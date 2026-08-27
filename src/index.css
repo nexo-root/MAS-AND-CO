@@ -92,22 +92,9 @@ header .boton.borde{border-color:rgba(244,242,234,.5);color:#F4F2EA}
   font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
 .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(24px,4vh,40px)}
 
-/* ── la cinta que corre ─────────────────────────────────────── */
-.cinta{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
-  overflow:hidden;padding:16px 0;background:var(--papel)}
-.cinta-tira{display:flex;white-space:nowrap;width:max-content;
-  animation:correr 26s linear infinite;
-  font-variation-settings:'wdth' 125,'wght' 350;
-  font-size:.95rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2)}
-@keyframes correr{to{transform:translateX(-50%)}}
-
 /* ── trabajos ───────────────────────────────────────────────── */
 .obra{display:block;text-decoration:none;color:inherit;
   margin-top:clamp(52px,8vh,96px);position:relative}
-.obra-num{position:absolute;top:-.62em;right:-.04em;z-index:0;line-height:1;
-  font-variation-settings:'wdth' 125,'wght' 200;
-  font-size:clamp(5rem,13vw,12rem);color:transparent;
-  -webkit-text-stroke:1px rgba(11,18,32,.22)}
 .lienzo{position:relative;border:1px solid var(--tinta);background:var(--papel-2);
   overflow:hidden;z-index:1}
 .lienzo img.ancha{width:100%;height:auto;display:block}
@@ -121,19 +108,6 @@ header .boton.borde{border-color:rgba(244,242,234,.5);color:#F4F2EA}
   font-size:.85rem;color:var(--tinta-2)}
 .obra:hover .ficha .ir{color:var(--tinta)}
 .obra-bajada{margin-top:10px;font-size:.95rem;color:var(--tinta-2);max-width:52ch}
-
-/* ── que hacemos: filas que se entintan al pasar ────────────── */
-.banda{background:var(--papel-2)}
-.lista{margin-top:clamp(30px,5vh,52px);border-top:1px solid var(--linea)}
-.item{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 26px;
-  padding:24px clamp(4px,1vw,14px);border-bottom:1px solid var(--linea);
-  transition:background .35s,color .35s,padding-left .45s var(--salida)}
-.item i{font-style:normal;font-variation-settings:'wdth' 125,'wght' 250;
-  font-size:1rem;color:var(--gris);min-width:2.2rem;transition:color .35s}
-.item .precio{margin-left:auto;font-variation-settings:'wdth' 125,'wght' 400;
-  font-size:.95rem;color:var(--tinta-2);white-space:nowrap;transition:color .35s}
-.item:hover{background:var(--tinta);color:var(--papel);padding-left:clamp(14px,2vw,26px)}
-.item:hover i,.item:hover .precio{color:rgba(237,237,231,.75)}
 
 /* ── el unico bloque navy ───────────────────────────────────── */
 .tinta{background:var(--tinta);color:var(--papel);padding-bottom:0}
@@ -166,12 +140,10 @@ header .boton.borde{border-color:rgba(244,242,234,.5);color:#F4F2EA}
     border-bottom:1px solid var(--linea);width:100%}
   .placa div:last-child{border-bottom:0}
   .movil{width:78px}
-  .obra-num{font-size:4.6rem;top:-.5em}
 }
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .punto{animation:none}
-  .cinta-tira{animation:none}
   .letra{transition:none}
 }

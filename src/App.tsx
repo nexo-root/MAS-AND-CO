@@ -16,12 +16,11 @@ const BASE = import.meta.env.BASE_URL
    del logo.
    ═══════════════════════════════════════════════════════════════ */
 
-function Obra({ id, url, titulo, rubro, num, bajada }: {
-  id: string; url: string; titulo: string; rubro: string; num: string; bajada: string
+function Obra({ id, url, titulo, rubro, bajada }: {
+  id: string; url: string; titulo: string; rubro: string; bajada: string
 }) {
   return (
     <a className="obra" href={url} target="_blank" rel="noopener">
-      <span className="obra-num" aria-hidden="true">{num}</span>
       <div className="lienzo">
         <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={980} height={637}
              loading="lazy" decoding="async" alt={`Sitio de ${titulo} visto en computadora`} />
@@ -84,33 +83,15 @@ export default function App() {
           </div>
         </section>
 
-        <div className="cinta" aria-hidden="true">
-          <div className="cinta-tira">
-            <span>Sitios web&ensp;·&ensp;Turnos y reservas&ensp;·&ensp;Automatizaciones&ensp;·&ensp;</span>
-            <span>Sitios web&ensp;·&ensp;Turnos y reservas&ensp;·&ensp;Automatizaciones&ensp;·&ensp;</span>
-          </div>
-        </div>
-
         <section id="trabajos">
           <div className="eje">
             <h2 className="titulo">Publicados y andando.</h2>
-            <Obra id="arbolito" num="01" url="https://pehuencoalquileres.com/"
+            <Obra id="arbolito" url="https://pehuencoalquileres.com/"
                   titulo="El Arbolito" rubro="Alojamientos · Pehuén-Có"
                   bajada="Cuatro alojamientos frente al mar. Dominio propio y consulta directa por WhatsApp." />
-            <Obra id="creditofinan" num="02" url="https://creditofinan.com/"
+            <Obra id="creditofinan" url="https://creditofinan.com/"
                   titulo="Crédito Finan" rubro="Créditos · Posadas"
                   bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
-          </div>
-        </section>
-
-        <section className="banda" id="hacemos">
-          <div className="eje">
-            <h2 className="titulo">Qué hacemos.</h2>
-            <div className="lista">
-              <div className="item"><i>01</i><h3>Sitio web</h3><span className="precio">desde $95.000</span></div>
-              <div className="item"><i>02</i><h3>Turnos y reservas</h3><span className="precio">desde $60.000</span></div>
-              <div className="item"><i>03</i><h3>Automatizaciones</h3><span className="precio">a medida</span></div>
-            </div>
           </div>
         </section>
 

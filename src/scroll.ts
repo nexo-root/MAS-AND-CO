@@ -83,22 +83,6 @@ export function useScroll() {
         }
       })
 
-      // 4 · filas y celdas, escalonadas
-      gsap.utils.toArray<HTMLElement>(".lista").forEach((lista) => {
-        gsap.fromTo(
-          lista.querySelectorAll(".item"),
-          { x: -34, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.85,
-            stagger: 0.09,
-            ease: "expo.out",
-            scrollTrigger: { trigger: lista, start: "top 82%" },
-          }
-        )
-      })
-
       gsap.utils.toArray<HTMLElement>(".placa").forEach((placa) => {
         gsap.fromTo(
           placa.querySelectorAll("div"),
@@ -115,7 +99,7 @@ export function useScroll() {
       })
 
       // 5 · el resto sube al entrar
-      gsap.utils.toArray<HTMLElement>(".ficha, .vias, .acciones").forEach((el) => {
+      gsap.utils.toArray<HTMLElement>(".ficha, .acciones, .rama").forEach((el) => {
         gsap.fromTo(
           el,
           { y: 26, opacity: 0 },
@@ -143,15 +127,18 @@ export function useScroll() {
         )
       })
 
-      // 7 · los numeros gigantes de obra se mueven a su propio ritmo
-      gsap.utils.toArray<HTMLElement>(".obra-num").forEach((n) => {
+      // 7 · cada marco de obra entra creciendo desde abajo
+      gsap.utils.toArray<HTMLElement>(".lienzo").forEach((marco) => {
         gsap.fromTo(
-          n,
-          { yPercent: 46 },
+          marco,
+          { y: 70, scale: 0.955, opacity: 0 },
           {
-            yPercent: -30,
-            ease: "none",
-            scrollTrigger: { trigger: n.parentElement, start: "top bottom", end: "bottom top", scrub: 0.7 },
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 1.15,
+            ease: "expo.out",
+            scrollTrigger: { trigger: marco, start: "top 86%" },
           }
         )
       })
@@ -168,6 +155,31 @@ export function useScroll() {
             ease: "expo.out",
             scrollTrigger: { trigger: b, start: "top 92%" },
           }
+        )
+      })
+
+      // 8b · las vias de contacto, de a una
+      gsap.utils.toArray<HTMLElement>(".vias").forEach((v) => {
+        gsap.fromTo(
+          v.querySelectorAll("a"),
+          { y: 24, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            stagger: 0.09,
+            ease: "expo.out",
+            scrollTrigger: { trigger: v, start: "top 92%" },
+          }
+        )
+      })
+
+      // 8c · el pie tambien respira
+      gsap.utils.toArray<HTMLElement>(".pie").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0 },
+          { opacity: 1, duration: 1, scrollTrigger: { trigger: el, start: "top 97%" } }
         )
       })
 
