@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import JuiceEffect from "./components/originkit/juiceeffect"
+import ScatterText from "./components/originkit/dot-scatter"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
 const BASE = import.meta.env.BASE_URL
@@ -87,18 +87,12 @@ export default function App() {
           <div className="retic" />
           <div className="eje">
             <h1 className="sr-only">Mas &amp; Co</h1>
-            <div className="marca-viva sube" aria-hidden="true">
-              <JuiceEffect
-                imageConfig={{ image: `${BASE}fotos/wordmark.png`, mode: "fit", scale: 10 }}
-                colorMode="custom"
-                particleColor="#EDEDE7"
-                particleSize={7}
-                density={42}
-                movementArea="inbounds"
-                speed={4}
-                hoverEnabled={true}
-                hoverRadius={110}
-                style={{ width: "100%", height: "100%" }}
+            <div className="marca-viva sube">
+              <ScatterText
+                text="mas and co"
+                color="#EDEDE7"
+                background="transparent"
+                variant="word"
               />
             </div>
             <p className="lugar sube" style={{ "--espera": "80ms" } as React.CSSProperties}>
