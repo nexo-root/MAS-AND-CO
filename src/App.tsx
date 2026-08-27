@@ -178,7 +178,6 @@ export default function App() {
             <span className="destacado" title="Muy pronto">MAS &amp; SONS</span>
           </nav>
           <Palanca oscuro={oscuro} alternar={() => setOscuro(!oscuro)} />
-          <a className="boton borde" href={WA} target="_blank" rel="noopener">Hablemos</a>
         </div>
       </header>
 

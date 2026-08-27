@@ -197,11 +197,16 @@ body,section,.lienzo,.placa,.placa div,.piso,.vias a,.ficha,.item,
 .pie-enlaces a:hover{text-decoration:underline;text-underline-offset:4px}
 .pie-enlaces .destacado{border-color:currentColor;color:inherit}
 
+/* En el celular el menu queda (Quienes somos y Terminos ocupan el
+   lugar del boton que se fue); solo se esconde el chip MAS & SONS,
+   que no entra sin amontonar. */
 @media (max-width:960px){
-  .menu a{display:none}
+  .menu{gap:14px;margin-right:2px}
+  .menu a{font-size:.72rem;letter-spacing:.01em;white-space:nowrap}
   .menu .destacado{display:none}
-  .barra{gap:14px}
+  .barra{gap:12px}
   .marca{font-size:.82rem;letter-spacing:.16em}
+  .palanca{font-size:7.5px}
 }
 
 /* ── el grupo, en grande: Mas & Sons, CMD, Mas & Co ─────────── */
