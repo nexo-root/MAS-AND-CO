@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react"
 import Curvas from "./Curvas"
 import VariableFontCursorProximity from "./components/originkit/dynamic-weight"
+import { Quienes, Terminos } from "./paginas"
 import { useScroll } from "./scroll"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
@@ -8,13 +10,65 @@ const BASE = import.meta.env.BASE_URL
 /* ═══════════════════════════════════════════════════════════════
    Mas & Co — papel y tinta.
 
-   Referencia: plano de arquitecto sobre papel. Hueso de fondo, navy
-   como tinta, las curvas de nivel de fondo como el plano de un
-   terreno. Un solo momento navy al final, que por contraste pesa.
-   El nombre del hero es el Dynamic Weight de Originkit: cada letra
-   engorda cuando el cursor se le acerca, en la misma Archivo variable
-   del logo.
+   Tres vistas: el inicio (el recorrido con scroll), Quiénes somos y
+   Términos, que viven fuera del recorrido y se llega solo por la
+   barra o el pie. El ruteo es por hash, que es lo único que aguanta
+   GitHub Pages sin servidor: #/quienes-somos y #/terminos son rutas,
+   cualquier otro hash es un ancla comun.
    ═══════════════════════════════════════════════════════════════ */
+
+type Ruta = "inicio" | "quienes" | "terminos"
+
+function rutaActual(): Ruta {
+  const h = location.hash
+  if (h.startsWith("#/quienes-somos")) return "quienes"
+  if (h.startsWith("#/terminos")) return "terminos"
+  return "inicio"
+}
+
+function usarRuta(): Ruta {
+  const [ruta, setRuta] = useState<Ruta>(rutaActual)
+  useEffect(() => {
+    const cambiar = () => {
+      const r = rutaActual()
+      setRuta(r)
+      if (r !== "inicio" || location.hash === "#/" ) scrollTo(0, 0)
+    }
+    addEventListener("hashchange", cambiar)
+    return () => removeEventListener("hashchange", cambiar)
+  }, [])
+  return ruta
+}
+
+/* La palanca de tema, de Uiverse (Uncannypotato69), tal cual su marcado.
+   Al cambiarla, toda la pagina cruza de papel a tinta con una transicion
+   de color; la eleccion queda guardada. */
+function Palanca({ oscuro, alternar }: { oscuro: boolean; alternar: () => void }) {
+  return (
+    <span className="palanca">
+      {/* From Uiverse.io by Uncannypotato69 */}
+      <label className="cursor-pointer relative h-[3em] w-[6em] rounded-full bg-[hsl(0,0%,7%)] shadow-[0px_2px_4px_0px_rgb(18,18,18,0.25),0px_4px_8px_0px_rgb(18,18,18,0.35)]">
+        <span className="absolute inset-[0.1em] rounded-full border-[1px] border-[hsl(0,0%,25%)]"></span>
+        <div className="absolute left-[0.5em] top-1/2 flex h-[2em] w-[2em] -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-[inset_0px_2px_2px_0px_hsl(0,0%,85%)]">
+          <div className="h-[1.5em] w-[1.5em] rounded-full bg-[hsl(0,0%,7%)] shadow-[0px_2px_2px_0px_hsl(0,0%,85%)]"></div>
+        </div>
+        <div className="absolute right-[0.5em] top-1/2 h-[0.25em] w-[1.5em] -translate-y-1/2 rounded-full bg-[hsl(0,0%,50%)] shadow-[inset_0px_2px_1px_0px_hsl(0,0%,40%)]"></div>
+        <input
+          className="peer h-[1em] w-[1em] opacity-0"
+          type="checkbox"
+          checked={oscuro}
+          onChange={alternar}
+          aria-label="Cambiar entre tema claro y oscuro"
+        />
+        <span className="absolute left-[0.25em] top-1/2 flex h-[2.5em] w-[2.5em] -translate-y-1/2 items-center justify-center rounded-full bg-[rgb(26,26,26)] shadow-[inset_4px_4px_4px_0px_rgba(64,64,64,0.25),inset_-4px_-4px_4px_0px_rgba(16,16,16,0.5)] duration-300 peer-checked:left-[calc(100%-2.75em)]">
+          <span className="relative h-full w-full rounded-full">
+            <span className="absolute inset-[0.1em] rounded-full border-[1px] border-[hsl(0,0%,50%)]"></span>
+          </span>
+        </span>
+      </label>
+    </span>
+  )
+}
 
 function Obra({ id, url, titulo, rubro, bajada }: {
   id: string; url: string; titulo: string; rubro: string; bajada: string
@@ -37,8 +91,65 @@ function Obra({ id, url, titulo, rubro, bajada }: {
   )
 }
 
+function Inicio() {
+  return (
+    <>
+      <section className="portada">
+        <div className="eje">
+          <h1 className="gigante">
+            <VariableFontCursorProximity
+              label="MAS & CO"
+              fromWeight={200}
+              toWeight={800}
+              strength={30}
+              fontSize="clamp(3.4rem, 12.2vw, 12rem)"
+              color="var(--tinta)"
+              transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
+              style={{ overflow: "visible" }}
+            />
+          </h1>
+          <div className="piso" />
+          <div className="bajo-piso">
+            <p className="lugar"><span className="punto" /> Desde Posadas, para todo el país</p>
+            <p className="bajada">Sitios web <em>que trabajan por vos.</em></p>
+          </div>
+          <div className="placa">
+            <div><b>$95.000</b><span>Desde</span></div>
+            <div><b>2 semanas</b><span>Entrega</span></div>
+            <div><b>50% y 50%</b><span>Al arrancar y al verlo</span></div>
+          </div>
+          <div className="acciones">
+            <a className="boton lleno" href={WA} target="_blank" rel="noopener">Escribinos</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="trabajos">
+        <div className="eje">
+          <h2 className="titulo">Publicados y andando.</h2>
+          <Obra id="arbolito" url="https://pehuencoalquileres.com/"
+                titulo="El Arbolito" rubro="Alojamientos · Pehuén-Có"
+                bajada="Cuatro alojamientos frente al mar. Dominio propio y consulta directa por WhatsApp." />
+          <Obra id="creditofinan" url="https://creditofinan.com/"
+                titulo="Crédito Finan" rubro="Créditos · Posadas"
+                bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
+        </div>
+      </section>
+    </>
+  )
+}
+
 export default function App() {
-  useScroll()
+  const ruta = usarRuta()
+  useScroll(ruta)
+
+  const [oscuro, setOscuro] = useState(() => {
+    try { return localStorage.getItem("tema") === "oscuro" } catch { return false }
+  })
+  useEffect(() => {
+    document.documentElement.dataset.tema = oscuro ? "oscuro" : "claro"
+    try { localStorage.setItem("tema", oscuro ? "oscuro" : "claro") } catch { /* privado */ }
+  }, [oscuro])
 
   return (
     <>
@@ -47,53 +158,21 @@ export default function App() {
 
       <header>
         <div className="eje barra">
-          <a className="marca" href="#">MAS &amp; CO</a>
+          <a className="marca" href="#/">MAS &amp; CO</a>
+          <nav className="menu">
+            <a href="#/quienes-somos">Quiénes somos</a>
+            <a href="#/terminos">Términos</a>
+            <span className="destacado" title="Muy pronto">MAS &amp; SONS</span>
+          </nav>
+          <Palanca oscuro={oscuro} alternar={() => setOscuro(!oscuro)} />
           <a className="boton borde" href={WA} target="_blank" rel="noopener">Hablemos</a>
         </div>
       </header>
 
       <main>
-        <section className="portada">
-          <div className="eje">
-            <h1 className="gigante">
-              <VariableFontCursorProximity
-                label="MAS & CO"
-                fromWeight={200}
-                toWeight={800}
-                strength={30}
-                fontSize="clamp(3.4rem, 12.2vw, 12rem)"
-                color="#0B1220"
-                transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
-                style={{ overflow: "visible" }}
-              />
-            </h1>
-            <div className="piso" />
-            <div className="bajo-piso">
-              <p className="lugar"><span className="punto" /> Desde Posadas, para todo el país</p>
-              <p className="bajada">Sitios web <em>que trabajan por vos.</em></p>
-            </div>
-            <div className="placa">
-              <div><b>$95.000</b><span>Desde</span></div>
-              <div><b>2 semanas</b><span>Entrega</span></div>
-              <div><b>50% y 50%</b><span>Al arrancar y al verlo</span></div>
-            </div>
-            <div className="acciones">
-              <a className="boton lleno" href={WA} target="_blank" rel="noopener">Escribinos</a>
-            </div>
-          </div>
-        </section>
-
-        <section id="trabajos">
-          <div className="eje">
-            <h2 className="titulo">Publicados y andando.</h2>
-            <Obra id="arbolito" url="https://pehuencoalquileres.com/"
-                  titulo="El Arbolito" rubro="Alojamientos · Pehuén-Có"
-                  bajada="Cuatro alojamientos frente al mar. Dominio propio y consulta directa por WhatsApp." />
-            <Obra id="creditofinan" url="https://creditofinan.com/"
-                  titulo="Crédito Finan" rubro="Créditos · Posadas"
-                  bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
-          </div>
-        </section>
+        {ruta === "inicio" && <Inicio />}
+        {ruta === "quienes" && <Quienes />}
+        {ruta === "terminos" && <Terminos />}
 
         <section className="tinta" id="contacto">
           <div className="eje">
@@ -111,6 +190,11 @@ export default function App() {
           <footer>
             <div className="eje pie">
               <span className="logo-pie">MAS &amp; CO</span>
+              <nav className="pie-enlaces">
+                <a href="#/quienes-somos">Quiénes somos</a>
+                <a href="#/terminos">Términos y condiciones</a>
+                <span className="destacado" title="Muy pronto">MAS &amp; SONS</span>
+              </nav>
               <span>Posadas, Misiones, Argentina</span>
             </div>
           </footer>

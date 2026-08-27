@@ -20,7 +20,7 @@ gsap.registerPlugin(ScrollTrigger)
    Con prefers-reduced-motion no se registra nada: todo queda visible y
    quieto, que es lo que corresponde.
    ═══════════════════════════════════════════════════════════════ */
-export function useScroll() {
+export function useScroll(ruta?: string) {
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
@@ -190,6 +190,13 @@ export function useScroll() {
         { y: 0, opacity: 1, duration: 1.05, stagger: 0.1, ease: "expo.out", delay: 0.08 }
       )
 
+      // 9b · las paginas fuera del recorrido entran igual
+      gsap.fromTo(
+        ".pagina .eje > *",
+        { y: 34, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9, stagger: 0.09, ease: "expo.out", delay: 0.05 }
+      )
+
       // 10 · la barra de progreso del scroll
       gsap.to(".progreso", {
         scaleX: 1,
@@ -209,5 +216,5 @@ export function useScroll() {
       ctx.revert()
       removeEventListener("load", refrescar)
     }
-  }, [])
+  }, [ruta])
 }
