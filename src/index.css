@@ -62,11 +62,10 @@ header.pegada{background:rgba(11,18,32,.92);backdrop-filter:blur(14px);
 .portada{min-height:100svh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
   padding:118px 0 56px;gap:clamp(18px,3vh,34px)}
-.retic{position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(var(--linea) 1px,transparent 1px),
-                   linear-gradient(90deg,var(--linea) 1px,transparent 1px);
-  background-size:clamp(96px,11vw,150px) clamp(96px,11vw,150px);
-  mask-image:radial-gradient(ellipse 70% 60% at 50% 45%,#000 25%,transparent 100%)}
+/* la grilla que ondula va detras de todo, y se desvanece hacia los bordes
+   para que el texto de abajo no pelee con las lineas */
+.fondo-vivo{position:absolute;inset:0;pointer-events:none;z-index:0;
+  mask-image:radial-gradient(ellipse 78% 70% at 50% 42%,#000 30%,transparent 100%)}
 .portada .eje{position:relative;z-index:2;display:flex;flex-direction:column;
   align-items:center;gap:clamp(16px,2.6vh,30px)}
 /* el wordmark vivo: ocupa el ancho de la pantalla */
@@ -83,7 +82,7 @@ header.pegada{background:rgba(11,18,32,.92);backdrop-filter:blur(14px);
 @keyframes latir{70%{box-shadow:0 0 0 9px rgba(111,207,151,0)}100%{box-shadow:0 0 0 0 rgba(111,207,151,0)}}
 .bajada{font-variation-settings:'wdth' 118,'wght' 700;
   font-size:clamp(1.15rem,2.6vw,2rem);letter-spacing:-.02em;line-height:1.1;
-  max-width:22ch;color:var(--hueso)}
+  max-width:28ch;color:var(--hueso)}
 .bajada em{font-style:normal;font-variation-settings:'wdth' 125,'wght' 200;
   color:var(--hueso-2)}
 .acciones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
@@ -137,7 +136,6 @@ footer{padding:34px 0;border-top:1px solid var(--linea);color:var(--gris);font-s
   body{padding-bottom:56px}
   section{padding:clamp(56px,8vh,84px) 0}
   .portada{min-height:auto;padding:96px 0 44px}
-  .retic{background-size:112px 112px}
   /* en el celular los tres datos van uno abajo del otro: en fila se parten
      y dejan un hueco vacio a la derecha */
   .placa{width:100%;flex-direction:column}

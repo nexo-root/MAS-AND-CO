@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react"
 import JuiceEffect from "./components/originkit/juiceeffect"
+import LiquidGrid from "./components/originkit/liquid-grid"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
 const BASE = import.meta.env.BASE_URL
@@ -84,7 +85,20 @@ export default function App() {
 
       <main>
         <section className="portada">
-          <div className="retic" />
+          <div className="fondo-vivo" aria-hidden="true">
+            <LiquidGrid
+              mode="lines"
+              background="#0B1220"
+              lineColor="rgba(237,237,231,0.10)"
+              glowColor="#C9CED8"
+              cellSize={68}
+              lineWidth={1}
+              radius={150}
+              intensity={70}
+              collide={false}
+              clickRipple={true}
+            />
+          </div>
           <div className="eje">
             <h1 className="sr-only">Mas &amp; Co</h1>
             <div className="marca-viva sube" aria-hidden="true">
@@ -92,8 +106,8 @@ export default function App() {
                 imageConfig={{ image: `${BASE}fotos/wordmark.png`, mode: "fit", scale: 10 }}
                 colorMode="custom"
                 particleColor="#EDEDE7"
-                particleSize={9}
-                density={88}
+                particleSize={10}
+                density={100}
                 movementArea="inbounds"
                 speed={4}
                 hoverEnabled={true}
