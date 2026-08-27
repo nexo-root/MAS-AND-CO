@@ -60,19 +60,34 @@ export function useScroll(ruta?: string) {
               anticipatePin: 1,
             },
           })
-          .to(".bajo-piso, .placa, .acciones", {
+          /* fromTo con puntos de partida explicitos y renderizado EN LA
+             CREACION (nada de immediateRender:false): asi la "foto" que
+             ScrollTrigger guarda para sus refresh se saca con los
+             elementos limpios, antes de que la intro los ponga en
+             opacidad 0. Sin esto, scrollear durante la entrada dejaba la
+             placa invisible para siempre al volver arriba. Selectores
+             acotados a .portada. */
+          .fromTo(".portada .bajo-piso, .portada .placa, .portada .acciones", {
+            y: 0,
+            opacity: 1,
+          }, {
             y: -50,
             opacity: 0,
             stagger: 0.05,
             ease: "power1.in",
           }, 0)
-          .to(letras, {
+          .fromTo(letras, {
+            yPercent: 0,
+            opacity: 1,
+          }, {
             yPercent: -150,
             opacity: 0,
             stagger: { each: 0.05, from: "start" },
             ease: "power1.in",
           }, 0.05)
-          .to(".piso", {
+          .fromTo(".piso", {
+            scaleX: 1,
+          }, {
             scaleX: 0,
             transformOrigin: "0 50%",
             ease: "none",
@@ -253,12 +268,14 @@ export function useScroll(ruta?: string) {
         )
       })
 
-      // la entrada del hero al cargar, y la de las paginas sueltas
-      gsap.fromTo(
-        ".portada .eje > *",
-        { y: 44, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.05, stagger: 0.1, ease: "expo.out", delay: 0.08 }
-      )
+      /* La entrada del hero NO va por GSAP: vive en CSS (@keyframes
+         entrada-hero en index.css). Motivo: la entrada anima los MISMOS
+         elementos que el pin del acto 1, y dos tweens escribiendo la
+         misma opacidad terminan mal — scrollear durante la entrada dejaba
+         la placa invisible para siempre. Una animacion CSS no toca
+         estilos inline, asi que no puede ensuciar las fotos que
+         ScrollTrigger guarda para sus refresh. La de las paginas sueltas
+         si queda en GSAP: ahi no hay scrub que pelee. */
       gsap.fromTo(
         ".pagina .eje > *",
         { y: 34, opacity: 0 },
