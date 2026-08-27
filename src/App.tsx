@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react"
 import Curvas from "./Curvas"
+import VariableFontCursorProximity from "./components/originkit/dynamic-weight"
 import { useScroll } from "./scroll"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
@@ -10,10 +10,10 @@ const BASE = import.meta.env.BASE_URL
 
    Referencia: plano de arquitecto sobre papel. Hueso de fondo, navy
    como tinta, las curvas de nivel de fondo como el plano de un
-   terreno. Un solo momento navy al final, que por contraste ahora
-   pesa. Una sola familia (Archivo variable) en tres voces: finisima
-   y ancha para la marca, negra y ancha para los titulos, normal
-   para leer.
+   terreno. Un solo momento navy al final, que por contraste pesa.
+   El nombre del hero es el Dynamic Weight de Originkit: cada letra
+   engorda cuando el cursor se le acerca, en la misma Archivo variable
+   del logo.
    ═══════════════════════════════════════════════════════════════ */
 
 function Obra({ id, url, titulo, rubro, num, bajada }: {
@@ -38,24 +38,8 @@ function Obra({ id, url, titulo, rubro, num, bajada }: {
   )
 }
 
-const LETRAS = ["M", "A", "S", " ", "&", " ", "C", "O"]
-
 export default function App() {
   useScroll()
-  const marca = useRef<HTMLHeadingElement>(null)
-
-  /* La entrada del nombre: cada letra sube desde atras de la linea de piso,
-     escalonada. Es la unica animacion de carga; el resto es del scroll. */
-  useEffect(() => {
-    const el = marca.current
-    if (!el) return
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el.classList.add("lista")
-      return
-    }
-    const t = setTimeout(() => el.classList.add("lista"), 60)
-    return () => clearTimeout(t)
-  }, [])
 
   return (
     <>
@@ -72,19 +56,22 @@ export default function App() {
       <main>
         <section className="portada">
           <div className="eje">
-            <h1 className="gigante" ref={marca} aria-label="Mas & Co">
-              {LETRAS.map((l, i) => (
-                <span className="tapa" key={i}>
-                  <span className="letra" style={{ transitionDelay: `${i * 55}ms` }}>
-                    {l === " " ? " " : l}
-                  </span>
-                </span>
-              ))}
+            <h1 className="gigante">
+              <VariableFontCursorProximity
+                label="MAS & CO"
+                fromWeight={200}
+                toWeight={800}
+                strength={30}
+                fontSize="clamp(3.4rem, 12.2vw, 12rem)"
+                color="#0B1220"
+                transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
+                style={{ overflow: "visible" }}
+              />
             </h1>
             <div className="piso" />
             <div className="bajo-piso">
               <p className="lugar"><span className="punto" /> Desde Posadas, para todo el país</p>
-              <p className="bajada">Sitios web y asistentes <em>que contestan por vos.</em></p>
+              <p className="bajada">Sitios web <em>que trabajan por vos.</em></p>
             </div>
             <div className="placa">
               <div><b>$95.000</b><span>Desde</span></div>
@@ -93,15 +80,14 @@ export default function App() {
             </div>
             <div className="acciones">
               <a className="boton lleno" href={WA} target="_blank" rel="noopener">Escribinos</a>
-              <a className="boton borde" href="#trabajos">Ver trabajos</a>
             </div>
           </div>
         </section>
 
         <div className="cinta" aria-hidden="true">
           <div className="cinta-tira">
-            <span>Sitios web&ensp;·&ensp;Automatización&ensp;·&ensp;Asistentes de IA&ensp;·&ensp;Mini apps&ensp;·&ensp;</span>
-            <span>Sitios web&ensp;·&ensp;Automatización&ensp;·&ensp;Asistentes de IA&ensp;·&ensp;Mini apps&ensp;·&ensp;</span>
+            <span>Sitios web&ensp;·&ensp;Turnos y reservas&ensp;·&ensp;Automatizaciones&ensp;·&ensp;</span>
+            <span>Sitios web&ensp;·&ensp;Turnos y reservas&ensp;·&ensp;Automatizaciones&ensp;·&ensp;</span>
           </div>
         </div>
 
@@ -123,8 +109,7 @@ export default function App() {
             <div className="lista">
               <div className="item"><i>01</i><h3>Sitio web</h3><span className="precio">desde $95.000</span></div>
               <div className="item"><i>02</i><h3>Turnos y reservas</h3><span className="precio">desde $60.000</span></div>
-              <div className="item"><i>03</i><h3>Asistente de WhatsApp</h3><span className="precio">a medida</span></div>
-              <div className="item"><i>04</i><h3>Automatizaciones</h3><span className="precio">a medida</span></div>
+              <div className="item"><i>03</i><h3>Automatizaciones</h3><span className="precio">a medida</span></div>
             </div>
           </div>
         </section>

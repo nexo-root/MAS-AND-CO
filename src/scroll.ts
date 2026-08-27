@@ -129,7 +129,56 @@ export function useScroll() {
         )
       })
 
-      // 6 · la barra de progreso del scroll
+      // 6 · toda la pagina deriva: cada seccion entra desde abajo y sigue
+      //     subiendo un poco mientras se scrollea, asi nada queda estatico
+      gsap.utils.toArray<HTMLElement>("section:not(.portada) .eje").forEach((eje) => {
+        gsap.fromTo(
+          eje,
+          { y: 64 },
+          {
+            y: -34,
+            ease: "none",
+            scrollTrigger: { trigger: eje, start: "top bottom", end: "bottom top", scrub: 0.9 },
+          }
+        )
+      })
+
+      // 7 · los numeros gigantes de obra se mueven a su propio ritmo
+      gsap.utils.toArray<HTMLElement>(".obra-num").forEach((n) => {
+        gsap.fromTo(
+          n,
+          { yPercent: 46 },
+          {
+            yPercent: -30,
+            ease: "none",
+            scrollTrigger: { trigger: n.parentElement, start: "top bottom", end: "bottom top", scrub: 0.7 },
+          }
+        )
+      })
+
+      // 8 · la bajada de cada obra
+      gsap.utils.toArray<HTMLElement>(".obra-bajada").forEach((b) => {
+        gsap.fromTo(
+          b,
+          { y: 22, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "expo.out",
+            scrollTrigger: { trigger: b, start: "top 92%" },
+          }
+        )
+      })
+
+      // 9 · la entrada del hero al cargar: todo sube escalonado
+      gsap.fromTo(
+        ".portada .eje > *",
+        { y: 44, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.05, stagger: 0.1, ease: "expo.out", delay: 0.08 }
+      )
+
+      // 10 · la barra de progreso del scroll
       gsap.to(".progreso", {
         scaleX: 1,
         ease: "none",
