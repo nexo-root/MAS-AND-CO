@@ -65,7 +65,7 @@ export default function Curvas() {
         const nivel = -2.6 + (n / (NIVELES - 1)) * 5.2
         // las del medio se ven un poco mas que las de los extremos
         const centro = 1 - Math.abs(n / (NIVELES - 1) - 0.5) * 2
-        ctx.strokeStyle = `rgba(237,237,231,${(0.075 + centro * 0.085).toFixed(3)})`
+        ctx.strokeStyle = `rgba(11,18,32,${(0.06 + centro * 0.07).toFixed(3)})`
         ctx.beginPath()
 
         for (let f = 0; f < filas - 1; f++) {

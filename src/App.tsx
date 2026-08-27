@@ -1,30 +1,27 @@
 import { useEffect, useRef } from "react"
-import JuiceEffect from "./components/originkit/juiceeffect"
 import Curvas from "./Curvas"
 import { useScroll } from "./scroll"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
 const BASE = import.meta.env.BASE_URL
 
-function useBarraPegada() {
-  const centinela = useRef<HTMLDivElement | null>(null)
-  useEffect(() => {
-    const cab = document.getElementById("cabecera")
-    const c = centinela.current
-    if (!cab || !c) return
-    const ob = new IntersectionObserver(
-      (ent) => cab.classList.toggle("pegada", !ent[0].isIntersecting),
-      { threshold: 0 }
-    )
-    ob.observe(c)
-    return () => ob.disconnect()
-  }, [])
-  return centinela
-}
+/* ═══════════════════════════════════════════════════════════════
+   Mas & Co — papel y tinta.
 
-function Obra({ id, url, titulo, rubro }: { id: string; url: string; titulo: string; rubro: string }) {
+   Referencia: plano de arquitecto sobre papel. Hueso de fondo, navy
+   como tinta, las curvas de nivel de fondo como el plano de un
+   terreno. Un solo momento navy al final, que por contraste ahora
+   pesa. Una sola familia (Archivo variable) en tres voces: finisima
+   y ancha para la marca, negra y ancha para los titulos, normal
+   para leer.
+   ═══════════════════════════════════════════════════════════════ */
+
+function Obra({ id, url, titulo, rubro, num, bajada }: {
+  id: string; url: string; titulo: string; rubro: string; num: string; bajada: string
+}) {
   return (
     <a className="obra" href={url} target="_blank" rel="noopener">
+      <span className="obra-num" aria-hidden="true">{num}</span>
       <div className="lienzo">
         <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={980} height={637}
              loading="lazy" decoding="async" alt={`Sitio de ${titulo} visto en computadora`} />
@@ -36,21 +33,36 @@ function Obra({ id, url, titulo, rubro }: { id: string; url: string; titulo: str
         <small>{rubro}</small>
         <span className="ir">Abrir sitio</span>
       </div>
+      <p className="obra-bajada">{bajada}</p>
     </a>
   )
 }
 
+const LETRAS = ["M", "A", "S", " ", "&", " ", "C", "O"]
+
 export default function App() {
   useScroll()
-  const centinela = useBarraPegada()
+  const marca = useRef<HTMLHeadingElement>(null)
+
+  /* La entrada del nombre: cada letra sube desde atras de la linea de piso,
+     escalonada. Es la unica animacion de carga; el resto es del scroll. */
+  useEffect(() => {
+    const el = marca.current
+    if (!el) return
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.classList.add("lista")
+      return
+    }
+    const t = setTimeout(() => el.classList.add("lista"), 60)
+    return () => clearTimeout(t)
+  }, [])
 
   return (
     <>
       <Curvas />
       <div className="progreso" aria-hidden="true" />
-      <div ref={centinela} style={{ position: "absolute", top: 0, height: 1, width: 1 }} />
 
-      <header id="cabecera">
+      <header>
         <div className="eje barra">
           <a className="marca" href="#">MAS &amp; CO</a>
           <a className="boton borde" href={WA} target="_blank" rel="noopener">Hablemos</a>
@@ -60,33 +72,20 @@ export default function App() {
       <main>
         <section className="portada">
           <div className="eje">
-            <h1 className="sr-only">Mas &amp; Co</h1>
-            <div
-              className="marca-viva"
-              aria-hidden="true"
-              onPointerEnter={(e) => { if (e.pointerType === "mouse") e.currentTarget.classList.add("liquida") }}
-              onPointerLeave={(e) => e.currentTarget.classList.remove("liquida")}
-            >
-              <img className="marca-solida" src={`${BASE}fotos/wordmark.png`} alt="" />
-              <JuiceEffect
-                imageConfig={{ image: `${BASE}fotos/wordmark.png`, mode: "fit", scale: 10 }}
-                colorMode="custom"
-                particleColor="#EDEDE7"
-                particleSize={12}
-                density={100}
-                movementArea="inbounds"
-                speed={1.5}
-                hoverEnabled={true}
-                hoverRadius={120}
-                style={{ width: "100%", height: "100%" }}
-              />
+            <h1 className="gigante" ref={marca} aria-label="Mas & Co">
+              {LETRAS.map((l, i) => (
+                <span className="tapa" key={i}>
+                  <span className="letra" style={{ transitionDelay: `${i * 55}ms` }}>
+                    {l === " " ? " " : l}
+                  </span>
+                </span>
+              ))}
+            </h1>
+            <div className="piso" />
+            <div className="bajo-piso">
+              <p className="lugar"><span className="punto" /> Desde Posadas, para todo el país</p>
+              <p className="bajada">Sitios web y asistentes <em>que contestan por vos.</em></p>
             </div>
-            <p className="lugar">
-              <span className="punto" /> Desde Posadas, para todo el país
-            </p>
-            <p className="bajada">
-              Sitios web y asistentes <em>que contestan por vos.</em>
-            </p>
             <div className="placa">
               <div><b>$95.000</b><span>Desde</span></div>
               <div><b>2 semanas</b><span>Entrega</span></div>
@@ -99,42 +98,43 @@ export default function App() {
           </div>
         </section>
 
+        <div className="cinta" aria-hidden="true">
+          <div className="cinta-tira">
+            <span>Sitios web&ensp;·&ensp;Automatización&ensp;·&ensp;Asistentes de IA&ensp;·&ensp;Mini apps&ensp;·&ensp;</span>
+            <span>Sitios web&ensp;·&ensp;Automatización&ensp;·&ensp;Asistentes de IA&ensp;·&ensp;Mini apps&ensp;·&ensp;</span>
+          </div>
+        </div>
+
         <section id="trabajos">
           <div className="eje">
-            <h2>Publicados y andando.</h2>
-            <Obra id="arbolito" url="https://pehuencoalquileres.com/" titulo="El Arbolito" rubro="Alojamientos · Pehuén-Có" />
-            <Obra id="creditofinan" url="https://creditofinan.com/" titulo="Crédito Finan" rubro="Créditos · Posadas" />
+            <h2 className="titulo">Publicados y andando.</h2>
+            <Obra id="arbolito" num="01" url="https://pehuencoalquileres.com/"
+                  titulo="El Arbolito" rubro="Alojamientos · Pehuén-Có"
+                  bajada="Cuatro alojamientos frente al mar. Dominio propio y consulta directa por WhatsApp." />
+            <Obra id="creditofinan" num="02" url="https://creditofinan.com/"
+                  titulo="Crédito Finan" rubro="Créditos · Posadas"
+                  bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
           </div>
         </section>
 
-        <section className="chapa">
+        <section className="banda" id="hacemos">
           <div className="eje">
-            <h2>Qué hacemos.</h2>
+            <h2 className="titulo">Qué hacemos.</h2>
             <div className="lista">
-              <div className="item"><h3>Sitio web</h3><span className="precio">desde $95.000</span></div>
-              <div className="item"><h3>Turnos y reservas</h3><span className="precio">desde $60.000</span></div>
-              <div className="item"><h3>Asistente de WhatsApp</h3><span className="precio">a medida</span></div>
-              <div className="item"><h3>Automatizaciones</h3><span className="precio">a medida</span></div>
+              <div className="item"><i>01</i><h3>Sitio web</h3><span className="precio">desde $95.000</span></div>
+              <div className="item"><i>02</i><h3>Turnos y reservas</h3><span className="precio">desde $60.000</span></div>
+              <div className="item"><i>03</i><h3>Asistente de WhatsApp</h3><span className="precio">a medida</span></div>
+              <div className="item"><i>04</i><h3>Automatizaciones</h3><span className="precio">a medida</span></div>
             </div>
           </div>
         </section>
 
-        <section>
+        <section className="tinta" id="contacto">
           <div className="eje">
-            <h2>La rama digital del grupo Mas.</h2>
-            <div className="placa">
-              <div><b>CMD</b><span>Desarrollos, Misiones</span></div>
-              <div><b>Mas &amp; Sons</b><span>Internacional</span></div>
-              <div><b>Mas &amp; Co</b><span>Tecnología</span></div>
-            </div>
-          </div>
-        </section>
-
-        <section className="chapa" id="contacto">
-          <div className="eje">
-            <h2>Contanos qué necesitás.</h2>
-            <div className="acciones" style={{ justifyContent: "flex-start" }}>
-              <a className="boton lleno" href={WA} target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+            <p className="rama">La rama de tecnología del grupo Mas, junto a CMD y Mas &amp; Sons.</p>
+            <h2 className="titulo enorme">Contanos qué<br />necesitás.</h2>
+            <div className="acciones">
+              <a className="boton claro" href={WA} target="_blank" rel="noopener">Escribinos por WhatsApp</a>
             </div>
             <div className="vias">
               <a href="https://wa.me/5493764615587" target="_blank" rel="noopener">+54 9 3764 61-5587</a>
@@ -142,17 +142,14 @@ export default function App() {
               <a href="https://instagram.com/mas.and.co" target="_blank" rel="noopener">@mas.and.co</a>
             </div>
           </div>
+          <footer>
+            <div className="eje pie">
+              <span className="logo-pie">MAS &amp; CO</span>
+              <span>Posadas, Misiones, Argentina</span>
+            </div>
+          </footer>
         </section>
       </main>
-
-      <footer>
-        <div className="eje pie">
-          <span style={{ fontVariationSettings: "'wdth' 125,'wght' 200", letterSpacing: ".22em", color: "var(--hueso)" }}>
-            MAS &amp; CO
-          </span>
-          <span>Posadas, Misiones, Argentina</span>
-        </div>
-      </footer>
 
       <a className="fijo" href={WA} target="_blank" rel="noopener">Escribinos por WhatsApp</a>
     </>
