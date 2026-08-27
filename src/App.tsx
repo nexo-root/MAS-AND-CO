@@ -50,22 +50,56 @@ function useBarraPegada() {
   return centinela
 }
 
-/* Fondo de toda la pagina. El componente escucha el mouse sobre su propio
-   div, y como vive detras del contenido nunca lo recibiria: por eso le
-   reenviamos el movimiento desde la ventana. */
+/* Fondo de toda la pagina.
+
+   Dos cosas que resuelve este envoltorio, sin tocar el componente:
+
+   1. El componente escucha el mouse sobre su propio div, y viviendo detras del
+      contenido nunca lo recibiria. Se lo reenviamos desde la ventana.
+   2. Por si solo las particulas quedan quietas hasta que alguien mueve el mouse.
+      Le pasamos un punto que deambula solo, con dos senos de periodos distintos
+      para que no se note el bucle. Cuando la persona mueve el mouse manda ella,
+      y el deambular vuelve tres segundos despues de que suelta. */
 function FondoVivo() {
   const caja = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     const destino = caja.current?.firstElementChild as HTMLElement | null
     if (!destino) return
-    const reenviar = (e: PointerEvent) => {
-      destino.dispatchEvent(
-        new PointerEvent("pointermove", { clientX: e.clientX, clientY: e.clientY })
-      )
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    let ultimoMouse = -Infinity
+    let cuadro = 0
+
+    const empujar = (x: number, y: number) => {
+      destino.dispatchEvent(new PointerEvent("pointermove", { clientX: x, clientY: y }))
     }
-    addEventListener("pointermove", reenviar, { passive: true })
-    return () => removeEventListener("pointermove", reenviar)
+
+    const deMano = (e: PointerEvent) => {
+      ultimoMouse = performance.now()
+      empujar(e.clientX, e.clientY)
+    }
+
+    const paso = (t: number) => {
+      if (t - ultimoMouse > 3000) {
+        const w = innerWidth
+        const h = innerHeight
+        // periodos primos entre si: el recorrido no se repite a simple vista
+        const x = w * (0.5 + 0.42 * Math.sin(t / 9700))
+        const y = h * (0.5 + 0.36 * Math.sin(t / 6100 + 1.3))
+        empujar(x, y)
+      }
+      cuadro = requestAnimationFrame(paso)
+    }
+    cuadro = requestAnimationFrame(paso)
+    addEventListener("pointermove", deMano, { passive: true })
+
+    return () => {
+      cancelAnimationFrame(cuadro)
+      removeEventListener("pointermove", deMano)
+    }
   }, [])
+
   return (
     <div className="fondo-vivo" ref={caja} aria-hidden="true">
       <ProximityHover
@@ -76,7 +110,7 @@ function FondoVivo() {
         maxSize={11}
         minSize={2.5}
         gap={30}
-        influence={230}
+        influence={260}
       />
     </div>
   )
