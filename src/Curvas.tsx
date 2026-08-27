@@ -64,11 +64,14 @@ export default function Curvas() {
       // el trazo sigue al tema: tinta sobre papel, hueso sobre navy
       const oscuro = document.documentElement.dataset.tema === "oscuro"
       const trazo = oscuro ? "237,237,231" : "11,18,32"
+      // sobre navy el mismo alfa casi no se ve: el trazo claro necesita mas
+      const base = oscuro ? 0.11 : 0.06
+      const rango = oscuro ? 0.12 : 0.07
       for (let n = 0; n < NIVELES; n++) {
         const nivel = -2.6 + (n / (NIVELES - 1)) * 5.2
         // las del medio se ven un poco mas que las de los extremos
         const centro = 1 - Math.abs(n / (NIVELES - 1) - 0.5) * 2
-        ctx.strokeStyle = `rgba(${trazo},${(0.06 + centro * 0.07).toFixed(3)})`
+        ctx.strokeStyle = `rgba(${trazo},${(base + centro * rango).toFixed(3)})`
         ctx.beginPath()
 
         for (let f = 0; f < filas - 1; f++) {

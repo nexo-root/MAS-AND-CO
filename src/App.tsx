@@ -115,7 +115,6 @@ function Inicio() {
           </div>
           <div className="placa">
             <div><b>$95.000</b><span>Desde</span></div>
-            <div><b>2 semanas</b><span>Entrega</span></div>
             <div><b>50% y 50%</b><span>Al arrancar y al verlo</span></div>
           </div>
           <div className="acciones">
