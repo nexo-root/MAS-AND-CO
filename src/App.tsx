@@ -61,7 +61,13 @@ export default function App() {
         <section className="portada">
           <div className="eje">
             <h1 className="sr-only">Mas &amp; Co</h1>
-            <div className="marca-viva" aria-hidden="true">
+            <div
+              className="marca-viva"
+              aria-hidden="true"
+              onPointerEnter={(e) => { if (e.pointerType === "mouse") e.currentTarget.classList.add("liquida") }}
+              onPointerLeave={(e) => e.currentTarget.classList.remove("liquida")}
+            >
+              <img className="marca-solida" src={`${BASE}fotos/wordmark.png`} alt="" />
               <JuiceEffect
                 imageConfig={{ image: `${BASE}fotos/wordmark.png`, mode: "fit", scale: 10 }}
                 colorMode="custom"
@@ -69,7 +75,7 @@ export default function App() {
                 particleSize={12}
                 density={100}
                 movementArea="inbounds"
-                speed={4}
+                speed={1.5}
                 hoverEnabled={true}
                 hoverRadius={120}
                 style={{ width: "100%", height: "100%" }}
