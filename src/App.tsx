@@ -151,9 +151,23 @@ export default function App() {
     try { localStorage.setItem("tema", oscuro ? "oscuro" : "claro") } catch { /* privado */ }
   }, [oscuro])
 
+  /* la barra gana fondo apenas se scrollea: mira un centinela de 1px */
+  useEffect(() => {
+    const cab = document.querySelector("header")
+    const c = document.getElementById("centinela")
+    if (!cab || !c) return
+    const ob = new IntersectionObserver(
+      (e) => cab.classList.toggle("pegada", !e[0].isIntersecting),
+      { threshold: 0 }
+    )
+    ob.observe(c)
+    return () => ob.disconnect()
+  }, [])
+
   return (
     <>
       <Curvas />
+      <div id="centinela" style={{ position: "absolute", top: 0, height: 1, width: 1 }} />
       <div className="progreso" aria-hidden="true" />
 
       <header>
