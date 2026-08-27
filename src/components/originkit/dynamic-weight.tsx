@@ -40,6 +40,26 @@ export default function VariableFontCursorProximity(props: Props) {
     const letterFactorsRef = useRef<number[]>([])
     const lastFrameRef = useRef(0)
     const mousePositionRef = useRef({ x: -99999, y: -99999 })
+    /* Sin puntero fino (celular) no hay proximidad posible: ahi corre una
+       onda automatica de peso que recorre las letras. */
+    const esTouchRef = useRef(
+        typeof matchMedia !== "undefined" && matchMedia("(hover: none)").matches
+    )
+    /* Fuera de pantalla o con el mouse lejos, el loop no mide nada: medir
+       cada letra por frame fuerza layout y pelea con el scroll. */
+    const visibleRef = useRef(true)
+    const maxFactorRef = useRef(0)
+
+    useEffect(() => {
+        const el = containerRef.current
+        if (!el || typeof IntersectionObserver === "undefined") return
+        const ob = new IntersectionObserver(
+            (e) => { visibleRef.current = e[0].isIntersecting },
+            { threshold: 0 }
+        )
+        ob.observe(el)
+        return () => ob.disconnect()
+    }, [])
 
     useEffect(() => {
         if (isStatic) return
@@ -74,10 +94,7 @@ export default function VariableFontCursorProximity(props: Props) {
     useAnimationFrame((now: number) => {
         if (isStatic) return
         const container = containerRef.current
-        if (!container) return
-        const containerRect = container.getBoundingClientRect()
-        const mx = mousePositionRef.current.x
-        const my = mousePositionRef.current.y
+        if (!container || !visibleRef.current) return
 
         const prevT = lastFrameRef.current || now
         const dtSec = Math.min(0.1, Math.max(0, (now - prevT) / 1000))
@@ -85,9 +102,40 @@ export default function VariableFontCursorProximity(props: Props) {
 
         const tau = Math.max(0.016, transition?.duration ?? 0.3)
         const a = 1 - Math.exp(-dtSec / tau)
+        const letras = letterRefs.current
+        let maxF = 0
 
-        for (let i = 0; i < letterRefs.current.length; i++) {
-            const letterEl = letterRefs.current[i]
+        /* ── celular: onda que viaja por las letras, sin medir nada ── */
+        if (esTouchRef.current) {
+            for (let i = 0; i < letras.length; i++) {
+                const letterEl = letras[i]
+                if (!letterEl) continue
+                const fase = (now / 1000) * 2.1 - i * 0.75
+                const target = Math.max(0, Math.sin(fase)) * 0.8
+                const prev = letterFactorsRef.current[i] ?? 0
+                const f = prev + (target - prev) * a
+                letterFactorsRef.current[i] = f
+                const w = Math.round(fromWeight + (toWeight - fromWeight) * f)
+                letterEl.style.fontVariationSettings =
+                    "'wdth' 125, 'wght' " + w
+            }
+            return
+        }
+
+        /* ── escritorio: proximidad al cursor ── */
+        const containerRect = container.getBoundingClientRect()
+        const mx = mousePositionRef.current.x
+        const my = mousePositionRef.current.y
+
+        /* mouse lejos y letras ya en reposo: nada que animar ni medir */
+        const lejos =
+            mx < -reach || my < -reach ||
+            mx > containerRect.width + reach ||
+            my > containerRect.height + reach
+        if (lejos && maxFactorRef.current < 0.001) return
+
+        for (let i = 0; i < letras.length; i++) {
+            const letterEl = letras[i]
             if (!letterEl) continue
             const rect = letterEl.getBoundingClientRect()
             const cx = rect.left + rect.width / 2 - containerRect.left
@@ -100,6 +148,7 @@ export default function VariableFontCursorProximity(props: Props) {
             const prev = letterFactorsRef.current[i] ?? 0
             const f = prev + (target - prev) * a
             letterFactorsRef.current[i] = f
+            if (f > maxF) maxF = f
 
             if (f < 0.001) {
                 if (letterEl.style.fontVariationSettings !== fromSettings) {
@@ -112,6 +161,7 @@ export default function VariableFontCursorProximity(props: Props) {
             letterEl.style.fontVariationSettings =
                 "'wdth' 125, 'wght' " + w
         }
+        maxFactorRef.current = maxF
     })
 
     const srOnlyStyle: React.CSSProperties = {

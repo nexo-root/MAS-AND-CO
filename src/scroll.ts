@@ -1,8 +1,18 @@
 import { useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Lenis from "lenis"
 
 gsap.registerPlugin(ScrollTrigger)
+
+/* Lenis suaviza la rueda: en Windows el mouse scrollea a saltos secos y
+   las animaciones scrub se sienten toscas sin esta interpolacion. En
+   touch no interviene (el scroll nativo del celular ya es fluido).
+   Es un singleton: vive una sola vez, fuera del ciclo de React. */
+export const lenis = new Lenis({ duration: 1.05 })
+lenis.on("scroll", ScrollTrigger.update)
+gsap.ticker.add((t) => lenis.raf(t * 1000))
+gsap.ticker.lagSmoothing(0)
 
 /* ═══════════════════════════════════════════════════════════════
    La coreografia de scroll. Cuatro actos, todos NOTORIOS:
@@ -42,7 +52,9 @@ export function useScroll(ruta?: string) {
             scrollTrigger: {
               trigger: ".portada",
               start: "top top",
-              end: "+=85%",
+              /* 50% y no mas: un pin largo se siente como scroll trabado
+                 (la pagina "no avanza" mientras dura). */
+              end: "+=50%",
               scrub: 0.5,
               pin: true,
               anticipatePin: 1,

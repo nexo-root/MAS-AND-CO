@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Curvas from "./Curvas"
 import VariableFontCursorProximity from "./components/originkit/dynamic-weight"
 import { Quienes, Terminos } from "./paginas"
-import { useScroll } from "./scroll"
+import { useScroll, lenis } from "./scroll"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
 const BASE = import.meta.env.BASE_URL
@@ -32,7 +32,7 @@ function usarRuta(): Ruta {
     const cambiar = () => {
       const r = rutaActual()
       setRuta(r)
-      if (r !== "inicio" || location.hash === "#/" ) scrollTo(0, 0)
+      if (r !== "inicio" || location.hash === "#/" ) lenis.scrollTo(0, { immediate: true })
     }
     addEventListener("hashchange", cambiar)
     return () => removeEventListener("hashchange", cambiar)
