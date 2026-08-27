@@ -100,8 +100,8 @@ function Inicio() {
             <VariableFontCursorProximity
               label="MAS & CO"
               fromWeight={200}
-              toWeight={800}
-              strength={30}
+              toWeight={850}
+              strength={42}
               fontSize="clamp(3.4rem, 12.2vw, 12rem)"
               color="var(--tinta)"
               transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}

@@ -25,7 +25,6 @@ export default function Curvas() {
     const ctx = cv.getContext("2d")
     if (!ctx) return
 
-    const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches
     let ancho = 0, alto = 0, cols = 0, filas = 0
     let campo = new Float32Array(0)
     let cuadro = 0
@@ -65,8 +64,8 @@ export default function Curvas() {
       const oscuro = document.documentElement.dataset.tema === "oscuro"
       const trazo = oscuro ? "237,237,231" : "11,18,32"
       // sobre navy el mismo alfa casi no se ve: el trazo claro necesita mas
-      const base = oscuro ? 0.11 : 0.06
-      const rango = oscuro ? 0.12 : 0.07
+      const base = oscuro ? 0.17 : 0.06
+      const rango = oscuro ? 0.16 : 0.07
       for (let n = 0; n < NIVELES; n++) {
         const nivel = -2.6 + (n / (NIVELES - 1)) * 5.2
         // las del medio se ven un poco mas que las de los extremos
@@ -111,13 +110,9 @@ export default function Curvas() {
     }
 
     medir()
-    if (quieto) {
-      dibujar(0)
-    } else {
-      cuadro = requestAnimationFrame(latir)
-    }
+    cuadro = requestAnimationFrame(latir)
 
-    const alRedimensionar = () => { medir(); if (quieto) dibujar(0) }
+    const alRedimensionar = () => medir()
     addEventListener("resize", alRedimensionar, { passive: true })
     return () => {
       cancelAnimationFrame(cuadro)

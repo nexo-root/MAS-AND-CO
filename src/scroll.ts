@@ -20,12 +20,13 @@ gsap.registerPlugin(ScrollTrigger)
    4. EL BLOQUE NAVY CRECE. Llega chico y levantado, y al entrar se
       expande hasta ocupar todo el ancho, como una tapa que cae.
 
-   Con prefers-reduced-motion no se registra nada: todo visible y
-   quieto, que es lo que corresponde.
    ═══════════════════════════════════════════════════════════════ */
 export function useScroll(ruta?: string) {
   useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    /* Ojo: aca NO se respeta prefers-reduced-motion a proposito. Windows con
+       "efectos de animacion" apagados (muy comun) lo reporta activo y dejaba
+       la web sin UNA sola animacion. Decision del dueno: el sitio se anima
+       siempre. */
 
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
