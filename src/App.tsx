@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import JuiceEffect from "./components/originkit/juiceeffect"
-import LiquidGrid from "./components/originkit/liquid-grid"
+import ProximityHover from "./components/originkit/reactivegrid"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
 const BASE = import.meta.env.BASE_URL
@@ -50,6 +50,38 @@ function useBarraPegada() {
   return centinela
 }
 
+/* Fondo de toda la pagina. El componente escucha el mouse sobre su propio
+   div, y como vive detras del contenido nunca lo recibiria: por eso le
+   reenviamos el movimiento desde la ventana. */
+function FondoVivo() {
+  const caja = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const destino = caja.current?.firstElementChild as HTMLElement | null
+    if (!destino) return
+    const reenviar = (e: PointerEvent) => {
+      destino.dispatchEvent(
+        new PointerEvent("pointermove", { clientX: e.clientX, clientY: e.clientY })
+      )
+    }
+    addEventListener("pointermove", reenviar, { passive: true })
+    return () => removeEventListener("pointermove", reenviar)
+  }, [])
+  return (
+    <div className="fondo-vivo" ref={caja} aria-hidden="true">
+      <ProximityHover
+        shape="circle"
+        fill="solid"
+        particleColor="rgba(237,237,231,0.17)"
+        backgroundColor="#0B1220"
+        maxSize={11}
+        minSize={2.5}
+        gap={30}
+        influence={230}
+      />
+    </div>
+  )
+}
+
 function Obra({ id, url, titulo, rubro }: { id: string; url: string; titulo: string; rubro: string }) {
   return (
     <a className="obra sube" href={url} target="_blank" rel="noopener">
@@ -74,6 +106,7 @@ export default function App() {
 
   return (
     <>
+      <FondoVivo />
       <div ref={centinela} style={{ position: "absolute", top: 0, height: 1, width: 1 }} />
 
       <header id="cabecera">
@@ -85,20 +118,6 @@ export default function App() {
 
       <main>
         <section className="portada">
-          <div className="fondo-vivo" aria-hidden="true">
-            <LiquidGrid
-              mode="lines"
-              background="#0B1220"
-              lineColor="rgba(237,237,231,0.10)"
-              glowColor="#C9CED8"
-              cellSize={68}
-              lineWidth={1}
-              radius={150}
-              intensity={70}
-              collide={false}
-              clickRipple={true}
-            />
-          </div>
           <div className="eje">
             <h1 className="sr-only">Mas &amp; Co</h1>
             <div className="marca-viva sube" aria-hidden="true">

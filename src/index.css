@@ -29,8 +29,8 @@ h3{font-variation-settings:'wdth' 118,'wght' 700;
   font-size:clamp(1.05rem,1.7vw,1.3rem);letter-spacing:-.02em;line-height:1.15}
 
 .eje{width:min(1240px,90vw);margin-inline:auto}
-section{padding:clamp(72px,11vh,132px) 0;position:relative}
-.chapa{background:var(--chapa)}
+section{padding:clamp(72px,11vh,132px) 0;position:relative;background:transparent}
+.chapa{background:color-mix(in srgb,var(--chapa) 88%,transparent)}
 
 /* datos grabados: la placa */
 .placa{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--linea);
@@ -62,10 +62,10 @@ header.pegada{background:rgba(11,18,32,.92);backdrop-filter:blur(14px);
 .portada{min-height:100svh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
   padding:118px 0 56px;gap:clamp(18px,3vh,34px)}
-/* la grilla que ondula va detras de todo, y se desvanece hacia los bordes
-   para que el texto de abajo no pelee con las lineas */
-.fondo-vivo{position:absolute;inset:0;pointer-events:none;z-index:0;
-  mask-image:radial-gradient(ellipse 78% 70% at 50% 42%,#000 30%,transparent 100%)}
+/* el fondo de particulas cubre la pagina entera y no intercepta clics */
+.fondo-vivo{position:fixed;inset:0;z-index:0;pointer-events:none}
+/* el contenido va encima del fondo; la barra, encima de todo */
+main,footer{position:relative;z-index:1}
 .portada .eje{position:relative;z-index:2;display:flex;flex-direction:column;
   align-items:center;gap:clamp(16px,2.6vh,30px)}
 /* el wordmark vivo: ocupa el ancho de la pantalla */
