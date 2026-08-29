@@ -1,0 +1,24 @@
+name: Fabrica de contenido Mas & Co
+
+on:
+  schedule:
+    # 13:05 UTC = 10:05 en Argentina, todos los dias.
+    # El script decide solo si hoy toca publicar (segun feed/cola.json).
+    - cron: "5 13 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publicar el post del dia
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN_MASANDCO }}
+        run: python feed/publicar.py

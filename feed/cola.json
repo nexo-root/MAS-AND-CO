@@ -1,0 +1,51 @@
+{
+  "_doc": "Cola de publicaciones de la fabrica Mas & Co. El bot publica la entrada cuya fecha (hora Argentina) sea HOY. No disenia ni inventa: solo publica lo aprobado.",
+  "base_url": "https://nexo-root.github.io/MAS-AND-CO/feed/",
+  "posts": [
+    {
+      "fecha": "2026-08-29",
+      "imagen": "ad5-rubros.png",
+      "caption": "Sea cual sea tu negocio, tu página puede verse así. Diseños de muestra y clientes reales — la tuya se hace a medida, con tus fotos y tu marca. Desde $95.000, la mitad al arrancar y la otra mitad cuando la ves terminada. Escribinos: +54 9 3764 61-5587 · Posadas, para todo el país. #paginaweb #pymes #posadas #misiones #diseñoweb"
+    },
+    {
+      "fecha": "2026-08-30",
+      "imagen": "post1-vitrina.png",
+      "caption": "Diseño Nº 03 · Gastronomía. Un restaurante no vende platos: vende ganas de ir. Así puede verse el tuyo. Diseño de muestra — el tuyo se hace a medida. Consultas: +54 9 3764 61-5587. #restaurantes #gastronomia #paginaweb #diseñoweb #posadas"
+    },
+    {
+      "fecha": "2026-08-31",
+      "imagen": "post2-tip.png",
+      "caption": "3 señales de que tu negocio necesita una página. ¿Te pasó alguna? La tercera es la que más duele: en Instagram el algoritmo decide quién te ve — en tu página, no. Consultas: +54 9 3764 61-5587. #negocios #pymes #marketingdigital #paginaweb #argentina"
+    },
+    {
+      "fecha": "2026-09-01",
+      "imagen": "post4-vitrina-oficio.png",
+      "caption": "Diseño Nº 02 · Barbería. Un corte se elige por cómo te va a quedar; una barbería, por cómo se ve. Con turnos por WhatsApp incluidos. Diseño de muestra — el tuyo se hace a medida. Consultas: +54 9 3764 61-5587. #barberia #barber #paginaweb #diseñoweb #posadas"
+    },
+    {
+      "fecha": "2026-09-02",
+      "imagen": "post3-proceso.png",
+      "caption": "Así trabajamos, sin sorpresas: pagás la mitad para arrancar, en 7 días ves tu página publicada y recién ahí pagás el resto. Precio fijo, sin letra chica. Consultas: +54 9 3764 61-5587 · Posadas, para todo el país. #pymes #paginaweb #emprendedores #posadas"
+    },
+    {
+      "fecha": "2026-09-03",
+      "imagen": "post5-vitrina-terra.png",
+      "caption": "Diseño Nº 01 · Inmobiliaria. Nadie compra una casa sin verla — tampoco te eligen sin verte. Buscador de propiedades y visitas por WhatsApp. Diseño de muestra — el tuyo se hace a medida. Consultas: +54 9 3764 61-5587. #inmobiliaria #propiedades #paginaweb #posadas"
+    },
+    {
+      "fecha": "2026-09-04",
+      "imagen": "ad4-whatsapp.png",
+      "caption": "Así de simple es el proceso, de verdad: precio fijo desde $95.000, mitad al arrancar y mitad cuando la ves hecha, publicada en 7 días. Una conversación y tu negocio queda en internet. Escribinos: +54 9 3764 61-5587. #paginaweb #pymes #posadas #misiones"
+    },
+    {
+      "fecha": "2026-09-07",
+      "imagen": "ad1-fan.png",
+      "caption": "La página que tenés hoy: ninguna. La que podés tener: cualquiera de estas. Tus clientes te buscan en Google — que te encuentren a vos, no a tu competencia. Consultas: +54 9 3764 61-5587. #google #negocios #paginaweb #pymes #argentina"
+    },
+    {
+      "fecha": "2026-09-09",
+      "imagen": "post6-cliente-arbolito.png",
+      "caption": "Cliente real: El Arbolito, cuatro alojamientos frente al mar en Pehuén-Có. Su página está publicada, andando y recibiendo consultas en pehuencoalquileres.com — la podés visitar ahora mismo. Consultas: +54 9 3764 61-5587. #alojamientos #turismo #paginaweb #clientereal"
+    }
+  ]
+}
