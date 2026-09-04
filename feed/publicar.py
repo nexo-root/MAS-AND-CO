@@ -23,8 +23,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 API = "https://graph.facebook.com/v25.0"
-PAGE_ID = "1240250065846822"        # pagina de Facebook "Mas & Co"
-IG_USER_ID = "17841430545492183"    # @mas.and.co
+PAGE_ID = "1342032842315941"        # pagina de Facebook "Mas And Co" (cuentas nuevas)
+IG_USER_ID = "17841427054482089"    # @masandco.mas
 
 ARG = timezone(timedelta(hours=-3))
 
