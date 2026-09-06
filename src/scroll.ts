@@ -140,9 +140,19 @@ export function useScroll(ruta?: string) {
             { clipPath: "inset(100% 0% 0% 0%)" },
             {
               clipPath: "inset(0% 0% 0% 0%)",
-              duration: 1.3,
-              ease: "expo.inOut",
-              scrollTrigger: { trigger: obra, start: "top 82%" },
+              /* Era 1,3 s con expo.inOut, la peor combinacion para quien baja
+                 rapido: esa curva es LENTA al principio, asi que durante media
+                 cortina no pasaba nada visible y el marco llegaba a mitad de
+                 pantalla todavia tapado. power3.out arranca fuerte. */
+              duration: 0.65,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: obra,
+                start: "top 92%",
+                /* con scroll rapido, saltar al estado final en vez de animar
+                   con retraso */
+                fastScrollEnd: true,
+              },
             }
           )
         }
@@ -158,7 +168,7 @@ export function useScroll(ruta?: string) {
                 trigger: marco,
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 0.7,
+                scrub: 0.4,
               },
             }
           )
@@ -175,8 +185,8 @@ export function useScroll(ruta?: string) {
               scrollTrigger: {
                 trigger: obra,
                 start: "top bottom",
-                end: "top 40%",
-                scrub: 0.6,
+                end: "top 62%",
+                scrub: 0.3,
               },
             }
           )
@@ -193,10 +203,10 @@ export function useScroll(ruta?: string) {
           {
             rotateX: 0,
             opacity: 1,
-            duration: 0.9,
-            stagger: 0.13,
+            duration: 0.5,
+            stagger: 0.06,
             ease: "expo.out",
-            scrollTrigger: { trigger: placa, start: "top 90%" },
+            scrollTrigger: { trigger: placa, start: "top 95%", fastScrollEnd: true },
           }
         )
       })
@@ -213,8 +223,10 @@ export function useScroll(ruta?: string) {
             scrollTrigger: {
               trigger: bloque,
               start: "top 96%",
-              end: "top 38%",
-              scrub: 0.5,
+              /* terminaba al 38% de la pantalla: el bloque llegaba casi al
+                 centro sin haber terminado de crecer. */
+              end: "top 62%",
+              scrub: 0.25,
             },
           }
         )
@@ -228,9 +240,9 @@ export function useScroll(ruta?: string) {
           {
             y: 0,
             opacity: 1,
-            duration: 0.85,
+            duration: 0.45,
             ease: "expo.out",
-            scrollTrigger: { trigger: el, start: "top 92%" },
+            scrollTrigger: { trigger: el, start: "top 96%", fastScrollEnd: true },
           }
         )
       })

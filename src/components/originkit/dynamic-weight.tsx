@@ -91,7 +91,17 @@ export default function VariableFontCursorProximity(props: Props) {
 
     const fromSettings = "'wdth' 125, 'wght' " + fromWeight
 
-    useAnimationFrame((now: number) => {
+    /* EL CUERPO DEL CUADRO VA EN UN REF Y SE REGISTRA UN ENVOLTORIO ESTABLE.
+       framer-motion re-engancha su callback cada vez que cambia la IDENTIDAD
+       de la funcion, y una flecha inline se recrea en cada render. Al tocar la
+       palanca de tema React re-renderiza, framer cancelaba el cuadro y no lo
+       volvia a enganchar: las letras quedaban con el peso que tenian en ese
+       instante y no reaccionaban nunca mas al mouse. Medido: antes del toque
+       "834 496 206..." variaba con el cursor; despues, siempre "211 205 200...".
+       Ni scrollear ni volver a tocar la palanca lo revivian.
+       Con la identidad fija, se engancha una sola vez y sobrevive los renders. */
+    const cuadroRef = useRef<(now: number) => void>(() => {})
+    cuadroRef.current = (now: number) => {
         if (isStatic) return
         const container = containerRef.current
         if (!container || !visibleRef.current) return
@@ -162,7 +172,10 @@ export default function VariableFontCursorProximity(props: Props) {
                 "'wdth' 125, 'wght' " + w
         }
         maxFactorRef.current = maxF
-    })
+    }
+    useAnimationFrame(
+        React.useCallback((now: number) => cuadroRef.current(now), [])
+    )
 
     const srOnlyStyle: React.CSSProperties = {
         position: "absolute",
@@ -188,8 +201,17 @@ export default function VariableFontCursorProximity(props: Props) {
 
     const words = label ? label.split(" ") : []
 
-    letterRefs.current = []
+    /* NO se vacia el array: se RECORTA. Los ref de cada letra estan sobre un
+       `motion.span` de framer-motion, que memoriza internamente y NO vuelve a
+       invocar el callback en un re-render normal —solo al montar—. Vaciando el
+       array en cada render, el primer re-render lo dejaba en cero y nadie lo
+       rellenaba: el bucle seguia corriendo a 120 cuadros por segundo, con el
+       mouse bien rastreado, pero sin una sola letra que tocar. Se notaba al
+       cambiar de tema, que es lo unico que re-renderiza esta pantalla: las
+       letras quedaban con el peso del instante del cambio, para siempre.
+       Recortando a la cantidad real, las referencias vivas sobreviven. */
     let letterIndex = 0
+    letterRefs.current.length = words.join("").length
 
     return (
         <div
