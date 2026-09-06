@@ -5,6 +5,18 @@ import Lenis from "lenis"
 
 gsap.registerPlugin(ScrollTrigger)
 
+/* Antes de cambiar de ruta hay que devolverle el DOM a React tal como lo
+   dejo. ScrollTrigger, al clavar la portada (pin: true), la envuelve en un
+   div "pin-spacer" que React no conoce. Cuando la ruta cambia y React
+   desmonta <Inicio/>, intenta sacar .portada de <main>, donde ya no esta:
+   NotFoundError, y React 19 responde desmontando el arbol entero. La barra,
+   el pie y el boton de WhatsApp desaparecen y la pagina queda en blanco.
+   kill(true) revierte cada trigger de forma SINCRONA: saca el spacer y
+   restaura los estilos, antes de que React toque nada. */
+export function revertirScroll() {
+  ScrollTrigger.getAll().forEach((t) => t.kill(true))
+}
+
 /* Lenis suaviza la rueda: en Windows el mouse scrollea a saltos secos y
    las animaciones scrub se sienten toscas sin esta interpolacion. En
    touch no interviene (el scroll nativo del celular ya es fluido).
@@ -33,6 +45,11 @@ gsap.ticker.lagSmoothing(0)
    ═══════════════════════════════════════════════════════════════ */
 export function useScroll(ruta?: string) {
   useEffect(() => {
+    /* Durante el prerender (scripts/prerender.mjs) no se arma ninguna
+       coreografia: los fromTo dejarian las cortinas en clipPath 100% y las
+       fichas en opacidad 0, y eso es lo que quedaria escrito en el HTML que
+       lee Google. El HTML estatico tiene que salir con todo VISIBLE. */
+    if ((window as unknown as { __PRERENDER__?: boolean }).__PRERENDER__) return
     /* Ojo: aca NO se respeta prefers-reduced-motion a proposito. Windows con
        "efectos de animacion" apagados (muy comun) lo reporta activo y dejaba
        la web sin UNA sola animacion. Decision del dueno: el sitio se anima

@@ -1,3 +1,6 @@
+import { Cabeza } from "./seo/Cabeza"
+import { rutaPorId } from "./seo/rutas"
+
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
 
 /* Las paginas que no estan en el recorrido principal: se llega solo
@@ -6,9 +9,10 @@ const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar"
 export function Quienes() {
   return (
     <section className="pagina">
+      <Cabeza ruta={rutaPorId("quienes")} />
       <div className="eje">
-        <a className="volver" href="#/">← Volver al inicio</a>
-        <h2 className="titulo">Quiénes somos.</h2>
+        <a className="volver" href="/">← Volver al inicio</a>
+        <h1 className="titulo">Quiénes somos.</h1>
         <div className="prosa">
           <p>
             Somos la rama de tecnología de la familia Mas, que construye desde
@@ -69,9 +73,10 @@ export function Quienes() {
 export function Terminos() {
   return (
     <section className="pagina">
+      <Cabeza ruta={rutaPorId("terminos")} />
       <div className="eje">
-        <a className="volver" href="#/">← Volver al inicio</a>
-        <h2 className="titulo">Términos y condiciones.</h2>
+        <a className="volver" href="/">← Volver al inicio</a>
+        <h1 className="titulo">Términos y condiciones.</h1>
         <div className="prosa legal">
           <p className="fecha">Última actualización: agosto de 2026</p>
 
@@ -118,8 +123,8 @@ export function Terminos() {
 
           <h3>6. Plazos y materiales</h3>
           <p>
-            El plazo estimado de entrega de un sitio es de dos semanas desde
-            la recepción de las fotos y la información del negocio. El cliente
+            El plazo estimado de entrega de un sitio es de 7 días desde la
+            recepción de las fotos y la información del negocio. El cliente
             garantiza tener derecho a usar los materiales que entrega; Mas
             &amp; Co no se responsabiliza por reclamos de terceros sobre
             materiales provistos por el cliente.

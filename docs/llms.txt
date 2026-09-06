@@ -1,0 +1,29 @@
+# Mas & Co
+
+> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye en Misiones desde 2010, con base en Posadas y cobertura en todo el país. Una página institucional a medida cuesta $95.000 ARS, precio final, se entrega en 7 días y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
+
+## Datos clave
+
+- Precio: $95.000 ARS por una página institucional, precio final.
+- Plazo: 7 días desde que se recibe el material del negocio.
+- Pago: 50% al arrancar, 50% al ver la página terminada. Si no gusta, no se paga el saldo.
+- Mantenimiento opcional: $30.000 ARS por mes (dominio, alojamiento, respaldos, soporte), primer mes gratis.
+- El dominio se registra a nombre del cliente.
+- Casos reales: El Arbolito (pehuencoalquileres.com), Crédito Finan (creditofinan.com).
+
+## Páginas
+
+- [Inicio](https://masandcoweb.com/): Construimos la página web de tu negocio en 7 días. Diseño propio, no plantillas. Desde $95.000: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.
+- [Precios](https://masandcoweb.com/precios/): Los estudios cotizan una página institucional entre $180.000 y $350.000. En Mas & Co sale $95.000, precio final, lista en 7 días. Qué incluye, cómo se paga y qué va aparte.
+- [Preguntas frecuentes](https://masandcoweb.com/preguntas-frecuentes/): Cuánto tarda, cómo se paga, de quién queda el dominio, qué pasa si ya tenés Instagram y qué tenés que mandar. Respuestas directas, sin vueltas.
+- [Página web para restaurantes](https://masandcoweb.com/pagina-web-para-restaurantes/): Carta, horarios, ubicación y reservas por WhatsApp en una página propia. Desde $95.000, lista en 7 días. Mirá el diseño Brasa.
+- [Página web para inmobiliarias](https://masandcoweb.com/pagina-web-para-inmobiliarias/): Buscador de propiedades, ficha por inmueble y visitas coordinadas por WhatsApp. Desde $95.000, lista en 7 días. Mirá el diseño Terra.
+- [Página web para alojamientos](https://masandcoweb.com/pagina-web-para-alojamientos/): Reservas directas, sin comisión de plataformas. Fotos, ubicación, reseñas y consulta por WhatsApp. Caso real: El Arbolito, Pehuén-Có.
+- [Quiénes somos](https://masandcoweb.com/quienes-somos/): La generación más joven de una familia que construye desde 2010. Hacemos los sitios, los turnos y las automatizaciones con los que un negocio vende y atiende.
+- [Términos y condiciones](https://masandcoweb.com/terminos/): Condiciones del servicio de Mas & Co: presupuestos, pagos, plazos, propiedad del trabajo y datos personales.
+
+## Contacto
+
+- WhatsApp: +54 9 3764 61-5587
+- Email: masandco.mas@gmail.com
+- Instagram: https://www.instagram.com/masandco.mas
