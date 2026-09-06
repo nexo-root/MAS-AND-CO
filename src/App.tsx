@@ -134,7 +134,7 @@ function Inicio() {
           </h1>
           <div className="piso" />
           <div className="bajo-piso">
-            <p className="lugar"><span className="punto" /> Desde Posadas, para todo el país</p>
+            <p className="lugar">Desde Posadas, para todo el país</p>
             <p className="bajada">Sitios web <em>que trabajan por vos.</em></p>
           </div>
           <div className="acciones">

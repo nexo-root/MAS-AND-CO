@@ -85,11 +85,16 @@ export function useScroll(ruta?: string) {
             stagger: { each: 0.05, from: "start" },
             ease: "power1.in",
           }, 0.05)
+          /* El `y: 0` es obligatorio y no es cosmetico: sin declararlo, GSAP
+             arrancaba la linea con un translateY de 44 px heredado del estado
+             que leyo al crear el tween, y la barra terminaba 20 px adentro del
+             texto de abajo, para siempre. Declarado, la matriz sale limpia.
+             (transformOrigin vive en .piso, en index.css) */
           .fromTo(".piso", {
             scaleX: 1,
+            y: 0,
           }, {
             scaleX: 0,
-            transformOrigin: "0 50%",
             ease: "none",
           }, 0.1)
       })
