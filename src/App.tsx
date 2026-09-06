@@ -70,13 +70,17 @@ function Palanca({ oscuro, alternar }: { oscuro: boolean; alternar: () => void }
   )
 }
 
+/* Las capturas van al DOBLE de lo que miden en pantalla. A 980 px se
+   mostraban a 1238 y quedaban estiradas un 26% —en retina, la mitad de eso—
+   y la letra de las barras de navegacion salia lavada. A 1960 sobra densidad
+   y siguen pesando menos de 140 KB cada una. */
 function Obra({ id, url, titulo, rubro, bajada }: {
   id: string; url: string; titulo: string; rubro: string; bajada: string
 }) {
   return (
     <a className="obra" href={url} target="_blank" rel="noopener">
       <div className="lienzo">
-        <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={980} height={637}
+        <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={1960} height={1274}
              loading="lazy" decoding="async" alt={`Sitio de ${titulo} visto en computadora`} />
         <img className="movil" src={`${BASE}fotos/${id}-movil.webp`} width={585} height={1266}
              loading="lazy" decoding="async" alt="El mismo sitio en un celular" />
@@ -100,7 +104,7 @@ function Diseno({ id, titulo, rubro, bajada }: {
   return (
     <div className="obra obra-muestra">
       <div className="lienzo">
-        <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={980} height={637}
+        <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={1960} height={1274}
              loading="lazy" decoding="async" alt={`Diseno de muestra ${titulo} en computadora`} />
         <img className="movil" src={`${BASE}fotos/${id}-movil.webp`} width={585} height={1266}
              loading="lazy" decoding="async" alt="El mismo diseno en un celular" />
