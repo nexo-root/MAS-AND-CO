@@ -103,9 +103,6 @@ header.pegada{background:color-mix(in srgb,var(--papel) 92%,transparent);
 .lienzo{position:relative;border:1px solid var(--tinta);background:var(--papel-2);
   overflow:hidden;z-index:1}
 .lienzo img.ancha{width:100%;height:auto;display:block}
-.movil{position:absolute;right:clamp(16px,3vw,44px);bottom:0;width:clamp(88px,13vw,168px);
-  height:auto;border:1px solid var(--tinta);border-bottom:0;
-  box-shadow:-18px 20px 44px rgba(11,18,32,.28)}
 .ficha{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;
   margin-top:16px;padding-bottom:12px;border-bottom:1px solid var(--linea)}
 .ficha small{font-size:.85rem;color:var(--gris)}
@@ -153,7 +150,6 @@ header.pegada{background:color-mix(in srgb,var(--papel) 92%,transparent);
   .placa div{padding:12px 18px;border-right:0;
     border-bottom:1px solid var(--linea);width:100%}
   .placa div:last-child{border-bottom:0}
-  .movil{width:78px}
 }
 
 /* ── la entrada del hero, en CSS puro: no puede pelear con GSAP ── */

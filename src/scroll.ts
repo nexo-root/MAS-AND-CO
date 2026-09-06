@@ -132,7 +132,6 @@ export function useScroll(ruta?: string) {
       gsap.utils.toArray<HTMLElement>(".obra").forEach((obra, i) => {
         const marco = obra.querySelector<HTMLElement>(".lienzo")
         const foto = obra.querySelector<HTMLElement>("img.ancha")
-        const cel = obra.querySelector<HTMLElement>("img.movil")
 
         // la cortina que descubre el marco
         if (marco) {
@@ -182,20 +181,6 @@ export function useScroll(ruta?: string) {
             }
           )
         })
-        // el celular sube despues de la cortina
-        if (cel) {
-          gsap.fromTo(
-            cel,
-            { y: 150, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 1.1,
-              ease: "expo.out",
-              scrollTrigger: { trigger: obra, start: "top 62%" },
-            }
-          )
-        }
       })
 
       // ── 3 · la placa se da vuelta en 3D ───────────────────────
