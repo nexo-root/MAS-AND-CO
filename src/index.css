@@ -112,6 +112,15 @@ header.pegada{background:color-mix(in srgb,var(--papel) 92%,transparent);
   font-size:.85rem;color:var(--tinta-2)}
 .obra:hover .ficha .ir{color:var(--tinta)}
 .obra-bajada{margin-top:10px;font-size:.95rem;color:var(--tinta-2);max-width:52ch}
+/* Las muestras no son enlaces: sin cursor de mano, sin "abrir sitio" y con el
+   rotulo que aclara que nadie las encargo. */
+.obra-muestra{cursor:default}
+.ficha .muestra{margin-left:auto;font-variation-settings:'wdth' 118,'wght' 500;
+  font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.seccion-bajada{margin:-6px 0 30px;font-size:1rem;color:var(--tinta-2);max-width:56ch}
+/* Debajo de un titulo el margen negativo cierra el bloque; debajo de la placa
+   lo deja pegado. Ahi respira. */
+.placa + .seccion-bajada{margin-top:18px}
 
 /* ── el unico bloque navy ───────────────────────────────────── */
 .tinta{background:var(--tinta);color:var(--papel);padding-bottom:0}

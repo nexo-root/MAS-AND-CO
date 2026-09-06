@@ -78,7 +78,7 @@ export function Terminos() {
           <h3>1. Titular</h3>
           <p>
             Mas &amp; Co, rama de tecnología del grupo Mas, con asiento en
-            Posadas, Misiones, Argentina. Contacto: masandcoo@gmail.com o
+            Posadas, Misiones, Argentina. Contacto: masandco.mas@gmail.com o
             WhatsApp +54 9 3764 61-5587.
           </p>
 
@@ -156,7 +156,7 @@ export function Terminos() {
             conservan mientras dure la relación comercial, conforme a la Ley
             25.326 de Protección de Datos Personales. El titular de los datos
             puede pedir acceso, rectificación o supresión escribiendo a
-            masandcoo@gmail.com; respondemos dentro de los 10 días hábiles.
+            masandco.mas@gmail.com; respondemos dentro de los 10 días hábiles.
             También puede reclamar ante la Agencia de Acceso a la Información
             Pública (AAIP), autoridad de control de la Ley 25.326. Para
             visitantes de la Unión Europea aplican además los derechos del

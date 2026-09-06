@@ -91,6 +91,30 @@ function Obra({ id, url, titulo, rubro, bajada }: {
   )
 }
 
+/* Los disenos de muestra son trabajo propio, no encargos: van sin enlace y
+   rotulados como lo que son. Mezclarlos con los clientes reales seria vender
+   como antecedente algo que nadie pago, y es la linea que no se cruza. */
+function Diseno({ id, titulo, rubro, bajada }: {
+  id: string; titulo: string; rubro: string; bajada: string
+}) {
+  return (
+    <div className="obra obra-muestra">
+      <div className="lienzo">
+        <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={980} height={637}
+             loading="lazy" decoding="async" alt={`Diseno de muestra ${titulo} en computadora`} />
+        <img className="movil" src={`${BASE}fotos/${id}-movil.webp`} width={585} height={1266}
+             loading="lazy" decoding="async" alt="El mismo diseno en un celular" />
+      </div>
+      <div className="ficha">
+        <h3>{titulo}</h3>
+        <small>{rubro}</small>
+        <span className="muestra">Diseño de muestra</span>
+      </div>
+      <p className="obra-bajada">{bajada}</p>
+    </div>
+  )
+}
+
 function Inicio() {
   return (
     <>
@@ -113,10 +137,6 @@ function Inicio() {
             <p className="lugar"><span className="punto" /> Desde Posadas, para todo el país</p>
             <p className="bajada">Sitios web <em>que trabajan por vos.</em></p>
           </div>
-          <div className="placa">
-            <div><b>$95.000</b><span>Desde</span></div>
-            <div><b>50% y 50%</b><span>Al arrancar y al verlo</span></div>
-          </div>
           <div className="acciones">
             <a className="boton lleno" href={WA} target="_blank" rel="noopener">Escribinos</a>
           </div>
@@ -132,6 +152,38 @@ function Inicio() {
           <Obra id="creditofinan" url="https://creditofinan.com/"
                 titulo="Crédito Finan" rubro="Créditos · Posadas"
                 bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
+        </div>
+      </section>
+
+      <section id="disenos">
+        <div className="eje">
+          <h2 className="titulo">Diseños de muestra.</h2>
+          <p className="seccion-bajada">
+            Estos no son encargos: los hicimos nosotros para mostrar cómo
+            resolvemos un rubro cuando arrancamos de cero.
+          </p>
+          <Diseno id="brasa" titulo="Brasa" rubro="Parrilla"
+                  bajada="Carta, horarios y una mesa que se reserva por mensaje." />
+          <Diseno id="terra" titulo="Terra Propiedades" rubro="Inmobiliaria"
+                  bajada="Buscador de propiedades y visitas que se coordinan por WhatsApp." />
+        </div>
+      </section>
+
+      {/* El precio va acá y no en la portada: leido despues de cuatro trabajos
+          es lo que sale hacer eso, y leido antes es un numero suelto que el
+          visitante compara contra seguir con el Instagram, que es gratis. */}
+      <section id="precio">
+        <div className="eje">
+          <h2 className="titulo">Lo que sale.</h2>
+          <div className="placa">
+            <div><b>$95.000</b><span>Desde</span></div>
+            <div><b>50% y 50%</b><span>Al arrancar y al verlo</span></div>
+            <div><b>7 días</b><span>De principio a fin</span></div>
+          </div>
+          <p className="seccion-bajada">
+            Pagás la mitad al arrancar y la otra mitad recién cuando la ves
+            terminada. Si no te gusta, no la pagás.
+          </p>
         </div>
       </section>
     </>
@@ -195,7 +247,7 @@ export default function App() {
             </div>
             <div className="vias">
               <a href="https://wa.me/5493764615587" target="_blank" rel="noopener">+54 9 3764 61-5587</a>
-              <a href="mailto:masandcoo@gmail.com">masandcoo@gmail.com</a>
+              <a href="mailto:masandco.mas@gmail.com">masandco.mas@gmail.com</a>
               <a href="https://instagram.com/masandco.mas" target="_blank" rel="noopener">@masandco.mas</a>
             </div>
           </div>
