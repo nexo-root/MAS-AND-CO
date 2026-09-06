@@ -196,7 +196,7 @@ export default function App() {
             <div className="vias">
               <a href="https://wa.me/5493764615587" target="_blank" rel="noopener">+54 9 3764 61-5587</a>
               <a href="mailto:masandcoo@gmail.com">masandcoo@gmail.com</a>
-              <a href="https://instagram.com/mas.and.co" target="_blank" rel="noopener">@mas.and.co</a>
+              <a href="https://instagram.com/masandco.mas" target="_blank" rel="noopener">@masandco.mas</a>
             </div>
           </div>
           <footer>
