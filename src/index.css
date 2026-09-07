@@ -225,6 +225,19 @@ body,section,.lienzo,.placa,.placa div,.piso,.vias a,.ficha,.item,
   .palanca{font-size:7.5px}
 }
 
+/* Celular angosto: con tres destinos, el logo y la palanca, la barra se
+   desbordaba y el interruptor quedaba cortado contra el borde. "Preguntas"
+   sale (esta en el pie y enlazada desde Precios) y lo que queda se aprieta
+   sin tocarse. */
+@media (max-width:560px){
+  .barra{gap:8px}
+  .menu{gap:11px;margin-right:0}
+  .menu a{font-size:.7rem}
+  .menu a[href="/preguntas-frecuentes/"]{display:none}
+  .marca{font-size:.78rem;letter-spacing:.12em}
+  .palanca{font-size:6.6px;flex:none}
+}
+
 /* ── el grupo, en grande: Mas & Sons, CMD, Mas & Co ─────────── */
 .grupo-grande{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
   background:var(--linea);border:1px solid var(--linea);

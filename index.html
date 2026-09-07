@@ -23,6 +23,14 @@
     <!-- el tema guardado se aplica ANTES del primer cuadro: el HTML prerenderizado
          sale en claro, y sin esto un usuario en oscuro veria un flash de papel -->
     <script>try{if(localStorage.getItem("tema")==="oscuro")document.documentElement.dataset.tema="oscuro"}catch(e){}</script>
+    <!-- El icono. Google lo rastrea aparte del HTML y solo muestra el que
+         esta DECLARADO aca: sin este link no aparece logo en el resultado.
+         Va PNG ademas del SVG porque Google pide un raster cuadrado. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
