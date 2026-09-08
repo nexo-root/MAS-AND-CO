@@ -2,10 +2,16 @@ name: Fabrica de contenido Mas & Co
 
 on:
   schedule:
-    # 13:05 UTC = 10:05 en Argentina, todos los dias.
-    # El script decide solo si hoy toca publicar (segun feed/cola.json).
+    # Dos publicaciones por dia. 13:05 UTC = 10:05 ARG, 22:05 UTC = 19:05 ARG.
+    # GitHub suele largar los cron con horas de atraso, asi que el turno no se
+    # deduce de la hora: se pasa segun CUAL de los dos disparo.
     - cron: "5 13 * * *"
-  workflow_dispatch: {}
+    - cron: "5 22 * * *"
+  workflow_dispatch:
+    inputs:
+      turno:
+        description: "1 = manana, 2 = tarde"
+        default: "1"
 
 permissions:
   contents: read
@@ -21,4 +27,5 @@ jobs:
       - name: Publicar el post del dia
         env:
           META_TOKEN: ${{ secrets.META_TOKEN_MASANDCO }}
+          TURNO: ${{ github.event.schedule == '5 22 * * *' && '2' || (inputs.turno || '1') }}
         run: python feed/publicar.py

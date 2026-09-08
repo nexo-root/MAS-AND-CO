@@ -1,96 +1,366 @@
 {
-  "_doc": "Cola de la fabrica de contenido: una entrada por dia, publica feed/publicar.py. Las imagenes se sirven desde raw.githubusercontent y NO desde GitHub Pages: al poner el dominio propio (06/09/2026) Pages empezo a redirigir nexo-root.github.io/MAS-AND-CO/feed/ a masandcoweb.com/feed/, que da 404 porque el sitio se sirve desde docs/ y feed/ vive en la raiz. Instagram exige una URL publica que devuelva la imagen, asi que el 404 hacia fallar el run. raw.githubusercontent no depende de la config de Pages ni del dominio.",
+  "_doc": "Cola de la fabrica: DOS publicaciones por dia (turno 1 = manana, turno 2 = tarde). publicar.py elige por fecha + turno; el turno se lo pasa el workflow segun cual de los dos cron disparo. Orden: cada tres posts va uno del top 20 del ranking; los otros dos salen intercalados para que nunca caigan dos flojos seguidos. Ver negocio/RANKING-CREATIVOS.md y negocio/_calendario.py. Las imagenes se sirven desde raw.githubusercontent, NO desde Pages: el dominio propio hace que Pages redirija y de 404.",
   "base_url": "https://raw.githubusercontent.com/nexo-root/MAS-AND-CO/main/feed/",
   "posts": [
     {
-      "fecha": "2026-09-05",
-      "imagen": "post8-ecuacion.png",
-      "caption": "1 mensaje = tu negocio en internet en 7 días. Sin reuniones eternas ni tecnicismos: nos contás tu negocio y en una semana está publicada. Escribinos: +54 9 3764 61-5587. #paginaweb #pymes #emprendedores"
-    },
-    {
-      "fecha": "2026-09-06",
-      "imagen": "post10-efectos.png",
-      "caption": "⚠ Efectos secundarios de tener página web: consultas mientras dormís, menos chats repetidos y un negocio que se ve como lo que puede ser. Consulte a su desarrollador de confianza: +54 9 3764 61-5587. #paginaweb #pymes #humor #posadas"
-    },
-    {
-      "fecha": "2026-09-07",
-      "imagen": "post13-tip2.png",
-      "caption": "Lo que tu página necesita sí o sí: WhatsApp a un toque, fotos reales de tu negocio y precios claros. Lo demás es decoración. Consultas: +54 9 3764 61-5587. #paginaweb #pymes #tips #diseñoweb"
+      "fecha": "2026-09-08",
+      "turno": 1,
+      "imagen": "t2-41-sueldo.png",
+      "caption": "Alguien que conteste consultas, que trabaje de noche y que no se olvide ningun precio.\n\nUna pagina hace las tres por $95.000, una sola vez. No reemplaza a nadie: contesta lo que se repite, para que vos atiendas a los que ya decidieron.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-08",
-      "imagen": "post9-checklist.png",
-      "caption": "Marcá lo que tu negocio ya tiene: ¿aparece en Google? ¿página propia? ¿precios claros? Si quedaron cajas vacías, hablemos: +54 9 3764 61-5587. #pymes #checklist #paginaweb #negocios"
+      "turno": 2,
+      "imagen": "t2-03-notas.png",
+      "caption": "Hace ocho meses que esa linea baja de la lista y nunca se tacha.\n\nSon 7 dias.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-09",
-      "imagen": "post11-faq.png",
-      "caption": "La pregunta que todos hacen: ¿y si dejo de pagar el mantenimiento? La página NO se apaga, queda publicada tal como está. Lo que compraste es tuyo. Consultas: +54 9 3764 61-5587. #paginaweb #sinletrachica #pymes"
+      "turno": 1,
+      "imagen": "post7-ticket.png",
+      "caption": "La cuenta, por favor.\n\nUna pagina web completa: $95.000, se paga una sola vez. Boton de WhatsApp, incluido. Que se vea bien en el celular, incluido. Que trabaje mientras dormis, cero peso.\n\nLa mitad al arrancar y la otra mitad cuando la ves hecha.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-09",
+      "turno": 2,
+      "imagen": "ad2-nota.png",
+      "caption": "Todos tenemos esa lista. La del cartel, la del toldo, la del contador.\n\nLa de la pagina web viene arrastrandose hace meses porque suena complicada y cara. Son 7 dias y desde $95.000, y la mitad la pagas recien cuando la ves terminada.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-10",
-      "imagen": "post3-proceso.png",
-      "caption": "Así trabajamos, sin sorpresas: pagás la mitad para arrancar, en 7 días ves tu página publicada y recién ahí pagás el resto. Precio fijo, sin letra chica. Consultas: +54 9 3764 61-5587 · Posadas, para todo el país. #pymes #paginaweb #emprendedores #posadas"
+      "turno": 1,
+      "imagen": "t2-15-meme.png",
+      "caption": "Con el Instagram alcanza hasta que el cliente pregunta el precio por privado y le contestas cinco horas despues.\n\nLos precios, los horarios y las fotos merecen un lugar donde no se pierdan entre las historias.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-10",
+      "turno": 2,
+      "imagen": "t2-09-google.png",
+      "caption": "El que no aparece, no se elige.\n\nTu cliente busca en Google antes de cruzar la puerta. Si no estas, entra al de al lado y ni se entera de que existias.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-11",
-      "imagen": "post7-ticket.png",
-      "caption": "La cuenta, por favor: una página web completa se paga UNA vez, $95.000, mitad al arrancar y mitad cuando la ves hecha. Y trabaja para tu negocio todos los días. Consultas: +54 9 3764 61-5587. #paginaweb #pymes #precios #posadas"
+      "turno": 1,
+      "imagen": "ad4-whatsapp.png",
+      "caption": "Asi de simple es el proceso completo. Nos escribis, te pasamos precio, mandas tus fotos y a los 7 dias la ves publicada.\n\nSin reuniones, sin formularios, sin tecnicismos. Todo por aca.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-11",
+      "turno": 2,
+      "imagen": "t2-29-tarjeta.png",
+      "caption": "Mil tarjetas impresas: novecientas en un cajon y cien en el piso. Se entregan de a una y en persona.\n\nUna direccion web se entrega sola, a cualquier hora, a todo el que te busque.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-12",
-      "imagen": "post12-celular.png",
-      "caption": "Tus clientes te van a mirar desde el celular, que valga la pena. Todas nuestras páginas se diseñan primero para el teléfono. Consultas: +54 9 3764 61-5587. #paginaweb #mobile #diseñoweb #posadas"
+      "turno": 1,
+      "imagen": "t2-06-presupuesto.png",
+      "caption": "Sin letra chica.\n\nPagina web a medida: $95.000. Diseno propio, dominio a tu nombre, alojamiento y respaldos, todo incluido. Entrega en 7 dias.\n\nLa mitad al arrancar y la otra mitad cuando la ves terminada.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-12",
+      "turno": 2,
+      "imagen": "post3-proceso.png",
+      "caption": "Tres pasos y ninguna sorpresa.\n\nPagas la mitad y nos contas de que es el negocio. En 7 dias la tenes andando. Recien ahi pagas el resto, y solo si te gusta.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-13",
-      "imagen": "post1-vitrina.png",
-      "caption": "Diseño Nº 03 · Gastronomía. Un restaurante no vende platos: vende ganas de ir. Así puede verse el tuyo. Diseño de muestra, el tuyo se hace a medida. Consultas: +54 9 3764 61-5587. #restaurantes #gastronomia #paginaweb #diseñoweb #posadas"
+      "turno": 1,
+      "imagen": "t2-31-sello.png",
+      "caption": "Tu pagina no sale de un catalogo. Se dibuja para tu negocio, con tus fotos, tus colores y tu forma de vender.\n\nNinguna es igual a otra.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-13",
+      "turno": 2,
+      "imagen": "t2-12-planilla.png",
+      "caption": "Sumale lo que gastas al ano en cartel, volantes y radio. Ahora mirá el ultimo renglon.\n\nEs lo unico de la lista que sigue trabajando a las tres de la manana, y el unico que se paga una sola vez.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-14",
-      "imagen": "post4-vitrina-oficio.png",
-      "caption": "Diseño Nº 02 · Barbería. Un corte se elige por cómo te va a quedar; una barbería, por cómo se ve. Con turnos por WhatsApp incluidos. Diseño de muestra, el tuyo se hace a medida. Consultas: +54 9 3764 61-5587. #barberia #barber #paginaweb #diseñoweb #posadas"
+      "turno": 1,
+      "imagen": "t2-01-presupuestos.png",
+      "caption": "Una clienta nos escribio esta semana: pidio cinco presupuestos y le pasaron desde $50.000 hasta $290.000, con hosting aparte o incluido, dominio propio o prestado, con y sin mantenimiento.\n\nNos dijo textual que la marean. Nosotros te decimos que incluye, que no y cuanto sale en el primer mensaje.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-14",
+      "turno": 2,
+      "imagen": "t2-39-velocidad.png",
+      "caption": "Tres segundos y ya se fue.\n\nLa pagina mas linda del mundo no sirve si no llega a mostrarse. Las nuestras cargan en menos de dos segundos en celular.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-15",
-      "imagen": "post5-vitrina-terra.png",
-      "caption": "Diseño Nº 01 · Inmobiliaria. Nadie compra una casa sin verla, tampoco te eligen sin verte. Buscador de propiedades y visitas por WhatsApp. Diseño de muestra, el tuyo se hace a medida. Consultas: +54 9 3764 61-5587. #inmobiliaria #propiedades #paginaweb #posadas"
+      "turno": 1,
+      "imagen": "t2-04-chat.png",
+      "caption": "Toda la conversacion, de la primera pregunta al arranque, entra en cinco mensajes.\n\nAsi trabajamos: sin reuniones y sin formularios.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-15",
+      "turno": 2,
+      "imagen": "t2-02-mitad.png",
+      "caption": "La mitad al arrancar, para reservar la semana de trabajo. La otra mitad cuando la abris en tu celular y te gusta.\n\nSi no te gusta, no pagas el saldo. El riesgo lo corremos nosotros.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-16",
-      "imagen": "ad4-whatsapp.png",
-      "caption": "Así de simple es el proceso, de verdad: precio fijo desde $95.000, mitad al arrancar y mitad cuando la ves hecha, publicada en 7 días. Una conversación y tu negocio queda en internet. Escribinos: +54 9 3764 61-5587. #paginaweb #pymes #posadas #misiones"
+      "turno": 1,
+      "imagen": "ad1-fan.png",
+      "caption": "A la izquierda, lo que ve hoy el que te busca en Google. A la derecha, lo que podria ver.\n\nLa diferencia son 7 dias y $95.000.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-16",
+      "turno": 2,
+      "imagen": "t2-13-carta.png",
+      "caption": "Se que la pagina te la vienen prometiendo hace rato y que ya escuchaste cinco precios distintos, todos con letra chica abajo.\n\nAca va sin vueltas: $95.000, lista en siete dias, y la mitad la pagas recien cuando la ves terminada.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-17",
-      "imagen": "post15-antesdespues-oficio.png",
-      "caption": "La página que tenés hoy / la que podés tener. Tus clientes te buscan en Google: que te encuentren a vos. Diseño de muestra, el tuyo a medida. Consultas: +54 9 3764 61-5587. #barberia #paginaweb #antesydespues"
+      "turno": 1,
+      "imagen": "t2-08-cartel.png",
+      "caption": "Tu competencia ya aparece cuando alguien busca lo que vos vendes.\n\nEso se resuelve en una semana.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-17",
+      "turno": 2,
+      "imagen": "post12-celular.png",
+      "caption": "Ocho de cada diez personas te van a mirar desde el celular, paradas en la vereda, decidiendo si entran.\n\nQue valga la pena esos diez segundos.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-18",
-      "imagen": "ad1-fan.png",
-      "caption": "La página que tenés hoy: ninguna. La que podés tener: cualquiera de estas. Tus clientes te buscan en Google, que te encuentren a vos, no a tu competencia. Consultas: +54 9 3764 61-5587. #google #negocios #paginaweb #pymes #argentina"
+      "turno": 1,
+      "imagen": "t2-25-boleta.png",
+      "caption": "El primer mes de mantenimiento es gratis. Dominio, alojamiento, respaldos y los cambios que pidas, adentro.\n\nDel mes dos en adelante son $30.000, y si lo cortas la pagina no se apaga: es tuya.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-18",
+      "turno": 2,
+      "imagen": "t2-10-diario.png",
+      "caption": "El cliente ya decidio en el celular antes de cruzar la puerta.\n\nEl negocio que no aparece no pierde una venta: pierde la posibilidad de que lo consideren.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-19",
-      "imagen": "ad5-rubros.png",
-      "caption": "Sea cual sea tu negocio, tu página puede verse así. Diseños de muestra y clientes reales, la tuya se hace a medida, con tus fotos y tu marca. Desde $95.000, la mitad al arrancar y la otra mitad cuando la ves terminada. Escribinos: +54 9 3764 61-5587 · Posadas, para todo el país. #paginaweb #pymes #posadas #misiones #diseñoweb"
+      "turno": 1,
+      "imagen": "post1-vitrina.png",
+      "caption": "Un restaurante no vende platos. Vende ganas de ir.\n\nPor eso la pagina de un lugar que cocina tiene que dar hambre antes que informacion. Las fotos primero, la carta despues, el boton de reservar siempre a mano.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-19",
+      "turno": 2,
+      "imagen": "t2-30-bandeja.png",
+      "caption": "Seis consultas entre las tres y las ocho de la manana, mientras el local estaba cerrado y vos dormias.\n\nEso hace una pagina.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-20",
+      "turno": 1,
+      "imagen": "t2-40-mapa.png",
+      "caption": "Somos de Posadas y trabajamos para todo el pais. Todo el proceso es por WhatsApp, asi que da igual donde estes.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-20",
+      "turno": 2,
       "imagen": "post6-cliente-arbolito.png",
-      "caption": "Cliente real: El Arbolito, cuatro alojamientos frente al mar en Pehuén-Có. Su página está publicada, andando y recibiendo consultas en pehuencoalquileres.com, la podés visitar ahora mismo. Consultas: +54 9 3764 61-5587. #alojamientos #turismo #paginaweb #clientereal"
+      "caption": "El Arbolito, en Pehuen-Co. Publicada, andando y recibiendo consultas de gente que nunca piso el lugar.\n\nEsta en pehuencoalquileres.com si la querés ver.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-21",
-      "imagen": "post14-cliente-finan.png",
-      "caption": "Cliente real: Crédito Finan, consultora de créditos de Posadas. Su formulario llega directo al correo, sin intermediarios, la podés visitar en creditofinan.com. Consultas: +54 9 3764 61-5587. #clientereal #paginaweb #posadas"
+      "turno": 1,
+      "imagen": "t2-32-etiqueta.png",
+      "caption": "Contenido neto: una pagina completa. Ingredientes: diseno hecho a mano, tus fotos, boton de WhatsApp, precios visibles y carga en menos de dos segundos.\n\nNo contiene letra chica, permanencia, ni dominio prestado.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-21",
+      "turno": 2,
+      "imagen": "ad3-clasico.png",
+      "caption": "Un sitio web no es un folleto lindo. Es el empleado que contesta a las tres de la manana, que no se olvida ningun precio y que nunca se toma franco.\n\nDesde $95.000, listo en 7 dias.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     },
     {
       "fecha": "2026-09-22",
-      "imagen": "ad3-clasico.png",
-      "caption": "Sitios web que trabajan por vos: $95.000 precio final desde, 50% y 50% (al arrancar y al verla), publicada en 7 días. Escribinos: +54 9 3764 61-5587. #paginaweb #precios #posadas #argentina"
+      "turno": 1,
+      "imagen": "post9-checklist.png",
+      "caption": "Marca mentalmente lo que tu negocio ya tiene.\n\nSi te quedaron casillas vacias, hablemos. Ninguna de las cuatro es un lujo en 2026.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-22",
+      "turno": 2,
+      "imagen": "t2-33-panel.png",
+      "caption": "Novedad: ahora las paginas con catalogo van con tu propio panel. Subis la foto, le pones nombre y precio, y queda publicada. Marcar algo como vendido es un toque.\n\nNo es un sistema para aprender: son tres botones, mas facil que subir a Instagram.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-23",
+      "turno": 1,
+      "imagen": "post14-cliente-finan.png",
+      "caption": "Credito Finan, de Posadas. Su formulario llega directo al correo, sin intermediarios y sin que nadie tenga que estar mirando el telefono.\n\nEntra a creditofinan.com y mirala vos mismo.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-23",
+      "turno": 2,
+      "imagen": "t2-18-listicle.png",
+      "caption": "Cinco preguntas que casi nadie hace antes de contratar una pagina web, y que te ahorran el disgusto: a nombre de quien queda el dominio, si el alojamiento va aparte, cuanto sale cambiar una foto, si es plantilla, y cuando se paga.\n\nHacelas. A quien sea.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-24",
+      "turno": 1,
+      "imagen": "t2-34-restaurantes.png",
+      "caption": "El que reserva ya vio la carta.\n\nTu menu, tus fotos y el boton de reservar por WhatsApp. El que llega al local llega decidido, y no te pregunta el precio del asado por privado.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-24",
+      "turno": 2,
+      "imagen": "t2-16-ficha.png",
+      "caption": "La oferta completa en seis lineas, para el que ya esta comparando.\n\nSin asteriscos.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-25",
+      "turno": 1,
+      "imagen": "ad3-fan.png",
+      "caption": "Precio final, forma de pago y plazo. Los tres numeros que nadie te dice hasta la cuarta reunion.\n\nAca estan desde el primer mensaje.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-25",
+      "turno": 2,
+      "imagen": "t2-36-alojamientos.png",
+      "caption": "El Arbolito, en Pehuen-Co. Publicada, andando y recibiendo consultas de gente que nunca piso el lugar.\n\nSi tu negocio depende de que te encuentren desde otra provincia, esto no es opcional.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-26",
+      "turno": 1,
+      "imagen": "t2-20-preguntas.png",
+      "caption": "Las cuatro que mas nos llegan, contestadas de una: si, te mandamos ejemplos. Siete dias. Desde $95.000. Y si no te gusta, no pagas la segunda mitad.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-26",
+      "turno": 2,
+      "imagen": "t2-37-retro.png",
+      "caption": "Tu negocio cambio tres veces de local. Su forma de aparecer, ninguna.\n\nAntes te encontraban si sabian tu nombre. Hoy te encuentran cuando te necesitan, o no te encuentran nunca.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-27",
+      "turno": 1,
+      "imagen": "t2-42-contador.png",
+      "caption": "Cuarenta veces por dia lo mismo: cuanto sale, a que hora abren, si hacen envios.\n\nTu pagina las contesta las cuarenta, y a vos te queda el que ya decidio comprar.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-27",
+      "turno": 2,
+      "imagen": "t2-21-trabajos.png",
+      "caption": "No te vamos a mostrar capturas. Escribi las direcciones y entra: pehuencoalquileres.com y creditofinan.com. Estan en linea ahora mismo.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-28",
+      "turno": 1,
+      "imagen": "post11-faq.png",
+      "caption": "La pregunta que todos hacen: y si un dia dejo de pagar el mantenimiento.\n\nLa pagina no se apaga. Queda publicada tal como esta. Lo que compraste es tuyo.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-28",
+      "turno": 2,
+      "imagen": "t2-07-vs.png",
+      "caption": "Una plantilla de $50.000 la tienen otros cuarenta negocios, el dominio queda a nombre de ellos y cada cambio se cobra aparte.\n\nLa tuya se disena para tu negocio, el dominio queda a tu nombre, y si un dia te vas, te la llevas entera.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-29",
+      "turno": 1,
+      "imagen": "t2-22-numero.png",
+      "caption": "Siete dias es todo lo que falta.\n\nDesde $95.000.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-29",
+      "turno": 2,
+      "imagen": "ad1-antes-despues.png",
+      "caption": "Esto es lo que aparece cuando alguien busca tu negocio y vos no tenes pagina. Nada.\n\nY abajo, lo que podria aparecer.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-30",
+      "turno": 1,
+      "imagen": "t2-11-postit.png",
+      "caption": "La uno y la dos se tachan en un rato. La tres hace ocho meses que esta ahi.\n\nSon 7 dias y la tachas.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-09-30",
+      "turno": 2,
+      "imagen": "t2-24-calendario.png",
+      "caption": "Una semana. No una promesa de tres meses.\n\nNos escribis, mandas las fotos, y al septimo dia la abris en tu celular.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-01",
+      "turno": 1,
+      "imagen": "post15-antesdespues-oficio.png",
+      "caption": "El Oficio, barberia. Antes: nada. Despues: turnos por WhatsApp, horarios claros y fotos que hacen que quieras cortarte el pelo ahi.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-01",
+      "turno": 2,
+      "imagen": "t2-17-rota.png",
+      "caption": "Siete dias. No siete meses.\n\nNos mandas las fotos y los datos por WhatsApp, y al septimo dia la abris en tu celular. Recien ahi pagas la segunda mitad.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-02",
+      "turno": 1,
+      "imagen": "t2-27-manual.png",
+      "caption": "Como se arma, en tres pasos y sin una sola palabra tecnica.\n\nNo hace falta que sepas nada de computadoras. La segunda mitad se paga recien en el paso tres.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-02",
+      "turno": 2,
+      "imagen": "t2-14-chapa.png",
+      "caption": "Una web se hace una sola vez y queda. El dominio se registra a tu nombre: la pagina es tuya.\n\nNosotros la mantenemos, no la retenemos.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-03",
+      "turno": 1,
+      "imagen": "t2-19-split.png",
+      "caption": "Asi se ve un negocio en el celular. La misma informacion que hoy repetis veinte veces por mensaje, ordenada en una pantalla que atiende sola.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-03",
+      "turno": 2,
+      "imagen": "t2-28-senaletica.png",
+      "caption": "Te buscan en Google y te encuentran. Ven precios y horarios sin preguntarte. Te escriben decididos.\n\nO se van al de al lado, que si aparece.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-04",
+      "turno": 1,
+      "imagen": "post4-vitrina-oficio.png",
+      "caption": "Un corte se elige por como te va a quedar. Una barberia, por como se ve.\n\nSi tu negocio entra por los ojos, tu pagina tambien.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-04",
+      "turno": 2,
+      "imagen": "t2-23-pizarra.png",
+      "caption": "Cartel en la puerta, si. Instagram, si. WhatsApp, si.\n\nUna pagina propia es la unica de la lista que trabaja cuando el local esta cerrado.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-05",
+      "turno": 1,
+      "imagen": "t2-38-semaforo.png",
+      "caption": "Hace la cuenta vos: como te encuentra el que no te conoce.\n\nSi la respuesta es solo Instagram, dependes de que el algoritmo quiera. Si es que no te encuentra, entra al de al lado.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-05",
+      "turno": 2,
+      "imagen": "post5-vitrina-terra.png",
+      "caption": "Nadie compra una casa sin verla. Tampoco te elige sin verte.\n\nCada propiedad con sus fotos, su ficha y su consulta directa.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-06",
+      "turno": 1,
+      "imagen": "t2-26-abierto.png",
+      "caption": "Tu local cierra a las nueve. Tu pagina no cierra nunca, y no cobra sueldo, ni franco, ni feriado.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-06",
+      "turno": 2,
+      "imagen": "t2-05-terminal.png",
+      "caption": "Cero es la cantidad de gente que te encuentra hoy si tu negocio no existe en Google.\n\nNo es una forma de decir. Buscalo ahora mismo y fijate que aparece.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-07",
+      "turno": 1,
+      "imagen": "ad5-rubros.png",
+      "caption": "Parrilla, alojamiento, inmobiliaria, barberia, taller. Cada una con sus fotos, su color y su forma de vender.\n\nLa tuya se hace a medida.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
+    },
+    {
+      "fecha": "2026-10-07",
+      "turno": 2,
+      "imagen": "t2-35-inmobiliarias.png",
+      "caption": "Nadie compra sin verla antes.\n\nCada propiedad con sus fotos, su ficha y su consulta directa. El interesado filtra solo y te escribe por la que le sirve.\n\nEscribinos por WhatsApp y te pasamos ejemplos de tu rubro."
     }
   ]
 }

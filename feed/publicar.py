@@ -61,14 +61,22 @@ def main() -> int:
 
     cola = json.loads((Path(__file__).parent / "cola.json").read_text(encoding="utf-8"))
     hoy = datetime.now(ARG).strftime("%Y-%m-%d")
-    entrada = next((p for p in cola["posts"] if p["fecha"] == hoy), None)
+    # Publicamos dos veces por dia. El turno NO se deduce de la hora: GitHub
+    # larga los cron con horas de atraso y eso elegiria el post equivocado.
+    # Lo manda el workflow segun cual de los dos cron disparo.
+    turno = int(os.environ.get("TURNO", "1"))
+    entrada = next(
+        (p for p in cola["posts"]
+         if p["fecha"] == hoy and int(p.get("turno", 1)) == turno),
+        None,
+    )
     if not entrada:
-        print(f"[i] {hoy}: sin publicacion programada. Nada que hacer.")
+        print(f"[i] {hoy} turno {turno}: sin publicacion programada. Nada que hacer.")
         return 0
 
     url_imagen = cola["base_url"] + entrada["imagen"]
     caption = entrada["caption"]
-    print(f"[i] {hoy}: publicando {entrada['imagen']}")
+    print(f"[i] {hoy} turno {turno}: publicando {entrada['imagen']}")
 
     # 1 · Instagram PRIMERO (es el paso fragil): si falla, no queda nada
     # publicado a medias y la corrida se puede reintentar sin duplicar.
