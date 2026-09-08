@@ -60,11 +60,19 @@ def main() -> int:
         return 1
 
     cola = json.loads((Path(__file__).parent / "cola.json").read_text(encoding="utf-8"))
-    hoy = datetime.now(ARG).strftime("%Y-%m-%d")
     # Publicamos dos veces por dia. El turno NO se deduce de la hora: GitHub
     # larga los cron con horas de atraso y eso elegiria el post equivocado.
     # Lo manda el workflow segun cual de los dos cron disparo.
     turno = int(os.environ.get("TURNO", "1"))
+
+    ahora = datetime.now(ARG)
+    # Red de seguridad: si el atraso de GitHub empujo la corrida de la tarde a
+    # despues de medianoche, el dia calendario ya avanzo pero el post que
+    # corresponde sigue siendo el de AYER. Sin esto la cola se corre sola.
+    if turno == 2 and ahora.hour < 6:
+        ahora -= timedelta(days=1)
+        print("[i] corrida atrasada cruzo la medianoche: uso la fecha de ayer")
+    hoy = ahora.strftime("%Y-%m-%d")
     entrada = next(
         (p for p in cola["posts"]
          if p["fecha"] == hoy and int(p.get("turno", 1)) == turno),

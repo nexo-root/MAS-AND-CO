@@ -2,11 +2,14 @@ name: Fabrica de contenido Mas & Co
 
 on:
   schedule:
-    # Dos publicaciones por dia. 13:05 UTC = 10:05 ARG, 22:05 UTC = 19:05 ARG.
-    # GitHub suele largar los cron con horas de atraso, asi que el turno no se
-    # deduce de la hora: se pasa segun CUAL de los dos disparo.
-    - cron: "5 13 * * *"
-    - cron: "5 22 * * *"
+    # Dos publicaciones por dia. 10:05 UTC = 07:05 ARG, 19:00 UTC = 16:00 ARG.
+    # Van ADELANTADAS a proposito: GitHub larga los cron con 3 a 5 horas de
+    # atraso, asi que en la practica salen cerca del mediodia y de la tarde.
+    # Si la segunda se programara a las 19 ARG, el atraso la cruzaria a
+    # despues de medianoche y publicaria el post del dia siguiente.
+    # El turno tampoco se deduce de la hora: se pasa segun CUAL disparo.
+    - cron: "5 10 * * *"
+    - cron: "0 19 * * *"
   workflow_dispatch:
     inputs:
       turno:
@@ -27,5 +30,5 @@ jobs:
       - name: Publicar el post del dia
         env:
           META_TOKEN: ${{ secrets.META_TOKEN_MASANDCO }}
-          TURNO: ${{ github.event.schedule == '5 22 * * *' && '2' || (inputs.turno || '1') }}
+          TURNO: ${{ github.event.schedule == '0 19 * * *' && '2' || (inputs.turno || '1') }}
         run: python feed/publicar.py
