@@ -309,3 +309,23 @@ html[data-tema="oscuro"] body::before{content:"";position:fixed;inset:0;
 .rubro-vitrina{margin:8px 0 12px}
 .rubro-vitrina .ficha h3{font-variation-settings:'wdth' 118,'wght' 800}
 .pie-enlaces{flex-wrap:wrap}
+
+/* La comparacion de precios en celular. Una tabla de cuatro columnas a 720px
+   obliga a scrollear de costado y no se lee: abajo de 620px cada fila se
+   convierte en una ficha, con el nombre de la columna delante del dato
+   (data-col lo pone el TSX). La columna nuestra queda destacada. */
+@media (max-width:620px){
+  .tabla-scroll{overflow:visible}
+  .tabla{min-width:0;width:100%;border-collapse:collapse}
+  .tabla thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tabla tr{display:block;border:1px solid var(--line-light);border-radius:8px;
+    padding:14px 16px;margin-bottom:12px}
+  .tabla td{display:flex;justify-content:space-between;gap:16px;
+    border:none;padding:7px 0;text-align:right;font-size:.83rem}
+  .tabla td:first-child{text-align:left;font-weight:700;font-size:.95rem;
+    padding-bottom:11px;margin-bottom:5px;border-bottom:1px solid var(--line-light)}
+  .tabla td:first-child::before{content:none}
+  .tabla td::before{content:attr(data-col);text-align:left;opacity:.62;
+    font-weight:500;flex:none}
+  .tabla td.nos{font-weight:800}
+}

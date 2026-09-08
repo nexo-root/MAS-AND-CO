@@ -24,7 +24,7 @@ const MERCADO = [
     que: "Página institucional (varias secciones)",
     faro: "$180.000 a $350.000",
     dwc: "$1.000.000 a $3.000.000",
-    nos: "$95.000",
+    nos: "desde $95.000",
   },
   {
     que: "Tienda online",
@@ -43,7 +43,7 @@ const MERCADO = [
 const FAQ: Pregunta[] = [
   {
     q: "¿Cuánto cuesta una página web en Argentina en 2026?",
-    a: "Según los estudios que publican sus precios, una página institucional cuesta entre $180.000 y $350.000 en los estudios más accesibles y hasta $3.000.000 en agencias corporativas. En Mas & Co una página institucional a medida sale $95.000, precio final, lista en 7 días.",
+    a: "Según los estudios que publican sus precios, una página institucional cuesta entre $180.000 y $350.000 en los estudios más accesibles y hasta $3.000.000 en agencias corporativas. En Mas & Co arrancan en $95.000 y el precio final depende de lo que necesite tu negocio: un catálogo con fichas por producto o el tratamiento de fotos suman sobre esa base. Se cotiza en el primer mensaje, lista en 7 días.",
   },
   {
     q: "¿Por qué Mas & Co cobra menos que el promedio?",
@@ -77,7 +77,7 @@ export function Precios() {
           ldFaq(FAQ),
           ldServicio(
             "Página web institucional a medida",
-            "Diseño y desarrollo de una página web institucional para un negocio, con diseño propio, lista en 7 días. $95.000, precio final.",
+            "Diseño y desarrollo de una página web institucional para un negocio, con diseño propio, lista en 7 días. Desde $95.000.",
             ORIGEN + ruta.path,
           ),
         ]}
@@ -91,12 +91,13 @@ export function Precios() {
         <p className="respuesta">
           Una página institucional para un negocio cuesta entre $180.000 y $350.000 en los
           estudios más accesibles del país, y arriba de $1.000.000 en las agencias
-          corporativas. En Mas &amp; Co sale <b>$95.000</b>, precio final, lista en 7 días:
-          pagás la mitad al arrancar y la otra mitad cuando la ves terminada.
+          corporativas. En Mas &amp; Co arrancan en <b>$95.000</b>, listas en 7 días: pagás la mitad al
+          arrancar y la otra mitad cuando la ves terminada. El precio del tuyo depende de
+          lo que necesite, y te lo decimos en el primer mensaje.
         </p>
 
         <div className="placa">
-          <div><b>$95.000</b><span>Precio final</span></div>
+          <div><b>desde $95.000</b><span>El tuyo se cotiza</span></div>
           <div><b>50% y 50%</b><span>Al arrancar y al verla</span></div>
           <div><b>7 días</b><span>De principio a fin</span></div>
         </div>
@@ -122,9 +123,9 @@ export function Precios() {
                 {MERCADO.map((f) => (
                   <tr key={f.que}>
                     <td>{f.que}</td>
-                    <td>{f.faro}</td>
-                    <td>{f.dwc}</td>
-                    <td className="nos">{f.nos || "—"}</td>
+                    <td data-col="Faro Studio">{f.faro}</td>
+                    <td data-col="Diseño Web Córdoba">{f.dwc}</td>
+                    <td data-col="Mas &amp; Co" className="nos">{f.nos || "—"}</td>
                   </tr>
                 ))}
               </tbody>

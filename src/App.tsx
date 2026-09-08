@@ -232,11 +232,6 @@ function Inicio() {
                   bajada="Carta, horarios y una mesa que se reserva por mensaje." />
           <Diseno id="terra" titulo="Terra Propiedades" rubro="Inmobiliaria" enlace="/pagina-web-para-inmobiliarias/"
                   bajada="Buscador de propiedades y visitas que se coordinan por WhatsApp." />
-          <p className="enlaces">
-            <a href="/pagina-web-para-restaurantes/">Página web para restaurantes</a>
-            <a href="/pagina-web-para-inmobiliarias/">Página web para inmobiliarias</a>
-            <a href="/pagina-web-para-alojamientos/">Página web para alojamientos</a>
-          </p>
         </div>
       </section>
 
