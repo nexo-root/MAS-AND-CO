@@ -1,6 +1,6 @@
 {
-  "_doc": "Cola de publicaciones de la fabrica Mas & Co. El bot publica la entrada cuya fecha (hora Argentina) sea HOY. No disenia ni inventa: solo publica lo aprobado. Orden: de la pieza mas floja a la mas fuerte, a proposito. Con la cuenta recien nacida los primeros posts casi no se ven, asi que las mejores se guardan para cuando ya haya algo de audiencia.",
-  "base_url": "https://nexo-root.github.io/MAS-AND-CO/feed/",
+  "_doc": "Cola de la fabrica de contenido: una entrada por dia, publica feed/publicar.py. Las imagenes se sirven desde raw.githubusercontent y NO desde GitHub Pages: al poner el dominio propio (06/09/2026) Pages empezo a redirigir nexo-root.github.io/MAS-AND-CO/feed/ a masandcoweb.com/feed/, que da 404 porque el sitio se sirve desde docs/ y feed/ vive en la raiz. Instagram exige una URL publica que devuelva la imagen, asi que el 404 hacia fallar el run. raw.githubusercontent no depende de la config de Pages ni del dominio.",
+  "base_url": "https://raw.githubusercontent.com/nexo-root/MAS-AND-CO/main/feed/",
   "posts": [
     {
       "fecha": "2026-09-05",
