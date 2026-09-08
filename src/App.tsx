@@ -190,7 +190,7 @@ function Inicio() {
               </p>
               <p>
                 Diseño propio para cada negocio, no una plantilla con tu logo encima. Lista en 7
-                días desde que recibimos tus fotos y tu información. Desde $95.000, precio final.
+                días desde que recibimos tus fotos y tu información. Desde $95.000.
               </p>
             </div>
             <div>

@@ -70,7 +70,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para un restaurante?",
-        a: "$95.000, precio final, lista en 7 días. Pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+        a: "Desde $95.000, lista en 7 días. Te pasamos el número exacto en el primer mensaje. Pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
       },
     ],
   },
@@ -118,7 +118,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para una inmobiliaria?",
-        a: "Desde $95.000, precio final, lista en 7 días. Si la cartera es muy grande o necesitás integración con un sistema propio, lo cotizamos aparte.",
+        a: "Desde $95.000, lista en 7 días. Si la cartera es muy grande o necesitás integración con un sistema propio, lo cotizamos sobre esa base.",
       },
     ],
   },
@@ -171,7 +171,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para un alojamiento?",
-        a: "$95.000, precio final, lista en 7 días. Pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+        a: "Desde $95.000, lista en 7 días. Te pasamos el número exacto en el primer mensaje. Pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
       },
     ],
   },

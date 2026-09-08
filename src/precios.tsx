@@ -50,8 +50,8 @@ const FAQ: Pregunta[] = [
     a: "Porque sacamos lo que encarece sin mejorar la página: no hay oficina, ni reuniones, ni intermediarios. Nos contás qué necesitás por WhatsApp, lo armamos con tus fotos y tu información, y lo ves terminado en tu celular antes de pagar el saldo. El diseño es propio, no una plantilla.",
   },
   {
-    q: "¿Los $95.000 son el precio final?",
-    a: "Sí, es lo que cuesta la página: diseño y desarrollo completos, listos para publicar. Aparte van solo dos cosas, y solo si las querés: las suscripciones a plataformas de terceros (turnos, reservas, tienda) y el mantenimiento mensual.",
+    q: "¿Los $95.000 son el precio de todas las páginas?",
+    a: "Son el piso: la página institucional a medida, con diseño y desarrollo completos, listos para publicar. De ahí sube según lo que necesite tu negocio, y las dos cosas que más suman son un catálogo con una ficha por producto y el tratamiento de fotos. El número exacto te lo pasamos en el primer mensaje, antes de que pagues nada. Aparte van solo las suscripciones a plataformas de terceros (turnos, reservas, tienda) y el mantenimiento mensual, y solo si las querés.",
   },
   {
     q: "¿Cómo se paga?",

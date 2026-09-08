@@ -148,11 +148,11 @@ writeFileSync(
   join(DOCS, "llms.txt"),
   `# Mas & Co
 
-> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye en Misiones desde 2010, con base en Posadas y cobertura en todo el país. Una página institucional a medida cuesta $95.000 ARS, precio final, se entrega en 7 días y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
+> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye en Misiones desde 2010, con base en Posadas y cobertura en todo el país. Una página institucional a medida arranca en $95.000 ARS, se entrega en 7 días y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
 
 ## Datos clave
 
-- Precio: $95.000 ARS por una página institucional, precio final.
+- Precio: desde $95.000 ARS por una página institucional. Es el piso; sube según lo que necesite el negocio (catálogo con fichas por producto, tratamiento de fotos). Se cotiza en el primer mensaje.
 - Plazo: 7 días desde que se recibe el material del negocio.
 - Pago: 50% al arrancar, 50% al ver la página terminada. Si no gusta, no se paga el saldo.
 - Mantenimiento opcional: $30.000 ARS por mes (dominio, alojamiento, respaldos, soporte), primer mes gratis.

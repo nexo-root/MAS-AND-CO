@@ -12,7 +12,7 @@ const WA = "https://wa.me/5493764615587?text=Hola%2C%20tengo%20una%20consulta"
 export const PREGUNTAS: Pregunta[] = [
   {
     q: "¿Cuánto cuesta hacer una página web para mi negocio?",
-    a: "$95.000, precio final. Incluye el diseño hecho para tu negocio y el desarrollo completo, listo para publicar. Se paga la mitad al arrancar y la otra mitad cuando la ves terminada.",
+    a: "Desde $95.000. Ese es el piso e incluye el diseño hecho para tu negocio y el desarrollo completo, listo para publicar. El precio del tuyo depende de lo que necesite, y te lo decimos en el primer mensaje. Se paga la mitad al arrancar y la otra mitad cuando la ves terminada.",
   },
   {
     q: "¿Cuánto tarda?",
