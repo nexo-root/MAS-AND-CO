@@ -180,7 +180,7 @@ function Inicio() {
           vendiendo antes de ver las capturas. */}
       <section id="que-hacemos">
         <div className="eje">
-          <h2 className="titulo">Páginas web para negocios que venden por WhatsApp.</h2>
+          <h2 className="titulo">Páginas web para negocios.</h2>
           <div className="prosa dos">
             <div>
               <p>
