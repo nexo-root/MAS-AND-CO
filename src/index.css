@@ -115,9 +115,9 @@ header.pegada{background:color-mix(in srgb,var(--papel) 92%,transparent);
 .obra-muestra{cursor:default}
 .ficha .muestra{margin-left:auto;font-variation-settings:'wdth' 118,'wght' 500;
   font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
-.seccion-bajada{margin:-6px 0 30px;font-size:1rem;color:var(--tinta-2);max-width:56ch}
-/* Debajo de un titulo el margen negativo cierra el bloque; debajo de la placa
-   lo deja pegado. Ahi respira. */
+/* Sin margen negativo debajo de un titulo: con interlineado .98 las patas de
+   la p y la g cuelgan fuera de su caja y la bajada se metia entre las letras. */
+.seccion-bajada{margin:clamp(16px,1.6vw,22px) 0 30px;font-size:1rem;color:var(--tinta-2);max-width:56ch}
 .placa + .seccion-bajada{margin-top:18px}
 
 /* ── el unico bloque navy ───────────────────────────────────── */
