@@ -12,7 +12,7 @@ const WA = "https://wa.me/5493764615587?text=Hola%2C%20tengo%20una%20consulta"
 export const PREGUNTAS: Pregunta[] = [
   {
     q: "¿Cuánto cuesta hacer una página web para mi negocio?",
-    a: "Desde $95.000. Ese es el piso e incluye el diseño hecho para tu negocio y el desarrollo completo, listo para publicar. El precio del tuyo depende de lo que necesite, y te lo decimos en el primer mensaje. Se paga la mitad al arrancar y la otra mitad cuando la ves terminada.",
+    a: "No hay lista de precios: cada página se cotiza según lo que necesite tu negocio, y el presupuesto te lo pasamos por WhatsApp en el día, antes de que pagues nada. Se paga la mitad al arrancar y la otra mitad cuando la ves terminada.",
   },
   {
     q: "¿Cuánto tarda?",
@@ -32,7 +32,7 @@ export const PREGUNTAS: Pregunta[] = [
   },
   {
     q: "¿Qué pasa después de la entrega?",
-    a: "Podés contratar el mantenimiento: $30.000 por mes que cubren el dominio, el alojamiento, los respaldos y el soporte. El primer mes es gratis. Si lo interrumpís, el sitio puede salir de línea y se retoma cuando vos decidas.",
+    a: "Podés contratar el mantenimiento, que cubre el dominio, el alojamiento, los respaldos y el soporte. Se cotiza junto con la página y el primer mes es gratis. Si lo interrumpís, el sitio puede salir de línea y se retoma cuando vos decidas.",
   },
   {
     q: "¿Hacen tiendas online, turnos o reservas?",

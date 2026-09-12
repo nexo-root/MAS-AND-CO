@@ -190,7 +190,7 @@ function Inicio() {
               </p>
               <p>
                 Diseño propio para cada negocio, no una plantilla con tu logo encima. Lista en 7
-                días desde que recibimos tus fotos y tu información. Desde $95.000.
+                días desde que recibimos tus fotos y tu información. El presupuesto, en el día.
               </p>
             </div>
             <div>
@@ -242,7 +242,7 @@ function Inicio() {
         <div className="eje">
           <h2 className="titulo">Lo que sale una página web.</h2>
           <div className="placa">
-            <div><b>$95.000</b><span>Desde</span></div>
+            <div><b>Por presupuesto</b><span>Te lo pasamos en el día</span></div>
             <div><b>50% y 50%</b><span>Al arrancar y al verlo</span></div>
             <div><b>7 días</b><span>De principio a fin</span></div>
           </div>

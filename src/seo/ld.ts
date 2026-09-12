@@ -58,8 +58,6 @@ export function ldServicio(nombre: string, descripcion: string, url: string) {
     url,
     offers: {
       "@type": "Offer",
-      price: "95000",
-      priceCurrency: "ARS",
       url: `${ORIGEN}/precios/`,
       availability: "https://schema.org/InStock",
     },

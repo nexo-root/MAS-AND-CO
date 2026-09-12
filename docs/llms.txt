@@ -1,23 +1,23 @@
 # Mas & Co
 
-> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye en Misiones desde 2010, con base en Posadas y cobertura en todo el país. Una página institucional a medida arranca en $95.000 ARS, se entrega en 7 días y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
+> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye en Misiones desde 2010, con base en Posadas y cobertura en todo el país. Cada página se cotiza por presupuesto para el negocio que la pide, se entrega en 7 días y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
 
 ## Datos clave
 
-- Precio: desde $95.000 ARS por una página institucional. Es el piso; sube según lo que necesite el negocio (catálogo con fichas por producto, tratamiento de fotos). Se cotiza en el primer mensaje.
+- Precio: por presupuesto, según lo que necesite el negocio (catálogo con fichas por producto, tratamiento de fotos). No hay lista de precios: se cotiza por WhatsApp en el día.
 - Plazo: 7 días desde que se recibe el material del negocio.
 - Pago: 50% al arrancar, 50% al ver la página terminada. Si no gusta, no se paga el saldo.
-- Mantenimiento opcional: $30.000 ARS por mes (dominio, alojamiento, respaldos, soporte), primer mes gratis.
+- Mantenimiento opcional (dominio, alojamiento, respaldos, soporte): se cotiza junto con la página, primer mes gratis.
 - El dominio se registra a nombre del cliente.
 - Casos reales: El Arbolito (pehuencoalquileres.com), Crédito Finan (creditofinan.com).
 
 ## Páginas
 
-- [Inicio](https://masandcoweb.com/): Construimos la página web de tu negocio en 7 días. Diseño propio, no plantillas. Desde $95.000: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.
-- [Precios](https://masandcoweb.com/precios/): Cuánto cuesta una página web en Argentina en 2026, con los precios que publican otros estudios al lado de los nuestros. Desde $95.000, lista en 7 días.
+- [Inicio](https://masandcoweb.com/): Construimos la página web de tu negocio en 7 días. Diseño propio, no plantillas. Presupuesto en el día, y la mitad la pagás recién cuando la ves terminada.
+- [Precios](https://masandcoweb.com/precios/): Cuánto cuesta una página web en Argentina en 2026: los precios que publican otros estudios y cómo se cotiza la tuya. Presupuesto en el día, lista en 7 días.
 - [Preguntas frecuentes](https://masandcoweb.com/preguntas-frecuentes/): Cuánto tarda, cómo se paga, de quién queda el dominio, qué pasa si ya tenés Instagram y qué tenés que mandar. Respuestas directas, sin vueltas.
-- [Página web para restaurantes](https://masandcoweb.com/pagina-web-para-restaurantes/): Carta, horarios, ubicación y reservas por WhatsApp en una página propia. Desde $95.000, lista en 7 días. Mirá el diseño Brasa.
-- [Página web para inmobiliarias](https://masandcoweb.com/pagina-web-para-inmobiliarias/): Buscador de propiedades, ficha por inmueble y visitas coordinadas por WhatsApp. Desde $95.000, lista en 7 días. Mirá el diseño Terra.
+- [Página web para restaurantes](https://masandcoweb.com/pagina-web-para-restaurantes/): Carta, horarios, ubicación y reservas por WhatsApp en una página propia. Presupuesto en el día, lista en 7 días. Mirá el diseño Brasa.
+- [Página web para inmobiliarias](https://masandcoweb.com/pagina-web-para-inmobiliarias/): Buscador de propiedades, ficha por inmueble y visitas coordinadas por WhatsApp. Presupuesto en el día, lista en 7 días. Mirá el diseño Terra.
 - [Página web para alojamientos](https://masandcoweb.com/pagina-web-para-alojamientos/): Reservas directas, sin comisión de plataformas. Fotos, ubicación, reseñas y consulta por WhatsApp. Caso real: El Arbolito, Pehuén-Có.
 - [Quiénes somos](https://masandcoweb.com/quienes-somos/): La generación más joven de una familia que construye desde 2010. Hacemos los sitios, los turnos y las automatizaciones con los que un negocio vende y atiende.
 - [Términos y condiciones](https://masandcoweb.com/terminos/): Condiciones del servicio de Mas & Co: presupuestos, pagos, plazos, propiedad del trabajo y datos personales.
