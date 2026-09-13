@@ -189,7 +189,7 @@ function Inicio() {
                 y ubicación, y te escriba por WhatsApp sin que tengas que explicar todo cada vez.
               </p>
               <p>
-                Diseño propio para cada negocio, no una plantilla con tu logo encima. Lista en 7
+                Diseño propio para cada negocio, no una plantilla con tu logo encima. Lista en
                 días desde que recibimos tus fotos y tu información. El presupuesto, en el día.
               </p>
             </div>
@@ -244,7 +244,7 @@ function Inicio() {
           <div className="placa">
             <div><b>Por presupuesto</b><span>Te lo pasamos en el día</span></div>
             <div><b>50% y 50%</b><span>Al arrancar y al verlo</span></div>
-            <div><b>7 días</b><span>De principio a fin</span></div>
+            <div><b>En días</b><span>De principio a fin</span></div>
           </div>
           <p className="seccion-bajada">
             Pagás la mitad al arrancar y la otra mitad recién cuando la ves

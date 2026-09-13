@@ -31,7 +31,7 @@ export const RUBROS: Record<string, Rubro> = {
     rutaId: "restaurantes",
     h1: "Página web para restaurantes y parrillas.",
     respuesta:
-      "Una página para un restaurante tiene que hacer tres cosas: mostrar la carta con precios, decir dónde estás y cuándo abrís, y dejar que reserven por WhatsApp sin llamar. Eso, con tus fotos y tu nombre, con presupuesto en el día y lista en 7 días.",
+      "Una página para un restaurante tiene que hacer tres cosas: mostrar la carta con precios, decir dónde estás y cuándo abrís, y dejar que reserven por WhatsApp sin llamar. Eso, con tus fotos y tu nombre, con presupuesto en el día y lista en días.",
     dolores: [
       {
         titulo: "Te buscan y aparece otro",
@@ -70,7 +70,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para un restaurante?",
-        a: "Se cotiza por presupuesto según lo que necesite tu restaurante, y te lo pasamos por WhatsApp en el día. Lista en 7 días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+        a: "Se cotiza por presupuesto según lo que necesite tu restaurante, y te lo pasamos por WhatsApp en el día. Lista en días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
       },
     ],
   },
@@ -79,7 +79,7 @@ export const RUBROS: Record<string, Rubro> = {
     rutaId: "inmobiliarias",
     h1: "Página web para inmobiliarias.",
     respuesta:
-      "Una inmobiliaria necesita que cada propiedad tenga su propia ficha, que se pueda filtrar por operación, tipo y zona, y que la visita se coordine por WhatsApp desde la misma página. Eso, con tu cartera y tu marca, con presupuesto en el día y lista en 7 días.",
+      "Una inmobiliaria necesita que cada propiedad tenga su propia ficha, que se pueda filtrar por operación, tipo y zona, y que la visita se coordine por WhatsApp desde la misma página. Eso, con tu cartera y tu marca, con presupuesto en el día y lista en días.",
     dolores: [
       {
         titulo: "Tu cartera vive en los portales",
@@ -118,7 +118,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para una inmobiliaria?",
-        a: "Se cotiza por presupuesto según el tamaño de la cartera y si necesitás integración con un sistema propio. Te lo pasamos por WhatsApp en el día; lista en 7 días.",
+        a: "Se cotiza por presupuesto según el tamaño de la cartera y si necesitás integración con un sistema propio. Te lo pasamos por WhatsApp en el día; lista en días.",
       },
     ],
   },
@@ -127,7 +127,7 @@ export const RUBROS: Record<string, Rubro> = {
     rutaId: "alojamientos",
     h1: "Página web para alojamientos y cabañas.",
     respuesta:
-      "Un alojamiento necesita que reserven directo, sin pagar comisión a una plataforma por cada noche. Fotos grandes, ubicación, qué incluye, reseñas y un botón de WhatsApp. Eso es lo que hicimos para El Arbolito en Pehuén-Có, y lo que hacemos con presupuesto en el día, en 7 días.",
+      "Un alojamiento necesita que reserven directo, sin pagar comisión a una plataforma por cada noche. Fotos grandes, ubicación, qué incluye, reseñas y un botón de WhatsApp. Eso es lo que hicimos para El Arbolito en Pehuén-Có, y lo que hacemos con presupuesto en el día, en días.",
     dolores: [
       {
         titulo: "Pagás comisión por cada reserva",
@@ -171,7 +171,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para un alojamiento?",
-        a: "Se cotiza por presupuesto según lo que necesite tu alojamiento, y te lo pasamos por WhatsApp en el día. Lista en 7 días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+        a: "Se cotiza por presupuesto según lo que necesite tu alojamiento, y te lo pasamos por WhatsApp en el día. Lista en días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
       },
     ],
   },
@@ -242,7 +242,7 @@ export function Rubro({ id }: { id: keyof typeof RUBROS }) {
           <div className="placa">
             <div><b>Por presupuesto</b><span>Te lo pasamos en el día</span></div>
             <div><b>50% y 50%</b><span>Al arrancar y al verla</span></div>
-            <div><b>7 días</b><span>De principio a fin</span></div>
+            <div><b>En días</b><span>De principio a fin</span></div>
           </div>
           <p className="seccion-bajada">
             Pagás la mitad al arrancar y la otra mitad recién cuando la ves terminada. Si no te

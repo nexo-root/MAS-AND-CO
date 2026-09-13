@@ -123,7 +123,7 @@ export function Terminos() {
 
           <h3>6. Plazos y materiales</h3>
           <p>
-            El plazo estimado de entrega de un sitio es de 7 días desde la
+            El plazo de entrega de un sitio se indica en el presupuesto y se cuenta desde la
             recepción de las fotos y la información del negocio. El cliente
             garantiza tener derecho a usar los materiales que entrega; Mas
             &amp; Co no se responsabiliza por reclamos de terceros sobre

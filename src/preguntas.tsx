@@ -16,7 +16,7 @@ export const PREGUNTAS: Pregunta[] = [
   },
   {
     q: "¿Cuánto tarda?",
-    a: "7 días desde que recibimos tus fotos y la información del negocio. Si algo se demora es porque falta material, y te lo avisamos ese mismo día.",
+    a: "Días, no semanas: depende de lo que lleve la página y de cuándo nos pasás las fotos y la información. El plazo exacto va en el presupuesto. Si algo se demora es porque falta material, y te lo avisamos ese mismo día.",
   },
   {
     q: "¿Cómo se paga?",

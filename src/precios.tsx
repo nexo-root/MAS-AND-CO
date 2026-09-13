@@ -64,7 +64,7 @@ const FAQ: Pregunta[] = [
   },
   {
     q: "¿Cuánto tarda?",
-    a: "7 días desde que recibimos tus fotos y la información del negocio.",
+    a: "Días, no semanas: depende de lo que lleve la página y de cuándo nos pasás las fotos y la información. El plazo exacto va en el presupuesto.",
   },
 ]
 
@@ -78,7 +78,7 @@ export function Precios() {
           ldFaq(FAQ),
           ldServicio(
             "Página web institucional a medida",
-            "Diseño y desarrollo de una página web institucional para un negocio, con diseño propio, lista en 7 días. Se cotiza por presupuesto.",
+            "Diseño y desarrollo de una página web institucional para un negocio, con diseño propio, lista en días. Se cotiza por presupuesto.",
             ORIGEN + ruta.path,
           ),
         ]}
@@ -94,13 +94,13 @@ export function Precios() {
           estudios más accesibles del país, y arriba de $1.000.000 en las agencias
           corporativas. En Mas &amp; Co no hay lista de precios: <b>cada página se cotiza para
           el negocio que la pide</b>, te pasamos el presupuesto por WhatsApp en el día, y pagás
-          la mitad al arrancar y la otra mitad cuando la ves terminada. Lista en 7 días.
+          la mitad al arrancar y la otra mitad cuando la ves terminada. Lista en días.
         </p>
 
         <div className="placa">
           <div><b>Por presupuesto</b><span>Te lo pasamos en el día</span></div>
           <div><b>50% y 50%</b><span>Al arrancar y al verla</span></div>
-          <div><b>7 días</b><span>De principio a fin</span></div>
+          <div><b>En días</b><span>De principio a fin</span></div>
         </div>
 
         <div className="prosa">

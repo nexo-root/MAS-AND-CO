@@ -4,8 +4,8 @@
     "path": "/",
     "nombre": "Inicio",
     "prioridad": "1.0",
-    "titulo": "Páginas web para negocios en Argentina, en 7 días | Mas & Co",
-    "descripcion": "Construimos la página web de tu negocio en 7 días. Diseño propio, no plantillas. Presupuesto en el día, y la mitad la pagás recién cuando la ves terminada."
+    "titulo": "Páginas web para negocios en Argentina, listas en días | Mas & Co",
+    "descripcion": "Construimos la página web de tu negocio en días. Diseño propio, no plantillas. Presupuesto en el día, y la mitad la pagás recién cuando la ves terminada."
   },
   {
     "id": "precios",
@@ -13,7 +13,7 @@
     "nombre": "Precios",
     "prioridad": "0.9",
     "titulo": "Cuánto cuesta una página web en Argentina (2026) | Mas & Co",
-    "descripcion": "Cuánto cuesta una página web en Argentina en 2026: los precios que publican otros estudios y cómo se cotiza la tuya. Presupuesto en el día, lista en 7 días."
+    "descripcion": "Cuánto cuesta una página web en Argentina en 2026: los precios que publican otros estudios y cómo se cotiza la tuya. Presupuesto en el día, lista en días."
   },
   {
     "id": "preguntas",
@@ -29,7 +29,7 @@
     "nombre": "Página web para restaurantes",
     "prioridad": "0.8",
     "titulo": "Página web para restaurantes y parrillas | Mas & Co",
-    "descripcion": "Carta, horarios, ubicación y reservas por WhatsApp en una página propia. Presupuesto en el día, lista en 7 días. Mirá el diseño Brasa."
+    "descripcion": "Carta, horarios, ubicación y reservas por WhatsApp en una página propia. Presupuesto en el día, lista en días. Mirá el diseño Brasa."
   },
   {
     "id": "inmobiliarias",
@@ -37,7 +37,7 @@
     "nombre": "Página web para inmobiliarias",
     "prioridad": "0.8",
     "titulo": "Página web para inmobiliarias | Mas & Co",
-    "descripcion": "Buscador de propiedades, ficha por inmueble y visitas coordinadas por WhatsApp. Presupuesto en el día, lista en 7 días. Mirá el diseño Terra."
+    "descripcion": "Buscador de propiedades, ficha por inmueble y visitas coordinadas por WhatsApp. Presupuesto en el día, lista en días. Mirá el diseño Terra."
   },
   {
     "id": "alojamientos",

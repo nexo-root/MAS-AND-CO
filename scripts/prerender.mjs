@@ -148,12 +148,12 @@ writeFileSync(
   join(DOCS, "llms.txt"),
   `# Mas & Co
 
-> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye en Misiones desde 2010, con base en Posadas y cobertura en todo el país. Cada página se cotiza por presupuesto para el negocio que la pide, se entrega en 7 días y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
+> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye en Misiones desde 2010, con base en Posadas y cobertura en todo el país. Cada página se cotiza por presupuesto para el negocio que la pide, se entrega en días, no en meses, y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
 
 ## Datos clave
 
 - Precio: por presupuesto, según lo que necesite el negocio (catálogo con fichas por producto, tratamiento de fotos). No hay lista de precios: se cotiza por WhatsApp en el día.
-- Plazo: 7 días desde que se recibe el material del negocio.
+- Plazo: días, no semanas; el plazo exacto va en cada presupuesto y se cuenta desde que se recibe el material del negocio.
 - Pago: 50% al arrancar, 50% al ver la página terminada. Si no gusta, no se paga el saldo.
 - Mantenimiento opcional (dominio, alojamiento, respaldos, soporte): se cotiza junto con la página, primer mes gratis.
 - El dominio se registra a nombre del cliente.
