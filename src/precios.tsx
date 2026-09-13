@@ -44,7 +44,7 @@ const MERCADO = [
 const FAQ: Pregunta[] = [
   {
     q: "¿Cuánto cuesta una página web en Argentina en 2026?",
-    a: "Según los estudios que publican sus precios, una página institucional cuesta entre $180.000 y $350.000 en los estudios más accesibles y hasta $3.000.000 en agencias corporativas. En Mas & Co no hay lista de precios: cada página se cotiza según lo que necesite tu negocio (un catálogo con fichas por producto o el tratamiento de fotos cambian el trabajo), y el presupuesto te lo pasamos por WhatsApp en el día. Lista en 7 días.",
+    a: "Según los estudios que publican sus precios, una página institucional cuesta entre $180.000 y $350.000 en los estudios más accesibles y hasta $3.000.000 en agencias corporativas. En Mas & Co no hay lista de precios: cada página se cotiza según lo que necesite tu negocio (un catálogo con fichas por producto o el tratamiento de fotos cambian el trabajo), y el presupuesto te lo pasamos por WhatsApp en el día. Lista en días.",
   },
   {
     q: "¿Qué define el precio de tu página?",
