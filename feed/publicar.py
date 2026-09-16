@@ -1,7 +1,7 @@
 """
 Fabrica de contenido Mas & Co — publicador.
 
-Corre dos veces por dia (GitHub Actions). Busca en cola.json la entrada cuya
+Corre tres veces por dia (GitHub Actions). Busca en cola.json la entrada cuya
 fecha sea HOY (hora de Argentina) y cuyo turno mande el workflow, y la publica
 en el Instagram y en la pagina de Facebook de Mas & Co. Si hoy no hay nada
 programado, termina en silencio. No genera contenido: solo publica piezas ya
@@ -24,7 +24,7 @@ vacia:
   4. La corrida termina en rojo solo si alguna red no publico de verdad.
 
 Variables opcionales, para recuperar a mano una publicacion:
-  TURNO=1|2         turno de la cola (lo manda el workflow)
+  TURNO=1|2|3       turno de la cola (lo manda el workflow)
   FECHA=AAAA-MM-DD  fuerza la fecha en vez de usar hoy
   SOLO=ig|fb        publica en una sola red
 """
@@ -193,7 +193,7 @@ def main() -> int:
         return 1
 
     cola = json.loads((Path(__file__).parent / "cola.json").read_text(encoding="utf-8"))
-    # Publicamos dos veces por dia. El turno NO se deduce de la hora: GitHub
+    # Publicamos tres veces por dia. El turno NO se deduce de la hora: GitHub
     # larga los cron con horas de atraso y eso elegiria el post equivocado.
     # Lo manda el workflow segun cual de los dos cron disparo.
     turno = int(os.environ.get("TURNO", "1"))
@@ -203,7 +203,7 @@ def main() -> int:
     # Red de seguridad: si el atraso de GitHub empujo la corrida de la tarde a
     # despues de medianoche, el dia calendario ya avanzo pero el post que
     # corresponde sigue siendo el de AYER. Sin esto la cola se corre sola.
-    if turno == 2 and ahora.hour < 6:
+    if turno >= 2 and ahora.hour < 6:
         ahora -= timedelta(days=1)
         print("[i] corrida atrasada cruzo la medianoche: uso la fecha de ayer")
     hoy = os.environ.get("FECHA", "").strip() or ahora.strftime("%Y-%m-%d")
