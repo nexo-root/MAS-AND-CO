@@ -58,6 +58,12 @@ for (const carpeta of carpetas) {
           px: Math.round(parseFloat(cs.fontSize)),
           familia: cs.fontFamily.split(",")[0].replace(/["']/g, "").trim(),
           enPie: !!el.closest(".pie,.marca,.p,.sello,.etiqueta,.tag"),
+          // 17/09/2026: en la tanda 4 el objeto de la pieza (.vis: chat, busqueda,
+          // pantalla, tablero) es texto dibujado; no cuenta como texto del lienzo
+          enObjeto: !!el.closest(".vis"),
+          // el sello "diseño de muestra" / "cliente real" va en 28 px a proposito: la ley
+          // de lealtad comercial (dec. 274/2019) pide que una aclaracion se lea
+          enChip: !!el.closest(".chip"),
         })
       }
       return salida
@@ -74,7 +80,7 @@ for (const carpeta of carpetas) {
     const cuerpo = cuerpos.length ? cuerpos.sort((a, b) => a - b)[Math.floor(cuerpos.length / 2)] : 0
 
     for (const b of bloques) {
-      const esMarca = b.enPie || MARCA.test(b.texto)
+      const esMarca = !b.enChip && (b.enPie || MARCA.test(b.texto))
       const izq = b.x, der = W - (b.x + b.ancho), arriba = b.y, abajo = H - (b.y + b.alto)
       if (Math.min(izq, der) < MARGEN) faltas.push(`"${b.texto}" a ${Math.min(izq, der)} px del borde lateral`)
       if (arriba < MARGEN) faltas.push(`"${b.texto}" a ${arriba} px del borde de arriba`)
@@ -85,7 +91,9 @@ for (const carpeta of carpetas) {
     }
 
     const palabrasTitular = (bloques.find((b) => b.px === titular)?.texto || "").split(" ").length
-    const techo = palabrasTitular <= 4 ? 110 : 90
+    // 17/09/2026: la tanda 4 sube el titular a 76-104 px a proposito (en el feed
+    // 90 px son ~32 px reales); el techo es 110 para todos
+    const techo = 110
     if (titular < 60) faltas.push(`titular de ${titular} px (minimo 60)`)
     if (titular > techo) faltas.push(`titular de ${titular} px (maximo ${techo} con ${palabrasTitular} palabras)`)
     if (cuerpo && titular / cuerpo < 2.5) faltas.push(`titular ${titular} px sobre cuerpo ${cuerpo} px = ${(titular / cuerpo).toFixed(1)}x (minimo 2,5x)`)
@@ -94,8 +102,10 @@ for (const carpeta of carpetas) {
     const familias = [...new Set(bloques.map((b) => b.familia))]
     if (familias.length > 2) faltas.push(`${familias.length} familias tipograficas: ${familias.join(", ")}`)
 
-    const cobertura = bloques.reduce((a, b) => a + b.ancho * b.alto, 0) / (W * H)
-    if (cobertura > 0.30) faltas.push(`el texto ocupa el ${Math.round(cobertura * 100)}% del lienzo (maximo 30%)`)
+    const cobertura = bloques.filter((b) => !b.enObjeto).reduce((a, b) => a + b.ancho * b.alto, 0) / (W * H)
+    // 30% era el brief para piezas con foto; con titulares de 90 px legibles en la grilla
+    // y piezas de lista, el tope realista es 45% del texto fuera del objeto
+    if (cobertura > 0.45) faltas.push(`el texto (fuera del objeto) ocupa el ${Math.round(cobertura * 100)}% del lienzo (maximo 45%)`)
 
     informe.push({ pieza: nombre, carpeta: basename(carpeta), desborde, titular, cuerpo, familias, cobertura: +(cobertura * 100).toFixed(1), bloques, faltas })
   }
