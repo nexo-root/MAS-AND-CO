@@ -246,7 +246,7 @@ export function Rubro({ id }: { id: keyof typeof RUBROS }) {
           </div>
           <p className="seccion-bajada">
             Pagás la mitad al arrancar y la otra mitad recién cuando la ves terminada. Si no te
-            gusta, no la pagás. <a href="/precios/">Ver qué incluye y qué va aparte.</a>
+            gusta, la segunda mitad no la pagás. <a href="/precios/">Ver qué incluye y qué va aparte.</a>
           </p>
 
           <h2>Preguntas de este rubro</h2>

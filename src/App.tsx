@@ -248,7 +248,7 @@ function Inicio() {
           </div>
           <p className="seccion-bajada">
             Pagás la mitad al arrancar y la otra mitad recién cuando la ves
-            terminada. Si no te gusta, no la pagás.{" "}
+            terminada. Si no te gusta, la segunda mitad no la pagás.{" "}
             <a href="/precios/">Ver qué incluye y qué cotiza el mercado.</a>
           </p>
         </div>
