@@ -1,0 +1,32 @@
+name: Reels de Mas & Co
+
+on:
+  schedule:
+    # Todos los dias a las 22:30 UTC = 19:30 ARG. El script mira cola-reels.json
+    # y solo publica si hoy hay un reel programado (van cada tres dias), asi que
+    # los demas dias termina en silencio. Esta ADELANTADO a proposito: GitHub
+    # larga los cron con horas de atraso.
+    - cron: "30 22 * * *"
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: "Fecha AAAA-MM-DD para recuperar un reel a mano (vacio = hoy)"
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publicar el reel del dia
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN_MASANDCO }}
+          FECHA: ${{ inputs.fecha }}
+        working-directory: feed
+        run: python publicar_reel.py
