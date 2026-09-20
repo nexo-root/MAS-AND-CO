@@ -2,8 +2,9 @@ name: Fabrica de contenido Mas & Co
 
 on:
   schedule:
-    # Tres publicaciones por dia. 10:05 UTC = 07:05 ARG, 14:30 UTC = 11:30 ARG,
-    # 19:00 UTC = 16:00 ARG.
+    # Cuatro publicaciones por dia: tres posts y un carrusel (turno 4).
+    # 10:05 UTC = 07:05 ARG, 14:30 UTC = 11:30 ARG, 19:00 UTC = 16:00 ARG,
+    # 21:30 UTC = 18:30 ARG.
     # Van ADELANTADAS a proposito: GitHub larga los cron con 3 a 5 horas de
     # atraso, asi que en la practica salen cerca del mediodia y de la tarde.
     # Si la segunda se programara a las 19 ARG, el atraso la cruzaria a
@@ -12,10 +13,11 @@ on:
     - cron: "5 10 * * *"
     - cron: "30 14 * * *"
     - cron: "0 19 * * *"
+    - cron: "30 21 * * *"
   workflow_dispatch:
     inputs:
       turno:
-        description: "1 = manana, 2 = mediodia, 3 = tarde"
+        description: "1 = manana, 2 = mediodia, 3 = tarde, 4 = carrusel"
         default: "1"
 
 permissions:
@@ -32,5 +34,5 @@ jobs:
       - name: Publicar el post del dia
         env:
           META_TOKEN: ${{ secrets.META_TOKEN_MASANDCO }}
-          TURNO: ${{ github.event.schedule == '0 19 * * *' && '3' || (github.event.schedule == '30 14 * * *' && '2' || (inputs.turno || '1')) }}
+          TURNO: ${{ github.event.schedule == '30 21 * * *' && '4' || (github.event.schedule == '0 19 * * *' && '3' || (github.event.schedule == '30 14 * * *' && '2' || (inputs.turno || '1'))) }}
         run: python feed/publicar.py

@@ -1,8 +1,9 @@
 """
 Fabrica de contenido Mas & Co — publicador.
 
-Corre tres veces por dia (GitHub Actions). Busca en cola.json la entrada cuya
-fecha sea HOY (hora de Argentina) y cuyo turno mande el workflow, y la publica
+Corre cuatro veces por dia (GitHub Actions): tres posts y un carrusel. Busca en
+cola.json la entrada cuya fecha sea HOY (hora de Argentina) y cuyo turno mande
+el workflow, y la publica
 en el Instagram y en la pagina de Facebook de Mas & Co. Si hoy no hay nada
 programado, termina en silencio. No genera contenido: solo publica piezas ya
 aprobadas.
@@ -24,7 +25,7 @@ vacia:
   4. La corrida termina en rojo solo si alguna red no publico de verdad.
 
 Variables opcionales, para recuperar a mano una publicacion:
-  TURNO=1|2|3       turno de la cola (lo manda el workflow)
+  TURNO=1|2|3|4     turno de la cola (lo manda el workflow; 4 es el carrusel)
   FECHA=AAAA-MM-DD  fuerza la fecha en vez de usar hoy
   SOLO=ig|fb        publica en una sola red
 """
@@ -116,26 +117,53 @@ def contenedor_publicado(cont_id: str, token: str) -> bool:
     return estado.get("status_code") == "PUBLISHED"
 
 
-def publicar_instagram(token: str, url_imagen: str, caption: str) -> bool:
-    if ya_esta_en_instagram(token, caption):
-        print("[i] Instagram ya tenia este post: no se repite")
-        return True
-
-    cont = llamar(f"{IG_USER_ID}/media", {
-        "image_url": url_imagen,
-        "caption": caption,
-        "access_token": token,
-    })
-    # El contenedor tarda: publicarlo al instante da 400 porque Meta todavia no
-    # termino de bajar la imagen.
+def esperar_contenedor(cont_id: str, token: str) -> bool:
+    """El contenedor tarda: publicarlo al instante da 400 porque Meta todavia no
+    termino de bajar la imagen."""
     for _ in range(10):
-        estado = llamar(f"{cont['id']}?fields=status_code&access_token={token}")
+        estado = llamar(f"{cont_id}?fields=status_code&access_token={token}")
         if estado.get("status_code") == "FINISHED":
-            break
+            return True
         if estado.get("status_code") == "ERROR":
             print("[X] Instagram: el contenedor quedo en ERROR")
             return False
         time.sleep(5)
+    return True
+
+
+def publicar_instagram(token: str, urls: list[str], caption: str) -> bool:
+    if ya_esta_en_instagram(token, caption):
+        print("[i] Instagram ya tenia este post: no se repite")
+        return True
+
+    if len(urls) == 1:
+        cont = llamar(f"{IG_USER_ID}/media", {
+            "image_url": urls[0],
+            "caption": caption,
+            "access_token": token,
+        })
+        if not esperar_contenedor(cont["id"], token):
+            return False
+    else:
+        # Carrusel: un contenedor por lamina y despues uno que las agrupa.
+        hijos = []
+        for u in urls:
+            h = llamar(f"{IG_USER_ID}/media", {
+                "image_url": u,
+                "is_carousel_item": "true",
+                "access_token": token,
+            })
+            if not esperar_contenedor(h["id"], token):
+                return False
+            hijos.append(h["id"])
+        cont = llamar(f"{IG_USER_ID}/media", {
+            "media_type": "CAROUSEL",
+            "children": ",".join(hijos),
+            "caption": caption,
+            "access_token": token,
+        })
+        if not esperar_contenedor(cont["id"], token):
+            return False
 
     try:
         pub = llamar(f"{IG_USER_ID}/media_publish", {
@@ -162,7 +190,7 @@ def publicar_instagram(token: str, url_imagen: str, caption: str) -> bool:
             return False
 
 
-def publicar_facebook(token: str, url_imagen: str, caption: str) -> bool:
+def publicar_facebook(token: str, urls: list[str], caption: str) -> bool:
     try:
         token_pagina = llamar(f"{PAGE_ID}?fields=access_token&access_token={token}", intentos=2)["access_token"]
     except Exception as e:
@@ -174,11 +202,28 @@ def publicar_facebook(token: str, url_imagen: str, caption: str) -> bool:
         return True
 
     try:
-        fb = llamar(f"{PAGE_ID}/photos", {
-            "url": url_imagen,
-            "message": caption,
-            "access_token": token_pagina,
-        })
+        if len(urls) == 1:
+            fb = llamar(f"{PAGE_ID}/photos", {
+                "url": urls[0],
+                "message": caption,
+                "access_token": token_pagina,
+            })
+        else:
+            # Carrusel: cada foto se sube sin publicar y despues van todas juntas
+            # en una sola entrada del muro.
+            adjuntos = {}
+            for i, u in enumerate(urls):
+                foto = llamar(f"{PAGE_ID}/photos", {
+                    "url": u,
+                    "published": "false",
+                    "access_token": token_pagina,
+                })
+                adjuntos[f"attached_media[{i}]"] = json.dumps({"media_fbid": foto["id"]})
+            fb = llamar(f"{PAGE_ID}/feed", {
+                "message": caption,
+                "access_token": token_pagina,
+                **adjuntos,
+            })
         print(f"[OK] Facebook: post {fb.get('post_id', fb.get('id'))}")
         return True
     except Exception as e:
@@ -217,16 +262,21 @@ def main() -> int:
         print(f"[i] {hoy} turno {turno}: sin publicacion programada. Nada que hacer.")
         return 0
 
-    url_imagen = cola["base_url"] + entrada["imagen"]
+    # "imagen" puede ser un nombre (post comun) o una lista (carrusel).
+    imagenes = entrada["imagen"]
+    if isinstance(imagenes, str):
+        imagenes = [imagenes]
+    urls = [cola["base_url"] + n for n in imagenes]
     caption = entrada["caption"]
-    print(f"[i] {hoy} turno {turno}: publicando {entrada['imagen']}")
+    que = imagenes[0] if len(imagenes) == 1 else f"carrusel de {len(imagenes)} laminas ({imagenes[0]})"
+    print(f"[i] {hoy} turno {turno}: publicando {que}")
 
     resultados = {}
     if solo != "fb":
-        resultados["Instagram"] = publicar_instagram(token, url_imagen, caption)
+        resultados["Instagram"] = publicar_instagram(token, urls, caption)
     # Facebook va SIEMPRE, aunque Instagram haya fallado.
     if solo != "ig":
-        resultados["Facebook"] = publicar_facebook(token, url_imagen, caption)
+        resultados["Facebook"] = publicar_facebook(token, urls, caption)
 
     fallaron = [red for red, ok in resultados.items() if not ok]
     if fallaron:
