@@ -165,7 +165,7 @@ function Inicio() {
           </h1>
           <div className="piso" />
           <div className="bajo-piso">
-            <p className="lugar">Desde Posadas, para todo el país</p>
+            <p className="lugar">Páginas web para todo el país</p>
             <p className="bajada">Sitios web <em>que trabajan por vos.</em></p>
           </div>
           <div className="acciones">
@@ -216,7 +216,7 @@ function Inicio() {
                 titulo="El Arbolito" rubro="Alojamientos · Pehuén-Có"
                 bajada="Cuatro alojamientos frente al mar. Dominio propio y consulta directa por WhatsApp." />
           <Obra id="creditofinan" url="https://creditofinan.com/"
-                titulo="Crédito Finan" rubro="Créditos · Posadas"
+                titulo="Crédito Finan" rubro="Créditos"
                 bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
         </div>
       </section>
@@ -344,7 +344,7 @@ export default function App() {
                 ))}
                 <span className="destacado" title="Muy pronto">MAS &amp; SONS</span>
               </nav>
-              <span>Posadas, Misiones, Argentina</span>
+              <span>Argentina</span>
             </div>
           </footer>
         </section>

@@ -39,8 +39,8 @@ export const PREGUNTAS: Pregunta[] = [
     a: "Sí, integrando plataformas de terceros que ya funcionan bien para eso. La suscripción a esa plataforma queda a tu nombre y se cotiza aparte, por cada una.",
   },
   {
-    q: "¿Trabajan solo en Posadas?",
-    a: "No. Trabajamos para todo el país. Todo el proceso es por WhatsApp: nos mandás la información, te mostramos avances y la página queda publicada sin que nadie tenga que viajar.",
+    q: "¿Trabajan en todo el país?",
+    a: "Sí. Todo el proceso es por WhatsApp: nos mandás la información, te mostramos avances y la página queda publicada sin que nadie tenga que viajar.",
   },
   {
     q: "¿Qué tengo que mandar para empezar?",

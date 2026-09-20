@@ -16,7 +16,7 @@ export function Quienes() {
         <div className="prosa">
           <p>
             Somos la rama de tecnología de la familia Mas, que construye desde
-            Posadas, Misiones, desde 2010. Lo que empezó como una empresa
+            2010. Lo que empezó como una empresa
             constructora se convirtió en un grupo de dos generaciones
             trabajando juntas: el padre y los hijos, cada uno al frente de una
             parte del negocio.
@@ -46,7 +46,7 @@ export function Quienes() {
             <h3>Mas &amp; Sons</h3>
             <p className="grupo-rol">Internacional</p>
             <p>La marca internacional del grupo: construcción, real estate y
-            comercio, desde Posadas hacia afuera.</p>
+            comercio.</p>
           </article>
           <article>
             <h3>CMD</h3>
