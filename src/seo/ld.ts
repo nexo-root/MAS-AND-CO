@@ -46,6 +46,24 @@ export function ldFaq(preguntas: Pregunta[]) {
   }
 }
 
+/* Un trabajo hecho para un cliente real. El nodo describe el sitio que hicimos,
+   no el negocio del cliente: nosotros somos el creator y ellos el cliente. Se
+   enlaza al sitio publicado para que se pueda verificar. */
+export function ldCaso(cliente: string, rubro: string, sitio: string, url: string, imagen: string) {
+  return {
+    "@type": "CreativeWork",
+    "@id": `${url}#caso`,
+    name: `Página web de ${cliente}`,
+    description: `Página web hecha para ${cliente}, ${rubro.toLowerCase()}.`,
+    genre: "Diseño y desarrollo de páginas web",
+    creator: { "@id": ORG },
+    about: { "@type": "Organization", name: cliente, url: sitio },
+    url,
+    image: imagen,
+    inLanguage: "es-AR",
+  }
+}
+
 export function ldServicio(nombre: string, descripcion: string, url: string) {
   return {
     "@type": "Service",

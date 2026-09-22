@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Curvas from "./Curvas"
 import VariableFontCursorProximity from "./components/originkit/dynamic-weight"
+import { Caso } from "./casos"
 import { Quienes, Terminos } from "./paginas"
 import { Precios } from "./precios"
 import { Preguntas } from "./preguntas"
@@ -322,6 +323,8 @@ export default function App() {
         {ruta === "restaurantes" && <Rubro id="restaurantes" />}
         {ruta === "inmobiliarias" && <Rubro id="inmobiliarias" />}
         {ruta === "alojamientos" && <Rubro id="alojamientos" />}
+        {ruta === "caso-arbolito" && <Caso id="caso-arbolito" />}
+        {ruta === "caso-finan" && <Caso id="caso-finan" />}
         {ruta === "quienes" && <Quienes />}
         {ruta === "terminos" && <Terminos />}
 

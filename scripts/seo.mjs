@@ -17,16 +17,12 @@ import { fileURLToPath } from "node:url"
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), "..", "docs")
 
-const RUTAS = [
-  ["/", "index.html"],
-  ["/precios/", "precios/index.html"],
-  ["/preguntas-frecuentes/", "preguntas-frecuentes/index.html"],
-  ["/pagina-web-para-restaurantes/", "pagina-web-para-restaurantes/index.html"],
-  ["/pagina-web-para-inmobiliarias/", "pagina-web-para-inmobiliarias/index.html"],
-  ["/pagina-web-para-alojamientos/", "pagina-web-para-alojamientos/index.html"],
-  ["/quienes-somos/", "quienes-somos/index.html"],
-  ["/terminos/", "terminos/index.html"],
-]
+/* Sale de src/seo/rutas.json, que es la unica fuente de verdad del sitio. Cuando
+ * la lista estaba escrita a mano aca, se agregaron dos rutas nuevas y la
+ * auditoria dijo "TODO OK" sin haberlas mirado: el peor resultado posible. */
+const RUTAS = JSON.parse(
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "src", "seo", "rutas.json"), "utf8"),
+).map((r) => [r.path, r.path === "/" ? "index.html" : r.path.replace(/^\/|\/$/g, "") + "/index.html"])
 
 /* Los limites no son gusto: son el ancho con el que Google corta en el celular.
  * Un titulo de 70 caracteres no es peor, es que se ve la mitad. */

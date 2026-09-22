@@ -48,6 +48,22 @@
     "descripcion": "Reservas directas, sin comisión de plataformas. Fotos, ubicación, reseñas y consulta por WhatsApp. Caso real: El Arbolito, Pehuén-Có."
   },
   {
+    "id": "caso-arbolito",
+    "path": "/caso/el-arbolito/",
+    "nombre": "Caso: El Arbolito",
+    "prioridad": "0.7",
+    "titulo": "El Arbolito, alojamiento en Pehuén-Có | Mas & Co",
+    "descripcion": "Así quedó la página de El Arbolito, alojamiento en Pehuén-Có: las fotos del lugar, cómo llegar y las consultas por WhatsApp. Es un cliente nuestro."
+  },
+  {
+    "id": "caso-finan",
+    "path": "/caso/credito-finan/",
+    "nombre": "Caso: Crédito Finan",
+    "prioridad": "0.7",
+    "titulo": "Crédito Finan, consultora de crédito | Mas & Co",
+    "descripcion": "Así quedó la página de Crédito Finan: qué hacen en una frase, un formulario que les llega al correo y el WhatsApp a un toque. Es un cliente nuestro."
+  },
+  {
     "id": "quienes",
     "path": "/quienes-somos/",
     "nombre": "Quiénes somos",
