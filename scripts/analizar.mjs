@@ -80,8 +80,14 @@ const v = await pagina.evaluate(() => {
     imgs: document.querySelectorAll("img").length,
     imgsSinAlt: [...document.querySelectorAll("img")].filter((i) => !i.hasAttribute("alt")).length,
     og: ["og:title", "og:description", "og:image"].filter((k) => !document.querySelector(`meta[property="${k}"]`)),
-    schema: [...document.querySelectorAll('script[type="application/ld+json"]')]
-      .flatMap((s) => { try { const d = JSON.parse(s.textContent); return (Array.isArray(d) ? d : [d]).map((x) => x["@type"]) } catch { return ["(roto)"] } }).filter(Boolean),
+    // el @type puede venir en la raiz, en una lista o adentro de un @graph
+    schema: (() => {
+      const tiposDe = (d) => !d || typeof d !== "object" ? []
+        : Array.isArray(d) ? d.flatMap(tiposDe)
+        : [...(d["@type"] ? [d["@type"]].flat() : []), ...tiposDe(d["@graph"])]
+      return [...document.querySelectorAll('script[type="application/ld+json"]')]
+        .flatMap((s) => { try { return tiposDe(JSON.parse(s.textContent)) } catch { return ["(roto)"] } }).filter(Boolean)
+    })(),
     whatsapp: !!document.querySelector('a[href*="wa.me"],a[href*="api.whatsapp"],a[href*="whatsapp.com/send"]'),
     tel: !!document.querySelector('a[href^="tel:"]'),
     mapa: !!document.querySelector('a[href*="maps.google"],a[href*="goo.gl/maps"],a[href*="maps.app.goo.gl"],iframe[src*="google.com/maps"]'),

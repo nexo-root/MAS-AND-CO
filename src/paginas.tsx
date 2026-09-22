@@ -43,19 +43,19 @@ export function Quienes() {
 
         <div className="grupo-grande">
           <article>
-            <h3>Mas &amp; Sons</h3>
+            <h2>Mas &amp; Sons</h2>
             <p className="grupo-rol">Internacional</p>
             <p>La marca internacional del grupo: construcción, real estate y
             comercio.</p>
           </article>
           <article>
-            <h3>CMD</h3>
+            <h2>CMD</h2>
             <p className="grupo-rol">Desarrollos · Misiones</p>
             <p>Cia Misionera de Desarrollos: construcción, loteos y
             desarrollos propios en la provincia desde 2010.</p>
           </article>
           <article>
-            <h3>Mas &amp; Co</h3>
+            <h2>Mas &amp; Co</h2>
             <p className="grupo-rol">Tecnología</p>
             <p>Los sitios, los turnos y las automatizaciones con los que un
             negocio vende y atiende todos los días.</p>
@@ -80,20 +80,20 @@ export function Terminos() {
         <div className="prosa legal">
           <p className="fecha">Última actualización: agosto de 2026</p>
 
-          <h3>1. Titular</h3>
+          <h2>1. Titular</h2>
           <p>
             Mas &amp; Co, rama de tecnología del grupo Mas, con asiento en
             Posadas, Misiones, Argentina. Contacto: masandco.mas@gmail.com o
             WhatsApp +54 9 3764 61-5587.
           </p>
 
-          <h3>2. Aceptación</h3>
+          <h2>2. Aceptación</h2>
           <p>
             Al usar este sitio aceptás estos términos. Si no estás de acuerdo,
             no uses el sitio.
           </p>
 
-          <h3>3. Servicios</h3>
+          <h2>3. Servicios</h2>
           <p>
             Diseño y desarrollo de sitios web, implementación de sistemas de
             turnos y reservas de plataformas de terceros, y automatizaciones a
@@ -101,7 +101,7 @@ export function Terminos() {
             venta online en este sitio.
           </p>
 
-          <h3>4. Presupuestos y pagos</h3>
+          <h2>4. Presupuestos y pagos</h2>
           <p>
             Los precios se expresan en pesos argentinos y los presupuestos
             tienen una validez de 7 días. Los trabajos se abonan 50% al
@@ -112,7 +112,7 @@ export function Terminos() {
             cliente lo decida.
           </p>
 
-          <h3>5. Derecho de arrepentimiento</h3>
+          <h2>5. Derecho de arrepentimiento</h2>
           <p>
             En contrataciones a distancia rige la Ley 24.240 de Defensa del
             Consumidor: el cliente puede arrepentirse dentro de los 10 días
@@ -121,7 +121,7 @@ export function Terminos() {
             proporcional de lo ya realizado.
           </p>
 
-          <h3>6. Plazos y materiales</h3>
+          <h2>6. Plazos y materiales</h2>
           <p>
             El plazo de entrega de un sitio se indica en el presupuesto y se cuenta desde la
             recepción de las fotos y la información del negocio. El cliente
@@ -130,7 +130,7 @@ export function Terminos() {
             materiales provistos por el cliente.
           </p>
 
-          <h3>7. Propiedad del trabajo</h3>
+          <h2>7. Propiedad del trabajo</h2>
           <p>
             Con el pago total, el sitio y su contenido son del cliente. El
             dominio se registra a nombre del cliente. Las suscripciones a
@@ -138,7 +138,7 @@ export function Terminos() {
             nombre del cliente y se facturan aparte, por cada plataforma.
           </p>
 
-          <h3>8. Propiedad intelectual de este sitio</h3>
+          <h2>8. Propiedad intelectual de este sitio</h2>
           <p>
             El contenido de este sitio (textos, diseño, código, marca) es
             propiedad de Mas &amp; Co y del grupo Mas. Las capturas de
@@ -146,14 +146,14 @@ export function Terminos() {
             muestran como referencia del trabajo realizado.
           </p>
 
-          <h3>9. Uso del sitio</h3>
+          <h2>9. Uso del sitio</h2>
           <p>
             Está prohibido usar este sitio para actividades ilegales, intentar
             accesos no autorizados, introducir código malicioso o realizar
             extracción masiva y automatizada de contenido sin autorización.
           </p>
 
-          <h3>10. Datos personales</h3>
+          <h2>10. Datos personales</h2>
           <p>
             Este sitio no tiene formularios de registro. Los datos de contacto
             que recibimos por WhatsApp o correo se usan solo para responder la
@@ -168,7 +168,7 @@ export function Terminos() {
             RGPD, con las mismas vías de contacto.
           </p>
 
-          <h3>11. Cookies y almacenamiento local</h3>
+          <h2>11. Cookies y almacenamiento local</h2>
           <p>
             Este sitio no usa cookies de publicidad ni de seguimiento, ni
             píxeles de redes sociales. Lo único que guarda es la preferencia
@@ -179,7 +179,7 @@ export function Terminos() {
             pedirá el consentimiento que corresponda.
           </p>
 
-          <h3>12. Alojamiento y transferencia internacional</h3>
+          <h2>12. Alojamiento y transferencia internacional</h2>
           <p>
             El sitio se aloja en GitHub Pages (GitHub Inc., Estados Unidos),
             que como todo servidor web puede registrar direcciones IP en sus
@@ -187,13 +187,13 @@ export function Terminos() {
             privacidad. Mas &amp; Co no accede a esos registros.
           </p>
 
-          <h3>13. Menores</h3>
+          <h2>13. Menores</h2>
           <p>
             Este sitio ofrece servicios a negocios y no está dirigido a
             menores de edad. No recolectamos conscientemente datos de menores.
           </p>
 
-          <h3>14. Responsabilidad</h3>
+          <h2>14. Responsabilidad</h2>
           <p>
             Los sitios se entregan funcionando y verificados. No garantizamos
             resultados comerciales ni posiciones en buscadores, que dependen
@@ -202,21 +202,21 @@ export function Terminos() {
             limita los derechos irrenunciables del consumidor.
           </p>
 
-          <h3>15. Enlaces a terceros</h3>
+          <h2>15. Enlaces a terceros</h2>
           <p>
             Este sitio enlaza a sitios de clientes y a plataformas de
             terceros. No controlamos ni respondemos por su contenido ni por
             sus prácticas de privacidad.
           </p>
 
-          <h3>16. Modificaciones</h3>
+          <h2>16. Modificaciones</h2>
           <p>
             Podemos actualizar estos términos; la fecha de arriba indica la
             última revisión. Los cambios rigen desde su publicación en esta
             página.
           </p>
 
-          <h3>17. Ley aplicable y jurisdicción</h3>
+          <h2>17. Ley aplicable y jurisdicción</h2>
           <p>
             Estos términos se rigen por las leyes de la República Argentina.
             Cualquier controversia se somete a los tribunales ordinarios de

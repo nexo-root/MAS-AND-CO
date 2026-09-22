@@ -202,7 +202,10 @@ body,section,.lienzo,.placa,.placa div,.piso,.vias a,.ficha,.item,
 .prosa{margin-top:clamp(20px,3vh,34px);max-width:64ch}
 .prosa p{margin-bottom:1.1em;color:var(--tinta-2)}
 .prosa b{color:var(--tinta);font-variation-settings:'wdth' 110,'wght' 650}
-.legal h3{font-variation-settings:'wdth' 118,'wght' 750;
+/* `.prosa.legal` y no `.legal` a secas: el bloque legal es un .prosa tambien, y
+   `.prosa h2` esta mas abajo en este archivo, asi que con la misma
+   especificidad ganaba y los 17 titulos del documento saltaban de 18 a 34 px. */
+.prosa.legal h2,.legal h3{font-variation-settings:'wdth' 118,'wght' 750;
   font-size:1.05rem;margin:1.6em 0 .5em;color:var(--tinta)}
 .legal .fecha{font-size:.85rem;color:var(--gris)}
 .legal .aviso-legal{margin-top:2.2em;padding:14px 18px;border:1px solid var(--linea);
@@ -243,7 +246,7 @@ body,section,.lienzo,.placa,.placa div,.piso,.vias a,.ficha,.item,
   margin-top:clamp(34px,5vh,54px)}
 .grupo-grande article{background:var(--papel);padding:clamp(22px,3vw,38px);
   transition:background-color .55s ease,color .55s ease}
-.grupo-grande h3{font-variation-settings:'wdth' 122,'wght' 800;
+.grupo-grande h2,.grupo-grande h3{font-variation-settings:'wdth' 122,'wght' 800;
   font-size:clamp(1.5rem,2.8vw,2.3rem);letter-spacing:-.02em}
 .grupo-rol{font-variation-settings:'wdth' 125,'wght' 400;
   font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
@@ -303,10 +306,10 @@ html[data-tema="oscuro"] body::before{content:"";position:fixed;inset:0;
 .tabla{min-width:720px}
 /* El titulo de una muestra ahora lleva a la pagina de su rubro: se ve como
    titulo y se delata como enlace al pasar por encima. */
-.ficha h3 a{color:inherit;text-decoration:none}
-.ficha h3 a:hover{text-decoration:underline;text-underline-offset:5px}
+.ficha h2 a,.ficha h3 a{color:inherit;text-decoration:none}
+.ficha h2 a:hover,.ficha h3 a:hover{text-decoration:underline;text-underline-offset:5px}
 .rubro-vitrina{margin:8px 0 12px}
-.rubro-vitrina .ficha h3{font-variation-settings:'wdth' 118,'wght' 800}
+.rubro-vitrina .ficha h2,.rubro-vitrina .ficha h3{font-variation-settings:'wdth' 118,'wght' 800}
 .pie-enlaces{flex-wrap:wrap}
 
 /* La comparacion de precios en celular. Una tabla de cuatro columnas a 720px

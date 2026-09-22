@@ -151,7 +151,11 @@ function Inicio() {
       <Cabeza ruta={rutaPorId("inicio")} />
       <section className="portada">
         <div className="eje">
-          <h1 className="gigante">
+          {/* El logotipo es decoracion, no el titulo de la pagina. Cuando era el
+              H1, lo mas importante que leia Google en el inicio era la marca
+              repetida (ya esta en el <title>, en el schema y en la barra) en
+              lugar de lo que vendemos. El H1 real es la bajada. */}
+          <div className="gigante" aria-hidden="true">
             <VariableFontCursorProximity
               label="MAS & CO"
               fromWeight={200}
@@ -162,11 +166,11 @@ function Inicio() {
               transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
               style={{ overflow: "visible" }}
             />
-          </h1>
+          </div>
           <div className="piso" />
           <div className="bajo-piso">
-            <p className="lugar">Páginas web para todo el país</p>
-            <p className="bajada">Sitios web <em>que trabajan por vos.</em></p>
+            <p className="lugar">Para negocios de toda Argentina</p>
+            <h1 className="bajada">Páginas web para negocios <em>que trabajan por vos.</em></h1>
           </div>
           <div className="acciones">
             <a className="boton lleno" href={WA} target="_blank" rel="noopener">Escribinos</a>

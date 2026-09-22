@@ -115,8 +115,14 @@ for (const [ruta, archivo] of RUTAS) {
     : BIEN("Open Graph completo")
 
   /* ── datos estructurados ── */
+  /* El @type puede estar en la raiz, en una lista, o adentro de un @graph, que es
+   * como lo escribe este sitio y es la forma correcta. Mirando solo la raiz daba
+   * "sin schema" en las 8 rutas cuando en realidad estaban todas. */
+  const tiposDe = (d) => !d || typeof d !== "object" ? []
+    : Array.isArray(d) ? d.flatMap(tiposDe)
+    : [...(d["@type"] ? [d["@type"]].flat() : []), ...tiposDe(d["@graph"])]
   const tipos = [...html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)]
-    .flatMap((m) => { try { const d = JSON.parse(m[1]); return (Array.isArray(d) ? d : [d]).map((x) => x["@type"]) } catch { return ["(JSON roto)"] } })
+    .flatMap((m) => { try { return tiposDe(JSON.parse(m[1])) } catch { return ["(JSON roto)"] } })
     .filter(Boolean)
   tipos.length ? BIEN(`schema: ${tipos.join(", ")}`) : AVISO("sin datos estructurados (schema)")
 }

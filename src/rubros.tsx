@@ -208,7 +208,7 @@ export function Rubro({ id }: { id: keyof typeof RUBROS }) {
             />
           </div>
           <div className="ficha">
-            <h3>{r.vitrina.nombre}</h3>
+            <h2>{r.vitrina.nombre}</h2>
             {r.vitrina.tipo === "cliente" ? (
               <a className="ir" href={r.vitrina.url} target="_blank" rel="noopener">
                 Abrir sitio
