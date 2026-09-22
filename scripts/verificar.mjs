@@ -147,9 +147,12 @@ for (const r of rutas) {
   const html = await (await fetch(B + r.path)).text()
   const texto = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ")
   const palabras = texto.split(/\s+/).filter(Boolean).length
-  const tieneH1 = /<h1[\s>]/.test(html)
+  // Uno solo, no "al menos uno": el H1 es la portada del libro y Google lee la
+  // pagina entera como un tema. Con varios H1 el tema queda repartido y ninguno
+  // pesa. Antes esto solo miraba que existiera, asi que un H1 de mas pasaba.
+  const h1 = (html.match(/<h1[\s>]/g) ?? []).length
   const enlacesInternos = (html.match(/href="\/[a-z-]*\/?"/g) ?? []).length
-  ;(palabras >= 250 && tieneH1 && enlacesInternos >= 6) ? ok(`${r.path.padEnd(34)} ${String(palabras).padStart(4)} palabras · h1 · ${enlacesInternos} enlaces internos`) : falla(`${r.path} ${palabras} palabras, h1:${tieneH1}, enlaces:${enlacesInternos}`)
+  ;(palabras >= 250 && h1 === 1 && enlacesInternos >= 6) ? ok(`${r.path.padEnd(34)} ${String(palabras).padStart(4)} palabras · 1 h1 · ${enlacesInternos} enlaces internos`) : falla(`${r.path} ${palabras} palabras, h1:${h1} (tiene que ser 1), enlaces:${enlacesInternos}`)
 }
 
 await navegador.close()
