@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "indexnow": "node scripts/indexnow.mjs",
     "verificar": "node scripts/verificar.mjs",
-    "capturas": "node scripts/capturas.mjs"
+    "capturas": "node scripts/capturas.mjs",
+    "seo": "node scripts/seo.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
