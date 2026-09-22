@@ -213,13 +213,12 @@ body,section,.lienzo,.placa,.placa div,.piso,.vias a,.ficha,.item,
 .pie-enlaces a:hover{text-decoration:underline;text-underline-offset:4px}
 .pie-enlaces .destacado{border-color:currentColor;color:inherit}
 
-/* En el celular el menu queda (Quienes somos y Terminos ocupan el
-   lugar del boton que se fue); solo se esconde el chip MAS & SONS,
-   que no entra sin amontonar. */
+/* En el celular el menu queda entero: son tres enlaces y entran.
+   El chip MAS & SONS se saco de la barra el 22/09/2026 hasta que esa
+   pagina exista; las reglas de .destacado quedan para cuando vuelva. */
 @media (max-width:960px){
   .menu{gap:14px;margin-right:2px}
   .menu a{font-size:.72rem;letter-spacing:.01em;white-space:nowrap}
-  .menu .destacado{display:none}
   .barra{gap:12px}
   .marca{font-size:.82rem;letter-spacing:.16em}
   .palanca{font-size:7.5px}

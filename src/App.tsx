@@ -306,7 +306,6 @@ export default function App() {
             <a href="/precios/">Precios</a>
             <a href="/quienes-somos/">Quiénes somos</a>
             <a href="/preguntas-frecuentes/">Preguntas</a>
-            <span className="destacado" title="Muy pronto">MAS &amp; SONS</span>
           </nav>
           <Palanca oscuro={oscuro} alternar={() => setOscuro(!oscuro)} />
         </div>
@@ -342,7 +341,6 @@ export default function App() {
                 {RUTAS.filter((r) => r.path !== "/").map((r) => (
                   <a key={r.id} href={r.path}>{r.nombre}</a>
                 ))}
-                <span className="destacado" title="Muy pronto">MAS &amp; SONS</span>
               </nav>
               <span>Argentina</span>
             </div>
