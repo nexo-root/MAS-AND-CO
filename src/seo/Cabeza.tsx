@@ -43,7 +43,7 @@ export function Cabeza({
   const ldClave = JSON.stringify(ld)
   useEffect(() => {
     const url = ORIGEN + ruta.path
-    const img = imagen ?? `${ORIGEN}/fotos/arbolito.webp`
+    const img = imagen ?? `${ORIGEN}/og-masandco.png`
 
     document.title = ruta.titulo
     meta("name", "description", ruta.descripcion)
