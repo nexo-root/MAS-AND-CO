@@ -50,18 +50,24 @@ def esperar_video(cont_id: str, token: str) -> bool:
     return False
 
 
-def publicar_reel_instagram(token: str, url_video: str, caption: str) -> bool:
+def publicar_reel_instagram(token: str, url_video: str, caption: str,
+                            colaboradores: list[str] | None = None) -> bool:
     if ya_esta_en_instagram(token, caption):
         print("[i] Instagram ya tenia este reel: no se repite")
         return True
 
-    cont = llamar(f"{IG_USER_ID}/media", {
+    datos = {
         "media_type": "REELS",
         "video_url": url_video,
         "caption": caption,
         "share_to_feed": "true",
         "access_token": token,
-    })
+    }
+    # Colaboracion: el reel sale tambien en el perfil del cliente cuando acepta
+    # la invitacion. Sin el @ exacto Meta rechaza el contenedor entero.
+    if colaboradores:
+        datos["collaborators"] = json.dumps(colaboradores)
+    cont = llamar(f"{IG_USER_ID}/media", datos)
     if not esperar_video(cont["id"], token):
         return False
 
@@ -154,7 +160,7 @@ def main() -> int:
 
     resultados = {}
     if solo != "fb":
-        resultados["Instagram"] = publicar_reel_instagram(token, url_video, caption)
+        resultados["Instagram"] = publicar_reel_instagram(token, url_video, caption, entrada.get("colaboradores"))
     # Facebook va SIEMPRE, aunque Instagram haya fallado.
     if solo != "ig":
         resultados["Facebook"] = publicar_reel_facebook(token, url_video, caption)
