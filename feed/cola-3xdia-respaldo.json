@@ -1,5 +1,5 @@
 {
- "_doc": "Cola de la fabrica: UNA publicacion por dia desde el 24/09/2026 (turno 1). Decidido con Felipe el 23/09: 3 por dia a ~30 seguidores no hacia crecer la cuenta. Respaldo de la cola vieja: cola-3xdia-respaldo.json.",
+ "_doc": "Cola de la fabrica: CUATRO publicaciones por dia: tres posts (turnos 1, 2 y 3) y un carrusel (turno 4, donde 'imagen' es una lista de laminas). publicar.py elige por fecha + turno, y el turno se lo pasa el workflow segun cual de los tres cron disparo. El primer turno de cada dia es una pieza del top del ranking; los otros dos van intercalados para que nunca caigan dos flojas seguidas. Ver negocio/_calendario.py, negocio/_ranking.py y negocio/ads-tanda3/_datos_t3.py. Las imagenes se sirven desde raw.githubusercontent, NO desde Pages: el dominio propio hace que Pages redirija y de 404.",
  "base_url": "https://raw.githubusercontent.com/nexo-root/MAS-AND-CO/main/feed/",
  "posts": [
   {
@@ -157,20 +157,20 @@
    "caption": "Veterinaria abierta ahora. Farmacia de turno. Cerrajero urgente. El que busca así no compara: entra al primero que aparece.\n\nSi tu negocio no está en esa lista, la llamada la recibe otro.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-09-25",
-   "turno": 1,
+   "fecha": "2026-09-24",
+   "turno": 2,
    "imagen": "v6-p05-tres-cosas.png",
    "caption": "Antes de escribirte, el que no te conoce quiere ver tres cosas: a qué hora abrís, dónde quedás y fotos de lo que hacés.\n\nSi las encuentra, escribe. Si no, sigue buscando.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-09-26",
-   "turno": 1,
+   "fecha": "2026-09-24",
+   "turno": 3,
    "imagen": "v6-p06-finan.png",
    "caption": "Así quedó la página de Crédito Finan: qué hacen en una frase, un formulario que les llega al correo y el WhatsApp a un toque. Es un cliente nuestro y está publicada en creditofinan.com.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-09-27",
-   "turno": 1,
+   "fecha": "2026-09-24",
+   "turno": 4,
    "imagen": [
     "v6-c03-arbolito-1.png",
     "v6-c03-arbolito-2.png",
@@ -180,26 +180,26 @@
    "caption": "Así quedó la página de El Arbolito, un cliente nuestro: las fotos reales, dónde queda y el WhatsApp a un toque. Mirala entrando a pehuencoalquileres.com desde el celular.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-09-28",
+   "fecha": "2026-09-25",
    "turno": 1,
    "imagen": "v6-p10-domingo.png",
    "caption": "Domingo a la noche. Tu local cerrado, vos descansando y nadie atendiendo el teléfono.\n\nTu página sigue abierta: muestra lo que hacés, dónde estás y deja el WhatsApp listo para el lunes a la mañana.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-09-29",
-   "turno": 1,
+   "fecha": "2026-09-25",
+   "turno": 2,
    "imagen": "v6-p08-once-noche.png",
    "caption": "Once y media de la noche. El que pregunta a esa hora no espera a mañana: le escribe al que puede contestarle ahora.\n\nCon los horarios, la dirección y las fotos publicadas, tu página contesta por vos mientras dormís.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-09-30",
-   "turno": 1,
+   "fecha": "2026-09-25",
+   "turno": 3,
    "imagen": "v6-p11-inmobiliaria.png",
    "caption": "Un diseño de muestra para inmobiliarias: cada propiedad con sus fotos, su ficha y su botón para consultar.\n\nEl que te escribe ya vio la propiedad y pregunta por esa. Se terminan las consultas de las que no tenés.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-01",
-   "turno": 1,
+   "fecha": "2026-09-25",
+   "turno": 4,
    "imagen": [
     "v6-c04-preguntas-1.png",
     "v6-c04-preguntas-2.png",
@@ -209,26 +209,26 @@
    "caption": "A qué hora abren, dónde quedan, si hacen envíos, cuánto sale. Contestás lo mismo diez veces por día. Tu página las contesta antes de que te escriban.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-02",
+   "fecha": "2026-09-26",
    "turno": 1,
    "imagen": "t4-15-cinco-mensajes.png",
    "caption": "De la primera pregunta al arranque, todo entra en cinco mensajes. Sin reuniones y sin formularios.\n\nNos escribís, nos contás de qué es el negocio, te pasamos ejemplos de tu rubro y el presupuesto el mismo día.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-03",
-   "turno": 1,
+   "fecha": "2026-09-26",
+   "turno": 2,
    "imagen": "t2-35-inmobiliarias.png",
    "caption": "Nadie compra sin verla antes.\n\nCada propiedad con sus fotos, su ficha y su consulta directa. El interesado filtra solo y te escribe por la que le sirve.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-04",
-   "turno": 1,
+   "fecha": "2026-09-26",
+   "turno": 3,
    "imagen": "t4-58-taller-antes.png",
    "caption": "Dónde quedás, qué trabajos hacés, si trabajás con turno y hasta qué hora. Eso quiere saber el cliente antes de llevarte el auto.\n\nEscrito una vez en la página, lo lee cualquiera, a cualquier hora, sin llamar.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-05",
-   "turno": 1,
+   "fecha": "2026-09-26",
+   "turno": 4,
    "imagen": [
     "v6-c05-te-buscan-1.png",
     "v6-c05-te-buscan-2.png",
@@ -238,416 +238,416 @@
    "caption": "Alguien buscó tu rubro hoy y apareció el de al lado. Con tu página aparecés vos, con fotos, horarios y tu WhatsApp a un toque.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-06",
+   "fecha": "2026-09-27",
    "turno": 1,
    "imagen": "t4-16-mientras-dormias.png",
    "caption": "Consultas entre las tres y las ocho de la mañana, con el local cerrado y vos durmiendo.\n\nEso hace una página: contesta lo que se repite cuando vos no podés, y a la mañana te queda el que ya decidió.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-07",
-   "turno": 1,
+   "fecha": "2026-09-27",
+   "turno": 2,
    "imagen": "t4-59-pintureria-google.png",
    "caption": "El domingo la gente elige el color desde el sillón, con el celular en la mano.\n\nSi tu pinturería no aparece, compra en la que sí aparece. Una página con la cartilla, los horarios y el mapa resuelve eso.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-08",
-   "turno": 1,
+   "fecha": "2026-09-27",
+   "turno": 3,
    "imagen": "t4-18-que-incluye.png",
    "caption": "Esto es lo que trae la página, sin letra chica: diseño propio con tus fotos, el dominio a tu nombre, el botón de WhatsApp a un toque y el primer mes de mantenimiento sin cargo.\n\nEl presupuesto te lo pasamos en el día, con lo que incluye y lo que no.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-09",
+   "fecha": "2026-09-28",
    "turno": 1,
    "imagen": "t4-12-panaderia-tortas.png",
    "caption": "La misma consulta todos los días, y siempre termina en pedir fotos.\n\nEn la página están las fotos de las tortas, la anticipación para encargar y cómo se pide. El que escribe después de verla, escribe para encargar.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-10",
-   "turno": 1,
+   "fecha": "2026-09-28",
+   "turno": 2,
    "imagen": "t4-60-abogados-leen.png",
    "caption": "El cliente lee algo tuyo antes de marcar el número. Si no hay nada que leer, lee lo del estudio de al lado.\n\nUna página con las áreas, la dirección y un formulario de consulta, en tu propio dominio.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-11",
-   "turno": 1,
+   "fecha": "2026-09-28",
+   "turno": 3,
    "imagen": "t4-20-inmo-fotos.png",
    "caption": "Hoy cada consulta se va en fotos sueltas, audios y la ubicación repetida.\n\nCon la página es un link: ficha, planos y mapa. El que escribe después de eso, escribe decidido.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-12",
+   "fecha": "2026-09-29",
    "turno": 1,
    "imagen": "t4-13-indumentaria-talle.png",
    "caption": "En temporada la misma pregunta llega veinte veces por día: si queda el talle, si hay en negro, si tenés más fotos.\n\nCon las prendas, los talles y los precios publicados, la que escribe ya sabe qué hay.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-13",
-   "turno": 1,
+   "fecha": "2026-09-29",
+   "turno": 2,
    "imagen": "t4-28-lo-que-ve-hoy.png",
    "caption": "A la izquierda, lo que encuentra hoy el que te busca. A la derecha, lo que podría encontrar.\n\nLa diferencia son unos días y un mensaje.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-14",
-   "turno": 1,
+   "fecha": "2026-09-29",
+   "turno": 3,
    "imagen": "t4-64-instituto-google.png",
    "caption": "El que busca un curso compara dos o tres antes de escribir, y compara lo que encuentra en Google.\n\nCon el programa, los horarios y la inscripción publicados, tu instituto entra en esa comparación.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-15",
+   "fecha": "2026-09-30",
    "turno": 1,
    "imagen": "t4-14-pintureria-cuenta.png",
    "caption": "La misma cuenta se hace de memoria diez veces por día en el mostrador.\n\nCon una calculadora simple en la página, el cliente llega con la cuenta hecha y con el producto elegido.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-16",
-   "turno": 1,
+   "fecha": "2026-09-30",
+   "turno": 2,
    "imagen": "t4-21-distri-pdf.png",
    "caption": "El PDF de precios se reenvía, se comprime y termina desactualizado en el celular de todos.\n\nUna página se corrige una sola vez y el link sigue siendo el mismo: cada cliente ve lo de hoy.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-17",
-   "turno": 1,
+   "fecha": "2026-09-30",
+   "turno": 3,
    "imagen": "t4-30-dos-pagos.png",
    "caption": "Dos pagos y nada más: la mitad al arrancar, para reservar la semana de trabajo, y la otra mitad cuando la abrís en tu celular y te gusta.\n\nSi no te gusta, la segunda mitad no la pagás. El riesgo lo corremos nosotros.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-18",
+   "fecha": "2026-10-01",
    "turno": 1,
    "imagen": "t4-61-heladeria-pedidos.png",
    "caption": "Los sábados a la noche el teléfono no para: si hacen delivery, qué gustos hay, hasta qué hora.\n\nCon los gustos del día, el horario y el pedido por WhatsApp en la página, el que escribe ya escribe con el pedido armado.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-19",
-   "turno": 1,
+   "fecha": "2026-10-01",
+   "turno": 2,
    "imagen": "t4-22-lavadero-cuaderno.png",
    "caption": "El cuaderno del mostrador funciona hasta que falta una hoja.\n\nCon un formulario simple en la página, el turno te llega con nombre, patente y horario, todo junto en una lista.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-20",
-   "turno": 1,
+   "fecha": "2026-10-01",
+   "turno": 3,
    "imagen": "t4-65-gimnasio-google.png",
    "caption": "En enero todos buscan gimnasio en el celular, y se anotan en el que aparece con la grilla de clases y las fotos del lugar.\n\nUna página con la grilla, los profesores y la clase de prueba te pone en esa búsqueda.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-21",
+   "fecha": "2026-10-02",
    "turno": 1,
    "imagen": "t4-68-ya-tengo-instagram.png",
    "caption": "Instagram muestra tus fotos y está bien que lo tengas. Lo que no muestra es lo que el cliente necesita para ir: precios, horarios y cómo llegar.\n\nSe complementan: la página lo ordena y aparece en Google.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-22",
-   "turno": 1,
+   "fecha": "2026-10-02",
+   "turno": 2,
    "imagen": "ad3-clasico.png",
    "caption": "Un sitio web no es un folleto lindo. Es el empleado que contesta a las tres de la manana, que no se olvida ningun precio y que nunca se toma franco.\n\nPresupuesto en el dia, y la pagina lista en dias.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-23",
-   "turno": 1,
+   "fecha": "2026-10-02",
+   "turno": 3,
    "imagen": "t2-13-carta.png",
    "caption": "Se que la pagina te la vienen prometiendo hace rato y que ya escuchaste cinco precios distintos, todos con letra chica abajo.\n\nAca va sin vueltas: presupuesto en el dia, lista en dias, no meses, y la mitad la pagas recien cuando la ves terminada.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-24",
+   "fecha": "2026-10-03",
    "turno": 1,
    "imagen": "t4-23-gimnasio-grilla.png",
    "caption": "La historia de Instagram dura un día y el flyer viejo sigue circulando.\n\nEn la página la grilla se corrige en un minuto y queda, con horarios y profesores. La miran antes de venir.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-25",
-   "turno": 1,
+   "fecha": "2026-10-03",
+   "turno": 2,
    "imagen": "post14-cliente-finan.png",
    "caption": "Credito Finan. Su formulario llega directo al correo, sin intermediarios y sin que nadie tenga que estar mirando el telefono.\n\nEntra a creditofinan.com y mirala vos mismo.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-26",
-   "turno": 1,
+   "fecha": "2026-10-03",
+   "turno": 3,
    "imagen": "t2-25-boleta.png",
    "caption": "El primer mes de mantenimiento es gratis, con los cambios que pidas adentro.\n\nDel mes dos en adelante se cotiza con la pagina, y el dominio queda a tu nombre.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-27",
+   "fecha": "2026-10-04",
    "turno": 1,
    "imagen": "t4-25-barberia-comentarios.png",
    "caption": "Cada vez que publicás algo, los turnos quedan mezclados en los comentarios y dos piden el mismo horario.\n\nEn la página llegan en una lista, con nombre y horario, y se confirman de una.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-28",
-   "turno": 1,
+   "fecha": "2026-10-04",
+   "turno": 2,
    "imagen": "t4-34-todo-el-pais.png",
    "caption": "Trabajamos para todo el país. Todo el proceso es por WhatsApp, así que da igual dónde tengas el negocio.\n\nNos mandás las fotos y los datos, y la ves terminada desde tu celular.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-29",
-   "turno": 1,
+   "fecha": "2026-10-04",
+   "turno": 3,
    "imagen": "t2-16-ficha.png",
    "caption": "La oferta completa en seis lineas, para el que ya esta comparando.\n\nSin asteriscos.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-30",
+   "fecha": "2026-10-05",
    "turno": 1,
    "imagen": "t2-32-etiqueta.png",
    "caption": "Contenido neto: una pagina completa. Ingredientes: diseno hecho a mano, tus fotos, boton de WhatsApp, precios visibles y carga en menos de dos segundos.\n\nNo contiene letra chica, permanencia, ni dominio prestado.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-10-31",
-   "turno": 1,
+   "fecha": "2026-10-05",
+   "turno": 2,
    "imagen": "t4-35-cada-rubro.png",
    "caption": "Cada rubro muestra lo suyo: la parrilla su carta, la cabaña sus fotos, la inmobiliaria sus fichas.\n\nPor eso ninguna página sale igual a la otra. La tuya se hace a medida de lo que vendés.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-01",
-   "turno": 1,
+   "fecha": "2026-10-05",
+   "turno": 3,
    "imagen": "t2-21-trabajos.png",
    "caption": "No te vamos a mostrar capturas. Escribi las direcciones y entra: pehuencoalquileres.com y creditofinan.com. Estan en linea ahora mismo.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-02",
+   "fecha": "2026-10-06",
    "turno": 1,
    "imagen": "t2-33-panel.png",
    "caption": "Novedad: ahora las paginas con catalogo van con tu propio panel. Subis la foto, le pones nombre y precio, y queda publicada. Marcar algo como vendido es un toque.\n\nNo es un sistema para aprender: son tres botones, mas facil que subir a Instagram.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-03",
-   "turno": 1,
+   "fecha": "2026-10-06",
+   "turno": 2,
    "imagen": "t4-47-cabanas-preguntas.png",
    "caption": "Son siempre las mismas cinco preguntas y llegan a cualquier hora.\n\nPublicadas en la página, con las fotos y el mapa, el que te escribe ya sabe si le sirve y escribe para reservar.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-04",
-   "turno": 1,
+   "fecha": "2026-10-06",
+   "turno": 3,
    "imagen": "t2-24-calendario.png",
    "caption": "En dias, no en meses.\n\nNos escribis, mandas las fotos, y la abris andando en tu celular.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-05",
+   "fecha": "2026-10-07",
    "turno": 1,
    "imagen": "t2-34-restaurantes.png",
    "caption": "El que reserva ya vio la carta.\n\nTu menu, tus fotos y el boton de reservar por WhatsApp. El que llega al local llega decidido, y no te pregunta el precio del asado por privado.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-06",
-   "turno": 1,
+   "fecha": "2026-10-07",
+   "turno": 2,
    "imagen": "t4-51-gimnasio-mira-antes.png",
    "caption": "El socio nuevo mira horarios, clases y fotos antes de pisar el gimnasio.\n\nSi eso no está publicado, la decisión la toma en el gimnasio de al lado, que sí lo tiene.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-07",
-   "turno": 1,
+   "fecha": "2026-10-07",
+   "turno": 3,
    "imagen": "t2-27-manual.png",
    "caption": "Como se arma, en tres pasos y sin una sola palabra tecnica.\n\nNo hace falta que sepas nada de computadoras. La segunda mitad se paga recien en el paso tres.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-08",
+   "fecha": "2026-10-08",
    "turno": 1,
    "imagen": "t4-07-inmo-ciudad.png",
    "caption": "Buscá inmobiliaria más el nombre de tu ciudad y contá cuántas aparecen antes que la tuya. El que busca casa arranca por ahí y casi nunca pasa de las primeras.\n\nUna página propia con las propiedades cargadas es lo que Google muestra.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-09",
-   "turno": 1,
+   "fecha": "2026-10-08",
+   "turno": 2,
    "imagen": "t2-28-senaletica.png",
    "caption": "Te buscan en Google y te encuentran. Ven precios y horarios sin preguntarte. Te escriben decididos.\n\nO se van al de al lado, que si aparece.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-10",
-   "turno": 1,
+   "fecha": "2026-10-08",
+   "turno": 3,
    "imagen": "t2-38-semaforo.png",
    "caption": "Hace la cuenta vos: como te encuentra el que no te conoce.\n\nSi la respuesta es solo Instagram, dependes de que el algoritmo quiera. Si es que no te encuentra, entra al de al lado.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-11",
+   "fecha": "2026-10-09",
    "turno": 1,
    "imagen": "t4-08-abogados-apellido.png",
    "caption": "Antes de llamar a un abogado, la gente lo busca por el apellido. Lo primero que sale decide si llaman.\n\nUna página con las áreas en las que trabajás, la dirección y un formulario de consulta, en tu propio dominio.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-12",
-   "turno": 1,
+   "fecha": "2026-10-09",
+   "turno": 2,
    "imagen": "t4-10-ferreteria-widia.png",
    "caption": "En la ferretería la misma consulta se repite hasta que cerrás el local.\n\nCon los rubros, las marcas y el horario en la página, el que escribe ya sabe qué hay y pregunta lo que de verdad importa.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-13",
-   "turno": 1,
+   "fecha": "2026-10-09",
+   "turno": 3,
    "imagen": "t4-69-la-hago-con-ia.png",
    "caption": "Armarla con inteligencia artificial se puede, y te lleva tus horas: hacerla, subirla, ponerle dominio y corregirla cada vez que cambia algo.\n\nNosotros la hacemos con tus fotos y te la mostramos terminada. Vos seguís atendiendo tu negocio.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-14",
+   "fecha": "2026-10-10",
    "turno": 1,
    "imagen": "t4-63-cabanas-google.png",
    "caption": "El que viene de otra provincia te busca en Google antes de reservar.\n\nSi tu cabaña no aparece, reserva otra. Una página con las fotos, el mapa y la consulta por WhatsApp es lo que Google muestra.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-15",
-   "turno": 1,
+   "fecha": "2026-10-10",
+   "turno": 2,
    "imagen": "post12-celular.png",
    "caption": "Ocho de cada diez personas te van a mirar desde el celular, paradas en la vereda, decidiendo si entran.\n\nQue valga la pena esos diez segundos.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-16",
-   "turno": 1,
+   "fecha": "2026-10-10",
+   "turno": 3,
    "imagen": "t4-11-taller-donde.png",
    "caption": "Con las manos en un motor no se atiende el teléfono, y el que llama corta y llama a otro.\n\nEn la página están el mapa, los horarios y los trabajos que hacés. Escrito una vez, para todos los que preguntan.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-17",
+   "fecha": "2026-10-11",
    "turno": 1,
    "imagen": "t4-62-barberia-google.png",
    "caption": "Un pibe nuevo en el barrio busca barbería en el celular y va a la primera que aparece con fotos, precios y turnos.\n\nUna página con tus cortes, tus precios y el WhatsApp para pedir turno te pone en esa lista.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-18",
-   "turno": 1,
+   "fecha": "2026-10-11",
+   "turno": 2,
    "imagen": "t2-08-cartel.png",
    "caption": "Tu competencia ya aparece cuando alguien busca lo que vos vendes.\n\nEso se resuelve en dias, no en meses.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-19",
-   "turno": 1,
+   "fecha": "2026-10-11",
+   "turno": 3,
    "imagen": "post1-vitrina.png",
    "caption": "Un restaurante no vende platos. Vende ganas de ir.\n\nPor eso la pagina de un lugar que cocina tiene que dar hambre antes que informacion. Las fotos primero, la carta despues, el boton de reservar siempre a mano.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-20",
+   "fecha": "2026-10-12",
    "turno": 1,
    "imagen": "t4-29-plantilla-vs-propia.png",
    "caption": "Una plantilla barata la tienen otros cuarenta negocios, el dominio queda a nombre de ellos y cada cambio se cobra aparte.\n\nLa tuya se diseña para tu negocio, el dominio queda a tu nombre, y si un día te vas, te la llevás entera.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-21",
-   "turno": 1,
+   "fecha": "2026-10-12",
+   "turno": 2,
    "imagen": "post9-checklist.png",
    "caption": "Marca mentalmente lo que tu negocio ya tiene.\n\nSi te quedaron casillas vacias, hablemos. Ninguna de las cuatro es un lujo en 2026.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-22",
-   "turno": 1,
+   "fecha": "2026-10-12",
+   "turno": 3,
    "imagen": "t4-31-cuanto-tarda.png",
    "caption": "La página se hace en días, no en meses, y mientras tanto te vamos mostrando cómo va quedando.\n\nEl plazo exacto te lo decimos en el presupuesto, cuando sabemos qué lleva la tuya.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-23",
+   "fecha": "2026-10-13",
    "turno": 1,
    "imagen": "t4-24-muebleria-catalogo.png",
    "caption": "Las fotos del catálogo por WhatsApp se comprimen, se mezclan y no se pueden buscar.\n\nEn la página el catálogo se ve bien, queda ordenado por mueble y siempre está en el mismo link.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-24",
-   "turno": 1,
+   "fecha": "2026-10-13",
+   "turno": 2,
    "imagen": "ad3-fan.png",
    "caption": "Precio, forma de pago y plazo. Los tres numeros que nadie te dice hasta la cuarta reunion.\n\nAca estan desde el primer mensaje.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-25",
-   "turno": 1,
+   "fecha": "2026-10-13",
+   "turno": 3,
    "imagen": "t4-32-cinco-preguntas.png",
    "caption": "Son las cuatro que te ahorran el disgusto, y casi nadie las hace antes de contratar.\n\nPreguntalas donde preguntes. Nosotros las contestamos por escrito, en el presupuesto, antes de arrancar.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-26",
+   "fecha": "2026-10-14",
    "turno": 1,
    "imagen": "t4-26-fotografo-album.png",
    "caption": "El álbum de muestra se presta y nunca vuelve entero.\n\nCon la galería en la página, mandás un link las veces que quieras y siempre está igual.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-27",
-   "turno": 1,
+   "fecha": "2026-10-14",
+   "turno": 2,
    "imagen": "t2-37-retro.png",
    "caption": "Tu negocio cambio tres veces de local. Su forma de aparecer, ninguna.\n\nAntes te encontraban si sabian tu nombre. Hoy te encuentran cuando te necesitan, o no te encuentran nunca.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-28",
-   "turno": 1,
+   "fecha": "2026-10-14",
+   "turno": 3,
    "imagen": "t4-33-cuatro-de-siempre.png",
    "caption": "Son las cuatro que más nos llegan por WhatsApp, así que van contestadas de una.\n\nSi te queda alguna otra, escribinos y te la contestamos igual de rápido.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-29",
+   "fecha": "2026-10-15",
    "turno": 1,
    "imagen": "t4-27-instituto-folleto.png",
    "caption": "El folleto queda viejo el día que cambia un horario, y reimprimir cuesta.\n\nEn la página el programa, los horarios y los requisitos se corrigen el mismo día, sin volver a repartir nada.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-11-30",
-   "turno": 1,
+   "fecha": "2026-10-15",
+   "turno": 2,
    "imagen": "t4-36-kiosco-necesita.png",
    "caption": "No todos los negocios necesitan lo mismo el primer día.\n\nCon la ficha de Google en orden ya te encuentran. La página viene cuando hace falta, y te decimos con sinceridad cuándo es.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-01",
-   "turno": 1,
+   "fecha": "2026-10-15",
+   "turno": 3,
    "imagen": "post11-faq.png",
    "caption": "La pregunta que todos hacen: y si un dia dejo de pagar el mantenimiento.\n\nEl dominio queda a tu nombre, no al nuestro. Lo que compraste es tuyo.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-02",
+   "fecha": "2026-10-16",
    "turno": 1,
    "imagen": "t4-37-odonto-telefono.png",
    "caption": "El teléfono suena con las manos ocupadas y el paciente en el sillón.\n\nCon un formulario simple en la página, el paciente deja sus datos y vos devolvés el llamado cuando salís. Los horarios y las obras sociales ya están escritos.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-03",
-   "turno": 1,
+   "fecha": "2026-10-16",
+   "turno": 2,
    "imagen": "ad1-antes-despues.png",
    "caption": "Esto es lo que aparece cuando alguien busca tu negocio y vos no tenes pagina. Nada.\n\nY abajo, lo que podria aparecer.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-04",
-   "turno": 1,
+   "fecha": "2026-10-16",
+   "turno": 3,
    "imagen": "post15-antesdespues-oficio.png",
    "caption": "El Oficio, barberia. Antes: nada. Despues: turnos por WhatsApp, horarios claros y fotos que hacen que quieras cortarte el pelo ahi.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-05",
+   "fecha": "2026-10-17",
    "turno": 1,
    "imagen": "t4-38-heladeria-domingo.png",
    "caption": "Domingo a la noche alguien se fija si estás abierto antes de salir de su casa.\n\nLa ficha de Google y la página lo contestan solas, con los horarios y el mapa. Si no aparecen, va a la heladería que sí aparece.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-06",
-   "turno": 1,
+   "fecha": "2026-10-17",
+   "turno": 2,
    "imagen": "t4-41-peluqueria-cartel.png",
    "caption": "El cartel escrito a mano funciona con la que ya está enfrente.\n\nLa que te busca desde su casa necesita encontrarte antes de salir: horarios, fotos de los trabajos y el WhatsApp para pedir turno.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-07",
-   "turno": 1,
+   "fecha": "2026-10-17",
+   "turno": 3,
    "imagen": "post4-vitrina-oficio.png",
    "caption": "Un corte se elige por como te va a quedar. Una barberia, por como se ve.\n\nSi tu negocio entra por los ojos, tu pagina tambien.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-08",
+   "fecha": "2026-10-18",
    "turno": 1,
    "imagen": "t4-40-instituto-inscripciones.png",
    "caption": "Cuando abren las inscripciones entran todas las consultas el mismo día.\n\nCon el programa, los requisitos y un formulario publicados, la página ordena la fila y a vos te llega cada inscripción con los datos completos.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-09",
-   "turno": 1,
+   "fecha": "2026-10-18",
+   "turno": 2,
    "imagen": "t4-43-vivero-abierto.png",
    "caption": "El cartel de madera está bien y hace su trabajo con el que pasa por la puerta.\n\nEn el celular del que te busca desde su casa, ese cartel no existe. Ahí hace falta la página: plantas, precios, horario y cómo llegar.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-10",
-   "turno": 1,
+   "fecha": "2026-10-18",
+   "turno": 3,
    "imagen": "post5-vitrina-terra.png",
    "caption": "Nadie compra una casa sin verla. Tampoco te elige sin verte.\n\nCada propiedad con sus fotos, su ficha y su consulta directa.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-11",
+   "fecha": "2026-10-19",
    "turno": 1,
    "imagen": "t4-42-cafe-vereda.png",
    "caption": "El cartel de la vereda trabaja con los que ya están en la cuadra.\n\nLa página trabaja con los que todavía están eligiendo a dónde ir: la carta, las fotos, el horario y cómo llegar.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-12",
-   "turno": 1,
+   "fecha": "2026-10-19",
+   "turno": 2,
    "imagen": "t4-39-kiosco-hora.png",
    "caption": "La pregunta llega con las manos ocupadas atendiendo el mostrador.\n\nLa ficha de Google la contesta sola, con horarios y ubicación. Es lo primero que armamos para un negocio chico.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   },
   {
-   "fecha": "2026-12-13",
-   "turno": 1,
+   "fecha": "2026-10-19",
+   "turno": 3,
    "imagen": "t4-44-vet-urgencias.png",
    "caption": "El cartel de la puerta lo ve el que ya está ahí.\n\nEl que busca de madrugada desde el celular necesita encontrarte antes: la ficha de Google con urgencias, teléfono y mapa.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día."
   }
