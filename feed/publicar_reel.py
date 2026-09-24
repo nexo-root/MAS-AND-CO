@@ -51,7 +51,8 @@ def esperar_video(cont_id: str, token: str) -> bool:
 
 
 def publicar_reel_instagram(token: str, url_video: str, caption: str,
-                            colaboradores: list[str] | None = None) -> bool:
+                            colaboradores: list[str] | None = None,
+                            portada_ms: int = 3000) -> bool:
     if ya_esta_en_instagram(token, caption):
         print("[i] Instagram ya tenia este reel: no se repite")
         return True
@@ -61,6 +62,10 @@ def publicar_reel_instagram(token: str, url_video: str, caption: str,
         "video_url": url_video,
         "caption": caption,
         "share_to_feed": "true",
+        # Portada del reel en la grilla: el cuadro de los 3 s, ya armado. El cuadro 0
+        # de casi todos los reels es el fondo vacio y en el perfil se ve un recuadro
+        # en blanco (paso con Malas noticias el 23/09).
+        "thumb_offset": str(portada_ms),
         "access_token": token,
     }
     # Colaboracion: el reel sale tambien en el perfil del cliente cuando acepta
@@ -160,7 +165,8 @@ def main() -> int:
 
     resultados = {}
     if solo != "fb":
-        resultados["Instagram"] = publicar_reel_instagram(token, url_video, caption, entrada.get("colaboradores"))
+        resultados["Instagram"] = publicar_reel_instagram(token, url_video, caption, entrada.get("colaboradores"),
+                                                           int(entrada.get("portada_ms", 3000)))
     # Facebook va SIEMPRE, aunque Instagram haya fallado.
     if solo != "ig":
         resultados["Facebook"] = publicar_reel_facebook(token, url_video, caption)
