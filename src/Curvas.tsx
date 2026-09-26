@@ -15,6 +15,10 @@ import { useEffect, useRef } from "react"
 const PASO = 26        // resolucion de la grilla de calculo, en pixeles
 const NIVELES = 11     // cuantas curvas
 const VELOCIDAD = 0.000035
+/* El campo se mueve tan despacio que redibujar 60 veces por segundo no se ve
+   distinto que 15, y cuesta el cuadruple de CPU (medido con Lighthouse el
+   26/09/2026, con el celular emulado). */
+const CADA_MS = 66
 
 export default function Curvas() {
   const lienzo = useRef<HTMLCanvasElement | null>(null)
@@ -81,22 +85,22 @@ export default function Curvas() {
             const d = campo[(f + 1) * cols + c + 1]
             const e = campo[(f + 1) * cols + c]
 
-            // en que lado de la celda cruza el nivel, y donde exactamente
+            // en que lado de la celda cruza el nivel, y donde exactamente.
+            // Sin arrays por celda: eran miles de objetos nuevos por cuadro.
             const cruce = (p: number, q: number) => (nivel - p) / (q - p)
-            const arriba = (a > nivel) !== (b > nivel)
-            const derecha = (b > nivel) !== (d > nivel)
-            const abajo = (e > nivel) !== (d > nivel)
-            const izquierda = (a > nivel) !== (e > nivel)
+            let n = 0, x0 = 0, y0 = 0, x1 = 0, y1 = 0
+            const punto = (px: number, py: number) => {
+              if (n === 0) { x0 = px; y0 = py } else { x1 = px; y1 = py }
+              n++
+            }
+            if ((a > nivel) !== (b > nivel)) punto(x + PASO * cruce(a, b), y)
+            if ((b > nivel) !== (d > nivel)) punto(x + PASO, y + PASO * cruce(b, d))
+            if ((e > nivel) !== (d > nivel)) punto(x + PASO * cruce(e, d), y + PASO)
+            if ((a > nivel) !== (e > nivel)) punto(x, y + PASO * cruce(a, e))
 
-            const puntos: [number, number][] = []
-            if (arriba) puntos.push([x + PASO * cruce(a, b), y])
-            if (derecha) puntos.push([x + PASO, y + PASO * cruce(b, d)])
-            if (abajo) puntos.push([x + PASO * cruce(e, d), y + PASO])
-            if (izquierda) puntos.push([x, y + PASO * cruce(a, e)])
-
-            if (puntos.length === 2) {
-              ctx.moveTo(puntos[0][0], puntos[0][1])
-              ctx.lineTo(puntos[1][0], puntos[1][1])
+            if (n === 2) {
+              ctx.moveTo(x0, y0)
+              ctx.lineTo(x1, y1)
             }
           }
         }
@@ -104,18 +108,45 @@ export default function Curvas() {
       }
     }
 
+    let ultimo = -Infinity
     const latir = (ms: number) => {
-      dibujar(ms * VELOCIDAD)
+      if (ms - ultimo >= CADA_MS) {
+        dibujar(ms * VELOCIDAD)
+        ultimo = ms
+      }
       cuadro = requestAnimationFrame(latir)
     }
 
-    medir()
-    cuadro = requestAnimationFrame(latir)
+    /* Arranca cuando la pagina ya cargo y el navegador esta libre: las curvas
+       son fondo, no pueden competir con el primer pintado. Con "reducir
+       movimiento" se dibujan una vez y quedan quietas. */
+    const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches
+    let espera = 0
+    const arrancar = () => {
+      medir()
+      if (quieto) dibujar(0)
+      else cuadro = requestAnimationFrame(latir)
+    }
+    const cuandoLibre = () => {
+      const ric = (window as unknown as { requestIdleCallback?: (f: () => void, o?: { timeout: number }) => number })
+        .requestIdleCallback
+      if (ric) espera = ric(arrancar, { timeout: 1500 })
+      else espera = window.setTimeout(arrancar, 600)
+    }
+    if (document.readyState === "complete") cuandoLibre()
+    else addEventListener("load", cuandoLibre, { once: true })
 
-    const alRedimensionar = () => medir()
+    const alRedimensionar = () => {
+      medir()
+      if (quieto) dibujar(0)
+    }
     addEventListener("resize", alRedimensionar, { passive: true })
     return () => {
       cancelAnimationFrame(cuadro)
+      clearTimeout(espera)
+      const cic = (window as unknown as { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback
+      if (cic) cic(espera)
+      removeEventListener("load", cuandoLibre)
       removeEventListener("resize", alRedimensionar)
     }
   }, [])

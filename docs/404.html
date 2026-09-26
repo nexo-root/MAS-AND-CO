@@ -31,9 +31,10 @@
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
+    <!-- La letra vive en el sitio (src/index.css): sin la hoja de Google Fonts,
+         que bloqueaba el primer pintado. Se precarga la de caracteres latinos,
+         que es la unica que usa el castellano. -->
+    <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
     <!-- El grafo comun a todo el sitio. Lo que cambia por pagina (WebPage, migas,
          FAQPage, Service) lo agrega la Cabeza en <script id="ld-pagina">. -->
     <script type="application/ld+json">
@@ -68,8 +69,8 @@
            "areaServed":{"@type":"Country","name":"Argentina"}}}}
     ]}
     </script>
-    <script type="module" crossorigin src="/assets/index-gavurgKV.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Be91J2Mu.css">
+    <script type="module" crossorigin src="/assets/index-F1JytHAj.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-KJoBA4DM.css">
   </head>
   <body>
     <div id="root"></div>

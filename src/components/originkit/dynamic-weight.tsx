@@ -49,16 +49,48 @@ export default function VariableFontCursorProximity(props: Props) {
        cada letra por frame fuerza layout y pelea con el scroll. */
     const visibleRef = useRef(true)
     const maxFactorRef = useRef(0)
+    /* cuando arranca la onda del celular (performance.now); null = todavia no */
+    const ondaDesdeRef = useRef<number | null>(null)
+    /* el ultimo peso ESCRITO en cada letra. No se compara contra
+       el.style.fontVariationSettings porque el navegador lo devuelve con otras
+       comillas ("wdth" 125 en vez de 'wdth' 125): nunca daba igual y cada
+       cuadro reescribia las ocho letras aunque no cambiaran */
+    const ultimoAjusteRef = useRef<string[]>([])
+    const escribir = (i: number, el: HTMLSpanElement, valor: string) => {
+        if (ultimoAjusteRef.current[i] === valor) return
+        ultimoAjusteRef.current[i] = valor
+        el.style.fontVariationSettings = valor
+    }
 
     useEffect(() => {
         const el = containerRef.current
         if (!el || typeof IntersectionObserver === "undefined") return
         const ob = new IntersectionObserver(
-            (e) => { visibleRef.current = e[0].isIntersecting },
+            (e) => {
+                const antes = visibleRef.current
+                visibleRef.current = e[0].isIntersecting
+                /* el logo vuelve a la pantalla: la onda se repite una vez */
+                if (!antes && visibleRef.current && ondaDesdeRef.current !== null) {
+                    ondaDesdeRef.current = performance.now() + 250
+                }
+            },
             { threshold: 0 }
         )
         ob.observe(el)
         return () => ob.disconnect()
+    }, [])
+
+    /* La onda del celular arranca 1,2 s despues de que la pagina termino de
+       cargar, da dos pasadas y descansa. Antes corria para siempre: cada cuadro
+       cambiaba el peso de las letras y el telefono tenia que volver a maquetar el
+       texto gigante. Lighthouse lo midio el 26/09/2026: 3,5 s de "estilo y
+       layout" en la carga, lo mas caro de toda la pagina en celular. */
+    useEffect(() => {
+        if (!esTouchRef.current) return
+        const arrancar = () => { ondaDesdeRef.current = performance.now() + 1200 }
+        if (document.readyState === "complete") arrancar()
+        else addEventListener("load", arrancar, { once: true })
+        return () => removeEventListener("load", arrancar)
     }, [])
 
     useEffect(() => {
@@ -115,20 +147,30 @@ export default function VariableFontCursorProximity(props: Props) {
         const letras = letterRefs.current
         let maxF = 0
 
-        /* ── celular: onda que viaja por las letras, sin medir nada ── */
+        /* ── celular: onda que viaja por las letras, sin medir nada ──
+           Dura ONDA_MS desde que arranca; despues las letras vuelven al peso
+           de reposo y el cuadro no toca mas el estilo. */
         if (esTouchRef.current) {
+            const desde = ondaDesdeRef.current
+            const ahora = performance.now()
+            if (desde === null || ahora < desde) return
+            const tOnda = ahora - desde
+            const activa = tOnda < ONDA_MS
+            if (!activa && maxFactorRef.current < 0.001) return
             for (let i = 0; i < letras.length; i++) {
                 const letterEl = letras[i]
                 if (!letterEl) continue
-                const fase = (now / 1000) * 2.1 - i * 0.75
-                const target = Math.max(0, Math.sin(fase)) * 0.8
+                const fase = (tOnda / 1000) * 2.1 - i * 0.75
+                const target = activa ? Math.max(0, Math.sin(fase)) * 0.8 : 0
                 const prev = letterFactorsRef.current[i] ?? 0
                 const f = prev + (target - prev) * a
                 letterFactorsRef.current[i] = f
-                const w = Math.round(fromWeight + (toWeight - fromWeight) * f)
-                letterEl.style.fontVariationSettings =
-                    "'wdth' 125, 'wght' " + w
+                if (f > maxF) maxF = f
+                escribir(i, letterEl, f < 0.001
+                    ? fromSettings
+                    : "'wdth' 125, 'wght' " + pesoEscalonado(fromWeight + (toWeight - fromWeight) * f))
             }
+            maxFactorRef.current = maxF
             return
         }
 
@@ -161,15 +203,12 @@ export default function VariableFontCursorProximity(props: Props) {
             if (f > maxF) maxF = f
 
             if (f < 0.001) {
-                if (letterEl.style.fontVariationSettings !== fromSettings) {
-                    letterEl.style.fontVariationSettings = fromSettings
-                }
+                escribir(i, letterEl, fromSettings)
                 continue
             }
 
-            const w = Math.round(fromWeight + (toWeight - fromWeight) * f)
-            letterEl.style.fontVariationSettings =
-                "'wdth' 125, 'wght' " + w
+            escribir(i, letterEl,
+                "'wdth' 125, 'wght' " + pesoEscalonado(fromWeight + (toWeight - fromWeight) * f))
         }
         maxFactorRef.current = maxF
     }
@@ -212,6 +251,9 @@ export default function VariableFontCursorProximity(props: Props) {
        Recortando a la cantidad real, las referencias vivas sobreviven. */
     let letterIndex = 0
     letterRefs.current.length = words.join("").length
+    /* un re-render (la palanca de tema) vuelve a poner el peso de reposo en el
+       estilo: se olvida lo escrito para que el proximo cuadro lo reponga */
+    ultimoAjusteRef.current = []
 
     return (
         <div
@@ -283,6 +325,19 @@ export default function VariableFontCursorProximity(props: Props) {
 }
 
 const VARIABLE_FONT_STACK = "Archivo, system-ui, sans-serif"
+/* dos pasadas de la onda en celular (el seno tarda ~3 s en recorrer una letra) */
+const ONDA_MS = 6000
+
+/* El peso se redondea de a 25 y no de a 1. Cada peso distinto de una letra
+   variable es una "instancia" nueva que el navegador tiene que armar y
+   maquetar desde cero; con pesos de a 1 eran cientos de instancias y cada
+   cuadro costaba ~25 ms en celular (traza del 26/09/2026, aun con el logo
+   aislado). De a 25 son 27 instancias entre 200 y 850 que quedan guardadas, y
+   el ojo no ve el escalon porque la onda los recorre en pocos cuadros. */
+const PASO_PESO = 25
+function pesoEscalonado(w: number) {
+    return Math.round(w / PASO_PESO) * PASO_PESO
+}
 
 const MAX_REACH = 800
 
