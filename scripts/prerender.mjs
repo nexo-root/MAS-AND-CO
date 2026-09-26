@@ -84,7 +84,11 @@ for (const r of rutas) {
      React monto la pagina correcta y termino su efecto */
   await pagina.waitForFunction((t) => document.title === t, r.titulo, { timeout: 15000 })
   await pagina.waitForTimeout(300)
-  const html = await pagina.content()
+  /* Vite precarga los pedazos de la pagina con <link rel="modulepreload"> y les
+     pone la direccion absoluta de ESTE servidor local. Guardados asi, en la web
+     publicada el navegador los pedia a 127.0.0.1 (26/09/2026: 6 paginas, dos
+     errores en consola cada una). Se dejan relativos a la raiz. */
+  const html = (await pagina.content()).replaceAll(`http://127.0.0.1:${puerto}`, "")
   const carpeta = join(DOCS, r.path)
   mkdirSync(carpeta, { recursive: true })
   writeFileSync(join(carpeta, "index.html"), html, "utf8")

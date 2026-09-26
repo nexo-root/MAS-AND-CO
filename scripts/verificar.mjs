@@ -153,6 +153,9 @@ for (const r of rutas) {
   const h1 = (html.match(/<h1[\s>]/g) ?? []).length
   const enlacesInternos = (html.match(/href="\/[a-z-]*\/?"/g) ?? []).length
   ;(palabras >= 250 && h1 === 1 && enlacesInternos >= 6) ? ok(`${r.path.padEnd(34)} ${String(palabras).padStart(4)} palabras · 1 h1 · ${enlacesInternos} enlaces internos`) : falla(`${r.path} ${palabras} palabras, h1:${h1} (tiene que ser 1), enlaces:${enlacesInternos}`)
+  // El prerender corre en un servidor local: si su direccion queda escrita en el
+  // HTML, la web publicada le pide archivos a la compu del que la visita (26/09/2026).
+  if (/127\.0\.0\.1|localhost:\d/.test(html)) falla(`${r.path} tiene escrita la direccion del servidor local`)
 }
 
 await navegador.close()
