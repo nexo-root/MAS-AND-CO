@@ -1,6 +1,7 @@
 import { Cabeza } from "./seo/Cabeza"
 import { ORIGEN, rutaPorId } from "./seo/rutas"
 import { ldFaq, ldServicio, type Pregunta } from "./seo/ld"
+import { Actualizado } from "./guias"
 
 const BASE = import.meta.env.BASE_URL
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20para%20mi%20negocio"
@@ -31,7 +32,7 @@ export const RUBROS: Record<string, Rubro> = {
     rutaId: "restaurantes",
     h1: "Página web para tu restaurante o parrilla.",
     respuesta:
-      "Una página para un restaurante tiene que hacer tres cosas: mostrar la carta con precios, decir dónde estás y cuándo abrís, y dejar que reserven por WhatsApp sin llamar. Eso, con tus fotos y tu nombre, con presupuesto en el día y lista en días.",
+      "Una página para un restaurante tiene que hacer tres cosas: mostrar la carta con precios, decir dónde estás y cuándo abrís, y dejar que reserven por WhatsApp sin llamar. Eso, con tus fotos y tu nombre, estés donde estés en Argentina, con presupuesto en el día y lista en días.",
     dolores: [
       {
         titulo: "Te buscan y aparece otro",
@@ -61,6 +62,10 @@ export const RUBROS: Record<string, Rubro> = {
       "Brasa es un diseño nuestro para una parrilla: carta, horarios y una mesa que se reserva por mensaje. No es un cliente, es la muestra de cómo resolvemos el rubro.",
     faq: [
       {
+        q: "¿Cómo creo una página web para mi restaurante?",
+        a: "Tenés dos caminos: armarla vos en una plataforma como Wix, con una plantilla y un plan pago para tener tu dominio, o que te la hagan. Si te la hacemos nosotros, nos mandás por WhatsApp fotos de los platos y del lugar, la carta y los horarios, y la ves terminada antes de pagar el saldo.",
+      },
+      {
         q: "¿Puedo cambiar la carta y los precios yo mismo?",
         a: "Sí. La carta se arma para que la actualices vos cuando cambian los precios o los platos, sin depender de nadie.",
       },
@@ -79,7 +84,7 @@ export const RUBROS: Record<string, Rubro> = {
     rutaId: "inmobiliarias",
     h1: "Página web para inmobiliarias.",
     respuesta:
-      "Una inmobiliaria necesita que cada propiedad tenga su propia ficha, que se pueda filtrar por operación, tipo y zona, y que la visita se coordine por WhatsApp desde la misma página. Eso, con tu cartera y tu marca, con presupuesto en el día y lista en días.",
+      "Una inmobiliaria necesita que cada propiedad tenga su propia ficha, que se pueda filtrar por operación, tipo y zona, y que la visita se coordine por WhatsApp desde la misma página. Eso, con tu cartera y tu marca, para inmobiliarias de toda Argentina, con presupuesto en el día y lista en días.",
     dolores: [
       {
         titulo: "Tu cartera vive en los portales",
@@ -109,6 +114,10 @@ export const RUBROS: Record<string, Rubro> = {
       "Terra es un diseño nuestro para una inmobiliaria: buscador de propiedades y visitas que se coordinan por WhatsApp. No es un cliente, es la muestra de cómo resolvemos el rubro.",
     faq: [
       {
+        q: "¿Qué web necesita una inmobiliaria chica en Argentina?",
+        a: "Una ficha por propiedad con fotos, precio y ubicación, un buscador por operación, tipo y zona, y un botón para coordinar la visita por WhatsApp. Con una cartera chica no hace falta un sistema grande: la página es la vidriera propia que los portales no te dan.",
+      },
+      {
         q: "¿Puedo cargar y sacar propiedades yo mismo?",
         a: "Sí. Las fichas se arman para que las cargues, edites y retires vos cuando una propiedad se vende o se alquila.",
       },
@@ -127,7 +136,7 @@ export const RUBROS: Record<string, Rubro> = {
     rutaId: "alojamientos",
     h1: "Página web para alojamientos y cabañas.",
     respuesta:
-      "Un alojamiento necesita que reserven directo, sin pagar comisión a una plataforma por cada noche. Fotos grandes, ubicación, qué incluye, reseñas y un botón de WhatsApp. Eso es lo que hicimos para El Arbolito en Pehuén-Có, y lo que hacemos con presupuesto en el día, en días.",
+      "Un alojamiento necesita que reserven directo, sin pagar comisión a una plataforma por cada noche. Fotos grandes, ubicación, qué incluye, reseñas y un botón de WhatsApp. Eso es lo que hicimos para El Arbolito en Pehuén-Có, y lo que hacemos para alojamientos de toda Argentina, con presupuesto en el día, en días.",
     dolores: [
       {
         titulo: "Pagás comisión por cada reserva",
@@ -162,6 +171,14 @@ export const RUBROS: Record<string, Rubro> = {
       "El Arbolito es un cliente real: cuatro alojamientos a 35 metros de la playa en Pehuén-Có, con dominio propio y consulta directa por WhatsApp. Podés abrirlo y recorrerlo.",
     faq: [
       {
+        q: "¿Cómo consigo reservas directas sin pagar comisión a Booking?",
+        a: "Con una página propia que el huésped encuentre y en la que confíe: fotos grandes, ubicación, qué incluye, tus reseñas de Google y un botón de WhatsApp para consultar fechas. Booking te ayuda a que te descubran; la página hace que el que ya te conoce, o te busca por tu nombre, reserve directo y la comisión quede en tu casa.",
+      },
+      {
+        q: "¿Qué necesita la web de un hotel chico o una cabaña para vender directo?",
+        a: "Fotos grandes de cada habitación o unidad, qué incluye la estadía, la ubicación con mapa, las reseñas a la vista y una forma simple de consultar fechas: por WhatsApp o con un motor de reservas. Si querés disponibilidad en vivo, integramos una plataforma de reservas y la suscripción queda a tu nombre.",
+      },
+      {
         q: "¿Puedo seguir usando Booking o Airbnb?",
         a: "Sí. La página no te saca de las plataformas: te da un lugar propio donde el que ya te conoce, o te encuentra en Google, reserva directo sin comisión.",
       },
@@ -172,6 +189,63 @@ export const RUBROS: Record<string, Rubro> = {
       {
         q: "¿Cuánto cuesta una página web para un alojamiento?",
         a: "Se cotiza por presupuesto según lo que necesite tu alojamiento, y te lo pasamos por WhatsApp en el día. Lista en días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+      },
+    ],
+  },
+
+  /* Sumada el 26/09/2026: "Soy profesional independiente en Argentina, ¿me
+     conviene tener web propia?" es una de las 20 preguntas congeladas del
+     estudio de visibilidad en IA, y no habia pagina que la contestara. La
+     vitrina es Credito Finan, cliente real de servicios, y se dice tal cual. */
+  profesionales: {
+    rutaId: "profesionales",
+    h1: "Página web para profesionales independientes.",
+    respuesta:
+      "Un profesional independiente necesita que, cuando lo buscan por su nombre o su especialidad, aparezca una página que diga qué hace, para quién, dónde atiende y cómo pedir turno por WhatsApp. Abogados, contadores, psicólogos, nutricionistas, arquitectos: una página propia, estés donde estés en Argentina, con presupuesto en el día y lista en días.",
+    dolores: [
+      {
+        titulo: "Te recomiendan y no te encuentran",
+        texto:
+          "Alguien le pasa tu nombre a un conocido, te busca en Google y aparece otro con tu apellido, un directorio viejo o nada.",
+      },
+      {
+        titulo: "Explicás lo mismo en cada consulta",
+        texto:
+          "Qué hacés, cuánto dura, qué hay que traer, si atendés online. Cada consulta por WhatsApp arranca de cero.",
+      },
+      {
+        titulo: "Tu trayectoria no se ve",
+        texto:
+          "Tu formación, tu matrícula y tu especialidad viven en un CV, no en un lugar que la persona pueda revisar antes de escribirte.",
+      },
+    ],
+    resuelve: [
+      "Qué hacés y para quién, dicho en una frase.",
+      "Tu formación, tu matrícula y tus especialidades.",
+      "Dónde atendés y si hacés consultas online.",
+      "Turnos por WhatsApp con un botón o, si querés, una agenda online.",
+      "Que Google pueda mostrarte cuando te buscan por tu nombre o por tu especialidad.",
+    ],
+    vitrina: {
+      tipo: "cliente",
+      id: "creditofinan",
+      nombre: "Crédito Finan",
+      url: "https://creditofinan.com/",
+    },
+    vitrinaTexto:
+      "Crédito Finan es un cliente real, una consultora de crédito: qué hacen en una frase, un formulario que les llega al correo y el WhatsApp a un toque. Es el mismo formato que le sirve a un profesional independiente.",
+    faq: [
+      {
+        q: "Soy profesional independiente en Argentina, ¿me conviene tener web propia?",
+        a: "Sí, si te llegan clientes por recomendación o por Google: es el lugar donde confirman quién sos antes de escribirte. Con una página propia mostrás tu especialidad, tu matrícula y cómo pedir turno, sin depender de un directorio que también muestra a otros profesionales.",
+      },
+      {
+        q: "¿Puedo tener turnos online?",
+        a: "Sí. El turno puede llegar por WhatsApp con un botón o, si querés agenda online, integramos una plataforma de turnos y la suscripción queda a tu nombre.",
+      },
+      {
+        q: "¿Cuánto cuesta una página web para un profesional?",
+        a: "Se cotiza por presupuesto según lo que necesites, y te lo pasamos por WhatsApp en el día. Lista en días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
       },
     ],
   },
@@ -194,6 +268,7 @@ export function Rubro({ id }: { id: keyof typeof RUBROS }) {
         </p>
         <h1 className="titulo">{r.h1}</h1>
         <p className="respuesta">{r.respuesta}</p>
+        <Actualizado iso={ruta.actualizado} />
 
         <div className="rubro-vitrina">
           <div className="lienzo">

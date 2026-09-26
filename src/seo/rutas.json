@@ -5,7 +5,8 @@
     "nombre": "Inicio",
     "prioridad": "1.0",
     "titulo": "Páginas web para negocios en toda Argentina | Mas & Co",
-    "descripcion": "Construimos la página web profesional de tu negocio en días. Diseño propio, no plantillas. Presupuesto en el día, y la mitad la pagás recién cuando la ves terminada."
+    "descripcion": "Construimos la página web profesional de tu negocio en días. Diseño propio, no plantillas. Presupuesto en el día, y la mitad la pagás recién cuando la ves terminada.",
+    "actualizado": "2026-09-26"
   },
   {
     "id": "precios",
@@ -13,8 +14,8 @@
     "nombre": "Precios",
     "prioridad": "0.9",
     "titulo": "Cuánto cuesta una página web en Argentina (2026) | Mas & Co",
-    "descripcion": "Cuánto cuesta una página web en Argentina en 2026: los precios que publican otros estudios y cómo se cotiza la tuya. Presupuesto en el día, lista en días.",
-    "actualizado": "2026-09-11"
+    "descripcion": "Precios de diseño web en Argentina en 2026: cuánto cuesta una página web según lo que publican otros estudios y cómo se cotiza la tuya. Presupuesto en el día, lista en días.",
+    "actualizado": "2026-09-26"
   },
   {
     "id": "preguntas",
@@ -44,12 +45,31 @@
     "actualizado": "2026-09-26"
   },
   {
+    "id": "web-y-whatsapp",
+    "path": "/pagina-web-y-whatsapp/",
+    "nombre": "¿Web si vendés por WhatsApp?",
+    "prioridad": "0.7",
+    "titulo": "¿Vale la pena tener página web si vendés por WhatsApp? | Mas & Co",
+    "descripcion": "Cuándo te alcanza con WhatsApp y cuándo conviene sumar una página web: qué hace cada uno, cómo se usan juntos y qué dicen los datos de Argentina.",
+    "actualizado": "2026-09-26"
+  },
+  {
+    "id": "como-elegir",
+    "path": "/como-elegir-quien-hace-tu-pagina-web/",
+    "nombre": "¿Cómo elegir quién te hace la página web?",
+    "prioridad": "0.7",
+    "titulo": "¿Cómo elegir quién te hace la página web? | Mas & Co",
+    "descripcion": "Las cinco preguntas antes de pagar una página web, agencia, estudio o freelance comparados, y las señales para desconfiar. Para negocios de Argentina.",
+    "actualizado": "2026-09-26"
+  },
+  {
     "id": "restaurantes",
     "path": "/pagina-web-para-restaurantes/",
     "nombre": "Página web para restaurantes",
     "prioridad": "0.8",
     "titulo": "Página web para tu restaurante o parrilla | Mas & Co",
-    "descripcion": "La página web de tu restaurante con la carta, los horarios, la ubicación y reservas por WhatsApp. Presupuesto en el día, lista en días. Mirá el diseño Brasa."
+    "descripcion": "La página web de tu restaurante con la carta, los horarios, la ubicación y reservas por WhatsApp. Presupuesto en el día, lista en días. Mirá el diseño Brasa.",
+    "actualizado": "2026-09-26"
   },
   {
     "id": "inmobiliarias",
@@ -57,7 +77,8 @@
     "nombre": "Página web para inmobiliarias",
     "prioridad": "0.8",
     "titulo": "Página web para inmobiliarias | Mas & Co",
-    "descripcion": "Buscador de propiedades, ficha por inmueble y visitas coordinadas por WhatsApp. Presupuesto en el día, lista en días. Mirá el diseño Terra."
+    "descripcion": "Buscador de propiedades, ficha por inmueble y visitas coordinadas por WhatsApp. Presupuesto en el día, lista en días. Mirá el diseño Terra.",
+    "actualizado": "2026-09-26"
   },
   {
     "id": "alojamientos",
@@ -65,7 +86,17 @@
     "nombre": "Página web para alojamientos",
     "prioridad": "0.8",
     "titulo": "Página web para alojamientos y cabañas | Mas & Co",
-    "descripcion": "Reservas directas, sin comisión de plataformas. Fotos, ubicación, reseñas y consulta por WhatsApp. Caso real: El Arbolito, Pehuén-Có."
+    "descripcion": "Reservas directas, sin comisión de plataformas. Fotos, ubicación, reseñas y consulta por WhatsApp. Caso real: El Arbolito, Pehuén-Có.",
+    "actualizado": "2026-09-26"
+  },
+  {
+    "id": "profesionales",
+    "path": "/pagina-web-para-profesionales/",
+    "nombre": "Página web para profesionales",
+    "prioridad": "0.8",
+    "titulo": "Página web para profesionales independientes | Mas & Co",
+    "descripcion": "Tu especialidad, tu matrícula, dónde atendés y turnos por WhatsApp en una página propia. Para abogados, contadores, psicólogos y más. Presupuesto en el día, lista en días.",
+    "actualizado": "2026-09-26"
   },
   {
     "id": "caso-arbolito",
@@ -88,8 +119,9 @@
     "path": "/quienes-somos/",
     "nombre": "Quiénes somos",
     "prioridad": "0.6",
-    "titulo": "Quiénes somos | Mas & Co, páginas web para negocios",
-    "descripcion": "La generación más joven de una familia que construye desde 2010. Hacemos los sitios, los turnos y las automatizaciones con los que un negocio vende y atiende."
+    "titulo": "Quiénes somos | Mas & Co, estudio de diseño web en Argentina",
+    "descripcion": "Mas & Co es un estudio de diseño web de Argentina, la rama de tecnología de una familia que construye desde 2010. Hacemos páginas web, turnos y automatizaciones para negocios.",
+    "actualizado": "2026-09-26"
   },
   {
     "id": "contacto",

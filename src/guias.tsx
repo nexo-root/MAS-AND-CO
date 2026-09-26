@@ -301,8 +301,276 @@ export function WebOInstagram() {
           </div>
           <p className="enlaces">
             <a href="/pagina-web-gratis-o-pagada/">¿Página web gratis o pagada?</a>
+            <a href="/pagina-web-y-whatsapp/">¿Web si vendés por WhatsApp?</a>
             <a href="/precios/">Cuánto cuesta una página web</a>
             <a href="/preguntas-frecuentes/">Preguntas frecuentes</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── ¿Vale la pena la web si vendés por WhatsApp? ───────────────────────
+   La tercera pregunta de la zona "Objecion" del estudio (26/09/2026), donde
+   los asistentes no nombran a nadie. El dato de WhatsApp es del informe
+   NubeCommerce 2026 de Tiendanube, con fuente al pie. */
+
+const WHATSAPP_FAQ: Pregunta[] = [
+  {
+    q: "¿Vale la pena tener página web si vendo por WhatsApp?",
+    a: "Sí, si te escribe gente que todavía no te conoce: la página le muestra qué vendés, precios, horarios y ubicación antes de escribirte, y el chat arranca con la persona ya decidida. Si todo te llega de clientes que ya te conocen, por ahora te alcanza con WhatsApp.",
+  },
+  {
+    q: "¿La página reemplaza a WhatsApp?",
+    a: "No. La página lleva a WhatsApp: cada sección tiene el botón para escribirte, y el mensaje puede llegar con el producto o la consulta ya escrita. Lo que cambia es que las preguntas de siempre ya están contestadas en la página.",
+  },
+  {
+    q: "¿Puedo mostrar un catálogo y que me pidan por WhatsApp?",
+    a: "Sí: un catálogo con fotos y precios que actualizás desde una planilla de Google, y un botón en cada producto que abre WhatsApp con el pedido ya escrito. Sin carrito ni pago online, que para muchos negocios es más de lo que necesitan.",
+  },
+  {
+    q: "¿Cuánto cuesta una página web que lleve a WhatsApp?",
+    a: "Se cotiza por presupuesto según lo que necesite tu negocio, y te lo pasamos por WhatsApp en el día. Pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+  },
+]
+
+export function WebYWhatsapp() {
+  const ruta = rutaPorId("web-y-whatsapp")
+  return (
+    <section className="pagina">
+      <Cabeza ruta={ruta} ld={[ldFaq(WHATSAPP_FAQ)]} />
+      <div className="eje">
+        <p className="miga">
+          <a href="/">Inicio</a> · ¿Web si vendés por WhatsApp?
+        </p>
+        <h1 className="titulo">¿Vale la pena tener página web si vendés por WhatsApp?</h1>
+
+        <p className="respuesta">
+          Sí, si te escribe gente que todavía no te conoce. La página le muestra qué vendés,
+          precios, horarios y ubicación antes de escribirte, y el chat arranca con la persona ya
+          decidida. Si todo te llega de clientes que ya te conocen, por ahora te alcanza con
+          WhatsApp.
+        </p>
+        <Actualizado iso={ruta.actualizado} />
+
+        <div className="prosa">
+          <h2>Qué hace cada uno</h2>
+          <div className="tabla-scroll">
+            <table className="tabla">
+              <thead>
+                <tr>
+                  <th>Qué</th>
+                  <th>WhatsApp solo</th>
+                  <th>Página web + WhatsApp</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Quién te escribe</td>
+                  <td data-col="WhatsApp solo">Quien ya tiene tu número</td>
+                  <td data-col="Página + WhatsApp" className="nos">También quien te encontró en Google</td>
+                </tr>
+                <tr>
+                  <td>Lo primero que te preguntan</td>
+                  <td data-col="WhatsApp solo">Precios, horarios, dónde estás</td>
+                  <td data-col="Página + WhatsApp" className="nos">Lo que la página no contesta</td>
+                </tr>
+                <tr>
+                  <td>Qué ve antes de escribirte</td>
+                  <td data-col="WhatsApp solo">Tu foto de perfil y tu estado</td>
+                  <td data-col="Página + WhatsApp" className="nos">Tus productos, tus fotos y tus reseñas</td>
+                </tr>
+                <tr>
+                  <td>Tu catálogo</td>
+                  <td data-col="WhatsApp solo">Fotos sueltas que reenviás en cada chat</td>
+                  <td data-col="Página + WhatsApp" className="nos">Ordenado, con precios, siempre al día</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Lo que dicen los datos</h2>
+          <p>
+            Según el informe NubeCommerce 2026 de Tiendanube, <b>el 71,5 % de los emprendedores
+            de Argentina usó WhatsApp como canal de venta en 2025</b>, el segundo más usado
+            después de Instagram. En WhatsApp se cierra la venta; en la página, la persona decide
+            escribirte.
+          </p>
+
+          <h2>Cómo se usan juntas</h2>
+          <ul>
+            <li>Un botón de WhatsApp en cada sección de la página, siempre a mano.</li>
+            <li>El mensaje llega con el producto o la consulta ya escrita.</li>
+            <li>El catálogo vive en la página y el pedido se cierra por WhatsApp.</li>
+            <li>El link de la página va en tu perfil de WhatsApp Business y en tus respuestas rápidas.</li>
+          </ul>
+
+          <h2>Cuándo te alcanza con WhatsApp solo</h2>
+          <ul>
+            <li>Si casi todos tus clientes ya te conocen o vienen recomendados.</li>
+            <li>Si vendés pocas cosas y las explicás en un mensaje.</li>
+            <li>Si no te buscan por Google, ni por tu nombre ni por tu rubro.</li>
+          </ul>
+
+          <h2>Preguntas</h2>
+          <div className="faq">
+            {WHATSAPP_FAQ.map((p) => (
+              <details key={p.q}>
+                <summary>{p.q}</summary>
+                <p>{p.a}</p>
+              </details>
+            ))}
+          </div>
+          <p className="nota">
+            Fuente del dato: informe NubeCommerce 2026 de Tiendanube, citado en su{" "}
+            <a href="https://www.tiendanube.com/blog/whatsapp-business/" target="_blank"
+               rel="noopener">guía de WhatsApp Business</a>.
+          </p>
+
+          <div className="acciones">
+            <a className="boton lleno" href={WA} target="_blank" rel="noopener">
+              Contanos de qué es tu negocio
+            </a>
+          </div>
+          <p className="enlaces">
+            <a href="/pagina-web-o-instagram/">¿Página web o Instagram?</a>
+            <a href="/pagina-web-gratis-o-pagada/">¿Página web gratis o pagada?</a>
+            <a href="/precios/">Cuánto cuesta una página web</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── ¿Cómo elegir quién te hace la página web? ─────────────────────────
+   La zona "Captacion" del estudio es la mas grande: 10 de 40 respuestas son
+   "¿qué agencia me recomendás?". Los asistentes contestan con criterios y con
+   directorios; esta pagina da los criterios, honestos y verificables, y dice
+   donde buscar (incluidos los directorios que ellos leen). Sin precio propio. */
+
+const ELEGIR_FAQ: Pregunta[] = [
+  {
+    q: "¿Qué agencia de diseño web recomiendan en Argentina?",
+    a: "No hay una sola respuesta: depende de tu negocio y de tu presupuesto. Elegí la que pase cinco pruebas: trabajos publicados que puedas abrir, dominio a tu nombre, presupuesto por escrito con lo que incluye, pago en partes y alguien que te conteste después de la entrega.",
+  },
+  {
+    q: "¿Conviene contratar una agencia, un estudio o un freelance?",
+    a: "Una agencia grande suma equipo y procesos, y cobra más. Un estudio chico o un freelance suelen ser más directos y más baratos, y conviene mirar bien quién te va a responder después. Para un negocio chico, lo que más pesa es que la página quede a tu nombre y que haya alguien que la mantenga.",
+  },
+  {
+    q: "¿Qué tiene que decir el presupuesto de una página web?",
+    a: "Qué páginas o secciones lleva, si el diseño es propio o una plantilla, a nombre de quién queda el dominio, cuánto cuesta y cómo se paga, qué pasa con el mantenimiento y qué va aparte. Si algo de eso no está por escrito, preguntalo antes de pagar.",
+  },
+  {
+    q: "¿Dónde busco quién me haga la página web?",
+    a: "En Google Maps, mirando las reseñas; en directorios de agencias como Clutch o Sortlist; y por recomendación de otros negocios. En todos los casos, pedí ver trabajos publicados y abrilos desde tu celular.",
+  },
+]
+
+export function ComoElegir() {
+  const ruta = rutaPorId("como-elegir")
+  return (
+    <section className="pagina">
+      <Cabeza ruta={ruta} ld={[ldFaq(ELEGIR_FAQ)]} />
+      <div className="eje">
+        <p className="miga">
+          <a href="/">Inicio</a> · ¿Cómo elegir quién te la hace?
+        </p>
+        <h1 className="titulo">¿Cómo elegir quién te hace la página web?</h1>
+
+        <p className="respuesta">
+          Antes de pagar, mirá cinco cosas: que tenga trabajos publicados que puedas abrir, que el
+          dominio quede a tu nombre, que el presupuesto diga por escrito qué incluye, que el pago
+          sea en partes y que sepas quién te contesta después de la entrega. Vale igual para una
+          agencia, un estudio o un freelance.
+        </p>
+        <Actualizado iso={ruta.actualizado} />
+
+        <div className="prosa">
+          <h2>Las cinco preguntas antes de pagar</h2>
+          <ol>
+            <li><b>¿Puedo ver trabajos publicados?</b> Páginas reales, andando, que puedas abrir desde tu celular. Un diseño de muestra está bien si se dice que es de muestra.</li>
+            <li><b>¿A nombre de quién queda el dominio?</b> Tiene que quedar a tu nombre. Si queda a nombre de quien te hace la página, el día que quieras irte vas a depender de esa persona.</li>
+            <li><b>¿Qué incluye el presupuesto?</b> Secciones, diseño, dominio, mantenimiento y lo que va aparte, por escrito.</li>
+            <li><b>¿Cómo se paga?</b> En partes, con una al final, cuando la ves terminada. Si pagás todo por adelantado, te quedás sin nada para negociar.</li>
+            <li><b>¿Quién me contesta después?</b> Una página necesita cambios. Preguntá quién los hace, cuánto tarda y cuánto cuesta.</li>
+          </ol>
+
+          <h2>Agencia, estudio, freelance o hacerla vos</h2>
+          <div className="tabla-scroll">
+            <table className="tabla">
+              <thead>
+                <tr>
+                  <th>Qué</th>
+                  <th>Agencia grande</th>
+                  <th>Estudio chico o freelance</th>
+                  <th>Hacerla vos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lo que suele costar</td>
+                  <td data-col="Agencia grande">Más de $1.000.000</td>
+                  <td data-col="Estudio o freelance">Desde $180.000 en los estudios más accesibles</td>
+                  <td data-col="Hacerla vos">El plan de la plataforma y tu tiempo</td>
+                </tr>
+                <tr>
+                  <td>Quién te atiende</td>
+                  <td data-col="Agencia grande">Un equipo, con un contacto de cuentas</td>
+                  <td data-col="Estudio o freelance">La persona que la hace</td>
+                  <td data-col="Hacerla vos">Vos, con la ayuda de la plataforma</td>
+                </tr>
+                <tr>
+                  <td>El diseño</td>
+                  <td data-col="Agencia grande">Propio</td>
+                  <td data-col="Estudio o freelance">Propio o plantilla, según quién</td>
+                  <td data-col="Hacerla vos">Una plantilla</td>
+                </tr>
+                <tr>
+                  <td>Mejor para</td>
+                  <td data-col="Agencia grande">Empresas con presupuesto y proyectos grandes</td>
+                  <td data-col="Estudio o freelance">Negocios que quieren su página sin armarla</td>
+                  <td data-col="Hacerla vos">Probar una idea o aprender</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="nota">
+            Los rangos de precio son los que publican los propios estudios argentinos (Faro
+            Studio, 2026; Diseño Web Córdoba, 2025): están en{" "}
+            <a href="/precios/">cuánto cuesta una página web</a>.
+          </p>
+
+          <h2>Señales para desconfiar</h2>
+          <ul>
+            <li>Te piden el total por adelantado.</li>
+            <li>No te muestran ninguna página publicada.</li>
+            <li>El dominio queda a nombre de ellos y no lo dicen.</li>
+            <li>El presupuesto es un número sin detalle.</li>
+            <li>Te venden una plantilla como si fuera diseño propio.</li>
+          </ul>
+
+          <h2>Preguntas</h2>
+          <div className="faq">
+            {ELEGIR_FAQ.map((p) => (
+              <details key={p.q}>
+                <summary>{p.q}</summary>
+                <p>{p.a}</p>
+              </details>
+            ))}
+          </div>
+
+          <div className="acciones">
+            <a className="boton lleno" href={WA} target="_blank" rel="noopener">
+              Hacenos esas cinco preguntas
+            </a>
+          </div>
+          <p className="enlaces">
+            <a href="/precios/">Cuánto cuesta una página web</a>
+            <a href="/pagina-web-gratis-o-pagada/">¿Página web gratis o pagada?</a>
+            <a href="/quienes-somos/">Quiénes somos</a>
           </p>
         </div>
       </div>

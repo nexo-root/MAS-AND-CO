@@ -48,6 +48,18 @@ const FAQ: Pregunta[] = [
     a: "Según los estudios que publican sus precios, una página institucional cuesta entre $180.000 y $350.000 en los estudios más accesibles y hasta $3.000.000 en agencias corporativas. En Mas & Co no hay lista de precios: cada página se cotiza según lo que necesite tu negocio (un catálogo con fichas por producto o el tratamiento de fotos cambian el trabajo), y el presupuesto te lo pasamos por WhatsApp en el día. Lista en días.",
   },
   {
+    q: "¿Cuánto sale una página web en Argentina?",
+    a: "Según lo que publican los estudios, una página institucional sale entre $180.000 y $350.000 en los más accesibles y más de $1.000.000 en las agencias corporativas, y una landing arranca en $80.000. En Mas & Co se cotiza por presupuesto para cada negocio y te lo pasamos en el día.",
+  },
+  {
+    q: "¿Qué tarifario manejan los diseñadores web en Argentina?",
+    a: "Los que publican sus precios cobran por tipo de página: una landing de $80.000 a $1.200.000, una página institucional de $180.000 a $3.000.000 y una tienda online de $350.000 a $6.000.000, según el estudio (Faro Studio 2026 y Diseño Web Córdoba 2025). El mantenimiento mensual va de $15.000 a $200.000.",
+  },
+  {
+    q: "¿Cuánto cuesta una página web profesional para un negocio chico?",
+    a: "Una página institucional con varias secciones y dominio propio cuesta entre $180.000 y $350.000 en los estudios más accesibles de Argentina, según lo que publican en sus sitios. En Mas & Co no hay lista de precios: te pasamos el presupuesto por WhatsApp en el día.",
+  },
+  {
     q: "¿Qué define el precio de tu página?",
     a: "Tres cosas: cuántas secciones lleva, si tiene catálogo con una ficha por producto, y cuánto trabajo piden las fotos. Lo que no lo encarece: no hay oficina, ni reuniones, ni intermediarios. Nos contás qué necesitás por WhatsApp, lo armamos con tus fotos y tu información, y lo ves terminado en tu celular antes de pagar el saldo. El diseño es propio, no una plantilla.",
   },

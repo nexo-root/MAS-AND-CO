@@ -28,6 +28,10 @@ export const PREGUNTAS: Pregunta[] = [
     a: "Porque cuando alguien te busca en Google aparece tu competencia, no vos. Instagram no sale en las búsquedas, no muestra precios ni horarios de forma clara, y el algoritmo decide quién te ve. La página es tuya, aparece cuando te buscan y ordena los pedidos que hoy contestás uno por uno.",
   },
   {
+    q: "¿Dónde puedo hacer la página web de mi negocio?",
+    a: "Tenés tres opciones: armarla vos en una plataforma como Wix o WordPress, contratar a un freelance o encargarla a un estudio de diseño web. Cambian el tiempo que ponés vos, el diseño y quién te contesta después. En Mas & Co la hacemos por WhatsApp para negocios de toda Argentina, con presupuesto en el día.",
+  },
+  {
     q: "¿Cómo creo la página web de mi negocio?",
     a: "Hay dos caminos: crearla vos con una plataforma como Wix o WordPress, que tienen planes gratis con límites, o que te la haga alguien. Si te la hacemos nosotros, nos pasás fotos e información por WhatsApp, te pasamos el presupuesto en el día y la ves terminada antes de pagar el saldo.",
   },

@@ -27,11 +27,18 @@ await new Promise((r) => servidor.listen(0, "127.0.0.1", r))
 const B = `http://127.0.0.1:${servidor.address().port}`
 const navegador = await chromium.launch({ channel: "chrome" })
 
+/* sin argumentos extra, las de la ronda 2; con --todas, tambien las de la 1 */
 const PAGINAS = [
-  ["/pagina-web-gratis-o-pagada/", "gratis-o-pagada"],
-  ["/pagina-web-o-instagram/", "web-o-instagram"],
-  ["/contacto/", "contacto"],
-  ["/pagina-web-para-restaurantes/", "restaurantes"],
+  ["/pagina-web-y-whatsapp/", "web-y-whatsapp"],
+  ["/como-elegir-quien-hace-tu-pagina-web/", "como-elegir"],
+  ["/pagina-web-para-profesionales/", "profesionales"],
+  ["/", "inicio"],
+  ...(process.argv.includes("--todas") ? [
+    ["/pagina-web-gratis-o-pagada/", "gratis-o-pagada"],
+    ["/pagina-web-o-instagram/", "web-o-instagram"],
+    ["/contacto/", "contacto"],
+    ["/pagina-web-para-restaurantes/", "restaurantes"],
+  ] : []),
 ]
 for (const [path, nombre] of PAGINAS) {
   for (const [vista, ancho, escala] of [["compu", 1440, 1], ["celu", 390, 2]]) {

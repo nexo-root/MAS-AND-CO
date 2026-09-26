@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Curvas from "./Curvas"
 import VariableFontCursorProximity from "./components/originkit/dynamic-weight"
 import { Caso } from "./casos"
-import { GratisOPagada, WebOInstagram } from "./guias"
+import { ComoElegir, GratisOPagada, WebOInstagram, WebYWhatsapp } from "./guias"
 import { Contacto, Quienes, Terminos } from "./paginas"
 import { Precios } from "./precios"
 import { Preguntas } from "./preguntas"
@@ -190,12 +190,12 @@ function Inicio() {
           <div className="prosa dos">
             <div>
               <p>
-                Hacemos la página web de tu negocio: la que aparece cuando alguien te busca en
+                Hacemos la página web de tu negocio o tu comercio: la que aparece cuando alguien te busca en
                 Google y adonde mandás a la gente desde Instagram para que vea precios, horarios
                 y ubicación, y te escriba por WhatsApp sin que tengas que explicar todo cada vez.
               </p>
               <p>
-                Diseño propio para cada negocio, no una plantilla con tu logo encima. Lista en
+                Diseño web propio para cada negocio, no una plantilla con tu logo encima. Lista en
                 días desde que recibimos tus fotos y tu información. El presupuesto, en el día.
               </p>
             </div>
@@ -208,6 +208,7 @@ function Inicio() {
               <p className="enlaces">
                 <a href="/precios/">Cuánto cuesta una página web</a>
                 <a href="/preguntas-frecuentes/">Preguntas frecuentes</a>
+                <a href="/como-elegir-quien-hace-tu-pagina-web/">Cómo elegir quién te la hace</a>
                 <a href="/quienes-somos/">Quiénes somos</a>
               </p>
             </div>
@@ -224,6 +225,12 @@ function Inicio() {
           <Obra id="creditofinan" url="https://creditofinan.com/"
                 titulo="Crédito Finan" rubro="Créditos"
                 bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
+          {/* Los casos tenian pagina propia pero solo se llegaba por el pie: el
+              estudio de visibilidad en IA (26/09) ni los encontro. */}
+          <p className="enlaces">
+            <a href="/caso/el-arbolito/">El caso de El Arbolito</a>
+            <a href="/caso/credito-finan/">El caso de Crédito Finan</a>
+          </p>
         </div>
       </section>
 
@@ -323,9 +330,12 @@ export default function App() {
         {ruta === "preguntas" && <Preguntas />}
         {ruta === "gratis-o-pagada" && <GratisOPagada />}
         {ruta === "web-o-instagram" && <WebOInstagram />}
+        {ruta === "web-y-whatsapp" && <WebYWhatsapp />}
+        {ruta === "como-elegir" && <ComoElegir />}
         {ruta === "restaurantes" && <Rubro id="restaurantes" />}
         {ruta === "inmobiliarias" && <Rubro id="inmobiliarias" />}
         {ruta === "alojamientos" && <Rubro id="alojamientos" />}
+        {ruta === "profesionales" && <Rubro id="profesionales" />}
         {ruta === "caso-arbolito" && <Caso id="caso-arbolito" />}
         {ruta === "caso-finan" && <Caso id="caso-finan" />}
         {ruta === "quienes" && <Quienes />}
