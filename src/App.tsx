@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react"
 import Curvas from "./Curvas"
 import VariableFontCursorProximity from "./components/originkit/dynamic-weight"
-import { Caso } from "./casos"
-import { ComoElegir, GratisOPagada, WebOInstagram, WebYWhatsapp } from "./guias"
-import { Contacto, Quienes, Terminos } from "./paginas"
-import { Precios } from "./precios"
-import { Preguntas } from "./preguntas"
-import { Rubro } from "./rubros"
+import { cargarPagina, paginaLista, recargarUnaVez } from "./paginas-diferidas"
 import { Cabeza } from "./seo/Cabeza"
 import { RUTAS, normalizar, rutaDesdeHash, rutaPorId, rutaPorPath } from "./seo/rutas"
 import { useScroll, lenis, revertirScroll } from "./scroll"
@@ -28,7 +23,7 @@ const BASE = import.meta.env.BASE_URL
    Los hashes viejos se traducen al cargar, para que ningun enlace muera.
    ═══════════════════════════════════════════════════════════════ */
 
-function rutaActual(): string {
+export function rutaActual(): string {
   const vieja = rutaDesdeHash(location.hash)
   if (vieja) {
     history.replaceState(null, "", vieja.path)
@@ -40,9 +35,21 @@ function rutaActual(): string {
 function usarRuta(): string {
   const [ruta, setRuta] = useState<string>(rutaActual)
   useEffect(() => {
+    /* La pagina de destino se baja ANTES de cambiar (paginas-diferidas.tsx):
+       mientras llega, sigue a la vista la anterior. Si se hace clic en dos
+       enlaces seguidos, gana el ultimo. */
+    let pedido = 0
     const cambiar = () => {
-      revertirScroll() // ver scroll.ts: sin esto React revienta al desmontar la portada clavada
-      setRuta(rutaActual())
+      const n = ++pedido
+      const destino = rutaActual()
+      cargarPagina(destino).then(
+        () => {
+          if (n !== pedido) return
+          revertirScroll() // ver scroll.ts: sin esto React revienta al desmontar la portada clavada
+          setRuta(destino)
+        },
+        recargarUnaVez,
+      )
     }
     /* Los enlaces internos no recargan: un solo oyente en el documento
        intercepta cualquier <a href="/..."> sin target y hace pushState. */
@@ -274,6 +281,15 @@ export default function App() {
   const ruta = usarRuta()
   useScroll(ruta)
 
+  /* Normalmente la pagina ya esta bajada (main.tsx y el clic la bajan antes).
+     Si no, se baja aca y se vuelve a dibujar al llegar. */
+  const Pagina = ruta === "inicio" ? undefined : paginaLista(ruta)
+  const [, redibujar] = useState(0)
+  useEffect(() => {
+    if (ruta === "inicio" || paginaLista(ruta)) return
+    cargarPagina(ruta).then(() => redibujar((x) => x + 1), recargarUnaVez)
+  }, [ruta])
+
   /* Arriba de todo en cada ruta nueva. Va en un efecto sobre `ruta` y no
      dentro de cambiar(): ahi la pagina nueva todavia no existe, y medido, un
      clic en el pie dejaba la ruta siguiente abierta en el scroll 2954. Ademas
@@ -325,22 +341,7 @@ export default function App() {
       </header>
 
       <main>
-        {ruta === "inicio" && <Inicio />}
-        {ruta === "precios" && <Precios />}
-        {ruta === "preguntas" && <Preguntas />}
-        {ruta === "gratis-o-pagada" && <GratisOPagada />}
-        {ruta === "web-o-instagram" && <WebOInstagram />}
-        {ruta === "web-y-whatsapp" && <WebYWhatsapp />}
-        {ruta === "como-elegir" && <ComoElegir />}
-        {ruta === "restaurantes" && <Rubro id="restaurantes" />}
-        {ruta === "inmobiliarias" && <Rubro id="inmobiliarias" />}
-        {ruta === "alojamientos" && <Rubro id="alojamientos" />}
-        {ruta === "profesionales" && <Rubro id="profesionales" />}
-        {ruta === "caso-arbolito" && <Caso id="caso-arbolito" />}
-        {ruta === "caso-finan" && <Caso id="caso-finan" />}
-        {ruta === "quienes" && <Quienes />}
-        {ruta === "contacto" && <Contacto />}
-        {ruta === "terminos" && <Terminos />}
+        {ruta === "inicio" ? <Inicio /> : Pagina && <Pagina />}
 
         <section className="tinta" id="contacto">
           <div className="eje">

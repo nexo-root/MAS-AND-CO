@@ -3,7 +3,9 @@
 import * as React from "react"
 import { useEffect, useRef } from "react"
 const useIsStaticRenderer = () => false
-import { motion, useAnimationFrame } from "framer-motion"
+/* Sin framer-motion (26/09/2026): el componente solo usaba `motion.span` como
+   un span comun y `useAnimationFrame` como un requestAnimationFrame. Eran 118 KB
+   del paquete (22 %) para dos cosas que hace el navegador solo. */
 
 /**
  * VariableFontCursorProximity — text whose letters individually morph
@@ -123,15 +125,12 @@ export default function VariableFontCursorProximity(props: Props) {
 
     const fromSettings = "'wdth' 125, 'wght' " + fromWeight
 
-    /* EL CUERPO DEL CUADRO VA EN UN REF Y SE REGISTRA UN ENVOLTORIO ESTABLE.
-       framer-motion re-engancha su callback cada vez que cambia la IDENTIDAD
-       de la funcion, y una flecha inline se recrea en cada render. Al tocar la
-       palanca de tema React re-renderiza, framer cancelaba el cuadro y no lo
-       volvia a enganchar: las letras quedaban con el peso que tenian en ese
-       instante y no reaccionaban nunca mas al mouse. Medido: antes del toque
-       "834 496 206..." variaba con el cursor; despues, siempre "211 205 200...".
-       Ni scrollear ni volver a tocar la palanca lo revivian.
-       Con la identidad fija, se engancha una sola vez y sobrevive los renders. */
+    /* EL CUERPO DEL CUADRO VA EN UN REF y el bucle de requestAnimationFrame se
+       engancha UNA sola vez (efecto de mas abajo). Asi un re-render (la palanca
+       de tema) actualiza lo que hace cada cuadro sin cortar el bucle. Con
+       framer-motion pasaba lo contrario: re-enganchaba al cambiar la identidad
+       de la funcion y las letras quedaban congeladas despues del primer toque
+       de la palanca ("211 205 200..." para siempre, medido). */
     const cuadroRef = useRef<(now: number) => void>(() => {})
     cuadroRef.current = (now: number) => {
         if (isStatic) return
@@ -212,9 +211,16 @@ export default function VariableFontCursorProximity(props: Props) {
         }
         maxFactorRef.current = maxF
     }
-    useAnimationFrame(
-        React.useCallback((now: number) => cuadroRef.current(now), [])
-    )
+    useEffect(() => {
+        if (isStatic) return
+        let id = 0
+        const bucle = (now: number) => {
+            cuadroRef.current(now)
+            id = requestAnimationFrame(bucle)
+        }
+        id = requestAnimationFrame(bucle)
+        return () => cancelAnimationFrame(id)
+    }, [isStatic])
 
     const srOnlyStyle: React.CSSProperties = {
         position: "absolute",
@@ -240,19 +246,15 @@ export default function VariableFontCursorProximity(props: Props) {
 
     const words = label ? label.split(" ") : []
 
-    /* NO se vacia el array: se RECORTA. Los ref de cada letra estan sobre un
-       `motion.span` de framer-motion, que memoriza internamente y NO vuelve a
-       invocar el callback en un re-render normal —solo al montar—. Vaciando el
-       array en cada render, el primer re-render lo dejaba en cero y nadie lo
-       rellenaba: el bucle seguia corriendo a 120 cuadros por segundo, con el
-       mouse bien rastreado, pero sin una sola letra que tocar. Se notaba al
-       cambiar de tema, que es lo unico que re-renderiza esta pantalla: las
-       letras quedaban con el peso del instante del cambio, para siempre.
-       Recortando a la cantidad real, las referencias vivas sobreviven. */
+    /* NO se vacia el array: se RECORTA. Cuando las letras eran `motion.span`,
+       framer memorizaba los ref y no los volvia a llamar en un re-render:
+       vaciando el array, el primer cambio de tema dejaba el bucle sin letras.
+       Con spans comunes React si los vuelve a llamar, pero recortar sigue
+       siendo lo correcto y no cuesta nada. */
     let letterIndex = 0
     letterRefs.current.length = words.join("").length
-    /* un re-render (la palanca de tema) vuelve a poner el peso de reposo en el
-       estilo: se olvida lo escrito para que el proximo cuadro lo reponga */
+    /* por las dudas, tras un re-render el proximo cuadro vuelve a escribir
+       el peso de cada letra */
     ultimoAjusteRef.current = []
 
     return (
@@ -287,7 +289,7 @@ export default function VariableFontCursorProximity(props: Props) {
                                     {wordLetters.map((letter, li) => {
                                         const idx = letterIndex++
                                         return (
-                                            <motion.span
+                                            <span
                                                 key={li}
                                                 ref={(
                                                     el: HTMLSpanElement | null
@@ -301,7 +303,7 @@ export default function VariableFontCursorProximity(props: Props) {
                                                 }}
                                             >
                                                 {letter}
-                                            </motion.span>
+                                            </span>
                                         )
                                     })}
                                 </span>
