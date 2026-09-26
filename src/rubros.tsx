@@ -29,7 +29,7 @@ type Rubro = {
 export const RUBROS: Record<string, Rubro> = {
   restaurantes: {
     rutaId: "restaurantes",
-    h1: "Página web para restaurantes y parrillas.",
+    h1: "Página web para tu restaurante o parrilla.",
     respuesta:
       "Una página para un restaurante tiene que hacer tres cosas: mostrar la carta con precios, decir dónde estás y cuándo abrís, y dejar que reserven por WhatsApp sin llamar. Eso, con tus fotos y tu nombre, con presupuesto en el día y lista en días.",
     dolores: [

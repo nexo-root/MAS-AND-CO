@@ -50,7 +50,7 @@ export function Quienes() {
           </article>
           <article>
             <h2>CMD</h2>
-            <p className="grupo-rol">Desarrollos · Misiones</p>
+            <p className="grupo-rol">Desarrollos</p>
             <p>Cia Misionera de Desarrollos: construcción, loteos y
             desarrollos propios en la provincia desde 2010.</p>
           </article>
@@ -230,6 +230,61 @@ export function Terminos() {
             sobre boilerplate estándar y buenas prácticas. No constituye
             asesoramiento legal. Antes de considerarlo definitivo debe
             revisarlo un abogado matriculado en la jurisdicción.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* Contacto con pagina propia: el estudio de visibilidad en IA (26/09/2026)
+   marco que los datos de contacto solo vivian en el pie, y un asistente cita
+   paginas, no pies. Horario de la ficha de Google Business; zona: todo el pais
+   (nunca la ciudad, ver la regla de la marca nacional). */
+export function Contacto() {
+  return (
+    <section className="pagina">
+      <Cabeza ruta={rutaPorId("contacto")} />
+      <div className="eje">
+        <p className="miga">
+          <a href="/">Inicio</a> · Contacto
+        </p>
+        <h1 className="titulo">Contacto.</h1>
+        <p className="respuesta">
+          Escribinos por WhatsApp al +54 9 3764 61-5587 y te contesta una persona. Atendemos
+          todos los días de 9 a 20, hora de Argentina, y trabajamos con negocios de todo el país.
+        </p>
+        <div className="prosa">
+          <ul>
+            <li><b>WhatsApp:</b> <a href="https://wa.me/5493764615587" target="_blank" rel="noopener">+54 9 3764 61-5587</a></li>
+            <li><b>Correo:</b> <a href="mailto:masandco.mas@gmail.com">masandco.mas@gmail.com</a></li>
+            <li><b>Instagram:</b> <a href="https://instagram.com/masandco.mas" target="_blank" rel="noopener">@masandco.mas</a></li>
+            <li><b>Horario:</b> todos los días, de 9 a 20 (hora de Argentina).</li>
+            <li><b>Zona:</b> todo el país. El trabajo completo se hace por WhatsApp.</li>
+          </ul>
+
+          <h2>Qué pasa cuando nos escribís</h2>
+          <ol>
+            <li>Te preguntamos de qué es tu negocio y qué necesitás que haga la página.</li>
+            <li>Te mostramos ejemplos de tu rubro y te pasamos el presupuesto por escrito, en el día.</li>
+            <li>Si te sirve, arrancamos con la mitad. La otra mitad la pagás cuando ves la página terminada, y si no te gusta, no la pagás.</li>
+          </ol>
+
+          <h2>Qué conviene tener a mano</h2>
+          <p>
+            Fotos de tu negocio o de lo que vendés, la información que querés que aparezca
+            (precios, horarios, ubicación y cómo te contactan) y el logo, si tenés. Si no tenés
+            fotos buenas, te decimos cómo sacarlas con el celular. Con eso armamos el presupuesto
+            y, si arrancamos, la página.
+          </p>
+
+          <div className="acciones">
+            <a className="boton lleno" href={WA} target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+          </div>
+          <p className="enlaces">
+            <a href="/precios/">Cuánto cuesta una página web</a>
+            <a href="/preguntas-frecuentes/">Preguntas frecuentes</a>
+            <a href="/quienes-somos/">Quiénes somos</a>
           </p>
         </div>
       </div>

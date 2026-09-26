@@ -1,6 +1,7 @@
 import { Cabeza } from "./seo/Cabeza"
 import { ORIGEN, rutaPorId } from "./seo/rutas"
 import { ldFaq, ldServicio, type Pregunta } from "./seo/ld"
+import { Actualizado } from "./guias"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20quiero%20pedir%20presupuesto%20para%20la%20p%C3%A1gina%20de%20mi%20negocio"
 
@@ -96,6 +97,7 @@ export function Precios() {
           el negocio que la pide</b>, te pasamos el presupuesto por WhatsApp en el día, y pagás
           la mitad al arrancar y la otra mitad cuando la ves terminada. Lista en días.
         </p>
+        <Actualizado iso={ruta.actualizado} />
 
         <div className="placa">
           <div><b>Por presupuesto</b><span>Te lo pasamos en el día</span></div>
@@ -183,6 +185,7 @@ export function Precios() {
           </div>
           <p className="enlaces">
             <a href="/preguntas-frecuentes/">Todas las preguntas frecuentes</a>
+            <a href="/pagina-web-gratis-o-pagada/">¿Gratis o pagada?</a>
             <a href="/pagina-web-para-restaurantes/">Para restaurantes</a>
             <a href="/pagina-web-para-inmobiliarias/">Para inmobiliarias</a>
             <a href="/pagina-web-para-alojamientos/">Para alojamientos</a>

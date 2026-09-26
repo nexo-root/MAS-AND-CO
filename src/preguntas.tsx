@@ -1,6 +1,7 @@
 import { Cabeza } from "./seo/Cabeza"
 import { rutaPorId } from "./seo/rutas"
 import { ldFaq, type Pregunta } from "./seo/ld"
+import { Actualizado } from "./guias"
 
 const WA = "https://wa.me/5493764615587?text=Hola%2C%20tengo%20una%20consulta"
 
@@ -25,6 +26,10 @@ export const PREGUNTAS: Pregunta[] = [
   {
     q: "Ya tengo Instagram, ¿para qué necesito una página web?",
     a: "Porque cuando alguien te busca en Google aparece tu competencia, no vos. Instagram no sale en las búsquedas, no muestra precios ni horarios de forma clara, y el algoritmo decide quién te ve. La página es tuya, aparece cuando te buscan y ordena los pedidos que hoy contestás uno por uno.",
+  },
+  {
+    q: "¿Cómo creo la página web de mi negocio?",
+    a: "Hay dos caminos: crearla vos con una plataforma como Wix o WordPress, que tienen planes gratis con límites, o que te la haga alguien. Si te la hacemos nosotros, nos pasás fotos e información por WhatsApp, te pasamos el presupuesto en el día y la ves terminada antes de pagar el saldo.",
   },
   {
     q: "¿El dominio queda a mi nombre?",
@@ -52,7 +57,7 @@ export const PREGUNTAS: Pregunta[] = [
   },
   {
     q: "¿Quiénes hacen la página?",
-    a: "El equipo de Mas & Co, la rama de tecnología del grupo Mas, una familia que construye en Misiones desde 2010 con CMD y Mas & Sons. Del otro lado del WhatsApp contesta una persona, no un formulario.",
+    a: "El equipo de Mas & Co, la rama de tecnología del grupo Mas, una familia que construye desde 2010 con CMD y Mas & Sons. Del otro lado del WhatsApp contesta una persona, no un formulario.",
   },
 ]
 
@@ -69,6 +74,7 @@ export function Preguntas() {
           Lo que nos preguntan antes de encargar una página, contestado como lo contestaríamos
           por WhatsApp: directo y sin vueltas.
         </p>
+        <Actualizado iso={rutaPorId("preguntas").actualizado} />
 
         <div className="prosa">
           <div className="faq">
@@ -87,6 +93,8 @@ export function Preguntas() {
           </div>
           <p className="enlaces">
             <a href="/precios/">Cuánto cuesta una página web</a>
+            <a href="/pagina-web-gratis-o-pagada/">¿Página web gratis o pagada?</a>
+            <a href="/pagina-web-o-instagram/">¿Página web o Instagram?</a>
             <a href="/quienes-somos/">Quiénes somos</a>
             <a href="/terminos/">Términos y condiciones</a>
           </p>

@@ -27,6 +27,9 @@ export function ldPagina(ruta: Ruta, extra: object[] = []) {
         inLanguage: "es-AR",
         isPartOf: { "@id": SITIO },
         about: { "@id": ORG },
+        /* fecha real de la ultima modificacion (campo "actualizado" de rutas.json):
+           los asistentes de IA prefieren lo fresco, pero solo si es verdad */
+        ...(ruta.actualizado ? { dateModified: ruta.actualizado } : {}),
         breadcrumb: { "@id": `${url}#breadcrumb` },
       },
       { "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`, itemListElement: migas },

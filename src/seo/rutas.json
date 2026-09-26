@@ -5,7 +5,7 @@
     "nombre": "Inicio",
     "prioridad": "1.0",
     "titulo": "Páginas web para negocios en toda Argentina | Mas & Co",
-    "descripcion": "Construimos la página web de tu negocio en días. Diseño propio, no plantillas. Presupuesto en el día, y la mitad la pagás recién cuando la ves terminada."
+    "descripcion": "Construimos la página web profesional de tu negocio en días. Diseño propio, no plantillas. Presupuesto en el día, y la mitad la pagás recién cuando la ves terminada."
   },
   {
     "id": "precios",
@@ -13,7 +13,8 @@
     "nombre": "Precios",
     "prioridad": "0.9",
     "titulo": "Cuánto cuesta una página web en Argentina (2026) | Mas & Co",
-    "descripcion": "Cuánto cuesta una página web en Argentina en 2026: los precios que publican otros estudios y cómo se cotiza la tuya. Presupuesto en el día, lista en días."
+    "descripcion": "Cuánto cuesta una página web en Argentina en 2026: los precios que publican otros estudios y cómo se cotiza la tuya. Presupuesto en el día, lista en días.",
+    "actualizado": "2026-09-11"
   },
   {
     "id": "preguntas",
@@ -21,15 +22,34 @@
     "nombre": "Preguntas frecuentes",
     "prioridad": "0.8",
     "titulo": "Preguntas frecuentes sobre hacer tu página web | Mas & Co",
-    "descripcion": "Cuánto tarda, cómo se paga, de quién queda el dominio, qué pasa si ya tenés Instagram y qué tenés que mandar. Respuestas directas, sin vueltas."
+    "descripcion": "Cuánto tarda, cómo se paga, de quién queda el dominio, qué pasa si ya tenés Instagram y qué tenés que mandar. Respuestas directas, sin vueltas.",
+    "actualizado": "2026-09-26"
+  },
+  {
+    "id": "gratis-o-pagada",
+    "path": "/pagina-web-gratis-o-pagada/",
+    "nombre": "¿Página web gratis o pagada?",
+    "prioridad": "0.7",
+    "titulo": "¿Página web gratis o pagada? Wix, WordPress o contratar | Mas & Co",
+    "descripcion": "Cuándo alcanza con una página gratis en Wix o WordPress y cuándo conviene que te la hagan: qué te da cada opción, qué te pide y en qué te limita.",
+    "actualizado": "2026-09-26"
+  },
+  {
+    "id": "web-o-instagram",
+    "path": "/pagina-web-o-instagram/",
+    "nombre": "¿Página web o Instagram?",
+    "prioridad": "0.7",
+    "titulo": "¿Página web o Instagram para tu negocio? | Mas & Co",
+    "descripcion": "Qué hace Instagram, qué hace una página web y por qué a un negocio le conviene tener las dos: una muestra lo que publicás y la otra aparece cuando te buscan en Google.",
+    "actualizado": "2026-09-26"
   },
   {
     "id": "restaurantes",
     "path": "/pagina-web-para-restaurantes/",
     "nombre": "Página web para restaurantes",
     "prioridad": "0.8",
-    "titulo": "Página web para restaurantes y parrillas | Mas & Co",
-    "descripcion": "Carta, horarios, ubicación y reservas por WhatsApp en una página propia. Presupuesto en el día, lista en días. Mirá el diseño Brasa."
+    "titulo": "Página web para tu restaurante o parrilla | Mas & Co",
+    "descripcion": "La página web de tu restaurante con la carta, los horarios, la ubicación y reservas por WhatsApp. Presupuesto en el día, lista en días. Mirá el diseño Brasa."
   },
   {
     "id": "inmobiliarias",
@@ -70,6 +90,14 @@
     "prioridad": "0.6",
     "titulo": "Quiénes somos | Mas & Co, páginas web para negocios",
     "descripcion": "La generación más joven de una familia que construye desde 2010. Hacemos los sitios, los turnos y las automatizaciones con los que un negocio vende y atiende."
+  },
+  {
+    "id": "contacto",
+    "path": "/contacto/",
+    "nombre": "Contacto",
+    "prioridad": "0.5",
+    "titulo": "Contacto | Mas & Co, páginas web para negocios",
+    "descripcion": "Escribinos por WhatsApp al +54 9 3764 61-5587 o a masandco.mas@gmail.com. Atendemos todos los días de 9 a 20 y trabajamos con negocios de todo el país."
   },
   {
     "id": "terminos",

@@ -65,10 +65,22 @@
            "areaServed":{"@type":"Country","name":"Argentina"}}}}
     ]}
     </script>
-    <script type="module" crossorigin src="/assets/index-Cf3yQCFz.js"></script>
+    <script type="module" crossorigin src="/assets/index-DldQDquc.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-Be91J2Mu.css">
   </head>
   <body>
     <div id="root"></div>
+    <!-- Cloudflare Web Analytics (sin cookies). Se carga SOLO en el dominio real:
+         asi el prerender, la verificacion y las capturas locales no cuentan
+         como visitas, y el HTML prerenderizado no queda con el beacon duplicado. -->
+    <script>
+      if (location.hostname === "masandcoweb.com") {
+        var cf = document.createElement("script")
+        cf.type = "module"
+        cf.src = "https://static.cloudflareinsights.com/beacon.min.js"
+        cf.setAttribute("data-cf-beacon", '{"token": "94cc48e8d3804eb0b66e4b515f16be84"}')
+        document.body.appendChild(cf)
+      }
+    </script>
   </body>
 </html>

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import Curvas from "./Curvas"
 import VariableFontCursorProximity from "./components/originkit/dynamic-weight"
 import { Caso } from "./casos"
-import { Quienes, Terminos } from "./paginas"
+import { GratisOPagada, WebOInstagram } from "./guias"
+import { Contacto, Quienes, Terminos } from "./paginas"
 import { Precios } from "./precios"
 import { Preguntas } from "./preguntas"
 import { Rubro } from "./rubros"
@@ -320,12 +321,15 @@ export default function App() {
         {ruta === "inicio" && <Inicio />}
         {ruta === "precios" && <Precios />}
         {ruta === "preguntas" && <Preguntas />}
+        {ruta === "gratis-o-pagada" && <GratisOPagada />}
+        {ruta === "web-o-instagram" && <WebOInstagram />}
         {ruta === "restaurantes" && <Rubro id="restaurantes" />}
         {ruta === "inmobiliarias" && <Rubro id="inmobiliarias" />}
         {ruta === "alojamientos" && <Rubro id="alojamientos" />}
         {ruta === "caso-arbolito" && <Caso id="caso-arbolito" />}
         {ruta === "caso-finan" && <Caso id="caso-finan" />}
         {ruta === "quienes" && <Quienes />}
+        {ruta === "contacto" && <Contacto />}
         {ruta === "terminos" && <Terminos />}
 
         <section className="tinta" id="contacto">
