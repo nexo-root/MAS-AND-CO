@@ -39,6 +39,16 @@ export function Quienes() {
             terminado en su celular antes de pagar el saldo. Del otro lado
             contesta una persona, no un formulario.
           </p>
+          <h2>Lo que ya hicimos</h2>
+          <p>
+            La primera página que hicimos para un cliente fue la de{" "}
+            <a href="/caso/credito-finan/">Crédito Finan</a>, una consultora de
+            crédito, en línea desde julio de 2026. En agosto de 2026 sumamos la
+            de <a href="/caso/el-arbolito/">El Arbolito</a>, un alojamiento en
+            Pehuén-Có. Las dos siguen publicadas y se pueden abrir desde{" "}
+            <a href="/casos/">Casos reales</a>, con qué necesitaba cada negocio
+            y qué hicimos.
+          </p>
         </div>
 
         <div className="grupo-grande">

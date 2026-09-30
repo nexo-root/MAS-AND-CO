@@ -161,7 +161,7 @@ writeFileSync(
 - Pago: 50% al arrancar, 50% al ver la página terminada. Si no gusta, no se paga el saldo.
 - Mantenimiento opcional (dominio, alojamiento, respaldos, soporte): se cotiza junto con la página, primer mes gratis.
 - El dominio se registra a nombre del cliente.
-- Casos reales: El Arbolito (pehuencoalquileres.com), Crédito Finan (creditofinan.com).
+- Casos reales (${ORIGEN}/casos/): Crédito Finan, consultora de crédito (creditofinan.com, en línea desde julio de 2026) y El Arbolito, alojamiento en Pehuén-Có (pehuencoalquileres.com, en línea desde agosto de 2026).
 
 ## Páginas
 
@@ -172,6 +172,7 @@ ${rutas.map((r) => `- [${r.nombre}](${ORIGEN}${r.path}): ${r.descripcion}`).join
 - WhatsApp: +54 9 3764 61-5587
 - Email: masandco.mas@gmail.com
 - Instagram: https://www.instagram.com/masandco.mas
+- Ficha de Google: https://www.google.com/maps?cid=3284061739839486985
 `,
   "utf8",
 )

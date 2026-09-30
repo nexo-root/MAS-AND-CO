@@ -216,6 +216,7 @@ function Inicio() {
                 <a href="/precios/">Cuánto cuesta una página web</a>
                 <a href="/preguntas-frecuentes/">Preguntas frecuentes</a>
                 <a href="/como-elegir-quien-hace-tu-pagina-web/">Cómo elegir quién te la hace</a>
+                <a href="/casos/">Casos reales</a>
                 <a href="/quienes-somos/">Quiénes somos</a>
               </p>
             </div>
@@ -235,8 +236,9 @@ function Inicio() {
           {/* Los casos tenian pagina propia pero solo se llegaba por el pie: el
               estudio de visibilidad en IA (26/09) ni los encontro. */}
           <p className="enlaces">
-            <a href="/caso/el-arbolito/">El caso de El Arbolito</a>
+            <a href="/casos/">Todos los casos reales</a>
             <a href="/caso/credito-finan/">El caso de Crédito Finan</a>
+            <a href="/caso/el-arbolito/">El caso de El Arbolito</a>
           </p>
         </div>
       </section>
@@ -333,6 +335,7 @@ export default function App() {
           <a className="marca" href="/">MAS &amp; CO</a>
           <nav className="menu">
             <a href="/precios/">Precios</a>
+            <a href="/casos/">Casos</a>
             <a href="/quienes-somos/">Quiénes somos</a>
             <a href="/preguntas-frecuentes/">Preguntas</a>
           </nav>

@@ -11,15 +11,26 @@ const SITIO = `${ORIGEN}/#website`
 
 export type Pregunta = { q: string; a: string }
 
+/* El tipo de pagina que dice schema.org para las que tienen uno propio (30/09/2026). Los
+   buscadores y los asistentes de IA reconocen asi "quienes somos", "contacto" y el listado
+   de casos sin deducirlo del texto. Todos son subtipos de WebPage. */
+const TIPO_PAGINA: Record<string, string> = {
+  quienes: "AboutPage",
+  contacto: "ContactPage",
+  casos: "CollectionPage",
+}
+
 export function ldPagina(ruta: Ruta, extra: object[] = []) {
   const url = ORIGEN + ruta.path
   const migas: object[] = [{ "@type": "ListItem", position: 1, name: "Inicio", item: `${ORIGEN}/` }]
-  if (ruta.path !== "/") migas.push({ "@type": "ListItem", position: 2, name: ruta.nombre, item: url })
+  if (ruta.id.startsWith("caso-"))
+    migas.push({ "@type": "ListItem", position: 2, name: "Casos reales", item: `${ORIGEN}/casos/` })
+  if (ruta.path !== "/") migas.push({ "@type": "ListItem", position: migas.length + 1, name: ruta.nombre, item: url })
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
+        "@type": TIPO_PAGINA[ruta.id] ?? "WebPage",
         "@id": `${url}#webpage`,
         url,
         name: ruta.titulo,
@@ -52,7 +63,7 @@ export function ldFaq(preguntas: Pregunta[]) {
 /* Un trabajo hecho para un cliente real. El nodo describe el sitio que hicimos,
    no el negocio del cliente: nosotros somos el creator y ellos el cliente. Se
    enlaza al sitio publicado para que se pueda verificar. */
-export function ldCaso(cliente: string, rubro: string, sitio: string, url: string, imagen: string) {
+export function ldCaso(cliente: string, rubro: string, sitio: string, url: string, imagen: string, publicada: string) {
   return {
     "@type": "CreativeWork",
     "@id": `${url}#caso`,
@@ -61,9 +72,44 @@ export function ldCaso(cliente: string, rubro: string, sitio: string, url: strin
     genre: "Diseño y desarrollo de páginas web",
     creator: { "@id": ORG },
     about: { "@type": "Organization", name: cliente, url: sitio },
+    /* el mes en que el sitio del cliente quedo en linea (sale de la fecha del repositorio) */
+    dateCreated: publicada,
+    datePublished: publicada,
+    isPartOf: { "@id": `${ORIGEN}/casos/#webpage` },
     url,
     image: imagen,
     inLanguage: "es-AR",
+  }
+}
+
+/* El listado de /casos/: una ItemList que apunta a cada CreativeWork por @id. */
+export function ldColeccion(casos: { url: string; nombre: string }[]) {
+  return {
+    "@type": "ItemList",
+    "@id": `${ORIGEN}/casos/#lista`,
+    name: "Casos reales de Mas & Co",
+    numberOfItems: casos.length,
+    itemListElement: casos.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.nombre,
+      url: c.url,
+      item: { "@id": `${c.url}#caso` },
+    })),
+  }
+}
+
+/* Un testimonio escrito por un cliente real, con su permiso. NUNCA uno inventado: marcar
+   reseñas falsas es motivo de penalizacion en Google y un problema legal (Ley 24.240). */
+export type Testimonio = { cliente: string; autor: string; fecha: string; texto: string }
+
+export function ldTestimonio(t: Testimonio) {
+  return {
+    "@type": "Review",
+    itemReviewed: { "@id": ORG },
+    author: { "@type": "Person", name: t.autor, affiliation: { "@type": "Organization", name: t.cliente } },
+    datePublished: t.fecha,
+    reviewBody: t.texto,
   }
 }
 
