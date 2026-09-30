@@ -1,5 +1,5 @@
 {
-  "_doc": "Reels de Mas & Co: uno cada tres dias, a las 19:30 de Argentina, en Instagram y en la pagina de Facebook. Lo publica publicar_reel.py desde el workflow reels.yml. Los videos traen la musica pegada adentro del archivo. Los dias van corridos respecto de TikTok a proposito, para no repetir lo mismo el mismo dia. | 23/09: la musica va PEGADA en el MP4: beats de hip-hop serios de Pixabay (sin Content ID), en negocio/v5-editorial/musica/cool/. La musica RF de Instagram no se puede bajar.",
+  "_doc": "Reels de Mas & Co: uno cada tres dias, a las 19:30 de Argentina, en Instagram y en la pagina de Facebook. Lo publica publicar_reel.py desde el workflow reels.yml. Los videos traen la musica pegada adentro del archivo. Los dias van corridos respecto de TikTok a proposito, para no repetir lo mismo el mismo dia. | 23/09: la musica va PEGADA en el MP4: beats de hip-hop serios de Pixabay (sin Content ID), en negocio/v5-editorial/musica/cool/. La musica RF de Instagram no se puede bajar. | 30/09: v8 con zona segura (nada tapado por la interfaz de TikTok ni de Reels) y musica nueva sin voces (Vanish Mode, Urban y Confident, de Pixabay, sin Content ID). Sale r04-cabanas: muestra la pagina de Pehuen-Co, que no se muestra (Felipe, 26/09).",
   "base_url": "https://raw.githubusercontent.com/nexo-root/MAS-AND-CO/main/feed/reels/",
   "reels": [
     {
@@ -46,11 +46,6 @@
       "fecha": "2026-10-13",
       "video": "r12-proceso.mp4",
       "caption": "Nos escribís con tu rubro, nos pasás las fotos y los datos por WhatsApp, y la ves terminada en tu celular. Lista en días.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día.\n\n#paginaweb #negocios #emprendedores #argentina"
-    },
-    {
-      "fecha": "2026-10-16",
-      "video": "r04-cabanas.mp4",
-      "caption": "Así quedó la página de El Arbolito, en Pehuen-Có: las fotos reales, dónde queda y un botón para consultar por WhatsApp. Es un cliente nuestro.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día.\n\n#paginaweb #negocios #emprendedores #argentina"
     },
     {
       "fecha": "2026-10-19",
