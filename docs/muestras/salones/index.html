@@ -69,8 +69,9 @@ body.cerrado .puerta:hover .p-ver svg{transform:translateX(5px)}
   font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(28px,2.6vw,42px)}
 .sello{position:absolute;z-index:4;will-change:transform;left:50%;top:44%;width:210px;height:210px;margin:-105px 0 0 -105px;border-radius:50%;background:var(--papel);
   display:grid;place-items:center;box-shadow:0 24px 50px -20px rgba(0,0,0,.6),0 0 0 8px rgba(245,239,230,.28);cursor:pointer}
-.sello svg{position:absolute;inset:0;width:100%;height:100%;animation:girar 40s linear infinite;will-change:transform}
-.sello svg text{font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:500;fill:#6F6870;letter-spacing:.02em}
+.sello svg{position:absolute;inset:0;width:100%;height:100%}
+.sello .giro{transform-origin:105px 105px;animation:girar 50s linear infinite}
+.sello svg text{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:500;fill:#6F6870}
 .sello strong{position:relative;max-width:132px;text-align:center;font-family:"Instrument Serif",serif;font-weight:400;font-size:30px;line-height:.98;color:var(--tinta);text-wrap:balance}
 @keyframes girar{to{transform:rotate(360deg)}}
 .portada{position:absolute;z-index:5;left:0;right:0;bottom:0;padding:0 32px 64px;text-align:center;color:var(--papel);visibility:hidden}
@@ -192,7 +193,7 @@ section{scroll-margin-top:76px}
   .pregunta{top:auto;bottom:auto;font-size:24px;top:14px}
   .puerta:first-child .p-txt{top:58%}
   .sello{left:auto;right:16px;top:50%;width:132px;height:132px;margin:-66px 0 0}
-  .sello svg text{font-size:13px}
+  .sello svg text{font-size:12px}
   .sello strong{font-size:20px;max-width:84px}
   .portada{padding:0 18px 44px}
   .portada h1{font-size:50px}
@@ -233,7 +234,7 @@ section{scroll-margin-top:76px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .sello svg{animation:none}
+  .sello .giro{animation:none}
   .puerta,.puerta img{transition:none}
 }
 </style></head><body class="cerrado" data-fiesta="cumple">
@@ -252,7 +253,7 @@ section{scroll-margin-top:76px}
   <p class="pregunta">¿Qué vas a festejar?</p>
   <div class="sello" id="sello" role="button" tabindex="0" aria-label="Volver a elegir la fiesta">
     <svg class="anillo" viewBox="0 0 210 210" aria-hidden="true"><defs><path id="aro" d="M105,105 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"/></defs>
-      <text><textPath href="#aro" id="aro-txt" textLength="520" lengthAdjust="spacing">SALÓN DE EVENTOS · CUMPLES · QUINCE · CASAMIENTOS · EMPRESAS ·</textPath></text></svg>
+      <g class="giro"><text><textPath href="#aro" id="aro-txt">SALÓN DE EVENTOS · CUMPLES · QUINCE · CASAMIENTOS · EMPRESAS · </textPath></text></g></svg>
     <strong data-n>Su salón</strong>
   </div>
   <div class="portada" id="portada">
@@ -373,7 +374,17 @@ const FIESTAS = {
 $$('[data-n]').forEach(el => el.textContent = N === 'Su salón' && el.tagName === 'SPAN' && el.closest('.pie') ? 'su salón' : N);
 $('[data-ini]').textContent = (N.replace(/^(sal[oó]n( de eventos)?|el|la|los|las)\s+/i, '')[0] || 'S').toUpperCase();
 document.title = `${N} · diseño de muestra · Mas & Co`;
-$('#aro-txt').textContent = `${INFANTIL ? 'FIESTAS INFANTILES' : 'SALÓN DE EVENTOS'} · ${(C || 'CUMPLES · QUINCE').toUpperCase()} · ${!isNaN(R) ? '★ ' + R.toFixed(1).replace('.', ',') + ' EN GOOGLE · ' : 'CASAMIENTOS · '}`;
+// el aro: la frase se repite hasta dar la vuelta y se reparte justo en la circunferencia (2·π·84)
+const FRASE = `${INFANTIL ? 'FIESTAS INFANTILES' : 'SALÓN DE EVENTOS'} · ${(C || 'CUMPLES · QUINCE').toUpperCase()} · ${!isNaN(R) ? R.toFixed(1).replace('.', ',') + ' EN GOOGLE · ' : 'CASAMIENTOS · '}`;
+function armarAro() {
+  const tp = $('#aro-txt'), vuelta = 2 * Math.PI * 84;
+  tp.removeAttribute('textLength'); tp.textContent = FRASE;
+  const largo = tp.getComputedTextLength() || 1;
+  const veces = Math.max(1, Math.round(vuelta / largo));
+  tp.textContent = FRASE.repeat(veces);
+  tp.setAttribute('textLength', (vuelta - 1).toFixed(1)); tp.setAttribute('lengthAdjust', 'spacing');
+}
+armarAro(); document.fonts.ready.then(armarAro);
 $$('.puerta img').forEach(img => { const id = FIESTAS[img.closest('.puerta').dataset.f].puerta;
   img.sizes = '(max-width:860px) 100vw, 45vw'; img.srcset = juego(id, [640, 1000, 1500]); img.src = foto(id, 1000);
   img.decoding = 'async'; img.fetchPriority = 'high'; });
