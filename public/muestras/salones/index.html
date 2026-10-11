@@ -1,0 +1,532 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Salón de eventos · diseño de muestra · Mas & Co</title>
+<link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300..800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Muestra completa para salones de eventos · Mas & Co · 11/10/2026.
+   Una sola página para toda la lista de salones: el link trae los datos de cada uno
+   (?n=nombre&c=ciudad&r=nota&o=opiniones&d=dirección) y la página los escribe donde van.
+   1. Portada: cuatro puertas, una por fiesta (cumple, quince, casamiento, empresa). Al tocar una, se abre
+      a pantalla completa, el sello con el nombre viaja a la barra y TODA la página cambia a esa fiesta.
+   2. La noche hora por hora: los momentos de esa fiesta en una tira que se recorre con el scroll.
+   3. ¿Tienen libre?: el visitante toca una fecha y cuántos son, y la página le escribe el WhatsApp.
+   4. Fotos en mosaico. 5. La nota de Google y el mapa real. 6. Cierre.
+   Fotos de Pexels (ver FIESTAS en el script). Fotos, horarios y fechas de ejemplo. */
+:root{--noche:#141016;--noche2:#1E1820;--papel:#F5EFE6;--tinta:#1A1519;--gris:#6F6870;--acento:#FFB43C;--acento-txt:#1A1519;
+  --suave:cubic-bezier(.16,1,.3,1)}
+body[data-fiesta=quince]{--acento:#F27AAE}
+body[data-fiesta=casamiento]{--acento:#DDBC80}
+body[data-fiesta=empresa]{--acento:#3CCFFF}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--papel);color:var(--tinta);font-family:"Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block}
+.serif{font-family:"Instrument Serif",serif;font-weight:400}
+.mono{font-family:"JetBrains Mono",monospace}
+
+/* ── barra ── */
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 28px;
+  background:rgba(20,16,22,.86);backdrop-filter:blur(8px);color:var(--papel);opacity:0;visibility:hidden;border-bottom:1px solid rgba(245,239,230,.08)}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.logo-hueco{flex:none;width:46px;height:46px;border-radius:50%;background:var(--papel);display:grid;place-items:center;color:var(--tinta);
+  font-family:"Instrument Serif",serif;font-size:22px;line-height:1}
+.logo b{font-family:"Instrument Serif",serif;font-weight:400;font-size:26px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:26px;font-size:15px;font-weight:600;color:rgba(245,239,230,.82)}
+.nav a:hover{color:var(--papel)}
+.barra-der{display:flex;align-items:center;gap:14px}
+.cambiar{font-size:14px;font-weight:600;color:rgba(245,239,230,.8);border-bottom:1px solid rgba(245,239,230,.35);padding-bottom:2px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--acento);color:var(--acento-txt);font-weight:700;border-radius:999px;
+  transition:transform .25s var(--suave),filter .25s;white-space:nowrap}
+.btn:hover{filter:brightness(.94)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px}
+.btn-chico{font-size:15px;padding:12px 18px}
+
+/* ── portada: las cuatro puertas ── */
+.puertas{position:relative;height:100vh;height:100svh;min-height:620px;display:flex;background:var(--noche);overflow:hidden}
+.puerta{position:relative;flex:1 1 0;min-width:0;min-height:0;overflow:hidden;text-align:left;transition:flex-grow .7s var(--suave);contain:layout paint}
+body.cerrado .puerta:hover{flex-grow:1.45}
+.puerta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.2s var(--suave)}
+body.cerrado .puerta:hover img{transform:scale(1)}
+.puerta::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,16,22,.9) 0%,rgba(20,16,22,.35) 42%,rgba(20,16,22,.15) 70%,rgba(20,16,22,.45) 100%);pointer-events:none}
+.puerta+.puerta{box-shadow:-1px 0 0 rgba(245,239,230,.18)}
+.p-txt{position:absolute;z-index:2;left:28px;right:20px;bottom:46px;color:var(--papel)}
+.p-txt .mono{display:block;font-size:13px;color:rgba(245,239,230,.75);margin-bottom:8px}
+.p-txt b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(46px,4.6vw,78px);line-height:.92;letter-spacing:-.01em}
+.p-txt small{display:block;font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(24px,2vw,32px);color:rgba(245,239,230,.85)}
+.p-ver{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:15px;font-weight:700;border-bottom:1.5px solid rgba(245,239,230,.5);padding-bottom:3px}
+.p-ver svg{width:17px;height:17px;transition:transform .35s var(--suave)}
+body.cerrado .puerta:hover .p-ver svg{transform:translateX(5px)}
+.puerta:focus-visible{outline:3px solid var(--papel);outline-offset:-10px}
+.pregunta{position:absolute;z-index:3;top:30px;left:0;right:0;text-align:center;color:var(--papel);pointer-events:none;
+  font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(28px,2.6vw,42px)}
+.sello{position:absolute;z-index:4;will-change:transform;left:50%;top:44%;width:210px;height:210px;margin:-105px 0 0 -105px;border-radius:50%;background:var(--papel);
+  display:grid;place-items:center;box-shadow:0 24px 50px -20px rgba(0,0,0,.6),0 0 0 8px rgba(245,239,230,.28);cursor:pointer}
+.sello svg{position:absolute;inset:0;width:100%;height:100%;animation:girar 40s linear infinite;will-change:transform}
+.sello svg text{font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:500;fill:#6F6870;letter-spacing:.02em}
+.sello strong{position:relative;max-width:132px;text-align:center;font-family:"Instrument Serif",serif;font-weight:400;font-size:30px;line-height:.98;color:var(--tinta);text-wrap:balance}
+@keyframes girar{to{transform:rotate(360deg)}}
+.portada{position:absolute;z-index:5;left:0;right:0;bottom:0;padding:0 32px 64px;text-align:center;color:var(--papel);visibility:hidden}
+.portada .mono{font-size:14px;color:rgba(245,239,230,.8)}
+.portada h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(54px,7.4vw,128px);line-height:.92;letter-spacing:-.015em;margin:12px auto 18px;max-width:14ch;text-wrap:balance}
+.portada h1 em{color:var(--acento)}
+.portada p{font-size:clamp(16px,1.3vw,19px);max-width:34em;margin:0 auto;color:rgba(245,239,230,.88);text-wrap:balance}
+.portada .acciones{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:26px}
+.portada .btn{font-size:17px;padding:16px 26px}
+
+/* ── secciones ── */
+.sec{position:relative;padding:120px 48px}
+section{scroll-margin-top:76px}
+.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:56px}
+.cabeza h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(46px,5.6vw,96px);line-height:.95;letter-spacing:-.015em;max-width:12ch;text-wrap:balance}
+.cabeza h2 em{font-style:italic}
+.cabeza p{max-width:22em;font-size:17px;color:var(--gris);line-height:1.5}
+.nota-ej{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gris)}
+
+/* la noche, hora por hora */
+.noche{background:var(--noche);color:var(--papel);padding:0;overflow:hidden}
+.noche .cabeza{padding:110px 48px 0;margin-bottom:0}
+.noche .cabeza p,.noche .nota-ej{color:rgba(245,239,230,.66)}
+.pista{display:flex;gap:44px;padding:56px 48px 110px;width:max-content;align-items:flex-start;will-change:transform}
+.momento{position:relative;width:min(34vw,470px);flex:none}
+.momento:nth-child(even){margin-top:90px}
+.momento figure{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:6px}
+.momento img{width:100%;height:100%;object-fit:cover}
+.momento .hora{position:relative;display:block;margin:-.52em 0 0 -6px;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:clamp(54px,5.4vw,92px);line-height:1;
+  color:var(--acento);letter-spacing:-.04em;text-shadow:0 10px 30px rgba(0,0,0,.35)}
+.momento h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(30px,2.6vw,42px);line-height:1;margin-top:10px}
+.momento p{font-size:16px;color:rgba(245,239,230,.7);margin-top:8px;max-width:26em}
+
+/* ¿tienen libre? */
+.fechas{display:grid;grid-template-columns:1fr 1.08fr;gap:72px;align-items:start}
+.fechas .cabeza{display:block;margin:0}
+.fechas .cabeza p{margin-top:22px}
+.cal{background:#fff;border-radius:22px;padding:28px 28px 26px;box-shadow:0 30px 60px -38px rgba(26,21,25,.45),0 0 0 1px rgba(26,21,25,.06)}
+.cal-cab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
+.cal-cab b{font-family:"Instrument Serif",serif;font-weight:400;font-size:30px}
+.dias{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dias .col{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gris);text-align:center;padding-bottom:2px}
+.dia{border-radius:14px;padding:12px 8px 11px;background:var(--papel);text-align:center;transition:background .2s,transform .2s var(--suave),color .2s}
+.dia b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:34px;line-height:1}
+.dia span{display:block;font-size:12.5px;font-weight:600;color:var(--gris);margin-top:3px}
+.dia:hover{transform:translateY(-2px)}
+.dia.on{background:var(--tinta);color:var(--papel)}
+.dia.on span{color:var(--acento)}
+.dia[disabled]{background:transparent;color:rgba(26,21,25,.32);cursor:not-allowed;box-shadow:inset 0 0 0 1px rgba(26,21,25,.12)}
+.dia[disabled] b{text-decoration:line-through;text-decoration-thickness:1.5px}
+.dia[disabled]:hover{transform:none}
+.cuantos{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;padding-top:20px;border-top:1px solid rgba(26,21,25,.1)}
+.cuantos label{font-weight:700;font-size:16px}
+.paso{display:flex;align-items:center;gap:6px;background:var(--papel);border-radius:999px;padding:5px}
+.paso button{width:40px;height:40px;border-radius:50%;background:#fff;font-size:22px;font-weight:600;line-height:1;box-shadow:0 2px 6px -2px rgba(26,21,25,.25)}
+.paso output{min-width:58px;text-align:center;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:20px}
+.burbuja{position:relative;margin-top:22px;background:#D9FDD3;border-radius:14px 14px 14px 4px;padding:14px 16px 22px;font-size:16.5px;line-height:1.45;color:#111B21}
+.burbuja small{position:absolute;right:12px;bottom:6px;font-size:11.5px;color:#667781}
+.burbuja.cambia{animation:latir .45s var(--suave)}
+@keyframes latir{0%{transform:scale(.985)}100%{transform:none}}
+.cal .btn{width:100%;margin-top:16px;font-size:17px;padding:17px}
+
+/* fotos */
+.mosaico{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:280px 280px;gap:10px}
+.mosaico figure{position:relative;overflow:hidden;border-radius:6px}
+.mosaico figure:first-child{grid-row:1 / 3}
+.mosaico img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--suave)}
+.mosaico figure:hover img{transform:scale(1.04)}
+
+/* nota + mapa */
+.llegar{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;background:#EDE5D9}
+.nota-g .grande{font-family:"Instrument Serif",serif;font-size:clamp(130px,15vw,240px);line-height:.8;letter-spacing:-.03em}
+.estrellas{display:flex;gap:6px;margin:14px 0 10px;color:var(--tinta)}
+.estrellas svg{width:26px;height:26px}
+.nota-g p{font-size:19px;font-weight:600}
+.nota-g a,.donde a{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-weight:700;border-bottom:1.5px solid var(--tinta);padding-bottom:2px}
+.mapa{border-radius:18px;overflow:hidden;aspect-ratio:16/11;background:#ddd;box-shadow:0 30px 60px -38px rgba(26,21,25,.5)}
+.mapa iframe{width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.05)}
+.donde{margin-top:18px;font-size:18px}
+.donde b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:30px}
+
+/* cierre */
+.cierre{position:relative;min-height:78vh;display:grid;place-items:center;text-align:center;color:var(--papel);overflow:hidden;padding:120px 32px}
+.cierre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cierre::after{content:"";position:absolute;inset:0;background:rgba(20,16,22,.62)}
+.cierre div{position:relative;z-index:2}
+.cierre h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(56px,8vw,140px);line-height:.92;letter-spacing:-.015em;max-width:13ch;margin:0 auto 28px;text-wrap:balance}
+.cierre h2 em{color:var(--acento)}
+.cierre .btn{font-size:18px;padding:18px 30px}
+.pie{background:var(--noche);color:rgba(245,239,230,.7);padding:34px 110px 84px 48px;display:flex;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
+.pie a{color:var(--papel);border-bottom:1px solid rgba(245,239,230,.4)}
+
+/* fijos */
+.muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--papel);background:rgba(20,16,22,.78);
+  padding:7px 12px;border-radius:999px;backdrop-filter:blur(8px)}
+.flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;
+  box-shadow:0 16px 30px -12px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(16px)}
+.flotante svg{width:30px;height:30px}
+.aviso{position:fixed;z-index:50;left:50%;bottom:96px;transform:translate(-50%,20px);max-width:min(92vw,460px);background:var(--tinta);color:var(--papel);
+  padding:14px 18px;border-radius:14px;font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--suave);
+  box-shadow:0 20px 40px -18px rgba(0,0,0,.6)}
+.aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .barra{height:64px;padding:0 12px 0 14px}
+  .nav{display:none}
+  .logo-hueco{width:38px;height:38px;font-size:19px}
+  .logo b{font-size:21px;max-width:44vw}
+  .cambiar{font-size:13px}
+  .barra .btn-chico{display:none}
+  .puertas{flex-direction:column;min-height:0}
+  .puerta+.puerta{box-shadow:0 -1px 0 rgba(245,239,230,.18)}
+  .puerta::after{background:linear-gradient(90deg,rgba(20,16,22,.82) 0%,rgba(20,16,22,.35) 60%,rgba(20,16,22,.2) 100%)}
+  .p-txt{left:18px;bottom:auto;top:50%;transform:translateY(-50%)}
+  .p-txt .mono{font-size:11.5px;margin-bottom:4px}
+  .p-txt b{font-size:44px}
+  .p-txt small{font-size:22px;display:inline;margin-left:6px}
+  .p-ver{display:none}
+  .pregunta{top:auto;bottom:auto;font-size:24px;top:14px}
+  .puerta:first-child .p-txt{top:58%}
+  .sello{left:auto;right:16px;top:50%;width:132px;height:132px;margin:-66px 0 0}
+  .sello svg text{font-size:13px}
+  .sello strong{font-size:20px;max-width:84px}
+  .portada{padding:0 18px 44px}
+  .portada h1{font-size:50px}
+  .portada .acciones{flex-direction:column;gap:14px}
+  .portada .btn{width:100%}
+  .sec{padding:76px 18px}
+  .cabeza{display:block;margin-bottom:32px}
+  .cabeza h2{font-size:46px}
+  .cabeza p{font-size:15.5px;margin-top:14px}
+  .noche .cabeza{padding:76px 18px 0}
+  .pista{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:36px 18px 76px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .pista::-webkit-scrollbar{display:none}
+  .momento{width:76vw;scroll-snap-align:start}
+  .momento:nth-child(even){margin-top:0}
+  .momento .hora{font-size:56px;margin-left:-2px}
+  .momento h3{font-size:30px;margin-top:6px}
+  .momento p{font-size:15px}
+  .fechas{display:block}
+  .cal{margin-top:28px;padding:18px 14px 16px;border-radius:18px}
+  .cal-cab b{font-size:24px}
+  .dias{gap:7px}
+  .dia{padding:9px 4px 8px;border-radius:11px}
+  .dia b{font-size:27px}
+  .dia span{font-size:11.5px}
+  .cuantos label{font-size:15px}
+  .burbuja{font-size:15px}
+  .mosaico{grid-template-columns:1fr 1fr;grid-template-rows:230px 150px 150px}
+  .mosaico figure:first-child{grid-row:auto;grid-column:1 / 3}
+  .llegar{display:block}
+  .nota-g .grande{font-size:130px}
+  .mapa{margin-top:36px;aspect-ratio:4/3.4}
+  .cierre{min-height:70vh;padding:90px 18px}
+  .cierre h2{font-size:54px}
+  .pie{display:block;padding:26px 18px 84px;font-size:13.5px}
+  .pie p+p{margin-top:10px}
+  .muestra{left:12px;bottom:12px;font-size:11px}
+  .flotante{right:14px;bottom:14px;width:56px;height:56px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .sello svg{animation:none}
+  .puerta,.puerta img{transition:none}
+}
+</style></head><body class="cerrado" data-fiesta="cumple">
+
+<header class="barra" id="barra">
+  <a class="logo" href="#arriba"><span class="logo-hueco" id="logo-hueco" data-ini>S</span><b data-n>Su salón</b></a>
+  <nav class="nav"><a href="#noche">La fiesta</a><a href="#fechas">Fechas</a><a href="#fotos">Fotos</a><a href="#llegar">Cómo llegar</a></nav>
+  <div class="barra-der"><button class="cambiar" id="cambiar" type="button">Cambiar de fiesta</button><a class="btn btn-chico" href="#fechas">Consultar una fecha</a></div>
+</header>
+
+<section class="puertas" id="arriba" aria-label="Elegir la fiesta">
+  <button class="puerta" data-f="cumple" type="button"><img alt="" data-foto="puerta"><span class="p-txt"><span class="mono">17:00 a 20:00</span><b>Cumple</b><small>infantil</small><span class="p-ver">Ver cómo es<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></button>
+  <button class="puerta" data-f="quince" type="button"><img alt="" data-foto="puerta"><span class="p-txt"><span class="mono">21:30 a 05:00</span><b>Quince</b><small>años</small><span class="p-ver">Ver cómo es<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></button>
+  <button class="puerta" data-f="casamiento" type="button"><img alt="" data-foto="puerta"><span class="p-txt"><span class="mono">20:30 a 05:00</span><b>Casamiento</b><small>y civil</small><span class="p-ver">Ver cómo es<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></button>
+  <button class="puerta" data-f="empresa" type="button"><img alt="" data-foto="puerta"><span class="p-txt"><span class="mono">19:00 a 00:00</span><b>Empresa</b><small>y fin de año</small><span class="p-ver">Ver cómo es<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></button>
+  <p class="pregunta">¿Qué vas a festejar?</p>
+  <div class="sello" id="sello" role="button" tabindex="0" aria-label="Volver a elegir la fiesta">
+    <svg class="anillo" viewBox="0 0 210 210" aria-hidden="true"><defs><path id="aro" d="M105,105 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"/></defs>
+      <text><textPath href="#aro" id="aro-txt" textLength="520" lengthAdjust="spacing">SALÓN DE EVENTOS · CUMPLES · QUINCE · CASAMIENTOS · EMPRESAS ·</textPath></text></svg>
+    <strong data-n>Su salón</strong>
+  </div>
+  <div class="portada" id="portada">
+    <span class="mono" data-horario>17:00 a 20:00 · fotos de ejemplo</span>
+    <h1 id="titulo">Cumpleaños infantiles en <em data-n>Su salón</em></h1>
+    <p id="bajada">Elegí la fecha, contanos cuántos son y te pasamos el presupuesto por WhatsApp.</p>
+    <div class="acciones"><a class="btn" href="#fechas">Ver las fechas libres</a></div>
+  </div>
+</section>
+
+<section class="sec noche" id="noche">
+  <div class="cabeza"><h2 id="noche-tit">Así es un <em>cumple</em>, hora por hora</h2><p><span id="noche-baj">De la llegada a la torta, todo pasa en el mismo lugar.</span><br><span class="nota-ej">Horarios y fotos de ejemplo</span></p></div>
+  <div class="pista" id="pista"></div>
+</section>
+
+<section class="sec" id="fechas">
+  <div class="fechas">
+    <div class="cabeza"><h2>¿Qué día es <em>la fiesta</em>?</h2><p>Tocá un día libre y cuántos van a ser. El mensaje se escribe solo: lo mandás por WhatsApp y te contestan con el presupuesto.</p><p class="nota-ej" style="margin-top:14px">Fechas de ejemplo</p></div>
+    <div class="cal">
+      <div class="cal-cab"><b id="mes">Próximos fines de semana</b></div>
+      <div class="dias" id="dias"><span class="col">Vie</span><span class="col">Sáb</span><span class="col">Dom</span></div>
+      <div class="cuantos"><label for="cant">¿Cuántos van a ser?</label>
+        <div class="paso"><button type="button" id="menos" aria-label="Menos">−</button><output id="cant">80</output><button type="button" id="mas" aria-label="Más">+</button></div></div>
+      <p class="burbuja" id="burbuja">…<small>ahora</small></p>
+      <button class="btn" type="button" id="enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Mandar por WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="fotos" style="padding-top:0">
+  <div class="cabeza"><h2>El salón, <em>armado</em></h2><p>Así se ve listo para la fiesta.<br><span class="nota-ej">Fotos de ejemplo · van las del salón</span></p></div>
+  <div class="mosaico" id="mosaico"></div>
+</section>
+
+<section class="sec llegar" id="llegar">
+  <div class="nota-g" id="nota-g">
+    <div class="grande" id="nota-num">4,8</div>
+    <div class="estrellas" id="estrellas"></div>
+    <p><span id="opiniones">opiniones</span> en Google</p>
+    <a id="ver-opiniones" href="#" target="_blank" rel="noopener">Leer las opiniones →</a>
+  </div>
+  <div>
+    <div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="donde"><b data-n>Su salón</b><span id="direccion"></span><br><a id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar →</a></div>
+  </div>
+</section>
+
+<section class="cierre" id="cierre">
+  <img alt="" id="cierre-foto">
+  <div><h2 id="cierre-tit">Su fiesta, en <em data-n>Su salón</em></h2><a class="btn" href="#fechas">Consultar una fecha</a></div>
+</section>
+
+<footer class="pie">
+  <p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su salón</span>.</p>
+  <p>Fotos, horarios y fechas de ejemplo: con los suyos queda su página.</p>
+</footer>
+
+<span class="muestra">Diseño de muestra</span>
+<a class="flotante" id="flotante" href="#fechas" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg></a>
+<p class="aviso" id="aviso" role="status"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
+
+// ── los datos de cada salón vienen en el link ──
+// cada salón de la lista tiene su link corto: …/salones/?s=mundo-magico  (nombre, lugar, nota, opiniones, infantil)
+const SALONES = {"la-florentina-salon-de-eventos":["La Florentina","Córdoba, Córdoba",4.4,1082,0],"casa-catedral":["Casa Catedral","San Isidro, Buenos Aires",4.7,1046,0],"mundo-magico":["Mundo Mágico","Morón, Buenos Aires",4.8,1024,1],"payana-eventos":["Payana Eventos","Córdoba, Córdoba",4.6,863,0],"balboa-eventos":["Balboa Eventos","Mar del Plata, Buenos Aires",4.8,838,0],"espacio-andes":["Espacio Andes","Corrientes, Corrientes",4.7,685,0],"kalindo":["Kalindo","Caballito, CABA",4.6,661,0],"wow-eventos-rosario":["Wow Eventos Rosario","Rosario, Santa Fe",4.7,650,1],"pacara-center":["Pacará Center","San Miguel de Tucumán, Tucumán",4.3,637,0],"aquarium-eventos":["Aquarium eventos","Flores, CABA",4.5,624,0],"salones-arizu":["Salones Arizu","Bahía Blanca, Buenos Aires",4.5,617,0],"mediterraneo":["Eventos Mediterráneo","Salta, Salta",4.6,554,0],"la-piccola-tartaruga":["La Piccola Tartaruga","Almagro, CABA",4.3,512,1],"el-cubo-eventos":["El Cubo Eventos","Vicente López, Buenos Aires",4.5,464,0],"rondinella":["Salon de Eventos RONDINELLA","Resistencia, Chaco",4.7,455,0],"up-multiespacio":["Up Multiespacio","Mar del Plata, Buenos Aires",4.2,454,0],"la-higuera":["Salón La Higuera","Villa Urquiza, CABA",4.4,405,0],"momana-eventos":["Momana Eventos","Lanús, Buenos Aires",4.6,397,0],"as-eventos-en-salon-belgrano":["AS eventos en Salón Belgrano","Palermo, CABA",4.8,384,0],"piedra-libre-eventos":["Piedra Libre Eventos","Paraná, Entre Ríos",4.5,365,0],"casita-de-fiestas-los-almendros":["Casita de fiestas Los Almendros","Bahía Blanca, Buenos Aires",4.7,358,0],"shi-ryu":["Shi-Ryu","Mendoza, Mendoza",4.4,354,0],"florida-party":["Florida Party","Bahía Blanca, Buenos Aires",4.3,342,0],"espacio-puan-eventos":["Espacio Puan Eventos","Caballito, CABA",4.4,335,0],"estacion-mitre-eventos":["Estación Mitre Eventos","Córdoba, Córdoba",4.2,332,0],"casa-de-espana-cordoba":["Casa de España – Córdoba","Córdoba, Córdoba",4.5,332,0],"fun-central":["Fun Central","Mar del Plata, Buenos Aires",4.3,330,0],"rovero-eventos":["Rovero Eventos","Lomas de Zamora, Buenos Aires",4.3,328,0],"mg-eventos-party-house":["MG EVENTOS Party House","Lanús, Buenos Aires",4.6,315,0],"mamamasa-kids-salon-de-eventos-infantiles":["Mamamasa Kids Salón de eventos infantiles","Vicente López, Buenos Aires",4.2,311,1],"espacio-pinar-eventos":["Espacio Pinar Eventos","Salta, Salta",4.4,280,0],"espacio-aventura":["Espacio Aventura","Córdoba, Córdoba",4.5,277,0],"s-lontano-espacio-lontano":["ᴇsᴘᴀᴄɪᴏ ℒ𝑜𝑛𝑡𝑎𝑛𝑜 (Espacio Lontano)","Córdoba, Córdoba",4.4,269,0],"recepciones-illia":["Recepciones Illia","San Justo, Buenos Aires",4.3,264,0],"travesuras-casita-de-fiestas":["Travesuras Casita De Fiestas","Bahía Blanca, Buenos Aires",4.5,254,0],"terrazas-del-norte":["Terrazas del Norte","Paraná, Entre Ríos",4.5,249,0],"casita-de-fiestas-la-casita-azul":["Casita de Fiestas - La Casita Azul","Bahía Blanca, Buenos Aires",4.3,247,0],"campus-eventos":["Campus Eventos","Almagro, CABA",4.2,243,0],"quinta-el-arrebol-eventos":["Quinta El Arrebol Eventos","Bahía Blanca, Buenos Aires",4.5,223,0],"conciertos-privados-un-clasico":["Conciertos Privados Un Clasico","Villa Urquiza, CABA",5.0,219,0],"leandro-veron-eventos":["Leandro Veron Eventos","Mar del Plata, Buenos Aires",4.5,219,0],"jump-eventos":["Jump eventos","Mar del Plata, Buenos Aires",4.3,216,0],"juguemos-en-el-bosque":["Juguemos En El Bosque","Escobar, Buenos Aires",4.5,213,1],"amicos-espacio-para-eventos":["Amicos - Espacio Para Eventos","Lanús, Buenos Aires",4.5,207,0],"wakaru-salon-de-eventos":["Wakarú Salon De Eventos","Rosario, Santa Fe",4.3,200,0],"la-casita-ddl-multiespacio":["La Casita DDL - Multiespacio","La Plata, Buenos Aires",4.4,186,0],"cericet-recepciones":["Cericet Recepciones","Caballito, CABA",4.3,181,0],"azahares-de-escobar":["Azahares de Escobar","Escobar, Buenos Aires",4.9,174,0],"idol-house-eventos":["Idol House Eventos","Quilmes, Buenos Aires",4.6,174,0],"festus-salon-de-eventos":["Festus Salón de Eventos","Posadas, Misiones",4.5,164,0],"francisco-i-salon-de-fiestas":["Francisco I Salón de Fiestas","Salta, Salta",4.5,156,0],"tunkelen-salon-de-eventos":["Tunkelen Salón de Eventos","San Miguel de Tucumán, Tucumán",4.5,152,0],"amelie-eventos-salon-de-eventos-y-fiestas-infantiles-zona-centro-rosario":["AMELIE EVENTOS - Salón de eventos y fiestas infantiles. Zona centro, Rosario.","Rosario, Santa Fe",4.7,144,1],"y-casita-de-fiestas-aluen":["Salon de eventos y casita de fiestas Aluen","Bahía Blanca, Buenos Aires",4.7,142,0],"planeta-ninos":["Planeta niños","Paraná, Entre Ríos",4.9,129,1],"alvear":["Salon Alvear","Posadas, Misiones",4.5,126,0],"fra-noi":["Salon Fra Noi","Escobar, Buenos Aires",4.3,124,0],"nqn-multiespacio":["Nqn Multiespacio","Neuquén, Neuquén",4.4,121,0],"espacio-hidalgo":["Espacio Hidalgo","Villa Crespo, CABA",4.4,121,0],"colibri-palermo":["Colibrí Palermo","Palermo, CABA",4.9,120,0],"allegra-espacio-para-eventos":["Allegra Espacio para Eventos","Avellaneda, Buenos Aires",4.7,118,0],"lu-pa-eventos":["Lu-Pa eventos","Morón, Buenos Aires",4.6,112,0],"la-magnolia-salon-de-eventos":["La Magnolia / Salon de Eventos","Mendoza, Mendoza",4.3,111,0],"la-estacion-eventos":["La Estacion, Eventos","Bahía Blanca, Buenos Aires",4.3,110,1],"la-finca-eventos":["LA FINCA eventos","Oberá, Misiones",4.5,104,0],"lamonte-quincho":["Lamonte Quincho","Corrientes, Corrientes",4.6,103,0],"casona-de-campo":["Casona de Campo","San Miguel de Tucumán, Tucumán",4.8,97,0],"quinta-los-cocos":["Quinta Los Cocos","Corrientes, Corrientes",4.6,94,0],"malek-eventos":["Malek Eventos","San Justo, Buenos Aires",4.9,88,0],"la-pinocha-salon-de-fiestas":["La Pinocha Salón de Fiestas","Lanús, Buenos Aires",4.3,87,0],"brisas-salon-de-fiestas":["Brisas, Salón de Fiestas","Paraná, Entre Ríos",4.5,87,0],"cumpleclub-parana":["CumpleClub Paraná","Paraná, Entre Ríos",4.7,84,1],"quinta-la-hijuela":["Quinta La Hijuela","Escobar, Buenos Aires",4.7,77,0],"variete-eventos":["VARIETE Eventos","Ramos Mejía, Buenos Aires",4.5,74,0],"la-chacra-salon-de-eventos":["LA CHACRA salón de eventos","Neuquén, Neuquén",4.5,66,0],"complejo-altagracia":["Complejo Altagracia","Neuquén, Neuquén",4.4,65,0],"a-festejar-en-lo-de-ro":["A Festejar en lo de Ro","Quilmes, Buenos Aires",4.6,62,0],"solar-del-sur":["Salón De Eventos Solar Del Sur","Santa Fe, Santa Fe",4.7,59,0],"zona-norte-eventos":["Zona Norte Eventos","Paraná, Entre Ríos",4.3,55,1],"mindy-escobar":["Mindy Escobar","Escobar, Buenos Aires",4.8,54,0],"palermo-cube":["Palermo Cube","Palermo, CABA",4.8,50,0],"marmol-recepciones":["Mármol Recepciones","San Justo, Buenos Aires",4.9,49,0],"aventukids":["Aventukids","Núñez, CABA",4.7,46,1],"j-u-c-l-a-eventos":["J U C L A Eventos","Mar del Plata, Buenos Aires",4.9,38,0],"experiencia-besares":["EXPERIENCIA Besares","Belgrano, CABA",4.7,37,0],"la-quinta-bahia":["La Quinta Bahía","Bahía Blanca, Buenos Aires",4.4,35,0],"vanalu-eventos":["Vanalu Eventos","Escobar, Buenos Aires",4.8,32,0],"room-eventos":["Room Eventos","Villa Devoto, CABA",4.8,27,0],"5-soles-eventos-personalizados-vajilla-en-alquiler":["5 Soles Eventos Personalizados (Vajilla en Alquiler)","Salta, Salta",4.5,23,0],"vuelta-al-sol":["Vuelta al Sol","Bahía Blanca, Buenos Aires",4.7,17,0],"eguinor":["Salón de Eventos EGUINOR","Eldorado, Misiones",4.9,15,0],"maralu-multi-espacios":["Maralu multi espacios","Mar del Plata, Buenos Aires",4.9,15,0]};
+const q = new URLSearchParams(location.search);
+const S = SALONES[(q.get('s') || '').toLowerCase()] || null;
+const N = (q.get('n') || '').trim() || (S && S[0]) || 'Su salón';
+const LUGAR = (q.get('c') || '').trim() || (S && S[1]) || '';
+const C = LUGAR.split(',')[0].trim();
+const R = parseFloat((q.get('r') || '').replace(',', '.')) || (S && S[2]) || NaN;
+const O = parseInt((q.get('o') || '').replace(/\D/g, ''), 10) || (S && S[3]) || 0;
+const D = (q.get('d') || '').trim();
+const INFANTIL = q.get('t') ? q.get('t') === 'infantil' : !!(S && S[4]);   // ?t=general muestra las cuatro puertas igual
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const celu = () => matchMedia('(max-width:860px)').matches;
+
+// ── cada fiesta: textos, horario y fotos (Pexels) ──
+const FIESTAS = {
+  cumple: {palabra: 'cumpleaños', titulo: 'Cumpleaños infantiles en', horario: '17:00 a 20:00', puerta: 19875872, cierre: 12689074,
+    noche: 'Así es un <em>cumple</em>, hora por hora', bajada: 'De la llegada a la torta, todo pasa en el mismo lugar.',
+    momentos: [['17:00', 'Llegan los chicos', 'Los papás dejan a los chicos y el salón ya está armado.', 12689074],
+               ['17:30', 'Pelotero y juegos', 'Una hora para correr, saltar y gastar energía.', 27177596],
+               ['18:30', 'El show', 'Música, baile y animación para todos.', 7155975],
+               ['19:15', 'La torta', 'Velitas, el feliz cumpleaños y la foto.', 27176374]],
+    fotos: [5610387, 12689074, 27177596, 10336806, 27176374]},
+  quince: {palabra: 'cumpleaños de 15', titulo: 'Fiestas de 15 en', horario: '21:30 a 05:00', puerta: 18004391, cierre: 16451002,
+    noche: 'Así son <em>tus 15</em>, hora por hora', bajada: 'La entrada, el vals y la pista: una noche entera.',
+    momentos: [['21:30', 'La recepción', 'Llegan los invitados y empieza la noche.', 16451002],
+               ['22:30', 'La entrada', 'El momento en que todos se dan vuelta.', 33678487],
+               ['00:00', 'El vals', 'Con papá, con los abuelos y con quien elijas.', 28123410],
+               ['01:30', 'La pista', 'Carioca, cotillón y baile hasta el final.', 30505259]],
+    fotos: [18004391, 15591486, 33678487, 16451002, 28123410]},
+  casamiento: {palabra: 'casamiento', titulo: 'Casamientos en', horario: '20:30 a 05:00', puerta: 38760354, cierre: 34597474,
+    noche: 'Así es un <em>casamiento</em>, hora por hora', bajada: 'De la llegada de los invitados al último baile.',
+    momentos: [['20:30', 'Llegan los invitados', 'Recepción con luces, música y algo para tomar.', 34597474],
+               ['21:30', 'La entrada', 'Los novios entran y empieza la fiesta.', 30146471],
+               ['23:00', 'El brindis', 'Las palabras, las copas y las bengalas.', 6405778],
+               ['00:30', 'Se abre la pista', 'Y no se cierra hasta el final.', 12417635]],
+    fotos: [29624008, 38760354, 17001765, 6405778, 34597474]},
+  empresa: {palabra: 'evento de empresa', titulo: 'Eventos de empresa en', horario: '19:00 a 00:00', puerta: 14636319, cierre: 35042459,
+    noche: 'Así es un <em>evento</em>, hora por hora', bajada: 'Presentaciones, cenas de fin de año y aniversarios.',
+    momentos: [['19:00', 'Recepción', 'Acreditación y bienvenida con algo para tomar.', 11066728],
+               ['19:30', 'La presentación', 'Pantalla, sonido y escenario listos.', 29708258],
+               ['20:30', 'La cena', 'Mesas armadas para todo el equipo.', 14636315],
+               ['22:30', 'Música y brindis', 'El cierre del año, con pista.', 9005510]],
+    fotos: [14636319, 35042459, 14636315, 29708258, 11066728]}
+};
+
+// ── el nombre y los datos, donde van ──
+$$('[data-n]').forEach(el => el.textContent = N === 'Su salón' && el.tagName === 'SPAN' && el.closest('.pie') ? 'su salón' : N);
+$('[data-ini]').textContent = (N.replace(/^(sal[oó]n( de eventos)?|el|la|los|las)\s+/i, '')[0] || 'S').toUpperCase();
+document.title = `${N} · diseño de muestra · Mas & Co`;
+$('#aro-txt').textContent = `${INFANTIL ? 'FIESTAS INFANTILES' : 'SALÓN DE EVENTOS'} · ${(C || 'CUMPLES · QUINCE').toUpperCase()} · ${!isNaN(R) ? '★ ' + R.toFixed(1).replace('.', ',') + ' EN GOOGLE · ' : 'CASAMIENTOS · '}`;
+$$('.puerta img').forEach(img => { const id = FIESTAS[img.closest('.puerta').dataset.f].puerta;
+  img.sizes = '(max-width:860px) 100vw, 45vw'; img.srcset = juego(id, [640, 1000, 1500]); img.src = foto(id, 1000);
+  img.decoding = 'async'; img.fetchPriority = 'high'; });
+
+const busqueda = encodeURIComponent([N, D, LUGAR].filter(Boolean).join(', '));
+if (!isNaN(R) && O) {
+  $('#nota-num').textContent = R.toFixed(1).replace('.', ',');
+  $('#opiniones').textContent = `${O.toLocaleString('es-AR')} opiniones`;
+  $('#ver-opiniones').href = `https://www.google.com/maps/search/?api=1&query=${busqueda}`;
+  const llenas = Math.round(R);
+  $('#estrellas').innerHTML = Array.from({length: 5}, (_, i) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="${i < llenas ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('');
+} else $('#nota-g').style.display = 'none';
+$('#mapa').src = `https://www.google.com/maps?q=${busqueda || 'Argentina'}&output=embed`;
+$('#direccion').textContent = [D, C].filter(Boolean).join(', ');
+$('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${busqueda}`;
+
+// ── la fiesta elegida cambia toda la página ──
+let fiesta = 'cumple';
+function pintar(f) {
+  fiesta = f;
+  const F = FIESTAS[f];
+  document.body.dataset.fiesta = f;
+  $('#titulo').innerHTML = `${F.titulo} <em>${N}</em>`;
+  $('[data-horario]').textContent = `${F.horario} · fotos de ejemplo`;
+  $('#noche-tit').innerHTML = F.noche;
+  $('#noche-baj').textContent = F.bajada;
+  $('#pista').innerHTML = F.momentos.map(([h, t, p, id]) =>
+    `<article class="momento"><figure><img src="${foto(id, 700)}" srcset="${juego(id, [480, 700, 1000])}" sizes="(max-width:860px) 76vw, 470px" alt="" loading="lazy" decoding="async"></figure><span class="hora">${h}</span><h3>${t}</h3><p>${p}</p></article>`).join('');
+  $('#mosaico').innerHTML = F.fotos.map((id, i) => `<figure><img src="${foto(id, i ? 600 : 1000)}" srcset="${juego(id, i ? [400, 600, 900] : [700, 1000, 1400])}" sizes="${i ? '(max-width:860px) 50vw, 25vw' : '(max-width:860px) 100vw, 45vw'}" alt="" loading="lazy" decoding="async"></figure>`).join('');
+  $('#cierre-foto').sizes = '100vw'; $('#cierre-foto').srcset = juego(F.cierre, [800, 1300, 1900]); $('#cierre-foto').src = foto(F.cierre, 1300);
+  $('#cierre-tit').innerHTML = `Tu ${F.palabra}, en <em>${N}</em>`;
+  escribir();
+  ScrollTrigger.refresh();
+}
+
+// ── puertas: abrir y cerrar ──
+const puertas = $$('.puerta'), sello = $('#sello'), anillo = $('.anillo'), barra = $('#barra'), portada = $('#portada'), flot = $('#flotante');
+let abierta = null;
+function abrir(p, alInstante = false) {
+  if (abierta) return;
+  abierta = p;
+  pintar(p.dataset.f);
+  puertas.forEach(x => gsap.set(x, {flexGrow: parseFloat(getComputedStyle(x).flexGrow) || 1}));
+  document.body.classList.remove('cerrado');
+  const h = $('#logo-hueco').getBoundingClientRect(), s = sello.getBoundingClientRect();
+  const tl = gsap.timeline({defaults: {ease: 'power4.inOut'}});
+  tl.to(puertas.filter(x => x !== p), {flexGrow: 0, duration: 1.15}, 0)
+    .to(p, {flexGrow: 1, duration: 1.15}, 0)
+    .to($$('.p-txt'), {autoAlpha: 0, y: 16, duration: .35, ease: 'power2.in'}, 0)
+    .to('.pregunta', {autoAlpha: 0, duration: .3}, 0)
+    .to(anillo, {opacity: 0, duration: .3}, .1)
+    .to(sello, {x: h.left + h.width / 2 - (s.left + s.width / 2), y: h.top + h.height / 2 - (s.top + s.height / 2), scale: h.width / s.width,
+      duration: 1.1, ease: 'power3.inOut'}, .15)
+    .to(barra, {autoAlpha: 1, duration: .5, ease: 'power2.out'}, .75)
+    .set(sello, {autoAlpha: 0}, 1.25)
+    .set(portada, {visibility: 'visible'}, .8)
+    .fromTo($$('#portada > *'), {y: 34, autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: .8, stagger: .09, ease: 'power3.out'}, .85)
+    .to(flot, {autoAlpha: 1, y: 0, duration: .5, ease: 'power3.out'}, 1.2);
+  if (reduce || alInstante) tl.progress(1);
+}
+function cerrar() {
+  if (!abierta) return;
+  const ir = () => {
+    const p = abierta;
+    const tl = gsap.timeline({defaults: {ease: 'power4.inOut'}, onComplete: () => {
+      document.body.classList.add('cerrado'); abierta = null;
+      puertas.forEach(x => gsap.set(x, {clearProps: 'flexGrow'}));
+    }});
+    tl.to($$('#portada > *'), {autoAlpha: 0, y: 20, duration: .3, ease: 'power2.in'}, 0)
+      .set(portada, {visibility: 'hidden'}, .3)
+      .to(barra, {autoAlpha: 0, duration: .3}, 0)
+      .to(flot, {autoAlpha: 0, y: 16, duration: .3}, 0)
+      .set(sello, {autoAlpha: 1}, 0)
+      .to(sello, {x: 0, y: 0, scale: 1, duration: 1, ease: 'power3.inOut'}, 0)
+      .to(anillo, {opacity: 1, duration: .4}, .7)
+      .to(puertas, {flexGrow: 1, duration: 1.05}, .1)
+      .to($$('.p-txt'), {autoAlpha: 1, y: 0, duration: .5, ease: 'power2.out'}, .85)
+      .to('.pregunta', {autoAlpha: 1, duration: .4}, .9);
+    if (reduce) tl.progress(1);
+  };
+  if (scrollY > 4) { scrollTo({top: 0, behavior: reduce ? 'auto' : 'smooth'}); setTimeout(ir, 550); } else ir();
+}
+puertas.forEach(p => p.addEventListener('click', () => abrir(p)));
+$('#cambiar').addEventListener('click', cerrar);
+$('.logo').addEventListener('click', e => { if (abierta && scrollY < 10) { e.preventDefault(); cerrar(); } });
+
+// ── fechas: los próximos fines de semana, con algunos ocupados ──
+const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+let elegido = null, cant = 80;
+(function armarDias() {
+  const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+  const v = new Date(hoy); v.setDate(v.getDate() + ((5 - v.getDay() + 7) % 7 || 7));
+  const html = [];
+  for (let s = 0; s < 4; s++) for (let k = 0; k < 3; k++) {
+    const f = new Date(v); f.setDate(v.getDate() + s * 7 + k);
+    const ocupado = (f.getDate() * 7 + f.getMonth() * 3 + k) % 5 === 0 || (s === 0 && k === 1);
+    html.push(`<button class="dia" type="button" data-t="${f.getTime()}"${ocupado ? ' disabled' : ''}><b>${f.getDate()}</b><span>${ocupado ? 'ocupado' : MESES[f.getMonth()].slice(0, 3)}</span></button>`);
+  }
+  $('#dias').insertAdjacentHTML('beforeend', html.join(''));
+  const primero = $('.dia:not([disabled])');
+  elegir(primero, false);
+})();
+function elegir(b, animar = true) {
+  $$('.dia.on').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); elegido = new Date(+b.dataset.t);
+  escribir(animar);
+}
+$('#dias').addEventListener('click', e => { const b = e.target.closest('.dia'); if (b && !b.disabled) elegir(b); });
+$('#menos').addEventListener('click', () => { cant = Math.max(10, cant - 10); escribir(); });
+$('#mas').addEventListener('click', () => { cant = Math.min(500, cant + 10); escribir(); });
+function mensaje() {
+  if (!elegido) return '';
+  return `Hola, ¿tienen libre el ${DIAS[elegido.getDay()]} ${elegido.getDate()} de ${MESES[elegido.getMonth()]} para un ${FIESTAS[fiesta].palabra}? Seríamos unos ${cant}.`;
+}
+function escribir(animar = true) {
+  $('#cant').textContent = cant;
+  const b = $('#burbuja');
+  if (!b) return;
+  b.innerHTML = `${mensaje()}<small>ahora</small>`;
+  if (animar && !reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
+}
+function avisar(t) {
+  const a = $('#aviso'); a.textContent = t; a.classList.add('ver');
+  clearTimeout(avisar._t); avisar._t = setTimeout(() => a.classList.remove('ver'), 4200);
+}
+$('#enviar').addEventListener('click', () => avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`));
+flot.addEventListener('click', e => { e.preventDefault(); document.getElementById('fechas').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); });
+
+pintar('cumple');
+// salón infantil: no se le muestran casamientos ni empresas, entra directo al cumple
+if (INFANTIL) { $('#cambiar').hidden = true; abrir(puertas[0], true); }
+
+// ── si baja sin elegir, la barra y el botón aparecen igual ──
+ScrollTrigger.create({trigger: '#noche', start: 'top 80%', onEnter: () => { if (!abierta) { gsap.to(barra, {autoAlpha: 1, duration: .4}); gsap.to(flot, {autoAlpha: 1, y: 0, duration: .4}); } },
+  onLeaveBack: () => { if (!abierta) { gsap.to(barra, {autoAlpha: 0, duration: .3}); gsap.to(flot, {autoAlpha: 0, y: 16, duration: .3}); } }});
+
+// ── movimiento con el scroll ──
+const mm = gsap.matchMedia();
+mm.add('(min-width:861px) and (prefers-reduced-motion: no-preference)', () => {
+  const pista = $('#pista');
+  gsap.to(pista, {x: () => -(pista.scrollWidth - innerWidth), ease: 'none',
+    scrollTrigger: {trigger: '#noche', start: 'top top', end: () => '+=' + (pista.scrollWidth - innerWidth), pin: true, scrub: 1, invalidateOnRefresh: true}});
+});
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 85%'}}));
+  gsap.from('.cal', {y: 60, autoAlpha: 0, duration: 1.1, ease: 'power3.out', scrollTrigger: {trigger: '.cal', start: 'top 85%'}});
+  gsap.from('#mosaico', {clipPath: 'inset(12% 8% 12% 8% round 6px)', duration: 1.4, ease: 'power3.out', scrollTrigger: {trigger: '#mosaico', start: 'top 80%'}});
+  if (!isNaN(R)) {
+    const obj = {v: 0};
+    gsap.to(obj, {v: R, duration: 1.6, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 80%'},
+      onUpdate: () => { $('#nota-num').textContent = obj.v.toFixed(1).replace('.', ','); }});
+  }
+  gsap.fromTo('#cierre-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '#cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}});
+});
+addEventListener('load', () => ScrollTrigger.refresh());
+document.fonts.ready.then(() => ScrollTrigger.refresh());
+</script>
+</body></html>
