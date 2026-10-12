@@ -405,7 +405,7 @@ function encuadres() {
   cam = {s0, a: [W / 2, H * (mov ? .5 : .52)], s1, b: [tx1 + PX * s1, ty1 + PY * s1]};
 }
 const lerp = (a, b, k) => a + (b - a) * k;
-const curva = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+const curva = k => k * k * (3 - 2 * k);      // suave en las puntas, pareja en el medio: la cámara no se queda quieta al empezar
 const vivo = {p: 0, entrada: 1};
 function ponerCamara() {
   if (!cam) encuadres();
