@@ -362,9 +362,8 @@ html[data-tema="oscuro"] body::before{content:"";position:fixed;inset:0;
    (la pagina entera, no solo la portada) y al tocarla se agranda hasta
    ocupar la pantalla con la pagina andando adentro. Mismos cantos rectos y
    la misma linea fina que el resto del sitio. */
-.vit-grilla{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.6vw,24px);
+.vit-grilla{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.6vw,24px);
   margin:clamp(26px,4vh,44px) 0 clamp(10px,2vh,20px)}
-@media (max-width:1180px){.vit-grilla{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:860px){.vit-grilla{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.vit-grilla{grid-template-columns:1fr}}
 .vit-tarjeta{position:relative;display:flex;flex-direction:column;border:1px solid var(--linea);

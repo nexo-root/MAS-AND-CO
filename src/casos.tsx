@@ -299,6 +299,12 @@ const MUESTRAS: Muestra[] = [
     pedido: "Hola, vi la página de Crédito Finan y quiero una así para mi negocio",
   },
   {
+    id: "autos", rubro: "Concesionarias de autos", titulo: "Su concesionaria", url: "/muestras/autos/",
+    bajada: "El nombre en una patente, el stock con filtros y un tablero de auto para cotizar el usado.",
+    tiene: ["Los autos con su año, sus kilómetros y su precio", "La ficha de cada auto arma la consulta", "El tablero: año y kilómetros del usado que entregás"],
+    pedido: "Hola, vi la página de muestra para concesionarias y quiero una así para la mía",
+  },
+  {
     id: "salones", rubro: "Salones de eventos", titulo: "Su salón", url: "/muestras/salones/?t=general",
     bajada: "Elegís qué vas a festejar y la página entera cambia. Las fechas libres arman el mensaje de WhatsApp.",
     tiene: ["Cuatro puertas: cumpleaños, quince, casamiento y empresa", "La noche contada hora por hora", "Fechas libres y cantidad de invitados que escriben la consulta"],
