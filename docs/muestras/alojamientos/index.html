@@ -1,0 +1,492 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Diseño de muestra para su alojamiento · Mas & Co">
+<meta property="og:description" content="Recórrala completa: las noches libres, las unidades y qué hay cerca.">
+<meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
+<title>Alojamiento · diseño de muestra · Mas & Co</title>
+<link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Albert+Sans:wght@300..800&family=DM+Mono:wght@400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Muestra completa para alojamientos · Mas & Co · 11/10/2026. Una página para los 54 de la lista:
+   …/alojamientos/?s=<slug> trae nombre, lugar, nota, opiniones y si son cabañas, departamentos o habitaciones.
+   1. La ventana: la foto de una cabaña mirando al paisaje; al bajar, la cámara entra por la ventana.
+   2. ¿Qué noches?: elegís llegada y salida en el calendario y cuántos son; la página escribe el WhatsApp.
+   3. Los llaveros: cada unidad es una llave de madera colgada; tocás una y aparece la suya.
+   4. La postal del lugar: de un lado la foto, del otro lo que hay cerca (datos reales del destino).
+   5. La nota de Google y el mapa real. 6. Cierre.
+   Fotos de Pexels. Unidades, fechas y fotos de ejemplo. */
+:root{--papel:#F2EDE3;--papel2:#E8E0D2;--tinta:#1F2A22;--gris:#68705F;--acento:#C2652F;--acento2:#A8541F;--noche:#141A15;--suave:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--papel);color:var(--tinta);font-family:"Albert Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block}
+section{scroll-margin-top:72px}
+.mono{font-family:"DM Mono",monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--acento);color:#fff;font-weight:700;border-radius:999px;white-space:nowrap;
+  transition:background .25s,transform .25s var(--suave)}
+.btn:hover{background:var(--acento2)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px}
+
+/* barra */
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;color:#fff;
+  transition:background .4s,color .4s,box-shadow .4s}
+.barra.solida{background:rgba(242,237,227,.94);color:var(--tinta);box-shadow:0 1px 0 rgba(31,42,34,.1);backdrop-filter:blur(8px)}
+.marca{font-family:"Young Serif",serif;font-size:23px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+.nav{display:flex;gap:26px;font-size:15px;font-weight:600}
+.barra .btn{font-size:15px;padding:12px 18px}
+
+/* 1 · la ventana */
+.ventana{position:relative;height:230vh;background:var(--noche)}
+.v-fija{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.v-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform-origin:50% 56%;will-change:transform}
+.v-velo{position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 72%,rgba(20,26,21,.55),rgba(20,26,21,0) 70%),linear-gradient(180deg,rgba(20,26,21,.62) 0%,rgba(20,26,21,.08) 30%,rgba(20,26,21,.12) 55%,rgba(20,26,21,.78) 100%)}
+.v-txt{position:absolute;left:0;right:0;bottom:9vh;text-align:center;color:#fff;padding:0 24px;text-shadow:0 2px 24px rgba(10,14,11,.55)}
+.v-lugar{font-size:14px;letter-spacing:.02em;color:rgba(255,255,255,.85)}
+.v-txt h1{font-family:"Young Serif",serif;font-weight:400;font-size:clamp(52px,7.6vw,124px);line-height:.95;letter-spacing:-.015em;margin:12px auto 16px;max-width:15ch;text-wrap:balance}
+.v-txt p.baj{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.9);max-width:30em;margin:0 auto}
+.v-txt .btn{margin-top:26px;font-size:17px;padding:16px 28px}
+.v-fin{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;color:#fff;font-family:"Young Serif",serif;
+  font-size:clamp(40px,6vw,96px);line-height:1;opacity:0;padding:0 20px;text-shadow:0 10px 40px rgba(0,0,0,.35)}
+.v-fin em{font-style:normal;color:#FFD9B8}
+.ejemplo-v{position:absolute;right:20px;top:86px;font-size:12.5px;color:#fff;background:rgba(20,26,21,.6);padding:6px 11px;border-radius:999px}
+
+/* secciones */
+.sec{position:relative;padding:116px 48px}
+.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:48px}
+.cabeza h2{font-family:"Young Serif",serif;font-weight:400;font-size:clamp(44px,5.2vw,88px);line-height:.98;letter-spacing:-.015em;max-width:13ch;text-wrap:balance}
+.cabeza h2 em{font-style:normal;color:var(--acento)}
+.cabeza p{max-width:24em;font-size:17px;color:var(--gris);line-height:1.5}
+.nota-ej{font-family:"DM Mono",monospace;font-size:12.5px;color:var(--gris)}
+
+/* 2 · las noches */
+.noches{display:grid;grid-template-columns:1.25fr .95fr;gap:40px;align-items:start}
+.cal{background:#fff;border-radius:22px;padding:24px 24px 18px;box-shadow:0 30px 60px -40px rgba(31,42,34,.5),0 0 0 1px rgba(31,42,34,.06)}
+.cal-cab{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-cab button{width:40px;height:40px;border-radius:50%;background:var(--papel);font-size:20px;line-height:1}
+.cal-cab button:disabled{opacity:.3;cursor:default}
+.meses{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.mes h3{font-family:"Young Serif",serif;font-weight:400;font-size:24px;text-transform:capitalize;margin-bottom:10px}
+.grilla{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.grilla .dsem{font-family:"DM Mono",monospace;font-size:11.5px;color:var(--gris);text-align:center;padding:4px 0}
+.d{aspect-ratio:1;border-radius:10px;font-size:15px;font-weight:600;display:grid;place-items:center;position:relative;transition:background .15s,color .15s}
+.d:hover:not(:disabled){background:var(--papel)}
+.d:disabled{color:rgba(31,42,34,.25);text-decoration:line-through;cursor:default}
+.d.pasado{visibility:hidden}
+.d.en-rango{background:#F6DCC9;border-radius:0}
+.d.borde{background:var(--tinta);color:#fff}
+.d.borde.ini{border-radius:10px 0 0 10px}.d.borde.fin{border-radius:0 10px 10px 0}.d.borde.ini.fin{border-radius:10px}
+.resumen{background:var(--tinta);color:#fff;border-radius:22px;padding:26px 26px 22px;position:sticky;top:96px}
+.fila-r{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.caja-r{background:rgba(255,255,255,.08);border-radius:14px;padding:12px 14px}
+.caja-r small{display:block;font-family:"DM Mono",monospace;font-size:12px;color:rgba(255,255,255,.6)}
+.caja-r b{display:block;font-family:"Young Serif",serif;font-weight:400;font-size:24px;margin-top:4px}
+.noches-n{margin:14px 0 4px;font-size:15px;color:rgba(255,255,255,.75)}
+.cuantos{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+.cuantos label{font-weight:700}
+.paso{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border-radius:999px;padding:5px}
+.paso button{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--tinta);font-size:21px;font-weight:600}
+.paso output{min-width:44px;text-align:center;font-family:"DM Mono",monospace;font-weight:500;font-size:19px}
+.burbuja{margin-top:18px;background:#D9FDD3;color:#111B21;border-radius:14px 14px 14px 4px;padding:13px 15px 22px;font-size:15.5px;line-height:1.45;position:relative}
+.burbuja small{position:absolute;right:12px;bottom:6px;font-size:11.5px;color:#667781}
+.burbuja.cambia{animation:latir .45s var(--suave)}
+@keyframes latir{0%{transform:scale(.985)}100%{transform:none}}
+.resumen .btn{width:100%;margin-top:14px;font-size:17px;padding:16px}
+
+/* 3 · los llaveros */
+.unidades{background:var(--papel2)}
+.tablero{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.clavero{position:relative;display:flex;justify-content:center;gap:clamp(18px,3vw,44px);padding-top:30px}
+.clavero::before{content:"";position:absolute;left:4%;right:4%;top:6px;height:16px;border-radius:4px;
+  background:linear-gradient(180deg,#8A5A36,#6E4427);box-shadow:0 8px 16px -8px rgba(0,0,0,.5)}
+.llave{position:relative;width:clamp(96px,9vw,130px);transform-origin:50% -18px;transition:transform .6s var(--suave)}
+.llave .aro{position:absolute;left:50%;top:-30px;width:26px;height:26px;margin-left:-13px;border-radius:50%;border:3px solid #9A9A9A;border-bottom-color:#7A7A7A}
+.llave .tag{display:block;height:clamp(160px,15vw,210px);border-radius:16px 16px 60px 60px;padding:34px 10px 0;text-align:center;color:#3A2312;
+  background:repeating-linear-gradient(92deg,rgba(255,255,255,.05) 0 2px,transparent 2px 9px),linear-gradient(180deg,#D7A06A,#B97B45);
+  box-shadow:inset 0 0 0 2px rgba(58,35,18,.15),0 18px 26px -14px rgba(0,0,0,.45)}
+.llave .tag::before{content:"";position:absolute;left:50%;top:12px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--papel2);box-shadow:inset 0 2px 3px rgba(0,0,0,.35)}
+.llave b{display:block;font-family:"Young Serif",serif;font-weight:400;font-size:clamp(46px,4.2vw,64px);line-height:1;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+.llave span{display:block;font-family:"DM Mono",monospace;font-size:13px;margin-top:6px}
+.llave:hover{transform:rotate(-4deg)}
+.llave.on{transform:translateY(10px)}
+.llave.on .tag{background:repeating-linear-gradient(92deg,rgba(255,255,255,.05) 0 2px,transparent 2px 9px),linear-gradient(180deg,#E7B57F,#C2652F);color:#fff;text-shadow:none}
+.llave.on b{text-shadow:none}
+.u-ficha{position:relative;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -38px rgba(31,42,34,.5)}
+.u-ficha img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.u-ficha figcaption{padding:20px 24px 22px}
+.u-ficha h3{font-family:"Young Serif",serif;font-weight:400;font-size:30px}
+.u-ficha ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.u-ficha li{font-size:14px;font-weight:600;background:var(--papel);padding:7px 12px;border-radius:999px}
+.u-ficha .nota-ej{display:block;margin-top:12px}
+
+/* 4 · la postal */
+.postal-sec{text-align:center;overflow:hidden}
+.postal-sec .cabeza{justify-content:center;text-align:center}
+.postal-sec .cabeza h2{max-width:none}
+.escena-postal{perspective:1800px;display:flex;justify-content:center}
+.postal{position:relative;width:min(820px,92vw);aspect-ratio:3/2;transform-style:preserve-3d;will-change:transform}
+.cara{position:absolute;inset:0;border-radius:6px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;
+  box-shadow:0 40px 70px -40px rgba(31,42,34,.6),0 0 0 1px rgba(31,42,34,.08)}
+.frente img{width:100%;height:100%;object-fit:cover}
+.frente::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 12px #FBF7EF;background:linear-gradient(0deg,rgba(15,20,16,.6) 0%,rgba(15,20,16,0) 45%)}
+.saludos{z-index:2}
+.saludos{position:absolute;left:34px;bottom:30px;text-align:left;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.45)}
+.saludos small{font-family:"Caveat",cursive;font-size:34px;display:block}
+.saludos b{font-family:"Young Serif",serif;font-weight:400;font-size:clamp(40px,5vw,72px);line-height:.95;display:block}
+.dorso{transform:rotateY(180deg);background:#FBF7EF;display:grid;grid-template-columns:1.1fr .9fr;padding:34px 34px 30px;text-align:left}
+.dorso::before{content:"";position:absolute;left:55%;top:34px;bottom:30px;width:1px;background:rgba(31,42,34,.18)}
+.escrito{font-family:"Caveat",cursive;font-size:clamp(24px,2.4vw,32px);line-height:1.25;color:#24406B;padding-right:28px}
+.escrito ul{list-style:none;margin-top:8px}
+.escrito li::before{content:"· "}
+.escrito .firma{margin-top:14px}
+.dest{position:relative;padding-left:30px;display:flex;flex-direction:column;justify-content:flex-end;gap:18px}
+.estampilla{position:absolute;right:0;top:0;width:96px;height:118px;padding:9px;box-shadow:0 3px 8px rgba(31,42,34,.18);background:radial-gradient(circle at 5px 0,#FBF7EF 3px,transparent 3.6px) 0 0/10px 10px repeat-x,radial-gradient(circle at 5px 10px,#FBF7EF 3px,transparent 3.6px) 0 100%/10px 10px repeat-x,radial-gradient(circle at 0 5px,#FBF7EF 3px,transparent 3.6px) 0 0/10px 10px repeat-y,radial-gradient(circle at 10px 5px,#FBF7EF 3px,transparent 3.6px) 100% 0/10px 10px repeat-y,#fff}
+.estampilla img{width:100%;height:100%;object-fit:cover}
+.matasello{position:absolute;right:62px;top:62px;width:96px;height:96px;border-radius:50%;border:2px solid rgba(36,64,107,.55);display:grid;place-items:center;transform:rotate(-14deg);
+  font-family:"DM Mono",monospace;font-size:10.5px;color:rgba(36,64,107,.75);text-align:center;line-height:1.3}
+.renglon{border-bottom:1px solid rgba(31,42,34,.25);padding-bottom:5px;font-family:"Caveat",cursive;font-size:26px;color:#24406B}
+.girar{margin-top:30px;font-weight:700;border-bottom:1.5px solid var(--tinta);padding-bottom:3px}
+
+/* 5 · nota + mapa */
+.llegar{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;background:#fff}
+.nota-g .grande{font-family:"Young Serif",serif;font-size:clamp(120px,14vw,220px);line-height:.85;letter-spacing:-.03em}
+.estrellas{display:flex;gap:6px;margin:16px 0 10px;color:var(--acento)}
+.estrellas svg{width:26px;height:26px}
+.nota-g p{font-size:19px;font-weight:600}
+.nota-g a,.donde a{display:inline-flex;margin-top:16px;font-weight:700;border-bottom:1.5px solid var(--tinta);padding-bottom:2px}
+.mapa{border-radius:18px;overflow:hidden;aspect-ratio:16/11;background:#ddd}
+.mapa iframe{width:100%;height:100%;border:0}
+.donde{margin-top:18px;font-size:18px}
+.donde b{display:block;font-family:"Young Serif",serif;font-weight:400;font-size:28px}
+
+/* 6 · cierre */
+.cierre{position:relative;min-height:80vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;padding:110px 28px}
+.cierre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cierre::after{content:"";position:absolute;inset:0;background:rgba(20,26,21,.55)}
+.cierre div{position:relative;z-index:2}
+.cierre h2{font-family:"Young Serif",serif;font-weight:400;font-size:clamp(50px,7vw,120px);line-height:.95;max-width:14ch;margin:0 auto 28px;text-wrap:balance}
+.cierre .btn{font-size:18px;padding:18px 30px}
+.pie{background:var(--noche);color:rgba(255,255,255,.7);padding:34px 110px 84px 48px;display:flex;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
+.pie a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+
+/* fijos */
+.muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-family:"DM Mono",monospace;font-size:12px;color:#fff;background:rgba(20,26,21,.8);padding:7px 12px;border-radius:999px}
+.flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(0,0,0,.5)}
+.flotante svg{width:30px;height:30px}
+.aviso{position:fixed;z-index:50;left:50%;bottom:96px;transform:translate(-50%,20px);max-width:min(92vw,460px);background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;
+  font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--suave)}
+.aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .barra{height:62px;padding:0 12px 0 16px}
+  .nav{display:none}
+  .marca{font-size:19px;max-width:56vw}
+  .barra .btn{font-size:14px;padding:10px 14px}
+  .ventana{height:190vh}
+  .v-txt{bottom:7vh}
+  .v-txt h1{font-size:46px}
+  .v-txt .btn{width:100%}
+  .ejemplo-v{top:72px;right:12px;font-size:11px}
+  .sec{padding:72px 16px}
+  .cabeza{display:block;margin-bottom:28px}
+  .cabeza h2{font-size:44px}
+  .cabeza p{font-size:15.5px;margin-top:12px}
+  .noches{display:block}
+  .cal{padding:16px 12px 12px;border-radius:18px}
+  .meses{grid-template-columns:1fr}
+  .mes+.mes{display:none}
+  .resumen{position:relative;top:auto;margin-top:16px;padding:20px 16px 16px;border-radius:18px}
+  .caja-r b{font-size:20px}
+  .tablero{display:block}
+  .clavero{gap:14px;margin-top:46px}
+  .llave{width:92px}
+  .llave .tag{height:150px;padding-top:30px}
+  .llave b{font-size:42px}
+  .llave span{font-size:12px}
+  .u-ficha{margin-top:34px}
+  .u-ficha h3{font-size:25px}
+  .postal{width:92vw;aspect-ratio:2/3}
+  .saludos{left:22px;bottom:24px}
+  .saludos small{font-size:28px}
+  .dorso{grid-template-columns:1fr;grid-template-rows:auto 1fr;padding:24px 20px}
+  .dorso::before{display:none}
+  .escrito{padding-right:0;font-size:25px}
+  .dest{padding-left:0;margin-top:14px}
+  .estampilla{width:78px;height:96px;top:auto;bottom:120px}
+  .matasello{right:52px;top:auto;bottom:150px;width:80px;height:80px;font-size:9.5px}
+  .renglon{font-size:22px}
+  .llegar{display:block}
+  .nota-g .grande{font-size:120px}
+  .mapa{margin-top:32px;aspect-ratio:4/3.4}
+  .cierre{min-height:68vh;padding:88px 18px}
+  .cierre h2{font-size:48px}
+  .pie{display:block;padding:26px 18px 84px;font-size:13.5px}
+  .pie p+p{margin-top:10px}
+  .muestra{left:12px;bottom:12px;font-size:11px}
+  .flotante{right:14px;bottom:14px;width:56px;height:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.llave,.d{transition:none}}
+</style></head><body>
+
+<header class="barra" id="barra">
+  <a class="marca" href="#arriba" data-n>Su alojamiento</a>
+  <nav class="nav"><a href="#noches">Noches libres</a><a href="#unidades" data-plural>Las cabañas</a><a href="#postal">Qué hay cerca</a><a href="#llegar">Cómo llegar</a></nav>
+  <a class="btn" href="#noches">Consultar fechas</a>
+</header>
+
+<section class="ventana" id="arriba">
+  <div class="v-fija">
+    <img class="v-foto" id="v-foto" alt="Ventana de una cabaña de madera que mira a las sierras." fetchpriority="high" decoding="async">
+    <div class="v-velo"></div>
+    <span class="ejemplo-v">Fotos de ejemplo</span>
+    <div class="v-txt" id="v-txt">
+      <span class="v-lugar" data-lugar>Su lugar</span>
+      <h1 data-n>Su alojamiento</h1>
+      <p class="baj" id="v-baj">Elegí tus noches y consultá directo por WhatsApp, sin intermediarios.</p>
+      <a class="btn" href="#noches">Ver las noches libres</a>
+    </div>
+    <p class="v-fin" id="v-fin">Desde la ventana, <em data-destino>el paisaje</em>.</p>
+  </div>
+</section>
+
+<section class="sec" id="noches">
+  <div class="cabeza"><h2>¿Qué <em>noches</em> venís?</h2><p>Tocá el día que llegás y el día que te vas. El mensaje se escribe solo y te contestamos por WhatsApp.<br><span class="nota-ej">Fechas de ejemplo</span></p></div>
+  <div class="noches">
+    <div class="cal">
+      <div class="cal-cab"><button type="button" id="ant" aria-label="Meses anteriores">‹</button><span class="nota-ej">Tocá llegada y salida</span><button type="button" id="sig" aria-label="Meses siguientes">›</button></div>
+      <div class="meses" id="meses"></div>
+    </div>
+    <aside class="resumen">
+      <div class="fila-r"><div class="caja-r"><small>Llegada</small><b id="r-ini">—</b></div><div class="caja-r"><small>Salida</small><b id="r-fin">—</b></div></div>
+      <p class="noches-n" id="r-noches">Elegí las fechas en el calendario</p>
+      <div class="cuantos"><label for="cant">¿Cuántos son?</label><div class="paso"><button type="button" id="menos" aria-label="Menos">−</button><output id="cant">4</output><button type="button" id="mas" aria-label="Más">+</button></div></div>
+      <p class="burbuja" id="burbuja">…<small>ahora</small></p>
+      <button class="btn" type="button" id="enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Consultar por WhatsApp</button>
+    </aside>
+  </div>
+</section>
+
+<section class="sec unidades" id="unidades">
+  <div class="cabeza"><h2 id="u-tit">Elegí tu <em>cabaña</em></h2><p>Cada llave es una. Tocá la que te sirva y mirá cómo es por dentro.<br><span class="nota-ej">Unidades y fotos de ejemplo</span></p></div>
+  <div class="tablero">
+    <div class="clavero" id="clavero"></div>
+    <figure class="u-ficha"><img id="u-foto" alt="" decoding="async"><figcaption><h3 id="u-nom">Cabaña 1 · para 2</h3><ul id="u-cosas"></ul><span class="nota-ej">Lo que trae cada una va con lo suyo</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="sec postal-sec" id="postal">
+  <div class="cabeza"><h2>Una postal de <em data-destino>su lugar</em></h2></div>
+  <div class="escena-postal"><div class="postal" id="tarjeta">
+    <div class="cara frente"><img id="p-foto" alt="" loading="lazy" decoding="async"><span class="saludos"><small>Saludos desde</small><b data-destino>su lugar</b></span></div>
+    <div class="cara dorso">
+      <div class="escrito" id="p-escrito"></div>
+      <div class="dest"><span class="estampilla"><img id="p-sello" alt="" loading="lazy"></span><span class="matasello" id="p-mata">CORREO</span>
+        <p class="renglon" data-n>Su alojamiento</p><p class="renglon" data-lugar>Su lugar</p><p class="renglon">Argentina</p></div>
+    </div>
+  </div></div>
+  <button class="girar" type="button" id="girar">Dar vuelta la postal</button>
+</section>
+
+<section class="sec llegar" id="llegar">
+  <div class="nota-g" id="nota-g"><div class="grande" id="nota-num">4,8</div><div class="estrellas" id="estrellas"></div>
+    <p><span id="opiniones">opiniones</span> de huéspedes en Google</p><a id="ver-opiniones" href="#" target="_blank" rel="noopener">Leer las opiniones →</a></div>
+  <div><div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="donde"><b data-n>Su alojamiento</b><span data-lugar></span><br><a id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar →</a></div></div>
+</section>
+
+<section class="cierre" id="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async">
+  <div><h2 id="c-tit">Tu escapada empieza acá</h2><a class="btn" href="#noches">Consultar fechas</a></div></section>
+
+<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su alojamiento</span>.</p><p>Fotos, unidades y fechas de ejemplo: con los suyos queda su página.</p></footer>
+<span class="muestra">Diseño de muestra</span>
+<a class="flotante" href="#noches" id="flotante" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg></a>
+<p class="aviso" id="aviso" role="status"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// los 54 alojamientos de la lista: nombre, lugar, nota, opiniones y qué alquilan
+const ALOJAMIENTOS = {"cabanas-el-refugio-del-mensu":["Cabañas El Refugio del Mensú","Puerto Iguazú, Misiones",4.5,953,"cabaña"],"tilcara-sierras-complejo-de-cabanas":["Tilcara Sierras - Complejo de Cabañas","Villa Carlos Paz, Córdoba",4.4,472,"cabaña"],"cabanas-el-manantial-de-iguazu":["Cabañas El Manantial de Iguazu","Puerto Iguazú, Misiones",4.8,434,"cabaña"],"cabanas-agua-que-brilla":["Cabañas Agua que Brilla","Mina Clavero, Córdoba",4.4,426,"cabaña"],"departamentos-lugar-de-descanso":["Departamentos Lugar de Descanso","El Bolsón, Río Negro",4.5,375,"departamento"],"cabanas-cerros-de-belgrano":["Cabañas Cerros de Belgrano","Villa General Belgrano, Córdoba",4.8,363,"cabaña"],"cabanas-dryadales":["Cabañas Dryadales","Villa General Belgrano, Córdoba",4.7,343,"cabaña"],"casita-del-rio":["Casita del Río","Mina Clavero, Córdoba",4.7,340,"habitación"],"cabanas-rincon-del-rio":["Cabañas Rincón del Rio","Colón, Entre Ríos",4.8,334,"cabaña"],"cabanas-kurupi":["Cabañas Kurupí","Puerto Iguazú, Misiones",4.5,298,"cabaña"],"tu-tiempo-departamentos":["Tu Tiempo Departamentos","Tafí del Valle, Tucumán",5.0,264,"departamento"],"cabanas-el-refugio-de-juan":["Cabañas El Refugio de Juan","Mina Clavero, Córdoba",4.6,258,"cabaña"],"cabanas-antawara":["Cabañas Antawara","Merlo, San Luis",4.6,256,"cabaña"],"aratiri-cabanas":["Aratiri Cabañas","Colón, Entre Ríos",4.8,241,"cabaña"],"cabanas-tunquelen":["Cabañas Tunquelén","El Bolsón, Río Negro",4.6,241,"cabaña"],"cabana-los-cedros":["Cabaña Los Cedros","Puerto Iguazú, Misiones",4.4,227,"cabaña"],"complejo-sol-cabanas":["Complejo Sol Cabañas","Villa Carlos Paz, Córdoba",4.5,225,"cabaña"],"cabanas-aires-de-tafi":["Cabañas Aires de Tafí","Tafí del Valle, Tucumán",4.7,208,"cabaña"],"colon-village-complejo":["Colon Village Complejo","Colón, Entre Ríos",4.5,201,"habitación"],"cabanas-las-pircas":["Cabañas Las Pircas","Villa General Belgrano, Córdoba",4.4,198,"cabaña"],"complejo-la-morena":["Complejo La Morena","Mina Clavero, Córdoba",4.5,197,"habitación"],"cabana-el-hornero":["Cabaña El Hornero","Puerto Iguazú, Misiones",4.7,193,"cabaña"],"complejo-de-mar-wasiyki":["Complejo de Mar Wasiyki","Villa Gesell, Buenos Aires",4.9,185,"departamento"],"cabanas-selva-verde":["Cabañas Selva Verde","Puerto Iguazú, Misiones",4.9,168,"cabaña"],"cabanas-piedralago-villa-carlos-paz":["Cabañas Piedralago Villa Carlos Paz","Villa Carlos Paz, Córdoba",4.9,166,"cabaña"],"cabanas-la-quinta":["Cabañas La Quinta","Puerto Iguazú, Misiones",4.6,162,"cabaña"],"complejo-mi-sueno":["Complejo Mi Sueño","Villa Carlos Paz, Córdoba",4.4,155,"habitación"],"cabanas-la-frontera":["Cabañas la Frontera","Villa General Belgrano, Córdoba",4.7,152,"cabaña"],"cabanas-don-merencho":["Cabañas Don Merencho","Colón, Entre Ríos",4.8,131,"cabaña"],"cabanas-las-escondidas":["Cabañas Las Escondidas","Monte Hermoso, Buenos Aires",4.4,121,"cabaña"],"complejo-de-las-sierras-cabanas":["Complejo de las Sierras Cabañas","Villa Carlos Paz, Córdoba",4.4,118,"cabaña"],"cabanas-monte-hermoso":["Cabañas Monte Hermoso","Monte Hermoso, Buenos Aires",4.6,117,"cabaña"],"la-reserva-cabanas-apart":["La Reserva - Cabañas - Apart.","Pilar, Buenos Aires",4.9,116,"cabaña"],"cabanas-del-monte-iguazu":["Cabañas Del Monte Iguazu","Puerto Iguazú, Misiones",4.5,99,"cabaña"],"cabanas-san-rafael-quinta-baigorri":["Cabañas San Rafael Quinta Baigorri","San Rafael, Mendoza",4.5,94,"cabaña"],"cabanas-57":["Cabañas 57","Villa Carlos Paz, Córdoba",4.8,72,"cabaña"],"cabanas-paraiso-iguazu":["Cabañas Paraíso Iguazú","Puerto Iguazú, Misiones",4.6,61,"cabaña"],"cabanas-itati":["Cabañas Itati","Puerto Iguazú, Misiones",4.2,60,"cabaña"],"la-ofis-apart-alojamiento-por-dia":["La Ofis Apart Alojamiento por día","Eldorado, Misiones",4.7,58,"departamento"],"departamentos-temporarios-premium-tucuman":["Departamentos Temporarios Premium Tucuman","San Miguel de Tucumán, Tucumán",4.7,58,"departamento"],"cedro-departamentos-temporarios":["Cedro Departamentos Temporarios","Posadas, Misiones",4.2,52,"departamento"],"complejo-cabanas-del-arbol":["Complejo Cabañas Del Árbol","Villa Gesell, Buenos Aires",4.5,46,"cabaña"],"cabanas-villa-gesell-casalba":["Cabañas Villa Gesell Casalba","Villa Gesell, Buenos Aires",4.6,46,"cabaña"],"el-mangrullo-cabanas-de-campo":["El Mangrullo Cabañas de Campo","Colón, Entre Ríos",4.7,36,"cabaña"],"perito-moreno-217-edificio-las-arecas":["Perito Moreno 217 - Edificio Las Arecas","Puerto Iguazú, Misiones",4.7,35,"departamento"],"cabanas-don-salvador":["Cabañas Don Salvador","El Bolsón, Río Negro",4.2,32,"cabaña"],"orillas-del-iguazu":["Orillas del Iguazú","Puerto Iguazú, Misiones",4.7,30,"habitación"],"cabanas-del-chachi-obera":["Cabañas Del Chachí Oberá","Oberá, Misiones",4.7,29,"cabaña"],"el-sauce":["El Sauce","Apóstoles, Misiones",4.7,27,"departamento"],"frente-al-rio":["Frente al Río","Paraná, Entre Ríos",4.5,24,"departamento"],"cabanas-don-benito":["Cabañas Don Benito","Puerto Iguazú, Misiones",4.9,24,"cabaña"],"lo-de-melody":["Lo De Melody","Goya, Corrientes",4.5,21,"cabaña"],"yasi-departamentos-temporarios":["Yasí Departamentos Temporarios","Corrientes, Corrientes",4.5,18,"departamento"],"complejo-la-pineta":["Complejo La Pineta","Villa Gesell, Buenos Aires",4.6,18,"casa"]};
+const q = new URLSearchParams(location.search);
+const A = ALOJAMIENTOS[(q.get('s') || '').toLowerCase()] || null;
+const N = (q.get('n') || '').trim() || (A && A[0]) || 'Su alojamiento';
+const LUGAR = (q.get('c') || '').trim() || (A && A[1]) || '';
+const CIUDAD = LUGAR.split(',')[0].trim();
+const R = parseFloat((q.get('r') || '').replace(',', '.')) || (A && A[2]) || NaN;
+const O = parseInt((q.get('o') || '').replace(/\D/g, ''), 10) || (A && A[3]) || 0;
+const UNIDAD = q.get('u') || (A && A[4]) || 'cabaña';
+const PLURAL = {cabaña: 'cabañas', departamento: 'departamentos', habitación: 'habitaciones', casa: 'casas'}[UNIDAD] || 'cabañas';
+
+// el destino: una foto y lo que hay cerca (datos del lugar, no del alojamiento)
+const DESTINOS = {
+  'Puerto Iguazú': [623174, ['Cataratas del Iguazú', 'Garganta del Diablo', 'Hito Tres Fronteras']],
+  'Villa Carlos Paz': [4613340, ['Lago San Roque', 'Reloj Cucú', 'Aerosilla']],
+  'Colón': [20828512, ['Termas de Colón', 'Parque Nacional El Palmar', 'Playas del río Uruguay']],
+  'Mina Clavero': [13544822, ['Río Mina Clavero', 'Camino de las Altas Cumbres', 'Museo Rocsen, en Nono']],
+  'Villa General Belgrano': [32347342, ['La Cumbrecita', 'Fiesta Nacional de la Cerveza', 'Valle de Calamuchita']],
+  'Villa Gesell': [31767893, ['La playa y el muelle', 'El bosque', 'Faro Querandí']],
+  'Monte Hermoso': [18371944, ['La playa', 'Faro Recalada', 'Laguna Sauce Grande']],
+  'El Bolsón': [28212551, ['Cerro Piltriquitrón', 'Feria Regional', 'Lago Puelo']],
+  'Tafí del Valle': [18291491, ['Dique La Angostura', 'Parque de los Menhires', 'El Mollar']],
+  'Merlo': [32347342, ['Mirador del Sol', 'Sierras de los Comechingones', 'Reserva Mogote Bayo']],
+  'San Rafael': [32550771, ['Cañón del Atuel', 'Valle Grande', 'Bodegas de la zona']]
+};
+const DEST = DESTINOS[CIUDAD] || [2408745, null];
+
+const UNIDADES = [
+  {n: 1, para: 2, foto: 19737829, cosas: ['Cama matrimonial', 'Vista al verde', 'Cocina equipada']},
+  {n: 2, para: 4, foto: 30070551, cosas: ['Dos ambientes', 'Parrilla propia', 'Wi-Fi']},
+  {n: 3, para: 6, foto: 5439497, cosas: ['Tres camas', 'Galería con mesa', 'Estacionamiento']}
+];
+
+// ── el nombre y los datos, donde van ──
+$$('[data-n]').forEach(el => el.textContent = N);
+$$('[data-lugar]').forEach(el => el.textContent = LUGAR || 'Argentina');
+$$('[data-destino]').forEach(el => el.textContent = CIUDAD || 'su lugar');
+$$('[data-plural]').forEach(el => el.textContent = 'Las ' + PLURAL);
+document.title = `${N} · diseño de muestra · Mas & Co`;
+const vf = $('#v-foto'); vf.sizes = '100vw'; vf.srcset = juego(17090486, [800, 1300, 2000]); vf.src = foto(17090486, 1300);
+$('#v-baj').textContent = `${PLURAL[0].toUpperCase() + PLURAL.slice(1)} en ${CIUDAD || 'Argentina'}. Elegí tus noches y consultá directo por WhatsApp, sin intermediarios.`;
+$('#u-tit').innerHTML = `Elegí tu <em>${UNIDAD}</em>`;
+const pf = $('#p-foto'); pf.sizes = '(max-width:860px) 92vw, 820px'; pf.srcset = juego(DEST[0], [700, 1100, 1600]); pf.src = foto(DEST[0], 1100);
+$('#p-sello').src = foto(DEST[0], 300);
+$('#p-mata').innerHTML = `${(CIUDAD || 'CORREO').toUpperCase()}<br>${new Date().getFullYear()}`;
+$('#p-escrito').innerHTML = DEST[1]
+  ? `Cerca de la ${UNIDAD === 'cabaña' ? 'cabaña' : 'casa'}:<ul>${DEST[1].map(x => `<li>${x}</li>`).join('')}</ul><p class="firma">¡Los esperamos!</p>`
+  : `Lo que hay para hacer cerca va acá, contado por ustedes.<p class="firma">¡Los esperamos!</p>`;
+const cf = $('#c-foto'); cf.sizes = '100vw'; cf.srcset = juego(7047478, [800, 1300, 1900]); cf.src = foto(7047478, 1300);
+$('#c-tit').textContent = `Tu escapada a ${CIUDAD || 'las sierras'} empieza acá`;
+
+const busqueda = encodeURIComponent([N, LUGAR].filter(Boolean).join(', '));
+if (!isNaN(R) && O) {
+  $('#nota-num').textContent = R.toFixed(1).replace('.', ',');
+  $('#opiniones').textContent = `${O.toLocaleString('es-AR')} opiniones`;
+  $('#ver-opiniones').href = `https://www.google.com/maps/search/?api=1&query=${busqueda}`;
+  const llenas = Math.round(R);
+  $('#estrellas').innerHTML = Array.from({length: 5}, (_, i) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="${i < llenas ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('');
+} else $('#nota-g').style.display = 'none';
+$('#mapa').src = `https://www.google.com/maps?q=${busqueda || 'Argentina'}&output=embed`;
+$('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${busqueda}`;
+
+// ── 3 · los llaveros ──
+$('#clavero').innerHTML = UNIDADES.map((u, i) => `<button class="llave${i ? '' : ' on'}" type="button" data-i="${i}" aria-label="${UNIDAD} ${u.n}, para ${u.para}"><span class="aro"></span><span class="tag"><b>${u.n}</b><span>para ${u.para}</span></span></button>`).join('');
+function mostrarUnidad(i, animar = true) {
+  const u = UNIDADES[i], img = $('#u-foto');
+  $$('.llave').forEach((l, k) => l.classList.toggle('on', k === i));
+  const poner = () => { img.sizes = '(max-width:860px) 92vw, 50vw'; img.srcset = juego(u.foto, [600, 900, 1300]); img.src = foto(u.foto, 900);
+    $('#u-nom').textContent = `${UNIDAD[0].toUpperCase() + UNIDAD.slice(1)} ${u.n} · para ${u.para}`;
+    $('#u-cosas').innerHTML = u.cosas.map(c => `<li>${c}</li>`).join(''); };
+  if (!animar || reduce) return poner();
+  gsap.to('.u-ficha', {autoAlpha: 0, y: 14, duration: .2, ease: 'power2.in', onComplete: () => { poner(); gsap.to('.u-ficha', {autoAlpha: 1, y: 0, duration: .45, ease: 'power3.out'}); }});
+  const l = $$('.llave')[i];
+  gsap.fromTo(l, {rotation: -9}, {rotation: 0, duration: 1.2, ease: 'elastic.out(1.1, .35)'});
+}
+$('#clavero').addEventListener('click', e => { const l = e.target.closest('.llave'); if (l) mostrarUnidad(+l.dataset.i); });
+mostrarUnidad(0, false);
+
+// ── 2 · las noches ──
+const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+let base = new Date(hoy.getFullYear(), hoy.getMonth() + 1, 1);   // arranca el mes que viene
+let ini = null, fin = null, cant = 4;
+const ocupado = d => { const k = d.getFullYear() * 400 + d.getMonth() * 31 + d.getDate(); return (k * 37 % 11) < 3; };
+function mesHTML(m) {
+  const pri = new Date(m.getFullYear(), m.getMonth(), 1), dias = new Date(m.getFullYear(), m.getMonth() + 1, 0).getDate();
+  let h = `<div class="mes"><h3>${MESES[m.getMonth()]} ${m.getFullYear()}</h3><div class="grilla">` + ['L', 'M', 'M', 'J', 'V', 'S', 'D'].map(x => `<span class="dsem">${x}</span>`).join('');
+  for (let i = 0; i < (pri.getDay() + 6) % 7; i++) h += '<span></span>';
+  for (let d = 1; d <= dias; d++) {
+    const f = new Date(m.getFullYear(), m.getMonth(), d), t = f.getTime();
+    h += `<button class="d" type="button" data-t="${t}"${f < hoy ? ' disabled' : ocupado(f) ? ' disabled title="Ocupado"' : ''}>${d}</button>`;
+  }
+  return h + '</div></div>';
+}
+function pintarCal() {
+  const m2 = new Date(base.getFullYear(), base.getMonth() + 1, 1);
+  $('#meses').innerHTML = mesHTML(base) + mesHTML(m2);
+  $('#ant').disabled = base <= new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+  marcar();
+}
+function marcar() {
+  $$('.d').forEach(b => {
+    const t = +b.dataset.t;
+    b.classList.toggle('borde', (ini && t === +ini) || (fin && t === +fin));
+    b.classList.toggle('ini', ini && t === +ini); b.classList.toggle('fin', fin && t === +fin);
+    b.classList.toggle('en-rango', !!(ini && fin && t > +ini && t < +fin));
+  });
+}
+const corto = d => `${DIAS[d.getDay()].slice(0, 3)} ${d.getDate()} ${MESES[d.getMonth()].slice(0, 3)}`;
+function libreEntre(a, b) { for (let d = new Date(a); d < b; d.setDate(d.getDate() + 1)) if (ocupado(d)) return false; return true; }
+function tocar(t) {
+  const d = new Date(+t);
+  if (!ini || fin || d <= ini) { ini = d; fin = null; }
+  else if (libreEntre(ini, d)) fin = d;
+  else { ini = d; fin = null; }
+  marcar(); escribir();
+}
+$('#meses').addEventListener('click', e => { const b = e.target.closest('.d'); if (b && !b.disabled) tocar(b.dataset.t); });
+$('#ant').addEventListener('click', () => { base = new Date(base.getFullYear(), base.getMonth() - 1, 1); pintarCal(); });
+$('#sig').addEventListener('click', () => { base = new Date(base.getFullYear(), base.getMonth() + 1, 1); pintarCal(); });
+$('#menos').addEventListener('click', () => { cant = Math.max(1, cant - 1); escribir(); });
+$('#mas').addEventListener('click', () => { cant = Math.min(16, cant + 1); escribir(); });
+function escribir(animar = true) {
+  $('#cant').textContent = cant;
+  $('#r-ini').textContent = ini ? corto(ini) : '—';
+  $('#r-fin').textContent = fin ? corto(fin) : '—';
+  const noches = ini && fin ? Math.round((fin - ini) / 864e5) : 0;
+  $('#r-noches').textContent = noches ? `${noches} ${noches === 1 ? 'noche' : 'noches'}` : ini ? 'Ahora tocá el día que te vas' : 'Elegí las fechas en el calendario';
+  const txt = ini && fin
+    ? `Hola, ¿tienen lugar del ${DIAS[ini.getDay()]} ${ini.getDate()}${ini.getMonth() !== fin.getMonth() ? ' de ' + MESES[ini.getMonth()] : ''} al ${DIAS[fin.getDay()]} ${fin.getDate()} de ${MESES[fin.getMonth()]} para ${cant} ${cant === 1 ? 'persona' : 'personas'}?`
+    : `Hola, quería consultar por una ${UNIDAD === 'cabaña' ? 'cabaña' : UNIDAD} para ${cant} ${cant === 1 ? 'persona' : 'personas'}.`;
+  const b = $('#burbuja'); b.innerHTML = `${txt}<small>ahora</small>`;
+  if (animar && !reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
+}
+(function inicial() {   // deja elegido un fin de semana libre para que se vea cómo queda
+  const v = new Date(base); v.setDate(v.getDate() + ((5 - v.getDay() + 7) % 7) + 7);
+  for (let s = 0; s < 8; s++) { const a = new Date(v); a.setDate(v.getDate() + s * 7); const b = new Date(a); b.setDate(a.getDate() + 2);
+    if (!ocupado(a) && libreEntre(a, b) && !ocupado(b)) { ini = a; fin = b; break; } }
+  pintarCal(); escribir(false);
+})();
+function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); clearTimeout(avisar._t); avisar._t = setTimeout(() => a.classList.remove('ver'), 4200); }
+$('#enviar').addEventListener('click', () => avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`));
+$('#flotante').addEventListener('click', e => { e.preventDefault(); $('#noches').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); });
+
+// ── 4 · la postal: se da vuelta con el scroll, o con el botón ──
+let dada = false;
+$('#girar').addEventListener('click', () => { dada = !dada; gsap.to('#tarjeta', {rotationY: dada ? 180 : 0, duration: reduce ? 0 : 1, ease: 'power3.inOut'}); });
+
+// ── barra: transparente sobre la ventana, sólida después ──
+const barraSolida = () => $('#barra').classList.toggle('solida', scrollY > innerHeight * .9);
+addEventListener('scroll', barraSolida, {passive: true}); barraSolida();
+
+const mm = gsap.matchMedia();
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  // 1 · la cámara entra por la ventana
+  const tl = gsap.timeline({scrollTrigger: {trigger: '.ventana', start: 'top top', end: 'bottom bottom', scrub: .6}});
+  tl.to('#v-foto', {scale: 2.3, ease: 'power1.in', duration: 1}, 0)
+    .to('#v-txt', {autoAlpha: 0, y: -50, ease: 'power2.in', duration: .3}, 0)
+    .to('.v-velo', {opacity: .55, duration: .5}, .2)
+    .fromTo('#v-fin', {autoAlpha: 0, y: 30}, {autoAlpha: 1, y: 0, ease: 'power2.out', duration: .3}, .5)
+    .to('#v-fin', {autoAlpha: 0, duration: .15}, .88);
+  // 4 · la postal se da vuelta sola al pasar
+  gsap.fromTo('#tarjeta', {rotationY: 0, rotationX: 6}, {rotationY: 180, rotationX: 0, ease: 'power2.inOut',
+    scrollTrigger: {trigger: '.escena-postal', start: 'center 52%', end: 'center 18%', scrub: .8, onLeave: () => dada = true, onEnterBack: () => dada = false}});
+  $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
+  gsap.from('.llave', {y: -50, rotation: -12, autoAlpha: 0, stagger: .12, duration: 1.1, ease: 'elastic.out(1, .5)', scrollTrigger: {trigger: '#clavero', start: 'top 80%'}});
+  if (!isNaN(R)) { const o = {v: 0}; gsap.to(o, {v: R, duration: 1.3, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 85%'},
+    onUpdate: () => { $('#nota-num').textContent = o.v.toFixed(1).replace('.', ','); }}); }
+  gsap.fromTo('#c-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '#cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}});
+});
+addEventListener('load', () => ScrollTrigger.refresh());
+document.fonts.ready.then(() => ScrollTrigger.refresh());
+</script>
+</body></html>
