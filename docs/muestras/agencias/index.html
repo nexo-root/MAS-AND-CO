@@ -1,0 +1,687 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Diseño de muestra para su agencia de viajes · Mas & Co">
+<meta property="og:description" content="Recórrala completa: el tablero de partidas, el mapa con las rutas y el pasaje que se completa solo.">
+<meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
+<title>Agencia de viajes · diseño de muestra · Mas & Co</title>
+<link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Muestra completa para agencias de viajes · Mas & Co · 12/10/2026. Una página para las 28 de la lista:
+   …/agencias/?s=<slug> trae nombre, lugar, nota, opiniones y qué venden:
+   viajes (destinos con avión), micro (pasajes desde la terminal), agua / ciudad / iguazu (excursiones del lugar).
+   1. El tablero de partidas (arquetipo 2, objeto protagonista, sobre la foto a sangre): las letras giran hasta armar
+      el nombre de la agencia y las próximas salidas.
+   2. El mapa con las rutas: sale desde la ciudad de la agencia, el avión (o el micro) vuela hasta el destino elegido.
+      En las de excursiones, las salidas de la semana.
+   3. El pasaje: cuándo, cuántos y qué incluye; lo que se suma cae como un sello y el mensaje se escribe solo.
+   4. La nota de Google y el mapa real. 5. Cierre.
+   Fotos de Pexels. Destinos, horarios, salidas y datos de ejemplo. */
+:root{--noche:#0C1520;--noche2:#132131;--papel:#F4F0E6;--tinta:#121A22;--gris:#5F6870;--mar:#0E5C76;--mar2:#0A4A60;--sol:#F2B33D;--suave:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--papel);color:var(--tinta);font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block}
+section{scroll-margin-top:70px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--mar);color:#fff;font-weight:700;border-radius:999px;white-space:nowrap;transition:background .25s,transform .25s var(--suave)}
+.btn:hover{background:var(--mar2)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px}
+.nota-ej{font-size:13px;color:var(--gris)}
+
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;
+  background:rgba(12,21,32,.86);backdrop-filter:blur(8px);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.07)}
+.marca{font-family:"Instrument Serif",serif;font-size:27px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44vw}
+.nav{display:flex;gap:26px;font-size:15.5px;font-weight:600;color:rgba(255,255,255,.8)}
+.nav a:hover{color:#fff}
+.barra .btn{font-size:15px;padding:12px 18px}
+
+/* 1 · el tablero */
+.partidas{position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:96px 24px 60px;background:var(--noche);color:#fff;overflow:hidden}
+.partidas .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.partidas::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,22,.66),rgba(8,14,22,.34) 45%,rgba(8,14,22,.8))}
+.centro-t{position:relative;z-index:2;width:min(1120px,100%);text-align:center}
+.tipo{font-size:17px;font-weight:600;color:rgba(255,255,255,.88)}
+.tablero{margin:18px auto 0;display:inline-block;background:#0B0B0C;border-radius:14px;padding:22px 22px 18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.06);text-align:left}
+.fila{display:flex;gap:var(--g)}
+.fila+.fila{margin-top:var(--g)}
+.fila.nombre+.fila.nombre{margin-top:var(--g)}
+.fila.titulos{margin:14px 0 8px;gap:var(--g)}
+.fila.titulos span{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:calc(var(--t)*.36);color:rgba(255,255,255,.5);letter-spacing:.04em}
+.ficha{position:relative;width:var(--t);height:calc(var(--t)*1.32);border-radius:3px;perspective:300px;
+  background:linear-gradient(180deg,#2B2B2D 0,#202022 49%,#0E0E0F 49.5%,#0E0E0F 50.5%,#1C1C1E 51%,#262628 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+.ficha b{position:absolute;inset:0;display:grid;place-items:center;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:calc(var(--t)*.98);line-height:1;color:#F4EFE3;transform-origin:50% 50%}
+.fila.nombre .ficha b{color:var(--sol)}
+.ficha.vacia{background:#141416}
+.acciones{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+.acciones .btn{font-size:17px;padding:16px 26px}
+.btn.claro{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7);color:#fff}
+.btn.claro:hover{background:rgba(255,255,255,.1)}
+.ejemplo-h{position:absolute;z-index:3;right:20px;top:84px;font-size:12.5px;color:#fff;background:rgba(8,14,22,.6);padding:6px 11px;border-radius:999px}
+
+/* secciones */
+.sec{position:relative;padding:112px 48px}
+.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:0 auto 44px;max-width:1220px}
+.cabeza h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(50px,5.8vw,96px);line-height:.95;letter-spacing:-.01em;max-width:12ch;text-wrap:balance}
+.cabeza h2 em{color:var(--mar)}
+.cabeza p{max-width:25em;font-size:17.5px;color:var(--gris);line-height:1.5}
+
+/* 2 · el mapa */
+.rutas{background:var(--noche);color:#fff}
+.rutas .cabeza h2 em{color:var(--sol)}
+.rutas .cabeza p,.rutas .nota-ej{color:rgba(255,255,255,.7)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:10px 15px;border-radius:999px;font-weight:600;font-size:15px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);transition:background .2s,color .2s}
+.chip:hover{background:rgba(255,255,255,.16)}
+.chip.on{background:var(--sol);color:#1B1406;box-shadow:none}
+.rutas .chips{max-width:1220px;margin:0 auto 18px}
+.mapa-rutas{display:grid;grid-template-columns:1.5fr .62fr;gap:26px;max-width:1220px;margin:0 auto;align-items:center}
+.lienzo{position:relative;border-radius:22px;background:radial-gradient(120% 90% at 50% 120%,#173049,#0F1E2D 60%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);overflow:hidden}
+#mapa-mundo{display:block;width:100%;height:auto}
+#mapa-mundo .tierra{fill:url(#puntos)}
+#mapa-mundo .tierra.casa{fill:url(#puntos-casa)}
+#mapa-mundo .ruta{fill:none;stroke:rgba(255,255,255,.22);stroke-width:1.2;stroke-dasharray:3 5}
+#mapa-mundo .activa{fill:none;stroke:var(--sol);stroke-width:2.4;stroke-linecap:round}
+#mapa-mundo .punto{fill:#fff}
+#mapa-mundo .punto.on{fill:var(--sol)}
+#mapa-mundo .origen{fill:var(--sol)}
+#mapa-mundo .halo{fill:none;stroke:var(--sol);stroke-width:1.5;opacity:.6}
+#mapa-mundo text{font-family:Barlow,sans-serif;font-weight:600;fill:rgba(255,255,255,.78);paint-order:stroke;stroke:#0F1E2D;stroke-width:4px;stroke-linejoin:round;cursor:pointer}
+#mapa-mundo text.on{fill:var(--sol)}
+#mapa-mundo text.de{fill:#fff;font-weight:700}
+.lienzo .nota-ej{position:absolute;left:18px;bottom:14px}
+.destino{background:var(--papel);color:var(--tinta);border-radius:20px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(0,0,0,.9)}
+.destino .ft{height:220px;overflow:hidden}
+.destino img{width:100%;height:100%;object-fit:cover}
+.destino .info{padding:20px 22px 22px}
+.destino small{font-size:14px;font-weight:600;color:var(--gris)}
+.destino h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:40px;line-height:1;margin:4px 0 12px}
+.dato{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;line-height:1.4;margin-top:8px}
+.dato svg{flex:none;width:20px;height:20px;margin-top:1px;color:var(--mar)}
+.destino .btn{width:100%;margin-top:18px;padding:15px;font-size:16px}
+.salidas{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1220px;margin:0 auto}
+.salida{position:relative;text-align:left;background:var(--papel);color:var(--tinta);border-radius:18px;overflow:hidden;box-shadow:0 0 0 2px transparent;transition:box-shadow .25s,transform .35s var(--suave)}
+.salida:hover{transform:translateY(-4px)}
+.salida.on{box-shadow:0 0 0 3px var(--sol)}
+.salida .ft{height:230px;overflow:hidden}
+.salida img{width:100%;height:100%;object-fit:cover}
+.salida div:last-child{padding:16px 18px 18px}
+.salida b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:28px;line-height:1.05}
+.salida span{display:block;margin-top:8px;font-size:15px;color:var(--gris);font-weight:600}
+.salida em{display:inline-block;margin-top:12px;font-style:normal;font-weight:700;font-size:14.5px;border-bottom:1.5px solid var(--tinta)}
+
+/* 3 · el pasaje */
+.armado{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;max-width:1220px;margin:0 auto;align-items:start}
+.controles{background:var(--noche2);color:#fff;border-radius:22px;padding:26px 24px 24px}
+.grupo+.grupo{margin-top:22px}
+.grupo h3{font-size:15px;font-weight:700;color:rgba(255,255,255,.72);margin-bottom:10px}
+.gente{display:flex;flex-direction:column;gap:10px}
+.cont{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;font-size:16px}
+.cont div{display:flex;align-items:center;gap:12px}
+.cont button{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);font-size:22px;line-height:1;display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.cont output{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;min-width:28px;text-align:center}
+.lado-pase{position:relative}
+.pase{position:relative;display:grid;grid-template-columns:1fr 200px;background:#fff;border-radius:20px;box-shadow:0 34px 60px -38px rgba(18,26,34,.55),0 0 0 1px rgba(18,26,34,.06)}
+.pase .principal{padding:22px 26px 24px;min-width:0}
+.cabecera-p{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:14px;border-bottom:1.5px solid rgba(18,26,34,.1)}
+.cabecera-p b{font-family:"Instrument Serif",serif;font-weight:400;font-size:24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cabecera-p span{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;color:var(--gris);white-space:nowrap}
+.trayecto{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px}
+.lugar-p{min-width:0}
+.lugar-p.der{text-align:right}
+.lugar-p strong{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:60px;line-height:.95;letter-spacing:.01em}
+.lugar-p small{display:block;font-size:14.5px;font-weight:600;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.medio{flex:1;display:flex;align-items:center;gap:8px;color:var(--mar)}
+.medio i{flex:1;border-top:2px dashed rgba(14,92,118,.4)}
+.medio svg{width:30px;height:30px}
+.excursion-p{margin-top:16px}
+.excursion-p strong{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:44px;line-height:1}
+.excursion-p small{display:block;margin-top:6px;font-size:15px;font-weight:600;color:var(--gris)}
+.campos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.campos div small{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:14px;color:var(--gris)}
+.campos div b{display:block;font-size:18px;font-weight:700;margin-top:2px}
+.sellos{position:relative;min-height:118px;margin-top:16px;padding:14px 12px;border-radius:12px;display:flex;flex-wrap:wrap;align-content:center;gap:12px 16px;background:repeating-linear-gradient(-45deg,rgba(18,26,34,.025) 0 8px,transparent 8px 16px)}
+.sellos .vacio{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;color:var(--gris)}
+.sello{position:relative;display:inline-block;padding:6px 11px;border:2.5px solid currentColor;border-radius:8px;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;line-height:1;white-space:nowrap;opacity:.88;
+  box-shadow:inset 0 0 0 2px #fff,inset 0 0 0 3.5px currentColor;mix-blend-mode:multiply}
+.talon{position:relative;border-left:2px dashed rgba(18,26,34,.18);padding:22px 20px 20px;display:flex;flex-direction:column;justify-content:space-between;background:#FBF8F1;border-radius:0 20px 20px 0}
+.talon::before,.talon::after{content:"";position:absolute;left:-13px;width:24px;height:24px;border-radius:50%;background:var(--papel)}
+.talon::before{top:-12px}.talon::after{bottom:-12px}
+.talon small{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:14px;color:var(--gris)}
+.talon strong{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:54px;line-height:.95}
+.barras{height:62px;border-radius:3px}
+.talon p{font-size:13px;color:var(--gris)}
+.burbuja{margin-top:18px;background:#D9FDD3;color:#111B21;border-radius:14px 14px 14px 4px;padding:13px 15px 22px;font-size:15.5px;line-height:1.45;position:relative}
+.burbuja small{position:absolute;right:12px;bottom:6px;font-size:11.5px;color:#667781}
+.burbuja.cambia{animation:latir .45s var(--suave)}
+@keyframes latir{0%{transform:scale(.985)}100%{transform:none}}
+.lado-pase .btn{width:100%;margin-top:14px;font-size:17px;padding:16px}
+
+/* 4 · nota + mapa */
+.llegar{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;background:#fff}
+.nota-g .grande{font-family:"Instrument Serif",serif;font-size:clamp(130px,15vw,240px);line-height:.85;letter-spacing:-.02em}
+.estrellas{display:flex;gap:6px;margin:16px 0 10px;color:var(--mar)}
+.estrellas svg{width:26px;height:26px}
+.nota-g p{font-size:19px;font-weight:600}
+.nota-g a,.donde a{display:inline-flex;margin-top:16px;font-weight:700;border-bottom:1.5px solid var(--tinta);padding-bottom:2px}
+.mapa{border-radius:18px;overflow:hidden;aspect-ratio:16/11;background:#ddd}
+.mapa iframe{width:100%;height:100%;border:0}
+.donde{margin-top:18px;font-size:18px}
+.donde b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:32px}
+
+/* 5 · cierre */
+.cierre{position:relative;min-height:80vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;padding:110px 28px}
+.cierre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cierre::after{content:"";position:absolute;inset:0;background:rgba(8,14,22,.45)}
+.cierre div{position:relative;z-index:2}
+.cierre h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(56px,7.6vw,128px);line-height:.95;max-width:13ch;margin:0 auto 14px;text-wrap:balance}
+.cierre p{font-size:19px;margin-bottom:30px;color:rgba(255,255,255,.9)}
+.cierre .btn{font-size:18px;padding:18px 30px}
+.pie{background:var(--noche);color:rgba(255,255,255,.7);padding:34px 110px 84px 48px;display:flex;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
+.pie a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+
+.muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(12,21,32,.86);padding:7px 12px;border-radius:999px}
+.flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(0,0,0,.5)}
+.flotante svg{width:30px;height:30px}
+.aviso{position:fixed;z-index:70;left:50%;bottom:96px;transform:translate(-50%,20px);max-width:min(92vw,460px);background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;
+  font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--suave)}
+.aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .barra{height:60px;padding:0 12px 0 16px}
+  .nav{display:none}
+  .marca{font-size:22px;max-width:56vw}
+  .barra .btn{font-size:14px;padding:10px 14px}
+  .partidas{padding:84px 12px 56px}
+  .tipo{font-size:15px}
+  .tablero{padding:14px 12px 12px;border-radius:12px}
+  .acciones{margin-top:28px}
+  .acciones .btn{font-size:15px;padding:14px 18px}
+  .ejemplo-h{top:auto;bottom:62px;right:auto;left:50%;transform:translateX(-50%);font-size:11.5px;white-space:nowrap}
+  .sec{padding:72px 16px}
+  .cabeza{display:block;margin-bottom:26px}
+  .cabeza h2{font-size:46px}
+  .cabeza p{font-size:15.5px;margin-top:12px}
+  .chip{font-size:14px;padding:9px 13px}
+  .rutas .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px 14px;padding:0 16px 4px;scrollbar-width:none}
+  .rutas .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+  .mapa-rutas{display:block}
+  .lienzo{border-radius:18px}
+  .destino{margin-top:14px;display:grid;grid-template-columns:120px 1fr}
+  .destino .ft{height:auto}
+  .destino .info{padding:14px 14px 16px}
+  .destino h3{font-size:30px;margin-bottom:6px}
+  .dato{font-size:14px;margin-top:6px}
+  .dato svg{width:17px;height:17px}
+  .destino .btn{margin-top:12px;padding:12px;font-size:14.5px}
+  .salidas{grid-template-columns:1fr 1fr;gap:10px}
+  .salida .ft{height:130px}
+  .salida div:last-child{padding:12px 12px 14px}
+  .salida b{font-size:22px}
+  .salida span{font-size:13.5px}
+  .salida em{display:none}
+  .armado{display:block}
+  .controles{padding:20px 16px 18px;border-radius:18px}
+  .lado-pase{margin-top:16px}
+  .pase{grid-template-columns:1fr}
+  .pase .principal{padding:18px 16px 18px}
+  .lugar-p strong{font-size:46px}
+  .excursion-p strong{font-size:34px}
+  .campos div b{font-size:16px}
+  .sellos{min-height:100px;gap:10px 12px}
+  .sello{font-size:15px}
+  .talon{border-left:0;border-top:2px dashed rgba(18,26,34,.18);border-radius:0 0 20px 20px;flex-direction:row;align-items:center;gap:14px;padding:16px}
+  .talon::before,.talon::after{top:-13px;bottom:auto}
+  .talon::before{left:-12px}.talon::after{left:auto;right:-12px}
+  .talon strong{font-size:40px}
+  .barras{flex:1;height:48px}
+  .talon p{display:none}
+  .llegar{display:block}
+  .nota-g .grande{font-size:130px}
+  .mapa{margin-top:32px;aspect-ratio:4/3.4}
+  .cierre{min-height:68vh;padding:88px 18px}
+  .cierre h2{font-size:52px}
+  .cierre p{font-size:16.5px}
+  .pie{display:block;padding:26px 18px 84px;font-size:13.5px}
+  .pie p+p{margin-top:10px}
+  .muestra{left:12px;bottom:12px;font-size:11.5px}
+  .flotante{right:14px;bottom:14px;width:56px;height:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+
+<header class="barra"><a class="marca" href="#arriba" data-n>Su agencia</a>
+  <nav class="nav"><a href="#destinos" id="nav-destinos">Destinos</a><a href="#pasaje" id="nav-pasaje">Armá tu viaje</a><a href="#llegar">Dónde estamos</a></nav>
+  <a class="btn" href="#pasaje" id="barra-btn">Cotizar</a></header>
+
+<section class="partidas" id="arriba">
+  <img class="foto" id="foto-portada" alt="" fetchpriority="high" decoding="async">
+  <div class="centro-t">
+    <p class="tipo" id="tipo">Agencia de viajes</p>
+    <div class="tablero" id="tablero" role="img" aria-label="Tablero de partidas"></div>
+    <div class="acciones"><a class="btn claro" href="#destinos" id="cta-1">Ver destinos</a><a class="btn" href="#pasaje" id="cta-2">Armá tu viaje</a></div>
+  </div>
+  <span class="ejemplo-h">Foto y salidas de ejemplo</span>
+</section>
+
+<section class="sec rutas" id="destinos">
+  <div class="cabeza"><h2 id="h-rutas">¿A dónde <em>te vas</em>?</h2><p id="p-rutas">Tocá un destino.<br><span class="nota-ej">Destinos y datos de ejemplo</span></p></div>
+  <div id="zona-mapa">
+    <div class="chips" id="chips-destino" role="tablist"></div>
+    <div class="mapa-rutas">
+      <div class="lienzo"><svg id="mapa-mundo" viewBox="0 0 1000 620" role="img" aria-label="Mapa con las rutas"></svg><span class="nota-ej">Rutas de ejemplo</span></div>
+      <article class="destino" id="destino" aria-live="polite"><div class="ft"><img id="d-foto" alt="" decoding="async"></div>
+        <div class="info"><small id="d-pais"></small><h3 id="d-nom"></h3>
+          <p class="dato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="d-tiempo"></span></p>
+          <p class="dato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span id="d-epoca"></span></p>
+          <a class="btn" href="#pasaje" id="d-elegir">Armar este viaje →</a></div></article>
+    </div>
+  </div>
+  <div class="salidas" id="salidas" hidden></div>
+</section>
+
+<section class="sec" id="pasaje">
+  <div class="cabeza"><h2 id="h-pasaje">Armá tu <em>viaje</em></h2><p>Elegí cuándo, cuántos van y qué querés que incluya. Lo que sumás cae como un sello en el pasaje y el mensaje se escribe solo.</p></div>
+  <div class="armado">
+    <div class="controles">
+      <div class="grupo"><h3 id="g-dest-t">Destino</h3><div class="chips" id="g-dest"></div></div>
+      <div class="grupo"><h3 id="g-cuando-t">¿Cuándo?</h3><div class="chips" id="g-cuando"></div></div>
+      <div class="grupo"><h3>¿Cuántos van?</h3><div class="gente">
+        <div class="cont">Adultos<div><button type="button" data-c="ad" data-d="-1" aria-label="Un adulto menos">−</button><output id="n-ad">2</output><button type="button" data-c="ad" data-d="1" aria-label="Un adulto más">+</button></div></div>
+        <div class="cont">Menores<div><button type="button" data-c="me" data-d="-1" aria-label="Un menor menos">−</button><output id="n-me">0</output><button type="button" data-c="me" data-d="1" aria-label="Un menor más">+</button></div></div></div></div>
+      <div class="grupo"><h3>¿Qué querés que incluya?</h3><div class="chips" id="g-incluye"></div></div>
+    </div>
+    <div class="lado-pase">
+      <div class="pase" id="pase">
+        <div class="principal">
+          <div class="cabecera-p"><b data-n>Su agencia</b><span id="p-clase">Tarjeta de embarque</span></div>
+          <div class="trayecto" id="p-trayecto"><div class="lugar-p"><strong id="p-de">BUE</strong><small id="p-de-n">Buenos Aires</small></div>
+            <div class="medio"><i></i><span id="p-icono"></span><i></i></div>
+            <div class="lugar-p der"><strong id="p-a">CUN</strong><small id="p-a-n">Cancún</small></div></div>
+          <div class="excursion-p" id="p-excursion" hidden><strong id="p-ex-n"></strong><small id="p-ex-d"></small></div>
+          <div class="campos"><div><small id="c1-t">Cuándo</small><b id="c1">Enero</b></div><div><small>Pasajeros</small><b id="c2">2 adultos</b></div><div><small id="c3-t">Sale</small><b id="c3">—</b></div></div>
+          <div class="sellos" id="sellos"><span class="vacio">Lo que sumes aparece acá</span></div>
+        </div>
+        <div class="talon" id="talon"><div><small id="t-tit">Destino</small><strong id="t-cod">CUN</strong></div><div class="barras" id="barras"></div><p>Pasaje de ejemplo</p></div>
+      </div>
+      <p class="burbuja" id="burbuja">…<small>ahora</small></p>
+      <button class="btn" type="button" id="enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg><span id="enviar-t">Pedir la cotización por WhatsApp</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="sec llegar" id="llegar">
+  <div class="nota-g" id="nota-g"><div class="grande" id="nota-num">4,8</div><div class="estrellas" id="estrellas"></div>
+    <p><span id="opiniones">opiniones</span> en Google</p><a id="ver-opiniones" href="#" target="_blank" rel="noopener">Leer las opiniones →</a></div>
+  <div><div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="donde"><b data-n>Su agencia</b><span data-lugar></span><br><a id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar →</a></div></div>
+</section>
+
+<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2 id="c-tit">Contanos a dónde querés ir</h2><p id="c-sub"></p><a class="btn" href="#pasaje">Armá tu viaje</a></div></section>
+<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su agencia</span>.</p><p>Fotos, destinos, salidas y datos de ejemplo: con los suyos queda su página.</p></footer>
+<span class="muestra">Diseño de muestra</span>
+<button class="flotante" type="button" id="flotante" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg></button>
+<p class="aviso" id="aviso" role="status"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const celu = () => matchMedia('(max-width:860px)').matches;
+
+// las 28 agencias de la lista: nombre, lugar, nota, opiniones y qué venden
+const AGENCIAS = {"viajes-conocer":["Viajes Conocer","Mendoza, Mendoza",4.8,4669],"f1viajes":["F1viajes","Villa Urquiza, CABA",4.9,337],"break-tienda-de-viajes":["Break Tienda de Viajes","Santa Fe, Santa Fe",4.7,330],"gustavo-vidart-viajes-y-turismo":["Gustavo Vidart Viajes y Turismo","Neuquén, Neuquén",4.3,223],"transfer-brasil-buenos-aires":["Transfer Brasil","Almagro, CABA",5.0,197],"new-trips":["New Trips","Mar del Plata, Buenos Aires",4.7,173],"crucero-del-norte-posadas-boleteria-54":["Crucero del Norte · Boletería 54","Posadas, Misiones",4.8,157,"micro"],"quevar-travel":["Quevar Travel","Salta, Salta",4.9,113],"guelcom-viajes":["Güelcom Viajes","Santa Fe, Santa Fe",5.0,111],"lozada-viajes-rosario":["Lozada Viajes Rosario","Rosario, Santa Fe",4.7,109],"travel-mar-del-plata":["Travel Mar del Plata","Mar del Plata, Buenos Aires",4.3,86],"tekoa-turismo":["Tekoa Turismo","Puerto Iguazú, Misiones",5.0,78,"iguazu"],"lloyd-viajes-eventos-olivos-grupo-gaman":["Lloyd Viajes & Eventos","Vicente López, Buenos Aires",5.0,66],"despegar-palmas-del-pilar":["Despegar Palmas del Pilar","Pilar, Buenos Aires",4.3,57],"argentina-delta-tigre-boat-tour":["Delta Tigre Boat Tour","Tigre, Buenos Aires",4.8,50,"agua"],"gs-kayaking":["GS Kayaking","Tigre, Buenos Aires",5.0,50,"agua"],"my-buenos-aires-tours":["My Buenos Aires Tours","Flores, CABA",5.0,42,"ciudad"],"turismo-soliver":["Turismo Soliver","San Miguel de Tucumán, Tucumán",4.8,38],"origen-iguazu-travel":["Origen Iguazú Travel","Puerto Iguazú, Misiones",5.0,34,"iguazu"],"laura-villaverde-viajes-y-turismo":["Laura Villaverde Viajes y Turismo","Oberá, Misiones",4.8,33],"job-viajes":["JOB Viajes","Resistencia, Chaco",4.8,32],"kayak-escobar":["Kayak Escobar","Escobar, Buenos Aires",4.8,31,"agua"],"lozada-viajes-belgrano":["Lozada Viajes Belgrano","Belgrano, CABA",5.0,24],"canoa-roja":["Canoa Roja","Tigre, Buenos Aires",5.0,21,"agua"],"tu-sueno-viajar-la-plata-viajes-y-turismo":["Tu Sueño Viajar","La Plata, Buenos Aires",5.0,20],"samana-turismo":["Samaná Turismo","San Miguel de Tucumán, Tucumán",4.9,20],"goya-turismo":["Goya Turismo","Goya, Corrientes",4.7,17],"all-inclusive-family-travels":["All Inclusive Family Travels","Belgrano, CABA",5.0,15]};
+const q = new URLSearchParams(location.search);
+const M = AGENCIAS[(q.get('s') || '').toLowerCase()] || null;
+const N = (q.get('n') || '').trim() || (M && M[0]) || 'Su agencia';
+const LUGAR = (q.get('c') || '').trim() || (M && M[1]) || '';
+const CIUDAD = LUGAR.split(',')[0].trim();
+const R = parseFloat((q.get('r') || '').replace(',', '.')) || (M && M[2]) || NaN;
+const O = parseInt((q.get('o') || '').replace(/\D/g, ''), 10) || (M && M[3]) || 0;
+const VAR = q.get('t') || (M && M[4]) || 'viajes';
+const EXC = ['agua', 'ciudad', 'iguazu'].includes(VAR);
+
+// de dónde salen: coordenadas, código y nombre para el pasaje
+const BUE = [-34.6, -58.38, 'BUE', 'Buenos Aires'];
+const ORIGENES = {'Mendoza': [-32.89, -68.83, 'MDZ', 'Mendoza'], 'Santa Fe': [-31.63, -60.7, 'SFN', 'Santa Fe'], 'Neuquén': [-38.95, -68.06, 'NQN', 'Neuquén'],
+  'Mar del Plata': [-38.0, -57.56, 'MDQ', 'Mar del Plata'], 'Posadas': [-27.37, -55.9, 'PSS', 'Posadas'], 'Salta': [-24.79, -65.41, 'SLA', 'Salta'], 'Rosario': [-32.95, -60.65, 'ROS', 'Rosario'],
+  'Puerto Iguazú': [-25.6, -54.57, 'IGR', 'Puerto Iguazú'], 'San Miguel de Tucumán': [-26.82, -65.22, 'TUC', 'Tucumán'], 'Oberá': [-27.49, -55.12, 'OBE', 'Oberá'],
+  'Resistencia': [-27.46, -58.98, 'RES', 'Resistencia'], 'La Plata': [-34.92, -57.95, 'LPG', 'La Plata'], 'Goya': [-29.14, -59.26, 'GOY', 'Goya']};
+const [OLAT, OLON, OCOD, ONOM] = ORIGENES[CIUDAD] || BUE;
+
+const DESTINOS = {
+  viajes: [
+    {k: 'bariloche', nom: 'Bariloche', corto: 'BARILOCHE', pais: 'Río Negro, Argentina', cod: 'BRC', lat: -41.13, lon: -71.31, foto: 17676587, epoca: 'Julio a septiembre para la nieve; diciembre a marzo para los lagos.'},
+    {k: 'iguazu', nom: 'Cataratas del Iguazú', corto: 'IGUAZÚ', pais: 'Misiones, Argentina', cod: 'IGR', lat: -25.69, lon: -54.44, foto: 36839861, epoca: 'Todo el año; de marzo a mayo hace menos calor.'},
+    {k: 'rio', nom: 'Río de Janeiro', corto: 'RÍO', pais: 'Brasil', cod: 'GIG', lat: -22.91, lon: -43.17, foto: 18351974, epoca: 'Todo el año; de diciembre a marzo, calor y carnaval.'},
+    {k: 'floripa', nom: 'Florianópolis', corto: 'FLORIPA', pais: 'Brasil', cod: 'FLN', lat: -27.59, lon: -48.55, foto: 15263658, epoca: 'De diciembre a marzo, la temporada de playa.'},
+    {k: 'cancun', nom: 'Cancún', corto: 'CANCÚN', pais: 'México', cod: 'CUN', lat: 21.16, lon: -86.85, foto: 20210509, epoca: 'De diciembre a abril, la temporada seca.'},
+    {k: 'puntacana', nom: 'Punta Cana', corto: 'PUNTA CANA', pais: 'República Dominicana', cod: 'PUJ', lat: 18.58, lon: -68.4, foto: 2646066, epoca: 'De diciembre a abril, con menos lluvia.'},
+    {k: 'cusco', nom: 'Cusco y Machu Picchu', corto: 'CUSCO', pais: 'Perú', cod: 'CUZ', lat: -13.53, lon: -71.97, foto: 37885473, epoca: 'De mayo a septiembre, la época seca.'},
+    {k: 'madrid', nom: 'Madrid', corto: 'MADRID', pais: 'España', cod: 'MAD', lat: 40.42, lon: -3.7, foto: 165637, epoca: 'De abril a junio y de septiembre a octubre.'},
+    {k: 'roma', nom: 'Roma', corto: 'ROMA', pais: 'Italia', cod: 'FCO', lat: 41.9, lon: 12.5, foto: 15562413, epoca: 'De abril a junio y de septiembre a octubre.'},
+    {k: 'miami', nom: 'Miami', corto: 'MIAMI', pais: 'Estados Unidos', cod: 'MIA', lat: 25.76, lon: -80.19, foto: 8574669, epoca: 'De noviembre a abril, sin tanto calor.'}],
+  micro: [
+    {k: 'bsas', nom: 'Buenos Aires', corto: 'BUENOS AIRES', pais: 'Terminal de Retiro', cod: 'BUE', lat: -34.6, lon: -58.38, foto: 40135622, epoca: 'Sale de noche y llegás a la mañana.'},
+    {k: 'cordoba', nom: 'Córdoba', corto: 'CÓRDOBA', pais: 'Córdoba, Argentina', cod: 'COR', lat: -31.42, lon: -64.18, foto: 32274812, epoca: 'Sale de noche y llegás a la mañana.'},
+    {k: 'iguazu', nom: 'Puerto Iguazú', corto: 'IGUAZÚ', pais: 'Misiones, Argentina', cod: 'IGR', lat: -25.6, lon: -54.57, foto: 36839861, epoca: 'Varias salidas por día.'},
+    {k: 'corrientes', nom: 'Corrientes', corto: 'CORRIENTES', pais: 'Corrientes, Argentina', cod: 'CNQ', lat: -27.47, lon: -58.83, foto: 11629494, epoca: 'Varias salidas por día.'},
+    {k: 'mendoza', nom: 'Mendoza', corto: 'MENDOZA', pais: 'Mendoza, Argentina', cod: 'MDZ', lat: -32.89, lon: -68.83, foto: 31025236, epoca: 'Coche cama, con cena a bordo.'},
+    {k: 'floripa', nom: 'Florianópolis', corto: 'FLORIPA', pais: 'Brasil', cod: 'FLN', lat: -27.59, lon: -48.55, foto: 15263658, epoca: 'Ideal de diciembre a marzo.'}]
+};
+const SALIDAS = {
+  agua: [{k: 'lancha', nom: 'Paseo en lancha por el Delta', corto: 'DELTA EN LANCHA', dura: '1 h 30', hora: '11:00', foto: 5151051},
+         {k: 'atardecer', nom: 'Kayak al atardecer', corto: 'KAYAK ATARDECER', dura: '2 h', hora: '18:30', foto: 7966667},
+         {k: 'arroyos', nom: 'Kayak por los arroyos', corto: 'ARROYOS', dura: '3 h', hora: '09:30', foto: 20466492},
+         {k: 'isla', nom: 'Día de isla con almuerzo', corto: 'DÍA DE ISLA', dura: '6 h', hora: '10:00', foto: 29942729}],
+  ciudad: [{k: 'boca', nom: 'Caminito y La Boca', corto: 'LA BOCA', dura: '3 h', hora: '10:00', foto: 32910336},
+           {k: 'santelmo', nom: 'San Telmo a pie', corto: 'SAN TELMO', dura: '2 h 30', hora: '11:00', foto: 32441068},
+           {k: 'recoleta', nom: 'Recoleta y su cementerio', corto: 'RECOLETA', dura: '2 h', hora: '15:00', foto: 34780108},
+           {k: 'tango', nom: 'Cena show de tango', corto: 'CENA TANGO', dura: '4 h', hora: '20:30', foto: 8281156}],
+  iguazu: [{k: 'garganta', nom: 'Garganta del Diablo', corto: 'GARGANTA', dura: 'Día completo', hora: '08:00', foto: 13540768},
+           {k: 'brasil', nom: 'Cataratas del lado brasileño', corto: 'LADO BRASIL', dura: 'Medio día', hora: '09:00', foto: 2851519},
+           {k: 'lancha', nom: 'Lancha bajo los saltos', corto: 'LANCHA SALTOS', dura: '1 h 30', hora: '11:30', foto: 10553971},
+           {k: 'superior', nom: 'Circuito superior', corto: 'CIRC SUPERIOR', dura: '2 h', hora: '14:00', foto: 623174}]
+};
+const CONFIG = {
+  viajes: {tipo: `Agencia de viajes${CIUDAD ? ' en ' + CIUDAD : ''}`, foto: [3274832, '50% 50%', '62% 50%'], cierre: 18136344, hPasaje: 'Armá tu <em>viaje</em>', clase: 'Tarjeta de embarque',
+           incluye: ['Vuelo', 'Hotel', 'Traslados', 'Excursiones', 'Asistencia al viajero'], porDefecto: ['Vuelo', 'Hotel'], cta: 'Pedir la cotización por WhatsApp', cTit: 'Contanos a dónde querés ir'},
+  micro: {tipo: `Pasajes en micro${CIUDAD ? ' desde ' + CIUDAD : ''}`, foto: [2601275, '50% 55%', '58% 50%'], cierre: 18136344, hPasaje: 'Sacá tu <em>pasaje</em>', clase: 'Pasaje en micro',
+          incluye: ['Ida y vuelta', 'Coche cama', 'Hotel', 'Traslado'], porDefecto: ['Ida y vuelta'], cta: 'Consultar por WhatsApp', cTit: 'Contanos a dónde viajás'},
+  agua: {tipo: `Paseos en el agua${CIUDAD ? ' en ' + CIUDAD : ''}`, foto: [36699748, '50% 60%', '72% 60%'], cierre: 7966667, hPasaje: 'Reservá tu <em>salida</em>', clase: 'Ticket de salida',
+         incluye: ['Traslado desde el hotel', 'Guía bilingüe', 'Almuerzo', 'Fotos del paseo'], porDefecto: [], cta: 'Reservar por WhatsApp', cTit: 'Te esperamos en el muelle'},
+  ciudad: {tipo: 'Tours por Buenos Aires', foto: [40135623, '50% 50%', '45% 50%'], cierre: 8281156, hPasaje: 'Reservá tu <em>tour</em>', clase: 'Ticket del tour',
+           incluye: ['Traslado desde el hotel', 'Guía bilingüe', 'Almuerzo', 'Fotos del paseo'], porDefecto: [], cta: 'Reservar por WhatsApp', cTit: 'Contanos qué querés conocer'},
+  iguazu: {tipo: `Excursiones${CIUDAD ? ' en ' + CIUDAD : ''}`, foto: [6942697, '50% 50%', '40% 50%'], cierre: 33950105, hPasaje: 'Reservá tu <em>excursión</em>', clase: 'Ticket de excursión',
+           incluye: ['Traslado desde el hotel', 'Guía bilingüe', 'Entradas', 'Almuerzo'], porDefecto: [], cta: 'Reservar por WhatsApp', cTit: 'Te esperamos en las Cataratas'}
+}[VAR] || null;
+const C = CONFIG || {};
+const LISTA = EXC ? SALIDAS[VAR] : DESTINOS[VAR === 'micro' ? 'micro' : 'viajes'];
+
+$$('[data-n]').forEach(el => el.textContent = N);
+$$('[data-lugar]').forEach(el => el.textContent = LUGAR || 'Argentina');
+document.title = `${N} · diseño de muestra · Mas & Co`;
+$('#tipo').textContent = C.tipo;
+$('#h-pasaje').innerHTML = C.hPasaje;
+$('#p-clase').textContent = C.clase;
+$('#enviar-t').textContent = C.cta;
+$('#c-tit').textContent = C.cTit;
+$('#c-sub').textContent = CIUDAD ? `En ${N}, ${CIUDAD}.` : `En ${N}.`;
+if (EXC) {
+  $('#zona-mapa').hidden = true; $('#salidas').hidden = false;
+  $('#h-rutas').innerHTML = 'Las salidas de <em>esta semana</em>';
+  $('#p-rutas').innerHTML = 'Elegí un paseo y armá tu salida más abajo.<br><span class="nota-ej">Salidas y horarios de ejemplo</span>';
+  $('#nav-destinos').textContent = 'Salidas'; $('#nav-pasaje').textContent = 'Reservar'; $('#barra-btn').textContent = 'Reservar';
+  $('#cta-1').textContent = 'Ver las salidas'; $('#cta-2').textContent = 'Reservar'; $('.cierre .btn').textContent = 'Reservar';
+  $('#g-dest-t').textContent = 'Paseo'; $('#c1-t').textContent = 'Día'; $('#c3-t').textContent = 'Hora';
+  $('#p-trayecto').hidden = true; $('#p-excursion').hidden = false; $('#t-tit').textContent = 'Sale';
+} else if (VAR === 'micro') {
+  $('#p-rutas').innerHTML = `Tocá un destino: el micro sale desde ${CIUDAD} y te contamos cuántas horas son.<br><span class="nota-ej">Destinos y horarios de ejemplo</span>`;
+  $('#nav-pasaje').textContent = 'Sacá tu pasaje'; $('#cta-2').textContent = 'Sacá tu pasaje'; $('.cierre .btn').textContent = 'Sacá tu pasaje'; $('#d-elegir').textContent = 'Sacar este pasaje →';
+} else {
+  $('#p-rutas').innerHTML = `Tocá un destino: el avión sale desde ${ONOM} y te contamos cuánto se tarda y cuándo conviene ir.<br><span class="nota-ej">Destinos y datos de ejemplo</span>`;
+}
+function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); if (avisar._t) avisar._t.kill(); avisar._t = gsap.delayedCall(4.2, () => a.classList.remove('ver')); }
+const avisoWsp = () => avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`);
+$('#flotante').addEventListener('click', avisoWsp);
+
+// ── 1 · el tablero de partidas ──
+const [pid, pdesk, pcel] = C.foto;
+const fp = $('#foto-portada'); fp.sizes = '(max-width:860px) 160vh, 100vw'; fp.srcset = juego(pid, [800, 1300, 2000]); fp.src = foto(pid, 1300);
+const encuadre = () => fp.style.objectPosition = celu() ? pcel : pdesk; encuadre();
+const AHORA = new Date();
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+function filasTablero(cols) {
+  // columnas: destino (o salida) · cuándo sale · estado (este último solo en la compu)
+  const estados = ['A HORARIO', 'CONFIRMADO', 'EMBARCANDO', 'A HORARIO'];
+  const [c1, c2] = cols;
+  return LISTA.slice(0, 4).map((d, i) => {
+    let sale;
+    if (EXC) sale = d.hora;
+    else if (VAR === 'micro') sale = ['21:30', '22:15', '07:40', '13:00'][i];
+    else sale = MESES[(AHORA.getMonth() + 1 + i) % 12].slice(0, 3).toUpperCase();
+    return [d.corto.slice(0, c1).padEnd(c1), sale.padEnd(c2), estados[i]];
+  });
+}
+function partirNombre(nom, ancho) {
+  const palabras = nom.toUpperCase().split(/\s+/), lineas = [];
+  let l = '';
+  palabras.forEach(p => { if (!l) l = p; else if ((l + ' ' + p).length <= ancho) l += ' ' + p; else { lineas.push(l); l = p; } });
+  if (l) lineas.push(l);
+  return lineas.slice(0, 3).map(x => x.slice(0, ancho));
+}
+let tableroCelu = null;
+function armarTablero(animar) {
+  const mov = celu(); tableroCelu = mov;
+  const c1 = mov ? 12 : 15, c2 = 5, c3 = 10, ancho = mov ? c1 + c2 + 1 : c1 + c2 + c3 + 2;
+  const disponible = Math.min(mov ? innerWidth - 48 : 1060, 1060);
+  const g = mov ? 2 : 3, t = Math.max(12, Math.min(42, Math.floor((disponible - (ancho - 1) * g) / ancho)));
+  const tb = $('#tablero'); tb.style.setProperty('--t', t + 'px'); tb.style.setProperty('--g', g + 'px');
+  const fila = (txt, cls = '') => `<div class="fila ${cls}">${[...txt.padEnd(ancho)].map(ch => `<span class="ficha${ch === ' ' ? ' vacia' : ''}"><b data-c="${ch}">${ch === ' ' ? '' : ch}</b></span>`).join('')}</div>`;
+  const nombre = partirNombre(N, ancho).map(l => fila(l, 'nombre')).join('');
+  const titulos = mov ? ['DESTINO'.padEnd(c1 + 1), 'SALE'] : [(EXC ? 'SALIDA' : 'DESTINO').padEnd(c1 + 1), (EXC || VAR === 'micro' ? 'HORA' : 'SALE').padEnd(c2 + 1), 'ESTADO'];
+  const tit = `<div class="fila titulos">${titulos.map(s => `<span style="width:calc(${s.length} * (var(--t) + var(--g)))">${s.trim()}</span>`).join('')}</div>`;
+  const filas = filasTablero([c1, c2]).map(([a, b, c]) => fila(mov ? `${a} ${b.trim()}` : `${a} ${b} ${c}`)).join('');
+  tb.innerHTML = nombre + tit + filas;
+  if (animar && !reduce) girarLetras(); else $$('.ficha b', tb).forEach(b => b.textContent = b.dataset.c.trim());
+}
+const LETRAS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+function girarLetras() {
+  // cada ficha pasa por unas letras al azar antes de quedar en la suya, de izquierda a derecha y fila por fila
+  $$('#tablero .fila:not(.titulos)').forEach((f, r) => {
+    $$('.ficha b', f).forEach((b, i) => {
+      const final = b.dataset.c, vueltas = final.trim() ? 4 + Math.floor(Math.random() * 6) : 0;
+      if (!vueltas) return;
+      b.textContent = '';
+      const tl = gsap.timeline({delay: .35 + r * .22 + i * .028});
+      for (let k = 0; k <= vueltas; k++) {
+        const ch = k === vueltas ? final : LETRAS[Math.floor(Math.random() * LETRAS.length)];
+        tl.call(() => { b.textContent = ch; }).fromTo(b, {rotationX: 80}, {rotationX: 0, duration: .055, ease: 'none'});
+      }
+    });
+  });
+}
+
+// ── 2 · el mapa con las rutas (o las salidas de la semana) ──
+let dest = LISTA[EXC ? 0 : (VAR === 'micro' ? 0 : 4)], probo = false;
+const AVION = '<path d="M-11 -1.6 L4 -1.6 L9 -6.5 L11.5 -6.5 L8 -1.6 L12 -1.6 Q15 0 12 1.6 L8 1.6 L11.5 6.5 L9 6.5 L4 1.6 L-11 1.6 L-12.5 4.5 L-14.5 4.5 L-13.3 0 L-14.5 -4.5 L-12.5 -4.5 Z" fill="#fff"/>';
+const MICRO = '<rect x="-11" y="-6" width="22" height="12" rx="3" fill="#fff"/><rect x="5" y="-4.4" width="4.2" height="8.8" rx="1" fill="#0F1E2D"/>';
+const ICONO_P = VAR === 'micro'
+  ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="13" rx="2.5"/><path d="M4 11h16M7.5 20v-3M16.5 20v-3"/><circle cx="8" cy="14" r=".6" fill="currentColor"/><circle cx="16" cy="14" r=".6" fill="currentColor"/></svg>'
+  : '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 15.5v-1.8l-8-5V3.3c0-.8-.7-1.5-1.5-1.5S10 2.5 10 3.3v5.4l-8 5v1.8l8-2.5v5.4l-2 1.5V21l3.5-1 3.5 1v-1.1l-2-1.5V13z" transform="rotate(90 12 12)"/></svg>';
+$('#p-icono').innerHTML = ICONO_P;
+function distanciaKm(a, b) {
+  const r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLon = (b.lon - a.lon) * r;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLon / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(h));
+}
+function horasTexto(h) { const m = Math.round(h * 2) / 2; return m % 1 ? `${Math.floor(m)} h y media` : `${m} h`; }
+function tiempoTexto(d) {
+  const km = distanciaKm({lat: OLAT, lon: OLON}, d);
+  if (VAR === 'micro') return `Unas ${horasTexto(km * 1.25 / 72 + .5)} de micro desde ${ONOM}.`;
+  return `Unas ${horasTexto(km / 790 + .6)} de vuelo desde ${ONOM}, sin contar escalas.`;
+}
+function mostrarDestino(d, animar = true) {
+  dest = d;
+  $('#d-foto').src = foto(d.foto, 700); $('#d-foto').srcset = juego(d.foto, [500, 800, 1100]); $('#d-foto').sizes = '(max-width:860px) 120px, 420px';
+  $('#d-pais').textContent = d.pais; $('#d-nom').textContent = d.nom; $('#d-tiempo').textContent = tiempoTexto(d); $('#d-epoca').textContent = d.epoca;
+  $$('#chips-destino .chip').forEach(b => b.classList.toggle('on', b.dataset.k === d.k));
+  if (animar && !reduce) gsap.fromTo('#destino .info > *', {y: 14, autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: .45, stagger: .05, ease: 'power3.out'});
+  volar(d, animar);
+  pase();
+}
+$('#chips-destino').innerHTML = EXC ? '' : LISTA.map(d => `<button class="chip" type="button" data-k="${d.k}">${d.nom}</button>`).join('');
+$('#chips-destino').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) { probo = true; mostrarDestino(LISTA.find(d => d.k === b.dataset.k)); } });
+let mundo = null, proy = null, rutas = {}, mapaCelu = null;
+function arco(p0, p1) {
+  const [x0, y0] = p0, [x1, y1] = p1, mx = (x0 + x1) / 2, my = (y0 + y1) / 2, dx = x1 - x0, dy = y1 - y0, L = Math.hypot(dx, dy) || 1;
+  let nx = -dy / L, ny = dx / L; if (ny > 0) { nx = -nx; ny = -ny; }   // la curva siempre hacia arriba
+  const h = Math.min(160, L * .28);
+  return `M${x0.toFixed(1)},${y0.toFixed(1)} Q${(mx + nx * h).toFixed(1)},${(my + ny * h).toFixed(1)} ${x1.toFixed(1)},${y1.toFixed(1)}`;
+}
+function dibujarMapa() {
+  if (!mundo || EXC) return;
+  const mov = celu(); mapaCelu = mov;
+  const W = mov ? 600 : 1000, H = mov ? 640 : 620, svg = $('#mapa-mundo');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const puntos = {type: 'MultiPoint', coordinates: [[OLON, OLAT], ...LISTA.map(d => [d.lon, d.lat])]};
+  proy = d3.geoNaturalEarth1().fitExtent([[mov ? 70 : 110, 70], [W - (mov ? 70 : 110), H - 60]], puntos);
+  const camino = d3.geoPath(proy);
+  const P = d => proy([d.lon, d.lat]);
+  const o = proy([OLON, OLAT]);
+  let s = `<defs><pattern id="puntos" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.35" fill="rgba(244,240,230,.32)"/></pattern>
+    <pattern id="puntos-casa" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.6" fill="rgba(242,179,61,.6)"/></pattern></defs>`;
+  s += mundo.features.map(f => `<path class="tierra${f.id === '032' ? ' casa' : ''}" d="${camino(f) || ''}"/>`).join('');
+  rutas = {};
+  LISTA.forEach(d => { rutas[d.k] = arco(o, P(d)); s += `<path class="ruta" d="${rutas[d.k]}"/>`; });
+  s += `<path class="activa" id="ruta-activa" d=""/>`;
+  const fs = mov ? 19 : 15;
+  LISTA.forEach(d => {
+    const [x, y] = P(d), izq = x > W * .62;
+    s += `<g data-k="${d.k}" style="cursor:pointer"><circle class="punto" cx="${x}" cy="${y}" r="${mov ? 6 : 4.5}"/><text x="${x + (izq ? -10 : 10)}" y="${y + 5}" font-size="${fs}" text-anchor="${izq ? 'end' : 'start'}">${d.nom.replace(' y Machu Picchu', '').replace('Cataratas del ', '')}</text></g>`;
+  });
+  s += `<circle class="halo" id="halo" cx="${o[0]}" cy="${o[1]}" r="12"/><circle class="origen" cx="${o[0]}" cy="${o[1]}" r="${mov ? 7 : 5.5}"/>
+        <text class="de" x="${o[0] + 12}" y="${o[1] + 20}" font-size="${fs}">${ONOM}</text>`;
+  s += `<g id="avion" transform="translate(${o[0]},${o[1]})"><g transform="scale(${mov ? 1.5 : 1.15})">${VAR === 'micro' ? MICRO : AVION}</g></g>`;
+  svg.innerHTML = s;
+  volar(dest, false);
+}
+$('#mapa-mundo').addEventListener('click', e => { const g = e.target.closest('[data-k]'); if (g) { probo = true; mostrarDestino(LISTA.find(d => d.k === g.dataset.k)); } });
+let vuelo = null;
+function volar(d, animar = true) {
+  const act = $('#ruta-activa'), av = $('#avion'); if (!act || !rutas[d.k]) return;
+  $$('#mapa-mundo [data-k]').forEach(g => { const on = g.dataset.k === d.k; g.querySelector('circle').classList.toggle('on', on); g.querySelector('text').classList.toggle('on', on); });
+  act.setAttribute('d', rutas[d.k]);
+  const L = act.getTotalLength(), o = {t: animar && !reduce ? 0 : 1};
+  if (vuelo) vuelo.kill();
+  act.style.strokeDasharray = L; act.style.strokeDashoffset = L * (1 - o.t);
+  const ubicar = () => {
+    const l = o.t * L, p = act.getPointAtLength(l), p2 = act.getPointAtLength(Math.min(L, l + 2)), p1 = act.getPointAtLength(Math.max(0, l - 2));
+    const ang = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+    av.setAttribute('transform', `translate(${p.x.toFixed(1)},${p.y.toFixed(1)}) rotate(${ang.toFixed(1)})`);
+    act.style.strokeDashoffset = L * (1 - o.t);
+  };
+  ubicar();
+  if (animar && !reduce) vuelo = gsap.to(o, {t: 1, duration: Math.min(2.2, .9 + L / 600), ease: 'power1.inOut', onUpdate: ubicar});
+}
+async function cargarMapa() {
+  if (EXC || typeof d3 === 'undefined' || typeof topojson === 'undefined') return;
+  try {
+    const topo = await (await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')).json();
+    mundo = topojson.feature(topo, topo.objects.countries);
+    dibujarMapa();
+  } catch (e) { $('.lienzo').style.display = 'none'; }
+}
+if (EXC) {
+  $('#salidas').innerHTML = LISTA.map(d => `<button class="salida" type="button" data-k="${d.k}"><div class="ft"><img src="${foto(d.foto, 600)}" srcset="${juego(d.foto, [400, 600, 900])}" sizes="(max-width:860px) 46vw, 290px" alt="" loading="lazy" decoding="async"></div><div><b>${d.nom}</b><span>${d.dura} · sale ${d.hora} h</span><em>Elegir este paseo →</em></div></button>`).join('');
+  $('#salidas').addEventListener('click', e => { const b = e.target.closest('.salida'); if (!b) return; probo = true; elegirSalida(LISTA.find(d => d.k === b.dataset.k)); $('#pasaje').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); });
+}
+function elegirSalida(d) { dest = d; $$('.salida').forEach(b => b.classList.toggle('on', b.dataset.k === d.k)); pase(); }
+
+// ── 3 · el pasaje ──
+const est = {cuando: 0, ad: 2, me: 0, incluye: new Set(C.porDefecto)};
+const CUANDO = EXC
+  ? Array.from({length: 5}, (_, k) => { const d = new Date(AHORA); d.setDate(d.getDate() + k); return d; })
+  : Array.from({length: 6}, (_, k) => (AHORA.getMonth() + 1 + k) % 12);
+const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+const chipCuando = (c, k) => EXC ? (k === 0 ? 'Hoy' : k === 1 ? 'Mañana' : DIAS[c.getDay()].slice(0, 3).replace(/^./, x => x.toUpperCase()) + ' ' + c.getDate()) : MESES[c].slice(0, 3).replace(/^./, x => x.toUpperCase());
+const textoCuando = k => EXC ? (k === 0 ? 'hoy' : k === 1 ? 'mañana' : `el ${DIAS[CUANDO[k].getDay()]} ${CUANDO[k].getDate()}`) : `en ${MESES[CUANDO[k]]}`;
+const lista = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' y ' + a[a.length - 1];
+const quienes = () => { const p = []; p.push(est.ad === 1 ? '1 adulto' : `${est.ad} adultos`); if (est.me) p.push(est.me === 1 ? '1 menor' : `${est.me} menores`); return lista(p); };
+$('#g-dest').innerHTML = LISTA.map(d => `<button class="chip" type="button" data-k="${d.k}">${d.nom.replace(' y Machu Picchu', '')}</button>`).join('');
+$('#g-cuando').innerHTML = CUANDO.map((c, k) => `<button class="chip" type="button" data-k="${k}">${chipCuando(c, k)}</button>`).join('');
+$('#g-incluye').innerHTML = C.incluye.map(x => `<button class="chip" type="button" data-x="${x}">${x}</button>`).join('');
+$('#g-dest').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; probo = true; const d = LISTA.find(x => x.k === b.dataset.k); EXC ? elegirSalida(d) : mostrarDestino(d, false); });
+$('#g-cuando').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) { est.cuando = +b.dataset.k; pase(); } });
+$('#g-incluye').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const x = b.dataset.x; est.incluye.has(x) ? est.incluye.delete(x) : est.incluye.add(x); pase(x); });
+$$('.cont button').forEach(b => b.addEventListener('click', () => { const c = b.dataset.c, v = est[c] + +b.dataset.d; if (v < (c === 'ad' ? 1 : 0) || v > 9) return; est[c] = v; pase(); }));
+const TINTAS = ['#1F4E79', '#9C2F2F', '#2E6B45', '#6B3E8C', '#8A5A12'];
+const GIROS = [-7, 5, -4, 6, -6, 8];
+let sellosPuestos = [];
+function pase(nuevo) {
+  const d = dest;
+  $$('#g-dest .chip').forEach(b => b.classList.toggle('on', b.dataset.k === d.k));
+  $$('#g-cuando .chip').forEach(b => b.classList.toggle('on', +b.dataset.k === est.cuando));
+  $$('#g-incluye .chip').forEach(b => b.classList.toggle('on', est.incluye.has(b.dataset.x)));
+  $('#n-ad').textContent = est.ad; $('#n-me').textContent = est.me;
+  if (EXC) { $('#p-ex-n').textContent = d.nom; $('#p-ex-d').textContent = `Dura ${/^\d/.test(d.dura) ? d.dura : d.dura.toLowerCase()}`; $('#c3').textContent = d.hora + ' h'; $('#t-cod').textContent = d.hora; }
+  else { $('#p-de').textContent = OCOD; $('#p-de-n').textContent = ONOM; $('#p-a').textContent = d.cod; $('#p-a-n').textContent = d.nom.replace(' y Machu Picchu', ''); $('#t-cod').textContent = d.cod;
+    $('#c3').textContent = VAR === 'micro' ? 'De noche' : 'A confirmar'; }
+  $('#c1').textContent = chipCuando(CUANDO[est.cuando], est.cuando);
+  $('#c2').textContent = quienes().replace(' y ', ' + ');
+  // los sellos: lo que está incluido, en el orden en que se sumó
+  sellosPuestos = sellosPuestos.filter(x => est.incluye.has(x)); C.incluye.forEach(x => { if (est.incluye.has(x) && !sellosPuestos.includes(x)) sellosPuestos.push(x); });
+  const caja = $('#sellos');
+  caja.innerHTML = sellosPuestos.length ? sellosPuestos.map((x, i) => `<span class="sello" data-x="${x}" style="transform:rotate(${GIROS[i % 6]}deg);top:${i % 2 ? 6 : -4}px;color:${TINTAS[C.incluye.indexOf(x) % 5]}">${x}</span>`).join('') : '<span class="vacio">Lo que sumes aparece acá</span>';
+  if (nuevo && est.incluye.has(nuevo) && !reduce) {
+    const s = $(`.sello[data-x="${nuevo}"]`, caja);
+    const g = GIROS[sellosPuestos.indexOf(nuevo) % 6];
+    gsap.fromTo(s, {scale: 1.9, rotation: g, autoAlpha: 0}, {scale: 1, rotation: g, autoAlpha: .88, duration: .3, ease: 'power4.in'});
+    gsap.fromTo('#pase', {y: 0}, {y: 3, duration: .06, delay: .3, yoyo: true, repeat: 1, ease: 'power1.inOut'});
+  }
+  // código de barras a partir del destino, siempre igual para el mismo destino
+  let semilla = [...(d.k + est.cuando)].reduce((a, c) => a * 31 + c.charCodeAt(0) >>> 0, 7), barras = [], x = 0;
+  while (x < 100) { semilla = (semilla * 1103515245 + 12345) >>> 0; const w = 1 + semilla % 4; barras.push(`#121A22 ${x}% ${x + w * .7}%`, `transparent ${x + w * .7}% ${x + w * .7 + 1.2}%`); x += w * .7 + 1.2; }
+  $('#barras').style.background = `linear-gradient(90deg, ${barras.join(',')})`;
+  escribir();
+}
+function escribir() {
+  const d = dest, inc = [...sellosPuestos].map(x => x.toLowerCase());
+  let t;
+  if (EXC) t = `Hola, quiero reservar «${d.nom}» para ${quienes()} ${textoCuando(est.cuando)}${inc.length ? `, con ${lista(inc)}` : ''}.`;
+  else if (VAR === 'micro') {
+    const iv = inc.includes('ida y vuelta'), resto = inc.filter(x => x !== 'ida y vuelta');
+    t = `Hola, quiero pasajes en micro a ${d.nom} para ${quienes()} ${textoCuando(est.cuando)}, ${iv ? 'ida y vuelta' : 'solo ida'}${resto.length ? `, con ${lista(resto)}` : ''}. Salgo desde ${ONOM}.`;
+  } else t = `Hola, quiero cotizar un viaje a ${d.nom} ${textoCuando(est.cuando)}, para ${quienes()}${inc.length ? `, con ${lista(inc)}` : ''}. Salimos desde ${ONOM}.`;
+  const b = $('#burbuja'); b.innerHTML = `${t}<small>ahora</small>`;
+  if (!reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
+}
+$('#enviar').addEventListener('click', () => {
+  // el talón se corta y vuelve: el pasaje "sale"
+  if (!reduce) gsap.timeline().to('#talon', {rotation: celu() ? 3 : 7, x: celu() ? 0 : 12, y: celu() ? 18 : 26, transformOrigin: '0% 0%', duration: .35, ease: 'power2.out'})
+    .to('#talon', {rotation: 0, x: 0, y: 0, duration: .5, ease: 'power3.inOut', delay: 1.1});
+  avisoWsp();
+});
+$('#d-elegir').addEventListener('click', () => { probo = true; pase(); });
+
+// ── 4 · nota y mapa · 5 · cierre ──
+const busqueda = encodeURIComponent([N, LUGAR].filter(Boolean).join(', '));
+if (!isNaN(R) && O) {
+  $('#nota-num').textContent = R.toFixed(1).replace('.', ',');
+  $('#opiniones').textContent = `${O.toLocaleString('es-AR')} opiniones`;
+  $('#ver-opiniones').href = `https://www.google.com/maps/search/?api=1&query=${busqueda}`;
+  const llenas = Math.round(R);
+  $('#estrellas').innerHTML = Array.from({length: 5}, (_, i) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="${i < llenas ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('');
+} else $('#nota-g').style.display = 'none';
+$('#mapa').src = `https://www.google.com/maps?q=${busqueda || 'Argentina'}&output=embed`;
+$('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${busqueda}`;
+const cf = $('#c-foto'); cf.sizes = '(max-width:860px) 120vh, 100vw'; cf.srcset = juego(C.cierre, [800, 1300, 1900]); cf.src = foto(C.cierre, 1300);
+
+if (EXC) elegirSalida(dest); else mostrarDestino(dest, false);
+armarTablero(false); cargarMapa();
+addEventListener('resize', () => { encuadre(); if (tableroCelu !== celu()) armarTablero(false); if (mundo && mapaCelu !== celu()) dibujarMapa(); });
+const mm = gsap.matchMedia();
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
+  // el avión sale solo una vez cuando se llega al mapa
+  ScrollTrigger.create({trigger: '#zona-mapa', start: 'top 60%', once: true, onEnter: () => { if (!probo && !EXC) volar(dest, true); }});
+  if (EXC) gsap.from('.salida', {y: 40, autoAlpha: 0, stagger: .08, duration: .8, ease: 'power3.out', scrollTrigger: {trigger: '#salidas', start: 'top 82%'}});
+  if (!isNaN(R)) { const n = {v: 0}; gsap.to(n, {v: R, duration: 1.3, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 85%'},
+    onUpdate: () => { $('#nota-num').textContent = n.v.toFixed(1).replace('.', ','); }}); }
+  gsap.fromTo('#c-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '.cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}});
+});
+document.fonts.ready.then(() => { armarTablero(true); ScrollTrigger.refresh(); });
+addEventListener('load', () => ScrollTrigger.refresh());
+</script>
+</body></html>
