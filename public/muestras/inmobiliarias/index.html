@@ -1,0 +1,630 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Diseño de muestra para su inmobiliaria · Mas & Co">
+<meta property="og:description" content="Recórrala completa: comprá, alquilá o vendé; las propiedades se deslizan y la tasación se arma sola.">
+<meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
+<title>Inmobiliaria · diseño de muestra · Mas & Co</title>
+<link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<style>
+/* Muestra completa para inmobiliarias · Mas & Co · 11/10/2026. Una página para las 28 de la lista:
+   …/inmobiliarias/?s=<slug> trae nombre, lugar, nota y opiniones.
+   1. Tríptico a sangre (arquetipo 1 con tres hojas): Comprá · Alquilá · Vendé; cada panel entero es el botón.
+      El nombre va en una placa de bronce, como la de la puerta de la oficina.
+   2. El mazo: las propiedades se deslizan; las que gustan vuelan a «Tu carpeta» y se consulta por todas juntas.
+   3. La tasación: cuatro preguntas y una maqueta isométrica que se arma sola; al final se escribe el pedido.
+   4. La nota de Google y el mapa real. 5. Cierre.
+   Fotos de Pexels. Propiedades, precios y maqueta de ejemplo. */
+:root{--papel:#F4F2ED;--papel2:#E9E6DF;--tinta:#15181B;--gris:#646A6E;--verde:#2E5B4E;--verde2:#234A3F;--noche:#14211D;--suave:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--papel);color:var(--tinta);font-family:"Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block}
+section{scroll-margin-top:70px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--verde);color:#fff;font-weight:700;border-radius:999px;white-space:nowrap;transition:background .25s,transform .25s var(--suave)}
+.btn:hover{background:var(--verde2)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px}
+.nota-ej{font-size:13px;color:var(--gris)}
+
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;
+  background:rgba(244,242,237,.92);backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(21,24,27,.08)}
+.marca{font-family:"Bodoni Moda",serif;font-weight:600;font-size:23px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44vw}
+.nav{display:flex;gap:26px;font-size:15px;font-weight:600;color:#3B4044}
+.nav a:hover{color:var(--verde)}
+.barra .btn{font-size:15px;padding:12px 18px}
+
+/* 1 · el tríptico */
+.triptico{position:relative;display:flex;height:100vh;height:100svh;min-height:640px;background:var(--noche);overflow:hidden}
+.panel{position:relative;flex:1;overflow:hidden;color:#fff;transition:flex-grow .8s var(--suave)}
+.panel+.panel{box-shadow:-1px 0 0 rgba(255,255,255,.35)}
+.panel:hover{flex-grow:1.45}
+.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--suave)}
+.panel:hover img{transform:scale(1.04)}
+.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,18,16,.78) 0%,rgba(12,18,16,.25) 42%,rgba(12,18,16,0) 62%)}
+.panel .txt{position:absolute;z-index:2;left:30px;right:24px;bottom:62px}
+.panel h2{font-family:"Bodoni Moda",serif;font-weight:500;font-style:italic;font-size:clamp(58px,6.2vw,112px);line-height:.9;letter-spacing:-.01em}
+.panel p{margin-top:10px;font-size:17px;color:rgba(255,255,255,.9);max-width:22em}
+.panel .ver{display:inline-flex;margin-top:16px;font-weight:700;font-size:15.5px;border-bottom:1.5px solid rgba(255,255,255,.75);padding-bottom:2px}
+.placa{position:absolute;z-index:5;left:50%;top:104px;transform:translateX(-50%);width:min(560px,86vw);padding:22px 34px 20px;text-align:center;border-radius:6px;overflow:hidden;
+  background:linear-gradient(135deg,#8A6732 0%,#D9BA7E 18%,#B08848 38%,#EED7A5 56%,#A47E44 78%,#D2B275 100%);
+  box-shadow:inset 0 0 0 2px rgba(255,238,200,.4),inset 0 0 0 5px rgba(90,62,22,.28),inset 0 0 0 7px rgba(255,238,200,.22),0 24px 44px -16px rgba(0,0,0,.65)}
+.placa small{display:block;font-size:14px;font-weight:700;color:#4A3413;text-shadow:0 1px 0 rgba(255,240,205,.55)}
+.placa h1{font-family:"Bodoni Moda",serif;font-weight:600;font-size:44px;line-height:1;margin-top:6px;color:#3D2A0E;text-wrap:balance;
+  text-shadow:0 1px 0 rgba(255,242,210,.75),0 -1px 0 rgba(60,38,8,.35)}
+.placa i{position:absolute;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F6E6C2,#8C6A34 70%);box-shadow:0 1px 1px rgba(0,0,0,.35)}
+.placa i::after{content:"";position:absolute;left:1.5px;right:1.5px;top:4px;height:1px;background:rgba(70,48,16,.7);transform:rotate(-30deg)}
+.placa i:nth-of-type(1){left:10px;top:10px}.placa i:nth-of-type(2){right:10px;top:10px}.placa i:nth-of-type(3){left:10px;bottom:10px}.placa i:nth-of-type(4){right:10px;bottom:10px}
+.placa .brillo{position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,255,255,0) 35%,rgba(255,250,235,.6) 50%,rgba(255,255,255,0) 65%);transform:translateX(-120%);pointer-events:none}
+.ejemplo-h{position:absolute;z-index:3;right:20px;top:84px;font-size:12.5px;color:#fff;background:rgba(14,20,18,.55);padding:6px 11px;border-radius:999px}
+
+/* secciones */
+.sec{position:relative;padding:116px 48px}
+.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:0 auto 48px;max-width:1180px}
+.cabeza h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(46px,5.3vw,90px);line-height:.98;letter-spacing:-.015em;max-width:12ch;text-wrap:balance}
+.cabeza h2 em{color:var(--verde)}
+.cabeza p{max-width:25em;font-size:17px;color:var(--gris);line-height:1.5}
+
+/* 2 · el mazo */
+.vidriera{display:grid;grid-template-columns:1fr 400px;gap:56px;max-width:1180px;margin:0 auto;align-items:start}
+.columna-mazo{display:flex;flex-direction:column;align-items:center}
+.arriba-mazo{display:flex;align-items:center;justify-content:space-between;gap:14px;width:min(440px,100%);margin-bottom:22px}
+.modo{display:inline-flex;background:var(--papel2);border-radius:999px;padding:4px}
+.modo button{padding:10px 18px;border-radius:999px;font-weight:700;font-size:15px;color:#4B5155;transition:background .25s,color .25s}
+.modo button.on{background:var(--tinta);color:#fff}
+.chip-carpeta{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:9px 14px 9px 12px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px rgba(21,24,27,.1)}
+.chip-carpeta svg{width:20px;height:20px;color:var(--verde)}
+.chip-carpeta b{min-width:22px;height:22px;border-radius:11px;background:var(--verde);color:#fff;font-size:13px;display:grid;place-items:center;padding:0 6px}
+.mazo{position:relative;width:min(440px,100%);height:540px;touch-action:pan-y}
+.tarjeta{position:absolute;inset:0;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 30px 50px -34px rgba(21,24,27,.55),0 0 0 1px rgba(21,24,27,.06);user-select:none;-webkit-user-select:none;transform-origin:50% 100%}
+.tarjeta.arriba{cursor:grab}
+.tarjeta .foto{position:relative;height:61%}
+.tarjeta img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.tarjeta .op{position:absolute;left:14px;top:14px;font-weight:700;font-size:13px;background:rgba(255,255,255,.92);padding:6px 11px;border-radius:999px}
+.tarjeta .datos{padding:20px 22px}
+.tarjeta .precio{font-family:"Bodoni Moda",serif;font-weight:600;font-size:34px;line-height:1;font-optical-sizing:none;font-variation-settings:"opsz" 11}
+.tarjeta h3{font-size:19px;font-weight:700;margin-top:8px;line-height:1.25}
+.tarjeta .lugar{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:15px;color:var(--gris)}
+.tarjeta .lugar svg{width:16px;height:16px}
+.tarjeta ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;list-style:none}
+.tarjeta li{font-size:13.5px;font-weight:600;padding:6px 10px;border-radius:8px;background:var(--papel)}
+.sello{position:absolute;z-index:3;top:24px;padding:7px 13px;border:3px solid;border-radius:10px;font-weight:800;font-size:21px;opacity:0;background:rgba(255,255,255,.88);pointer-events:none}
+.sello.si{left:20px;color:#1E7A4C;transform:rotate(-12deg)}
+.sello.no{right:20px;color:#6C7176;transform:rotate(12deg)}
+.fin-mazo{position:absolute;inset:0;border-radius:22px;border:2px dashed rgba(21,24,27,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:30px}
+.fin-mazo b{font-family:"Bodoni Moda",serif;font-weight:500;font-size:30px;line-height:1.1}
+.fin-mazo button{font-weight:700;font-size:15.5px;border-bottom:1.5px solid var(--tinta);padding-bottom:2px}
+.botones{display:flex;justify-content:center;gap:26px;margin-top:56px}
+.redondo{width:66px;height:66px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 14px 26px -16px rgba(21,24,27,.6),0 0 0 1px rgba(21,24,27,.08);transition:transform .25s var(--suave)}
+.redondo:hover{transform:scale(1.06)}
+.redondo svg{width:28px;height:28px}
+.redondo.no{color:#6C7176}.redondo.si{color:#1E7A4C}
+.ayuda-mazo{margin-top:12px;font-size:14px;color:var(--gris)}
+.carpeta{background:var(--noche);color:#fff;border-radius:22px;padding:26px 24px 22px}
+.carpeta h3{font-family:"Bodoni Moda",serif;font-weight:500;font-size:32px;display:flex;align-items:baseline;justify-content:space-between}
+.carpeta h3 span{font-family:"Hanken Grotesk",sans-serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.65)}
+.lista{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.lista li{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:8px 10px 8px 8px}
+.lista img{width:56px;height:42px;border-radius:7px;object-fit:cover}
+.lista div{flex:1;min-width:0}
+.lista b{display:block;font-size:14.5px;line-height:1.25}
+.lista small{font-size:13px;color:rgba(255,255,255,.65)}
+.lista button{width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);font-size:18px}
+.lista button:hover{background:rgba(255,255,255,.1);color:#fff}
+.vacia{margin-top:14px;font-size:15px;line-height:1.45;color:rgba(255,255,255,.7)}
+.burbuja{margin-top:16px;background:#D9FDD3;color:#111B21;border-radius:14px 14px 14px 4px;padding:13px 15px 22px;font-size:15px;line-height:1.45;position:relative;white-space:pre-line}
+.burbuja small{position:absolute;right:12px;bottom:6px;font-size:11.5px;color:#667781}
+.burbuja.cambia{animation:latir .45s var(--suave)}
+@keyframes latir{0%{transform:scale(.985)}100%{transform:none}}
+.carpeta .btn,.preguntas .btn{width:100%;margin-top:14px;font-size:17px;padding:16px}
+.carpeta .btn{background:#fff;color:var(--tinta)}
+.carpeta .btn:hover{background:#E9E6DF}
+.carpeta .btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* 3 · la tasación */
+.tasacion{background:#fff}
+.tasar{display:grid;grid-template-columns:1.12fr .88fr;gap:26px;max-width:1180px;margin:0 auto;align-items:stretch}
+.maqueta{position:relative;border-radius:22px;background:linear-gradient(180deg,#EEF2EE,#DFE7E1);overflow:hidden;min-height:470px;display:flex;align-items:center}
+.maqueta svg{width:100%;height:auto;display:block}
+.maqueta .nota-ej{position:absolute;left:18px;bottom:14px}
+.preguntas{position:relative;border-radius:22px;background:var(--papel);padding:30px 30px 26px;display:flex;flex-direction:column;min-height:470px}
+.progreso{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:700;color:var(--gris)}
+.progreso span{flex:1;height:4px;border-radius:2px;background:var(--papel2);overflow:hidden}
+.progreso i{display:block;height:100%;background:var(--verde);transition:width .5s var(--suave)}
+.paso{margin-top:22px;flex:1;display:flex;flex-direction:column}
+.paso h3{font-family:"Bodoni Moda",serif;font-weight:500;font-size:38px;line-height:1.05}
+.paso .sub{margin-top:8px;font-size:15.5px;color:var(--gris)}
+.opciones{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.opciones.nros{grid-template-columns:repeat(5,1fr)}
+.op-b{padding:16px 16px;border-radius:14px;background:#fff;text-align:left;font-weight:700;font-size:17px;box-shadow:0 0 0 1.5px rgba(21,24,27,.1);transition:box-shadow .2s,background .2s}
+.op-b small{display:block;font-weight:500;font-size:13.5px;color:var(--gris);margin-top:3px}
+.nros .op-b{text-align:center;padding:16px 0;font-size:20px}
+.op-b:hover{box-shadow:0 0 0 1.5px var(--verde)}
+.op-b.on{background:var(--verde);color:#fff;box-shadow:0 0 0 1.5px var(--verde)}
+.op-b.on small{color:rgba(255,255,255,.8)}
+.metros{margin-top:26px;display:flex;align-items:center;gap:16px}
+.metros input{flex:1;accent-color:var(--verde)}
+.metros output{font-family:"Bodoni Moda",serif;font-weight:600;font-optical-sizing:none;font-variation-settings:"opsz" 11;font-size:34px;min-width:4.2em;text-align:right}
+.pie-paso{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:20px}
+.volver{font-weight:700;font-size:15px;color:var(--gris);white-space:nowrap}
+.preguntas .seguir{width:auto;margin-top:0;padding:13px 22px;font-size:16px}
+.volver:hover{color:var(--tinta)}
+.de-nuevo{margin-top:12px;font-weight:700;font-size:15px;color:var(--gris);text-align:center;width:100%}
+
+/* 4 · nota + mapa */
+.llegar{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;background:var(--papel)}
+.nota-g .grande{font-family:"Bodoni Moda",serif;font-weight:600;font-optical-sizing:none;font-variation-settings:"opsz" 11;font-size:clamp(120px,14vw,220px);line-height:.85;letter-spacing:-.02em}
+.estrellas{display:flex;gap:6px;margin:16px 0 10px;color:var(--verde)}
+.estrellas svg{width:26px;height:26px}
+.nota-g p{font-size:19px;font-weight:600}
+.nota-g a,.donde a{display:inline-flex;margin-top:16px;font-weight:700;border-bottom:1.5px solid var(--tinta);padding-bottom:2px}
+.mapa{border-radius:18px;overflow:hidden;aspect-ratio:16/11;background:#ddd}
+.mapa iframe{width:100%;height:100%;border:0}
+.donde{margin-top:18px;font-size:18px}
+.donde b{display:block;font-family:"Bodoni Moda",serif;font-weight:600;font-size:28px}
+
+/* 5 · cierre */
+.cierre{position:relative;min-height:80vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;padding:110px 28px}
+.cierre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cierre::after{content:"";position:absolute;inset:0;background:rgba(12,18,16,.45)}
+.cierre div{position:relative;z-index:2}
+.cierre h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(52px,7.2vw,122px);line-height:.98;max-width:13ch;margin:0 auto 14px;text-wrap:balance}
+.cierre p{font-size:19px;margin-bottom:30px;color:rgba(255,255,255,.9)}
+.cierre .btn{font-size:18px;padding:18px 30px}
+.pie{background:var(--noche);color:rgba(255,255,255,.7);padding:34px 110px 84px 48px;display:flex;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
+.pie a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+
+.muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(20,33,29,.86);padding:7px 12px;border-radius:999px}
+.flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(0,0,0,.5)}
+.flotante svg{width:30px;height:30px}
+.aviso{position:fixed;z-index:70;left:50%;bottom:96px;transform:translate(-50%,20px);max-width:min(92vw,460px);background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;
+  font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--suave)}
+.aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .barra{height:60px;padding:0 12px 0 16px}
+  .nav{display:none}
+  .marca{font-size:19px;max-width:56vw}
+  .barra .btn{font-size:14px;padding:10px 14px}
+  .triptico{flex-direction:column}
+  .panel:first-of-type{flex:1.45}
+  .panel:hover{flex-grow:1}
+  .panel:first-of-type:hover{flex-grow:1.45}
+  .panel+.panel{box-shadow:0 -1px 0 rgba(255,255,255,.35)}
+  .panel .txt{left:18px;right:16px;bottom:18px}
+  .panel:last-of-type .txt{bottom:68px}
+  .panel h2{font-size:50px}
+  .panel p{font-size:14.5px;margin-top:6px}
+  .panel .ver{margin-top:8px;font-size:14px}
+  .placa{top:76px;width:min(340px,90vw);padding:16px 22px 14px}
+  .placa small{font-size:12.5px}
+  .placa h1{font-size:30px}
+  .ejemplo-h{display:none}
+  .sec{padding:72px 16px}
+  .cabeza{display:block;margin-bottom:28px}
+  .cabeza h2{font-size:44px}
+  .cabeza p{font-size:15.5px;margin-top:12px}
+  .vidriera{display:block}
+  .arriba-mazo{width:100%}
+  .modo button{padding:9px 14px;font-size:14px}
+  .chip-carpeta{font-size:14px;padding:8px 12px 8px 10px}
+  .mazo{height:500px}
+  .tarjeta .precio{font-size:30px}
+  .tarjeta h3{font-size:17.5px}
+  .carpeta{margin-top:34px;padding:22px 18px 18px}
+  .tasar{display:block}
+  .maqueta{min-height:0}
+  .preguntas{margin-top:14px;min-height:0;padding:22px 18px 20px}
+  .paso h3{font-size:31px}
+  .op-b{padding:14px 14px;font-size:16px}
+  .nros .op-b{font-size:18px;padding:14px 0}
+  .metros output{font-size:28px}
+  .llegar{display:block}
+  .nota-g .grande{font-size:120px}
+  .mapa{margin-top:32px;aspect-ratio:4/3.4}
+  .cierre{min-height:68vh;padding:88px 18px}
+  .cierre h2{font-size:48px}
+  .cierre p{font-size:16.5px}
+  .pie{display:block;padding:26px 18px 84px;font-size:13.5px}
+  .pie p+p{margin-top:10px}
+  .muestra{left:12px;bottom:12px;font-size:11.5px}
+  .flotante{right:14px;bottom:14px;width:56px;height:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+
+<header class="barra"><a class="marca" href="#arriba" data-n>Su inmobiliaria</a>
+  <nav class="nav"><a href="#propiedades">Propiedades</a><a href="#tasar">Tasaciones</a><a href="#llegar">Dónde estamos</a></nav>
+  <a class="btn" href="#propiedades">Ver propiedades</a></header>
+
+<section class="triptico" id="arriba">
+  <a class="panel" href="#propiedades" data-modo="comprar"><img id="p-comprar" alt="Casa con jardín y un camino de piedra hasta la puerta." fetchpriority="high" decoding="async">
+    <div class="txt"><h2>Comprá</h2><p data-zona="Casas, departamentos y PH">Casas, departamentos y PH</p><span class="ver">Ver propiedades en venta →</span></div></a>
+  <a class="panel" href="#propiedades" data-modo="alquilar"><img id="p-alquilar" alt="Living luminoso con ventana en arco." decoding="async">
+    <div class="txt"><h2>Alquilá</h2><p>Departamentos y casas para mudarte</p><span class="ver">Ver alquileres →</span></div></a>
+  <a class="panel" href="#tasar"><img id="p-vender" alt="Mano que sostiene las llaves de una casa." decoding="async">
+    <div class="txt"><h2>Vendé</h2><p>Te decimos cuánto vale tu propiedad</p><span class="ver">Pedir una tasación →</span></div></a>
+  <div class="placa" id="placa"><i></i><i></i><i></i><i></i><small id="tipo">Inmobiliaria</small><h1 id="placa-n" data-n>Su inmobiliaria</h1><span class="brillo"></span></div>
+  <span class="ejemplo-h">Fotos de ejemplo</span>
+</section>
+
+<section class="sec" id="propiedades">
+  <div class="cabeza"><h2>Guardá las que <em>te gustan</em></h2><p>Deslizá a la derecha las que te interesan y a la izquierda las que no. Después consultás por todas juntas.<br><span class="nota-ej">Propiedades y precios de ejemplo</span></p></div>
+  <div class="vidriera">
+    <div class="columna-mazo">
+      <div class="arriba-mazo"><div class="modo" role="tablist"><button type="button" class="on" data-modo="comprar" role="tab">Comprar</button><button type="button" data-modo="alquilar" role="tab">Alquilar</button></div>
+        <a class="chip-carpeta" href="#carpeta" id="chip-carpeta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h4.2l2 2.2h8.8A1.5 1.5 0 0 1 21 8.7v9.8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></svg>Tu carpeta <b id="cuenta-chip">0</b></a></div>
+      <div class="mazo" id="mazo"></div>
+      <div class="botones"><button class="redondo no" type="button" id="b-no" aria-label="No me interesa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <button class="redondo si" type="button" id="b-si" aria-label="Me interesa"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.2 1.8-2 3.3-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg></button></div>
+      <p class="ayuda-mazo">O arrastrá la tarjeta para un lado</p>
+    </div>
+    <aside class="carpeta" id="carpeta">
+      <h3>Tu carpeta <span id="cuenta-carpeta">0 guardadas</span></h3>
+      <ul class="lista" id="lista"></ul>
+      <p class="vacia" id="vacia">Todavía no guardaste ninguna. Las que te gusten aparecen acá y se consulta por todas en un solo mensaje.</p>
+      <p class="burbuja" id="burbuja-carpeta" hidden></p>
+      <button class="btn" type="button" id="enviar-carpeta" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Consultar por WhatsApp</button>
+    </aside>
+  </div>
+</section>
+
+<section class="sec tasacion" id="tasar">
+  <div class="cabeza"><h2>¿Cuánto vale <em>tu propiedad</em>?</h2><p>Contanos cómo es en cuatro preguntas. La maqueta se arma a medida que contestás y el pedido de tasación se escribe solo.</p></div>
+  <div class="tasar">
+    <div class="maqueta"><svg id="maqueta" viewBox="0 0 600 460" role="img" aria-label="Maqueta de la propiedad"></svg><span class="nota-ej">Maqueta de ejemplo</span></div>
+    <div class="preguntas" id="preguntas" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="sec llegar" id="llegar">
+  <div class="nota-g" id="nota-g"><div class="grande" id="nota-num">4,8</div><div class="estrellas" id="estrellas"></div>
+    <p><span id="opiniones">opiniones</span> en Google</p><a id="ver-opiniones" href="#" target="_blank" rel="noopener">Leer las opiniones →</a></div>
+  <div><div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="donde"><b data-n>Su inmobiliaria</b><span data-lugar></span><br><a id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar a la oficina →</a></div></div>
+</section>
+
+<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2>Contanos qué estás buscando</h2><p id="c-sub">Te esperamos</p><button class="btn" type="button" data-wsp>Escribir por WhatsApp</button></div></section>
+<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su inmobiliaria</span>.</p><p>Fotos, propiedades, precios y maqueta de ejemplo: con los suyos queda su página.</p></footer>
+<span class="muestra">Diseño de muestra</span>
+<button class="flotante" type="button" data-wsp aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg></button>
+<p class="aviso" id="aviso" role="status"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const celu = () => matchMedia('(max-width:860px)').matches;
+const WSP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>';
+
+// las 28 inmobiliarias de la lista: nombre, lugar, nota y opiniones (5.º dato opcional: qué hacen)
+const INMOBILIARIAS = {"marta-gonzalez-propiedades-casa-central":["Marta Gonzalez Propiedades","Ramos Mejía, Buenos Aires",4.2,219],"berto-inmuebles":["Berto Inmuebles","Ramos Mejía, Buenos Aires",4.3,158],"mb-estudio-juridico-e-inmobiliario":["MB Estudio Jurídico e Inmobiliario","Villa Crespo, CABA",4.9,98,"Estudio jurídico e inmobiliario"],"frank-real-estate-s-a":["Frank Real Estate","Palermo, CABA",4.7,93],"estudio-campana-propiedades-arte":["Estudio Campana","Palermo, CABA",4.9,70,"Propiedades y arte"],"misiones-argentina":["Misiones Argentina","Puerto Iguazú, Misiones",4.9,70,"Viviendas"],"yeger-negocios-inmobiliarios":["Yeger Negocios Inmobiliarios","Villa Crespo, CABA",4.7,65],"jota-pe-inmobiliaria":["Jota&Pe Inmobiliaria","Posadas, Misiones",5.0,64],"inmobiliaria-giuliana-meaurio-propiedades-en-moron":["Giuliana Meaurio Propiedades","Morón, Buenos Aires",4.8,58],"monaco-servicios-inmobiliarios":["Monaco Servicios Inmobiliarios","Ramos Mejía, Buenos Aires",4.3,58],"rattari-propiedades":["Rattari Propiedades","San Justo, Buenos Aires",5.0,52],"fcg-fernando-cedres-operaciones-inmobiliarias":["FCG Operaciones Inmobiliarias","Almagro, CABA",4.4,49],"liliana-duran-propiedades":["Liliana Duran Propiedades","Posadas, Misiones",4.2,46,"Administración de propiedades"],"lavila-negocios-inmobiliarios":["Lavila Negocios Inmobiliarios","San Justo, Buenos Aires",4.2,46],"nicolas-palmer-coll-y-yazmin-antonella-avanzato-agentes-bienes-raices":["Palmer Coll & Avanzato","Tigre, Buenos Aires",5.0,44,"Agentes inmobiliarios"],"syh-negocios-inmobiliarios":["SYH Negocios Inmobiliarios","Villa Devoto, CABA",4.8,42],"inmobiliaria-giacobbe":["Inmobiliaria Giacobbe","Ramos Mejía, Buenos Aires",4.7,35],"ferraro-braulio-nahuel-negocios-inmobiliarios":["Ferraro Negocios Inmobiliarios","Quilmes, Buenos Aires",5.0,33],"barudi-propiedades":["Barudi Propiedades","Núñez, CABA",4.7,31],"besso-propiedades":["Besso Propiedades","Flores, CABA",4.3,26],"casa-alquiler-temporario-en-el-centro-de-posadas":["Alquiler Temporario Posadas","Posadas, Misiones",4.6,25,"Alquileres temporarios"],"frankel-propiedades":["Frankel Propiedades","Belgrano, CABA",5.0,24],"nahuel-del-puerto-inmobiliaria":["Nahuel Del Puerto Inmobiliaria","Ramos Mejía, Buenos Aires",4.9,23],"kleiven-schierse-inmobiliaria":["Kleiven Schierse Inmobiliaria","Oberá, Misiones",4.6,23],"veronica-aquino-propiedades":["Verónica Aquino Propiedades","Ramos Mejía, Buenos Aires",4.8,22],"inmobiliaria-sh":["Inmobiliaria SH","Oberá, Misiones",5.0,22],"origen-propiedades":["Origen Propiedades","Posadas, Misiones",4.9,20],"raices-inmobiliaria":["Raíces Inmobiliaria","Eldorado, Misiones",4.3,19]};
+const q = new URLSearchParams(location.search);
+const M = INMOBILIARIAS[(q.get('s') || '').toLowerCase()] || null;
+const N = (q.get('n') || '').trim() || (M && M[0]) || 'Su inmobiliaria';
+const LUGAR = (q.get('c') || '').trim() || (M && M[1]) || '';
+const CIUDAD = LUGAR.split(',')[0].trim();
+const R = parseFloat((q.get('r') || '').replace(',', '.')) || (M && M[2]) || NaN;
+const O = parseInt((q.get('o') || '').replace(/\D/g, ''), 10) || (M && M[3]) || 0;
+const QUE = (M && M[4]) || 'Inmobiliaria';
+
+$$('[data-n]').forEach(el => el.textContent = N);
+$$('[data-lugar]').forEach(el => el.textContent = LUGAR || 'Argentina');
+document.title = `${N} · diseño de muestra · Mas & Co`;
+$('#tipo').textContent = `${QUE}${CIUDAD ? ' en ' + CIUDAD : ''}`;
+if (CIUDAD) $('[data-zona]').textContent = `Casas, departamentos y PH en ${CIUDAD}`;
+$('#c-sub').textContent = CIUDAD ? `En ${N}, ${CIUDAD}.` : `En ${N}.`;
+function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); if (avisar._t) avisar._t.kill(); avisar._t = gsap.delayedCall(4.2, () => a.classList.remove('ver')); }
+const avisoWsp = () => avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`);
+$$('[data-wsp]').forEach(b => b.addEventListener('click', avisoWsp));
+
+// ── 1 · el tríptico ──
+[['#p-comprar', 7031581, '22% 60%'], ['#p-alquilar', 36025686, '42% 50%'], ['#p-vender', 31015267, '40% 40%']].forEach(([s, id, pos]) => {
+  const im = $(s); im.sizes = '(max-width:860px) 100vw, 50vw'; im.srcset = juego(id, [700, 1100, 1700]); im.src = foto(id, 1100); im.style.objectPosition = pos;
+});
+function ajustarPlaca() {
+  const h = $('#placa-n'), max = celu() ? 32 : 46;
+  let fs = max; h.style.fontSize = fs + 'px';
+  while (fs > 18 && (h.scrollWidth > h.clientWidth + 1 || h.offsetHeight > fs * 2.15)) { fs -= 1; h.style.fontSize = fs + 'px'; }
+}
+ajustarPlaca();
+
+// ── 2 · el mazo ──
+const PROPS = {
+  comprar: [
+    {id: 26925314, tipo: 'Departamento', tit: 'Departamento de 3 ambientes con balcón', precio: 'USD 145.000', datos: ['3 amb.', '78 m²', '2 baños', 'Cochera']},
+    {id: 19013522, tipo: 'Casa', tit: 'Casa con pileta y quincho', precio: 'USD 235.000', datos: ['4 amb.', '190 m²', 'Lote de 400 m²', 'Pileta']},
+    {id: 12870090, tipo: 'PH', tit: 'PH con terraza propia', precio: 'USD 118.000', datos: ['3 amb.', '85 m²', 'Terraza', 'Sin expensas']},
+    {id: 6969987, tipo: 'Departamento', tit: 'Monoambiente a estrenar', precio: 'USD 62.000', datos: ['1 amb.', '34 m²', 'Apto crédito']},
+    {id: 30992623, tipo: 'Casa', tit: 'Casa con jardín y galería', precio: 'USD 168.000', datos: ['4 amb.', '140 m²', 'Jardín', 'Cochera']},
+    {id: 35440928, tipo: 'Lote', tit: 'Lote para construir', precio: 'USD 54.000', datos: ['600 m²', 'Escriturable', 'Con servicios']}],
+  alquilar: [
+    {id: 19857226, tipo: 'Departamento', tit: 'Departamento de 2 ambientes con balcón', precio: '$ 650.000 por mes', datos: ['2 amb.', '48 m²', 'Balcón', 'Apto mascotas']},
+    {id: 34996523, tipo: 'Departamento', tit: 'Monoambiente luminoso', precio: '$ 480.000 por mes', datos: ['1 amb.', '32 m²', 'Amoblado']},
+    {id: 36816986, tipo: 'Departamento', tit: 'Departamento de 3 ambientes al frente', precio: '$ 820.000 por mes', datos: ['3 amb.', '72 m²', 'Cochera']},
+    {id: 11315954, tipo: 'Casa', tit: 'Casa con galería y patio', precio: '$ 1.100.000 por mes', datos: ['4 amb.', '150 m²', 'Patio', 'Parrilla']},
+    {id: 8089275, tipo: 'Loft', tit: 'Loft de doble altura', precio: '$ 900.000 por mes', datos: ['2 amb.', '80 m²', 'Ladrillo visto']},
+    {id: 17000987, tipo: 'Departamento', tit: 'Departamento de 2 ambientes con vista abierta', precio: '$ 700.000 por mes', datos: ['2 amb.', '52 m²', 'Piso alto']}]
+};
+const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>';
+let modo = 'comprar', volando = false;
+const pos = {comprar: 0, alquilar: 0}, guardadas = [];
+const mazo = $('#mazo');
+const tarjetaHTML = p => `<article class="tarjeta"><div class="foto"><img src="${foto(p.id, 700)}" srcset="${juego(p.id, [500, 700, 1000])}" sizes="(max-width:860px) 92vw, 440px" alt="" decoding="async"><span class="op">${p.precio.startsWith('USD') ? 'Venta' : 'Alquiler'}</span></div>
+  <div class="datos"><b class="precio">${p.precio}</b><h3>${p.tit}</h3><p class="lugar">${PIN}${CIUDAD || 'En la zona'}</p><ul>${p.datos.map(d => `<li>${d}</li>`).join('')}</ul></div>
+  <span class="sello si">Me interesa</span><span class="sello no">Paso</span></article>`;
+function armarMazo() {
+  const lista = PROPS[modo], i = pos[modo], vis = lista.slice(i, i + 3);
+  if (!vis.length) {
+    const otro = modo === 'comprar' ? 'alquilar' : 'comprar';
+    mazo.innerHTML = `<div class="fin-mazo"><b>Ya viste todas las ${modo === 'comprar' ? 'de venta' : 'de alquiler'}</b><button type="button" data-ir="${otro}">Ver las ${otro === 'comprar' ? 'de venta' : 'de alquiler'} →</button><button type="button" data-otra-vez>Verlas de nuevo</button></div>`;
+    return;
+  }
+  mazo.innerHTML = vis.map(tarjetaHTML).reverse().join('');
+  ordenar(0);
+}
+function ordenar(dur, sin) {
+  const cs = $$('.tarjeta', mazo).filter(c => c !== sin);
+  cs.forEach((c, j) => {
+    const prof = cs.length - 1 - j;
+    c.style.zIndex = 10 - prof; c.classList.toggle('arriba', prof === 0);
+    gsap.to(c, {x: 0, y: prof * 18, scale: 1 - prof * .05, rotation: 0, duration: dur, ease: 'power3.out'});
+  });
+}
+function sellos(c, dx) {
+  $('.sello.si', c).style.opacity = Math.max(0, Math.min(1, dx / 110));
+  $('.sello.no', c).style.opacity = Math.max(0, Math.min(1, -dx / 110));
+}
+function tirar(dir) {
+  const c = $('.tarjeta.arriba', mazo);
+  if (!c || volando) return;
+  volando = true;
+  const p = PROPS[modo][pos[modo]];
+  sellos(c, dir * 200);
+  if (dir > 0) guardar(p, c);
+  ordenar(.45, c);
+  gsap.to(c, {x: dir * (Math.min(innerWidth, 900) * .8 + 120), y: '+=50', rotation: dir * 22, duration: reduce ? 0 : .55, ease: 'power2.in', onComplete: () => { pos[modo]++; volando = false; armarMazo(); }});
+}
+let tir = null;
+mazo.addEventListener('pointerdown', e => {
+  const c = e.target.closest('.tarjeta.arriba'); if (!c || volando) return;
+  tir = {c, x0: e.clientX, y0: e.clientY, dx: 0, vx: 0, ult: e.clientX, t: performance.now()};
+  c.setPointerCapture(e.pointerId);
+});
+mazo.addEventListener('pointermove', e => {
+  if (!tir) return;
+  const ahora = performance.now();
+  tir.vx = .6 * tir.vx + .4 * ((e.clientX - tir.ult) / Math.max(8, ahora - tir.t)); tir.ult = e.clientX; tir.t = ahora;
+  tir.dx = e.clientX - tir.x0;
+  gsap.set(tir.c, {x: tir.dx, y: (e.clientY - tir.y0) * .3, rotation: tir.dx * .05});
+  sellos(tir.c, tir.dx);
+});
+function soltarT() {
+  if (!tir) return;
+  const {c, dx, vx} = tir; tir = null;
+  if (Math.abs(dx) > 110 || (Math.abs(vx) > .8 && Math.abs(dx) > 30)) tirar(Math.sign(dx));
+  else { gsap.to(c, {x: 0, y: 0, rotation: 0, duration: .5, ease: 'back.out(1.7)'}); sellos(c, 0); }
+}
+mazo.addEventListener('pointerup', soltarT); mazo.addEventListener('pointercancel', soltarT);
+mazo.addEventListener('click', e => {
+  const b = e.target.closest('[data-ir]'); if (b) return cambiarModo(b.dataset.ir);
+  if (e.target.closest('[data-otra-vez]')) { pos[modo] = 0; armarMazo(); }
+});
+$('#b-si').addEventListener('click', () => tirar(1));
+$('#b-no').addEventListener('click', () => tirar(-1));
+function cambiarModo(m) {
+  if (m === modo || volando) return;
+  modo = m; $$('.modo button').forEach(b => b.classList.toggle('on', b.dataset.modo === m));
+  armarMazo();
+  if (!reduce) gsap.from($$('.tarjeta', mazo).reverse(), {y: 40, autoAlpha: 0, stagger: .06, duration: .5, ease: 'power3.out'});
+}
+$$('.modo button').forEach(b => b.addEventListener('click', () => cambiarModo(b.dataset.modo)));
+$$('.panel[data-modo]').forEach(a => a.addEventListener('click', () => cambiarModo(a.dataset.modo)));
+function guardar(p, c) {
+  if (guardadas.includes(p)) return;
+  guardadas.push(p);
+  const img = $('img', c), r = img.getBoundingClientRect(), d = $('#chip-carpeta').getBoundingClientRect();
+  if (reduce || r.bottom < 0 || r.top > innerHeight) return pintarCarpeta();
+  // la foto vuela a la carpeta
+  const v = img.cloneNode();
+  Object.assign(v.style, {position: 'fixed', left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px', objectFit: 'cover', borderRadius: '18px', zIndex: 60, pointerEvents: 'none', boxShadow: '0 20px 40px -18px rgba(0,0,0,.5)'});
+  document.body.appendChild(v);
+  gsap.to(v, {left: d.left + 10, top: d.top + d.height / 2 - 14, width: 38, height: 28, borderRadius: 6, opacity: .9, duration: .75, ease: 'power3.inOut',
+    onComplete: () => { v.remove(); pintarCarpeta(); gsap.fromTo('#chip-carpeta', {scale: 1.12}, {scale: 1, duration: .45, ease: 'back.out(3)'}); }});
+}
+function pintarCarpeta() {
+  const n = guardadas.length;
+  $('#cuenta-chip').textContent = n;
+  $('#cuenta-carpeta').textContent = n === 1 ? '1 guardada' : `${n} guardadas`;
+  $('#lista').innerHTML = guardadas.map((p, i) => `<li><img src="${foto(p.id, 200)}" alt=""><div><b>${p.tit}</b><small>${p.precio}</small></div><button type="button" data-quitar="${i}" aria-label="Sacar de la carpeta">×</button></li>`).join('');
+  $('#vacia').hidden = n > 0;
+  const b = $('#burbuja-carpeta'); b.hidden = !n; $('#enviar-carpeta').disabled = !n;
+  if (n) {
+    const renglones = guardadas.map(p => `· ${p.tit} (${p.precio})`).join('\n');
+    b.innerHTML = `Hola, me interesan ${n === 1 ? 'esta propiedad' : 'estas propiedades'}:\n${renglones}\n¿Se ${n === 1 ? 'puede' : 'pueden'} visitar esta semana?<small>ahora</small>`;
+    if (!reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
+  }
+}
+$('#lista').addEventListener('click', e => { const b = e.target.closest('[data-quitar]'); if (b) { guardadas.splice(+b.dataset.quitar, 1); pintarCarpeta(); } });
+$('#enviar-carpeta').addEventListener('click', avisoWsp);
+armarMazo(); pintarCarpeta();
+
+// ── 3 · la tasación y la maqueta ──
+const TIPOS = {
+  depto: {nom: 'Departamento', sub: 'En un edificio', art: 'mi departamento', ver: 'verlo', extras: ['Balcón', 'Cochera', 'Amenities'], m2: [25, 250, 65, 5]},
+  casa: {nom: 'Casa', sub: 'Con terreno propio', art: 'mi casa', ver: 'verla', extras: ['Cochera', 'Pileta', 'Quincho', 'Jardín'], m2: [50, 600, 140, 5]},
+  ph: {nom: 'PH', sub: 'Al fondo, sin expensas', art: 'mi PH', ver: 'verlo', extras: ['Terraza', 'Patio', 'Cochera'], m2: [35, 300, 90, 5]},
+  lote: {nom: 'Terreno', sub: 'Para construir', art: 'un terreno', ver: 'verlo', extras: [], m2: [150, 2000, 600, 10]}
+};
+const tas = {tipo: null, amb: null, extras: new Set(), m2: null};
+let paso = 0;
+const PASOS = () => tas.tipo === 'lote' ? [0, 3, 4] : [0, 1, 2, 3, 4];
+const lista = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' y ' + a[a.length - 1];
+function mensajeTasacion() {
+  const T = TIPOS[tas.tipo];
+  let s = `Hola, quiero tasar ${T.art}`;
+  if (tas.tipo !== 'lote') s += ` de ${tas.amb === 1 ? '1 ambiente' : tas.amb === 5 ? '5 ambientes o más' : tas.amb + ' ambientes'}`;
+  s += `${tas.tipo === 'lote' ? ' de' : ','} ${tas.m2} m²`;
+  const ex = [...tas.extras].map(e => e.toLowerCase());
+  if (ex.length) s += `, con ${lista(ex)}`;
+  return s + `. Está en ${CIUDAD || 'la zona'}. ¿Cuándo pueden venir a ${T.ver}?`;
+}
+function pintarPaso(dir = 1) {
+  const orden = PASOS(), k = orden.indexOf(paso), total = orden.length - 1;
+  const caja = $('#preguntas');
+  const barra = `<div class="progreso">${paso === 4 ? 'Listo' : `Paso ${k + 1} de ${total}`}<span><i style="width:${Math.round((k / total) * 100)}%"></i></span></div>`;
+  let h = '';
+  if (paso === 0) h = `<h3>¿Qué querés tasar?</h3><div class="opciones">${Object.entries(TIPOS).map(([key, t]) => `<button class="op-b${tas.tipo === key ? ' on' : ''}" type="button" data-tipo="${key}">${t.nom}<small>${t.sub}</small></button>`).join('')}</div>`;
+  if (paso === 1) h = `<h3>¿Cuántos ambientes tiene?</h3><p class="sub">Contando el living, sin baños ni cocina.</p><div class="opciones nros">${[1, 2, 3, 4, 5].map(n => `<button class="op-b${tas.amb === n ? ' on' : ''}" type="button" data-amb="${n}">${n === 5 ? '5+' : n}</button>`).join('')}</div>`;
+  if (paso === 2) h = `<h3>¿Qué más tiene?</h3><p class="sub">Marcá todo lo que corresponda.</p><div class="opciones">${TIPOS[tas.tipo].extras.map(x => `<button class="op-b${tas.extras.has(x) ? ' on' : ''}" type="button" data-extra="${x}">${x}</button>`).join('')}</div>`;
+  if (paso === 3) { const [a, b, , st] = TIPOS[tas.tipo].m2; h = `<h3>¿Cuántos metros tiene?</h3><p class="sub">${tas.tipo === 'lote' ? 'La superficie del terreno.' : 'La superficie cubierta, más o menos.'}</p><div class="metros"><input type="range" id="m2" min="${a}" max="${b}" step="${st}" value="${tas.m2}" aria-label="Metros cuadrados"><output id="m2-val">${tas.m2} m²</output></div>`; }
+  if (paso === 4) h = `<h3>Listo, este es tu pedido</h3><p class="burbuja" id="burbuja-tas">${mensajeTasacion()}<small>ahora</small></p><button class="btn" type="button" data-wsp-t>${WSP}Pedir la tasación por WhatsApp</button><button class="de-nuevo" type="button" data-reiniciar>Empezar de nuevo</button>`;
+  const pie = paso > 0 && paso < 4 ? `<div class="pie-paso"><button class="volver" type="button" data-volver>← Volver</button>${paso >= 2 ? `<button class="btn seguir" type="button" data-seguir>${paso === 3 ? 'Listo' : 'Seguir'} →</button>` : ''}</div>` : '';
+  caja.innerHTML = barra + `<div class="paso">${h}${pie}</div>`;
+  if (!reduce) gsap.from('.paso', {x: dir * 36, autoAlpha: 0, duration: .45, ease: 'power3.out'});
+}
+function avanzar(dir = 1) { const o = PASOS(), k = o.indexOf(paso); paso = o[Math.max(0, Math.min(o.length - 1, k + dir))]; pintarPaso(dir); }
+$('#preguntas').addEventListener('click', e => {
+  const t = e.target.closest('button'); if (!t) return;
+  if (t.dataset.tipo) {
+    const nuevo = t.dataset.tipo; if (nuevo !== tas.tipo) { tas.extras.clear(); tas.m2 = TIPOS[nuevo].m2[2]; }
+    tas.tipo = nuevo; $$('[data-tipo]').forEach(b => b.classList.toggle('on', b === t)); dibujar();
+    gsap.delayedCall(reduce ? 0 : .38, () => avanzar(1));
+  } else if (t.dataset.amb) {
+    tas.amb = +t.dataset.amb; $$('[data-amb]').forEach(b => b.classList.toggle('on', b === t)); dibujar();
+    gsap.delayedCall(reduce ? 0 : .38, () => avanzar(1));
+  } else if (t.dataset.extra) {
+    const x = t.dataset.extra; tas.extras.has(x) ? tas.extras.delete(x) : tas.extras.add(x); t.classList.toggle('on', tas.extras.has(x)); dibujar();
+  } else if ('seguir' in t.dataset) avanzar(1);
+  else if ('volver' in t.dataset) avanzar(-1);
+  else if ('wspT' in t.dataset) avisoWsp();
+  else if ('reiniciar' in t.dataset) { tas.tipo = null; tas.amb = null; tas.extras.clear(); tas.m2 = null; paso = 0; pintarPaso(-1); dibujar(); }
+});
+$('#preguntas').addEventListener('input', e => { if (e.target.id === 'm2') { tas.m2 = +e.target.value; $('#m2-val').textContent = `${tas.m2} m²`; dibujar(false); } });
+
+// la maqueta: proyección isométrica; cada pieza tiene su nombre y las nuevas caen en su lugar
+const K = 22, OX = 300, OY = 168;
+const P = (x, y, z = 0) => [OX + (x - y) * K * .866, OY + (x + y) * K * .5 - z * K];
+const pts = a => a.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+function tono(hex, f) { const n = parseInt(hex.slice(1), 16); const c = v => Math.max(0, Math.min(255, Math.round(v * f))); return `rgb(${c(n >> 16)},${c(n >> 8 & 255)},${c(n & 255)})`; }
+function caja(x, y, z, w, d, h, color, techo) {
+  const top = [P(x, y, z + h), P(x + w, y, z + h), P(x + w, y + d, z + h), P(x, y + d, z + h)];
+  const der = [P(x + w, y, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x + w, y, z + h)];
+  const izq = [P(x, y + d, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x, y + d, z + h)];
+  return `<polygon points="${pts(izq)}" fill="${tono(color, .9)}"/><polygon points="${pts(der)}" fill="${tono(color, .76)}"/><polygon points="${pts(top)}" fill="${techo || tono(color, 1.05)}"/>`;
+}
+// ventanas: en la cara de adelante-izquierda (y fija) o adelante-derecha (x fija)
+const venIzq = (y, x0, x1, z0, z1, c = '#3D5A66') => `<polygon points="${pts([P(x0, y, z0), P(x1, y, z0), P(x1, y, z1), P(x0, y, z1)])}" fill="${c}"/>`;
+const venDer = (x, y0, y1, z0, z1, c = '#33505B') => `<polygon points="${pts([P(x, y0, z0), P(x, y1, z0), P(x, y1, z1), P(x, y0, z1)])}" fill="${c}"/>`;
+function arbol(x, y, s = 1) {
+  const [a, b] = P(x, y, 0), [c, d] = P(x, y, 1.6 * s);
+  return `<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="#6B4A2E" stroke-width="${3 * s}"/><ellipse cx="${c}" cy="${d - 6 * s}" rx="${17 * s}" ry="${15 * s}" fill="#5E8C4F"/><ellipse cx="${c - 5 * s}" cy="${d - 10 * s}" rx="${9 * s}" ry="${7 * s}" fill="#78A563"/>`;
+}
+function etiqueta(x, y, z, txt) {
+  const [a, b] = P(x, y, z), w = txt.length * 8.2 + 22;
+  return `<g><line x1="${a}" y1="${b}" x2="${a}" y2="${b - 30}" stroke="#15181B" stroke-width="1.2"/><rect x="${a - w / 2}" y="${b - 56}" width="${w}" height="27" rx="13.5" fill="#15181B"/><text x="${a}" y="${b - 38}" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="14" font-weight="700" fill="#fff">${txt}</text></g>`;
+}
+let previas = new Set();
+function dibujar(animar = true) {
+  const t = tas.tipo, ex = tas.extras, n = tas.amb || 0, piezas = [];
+  const add = (k, orden, svg) => piezas.push({k: (t || 'nada') + ':' + k, orden, svg});
+  const VERDE = '#A9C78B', PARED = '#EFEBE3', TECHO = '#C9C2B5', SUYO = '#2E5B4E';
+  if (!t || t === 'lote') {
+    add('suelo', -99, caja(0, 0, -.3, 12, 10, .3, '#B9D197'));
+    const borde = [P(.3, .3), P(11.7, .3), P(11.7, 9.7), P(.3, 9.7)];
+    add('borde', -98, `<polygon points="${pts(borde)}" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="7 6"/>`);
+    [[.3, .3], [11.7, .3], [11.7, 9.7], [.3, 9.7]].forEach(([x, y], i) => add('estaca' + i, x + y, caja(x - .12, y - .12, 0, .24, .24, 1.1, '#E07A3F')));
+    add('arbol1', 1.5, arbol(1.4, 1.2, 1.1)); add('arbol2', 3.2, arbol(2.4, 1.0, .85));
+    add('etq', 50, etiqueta(6, 5, 0, t ? `${tas.m2} m²` : 'Tu propiedad'));
+  } else if (t === 'casa') {
+    add('suelo', -99, caja(0, 0, -.3, 12, 10, .3, VERDE));
+    const lugares = [[1.2, 1.2], [4.4, 1.2], [1.2, 4.4], [4.4, 4.4], [7.6, 1.2]];
+    const conPuerta = n > 2 ? 2 : 0;   // la puerta va en el ambiente de adelante a la izquierda
+    for (let i = 0; i < Math.max(1, n); i++) {
+      const [x, y] = lugares[i];
+      const frente = i === conPuerta ? venIzq(y + 3.2, x + 1.1, x + 2, 0, 1.75, '#7A5434') : venIzq(y + 3.2, x + .8, x + 2.4, .9, 1.9);
+      add('amb' + i, x + y + 3, caja(x, y, 0, 3.2, 3.2, 2.4, PARED, TECHO) + frente + venDer(x + 3.2, y + .8, y + 2.4, .9, 1.9));
+    }
+    if (ex.has('Cochera')) add('cochera', 7.6 + 4.4 + 3, caja(7.6, 4.4, 0, 3.2, 3.2, 2, '#E3DED4', TECHO) + venIzq(7.6, 8.1, 10.3, 0, 1.5, '#8E9499'));
+    if (ex.has('Pileta')) add('pileta', 9.6, caja(1.2, 8, -.25, 4, 1.6, .28, '#F4F3EE') + caja(1.45, 8.2, -.24, 3.5, 1.2, .25, '#4DB3DE', '#59BDE6'));
+    if (ex.has('Quincho')) add('quincho', 8.4 + 8 + 1, caja(8.4, 7.9, 0, 2.4, 1.7, 1.6, '#D9C3A5', '#B5532E') + venIzq(9.6, 8.8, 10.4, .5, 1.2));
+    if (ex.has('Jardín')) { add('j1', 11.3 + 8.8, arbol(11.2, 8.9, 1)); add('j2', 11.4 + .8, arbol(11.3, .9, 1.15)); add('j3', 6.3 + 9.4, arbol(6.6, 9.3, .8)); }
+    add('etq', 50, etiqueta(4.8, 4.8, 2.6, `${tas.m2} m²`));
+  } else if (t === 'depto') {
+    add('suelo', -99, caja(0, 0, -.3, 12, 10, .3, '#D3CFC6'));
+    const pisos = 7, ph = 1.05, mio = 3;
+    for (let f = 0; f < pisos; f++) {
+      const es = f === mio, col = es ? '#CFE2D8' : '#E6E2DA';
+      let s = caja(3, 2.5, f * ph, 6, 5, ph, col, f === pisos - 1 ? TECHO : null);
+      const nv = es ? Math.max(1, n) : 3;
+      for (let v = 0; v < nv; v++) { const a = 3.4 + v * (5.2 / nv), b = a + 5.2 / nv - .5; s += venIzq(7.5, a, b, f * ph + .3, f * ph + .8, es ? SUYO : '#5C6E76'); }
+      s += venDer(9, 3, 4.4, f * ph + .3, f * ph + .8, es ? SUYO : '#4F6169') + venDer(9, 5.4, 6.8, f * ph + .3, f * ph + .8, es ? SUYO : '#4F6169');
+      add('piso' + f, 100 + f, s);
+    }
+    if (ex.has('Balcón')) {
+      const z = mio * ph, [a1, b1] = P(9.95, 3, z + .55), [a2, b2] = P(9.95, 7, z + .55);
+      add('balcon', 103.5, caja(9, 3, z, .95, 4, .1, '#CFC9BE') + `<line x1="${a1}" y1="${b1}" x2="${a2}" y2="${b2}" stroke="#15181B" stroke-width="1.6"/>` +
+        [3, 4, 5, 6, 7].map(y => { const [c, d] = P(9.95, y, z + .1), [e2, f2] = P(9.95, y, z + .55); return `<line x1="${c}" y1="${d}" x2="${e2}" y2="${f2}" stroke="#15181B" stroke-width="1"/>`; }).join(''));
+    }
+    if (ex.has('Cochera')) add('cochera', 99, venIzq(7.5, 7, 8.6, 0, .8, '#2B3236') + caja(6.6, 8.4, 0, 2.1, 1.1, .55, '#3E6E9E', '#5B8BBB'));
+    if (ex.has('Amenities')) add('pileta', 120, caja(3.6, 3, pisos * ph, 3.6, 1.8, .12, '#F4F3EE') + caja(3.8, 3.2, pisos * ph + .01, 3.2, 1.4, .12, '#4DB3DE', '#59BDE6'));
+    add('etq', 130, etiqueta(4, 7.5, mio * ph + .6, `${Math.max(1, n)} amb. · ${tas.m2} m²`));
+  } else if (t === 'ph') {
+    add('suelo', -99, caja(0, 0, -.3, 11, 11, .3, VERDE));
+    add('frente', 40, caja(.8, 7.8, 0, 9.4, 2.6, 2.6, '#DAD6CE', TECHO) + venIzq(10.4, 2, 3.4, 1, 1.9, '#5C6E76') + venIzq(10.4, 6, 7.4, 1, 1.9, '#5C6E76') +
+      (ex.has('Cochera') ? venIzq(10.4, 7.8, 9.8, 0, 1.6, '#8E9499') : '') + venIzq(10.4, 4.3, 5.1, 0, 1.7, '#7A5434'));
+    const lugares = [[.8, 1], [3.9, 1], [7, 1], [.8, 4.1], [3.9, 4.1]];
+    for (let i = 0; i < Math.max(1, n); i++) {
+      const [x, y] = lugares[i];
+      add('amb' + i, x + y + 3, caja(x, y, 0, 3.1, 3.1, 2.4, '#E3EEE7', TECHO) + venIzq(y + 3.1, x + .8, x + 2.3, .9, 1.9, SUYO) + venDer(x + 3.1, y + .8, y + 2.3, .9, 1.9, SUYO));
+    }
+    if (ex.has('Terraza')) { const z = 2.4, [a1, b1] = P(.8, 4.1, z + .5), [a2, b2] = P(3.9, 4.1, z + .5), [a3, b3] = P(3.9, 1, z + .5);
+      add('terraza', 4.5, caja(.8, 1, z, 3.1, 3.1, .08, '#C9A27F', '#C7966C') + `<polyline points="${a1},${b1} ${a2},${b2} ${a3},${b3}" fill="none" stroke="#15181B" stroke-width="1.5"/>` + arbol(1.6, 1.8, .55)); }
+    if (ex.has('Patio')) add('patio', 7.6 + 4.6 + 1, caja(7.2, 4.4, -.02, 3, 2.8, .05, '#E3D7C3', '#E6DCCB') + arbol(9.2, 6, .75));
+    add('etq', 60, etiqueta(4.6, 2.6, 2.8, `PH · ${tas.m2} m²`));
+  }
+  piezas.sort((a, b) => a.orden - b.orden);
+  $('#maqueta').innerHTML = piezas.map(p => `<g data-k="${p.k}">${p.svg}</g>`).join('');
+  const nuevas = piezas.filter(p => !previas.has(p.k) && !/:(suelo|etq|borde)$/.test(p.k)).map(p => $(`#maqueta [data-k="${p.k}"]`));
+  if (animar && !reduce && nuevas.length) gsap.from(nuevas, {y: -46, autoAlpha: 0, duration: .55, stagger: .07, ease: 'back.out(1.6)'});
+  previas = new Set(piezas.map(p => p.k));
+}
+pintarPaso(); dibujar(false);
+
+// ── 4 · nota y mapa · 5 · cierre ──
+const busqueda = encodeURIComponent([N, LUGAR].filter(Boolean).join(', '));
+if (!isNaN(R) && O) {
+  $('#nota-num').textContent = R.toFixed(1).replace('.', ',');
+  $('#opiniones').textContent = `${O.toLocaleString('es-AR')} opiniones`;
+  $('#ver-opiniones').href = `https://www.google.com/maps/search/?api=1&query=${busqueda}`;
+  const llenas = Math.round(R);
+  $('#estrellas').innerHTML = Array.from({length: 5}, (_, i) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="${i < llenas ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('');
+} else $('#nota-g').style.display = 'none';
+$('#mapa').src = `https://www.google.com/maps?q=${busqueda || 'Argentina'}&output=embed`;
+$('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${busqueda}`;
+const cf = $('#c-foto'); cf.sizes = '(max-width:860px) 120vh, 100vw'; cf.srcset = juego(4626268, [800, 1300, 1900]); cf.src = foto(4626268, 1300);
+
+addEventListener('resize', ajustarPlaca);
+const mm = gsap.matchMedia();
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  // las tres hojas suben como persianas y después la placa; el brillo cruza el bronce una sola vez
+  gsap.from('.panel', {clipPath: 'inset(100% 0 0 0)', duration: 1.1, stagger: .13, ease: 'power4.out', clearProps: 'clipPath'});
+  gsap.from('.panel .txt', {y: 30, autoAlpha: 0, duration: .8, stagger: .13, delay: .45, ease: 'power3.out'});
+  gsap.from('#placa', {y: -24, autoAlpha: 0, duration: .9, delay: .7, ease: 'power3.out'});
+  gsap.to('.placa .brillo', {x: '120%', duration: 1.3, delay: 1.5, ease: 'power2.inOut'});
+  $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
+  if (!isNaN(R)) { const n = {v: 0}; gsap.to(n, {v: R, duration: 1.3, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 85%'},
+    onUpdate: () => { $('#nota-num').textContent = n.v.toFixed(1).replace('.', ','); }}); }
+  gsap.fromTo('#c-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '.cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}});
+});
+document.fonts.ready.then(() => { ajustarPlaca(); ScrollTrigger.refresh(); });
+addEventListener('load', () => ScrollTrigger.refresh());
+</script>
+</body></html>
