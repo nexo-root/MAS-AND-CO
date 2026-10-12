@@ -45,9 +45,9 @@ export function Quienes() {
             <a href="/caso/credito-finan/">Crédito Finan</a>, una consultora de
             crédito, en línea desde julio de 2026. En agosto de 2026 sumamos la
             de <a href="/caso/el-arbolito/">El Arbolito</a>, un alojamiento en
-            Pehuén-Có. Las dos siguen publicadas y se pueden abrir desde{" "}
-            <a href="/casos/">Casos reales</a>, con qué necesitaba cada negocio
-            y qué hicimos.
+            Pehuén-Có. Las dos siguen publicadas y cada una tiene su página, con
+            qué necesitaba el negocio y qué hicimos. Las páginas de muestra de
+            cada rubro están en <a href="/casos/">Ejemplos</a>.
           </p>
         </div>
 

@@ -101,11 +101,11 @@
   {
     "id": "casos",
     "path": "/casos/",
-    "nombre": "Casos reales",
+    "nombre": "Ejemplos",
     "prioridad": "0.8",
-    "titulo": "Casos reales: páginas web que hicimos para negocios | Mas & Co",
-    "descripcion": "Las páginas web que hicimos para negocios reales, publicadas y abiertas para que las compruebes: qué necesitaba cada uno, qué hicimos y cuándo quedó en línea.",
-    "actualizado": "2026-09-30"
+    "titulo": "Ejemplos de páginas web por rubro | Mas & Co",
+    "descripcion": "Páginas de muestra para salones, alojamientos, mueblerías, restaurantes, inmobiliarias, agencias de viajes y corralones. Recorrelas y probalas con el nombre de tu negocio.",
+    "actualizado": "2026-10-12"
   },
   {
     "id": "caso-arbolito",

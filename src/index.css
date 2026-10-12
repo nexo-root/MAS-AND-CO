@@ -356,3 +356,87 @@ html[data-tema="oscuro"] body::before{content:"";position:fixed;inset:0;
     font-weight:500;flex:none}
   .tabla td.nos{font-weight:800}
 }
+
+/* ── /casos/: la vitrina de muestras (12/10/2026) ─────────────────────
+   Tarjetas en grilla: al pasar el mouse la captura se recorre hacia abajo
+   (la pagina entera, no solo la portada) y al tocarla se agranda hasta
+   ocupar la pantalla con la pagina andando adentro. Mismos cantos rectos y
+   la misma linea fina que el resto del sitio. */
+.vit-grilla{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.6vw,24px);
+  margin:clamp(26px,4vh,44px) 0 clamp(10px,2vh,20px)}
+@media (max-width:1180px){.vit-grilla{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:860px){.vit-grilla{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.vit-grilla{grid-template-columns:1fr}}
+.vit-tarjeta{position:relative;display:flex;flex-direction:column;border:1px solid var(--linea);
+  background:var(--papel);transition:border-color .35s,transform .45s var(--salida),box-shadow .45s var(--salida)}
+.vit-tarjeta:hover,.vit-tarjeta:focus-within{border-color:var(--tinta);transform:translateY(-4px);
+  box-shadow:0 26px 50px -30px rgba(11,18,32,.45)}
+.vit-img{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--papel-2);border-bottom:1px solid var(--linea)}
+/* la captura mide 1,625 veces el ancho; la ventana, 0,625: se recorre un 61,5 % de su alto */
+.vit-img img{display:block;width:100%;height:auto;transition:transform .9s var(--salida)}
+.vit-tarjeta:hover .vit-img img{transform:translateY(-61.5%);transition:transform 5.5s cubic-bezier(.45,.05,.4,1)}
+.vit-pie{display:flex;flex-direction:column;gap:8px;padding:16px 18px 18px;flex:1}
+.vit-pie h2{font-variation-settings:'wdth' 118,'wght' 800;font-size:1.28rem;letter-spacing:-.02em;line-height:1.1}
+.vit-pie h2 button{all:unset;cursor:pointer}
+.vit-pie h2 button::after{content:"";position:absolute;inset:0;z-index:2}
+.vit-pie h2 button:focus-visible{outline:none}
+.vit-tarjeta:has(button:focus-visible){outline:2px solid var(--tinta);outline-offset:3px}
+.vit-pie p{font-size:.92rem;line-height:1.45;color:var(--tinta-2)}
+.vit-abrir{margin-top:auto;padding-top:6px;font-variation-settings:'wdth' 118,'wght' 650;font-size:.82rem;color:var(--tinta-2)}
+.vit-tarjeta:hover .vit-abrir{color:var(--tinta)}
+.vit-chip{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:4px 9px;
+  border:1px solid var(--linea);font-variation-settings:'wdth' 118,'wght' 600;font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}
+.vit-chip.real{color:var(--vivo);border-color:color-mix(in srgb,var(--vivo) 45%,transparent)}
+.vit-chip.real::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--vivo)}
+
+/* el panel grande */
+html.vit-quieto{overflow:hidden}
+.vit-capa{position:fixed;inset:0;z-index:90}
+.vit-fondo{position:absolute;inset:0;background:rgba(11,18,32,.62);backdrop-filter:blur(6px)}
+.vit-panel{position:absolute;inset:3.5vh 2.6vw;display:grid;grid-template-columns:minmax(0,1fr) 360px;
+  background:var(--papel);border:1px solid var(--tinta);will-change:clip-path}
+.vit-vista{position:relative;min-height:0;display:flex;align-items:center;justify-content:center;
+  background:var(--papel-2);border-right:1px solid var(--linea);padding:18px;overflow:hidden}
+.vit-marco{position:relative;display:flex;flex-direction:column;background:#0B1220}
+.vit-marco.compu{border:1px solid var(--linea)}
+.vit-marco.celu{border-radius:34px;box-shadow:0 30px 60px -30px rgba(11,18,32,.6)}
+.vit-marco.celu .vit-pantalla{border-radius:24px}
+.vit-navegador{display:flex;align-items:center;gap:7px;padding:0 14px;background:#E2E2DA;color:#38455C;flex:none}
+.vit-navegador i{width:10px;height:10px;border-radius:50%;background:#C4C6C0}
+.vit-navegador span{margin-left:12px;font-size:.78rem;background:#F4F4EF;padding:3px 14px;flex:1;max-width:520px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vit-pantalla{position:relative;overflow:hidden;background:#F4F4EF}
+.vit-previa{position:absolute;left:0;top:0;width:100%;height:auto}
+.vit-pantalla iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;opacity:0;transition:opacity .45s}
+.vit-pantalla iframe.listo{opacity:1}
+.vit-cargando{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:.8rem;color:#0B1220;
+  background:rgba(244,244,239,.92);padding:6px 12px;white-space:nowrap}
+.vit-info{position:relative;display:flex;flex-direction:column;gap:14px;padding:30px 26px 26px;overflow-y:auto}
+.vit-info h2{font-variation-settings:'wdth' 118,'wght' 850;font-size:clamp(1.8rem,2.4vw,2.4rem);letter-spacing:-.03em;line-height:1;margin-top:2px}
+.vit-bajada{color:var(--tinta-2);font-size:1rem;line-height:1.5}
+.vit-info ul{list-style:none;border-top:1px solid var(--linea)}
+.vit-info li{padding:9px 0;border-bottom:1px solid var(--linea);font-size:.92rem;color:var(--tinta-2);line-height:1.4}
+.vit-cerrar{position:absolute;top:12px;right:12px;width:44px;height:44px;border:1px solid var(--linea);background:var(--papel);
+  color:var(--tinta);font-size:1.6rem;line-height:1;cursor:pointer;z-index:3}
+.vit-cerrar:hover{border-color:var(--tinta)}
+.vit-probar label{display:block;font-variation-settings:'wdth' 118,'wght' 650;font-size:.82rem;margin-bottom:6px}
+.vit-probar div{display:flex;border:1px solid var(--tinta)}
+.vit-probar input{flex:1;min-width:0;border:0;background:transparent;color:var(--tinta);font:inherit;font-size:.95rem;padding:11px 12px;outline:none}
+.vit-probar button{border:0;border-left:1px solid var(--tinta);background:var(--tinta);color:var(--papel);
+  font-variation-settings:'wdth' 118,'wght' 650;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:0 16px;cursor:pointer}
+.vit-dispo{display:flex;border:1px solid var(--linea)}
+.vit-dispo button{flex:1;border:0;background:transparent;color:var(--tinta-2);font:inherit;font-size:.85rem;padding:10px;cursor:pointer}
+.vit-dispo button.on{background:var(--tinta);color:var(--papel)}
+.vit-acciones{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.vit-acciones .boton{width:100%}
+.vit-caso{color:var(--tinta);font-size:.9rem;text-decoration:underline;text-underline-offset:4px}
+.vit-nota{font-size:.8rem;color:var(--gris);line-height:1.45}
+@media (max-width:860px){
+  .vit-panel{inset:0;grid-template-columns:1fr;grid-template-rows:auto auto;overflow-y:auto;border:0}
+  .vit-vista{height:68svh;padding:0;border-right:0;border-bottom:1px solid var(--linea)}
+  .vit-marco.celu{border-radius:0;box-shadow:none}
+  .vit-marco.celu .vit-pantalla{border-radius:0}
+  .vit-info{overflow:visible;padding:22px 16px 90px}
+  .vit-cerrar{position:fixed;top:10px;right:10px;background:var(--papel)}
+}
