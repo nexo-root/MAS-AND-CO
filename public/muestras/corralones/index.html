@@ -1,0 +1,601 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Diseño de muestra para su corralón · Mas & Co">
+<meta property="og:description" content="Recórrala completa: la calculadora de materiales, la pared que se levanta y el camión que lleva el pedido a la obra.">
+<meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
+<title>Corralón · diseño de muestra · Mas & Co</title>
+<link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800;900&family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:wght@400..800&display=swap" rel="stylesheet">
+<style>
+/* Muestra completa para corralones · Mas & Co · 12/10/2026. Una página para los 19 de la lista:
+   …/corralones/?s=<slug> trae nombre, lugar, nota, opiniones y qué venden (corralón, ferretería, maderera, arenera,
+   hormigón elaborado o chapas).
+   1. El nombre pintado con esténcil, de borde a borde, sobre la foto a sangre (arquetipo 3); abajo, una cinta métrica
+      que se desenrolla.
+   2. La calculadora: pared (ladrillos, cemento, cal y arena) o contrapiso; la pared se levanta mientras cambian las
+      medidas y la lista se escribe como un remito. El pedido se manda por WhatsApp.
+   3. Del corralón a la obra: al bajar, el camión lleva lo calculado.
+   4. La nota de Google y el mapa real. 5. Cierre.
+   Fotos de Pexels. Cálculos aproximados y ejemplos: el presupuesto final lo hace el corralón. */
+:root{--hormigon:#ECEAE5;--hormigon2:#DFDCD5;--tinta:#1C1D1F;--gris:#66696D;--amarillo:#F2C230;--amarillo2:#E0B11F;--ladrillo:#B4532F;--noche:#17181A;--suave:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--hormigon);color:var(--tinta);font-family:"Public Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block}
+section{scroll-margin-top:70px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--amarillo);color:var(--tinta);font-weight:800;border-radius:10px;white-space:nowrap;transition:background .25s,transform .25s var(--suave)}
+.btn:hover{background:var(--amarillo2)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px}
+.btn.oscuro{background:var(--tinta);color:#fff}
+.btn.oscuro:hover{background:#000}
+.nota-ej{font-size:13px;color:var(--gris)}
+
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;
+  background:rgba(23,24,26,.9);backdrop-filter:blur(8px);color:#fff}
+.marca{font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:26px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+.nav{display:flex;gap:26px;font-size:15px;font-weight:600;color:rgba(255,255,255,.8)}
+.nav a:hover{color:#fff}
+.barra .btn{font-size:15px;padding:11px 16px}
+
+/* 1 · el nombre pintado */
+.portada{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--noche);color:#fff}
+.portada .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,18,.55) 0%,rgba(17,17,18,.15) 35%,rgba(17,17,18,.55) 62%,rgba(17,17,18,.9) 100%)}
+.letrero{position:absolute;z-index:2;left:44px;right:44px;bottom:140px}
+.tipo{font-size:18px;font-weight:700;display:flex;align-items:center;gap:12px}
+.tipo i{width:30px;height:4px;background:var(--amarillo)}
+.esten{font-family:"Big Shoulders Stencil Display",sans-serif;font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:.005em;margin-top:12px;font-size:150px;text-wrap:balance;
+  -webkit-mask-image:linear-gradient(90deg,#000 var(--p,100%),transparent calc(var(--p,100%) + 9%));mask-image:linear-gradient(90deg,#000 var(--p,100%),transparent calc(var(--p,100%) + 9%));
+  color:#F4F1EA;text-shadow:0 0 1px rgba(244,241,234,.6),0 0 18px rgba(0,0,0,.25)}
+.bajada{margin-top:16px;font-size:19px;max-width:30em;color:rgba(255,255,255,.9)}
+.acciones{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.acciones .btn{font-size:17px;padding:16px 24px}
+.btn.claro{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75)}
+.btn.claro:hover{background:rgba(255,255,255,.12)}
+.cinta{position:absolute;z-index:3;left:0;right:0;bottom:64px;height:46px;display:flex;align-items:center}
+.cinta .caja{flex:none;width:76px;height:64px;margin-left:16px;border-radius:14px;background:linear-gradient(160deg,#2E3034,#151618);box-shadow:inset 0 0 0 2px rgba(255,255,255,.08),0 10px 20px -8px rgba(0,0,0,.6);position:relative;z-index:2}
+.cinta .caja::after{content:"";position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:radial-gradient(circle,#3C3F44 0 40%,#F2C230 41% 55%,#2B2D31 56%)}
+.cinta .tira{position:relative;flex:1;height:40px;margin-left:-6px;background:
+  repeating-linear-gradient(90deg,rgba(28,29,31,.9) 0 1.5px,transparent 1.5px 60px) 0 0/100% 100% no-repeat,
+  repeating-linear-gradient(90deg,rgba(28,29,31,.85) 0 1px,transparent 1px 30px) 0 0/100% 46% no-repeat,
+  repeating-linear-gradient(90deg,rgba(28,29,31,.7) 0 1px,transparent 1px 6px) 0 0/100% 26% no-repeat,
+  linear-gradient(180deg,#F6CC3E,#E9B925);box-shadow:0 8px 16px -8px rgba(0,0,0,.5);clip-path:inset(0 0 0 0)}
+.cinta .tira span{position:absolute;bottom:4px;font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:15px;color:var(--tinta);transform:translateX(-50%)}
+.ejemplo-h{position:absolute;z-index:3;right:20px;top:84px;font-size:12.5px;color:#fff;background:rgba(17,17,18,.6);padding:6px 11px;border-radius:999px}
+
+/* secciones */
+.sec{position:relative;padding:112px 48px}
+.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:0 auto 44px;max-width:1220px}
+.cabeza h2{font-family:"Big Shoulders Display",sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(52px,6vw,104px);line-height:.88;letter-spacing:-.005em;max-width:11ch;text-wrap:balance}
+.cabeza h2 em{font-style:normal;color:var(--ladrillo)}
+.cabeza p{max-width:26em;font-size:17.5px;color:var(--gris);line-height:1.5}
+
+/* 2 · la calculadora */
+.pestanas{display:inline-flex;background:var(--hormigon2);border-radius:12px;padding:4px;margin:0 auto 18px}
+.pestanas button{padding:11px 20px;border-radius:9px;font-weight:800;font-size:15.5px;color:#4A4D52}
+.pestanas button.on{background:var(--tinta);color:#fff}
+.calc{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;max-width:1220px;margin:0 auto;align-items:start}
+.lienzo{background:#F7F5F1;border-radius:20px;box-shadow:0 30px 60px -44px rgba(28,29,31,.55),0 0 0 1px rgba(28,29,31,.06);overflow:hidden}
+.lienzo svg{display:block;width:100%;height:auto}
+.lienzo .pie-l{display:flex;justify-content:space-between;gap:12px;padding:0 22px 16px;font-size:13.5px;color:var(--gris)}
+.mando{padding:18px 22px 20px;border-top:1.5px solid rgba(28,29,31,.07);display:grid;grid-template-columns:1fr 1fr;gap:16px 26px}
+.mando .ancho{grid-column:1 / -1}
+.mando h3{font-size:14.5px;font-weight:800;margin-bottom:8px;display:flex;justify-content:space-between}
+.mando h3 output{font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:21px;line-height:1}
+.mando input[type=range]{width:100%;accent-color:var(--tinta)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:10px 14px;border-radius:9px;font-weight:700;font-size:14.5px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(28,29,31,.12);transition:background .2s,color .2s,box-shadow .2s}
+.chip:hover{box-shadow:inset 0 0 0 1.5px rgba(28,29,31,.35)}
+.chip.on{background:var(--tinta);color:#fff;box-shadow:none}
+.chip:disabled{opacity:.35;cursor:not-allowed}
+.remito{background:#fff;border-radius:20px;padding:24px 24px 22px;box-shadow:0 30px 60px -44px rgba(28,29,31,.55),0 0 0 1px rgba(28,29,31,.06)}
+.remito-cab{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:12px;border-bottom:2px solid var(--tinta)}
+.remito-cab b{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:30px;text-transform:uppercase}
+.remito-cab span{font-size:13px;color:var(--gris);text-align:right}
+.renglones{list-style:none}
+.renglones li{display:grid;grid-template-columns:96px 1fr;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1.5px dashed rgba(28,29,31,.16)}
+.renglones b{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:38px;line-height:.9;text-align:right}
+.renglones span{font-size:15.5px;font-weight:600;line-height:1.3}
+.renglones small{display:block;font-size:13px;font-weight:500;color:var(--gris)}
+.burbuja{margin-top:16px;background:#D9FDD3;color:#111B21;border-radius:14px 14px 14px 4px;padding:13px 15px 22px;font-size:15px;line-height:1.45;position:relative}
+.burbuja small{position:absolute;right:12px;bottom:6px;font-size:11.5px;color:#667781}
+.burbuja.cambia{animation:latir .45s var(--suave)}
+@keyframes latir{0%{transform:scale(.985)}100%{transform:none}}
+.remito .btn{width:100%;margin-top:14px;font-size:17px;padding:16px}
+
+/* 3 · del corralón a la obra */
+.viaje{background:var(--noche);color:#fff;overflow:hidden}
+.viaje .cabeza h2 em{color:var(--amarillo)}
+.viaje .cabeza p,.viaje .nota-ej{color:rgba(255,255,255,.72)}
+.escena{max-width:1320px;margin:0 auto}
+.escena svg{display:block;width:100%;height:auto;overflow:visible}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1220px;margin:36px auto 0}
+.paso-v{border-top:3px solid var(--amarillo);padding-top:14px}
+.paso-v b{display:block;font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:44px;line-height:1;color:var(--amarillo)}
+.paso-v p{margin-top:6px;font-size:16.5px;line-height:1.45;color:rgba(255,255,255,.88)}
+
+/* 4 · nota + mapa */
+.llegar{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;background:#fff}
+.nota-g .grande{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:clamp(140px,16vw,250px);line-height:.82}
+.estrellas{display:flex;gap:6px;margin:16px 0 10px;color:var(--ladrillo)}
+.estrellas svg{width:26px;height:26px}
+.nota-g p{font-size:19px;font-weight:600}
+.nota-g a,.donde a{display:inline-flex;margin-top:16px;font-weight:700;border-bottom:1.5px solid var(--tinta);padding-bottom:2px}
+.mapa{border-radius:18px;overflow:hidden;aspect-ratio:16/11;background:#ddd}
+.mapa iframe{width:100%;height:100%;border:0}
+.donde{margin-top:18px;font-size:18px}
+.donde b{display:block;font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:32px;text-transform:uppercase}
+
+/* 5 · cierre */
+.cierre{position:relative;min-height:80vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;padding:110px 28px}
+.cierre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cierre::after{content:"";position:absolute;inset:0;background:rgba(17,17,18,.55)}
+.cierre div{position:relative;z-index:2}
+.cierre h2{font-family:"Big Shoulders Display",sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(60px,8vw,136px);line-height:.88;max-width:12ch;margin:0 auto 16px;text-wrap:balance}
+.cierre p{font-size:19px;margin-bottom:30px;color:rgba(255,255,255,.9)}
+.cierre .btn{font-size:18px;padding:18px 30px}
+.pie{background:var(--noche);color:rgba(255,255,255,.7);padding:34px 110px 84px 48px;display:flex;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
+.pie a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+
+.muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(23,24,26,.88);padding:7px 12px;border-radius:999px}
+.flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(0,0,0,.5)}
+.flotante svg{width:30px;height:30px}
+.aviso{position:fixed;z-index:70;left:50%;bottom:96px;transform:translate(-50%,20px);max-width:min(92vw,460px);background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;
+  font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--suave)}
+.aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .barra{height:60px;padding:0 12px 0 16px}
+  .nav{display:none}
+  .marca{font-size:22px;max-width:56vw}
+  .barra .btn{font-size:14px;padding:10px 12px}
+  .letrero{left:16px;right:16px;bottom:120px}
+  .tipo{font-size:15px}
+  .bajada{font-size:16px}
+  .acciones .btn{font-size:15px;padding:14px 16px}
+  .cinta{bottom:58px;height:38px}
+  .cinta .caja{width:56px;height:50px;margin-left:10px;border-radius:12px}
+  .cinta .tira{height:32px}
+  .cinta .tira span{font-size:13px}
+  .ejemplo-h{top:72px;right:12px;font-size:11.5px}
+  .sec{padding:72px 16px}
+  .cabeza{display:block;margin-bottom:26px}
+  .cabeza h2{font-size:52px}
+  .cabeza p{font-size:15.5px;margin-top:12px}
+  .calc{display:block}
+  .mando{grid-template-columns:1fr;padding:16px 16px 18px;gap:14px}
+  .lienzo .pie-l{padding:0 16px 12px;font-size:12.5px}
+  .remito{margin-top:14px;padding:20px 16px 18px}
+  .renglones li{grid-template-columns:78px 1fr}
+  .renglones b{font-size:32px}
+  .pasos{grid-template-columns:1fr;gap:18px}
+  .paso-v b{font-size:36px}
+  .paso-v p{font-size:15.5px}
+  .llegar{display:block}
+  .nota-g .grande{font-size:140px}
+  .mapa{margin-top:32px;aspect-ratio:4/3.4}
+  .cierre{min-height:68vh;padding:88px 18px}
+  .cierre h2{font-size:58px}
+  .cierre p{font-size:16.5px}
+  .pie{display:block;padding:26px 18px 84px;font-size:13.5px}
+  .pie p+p{margin-top:10px}
+  .muestra{left:12px;bottom:12px;font-size:11.5px}
+  .flotante{right:14px;bottom:14px;width:56px;height:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+
+<header class="barra"><a class="marca" href="#arriba" data-n>Su corralón</a>
+  <nav class="nav"><a href="#calcular">Calculá tus materiales</a><a href="#envio">Envíos</a><a href="#llegar">Dónde estamos</a></nav>
+  <a class="btn" href="#calcular">Pedir presupuesto</a></header>
+
+<section class="portada" id="arriba">
+  <img class="foto" id="foto-portada" alt="" fetchpriority="high" decoding="async">
+  <div class="letrero">
+    <p class="tipo"><i></i><span id="tipo">Corralón</span></p>
+    <h1 class="esten" id="esten">SU CORRALON</h1>
+    <p class="bajada" id="bajada">Materiales para tu obra: calculá lo que necesitás y pedí el presupuesto por WhatsApp.</p>
+    <div class="acciones"><a class="btn" href="#calcular">Calculá tus materiales</a><a class="btn claro" href="#envio">Cómo es el envío</a></div>
+  </div>
+  <div class="cinta" aria-hidden="true"><span class="caja"></span><span class="tira" id="tira"></span></div>
+  <span class="ejemplo-h">Foto de ejemplo</span>
+</section>
+
+<section class="sec" id="calcular">
+  <div class="cabeza"><h2 id="h-calc">¿Cuánto <em>necesitás</em>?</h2><p id="p-calc">Poné las medidas y elegí el material. La cuenta es aproximada y el presupuesto final te lo pasamos nosotros.</p></div>
+  <div style="max-width:1220px;margin:0 auto"><div class="pestanas" id="pestanas" role="tablist"><button type="button" data-m="pared" class="on">Pared</button><button type="button" data-m="piso" id="pest-piso">Contrapiso</button></div></div>
+  <div class="calc">
+    <div class="lienzo">
+      <svg id="dibujo" viewBox="0 0 800 460" role="img" aria-label="Dibujo de la obra a escala"></svg>
+      <div class="pie-l"><span id="pie-a">Dibujo a escala</span><span>Cálculo aproximado</span></div>
+      <div class="mando" id="mando"></div>
+    </div>
+    <div class="remito">
+      <div class="remito-cab"><b>Tu lista</b><span id="remito-sub">Pared de ladrillo hueco del 12</span></div>
+      <ul class="renglones" id="renglones"></ul>
+      <p class="burbuja" id="burbuja">…<small>ahora</small></p>
+      <button class="btn oscuro" type="button" id="enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Pedir presupuesto por WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec viaje" id="envio">
+  <div class="cabeza"><h2 id="h-envio">Del corralón <em>a tu obra</em></h2><p>Lo que calculaste, arriba del camión. Lo pedís por WhatsApp y coordinamos el día de entrega.<br><span class="nota-ej">Dibujo y envío de ejemplo</span></p></div>
+  <div class="escena"><svg id="escena" viewBox="0 0 1300 380" role="img" aria-label="Un camión lleva los materiales desde el corralón hasta la obra"></svg></div>
+  <div class="pasos">
+    <div class="paso-v"><b>1</b><p>Calculás lo que necesitás o nos mandás la lista de tu constructor.</p></div>
+    <div class="paso-v"><b>2</b><p>Te pasamos el presupuesto por WhatsApp, con el envío incluido.</p></div>
+    <div class="paso-v"><b>3</b><p>Coordinamos el día y el horario para descargar en la obra.</p></div>
+  </div>
+</section>
+
+<section class="sec llegar" id="llegar">
+  <div class="nota-g" id="nota-g"><div class="grande" id="nota-num">4,5</div><div class="estrellas" id="estrellas"></div>
+    <p><span id="opiniones">opiniones</span> en Google</p><a id="ver-opiniones" href="#" target="_blank" rel="noopener">Leer las opiniones →</a></div>
+  <div><div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="donde"><b data-n>Su corralón</b><span data-lugar></span><br><a id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar →</a></div></div>
+</section>
+
+<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2>Arrancá tu obra con todo</h2><p id="c-sub"></p><a class="btn" href="#calcular">Calculá tus materiales</a></div></section>
+<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su corralón</span>.</p><p>Fotos, dibujos y cálculos de ejemplo: con los datos de ustedes queda su página.</p></footer>
+<span class="muestra">Diseño de muestra</span>
+<button class="flotante" type="button" id="flotante" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg></button>
+<p class="aviso" id="aviso" role="status"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const celu = () => matchMedia('(max-width:860px)').matches;
+
+// los 19 corralones de la lista: nombre, lugar, nota, opiniones y qué venden
+const CORRALONES = {"corralon-barabas-hnos":["Corralón Barabas Hnos.","Quilmes, Buenos Aires",4.5,328],"ferreteria-corralon-el-fenix":["Ferretería Corralón El Fénix","Córdoba, Córdoba",4.2,256,"ferreteria"],"corralon-juan-b-justo":["Corralón Juan B. Justo","Mar del Plata, Buenos Aires",4.3,210],"corralon-el-chocon":["Corralón El Chocón","Neuquén, Neuquén",4.3,155],"materiales-de-construccion-la-ruta":["Materiales La Ruta","Pilar, Buenos Aires",4.6,125],"maderera-y-artistica-waltana":["Maderera Waltana","Núñez, CABA",4.6,117,"madera"],"corralon-de-materiales-karla":["Corralón de Materiales Karla","Pilar, Buenos Aires",4.7,113],"ferreteria-y-corralon-nueva-pueyrredon":["Ferretería y Corralón Nueva Pueyrredón","Córdoba, Córdoba",4.6,102,"ferreteria"],"materiales-castelli-group-sa":["Materiales Castelli","Pilar, Buenos Aires",4.6,100],"la-peregrina-chapas-y-materiales-de-construccion-mdq":["La Peregrina","Mar del Plata, Buenos Aires",4.6,95,"chapas"],"bendito-corralon-mayorista":["Bendito Corralón Mayorista","Córdoba, Córdoba",4.9,66],"arenera-farjat":["Arenera Farjat","Paraná, Entre Ríos",4.7,61,"arena"],"corralon-laprida":["Corralón Laprida","Paraná, Entre Ríos",4.3,55],"corralon-dolzani-sucursal-arroyo-leyes":["Corralón Dolzani","Santa Fe, Santa Fe",4.5,52],"ferreteria-y-corralon-8-y-9":["Ferretería y Corralón 8 y 9","San Miguel de Tucumán, Tucumán",4.3,51,"ferreteria"],"omar-panarello-materiales-de-construccion":["Omar Panarello Materiales","Mar del Plata, Buenos Aires",4.5,43],"corralon-md":["Corralón MD","Bahía Blanca, Buenos Aires",4.4,35],"grupo-cementera-del-sur":["Grupo Cementera del Sur","Quilmes, Buenos Aires",4.5,34],"hormimas":["Hormimas","Adrogué, Buenos Aires",4.8,20,"hormigon"]};
+const q = new URLSearchParams(location.search);
+const M = CORRALONES[(q.get('s') || '').toLowerCase()] || null;
+const N = (q.get('n') || '').trim() || (M && M[0]) || 'Su corralón';
+const LUGAR = (q.get('c') || '').trim() || (M && M[1]) || '';
+const CIUDAD = LUGAR.split(',')[0].trim();
+const R = parseFloat((q.get('r') || '').replace(',', '.')) || (M && M[2]) || NaN;
+const O = parseInt((q.get('o') || '').replace(/\D/g, ''), 10) || (M && M[3]) || 0;
+const VAR = q.get('t') || (M && M[4]) || 'corralon';
+const CONF = {
+  corralon: {tipo: 'Corralón de materiales', foto: [39370865, '50% 50%', '30% 50%'], modo: 'pared'},
+  ferreteria: {tipo: 'Ferretería y corralón', foto: [39370865, '50% 50%', '30% 50%'], modo: 'pared'},
+  madera: {tipo: 'Maderera', foto: [12278586, '50% 55%', '72% 50%'], modo: 'pared'},
+  arena: {tipo: 'Arenera y materiales', foto: [38862399, '55% 50%', '62% 50%'], modo: 'piso'},
+  hormigon: {tipo: 'Hormigón elaborado', foto: [10068081, '40% 50%', '30% 50%'], modo: 'piso'},
+  chapas: {tipo: 'Chapas y materiales', foto: [18275847, '50% 40%', '50% 40%'], modo: 'pared'}
+}[VAR] || {tipo: 'Corralón de materiales', foto: [39370865, '50% 50%', '30% 50%'], modo: 'pared'};
+const HORMIGON = VAR === 'hormigon';
+
+$$('[data-n]').forEach(el => el.textContent = N);
+const SIN_TILDES = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+$('#esten').textContent = SIN_TILDES(N); $('#esten').setAttribute('aria-label', N);
+$$('[data-lugar]').forEach(el => el.textContent = LUGAR || 'Argentina');
+document.title = `${N} · diseño de muestra · Mas & Co`;
+$('#tipo').textContent = `${CONF.tipo}${CIUDAD ? ' en ' + CIUDAD : ''}`;
+$('#c-sub').textContent = CIUDAD ? `En ${N}, ${CIUDAD}.` : `En ${N}.`;
+if (HORMIGON) {
+  $('#bajada').textContent = 'Hormigón elaborado para tu losa o tu contrapiso: calculá los metros cúbicos y pedí el presupuesto por WhatsApp.';
+  $('#pestanas').hidden = true; $('#h-calc').innerHTML = '¿Cuántos metros <em>cúbicos</em>?'; $('#h-envio').innerHTML = 'De la planta <em>a tu obra</em>';
+}
+function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); if (avisar._t) avisar._t.kill(); avisar._t = gsap.delayedCall(4.2, () => a.classList.remove('ver')); }
+const avisoWsp = () => avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`);
+$('#flotante').addEventListener('click', avisoWsp);
+$('#enviar').addEventListener('click', avisoWsp);
+
+// ── 1 · el nombre pintado y la cinta métrica ──
+const [pid, pdesk, pcel] = CONF.foto;
+const fp = $('#foto-portada'); fp.sizes = '(max-width:860px) 160vh, 100vw'; fp.srcset = juego(pid, [800, 1300, 2000]); fp.src = foto(pid, 1300);
+const encuadre = () => fp.style.objectPosition = celu() ? pcel : pdesk; encuadre();
+function ajustarNombre() {
+  const h = $('#esten'), max = celu() ? 92 : Math.min(innerWidth * .14, 210);
+  let fs = max; h.style.fontSize = fs + 'px';
+  while (fs > 34 && (h.scrollWidth > h.clientWidth + 1 || h.offsetHeight > fs * .88 * (celu() ? 3.1 : 2.1))) { fs -= 2; h.style.fontSize = fs + 'px'; }
+}
+function marcarCinta() {
+  const t = $('#tira'), w = t.clientWidth || innerWidth, cada = 60;
+  t.innerHTML = Array.from({length: Math.floor(w / cada)}, (_, i) => i ? `<span style="left:${i * cada}px">${i * 10}</span>` : '').join('');
+}
+ajustarNombre(); marcarCinta();
+
+// ── 2 · la calculadora ──
+const LADRILLOS = {
+  hueco12: {nom: 'Hueco del 12', largo: 'ladrillo hueco del 12', espesor: 12, w: .33, h: .18, porM2: 15, mortero: .012, color: '#C35F37'},
+  hueco18: {nom: 'Hueco del 18', largo: 'ladrillo hueco del 18', espesor: 18, w: .33, h: .18, porM2: 15, mortero: .016, color: '#B9572F'},
+  comun: {nom: 'Común', largo: 'ladrillo común', espesor: 15, w: .26, h: .055, porM2: 60, mortero: .035, color: '#A4472A'}
+};
+const JUNTA = .015;
+const st = {modo: HORMIGON ? 'piso' : CONF.modo, lad: 'hueco12', L: 4.5, H: 2.6, puerta: true, ventana: false, Lp: 5, Wp: 4, e: HORMIGON ? 12 : 10};
+const vis = {L: st.L, H: st.H, Lp: st.Lp, Wp: st.Wp, e: st.e};   // lo que se dibuja (se anima hacia st)
+const coma = (n, d = 2) => n.toFixed(d).replace('.', ',');
+const metros = n => { const r = Math.round(n * 100) / 100; return (Number.isInteger(r) ? String(r) : r.toFixed(2).replace(/0$/, '')).replace('.', ',') + ' m'; };
+function cuentas() {
+  if (st.modo === 'pared') {
+    const T = LADRILLOS[st.lad];
+    let area = st.L * st.H; const abre = [];
+    if (st.puerta && puertaCabe()) { area -= 1.8; abre.push('una puerta'); }
+    if (st.ventana && ventanaCabe()) { area -= 1.32; abre.push('una ventana'); }
+    area = Math.max(0, area);
+    const mort = area * T.mortero;
+    return {area, abre, ladrillos: Math.ceil(area * T.porM2 * 1.05), cemento: Math.max(1, Math.ceil(mort * 2.1)), cal: Math.max(1, Math.ceil(mort * 6)), arena: Math.max(.1, Math.ceil(mort * 1.1 * 10) / 10)};
+  }
+  const area = st.Lp * st.Wp, vol = area * st.e / 100;
+  return {area, vol, cemento: Math.ceil(vol * 6), arena: Math.ceil(vol * .55 * 10) / 10, piedra: Math.ceil(vol * .75 * 10) / 10};
+}
+const puertaCabe = () => st.H >= 2.2 && st.L >= 1.6;
+const ventanaCabe = () => st.H >= 2.2 && st.L >= (st.puerta ? 3.4 : 2);
+function mandos() {
+  const m = $('#mando');
+  if (st.modo === 'pared') {
+    m.innerHTML = `<div class="ancho"><h3>Ladrillo</h3><div class="chips" id="g-lad">${Object.entries(LADRILLOS).map(([k, l]) => `<button class="chip${st.lad === k ? ' on' : ''}" type="button" data-k="${k}">${l.nom}</button>`).join('')}</div></div>
+      <div><h3>Largo <output id="o-L">${metros(st.L)}</output></h3><input type="range" id="r-L" min="1" max="15" step=".1" value="${st.L}" aria-label="Largo de la pared"></div>
+      <div><h3>Alto <output id="o-H">${metros(st.H)}</output></h3><input type="range" id="r-H" min="1" max="4" step=".1" value="${st.H}" aria-label="Alto de la pared"></div>
+      <div class="ancho"><h3>Aberturas</h3><div class="chips"><button class="chip${st.puerta ? ' on' : ''}" type="button" id="b-puerta">Una puerta</button><button class="chip${st.ventana ? ' on' : ''}" type="button" id="b-ventana">Una ventana</button></div></div>`;
+  } else {
+    m.innerHTML = `<div><h3>Largo <output id="o-Lp">${metros(st.Lp)}</output></h3><input type="range" id="r-Lp" min="1" max="15" step=".1" value="${st.Lp}" aria-label="Largo"></div>
+      <div><h3>Ancho <output id="o-Wp">${metros(st.Wp)}</output></h3><input type="range" id="r-Wp" min="1" max="10" step=".1" value="${st.Wp}" aria-label="Ancho"></div>
+      <div class="ancho"><h3>Espesor</h3><div class="chips" id="g-e">${(HORMIGON ? [10, 12, 15, 20] : [8, 10, 12]).map(e => `<button class="chip${st.e === e ? ' on' : ''}" type="button" data-e="${e}">${e} cm</button>`).join('')}</div></div>`;
+  }
+  aberturas();
+}
+function aberturas() {
+  const bp = $('#b-puerta'), bv = $('#b-ventana'); if (!bp) return;
+  bp.disabled = !puertaCabe(); bv.disabled = !ventanaCabe();
+  bp.classList.toggle('on', st.puerta && puertaCabe()); bv.classList.toggle('on', st.ventana && ventanaCabe());
+}
+$('#mando').addEventListener('input', e => {
+  const id = e.target.id; if (!id.startsWith('r-')) return;
+  const k = id.slice(2); st[k] = +e.target.value; $('#o-' + k).textContent = metros(st[k]);
+  aberturas(); mover(.35);
+});
+$('#mando').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b || b.disabled) return;
+  if (b.dataset.k) { st.lad = b.dataset.k; $$('#g-lad .chip').forEach(x => x.classList.toggle('on', x === b)); }
+  else if (b.dataset.e) { st.e = +b.dataset.e; $$('#g-e .chip').forEach(x => x.classList.toggle('on', x === b)); }
+  else if (b.id === 'b-puerta') st.puerta = !st.puerta;
+  else if (b.id === 'b-ventana') st.ventana = !st.ventana;
+  aberturas(); mover(.5);
+});
+$('#pestanas').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b || b.dataset.m === st.modo) return;
+  st.modo = b.dataset.m; $$('#pestanas button').forEach(x => x.classList.toggle('on', x === b));
+  mandos(); dibujar(); remito(true);
+});
+function mover(dur) {
+  gsap.to(vis, {L: st.L, H: st.H, Lp: st.Lp, Wp: st.Wp, e: st.e, duration: reduce ? 0 : dur, ease: 'power3.out', overwrite: true, onUpdate: dibujar});
+  remito(true);
+}
+// el dibujo: en pared, la elevación con su ladrillo y las cotas; en contrapiso, la losa en perspectiva
+function cota(x1, y1, x2, y2, txt, vertical) {
+  const tx = (x1 + x2) / 2, ty = (y1 + y2) / 2;
+  let s = `<g stroke="#1C1D1F" stroke-width="1.3"><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
+  s += vertical ? `<line x1="${x1 - 6}" y1="${y1}" x2="${x1 + 6}" y2="${y1}"/><line x1="${x2 - 6}" y1="${y2}" x2="${x2 + 6}" y2="${y2}"/>`
+                : `<line x1="${x1}" y1="${y1 - 6}" x2="${x1}" y2="${y1 + 6}"/><line x1="${x2}" y1="${y2 - 6}" x2="${x2}" y2="${y2 + 6}"/>`;
+  s += `</g><text x="${vertical ? tx - 12 : tx}" y="${vertical ? ty : ty + 22}" font-family="Big Shoulders Display, sans-serif" font-weight="800" font-size="20" fill="#1C1D1F" text-anchor="middle"${vertical ? ` transform="rotate(-90 ${tx - 12} ${ty})"` : ''}>${txt}</text>`;
+  return s;
+}
+function dibujar() {
+  const svg = $('#dibujo');
+  if (st.modo === 'pared') {
+    const T = LADRILLOS[st.lad], L = vis.L, H = vis.H, s = Math.min(640 / L, 320 / H, 112);
+    const x0 = 100 + (640 - L * s) / 2, yB = 380, yT = yB - H * s, mw = (T.w + JUNTA) * s, mh = (T.h + JUNTA) * s, bw = T.w * s, bh = T.h * s;
+    $('#pie-a').textContent = `Pared de ${T.espesor} cm, dibujada a escala`;
+    let p = `<defs><pattern id="lad" width="${mw}" height="${2 * mh}" patternUnits="userSpaceOnUse" patternTransform="translate(${x0} ${yB})">
+      <rect width="${mw}" height="${2 * mh}" fill="#CFC8BC"/>
+      <rect x="0" y="${JUNTA * s / 2}" width="${bw}" height="${bh}" fill="${T.color}"/>
+      <rect x="${-mw / 2}" y="${mh + JUNTA * s / 2}" width="${bw}" height="${bh}" fill="${T.color}"/><rect x="${mw / 2}" y="${mh + JUNTA * s / 2}" width="${bw}" height="${bh}" fill="${T.color}"/>
+      ${st.lad !== 'comun' && bh > 9 ? [.33, .66].map(f => `<rect x="0" y="${JUNTA * s / 2 + bh * f}" width="${bw}" height="1" fill="rgba(0,0,0,.14)"/><rect x="${-mw / 2}" y="${mh + JUNTA * s / 2 + bh * f}" width="${bw}" height="1" fill="rgba(0,0,0,.14)"/><rect x="${mw / 2}" y="${mh + JUNTA * s / 2 + bh * f}" width="${bw}" height="1" fill="rgba(0,0,0,.14)"/>`).join('') : ''}
+      <rect x="0" y="${JUNTA * s / 2}" width="${bw}" height="${Math.max(1, bh * .12)}" fill="rgba(255,255,255,.12)"/></pattern>
+      <pattern id="tierra" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#E7E3DA"/><rect width="1.4" height="10" fill="#B9B2A6"/></pattern></defs>`;
+    p += `<rect x="40" y="${yB}" width="720" height="18" fill="url(#tierra)"/><line x1="40" y1="${yB}" x2="760" y2="${yB}" stroke="#1C1D1F" stroke-width="2"/>`;
+    p += `<rect x="${x0}" y="${yT}" width="${L * s}" height="${H * s}" fill="url(#lad)"/><rect x="${x0}" y="${yT}" width="${L * s}" height="${H * s}" fill="none" stroke="rgba(28,29,31,.35)" stroke-width="1"/>`;
+    if (st.puerta && puertaCabe()) {
+      const px = x0 + Math.max(.4, L * .16) * s, pw = .9 * s, ph = 2 * s;
+      p += `<rect x="${px}" y="${yB - ph}" width="${pw}" height="${ph}" fill="#F7F5F1" stroke="#4E4740" stroke-width="3"/><rect x="${px + pw * .14}" y="${yB - ph * .9}" width="${pw * .72}" height="${ph * .38}" fill="none" stroke="#B7AEA2" stroke-width="1.5"/><rect x="${px + pw * .14}" y="${yB - ph * .46}" width="${pw * .72}" height="${ph * .36}" fill="none" stroke="#B7AEA2" stroke-width="1.5"/><circle cx="${px + pw * .82}" cy="${yB - ph * .5}" r="3" fill="#4E4740"/>`;
+    }
+    if (st.ventana && ventanaCabe()) {
+      const vw = 1.2 * s, vh = 1.1 * s, vx = x0 + L * s - (Math.max(.5, L * .16) + 1.2) * s, vy = yB - 2 * s;
+      p += `<rect x="${vx}" y="${vy}" width="${vw}" height="${vh}" fill="#DCE8EE" stroke="#4E4740" stroke-width="3"/><line x1="${vx + vw / 2}" y1="${vy}" x2="${vx + vw / 2}" y2="${vy + vh}" stroke="#4E4740" stroke-width="2"/><line x1="${vx + 6}" y1="${vy + vh * .3}" x2="${vx + vw * .32}" y2="${vy + 6}" stroke="#fff" stroke-width="2" opacity=".7"/>`;
+    }
+    p += cota(x0, yB + 34, x0 + L * s, yB + 34, metros(L).replace(' m', ' m'));
+    p += cota(x0 - 34, yT, x0 - 34, yB, metros(H), true);
+    svg.innerHTML = p;
+  } else {
+    const L = vis.Lp, W = vis.Wp, e = vis.e, k = .5;
+    const s = Math.min(560 / (L + W * k * .87), 250 / (W * k * .5 + e / 100 * 3 + .1), 90);
+    const dx = W * k * .87 * s, dy = W * k * .5 * s, grosor = Math.max(8, e / 100 * s * 3);
+    const x0 = 110 + (560 - (L * s + dx)) / 2, yF = 300 + (200 - dy - grosor) / 2 - 40;
+    const A = [x0, yF + dy], B = [x0 + L * s, yF + dy], Cc = [x0 + L * s + dx, yF], Dd = [x0 + dx, yF];
+    $('#pie-a').textContent = HORMIGON ? `Losa de ${st.e} cm, dibujada a escala (el espesor, exagerado)` : `Contrapiso de ${st.e} cm, dibujado a escala (el espesor, exagerado)`;
+    let p = `<defs><pattern id="horm" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="#C9C6BF"/><circle cx="2" cy="3" r="1" fill="#A9A59D"/><circle cx="6.5" cy="7" r=".8" fill="#B3AFA7"/><circle cx="7" cy="2" r=".6" fill="#9E9A92"/></pattern></defs>`;
+    p += `<polygon points="${A} ${B} ${Cc} ${Dd}" fill="url(#horm)" stroke="#1C1D1F" stroke-width="1.5"/>`;
+    p += `<polygon points="${A} ${B} ${B[0]},${B[1] + grosor} ${A[0]},${A[1] + grosor}" fill="#A8A49C" stroke="#1C1D1F" stroke-width="1.5"/>`;
+    p += `<polygon points="${B} ${Cc} ${Cc[0]},${Cc[1] + grosor} ${B[0]},${B[1] + grosor}" fill="#96928A" stroke="#1C1D1F" stroke-width="1.5"/>`;
+    p += cota(A[0], A[1] + grosor + 30, B[0], B[1] + grosor + 30, metros(L));
+    const mx = (B[0] + Cc[0]) / 2 + 26, my = (B[1] + Cc[1]) / 2 + grosor / 2;
+    p += `<g stroke="#1C1D1F" stroke-width="1.3"><line x1="${B[0] + 18}" y1="${B[1] + grosor / 2 + 8}" x2="${Cc[0] + 18}" y2="${Cc[1] + grosor / 2 + 8}"/></g><text x="${mx + 14}" y="${my + 10}" font-family="Big Shoulders Display, sans-serif" font-weight="800" font-size="20" fill="#1C1D1F">${metros(W)}</text>`;
+    p += `<text x="${A[0] - 12}" y="${A[1] + grosor / 2 + 6}" font-family="Big Shoulders Display, sans-serif" font-weight="800" font-size="18" fill="#1C1D1F" text-anchor="end">${Math.round(e)} cm</text>`;
+    svg.innerHTML = p;
+  }
+}
+const contar = {};
+function remito(animar) {
+  const c = cuentas(), ul = $('#renglones');
+  let filas;
+  if (st.modo === 'pared') {
+    const T = LADRILLOS[st.lad];
+    $('#remito-sub').textContent = `Pared de ${T.largo}`;
+    filas = [['ladrillos', c.ladrillos, 0, 'ladrillos', `${T.nom}, con un 5 % de más por roturas`], ['cemento', c.cemento, 0, c.cemento === 1 ? 'bolsa de cemento' : 'bolsas de cemento', 'Bolsas de 50 kg'],
+             ['cal', c.cal, 0, c.cal === 1 ? 'bolsa de cal' : 'bolsas de cal', 'Bolsas de 25 kg'], ['arena', c.arena, 1, 'm³ de arena', 'Arena para la mezcla']];
+  } else if (HORMIGON) {
+    $('#remito-sub').textContent = `Losa de ${st.e} cm`;
+    filas = [['m2', c.area, 1, 'm² de superficie', `${metros(st.Lp)} × ${metros(st.Wp)}`], ['vol', Math.ceil(c.vol * 10) / 10, 1, 'm³ de hormigón', 'Hormigón elaborado H21'], ['mixer', Math.ceil(c.vol / 8), 0, Math.ceil(c.vol / 8) === 1 ? 'viaje de mixer' : 'viajes de mixer', 'Hasta 8 m³ por viaje']];
+  } else {
+    $('#remito-sub').textContent = `Contrapiso de ${st.e} cm`;
+    filas = [['m2', c.area, 1, 'm² de contrapiso', `${metros(st.Lp)} × ${metros(st.Wp)}`], ['cemento', c.cemento, 0, c.cemento === 1 ? 'bolsa de cemento' : 'bolsas de cemento', 'Bolsas de 50 kg'],
+             ['arena', c.arena, 1, 'm³ de arena', 'Arena gruesa'], ['piedra', c.piedra, 1, 'm³ de piedra', 'Piedra partida 6-20']];
+  }
+  if (!ul.dataset.modo || ul.dataset.modo !== st.modo || ul.children.length !== filas.length) {
+    ul.dataset.modo = st.modo;
+    ul.innerHTML = filas.map(([k]) => `<li data-k="${k}"><b>0</b><span></span></li>`).join('');
+    filas.forEach(([k]) => contar[k] = {v: 0});
+  }
+  filas.forEach(([k, v, dec, txt, sub]) => {
+    const li = $(`li[data-k="${k}"]`, ul); $('span', li).innerHTML = `${txt}<small>${sub}</small>`;
+    const o = contar[k] || (contar[k] = {v: 0}), b = $('b', li);
+    gsap.to(o, {v, duration: animar && !reduce ? .6 : 0, ease: 'power2.out', overwrite: true, onUpdate: () => { b.textContent = dec ? coma(o.v, 1) : Math.round(o.v).toLocaleString('es-AR'); }});
+  });
+  escribir(c);
+  cargarCamion(c);
+}
+function escribir(c) {
+  let t;
+  if (st.modo === 'pared') {
+    const T = LADRILLOS[st.lad];
+    t = `Hola, quiero presupuesto para una pared de ${metros(st.L)} × ${metros(st.H)} de ${T.largo}${c.abre.length ? ` (con ${c.abre.join(' y ')})` : ''}: unos ${c.ladrillos.toLocaleString('es-AR')} ladrillos, ${c.cemento} ${c.cemento === 1 ? 'bolsa' : 'bolsas'} de cemento, ${c.cal} de cal y ${coma(c.arena, 1)} m³ de arena. ¿Me pasan el precio con envío?`;
+  } else if (HORMIGON) t = `Hola, quiero presupuesto de hormigón elaborado para una losa de ${metros(st.Lp)} × ${metros(st.Wp)} de ${st.e} cm: unos ${coma(Math.ceil(c.vol * 10) / 10, 1)} m³. ¿Para qué día podrían?`;
+  else t = `Hola, quiero presupuesto para un contrapiso de ${metros(st.Lp)} × ${metros(st.Wp)} de ${st.e} cm: ${c.cemento} bolsas de cemento, ${coma(c.arena, 1)} m³ de arena y ${coma(c.piedra, 1)} m³ de piedra. ¿Me pasan el precio con envío?`;
+  const b = $('#burbuja'); b.innerHTML = `${t}<small>ahora</small>`;
+  if (!reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
+}
+if (HORMIGON) $('#pest-piso').textContent = 'Losa';
+
+// ── 3 · del corralón a la obra: el camión ──
+// un camión con baranda (o un mixer en las de hormigón), de costado y mirando a la derecha; las ruedas apoyan en y = 0
+function rueda(cx) {
+  return `<g transform="translate(${cx} -17)"><circle r="17" fill="#141517"/><circle r="15" fill="none" stroke="#2C2E32" stroke-width="2"/><circle r="8.5" fill="#A7ACB2"/>
+    <g class="rayos">${[0, 72, 144, 216, 288].map(a => `<rect x="-1.4" y="-8" width="2.8" height="5" rx="1" fill="#6D7278" transform="rotate(${a})"/>`).join('')}</g><circle r="3" fill="#2C2E32"/></g>`;
+}
+function camionSVG() {
+  let s = '';
+  s += `<rect x="6" y="-46" width="270" height="11" rx="3" fill="#25272B"/>`;   // chasis
+  if (HORMIGON) {
+    s += `<path d="M14 -46 L30 -64 L184 -64 L190 -46 Z" fill="#33363B"/>`;
+    s += `<g transform="rotate(-10 104 -90)"><rect x="22" y="-122" width="166" height="62" rx="31" fill="#E7E3DA"/><rect x="22" y="-122" width="166" height="62" rx="31" fill="none" stroke="#B9B3A8" stroke-width="2"/>
+      ${[52, 92, 132].map(x => `<path d="M${x} -121 L${x + 26} -61" stroke="#F2C230" stroke-width="9"/>`).join('')}<ellipse cx="190" cy="-91" rx="9" ry="22" fill="#C9C3B8"/></g>`;
+    s += `<path d="M200 -104 L214 -82 L206 -78 L194 -98 Z" fill="#8E9399"/>`;
+  } else {
+    s += `<rect x="0" y="-62" width="192" height="16" rx="2" fill="#6E5D4B"/><rect x="0" y="-62" width="192" height="3.5" fill="#8C7762"/>`;   // la caja
+    s += `<g id="carga"></g>`;
+    s += `<rect x="0" y="-94" width="192" height="4" rx="1.5" fill="#4C5056"/>${[0, 47, 94, 141, 188].map(x => `<rect x="${x}" y="-94" width="4" height="32" fill="#4C5056"/>`).join('')}`;   // barandas
+  }
+  // cabina
+  s += `<path d="M198 -35 L198 -106 Q198 -112 204 -112 L240 -112 Q246 -112 249 -107 L268 -74 L277 -70 Q281 -68 281 -62 L281 -35 Z" fill="#F2C230"/>`;
+  s += `<path d="M206 -104 L238 -104 L255 -75 L206 -75 Z" fill="#1E2C36"/><path d="M212 -100 L224 -100 L212 -82 Z" fill="rgba(255,255,255,.18)"/>`;
+  s += `<line x1="242" y1="-75" x2="242" y2="-38" stroke="#C99D1C" stroke-width="2"/><rect x="230" y="-66" width="9" height="2.6" rx="1.3" fill="#3A3D42"/>`;
+  s += `<rect x="198" y="-52" width="83" height="6" fill="#1C1D1F" opacity=".85"/>`;
+  s += `<rect x="274" y="-62" width="7" height="7" rx="1.5" fill="#FFF3C4"/><rect x="264" y="-40" width="20" height="9" rx="2" fill="#25272B"/>`;
+  s += `<rect x="252" y="-100" width="3" height="14" rx="1.5" fill="#25272B"/><rect x="250" y="-104" width="7" height="8" rx="1.5" fill="#25272B"/>`;
+  s += `<path d="M29 -17 a21 21 0 0 1 42 0 M67 -17 a21 21 0 0 1 42 0" fill="none" stroke="#25272B" stroke-width="4"/><path d="M215 -17 a21 21 0 0 1 42 0" fill="none" stroke="#25272B" stroke-width="4"/>`;
+  s += rueda(50) + rueda(88) + rueda(236);
+  return s;
+}
+function cargaSVG(c) {
+  // la carga sale de la calculadora: un pallet de ladrillos (más alto si son más) y las bolsas de cemento
+  if (HORMIGON) return '';
+  let s = '';
+  const filas = st.modo === 'pared' ? Math.max(1, Math.min(4, Math.ceil((c.ladrillos || 100) / 250))) : 1;
+  const bolsas = Math.max(1, Math.min(6, c.cemento || 1));
+  s += `<rect x="10" y="-68" width="84" height="6" fill="#A47B4E"/>`;   // pallet
+  for (let f = 0; f < filas; f++) {
+    const y = -68 - (f + 1) * 7.2, off = f % 2 ? 6 : 0;
+    for (let x = 10 - off; x < 94; x += 12) { const a = Math.max(10, x), b = Math.min(94, x + 11); if (b > a) s += `<rect x="${a}" y="${y}" width="${b - a}" height="6.4" fill="${f % 2 ? '#B9562F' : '#C35F37'}"/>`; }
+  }
+  for (let i = 0; i < bolsas; i++) {
+    const col = i % 3, fila = Math.floor(i / 3), x = 104 + col * 27, y = -76 - fila * 13;
+    s += `<rect x="${x}" y="${y}" width="25" height="13" rx="4" fill="#DAD6CE" stroke="#B7B1A6" stroke-width="1"/><rect x="${x + 8}" y="${y + 4}" width="9" height="5" rx="1" fill="#C5432D"/>`;
+  }
+  return s;
+}
+let mov = null, esc = {x0: 0, x1: 0};
+function armarEscena() {
+  const m = celu(); mov = m;
+  const W = m ? 600 : 1300, H = m ? 380 : 380, suelo = m ? 290 : 290, svg = $('#escena');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const propias = N.split(/\s+/).filter(w => !/^(ferreter[ií]a|corral[oó]n|y|de|materiales|grupo)$/i.test(w));
+  let nombreCorto = propias.length ? propias.join(' ') : N;
+  if (nombreCorto.length > 18) nombreCorto = propias.slice(0, 2).join(' ');
+  const corrX = m ? -70 : 40, corrW = m ? 250 : 330, obraX = m ? 420 : 960;
+  let s = `<defs><pattern id="lad-e" width="13.8" height="15.6" patternUnits="userSpaceOnUse"><rect width="13.8" height="15.6" fill="#8F877C"/><rect x=".5" y=".5" width="12.8" height="7" fill="#B9572F"/><rect x="-6.4" y="8.3" width="12.8" height="7" fill="#B9572F"/><rect x="7.4" y="8.3" width="12.8" height="7" fill="#B9572F"/></pattern></defs>`;
+  // el suelo y la calle
+  s += `<rect x="-200" y="${suelo}" width="${W + 400}" height="${H - suelo + 200}" fill="#2A2C30"/><rect x="-200" y="${suelo + 10}" width="${W + 400}" height="44" fill="#34373C"/>`;
+  s += `<line x1="-200" y1="${suelo + 32}" x2="${W + 200}" y2="${suelo + 32}" stroke="#F2C230" stroke-width="3" stroke-dasharray="26 22" opacity=".8"/>`;
+  // el corralón: galpón con el nombre, una pila de arena y pallets
+  const gy = suelo - 170;
+  s += `<path d="M${corrX} ${suelo} L${corrX} ${gy + 40} L${corrX + corrW / 2} ${gy} L${corrX + corrW} ${gy + 40} L${corrX + corrW} ${suelo} Z" fill="#43464C"/>`;
+  s += `<path d="M${corrX - 8} ${gy + 44} L${corrX + corrW / 2} ${gy - 4} L${corrX + corrW + 8} ${gy + 44}" fill="none" stroke="#5A5E65" stroke-width="8" stroke-linejoin="round"/>`;
+  s += `<rect x="${corrX + corrW * .3}" y="${suelo - 100}" width="${corrW * .4}" height="100" fill="#1E2023"/>${[1, 2, 3, 4, 5].map(i => `<line x1="${corrX + corrW * .3}" y1="${suelo - 100 + i * 17}" x2="${corrX + corrW * .7}" y2="${suelo - 100 + i * 17}" stroke="#2C2F33" stroke-width="2"/>`).join('')}`;
+  s += `<rect x="${corrX + 18}" y="${gy + 52}" width="${corrW - 36}" height="38" rx="3" fill="#F2C230"/><text x="${corrX + corrW / 2}" y="${gy + 80}" text-anchor="middle" font-family="Big Shoulders Stencil Display, sans-serif" font-weight="900" font-size="${m ? 22 : 26}" fill="#1C1D1F" textLength="${Math.min(corrW - 56, nombreCorto.length * (m ? 13 : 15.5))}" lengthAdjust="spacingAndGlyphs">${nombreCorto.toUpperCase()}</text>`;
+  s += `<path d="M${corrX + corrW + 8} ${suelo} Q${corrX + corrW + 48} ${suelo - 64} ${corrX + corrW + 92} ${suelo} Z" fill="#D6C59E"/><path d="M${corrX + corrW + 30} ${suelo - 30} Q${corrX + corrW + 48} ${suelo - 62} ${corrX + corrW + 62} ${suelo - 36}" fill="none" stroke="#E7DAB8" stroke-width="3"/>`;
+  // la obra: losa, paredes que suben, andamio
+  const oy = suelo - 150, ow = m ? 230 : 300;
+  s += `<rect x="${obraX}" y="${suelo - 12}" width="${ow}" height="12" fill="#9C988F"/>`;
+  s += `<rect x="${obraX + 12}" y="${oy + 40}" width="${ow * .42}" height="${suelo - 12 - oy - 40}" fill="url(#lad-e)"/><rect x="${obraX + ow * .5}" y="${oy + 80}" width="${ow * .44}" height="${suelo - 12 - oy - 80}" fill="url(#lad-e)"/>`;
+  s += `<rect x="${obraX + 12 + ow * .12}" y="${oy + 70}" width="${ow * .16}" height="${ow * .14}" fill="#2A2C30"/>`;
+  s += `<rect x="${obraX + 6}" y="${oy + 30}" width="${ow * .48}" height="10" fill="#B8B3AA"/>`;
+  s += `<g stroke="#8E9399" stroke-width="3">${[0, 1, 2].map(i => `<line x1="${obraX + ow * .5 + i * ow * .2}" y1="${oy + 10}" x2="${obraX + ow * .5 + i * ow * .2}" y2="${suelo - 12}"/>`).join('')}${[0, 1, 2].map(i => `<line x1="${obraX + ow * .48}" y1="${oy + 20 + i * 42}" x2="${obraX + ow * .94}" y2="${oy + 20 + i * 42}"/>`).join('')}</g>`;
+  s += `<text x="${m ? obraX + 90 : obraX + ow / 2}" y="${suelo + 84}" text-anchor="middle" font-family="Public Sans, sans-serif" font-weight="800" font-size="18" fill="#F2C230">TU OBRA</text>`;
+  // el camión
+  esc.x0 = m ? -10 : corrX + corrW * .32; esc.x1 = m ? 300 : obraX - 300;
+  s += `<g id="camion" transform="translate(${esc.x0} ${suelo + 30}) scale(${m ? 1 : 1.1})">${camionSVG()}</g>`;
+  svg.innerHTML = s;
+  cargarCamion(cuentas());
+  ponerCamion(viajeP.p);
+}
+function cargarCamion(c) { const g = $('#carga'); if (g) g.innerHTML = cargaSVG(c); }
+const viajeP = {p: 0};
+function ponerCamion(p) {
+  const cam = $('#camion'); if (!cam) return;
+  const x = esc.x0 + (esc.x1 - esc.x0) * p, sc = mov ? 1 : 1.1, suelo = 290;
+  cam.setAttribute('transform', `translate(${x.toFixed(1)} ${suelo + 30}) scale(${sc})`);
+  const giro = (x - esc.x0) / (2 * Math.PI * 17 * sc) * 360;
+  $$('#camion .rayos').forEach(r => r.setAttribute('transform', `rotate(${giro.toFixed(1)})`));
+}
+
+// ── 4 · nota y mapa · 5 · cierre ──
+const busqueda = encodeURIComponent([N, LUGAR].filter(Boolean).join(', '));
+if (!isNaN(R) && O) {
+  $('#nota-num').textContent = R.toFixed(1).replace('.', ',');
+  $('#opiniones').textContent = `${O.toLocaleString('es-AR')} opiniones`;
+  $('#ver-opiniones').href = `https://www.google.com/maps/search/?api=1&query=${busqueda}`;
+  const llenas = Math.round(R);
+  $('#estrellas').innerHTML = Array.from({length: 5}, (_, i) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="${i < llenas ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('');
+} else $('#nota-g').style.display = 'none';
+$('#mapa').src = `https://www.google.com/maps?q=${busqueda || 'Argentina'}&output=embed`;
+$('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${busqueda}`;
+const cf = $('#c-foto'); cf.sizes = '(max-width:860px) 120vh, 100vw'; cf.srcset = juego(19688828, [800, 1300, 1900]); cf.src = foto(19688828, 1300);
+
+if (!HORMIGON && st.modo === 'piso') { $$('#pestanas button').forEach(x => x.classList.toggle('on', x.dataset.m === 'piso')); }
+mandos(); dibujar(); armarEscena(); remito(false);
+addEventListener('resize', () => { encuadre(); ajustarNombre(); marcarCinta(); if (mov !== celu()) armarEscena(); });
+const mm = gsap.matchMedia();
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  // el nombre se pinta de izquierda a derecha, como con aerosol sobre la plantilla; la cinta se desenrolla
+  const pinta = {p: -10};
+  gsap.to(pinta, {p: 100, duration: 1.5, delay: .35, ease: 'power2.inOut', onUpdate: () => $('#esten').style.setProperty('--p', pinta.p + '%')});
+  $('#esten').style.setProperty('--p', '-10%');
+  gsap.fromTo('#tira', {clipPath: 'inset(0 100% 0 0)'}, {clipPath: 'inset(0 0% 0 0)', duration: 1.6, delay: .2, ease: 'power3.out'});
+  gsap.from('.letrero .tipo, .bajada, .acciones', {y: 20, autoAlpha: 0, duration: .8, stagger: .08, delay: .9, ease: 'power3.out'});
+  $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
+  // la pared se levanta una vez cuando se llega a la calculadora
+  ScrollTrigger.create({trigger: '#dibujo', start: 'top 70%', once: true, onEnter: () => { if (st.modo === 'pared') { vis.H = .2; dibujar(); gsap.to(vis, {H: st.H, duration: 1.2, ease: 'power2.out', onUpdate: dibujar}); } }});
+  // el camión va del corralón a la obra mientras se baja
+  gsap.to(viajeP, {p: 1, ease: 'none', onUpdate: () => ponerCamion(viajeP.p), scrollTrigger: {trigger: '#escena', start: 'top 80%', end: 'bottom 35%', scrub: .6}});
+  if (!isNaN(R)) { const n = {v: 0}; gsap.to(n, {v: R, duration: 1.3, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 85%'},
+    onUpdate: () => { $('#nota-num').textContent = n.v.toFixed(1).replace('.', ','); }}); }
+  gsap.fromTo('#c-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '.cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}});
+});
+document.fonts.ready.then(() => { ajustarNombre(); armarEscena(); ScrollTrigger.refresh(); });
+addEventListener('load', () => ScrollTrigger.refresh());
+</script>
+</body></html>
