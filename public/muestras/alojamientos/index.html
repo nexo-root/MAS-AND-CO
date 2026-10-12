@@ -479,7 +479,7 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
     .to('#v-fin', {autoAlpha: 0, duration: .15}, .88);
   // 4 · la postal se da vuelta sola al pasar
   gsap.fromTo('#tarjeta', {rotationY: 0, rotationX: 6}, {rotationY: 180, rotationX: 0, ease: 'power2.inOut',
-    scrollTrigger: {trigger: '.escena-postal', start: 'center 52%', end: 'center 18%', scrub: .8, onLeave: () => dada = true, onEnterBack: () => dada = false}});
+    scrollTrigger: {trigger: '.escena-postal', start: 'center 64%', end: 'center 38%', scrub: .8, onLeave: () => dada = true, onEnterBack: () => dada = false}});
   $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
   gsap.from('.llave', {y: -50, rotation: -12, autoAlpha: 0, stagger: .12, duration: 1.1, ease: 'elastic.out(1, .5)', scrollTrigger: {trigger: '#clavero', start: 'top 80%'}});
   if (!isNaN(R)) { const o = {v: 0}; gsap.to(o, {v: R, duration: 1.3, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 85%'},
