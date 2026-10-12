@@ -1,0 +1,620 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Diseño de muestra para su restaurante · Mas & Co">
+<meta property="og:description" content="Recórrala completa: el cartel que se prende, la carta que gira y el plano para reservar mesa.">
+<meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
+<title>Restaurante · diseño de muestra · Mas & Co</title>
+<link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400..800&family=Caveat:wght@500;700&family=Tilt+Neon&display=swap" rel="stylesheet">
+<style>
+/* Muestra completa para restaurantes · Mas & Co · 11/10/2026. Una página para los 34 de la lista:
+   …/restaurantes/?s=<slug> trae nombre, lugar, nota, opiniones y qué cocina tiene (bodegón, parrilla, italiano, bar o café).
+   1. El cartel (arquetipo 2, objeto protagonista, sobre la foto a sangre): el nombre en neón que se prende,
+      y el cartel de «Abierto» prendido o apagado según la hora real (horario de ejemplo).
+   2. La carta en una bandeja giratoria: se gira con el dedo; el plato de adelante se escribe en la pizarra.
+   3. El plano del salón: cuántos son, día y hora; la mesa que les toca se marca, se corren sus sillas y se escribe el WhatsApp.
+   4. La nota de Google y el mapa real. 5. Cierre.
+   Fotos de Pexels. Platos, horarios, plano y reservas de ejemplo. Para probar otra hora: ?hora=21:30 */
+:root{--noche:#15110E;--noche2:#211A16;--papel:#FAF6EF;--crema:#F4ECE0;--tinta:#1E1915;--gris:#6F665C;--vino:#8E2D2A;--vino2:#74221F;--oro:#E7B66C;--suave:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--papel);color:var(--tinta);font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block}
+section{scroll-margin-top:70px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--vino);color:#fff;font-weight:700;border-radius:999px;white-space:nowrap;transition:background .25s,transform .25s var(--suave)}
+.btn:hover{background:var(--vino2)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px}
+.nota-ej{font-size:13px;color:var(--gris)}
+
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;
+  background:rgba(21,17,14,.84);backdrop-filter:blur(8px);color:var(--crema);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.marca{font-family:"DM Serif Display",serif;font-size:25px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42vw}
+.nav{display:flex;gap:26px;font-size:15px;font-weight:600;color:rgba(244,236,224,.82)}
+.nav a:hover{color:#fff}
+.barra .btn{font-size:15px;padding:12px 18px}
+
+/* 1 · el cartel */
+.cartel{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--noche);color:var(--crema);display:grid;place-items:center;text-align:center}
+.cartel .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cartel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,8,.78) 0%,rgba(14,10,8,.56) 34%,rgba(14,10,8,.52) 60%,rgba(14,10,8,.9) 100%)}
+.letrero{position:relative;z-index:2;width:min(1180px,92vw);padding-top:56px}
+.tipo{font-size:17px;font-weight:600;color:rgba(244,236,224,.86)}
+.neon{position:relative;font-family:"Tilt Neon",sans-serif;font-weight:400;line-height:1.04;margin:16px auto 0;font-size:120px;text-wrap:balance}
+.neon span{display:block;text-wrap:balance}
+.neon .tubo{color:rgba(150,128,108,.42);text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.neon .luz{position:absolute;inset:0;color:#FFF4E4;opacity:0;
+  text-shadow:0 0 2px rgba(255,244,228,.95),0 0 10px rgba(255,178,100,.55),0 0 26px rgba(255,140,60,.34),0 0 56px rgba(255,120,40,.18)}
+.abierto{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:30px;flex-wrap:wrap}
+.chapa{position:relative;display:inline-block}
+.chapa span{display:block;font-family:"Tilt Neon",sans-serif;font-size:27px;line-height:1;padding:7px 16px 8px;border:2px solid;border-radius:12px}
+.chapa .tubo{color:rgba(170,130,130,.45);border-color:rgba(170,130,130,.3)}
+.chapa .luz{position:absolute;inset:0;opacity:0;color:#FFE3E6;border-color:#FF8F9A;
+  text-shadow:0 0 2px #FFE3E6,0 0 9px rgba(255,64,84,.75),0 0 22px rgba(255,64,84,.4);box-shadow:0 0 8px rgba(255,64,84,.55),inset 0 0 8px rgba(255,64,84,.35),0 0 26px rgba(255,64,84,.22)}
+.hora-hoy{font-size:18px;font-weight:600;color:rgba(244,236,224,.92)}
+.acciones{display:flex;gap:12px;justify-content:center;margin-top:44px}
+.acciones .btn{font-size:17px;padding:16px 26px}
+.btn.claro{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(244,236,224,.7);color:var(--crema)}
+.btn.claro:hover{background:rgba(244,236,224,.1)}
+.ejemplo-h{position:absolute;z-index:3;right:20px;top:84px;font-size:12.5px;color:var(--crema);background:rgba(21,17,14,.6);padding:6px 11px;border-radius:999px}
+
+/* secciones */
+.sec{position:relative;padding:116px 48px}
+.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:0 auto 52px;max-width:1240px}
+.cabeza h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(46px,5.4vw,92px);line-height:.98;letter-spacing:-.01em;max-width:12ch;text-wrap:balance}
+.cabeza h2 em{color:var(--vino)}
+.cabeza p{max-width:25em;font-size:17px;color:var(--gris);line-height:1.5}
+
+/* 2 · la carta en la bandeja */
+.carta{background:#18120F;color:var(--crema);overflow:hidden;padding-top:96px}
+.carta .cabeza{margin-bottom:40px}
+.carta .cabeza h2{max-width:none}
+.carta>.fondo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+.carta::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,17,14,.75),rgba(21,17,14,.35) 40%,rgba(21,17,14,.6))}
+.carta .cabeza,.mesa-carta{position:relative;z-index:2}
+.carta .cabeza h2 em{color:var(--oro)}
+.carta .cabeza p,.carta .nota-ej{color:rgba(244,236,224,.75)}
+.mesa-carta{display:grid;grid-template-columns:auto 1fr;gap:72px;align-items:center;max-width:1240px;margin:0 auto}
+.bandeja{--D:min(540px,40vw,calc(100vh - 330px));position:relative;width:var(--D);height:var(--D);touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.bandeja.agarrada{cursor:grabbing}
+.disco{position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#6F4B2D 0 2px,#7B5434 2px 6px,#6A472A 6px 9px);
+  box-shadow:0 0 0 10px #4B301C,0 0 0 12px rgba(255,220,170,.14),0 46px 80px -30px rgba(0,0,0,.9)}
+.bandeja::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;z-index:3;background:radial-gradient(circle at 34% 24%,rgba(255,226,182,.16),rgba(255,226,182,0) 52%)}
+.plato{position:absolute;width:calc(var(--D)*.29);height:calc(var(--D)*.29);margin:calc(var(--D)*-.145) 0 0 calc(var(--D)*-.145);border-radius:50%;
+  background:#F1ECE4;padding:calc(var(--D)*.011);box-shadow:0 0 22px rgba(0,0,0,.55);overflow:hidden;transition:filter .45s}
+.plato span{display:block;width:100%;height:100%;border-radius:50%;overflow:hidden}
+.plato img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.plato.lejos{filter:brightness(.6) saturate(.8)}
+.centro{position:absolute;z-index:2;left:50%;top:50%;width:calc(var(--D)*.25);height:calc(var(--D)*.25);transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#82603F,#5B3C23);box-shadow:inset 0 2px 6px rgba(255,230,190,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 6px 16px rgba(0,0,0,.4);
+  display:grid;place-items:center;text-align:center;font-family:Caveat,cursive;font-weight:700;font-size:calc(var(--D)*.042);line-height:1;color:rgba(255,236,206,.88);pointer-events:none}
+.centro svg{position:absolute;inset:9%;width:82%;height:82%;opacity:.55}
+.pizarra{position:relative;max-width:540px;min-height:380px;padding:38px 40px 30px;border-radius:6px;font-family:Caveat,cursive;color:#F1EEE6;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(130% 90% at 25% 15%,rgba(255,255,255,.05),rgba(255,255,255,0) 60%),linear-gradient(#202A25,#18201C);
+  box-shadow:0 0 0 12px #3D2818,0 0 0 14px rgba(255,220,170,.12),0 46px 70px -30px rgba(0,0,0,.85);display:flex;flex-direction:column}
+.tiza{filter:url(#tiza)}
+.pz-cat{font-size:28px;color:#EBCB8C}
+.pz-nom{font-size:clamp(50px,4.8vw,76px);font-weight:700;line-height:.92;margin:6px 0 14px}
+.pz-txt{font-size:29px;line-height:1.16;color:rgba(241,238,230,.9)}
+.pz-tags{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:26px;color:#EBCB8C}
+.pz-tags span::before{content:"· "}
+.linea{display:block}
+.pz-nav{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:26px;font-family:Figtree,sans-serif}
+.pz-nav button{width:46px;height:46px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(241,238,230,.55);display:grid;place-items:center;transition:background .2s}
+.pz-nav button:hover{background:rgba(241,238,230,.1)}
+.pz-nav svg{width:22px;height:22px}
+.pz-nav .cuenta{font-family:Caveat,cursive;font-size:26px;min-width:50px;text-align:center}
+.pz-nav a{margin-left:auto;font-weight:700;font-size:15px;color:#fff;border-bottom:1.5px solid rgba(255,255,255,.6);padding-bottom:2px}
+
+/* 3 · el plano */
+.reserva{background:var(--papel)}
+.salon{display:grid;grid-template-columns:1.3fr .7fr;gap:26px;align-items:start;max-width:1240px;margin:0 auto}
+.plano-caja{background:#fff;border-radius:22px;padding:22px 22px 16px;box-shadow:0 30px 60px -42px rgba(30,25,21,.5),0 0 0 1px rgba(30,25,21,.06)}
+#plano{width:100%;height:auto;display:block}
+#plano .pared{fill:none;stroke:#1E1915;stroke-width:3}
+#plano .ventana{stroke:#9CC0D6;stroke-width:6}
+#plano .rotulo{font-family:Figtree,sans-serif;font-size:13px;font-weight:600;fill:#8A8075}
+#plano .barra-p{fill:#E6DCCB;stroke:#1E1915;stroke-width:1.4}
+#plano .banqueta{fill:#fff;stroke:#1E1915;stroke-width:1.2}
+#plano .cocina{fill:url(#rayas-cocina);stroke:#1E1915;stroke-width:1.4}
+.mesa{cursor:pointer}
+.mesa .tapa{fill:#fff;stroke:#1E1915;stroke-width:1.6;transition:fill .3s,stroke .3s}
+.mesa .silla{fill:#EEE7DB;stroke:#1E1915;stroke-width:1.1;transition:fill .3s}
+.mesa text{font-family:Figtree,sans-serif;font-size:12px;font-weight:700;fill:#8A8075;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.mesa.sirve .tapa{stroke:var(--vino);stroke-width:2.6}
+.mesa.sirve text{fill:var(--vino)}
+.mesa.no-sirve{opacity:.42}
+.mesa.ocupada{cursor:not-allowed}
+.mesa.ocupada .tapa{fill:url(#rayas)}
+.mesa.ocupada .silla{fill:#DDD5C9}
+.mesa.elegida .tapa{fill:var(--vino);stroke:var(--vino2)}
+.mesa.elegida text{fill:#fff}
+.mesa .silla.nuestra{fill:var(--oro)}
+.leyenda{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;margin-top:12px;font-size:14px;font-weight:600;color:#4A433C}
+.leyenda i{display:inline-block;width:16px;height:16px;border-radius:5px;vertical-align:-3px;margin-right:7px;border:1.6px solid #1E1915}
+.leyenda .l-sirve{border:2.4px solid var(--vino)}
+.leyenda .l-ocup{background:repeating-linear-gradient(45deg,#CFC6B8 0 2px,#fff 2px 5px)}
+.leyenda .l-suya{background:var(--vino);border-color:var(--vino2)}
+.leyenda .nota-ej{margin-left:auto}
+.controles{background:var(--noche2);color:#fff;border-radius:22px;padding:26px 24px 22px}
+.grupo+.grupo{margin-top:22px}
+.grupo h3{font-size:15px;font-weight:700;color:rgba(255,255,255,.72);margin-bottom:10px}
+.contador{display:flex;align-items:center;gap:12px}
+.contador button{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);font-size:26px;line-height:1;display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.contador button:hover{background:rgba(255,255,255,.18)}
+.contador output{font-family:"DM Serif Display",serif;font-size:34px;min-width:5.6em;text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.08);font-weight:600;font-size:15px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);transition:background .2s}
+.chip.on{background:#fff;color:var(--tinta)}
+.chip:disabled{opacity:.32;cursor:not-allowed;text-decoration:line-through}
+.burbuja{margin-top:20px;background:#D9FDD3;color:#111B21;border-radius:14px 14px 14px 4px;padding:13px 15px 22px;font-size:15.5px;line-height:1.45;position:relative}
+.burbuja small{position:absolute;right:12px;bottom:6px;font-size:11.5px;color:#667781}
+.burbuja.cambia{animation:latir .45s var(--suave)}
+@keyframes latir{0%{transform:scale(.985)}100%{transform:none}}
+.controles .btn{width:100%;margin-top:14px;font-size:17px;padding:16px;background:#fff;color:var(--tinta)}
+.controles .btn:hover{background:#ECE6DC}
+
+/* 4 · nota + mapa */
+.llegar{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;background:#fff}
+.nota-g .grande{font-family:"DM Serif Display",serif;font-size:clamp(120px,14vw,220px);line-height:.85;letter-spacing:-.02em}
+.estrellas{display:flex;gap:6px;margin:16px 0 10px;color:var(--vino)}
+.estrellas svg{width:26px;height:26px}
+.nota-g p{font-size:19px;font-weight:600}
+.nota-g a,.donde a{display:inline-flex;margin-top:16px;font-weight:700;border-bottom:1.5px solid var(--tinta);padding-bottom:2px}
+.mapa{border-radius:18px;overflow:hidden;aspect-ratio:16/11;background:#ddd}
+.mapa iframe{width:100%;height:100%;border:0}
+.donde{margin-top:18px;font-size:18px}
+.donde b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:30px}
+
+/* 5 · cierre */
+.cierre{position:relative;min-height:80vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;padding:110px 28px}
+.cierre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cierre::after{content:"";position:absolute;inset:0;background:rgba(14,10,8,.5)}
+.cierre div{position:relative;z-index:2}
+.cierre h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(54px,7.6vw,128px);line-height:.96;max-width:13ch;margin:0 auto 14px;text-wrap:balance}
+.cierre p{font-size:19px;margin-bottom:30px;color:rgba(255,255,255,.88)}
+.cierre .btn{font-size:18px;padding:18px 30px}
+.pie{background:var(--noche);color:rgba(255,255,255,.7);padding:34px 110px 84px 48px;display:flex;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
+.pie a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+
+.muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-size:12.5px;font-weight:600;color:#fff;background:rgba(21,17,14,.84);padding:7px 12px;border-radius:999px}
+.flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(0,0,0,.5)}
+.flotante svg{width:30px;height:30px}
+.aviso{position:fixed;z-index:50;left:50%;bottom:96px;transform:translate(-50%,20px);max-width:min(92vw,460px);background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;
+  font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--suave)}
+.aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .barra{height:60px;padding:0 12px 0 16px}
+  .nav{display:none}
+  .marca{font-size:21px;max-width:56vw}
+  .barra .btn{font-size:14px;padding:10px 14px}
+  .letrero{padding-top:30px}
+  .tipo{font-size:15px}
+  .abierto{gap:10px;margin-top:22px}
+  .chapa span{font-size:22px;padding:6px 13px 7px}
+  .hora-hoy{font-size:15.5px;flex-basis:100%}
+  .acciones{margin-top:34px}
+  .acciones .btn{font-size:15px;padding:14px 18px}
+  .ejemplo-h{top:auto;bottom:56px;right:auto;left:50%;transform:translateX(-50%);font-size:11.5px;white-space:nowrap}
+  .sec{padding:72px 16px}
+  .cabeza{display:block;margin-bottom:30px}
+  .cabeza h2{font-size:44px}
+  .cabeza p{font-size:15.5px;margin-top:12px}
+  .mesa-carta{display:block}
+  .bandeja{--D:min(340px,86vw);margin:14px auto 0}
+  .pizarra{margin-top:46px;min-height:0;padding:26px 22px 20px}
+  .pz-cat{font-size:24px}
+  .pz-nom{font-size:44px}
+  .pz-txt{font-size:24px}
+  .pz-tags{font-size:22px}
+  .pz-nav{padding-top:20px}
+  .pz-nav button{width:42px;height:42px}
+  .pz-nav a{font-size:14px}
+  .pz-nav .largo{display:none}
+  .carta .cabeza h2{max-width:12ch}
+  .salon{display:block}
+  .plano-caja{padding:12px 10px 12px;border-radius:18px}
+  .leyenda{font-size:13px;gap:6px 14px;padding:0 4px}
+  .leyenda .nota-ej{margin-left:0;flex-basis:100%}
+  .controles{margin-top:14px;padding:20px 16px 16px;border-radius:18px}
+  .contador output{font-size:30px}
+  .chip{font-size:14px;padding:9px 12px}
+  .llegar{display:block}
+  .nota-g .grande{font-size:120px}
+  .mapa{margin-top:32px;aspect-ratio:4/3.4}
+  .cierre{min-height:68vh;padding:88px 18px}
+  .cierre h2{font-size:52px}
+  .cierre p{font-size:16.5px}
+  .pie{display:block;padding:26px 18px 84px;font-size:13.5px}
+  .pie p+p{margin-top:10px}
+  .muestra{left:12px;bottom:12px;font-size:11.5px}
+  .flotante{right:14px;bottom:14px;width:56px;height:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="tiza" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3" result="r"/><feDisplacementMap in="SourceGraphic" in2="r" scale="2.4"/></filter></svg>
+
+<header class="barra"><a class="marca" href="#arriba" data-n>Su restaurante</a>
+  <nav class="nav"><a href="#carta">La carta</a><a href="#mesa">Reservar</a><a href="#llegar">Cómo llegar</a></nav>
+  <a class="btn" href="#mesa">Reservar mesa</a></header>
+
+<section class="cartel" id="arriba">
+  <img class="foto" id="foto-portada" alt="" fetchpriority="high" decoding="async">
+  <div class="letrero">
+    <p class="tipo" id="tipo">Restaurante</p>
+    <h1 class="neon" id="neon"><span class="tubo" data-n>Su restaurante</span><span class="luz" aria-hidden="true" data-n>Su restaurante</span></h1>
+    <div class="abierto"><span class="chapa" id="chapa"><span class="tubo">Abierto</span><span class="luz" aria-hidden="true">Abierto</span></span><span class="hora-hoy" id="hora-hoy"></span></div>
+    <div class="acciones"><a class="btn claro" href="#carta">Ver la carta</a><a class="btn" href="#mesa">Reservar mesa</a></div>
+  </div>
+  <span class="ejemplo-h">Foto y horario de ejemplo</span>
+</section>
+
+<section class="sec carta" id="carta">
+  <img class="fondo" id="fondo-carta" alt="" loading="lazy" decoding="async">
+  <div class="cabeza"><h2>La carta, <em>a la mesa</em></h2><p>Girá la bandeja con el dedo o con las flechas. El plato que queda adelante se escribe en la pizarra.<br><span class="nota-ej">Platos y fotos de ejemplo</span></p></div>
+  <div class="mesa-carta">
+    <div class="bandeja" id="bandeja">
+      <div class="disco" id="disco"></div>
+      <div class="centro"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M50 8a42 42 0 0 1 40 29"/><path d="M84 30l6 7 3-9"/><path d="M50 92A42 42 0 0 1 10 63"/><path d="M16 70l-6-7-3 9"/></svg>Girá la<br>bandeja</div>
+    </div>
+    <div class="pizarra" id="pizarra" aria-live="polite">
+      <div class="tiza"><span class="linea pz-cat" id="pz-cat"></span><span class="linea pz-nom" id="pz-nom"></span><span class="linea pz-txt" id="pz-txt"></span><span class="linea pz-tags" id="pz-tags"></span></div>
+      <div class="pz-nav"><button type="button" id="pz-ant" aria-label="Plato anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <span class="cuenta" id="pz-cuenta">1 / 6</span>
+        <button type="button" id="pz-sig" aria-label="Plato siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        <a href="#mesa">Reservar<span class="largo"> para probarlo</span> →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec reserva" id="mesa">
+  <div class="cabeza"><h2>Reservá tu <em>mesa</em></h2><p>Decinos cuántos son, el día y la hora. En el plano ves la mesa que les toca, o tocá otra que esté libre.</p></div>
+  <div class="salon">
+    <div class="plano-caja">
+      <svg id="plano" role="img" aria-label="Plano del salón con las mesas"></svg>
+      <div class="leyenda"><span><i class="l-sirve"></i>Les sirve</span><span><i class="l-ocup"></i>Reservada</span><span><i class="l-suya"></i>La de ustedes</span><span class="nota-ej">Plano y reservas de ejemplo</span></div>
+    </div>
+    <div class="controles">
+      <div class="grupo"><h3>¿Cuántos son?</h3><div class="contador"><button type="button" id="menos" aria-label="Uno menos">−</button><output id="gente">4 personas</output><button type="button" id="mas" aria-label="Uno más">+</button></div></div>
+      <div class="grupo"><h3>¿Qué día?</h3><div class="chips" id="g-dia"></div></div>
+      <div class="grupo"><h3>¿A qué hora?</h3><div class="chips" id="g-hora"></div></div>
+      <p class="burbuja" id="burbuja">…<small>ahora</small></p>
+      <button class="btn" type="button" id="enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Reservar por WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec llegar" id="llegar">
+  <div class="nota-g" id="nota-g"><div class="grande" id="nota-num">4,5</div><div class="estrellas" id="estrellas"></div>
+    <p><span id="opiniones">opiniones</span> en Google</p><a id="ver-opiniones" href="#" target="_blank" rel="noopener">Leer las opiniones →</a></div>
+  <div><div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="donde"><b data-n>Su restaurante</b><span data-lugar></span><br><a id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar →</a></div></div>
+</section>
+
+<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2>Te guardamos la mesa</h2><p id="c-sub">Te esperamos</p><a class="btn" href="#mesa">Reservar por WhatsApp</a></div></section>
+<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su restaurante</span>.</p><p>Fotos, platos, horarios y plano de ejemplo: con los suyos queda su página.</p></footer>
+<span class="muestra">Diseño de muestra</span>
+<a class="flotante" href="#mesa" id="flotante" aria-label="Reservar por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg></a>
+<p class="aviso" id="aviso" role="status"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const celu = () => matchMedia('(max-width:860px)').matches;
+
+// los 34 restaurantes de la lista: nombre, lugar, nota, opiniones y qué cocina tienen
+const RESTAURANTES = {"riomio":["Riomío","Rosario, Santa Fe",4.2,18324,"restobar"],"adelmo-san-isidro":["Adelmo","San Isidro, Buenos Aires",4.4,10508,"resto"],"prego-bistro-bar":["Prego Bistró & Bar","Morón, Buenos Aires",4.6,10159,"restobar"],"bodegon-espanol":["Bodegón Español","Caballito, CABA",4.4,10036,"bodegon"],"restaurante-estancia-la-pasion":["Estancia La Pasión","Mendoza, Mendoza",4.8,9600,"parrilla"],"primo-resto-bar":["Primo Resto Bar","Córdoba, Córdoba",4.4,9416,"restobar"],"bodegon-los-garcia":["Bodegón Los Garcia","Lanús, Buenos Aires",4.4,8805,"bodegon"],"chill-garden":["Chill Garden","Caballito, CABA",4.4,8586,"restobar"],"alicia":["Alicia","Villa Devoto, CABA",4.2,8129,"resto"],"chicha-bodegon-parrilla":["Chicha Bodegón","Ramos Mejía, Buenos Aires",4.5,7894,"bodegon-parrilla"],"il-postino":["Il Postino","San Miguel de Tucumán, Tucumán",4.5,7618,"italiano"],"mecha-fuego-porteno":["Mecha Fuego Porteño","Villa Devoto, CABA",4.2,7099,"parrilla"],"motin-del-bajo":["Motín del Bajo","San Isidro, Buenos Aires",4.5,5960,"resto"],"cocina-mama-restaurant":["Cocina Mamá","Mar del Plata, Buenos Aires",4.2,5754,"resto"],"bar-menggano":["Bar Menggano","Rosario, Santa Fe",4.3,4568,"bar"],"antojos":["Antojos","Ramos Mejía, Buenos Aires",4.7,4273,"cafe"],"parrilla-la-carrocita":["Parrilla La Carrocita","Canning, Buenos Aires",4.3,4113,"parrilla"],"filipo-cafe-resto-bar":["Filipo Café Resto Bar","Salta, Salta",4.3,3727,"restobar"],"joe-s-grill-san-isidro":["Joe's Grill","San Isidro, Buenos Aires",4.2,3213,"parrilla"],"sherwood-grill":["Sherwood Grill","Corrientes, Corrientes",4.3,2807,"parrilla"],"restaurant-refineria":["Refinería","Rosario, Santa Fe",4.4,2642,"resto"],"parrilla-y-parador-don-tolo":["Parador Don Tolo","Paso de los Libres, Corrientes",4.2,2452,"parrilla"],"bodegon-la-morocha":["Bodegón La Morocha","Caballito, CABA",4.7,2337,"bodegon"],"barbas-ny-escobar":["Barbas NY","Escobar, Buenos Aires",4.7,2293,"bar"],"chamuyo-comedor":["Chamuyo Comedor","Rosario, Santa Fe",4.6,2268,"comedor"],"nanas-suena-bien":["Nanas Suena Bien!","Resistencia, Chaco",4.5,2023,"restobar"],"mulata-cafe-pasteleria":["Mulata Café & Pastelería","Bahía Blanca, Buenos Aires",4.4,1976,"cafe"],"la-tavola":["La Tavola","Quilmes, Buenos Aires",4.7,1941,"italiano"],"asturia":["Asturia","Almagro, CABA",4.2,1937,"bodegon"],"basta-de-humo":["Basta de Humo","San Isidro, Buenos Aires",4.3,1936,"resto"],"cachita":["Cachita","Nordelta, Buenos Aires",4.2,1711,"resto"],"casa-mandinga":["Casa Mandinga","Mar del Plata, Buenos Aires",4.8,1620,"resto"],"bodegon-kimberley":["Bodegón Kimberley","Villa Devoto, CABA",4.4,1599,"bodegon"],"espacio-sur-eventos":["Espacio Sur","Adrogué, Buenos Aires",4.7,32,"resto"]};
+const q = new URLSearchParams(location.search);
+const M = RESTAURANTES[(q.get('s') || '').toLowerCase()] || null;
+const N = (q.get('n') || '').trim() || (M && M[0]) || 'Su restaurante';
+const LUGAR = (q.get('c') || '').trim() || (M && M[1]) || '';
+const CIUDAD = LUGAR.split(',')[0].trim();
+const R = parseFloat((q.get('r') || '').replace(',', '.')) || (M && M[2]) || NaN;
+const O = parseInt((q.get('o') || '').replace(/\D/g, ''), 10) || (M && M[3]) || 0;
+const TIPO = q.get('t') || (M && M[4]) || 'resto';
+const KICKER = {bodegon: 'Bodegón', resto: 'Restaurante', comedor: 'Comedor', parrilla: 'Parrilla', 'bodegon-parrilla': 'Bodegón y parrilla', italiano: 'Cocina italiana', bar: 'Bar', restobar: 'Resto bar', cafe: 'Cafetería'};
+const COCINA = {resto: 'bodegon', comedor: 'bodegon', 'bodegon-parrilla': 'parrilla', restobar: 'bar'}[TIPO] || (['bodegon', 'parrilla', 'italiano', 'bar', 'cafe'].includes(TIPO) ? TIPO : 'bodegon');
+
+$$('[data-n]').forEach(el => el.textContent = N);
+$$('[data-lugar]').forEach(el => el.textContent = LUGAR || 'Argentina');
+document.title = `${N} · diseño de muestra · Mas & Co`;
+$('#tipo').textContent = `${KICKER[TIPO] || 'Restaurante'}${CIUDAD ? ' en ' + CIUDAD : ''}`;
+$('#c-sub').textContent = CIUDAD ? `En ${N}, ${CIUDAD}.` : `En ${N}.`;
+
+// ── 1 · el cartel ──
+const PORTADA = {bodegon: [36127951, '50% 55%', '56% 50%'], parrilla: [37179553, '50% 62%', '34% 60%'], italiano: [905847, '50% 55%', '64% 50%'],
+                 bar: [26626726, '50% 60%', '44% 60%'], cafe: [11264051, '50% 50%', '76% 50%']};
+const [pid, pdesk, pcel] = PORTADA[COCINA];
+const fp = $('#foto-portada'); fp.sizes = '(max-width:860px) 160vh, 100vw'; fp.srcset = juego(pid, [800, 1300, 2000]); fp.src = foto(pid, 1300);
+const encuadre = () => fp.style.objectPosition = celu() ? pcel : pdesk; encuadre();
+// horario de ejemplo, en minutos desde la medianoche (más de 1440 = pasada la medianoche)
+const HORARIO = {bar: [[1080, 1560]], cafe: [[450, 1230]]}[COCINA] || [[720, 930], [1200, 1470]];
+const AHORA = (() => { const d = new Date(), h = (q.get('hora') || '').match(/^(\d{1,2}):?(\d{2})$/); if (h) d.setHours(+h[1], +h[2], 0, 0); return d; })();
+const minAhora = AHORA.getHours() * 60 + AHORA.getMinutes();
+const hhmm = m => { const h = Math.floor(m / 60) % 24; return `${h === 0 ? '00' : h}:${String(m % 60).padStart(2, '0')}`; };
+function estado(min) {
+  for (const [a, b] of HORARIO) {
+    if (min >= a && min < b) return {abierto: true, hasta: b};
+    if (b > 1440 && min < b - 1440) return {abierto: true, hasta: b - 1440};
+  }
+  const prox = HORARIO.map(t => t[0]).filter(a => a > min).sort((x, y) => x - y)[0];
+  return prox != null ? {abierto: false, abre: prox, hoy: true} : {abierto: false, abre: HORARIO[0][0], hoy: false};
+}
+const EST = estado(minAhora);
+$('#hora-hoy').textContent = EST.abierto ? `hasta las ${hhmm(EST.hasta)}` : `Ahora cerrado · abre ${EST.hoy ? 'hoy' : 'mañana'} a las ${hhmm(EST.abre)}`;
+function ajustarNeon() {
+  const h = $('#neon'), t = $('#neon .tubo');
+  let fs = celu() ? Math.min(innerWidth * .2, 84) : Math.min(innerWidth * .115, 156);
+  h.style.fontSize = fs + 'px';
+  while (fs > 26 && (h.scrollWidth > h.clientWidth + 2 || t.offsetHeight > fs * 1.04 * 2.2)) { fs -= 2; h.style.fontSize = fs + 'px'; }
+}
+ajustarNeon();
+function prender() {
+  if (reduce) { gsap.set('#neon .luz', {opacity: 1}); if (EST.abierto) gsap.set('#chapa .luz', {opacity: 1}); return; }
+  // se prende como un tubo de verdad: dos tirones y queda. Una sola vez, nada que titile en bucle
+  const tl = gsap.timeline({delay: .45});
+  tl.to('#neon .luz', {opacity: .85, duration: .04})
+    .to('#neon .luz', {opacity: .06, duration: .06}, '+=.07')
+    .to('#neon .luz', {opacity: .7, duration: .04}, '+=.13')
+    .to('#neon .luz', {opacity: .22, duration: .05}, '+=.05')
+    .to('#neon .luz', {opacity: 1, duration: .14}, '+=.09');
+  if (EST.abierto) tl.to('#chapa .luz', {opacity: 1, duration: .04}, '+=.3').to('#chapa .luz', {opacity: .15, duration: .05}, '+=.06').to('#chapa .luz', {opacity: 1, duration: .1}, '+=.08');
+}
+
+// ── 2 · la carta en la bandeja ──
+const CARTAS = {
+  bodegon: [
+    {id: 37520729, nom: 'Milanesa con fritas', pedido: 'la milanesa con fritas', cat: 'El clásico de la casa', txt: 'De ternera, finita, con papas fritas cortadas a mano.', tags: ['Para 1', 'Se puede napolitana']},
+    {id: 14941245, nom: 'Tortilla de papas', pedido: 'la tortilla de papas', cat: 'Para compartir', txt: 'Jugosa por dentro, con cebolla o sin, como la pidan.', tags: ['Para 2']},
+    {id: 27565826, nom: 'Rabas', pedido: 'las rabas', cat: 'Para picar', txt: 'Calamar rebozado, con limón y alioli.', tags: ['Para compartir']},
+    {id: 34565193, nom: 'Ravioles con tuco', pedido: 'los ravioles con tuco', cat: 'Pastas caseras', txt: 'De ricota y verdura, con el tuco de la casa.', tags: ['Hechos acá']},
+    {id: 6210876, nom: 'Pollo al horno', pedido: 'el pollo al horno', cat: 'Del horno', txt: 'Medio pollo con papas y batatas asadas.', tags: ['Para 1']},
+    {id: 14665242, nom: 'Flan casero', pedido: 'el flan', cat: 'El postre', txt: 'Con dulce de leche y crema, o mixto.', tags: ['Casero']}],
+  parrilla: [
+    {id: 31917730, nom: 'Asado de tira', pedido: 'el asado de tira', cat: 'De la parrilla', txt: 'A la leña, jugoso o a punto, como lo pidan.', tags: ['Para 2']},
+    {id: 16444386, nom: 'Bife de chorizo', pedido: 'el bife de chorizo', cat: 'El corte de la casa', txt: 'Alto y tierno, con guarnición a elección.', tags: ['Para 1']},
+    {id: 29095928, nom: 'Provoleta', pedido: 'la provoleta', cat: 'Para arrancar', txt: 'A la parrilla, con orégano y tomates asados.', tags: ['Para compartir']},
+    {id: 22881970, nom: 'Chorizo', pedido: 'el chorizo', cat: 'Achuras', txt: 'De cerdo, a la leña, con chimichurri.', tags: ['Para picar']},
+    {id: 36057938, nom: 'Empanadas', pedido: 'las empanadas', cat: 'Para empezar', txt: 'De carne cortada a cuchillo, al horno.', tags: ['Por unidad']},
+    {id: 4506883, nom: 'Ensalada mixta', pedido: 'una ensalada mixta', cat: 'Para acompañar', txt: 'Lechuga, tomate y cebolla, con oliva.', tags: ['Para compartir']}],
+  italiano: [
+    {id: 24786266, nom: 'Pizza margarita', pedido: 'la pizza margarita', cat: 'Del horno a leña', txt: 'Masa de fermentación lenta, mozzarella y albahaca.', tags: ['8 porciones']},
+    {id: 36430172, nom: 'Spaghetti al pomodoro', pedido: 'los spaghetti', cat: 'Pastas', txt: 'Pasta fresca con salsa de tomate y albahaca.', tags: ['Hechos acá']},
+    {id: 31779544, nom: 'Lasaña', pedido: 'la lasaña', cat: 'Del horno', txt: 'Capas de carne, salsa blanca y mucho queso.', tags: ['Para 1']},
+    {id: 14987817, nom: 'Ñoquis', pedido: 'los ñoquis', cat: 'Pastas caseras', txt: 'De papa, con crema y parmesano o con tuco.', tags: ['El 29 y siempre']},
+    {id: 24289215, nom: 'Risotto de hongos', pedido: 'el risotto de hongos', cat: 'Para algo distinto', txt: 'Arroz cremoso con hongos y parmesano.', tags: ['Sin TACC']},
+    {id: 37940826, nom: 'Tiramisú', pedido: 'el tiramisú', cat: 'El postre', txt: 'Con café, mascarpone y cacao amargo.', tags: ['Casero']}],
+  bar: [
+    {id: 16241419, nom: 'Hamburguesa doble', pedido: 'la hamburguesa doble', cat: 'La más pedida', txt: 'Doble carne, cheddar, panceta y pan de papa.', tags: ['Con papas']},
+    {id: 28525208, nom: 'Papas con cheddar', pedido: 'las papas con cheddar', cat: 'Para compartir', txt: 'Con panceta crocante y verdeo.', tags: ['Para 2']},
+    {id: 11755201, nom: 'Nachos', pedido: 'los nachos', cat: 'Para picar', txt: 'Con guacamole, cheddar y jalapeños.', tags: ['Para la mesa']},
+    {id: 5975428, nom: 'Picada', pedido: 'la picada', cat: 'Para la mesa', txt: 'Fiambres, quesos, aceitunas y pan.', tags: ['Para 4']},
+    {id: 5805611, nom: 'Alitas', pedido: 'las alitas', cat: 'Para picar', txt: 'Glaseadas, con salsa de queso azul.', tags: ['Docena']},
+    {id: 36392097, nom: 'Martini seco', pedido: 'un martini', cat: 'De la barra', txt: 'Con aceitunas. Y la carta de tragos de autor.', tags: ['Happy hour']}],
+  cafe: [
+    {id: 11385490, nom: 'Café con leche', pedido: 'un café con leche', cat: 'Para arrancar', txt: 'Con la leche cremosa, en taza grande.', tags: ['Todo el día']},
+    {id: 32802349, nom: 'Medialunas', pedido: 'las medialunas', cat: 'Recién horneadas', txt: 'De manteca, hechas acá cada mañana.', tags: ['Por docena también']},
+    {id: 8478413, nom: 'Tostado', pedido: 'un tostado', cat: 'Para el mediodía', txt: 'De jamón y queso, en pan de miga.', tags: ['Con jugo']},
+    {id: 7656042, nom: 'Tostada con palta', pedido: 'la tostada con palta', cat: 'Algo liviano', txt: 'Pan de masa madre, palta y semillas.', tags: ['Vegetariano']},
+    {id: 39398359, nom: 'Cheesecake', pedido: 'el cheesecake', cat: 'Pastelería', txt: 'Con frutos rojos, de la casa.', tags: ['Porción']},
+    {id: 13539254, nom: 'Torta de chocolate', pedido: 'la torta de chocolate', cat: 'Pastelería', txt: 'Húmeda, con ganache de chocolate.', tags: ['Porción']}]
+};
+const PLATOS = CARTAS[COCINA];
+const fc = $('#fondo-carta'); fc.sizes = '(max-width:860px) 300vw, 100vw'; fc.srcset = juego(3800260, [800, 1300, 1900]); fc.src = foto(3800260, 1300);
+const disco = $('#disco'), bandeja = $('#bandeja');
+disco.innerHTML = PLATOS.map((p, i) => {
+  const a = i * 60 * Math.PI / 180;
+  return `<button class="plato" type="button" data-i="${i}" aria-label="${p.nom}" style="left:${50 + 33.5 * Math.cos(a)}%;top:${50 + 33.5 * Math.sin(a)}%"><span><img src="${foto(p.id, 400)}" srcset="${juego(p.id, [300, 500, 800])}" sizes="(max-width:860px) 110px, 180px" alt="" decoding="async" style="object-position:${p.pos || '50% 50%'};transform:scale(${p.z || 1.06})"></span></button>`;
+}).join('');
+const est = {g: 0};
+let actual = -1, probo = false;
+const SEL = () => celu() ? 90 : 0;   // dónde queda el plato elegido: a la derecha, junto a la pizarra; en el celular, abajo
+const idxDe = g => ((Math.round((SEL() - g) / 60) % 6) + 6) % 6;
+function mostrar(i, animar = true) {
+  if (i === actual) return;
+  actual = i; const p = PLATOS[i];
+  $('#pz-cat').textContent = p.cat; $('#pz-nom').textContent = p.nom; $('#pz-txt').textContent = p.txt;
+  $('#pz-tags').innerHTML = p.tags.map(t => `<span>${t}</span>`).join('');
+  $('#pz-cuenta').textContent = `${i + 1} / ${PLATOS.length}`;
+  $$('.plato').forEach((b, k) => { b.classList.toggle('lejos', k !== i); gsap.to(b, {scale: k === i ? 1.1 : 1, duration: reduce || !animar ? 0 : .45, ease: 'power3.out'}); });
+  // la pizarra se escribe de nuevo, renglón por renglón
+  if (animar && !reduce) gsap.fromTo('.pizarra .linea', {clipPath: 'inset(-30% 100% -30% 0)'}, {clipPath: 'inset(-30% 0% -30% 0)', duration: .5, stagger: .11, ease: 'power1.inOut'});
+  if (probo) escribir();
+}
+function girarA(destino, dur = .8) {
+  gsap.killTweensOf(est);
+  gsap.to(est, {g: destino, duration: reduce ? 0 : dur, ease: 'power3.out', onUpdate: () => gsap.set(disco, {rotation: est.g}), onComplete: () => mostrar(idxDe(est.g))});
+}
+function elegirPlato(i, dur) {
+  const base = SEL() - i * 60, destino = base + 360 * Math.round((est.g - base) / 360);
+  girarA(destino, dur);
+}
+let drag = null;
+const angulo = (e, c) => Math.atan2(e.clientY - c[1], e.clientX - c[0]) * 180 / Math.PI;
+bandeja.addEventListener('pointerdown', e => {
+  gsap.killTweensOf(est);
+  const r = bandeja.getBoundingClientRect(), c = [r.left + r.width / 2, r.top + r.height / 2];
+  drag = {c, ult: angulo(e, c), t: performance.now(), v: 0, movido: 0, plato: e.target.closest('.plato')};
+  bandeja.setPointerCapture(e.pointerId); bandeja.classList.add('agarrada');
+});
+bandeja.addEventListener('pointermove', e => {
+  if (!drag) return;
+  const a = angulo(e, drag.c); let d = a - drag.ult; if (d > 180) d -= 360; if (d < -180) d += 360;
+  const ahora = performance.now(), dt = Math.max(8, ahora - drag.t);
+  drag.v = .7 * drag.v + .3 * (d / dt * 1000); drag.ult = a; drag.t = ahora; drag.movido += Math.abs(d);
+  est.g += d; gsap.set(disco, {rotation: est.g});
+});
+function soltar() {
+  if (!drag) return;
+  const d = drag; drag = null; bandeja.classList.remove('agarrada'); probo = true;
+  if (d.movido < 4) { if (d.plato) elegirPlato(+d.plato.dataset.i); else girarA(SEL() + Math.round((est.g - SEL()) / 60) * 60, .4); return; }
+  const destino = est.g + Math.max(-200, Math.min(200, d.v * .22));
+  girarA(SEL() + Math.round((destino - SEL()) / 60) * 60, 1);
+}
+bandeja.addEventListener('pointerup', soltar); bandeja.addEventListener('pointercancel', soltar);
+disco.addEventListener('click', e => { const b = e.target.closest('.plato'); if (b && e.detail === 0) { probo = true; elegirPlato(+b.dataset.i); } });
+$('#pz-sig').addEventListener('click', () => { probo = true; elegirPlato((Math.max(actual, 0) + 1) % 6); });
+$('#pz-ant').addEventListener('click', () => { probo = true; elegirPlato((Math.max(actual, 0) + 5) % 6); });
+est.g = SEL(); gsap.set(disco, {rotation: est.g}); mostrar(0, false);
+
+// ── 3 · el plano del salón ──
+const TURNOS = {bar: ['19:00', '20:30', '22:00', '23:30'], cafe: ['09:00', '11:00', '17:00', '18:30']}[COCINA] || ['12:30', '13:30', '20:30', '21:30', '22:30'];
+const PREFIERE = {bar: '20:30', cafe: '17:00'}[COCINA] || '21:30';
+const MESAS = [
+  {id: 'v1', cap: 2, forma: 'red', x: 110, y: 104, zona: 'ventana'}, {id: 'v2', cap: 2, forma: 'red', x: 240, y: 104, zona: 'ventana'},
+  {id: 'v3', cap: 2, forma: 'red', x: 370, y: 104, zona: 'ventana'}, {id: 'v4', cap: 2, forma: 'red', x: 500, y: 104, zona: 'ventana'},
+  {id: 's1', cap: 4, forma: 'rect', x: 150, y: 236, w: 60, h: 60}, {id: 's2', cap: 4, forma: 'rect', x: 300, y: 236, w: 60, h: 60},
+  {id: 's3', cap: 4, forma: 'rect', x: 450, y: 236, w: 60, h: 60},
+  {id: 'g6', cap: 6, forma: 'rect', x: 190, y: 374, w: 130, h: 56}, {id: 'g10', cap: 10, forma: 'rect', x: 450, y: 384, w: 220, h: 56, zona: 'larga'}];
+let gente = 4, dia = 0, turno = 0, mesa = null, aMano = false, ocup = new Set();
+const DIAS = Array.from({length: 5}, (_, k) => { const d = new Date(AHORA); d.setDate(d.getDate() + k); return d; });
+const NOMDIA = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+const chipDia = k => k === 0 ? 'Hoy' : k === 1 ? 'Mañana' : NOMDIA[DIAS[k].getDay()].slice(0, 3).replace(/^./, c => c.toUpperCase()) + ' ' + DIAS[k].getDate();
+const textoDia = k => k === 0 ? 'hoy' : k === 1 ? 'mañana' : `el ${NOMDIA[DIAS[k].getDay()]} ${DIAS[k].getDate()}`;
+const minDe = s => { const [h, m] = s.split(':').map(Number); return h * 60 + m; };
+const paso = (k, t) => k === 0 && minDe(TURNOS[t]) <= minAhora + 30;
+const nivel = n => n <= 2 ? 2 : n <= 4 ? 4 : n <= 6 ? 6 : 10;
+const sirve = m => !ocup.has(m.id) && m.cap >= Math.min(gente, 10) && m.cap <= Math.max(nivel(gente), gente + 2);
+dia = TURNOS.some((_, t) => !paso(0, t)) ? 0 : 1;
+turno = TURNOS.indexOf(PREFIERE); if (paso(dia, turno)) turno = TURNOS.findIndex((_, t) => !paso(dia, t));
+
+// las sillas de cada mesa, en el orden en que se ocupan, con hacia dónde se corren
+function sillas(m) {
+  const s = [], C = 18, F = 11;
+  if (m.forma === 'red') {
+    s.push({x: m.x - 24 - 5 - F, y: m.y - C / 2, w: F, h: C, dx: -1, dy: 0}, {x: m.x + 24 + 5, y: m.y - C / 2, w: F, h: C, dx: 1, dy: 0});
+    return s;
+  }
+  const lados = (m.cap - 2) / 2, x0 = m.x - m.w / 2, y0 = m.y - m.h / 2;
+  for (let j = 0; j < lados; j++) {
+    const cx = x0 + m.w * (j + .5) / lados - C / 2;
+    s.push({x: cx, y: y0 - 5 - F, w: C, h: F, dx: 0, dy: -1}, {x: cx, y: y0 + m.h + 5, w: C, h: F, dx: 0, dy: 1});
+  }
+  s.push({x: x0 - 5 - F, y: m.y - C / 2, w: F, h: C, dx: -1, dy: 0}, {x: x0 + m.w + 5, y: m.y - C / 2, w: F, h: C, dx: 1, dy: 0});
+  return s;
+}
+let planoMovil = null;
+function dibujarPlano() {
+  const mov = celu(); planoMovil = mov;
+  const P = (x, y) => mov ? [y, x] : [x, y];
+  const rect = (x, y, w, h, extra = '') => { const [a, b] = P(x, y), [c, d] = mov ? [h, w] : [w, h]; return `<rect x="${a}" y="${b}" width="${c}" height="${d}" ${extra}/>`; };
+  const texto = (x, y, t, giroEsc = 0, giroMov = 0, extra = '') => { const [a, b] = P(x, y), g = mov ? giroMov : giroEsc; return `<text class="rotulo" x="${a}" y="${b}" text-anchor="middle" dominant-baseline="central"${g ? ` transform="rotate(${g} ${a} ${b})"` : ''} ${extra}>${t}</text>`; };
+  const linea = (x1, y1, x2, y2, cls) => { const [a, b] = P(x1, y1), [c, d] = P(x2, y2); return `<line class="${cls}" x1="${a}" y1="${b}" x2="${c}" y2="${d}"/>`; };
+  let s = `<defs><pattern id="rayas" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><rect width="2.4" height="6" fill="#CFC6B8"/></pattern>
+    <pattern id="rayas-cocina" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#F4EFE6"/><rect width="1.4" height="10" fill="#D7CDBE"/></pattern></defs>`;
+  s += rect(20, 24, 760, 452, 'class="pared"');
+  s += linea(60, 24, 560, 24, 'ventana') + texto(310, 46, 'ventana a la calle', 0, -90);
+  // la entrada: un hueco en la pared con la puerta abierta
+  const [ha, hb] = P(36, 476), [hc, hd] = P(96, 476), [pa, pb] = P(96, 418);
+  s += `<line x1="${ha}" y1="${hb}" x2="${hc}" y2="${hd}" stroke="#fff" stroke-width="5"/><line x1="${hc}" y1="${hd}" x2="${pa}" y2="${pb}" stroke="#1E1915" stroke-width="1.6"/>
+        <path d="M${pa} ${pb} A58 58 0 0 ${mov ? 1 : 0} ${ha} ${hb}" fill="none" stroke="#B9AFA2" stroke-width="1.2" stroke-dasharray="4 4"/>`;
+  s += texto(66, 450, 'entrada', 0, 0);
+  s += rect(600, 330, 180, 146, 'class="cocina"') + texto(690, 403, 'cocina');
+  s += rect(662, 70, 34, 222, 'class="barra-p" rx="4"') + texto(679, 181, 'barra', 90, 0);
+  for (let k = 0; k < 5; k++) { const [a, b] = P(634, 92 + k * 44); s += `<circle class="banqueta" cx="${a}" cy="${b}" r="10"/>`; }
+  MESAS.forEach(m => {
+    let g = `<g class="mesa" data-id="${m.id}" role="button" tabindex="0" aria-label="Mesa para ${m.cap}">`;
+    sillas(m).forEach((c, j) => { const [dx, dy] = mov ? [c.dy, c.dx] : [c.dx, c.dy]; g += rect(c.x, c.y, c.w, c.h, `class="silla" rx="3" data-dx="${dx}" data-dy="${dy}"`); });
+    const [cx, cy] = P(m.x, m.y);
+    g += m.forma === 'red' ? `<circle class="tapa" cx="${cx}" cy="${cy}" r="24"/>` : rect(m.x - m.w / 2, m.y - m.h / 2, m.w, m.h, 'class="tapa" rx="6"');
+    g += `<text x="${cx}" y="${cy}"></text></g>`;
+    s += g;
+  });
+  const pl = $('#plano'); pl.setAttribute('viewBox', mov ? '0 0 500 800' : '0 0 800 500'); pl.innerHTML = s;
+  actualizarPlano(false);
+}
+function calcularOcupadas() {
+  ocup = new Set();
+  MESAS.forEach((m, i) => { const h = Math.imul(dia * 31 + turno * 17 + i * 7 + 3, 2654435761) >>> 0; if (h % 100 < 34) ocup.add(m.id); });
+  // siempre queda al menos una mesa que les sirva
+  if (!MESAS.some(sirve)) ocup.delete(MESAS.find(m => m.cap >= nivel(gente)).id);
+}
+function actualizarPlano(animar = true) {
+  // la que eligieron a mano se respeta mientras esté libre y entren; si no, se busca la que mejor les queda
+  if (!mesa || ocup.has(mesa.id) || mesa.cap < Math.min(gente, 10) || (!aMano && !sirve(mesa))) { mesa = MESAS.find(m => sirve(m) && m.cap === nivel(gente)) || MESAS.find(sirve); aMano = false; }
+  $$('#plano .mesa').forEach(g => {
+    const m = MESAS.find(x => x.id === g.dataset.id), oc = ocup.has(m.id), el = mesa === m;
+    g.classList.toggle('ocupada', oc); g.classList.toggle('sirve', !oc && sirve(m) && !el); g.classList.toggle('no-sirve', !oc && !sirve(m)); g.classList.toggle('elegida', el);
+    g.querySelector('text').textContent = oc ? (m.cap > 2 ? 'reservada' : '') : el ? `para ${gente}` : m.cap;
+    $$('.silla', g).forEach((s, j) => {
+      const corrida = el && j < gente; s.classList.toggle('nuestra', corrida);
+      gsap.to(s, {x: corrida ? +s.dataset.dx * 7 : 0, y: corrida ? +s.dataset.dy * 7 : 0, duration: animar && !reduce ? .42 : 0, ease: 'back.out(2.2)', delay: animar && corrida ? j * .045 : 0});
+    });
+  });
+  escribir();
+}
+function controles() {
+  $('#gente').textContent = gente === 1 ? '1 persona' : `${gente} personas`;
+  $('#g-dia').innerHTML = DIAS.map((_, k) => `<button class="chip${k === dia ? ' on' : ''}" type="button" data-k="${k}"${TURNOS.every((_, t) => paso(k, t)) ? ' disabled' : ''}>${chipDia(k)}</button>`).join('');
+  $('#g-hora').innerHTML = TURNOS.map((t, k) => `<button class="chip${k === turno ? ' on' : ''}" type="button" data-k="${k}"${paso(dia, k) ? ' disabled' : ''}>${t}</button>`).join('');
+}
+function escribir() {
+  if (!mesa) return;
+  const b = $('#burbuja');
+  let txt = `Hola, quería reservar una mesa para ${gente} ${textoDia(dia)} a las ${TURNOS[turno]}.`;
+  if (gente > 10) txt += ` Somos ${gente}: ¿nos pueden juntar mesas?`;
+  else if (mesa.zona === 'ventana') txt += ' Si se puede, junto a la ventana.';
+  else if (mesa.zona === 'larga') txt += ' Si se puede, la mesa larga.';
+  if (probo && actual >= 0) txt += ` Venimos por ${PLATOS[actual].pedido}.`;
+  b.innerHTML = `${txt}<small>ahora</small>`;
+  if (!reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
+}
+function cambio(animar = true) { calcularOcupadas(); controles(); actualizarPlano(animar); }
+$('#menos').addEventListener('click', () => { if (gente > 1) { gente--; aMano = false; cambio(); } });
+$('#mas').addEventListener('click', () => { if (gente < 16) { gente++; aMano = false; cambio(); } });
+$('#g-dia').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; dia = +b.dataset.k; if (paso(dia, turno)) turno = TURNOS.findIndex((_, t) => !paso(dia, t)); cambio(); });
+$('#g-hora').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b || b.disabled) return; turno = +b.dataset.k; cambio(); });
+function tocarMesa(g) {
+  const m = MESAS.find(x => x.id === g.dataset.id);
+  if (ocup.has(m.id)) return avisar('Esa mesa ya está reservada a esa hora. Elegí otra o cambiá el horario.');
+  if (m.cap < Math.min(gente, 10)) return avisar(`Esa mesa es para ${m.cap}. Para ${gente} les sirven las marcadas.`);
+  mesa = m; aMano = true; actualizarPlano();
+}
+$('#plano').addEventListener('click', e => { const g = e.target.closest('.mesa'); if (g) tocarMesa(g); });
+$('#plano').addEventListener('keydown', e => { const g = e.target.closest('.mesa'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); tocarMesa(g); } });
+function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); clearTimeout(avisar._t); avisar._t = setTimeout(() => a.classList.remove('ver'), 4200); }
+$('#enviar').addEventListener('click', () => avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`));
+calcularOcupadas(); controles(); dibujarPlano();
+
+// ── 4 · nota y mapa · 5 · cierre ──
+const busqueda = encodeURIComponent([N, LUGAR].filter(Boolean).join(', '));
+if (!isNaN(R) && O) {
+  $('#nota-num').textContent = R.toFixed(1).replace('.', ',');
+  $('#opiniones').textContent = `${O.toLocaleString('es-AR')} opiniones`;
+  $('#ver-opiniones').href = `https://www.google.com/maps/search/?api=1&query=${busqueda}`;
+  const llenas = Math.round(R);
+  $('#estrellas').innerHTML = Array.from({length: 5}, (_, i) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="${i < llenas ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('');
+} else $('#nota-g').style.display = 'none';
+$('#mapa').src = `https://www.google.com/maps?q=${busqueda || 'Argentina'}&output=embed`;
+$('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${busqueda}`;
+const cf = $('#c-foto'); cf.sizes = '(max-width:860px) 110vh, 100vw'; cf.srcset = juego(5116976, [800, 1300, 1900]); cf.src = foto(5116976, 1300);
+$('#flotante').addEventListener('click', e => { e.preventDefault(); $('#mesa').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); });
+
+addEventListener('resize', () => {
+  encuadre(); ajustarNeon();
+  if (planoMovil !== celu()) { dibujarPlano(); elegirPlato(Math.max(actual, 0), 0); }
+});
+const mm = gsap.matchMedia();
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  gsap.fromTo('#foto-portada', {scale: 1.06}, {scale: 1, duration: 2.6, ease: 'power2.out'});
+  $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
+  // la bandeja da una vuelta corta sola, una vez, para que se entienda que gira
+  ScrollTrigger.create({trigger: '#bandeja', start: 'top 62%', once: true, onEnter: () => { if (!probo) girarA(est.g - 60, 1.3); }});
+  if (!isNaN(R)) { const n = {v: 0}; gsap.to(n, {v: R, duration: 1.3, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 85%'},
+    onUpdate: () => { $('#nota-num').textContent = n.v.toFixed(1).replace('.', ','); }}); }
+  gsap.fromTo('#c-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '.cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}});
+});
+document.fonts.ready.then(() => { ajustarNeon(); prender(); ScrollTrigger.refresh(); });
+addEventListener('load', () => ScrollTrigger.refresh());
+</script>
+</body></html>
