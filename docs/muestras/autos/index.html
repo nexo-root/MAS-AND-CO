@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Diseño de muestra para su concesionaria · Mas & Co">
-<meta property="og:description" content="Recórrala completa: la patente con su nombre, el stock con filtros y el tablero para cotizar el usado.">
+<meta property="og:description" content="Recórrala completa: el portapatente con su nombre, el stock con filtros y el tablero para cotizar el usado.">
 <meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
 <title>Concesionaria · diseño de muestra · Mas & Co</title>
 <link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,8 +10,10 @@
 <style>
 /* Muestra completa para concesionarias y agencias de autos usados · Mas & Co · 12/10/2026.
    Una página para las de la lista: …/autos/?s=<slug> trae nombre, lugar, nota y opiniones.
-   1. La patente (arquetipo 2, objeto protagonista, sobre la foto a sangre): el nombre de la agencia en una
-      patente Mercosur que se atornilla y brilla una vez.
+   1. La portada (arquetipo 2, objeto protagonista, dentro de la foto a sangre): un auto de frente, de noche. Arranca
+      pegada a la patente, con el portapatente que llevan los autos de agencia y el nombre de la concesionaria; al bajar,
+      la cámara se aleja hasta ver el auto entero y las luces hacen un guiño. (La v1, una patente gigante flotando sobre
+      la foto, a Felipe no le gustó: «creo que lo podés hacer mejor».)
    2. El stock: filtros por tipo y por precio; los autos se reacomodan (GSAP Flip). Cada auto abre su ficha con
       el cuentakilómetros y el mensaje ya escrito.
    3. Tomamos tu usado: un tablero de auto. Año y kilómetros mueven las agujas; la pantalla arma el pedido de cotización.
@@ -40,30 +42,43 @@ section{scroll-margin-top:70px}
 .nav a:hover{color:#fff}
 .barra .btn{font-size:15px;padding:12px 18px}
 
-/* 1 · la patente */
-.portada{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--asfalto);color:#fff;display:grid;place-items:center;text-align:center}
-.portada .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,15,.72),rgba(10,12,15,.35) 42%,rgba(10,12,15,.55) 70%,rgba(10,12,15,.92))}
-.centro{position:relative;z-index:2;width:min(1100px,92vw);padding-top:40px;perspective:900px}
-.tipo{font-size:17px;font-weight:700;color:rgba(255,255,255,.88)}
-.patente{position:relative;display:inline-block;margin-top:20px;background:linear-gradient(180deg,#FFFFFF,#E9ECF1);border:4px solid #121417;border-radius:16px;
-  box-shadow:0 0 0 2px rgba(255,255,255,.55),0 40px 70px -26px rgba(0,0,0,.9);overflow:hidden;color:#111317;max-width:100%}
-.banda{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;background:var(--placa);color:#fff;padding:7px 64px 6px;
-  font-family:"Saira Condensed",sans-serif;font-weight:700;letter-spacing:.14em;font-size:18px}
-.banda .mer{position:absolute;left:14px;top:50%;width:26px;height:26px;margin-top:-13px}
-.banda .bandera{position:absolute;right:14px;top:50%;width:34px;height:22px;margin-top:-11px;border-radius:3px;
-  background:linear-gradient(180deg,#74ACDF 0 33%,#fff 33% 67%,#74ACDF 67%);box-shadow:0 0 0 1px rgba(255,255,255,.4)}
-.banda .bandera::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#F6B40E}
-.letras{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;line-height:.95;letter-spacing:.07em;padding:.12em .55em .16em;white-space:nowrap;font-size:120px}
-.letras span{display:block}
-.tornillo{position:absolute;top:50px;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F4F5F7,#9AA0A8 70%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
-.tornillo::after{content:"";position:absolute;left:3px;right:3px;top:7px;height:2px;background:rgba(0,0,0,.45);border-radius:1px}
-.tornillo.i{left:16px}.tornillo.d{right:16px}
-.brillo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.75) 50%,rgba(255,255,255,0) 62%);transform:translateX(-130%)}
-.bajada{margin:26px auto 0;font-size:19px;max-width:30em;color:rgba(255,255,255,.9)}
-.acciones{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+/* 1 · la portada: la cámara se aleja desde la patente */
+.intro{position:relative;height:250vh;background:#0B0C0E}
+.intro-fijo{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:#fff;background:#0B0C0E}
+.escena{position:absolute;left:0;top:0;width:1600px;height:1067px;transform-origin:0 0}
+.escena img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.porta{position:absolute;left:705px;top:679px;width:212px;height:96px;border-radius:7px;overflow:hidden;
+  background:linear-gradient(180deg,#26282C,#0C0D0F 30%,#141518 70%,#08090A);box-shadow:0 2px 3px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.18);
+  filter:brightness(.86) saturate(.9)}
+.porta-arriba{position:absolute;left:0;right:0;top:1.5px;height:8px;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:6.2px;
+  letter-spacing:.16em;text-align:center;color:#C9CDD3;line-height:8px;white-space:nowrap;overflow:hidden}
+.placa{position:absolute;left:7px;top:9.5px;width:198px;height:64px;border-radius:4px;background:linear-gradient(180deg,#FFFFFF,#E6E9EE);
+  box-shadow:inset 0 0 0 1px #1B1D21;overflow:hidden}
+.placa .banda-p{height:12px;background:#2A3D93;color:#fff;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:6.6px;letter-spacing:.2em;
+  display:flex;align-items:center;justify-content:center;position:relative}
+.placa .mer{position:absolute;left:4px;top:2px;width:8px;height:8px;border-radius:50%;box-shadow:inset 0 0 0 .8px #fff}
+.placa .bandera{position:absolute;right:4px;top:2.5px;width:11px;height:7px;background:linear-gradient(180deg,#74ACDF 0 33%,#fff 33% 67%,#74ACDF 67%)}
+.placa b{display:block;text-align:center;font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:44px;line-height:52px;letter-spacing:.07em;color:#16181C;
+  transform:scaleY(1.06)}
+.porta-nombre{position:absolute;left:4px;right:4px;bottom:2.5px;height:17px;display:flex;align-items:center;justify-content:center;
+  font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
+  color:#E8EBEF;background:linear-gradient(180deg,#E8EBEF,#9BA1AA);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.noche{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(10,14,22,.18),rgba(10,14,22,.38));pointer-events:none}
+.brillo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 40%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 60%);
+  transform:translateX(-120%);mix-blend-mode:screen;border-radius:inherit}
+.faro{position:absolute;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;pointer-events:none;mix-blend-mode:screen;opacity:0;
+  background:radial-gradient(circle,rgba(235,244,255,.95) 0,rgba(200,225,255,.45) 18%,rgba(160,200,255,.12) 42%,rgba(160,200,255,0) 70%)}
+.faro.i{left:434px;top:523px}.faro.d{left:1183px;top:523px}
+.velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#0B0C0E 0%,rgba(11,12,14,.75) 16%,rgba(11,12,14,0) 42%,rgba(11,12,14,0) 74%,rgba(11,12,14,.85) 100%)}
+.texto{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:96px 24px 40px;pointer-events:none}
+.texto .tipo{font-size:17px;font-weight:700;color:rgba(255,255,255,.88)}
+.texto h1{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;line-height:.86;letter-spacing:.005em;margin-top:10px;
+  font-size:clamp(56px,9vw,150px);line-height:.98;max-width:14ch;text-wrap:balance;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.texto .bajada{margin-top:16px;font-size:19px;max-width:30em;color:rgba(255,255,255,.88);text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.texto .acciones{margin-top:auto;pointer-events:auto}
+.acciones{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .acciones .btn{font-size:17px;padding:16px 26px}
-.btn.claro{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75);color:#fff}
+.btn.claro{background:rgba(10,12,15,.35);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75);color:#fff;backdrop-filter:blur(4px)}
 .btn.claro:hover{background:rgba(255,255,255,.12)}
 .ejemplo-h{position:absolute;z-index:3;right:20px;top:84px;font-size:12.5px;color:#fff;background:rgba(10,12,15,.6);padding:6px 11px;border-radius:999px}
 
@@ -99,7 +114,9 @@ section{scroll-margin-top:70px}
 .odo b{font-weight:400;color:var(--cian)}
 .precio{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:27px;line-height:1;margin-top:auto;padding-top:6px}
 .ver{font-weight:800;font-size:14px;color:var(--azul)}
-.vacio-s{max-width:1240px;margin:20px auto 0;font-size:16px;color:var(--gris)}
+.vacio-s{max-width:1240px;margin:-10px auto 16px;font-size:16px;color:var(--gris)}
+.auto{transition:transform .35s var(--suave),box-shadow .35s,opacity .45s,filter .45s}
+.auto.fuera{opacity:.2;filter:grayscale(1);pointer-events:none;box-shadow:none}
 
 /* la ficha de un auto */
 .capa{position:fixed;inset:0;z-index:60;visibility:hidden}
@@ -193,16 +210,10 @@ section{scroll-margin-top:70px}
   .barra{height:60px;padding:0 12px 0 16px}
   .nav{display:none}
   .marca{font-size:22px;max-width:56vw}
-  .barra .btn{font-size:14px;padding:10px 14px}
-  .tipo{font-size:15px}
-  .patente{border-width:3px;border-radius:12px}
-  .banda{font-size:12px;padding:5px 44px 4px;gap:8px;letter-spacing:.1em}
-  .banda .mer{width:18px;height:18px;margin-top:-9px;left:10px}
-  .banda .bandera{width:24px;height:16px;margin-top:-8px;right:10px}
-  .tornillo{top:34px;width:11px;height:11px}
-  .tornillo::after{top:4.5px;height:1.5px;left:2px;right:2px}
-  .tornillo.i{left:9px}.tornillo.d{right:9px}
-  .bajada{font-size:16px}
+  .texto{padding:78px 16px 92px}
+  .texto .tipo{font-size:15px}
+  .texto h1{font-size:clamp(40px,12.5vw,58px)}
+  .texto .bajada{font-size:15.5px;margin-top:12px}
   .acciones .btn{font-size:15px;padding:14px 18px}
   .ejemplo-h{top:auto;bottom:62px;right:auto;left:50%;transform:translateX(-50%);font-size:11.5px;white-space:nowrap}
   .sec{padding:72px 16px}
@@ -247,21 +258,27 @@ section{scroll-margin-top:70px}
   <nav class="nav"><a href="#stock">Los autos</a><a href="#usado">Tomamos tu usado</a><a href="#llegar">Dónde estamos</a></nav>
   <a class="btn" href="#stock">Ver los autos</a></header>
 
-<section class="portada" id="arriba">
-  <img class="foto" id="foto-portada" alt="Agencia de autos de noche, con un auto rojo en la puerta." fetchpriority="high" decoding="async">
-  <div class="centro">
-    <p class="tipo" id="tipo">Autos usados</p>
-    <div class="patente" id="patente" role="img" aria-label="Patente con el nombre de la agencia">
-      <div class="banda"><svg class="mer" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M5 17c4-6 12-8 16-6" stroke="#fff" stroke-width="1.6" fill="none"/>
-        <g fill="#fff"><circle cx="9" cy="8" r="1.4"/><circle cx="13" cy="6.5" r="1.1"/><circle cx="17" cy="8.5" r="1.2"/><circle cx="12" cy="11" r=".9"/></g></svg>
-        <b>REPÚBLICA ARGENTINA</b><span class="bandera" aria-hidden="true"></span></div>
-      <b class="letras" id="letras">SU CONCESIONARIA</b>
-      <i class="tornillo i"></i><i class="tornillo d"></i><span class="brillo" id="brillo"></span>
+<section class="intro" id="arriba">
+  <div class="intro-fijo">
+    <div class="escena" id="escena">
+      <img id="foto-portada" alt="Auto de frente, de noche, con las luces prendidas, en un muelle frente a la ciudad." fetchpriority="high" decoding="async">
+      <span class="faro i" aria-hidden="true"></span><span class="faro d" aria-hidden="true"></span>
+      <div class="porta" id="porta" aria-hidden="true">
+        <span class="porta-arriba" id="porta-arriba">BUENOS AIRES</span>
+        <div class="placa"><div class="banda-p"><i class="mer"></i>REPÚBLICA ARGENTINA<i class="bandera"></i></div><b>AF 482 KD</b></div>
+        <span class="porta-nombre" id="porta-nombre">SU CONCESIONARIA</span>
+        <span class="noche"></span><span class="brillo" id="brillo"></span>
+      </div>
     </div>
-    <p class="bajada" id="bajada">Mirá los autos que tenemos, consultá por WhatsApp y traé tu usado como parte de pago.</p>
-    <div class="acciones"><a class="btn" href="#stock">Ver los autos</a><a class="btn claro" href="#usado">Cotizá tu usado</a></div>
+    <div class="velo" id="velo"></div>
+    <div class="texto">
+      <p class="tipo" id="tipo">Autos usados</p>
+      <h1 id="titulo" data-n>Su concesionaria</h1>
+      <p class="bajada" id="bajada">Mirá los autos que tenemos, consultá por WhatsApp y traé tu usado como parte de pago.</p>
+      <div class="acciones"><a class="btn" href="#stock">Ver los autos</a><a class="btn claro" href="#usado">Cotizá tu usado</a></div>
+    </div>
+    <span class="ejemplo-h">Foto y patente de ejemplo</span>
   </div>
-  <span class="ejemplo-h">Foto de ejemplo</span>
 </section>
 
 <section class="sec" id="stock">
@@ -271,8 +288,8 @@ section{scroll-margin-top:70px}
     <label class="tope">Hasta <input type="range" id="tope" min="9000" max="45000" step="1000" value="45000" aria-label="Precio máximo"><output id="tope-v">USD 45.000</output></label>
     <span class="cuenta" id="cuenta"></span>
   </div>
-  <div class="stock" id="lista"></div>
   <p class="vacio-s" id="vacio" hidden>No hay autos con esos filtros. Probá subir el precio o elegir otro tipo.</p>
+  <div class="stock" id="lista"></div>
 </section>
 
 <section class="sec usado" id="usado">
@@ -366,24 +383,47 @@ $$('[data-wsp]').forEach(b => b.addEventListener('click', () => avisar(`En su p�
 const miles = n => Math.round(n).toLocaleString('es-AR');
 const usd = n => `USD ${miles(n)}`;
 
-// ── 1 · la patente ──
-const fp = $('#foto-portada'); fp.sizes = '(max-width:860px) 160vh, 100vw'; fp.srcset = juego(5864150, [800, 1300, 2000]); fp.src = foto(5864150, 1300);
-const encuadre = () => fp.style.objectPosition = celu() ? '30% 60%' : '50% 62%'; encuadre();
-const PLACA = N.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z0-9&.' -]/g, '').replace(/\s+/g, ' ').trim();
-function renglones(t, max) {
-  if (t.length <= max) return [t];
-  const p = t.split(' '); let mejor = [t], dif = 1e9;
-  for (let i = 1; i < p.length; i++) { const a = p.slice(0, i).join(' '), b = p.slice(i).join(' '), d = Math.max(a.length, b.length); if (d < dif) { dif = d; mejor = [a, b]; } }
-  return mejor;
+// ── 1 · la portada: de la patente al auto entero ──
+const IW = 1600, IH = 1067, PX = 811, PY = 727;      // la escena mide como la foto; la patente cae en (811, 727)
+const fp = $('#foto-portada'); fp.sizes = '(max-width:860px) 700vw, 260vw'; fp.srcset = juego(7549092, [1600, 2400, 3200]); fp.src = foto(7549092, 2400);
+$('#porta-nombre').textContent = N.toUpperCase();
+$('#porta-arriba').textContent = (CIUDAD || 'Buenos Aires').toUpperCase();
+// el nombre del portapatente se achica hasta entrar en el marco
+function ajustarPorta() {
+  const n = $('#porta-nombre'); let fs = 13; n.style.fontSize = fs + 'px'; n.style.letterSpacing = '.06em';
+  while (fs > 6.5 && n.scrollWidth > n.clientWidth) { fs -= .5; n.style.fontSize = fs + 'px'; }
+  if (n.scrollWidth > n.clientWidth) n.style.letterSpacing = '0';
 }
-function ajustarPlaca() {
-  const l = $('#letras'), r = renglones(PLACA, celu() ? 12 : 16);
-  l.innerHTML = r.map(x => `<span>${x}</span>`).join('');
-  const maxAncho = Math.min(innerWidth * (celu() ? .9 : .82), 1040);
-  let fs = celu() ? 64 : 132; l.style.fontSize = fs + 'px';
-  while (fs > 22 && l.offsetWidth > maxAncho) { fs -= 2; l.style.fontSize = fs + 'px'; }
+// dos encuadres: pegado a la patente y el auto entero; en el medio, la escala va en logaritmo y la patente viaja de un lugar al otro
+let cam = null;
+function encuadres() {
+  const W = innerWidth, H = innerHeight, mov = celu();
+  const s0 = (mov ? .84 : .44) * W / 212;
+  let s1, tx1, ty1;
+  if (mov) { s1 = .94 * W / (.56 * IW); tx1 = W / 2 - .507 * IW * s1; ty1 = H * .64 - .55 * IH * s1; }
+  else { s1 = Math.max(W / IW, H / IH) * 1.02; tx1 = W / 2 - .507 * IW * s1; ty1 = Math.min(0, Math.max(H - IH * s1, H * .34 - .24 * IH * s1)); }
+  cam = {s0, a: [W / 2, H * (mov ? .5 : .52)], s1, b: [tx1 + PX * s1, ty1 + PY * s1]};
 }
-ajustarPlaca();
+const lerp = (a, b, k) => a + (b - a) * k;
+const curva = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+const vivo = {p: 0, entrada: 1};
+function ponerCamara() {
+  if (!cam) encuadres();
+  const k = curva(Math.min(1, vivo.p / .8));
+  const s = Math.exp(lerp(Math.log(cam.s0), Math.log(cam.s1), k)) * (1 + .18 * vivo.entrada * (1 - k));
+  const x = lerp(cam.a[0], cam.b[0], k) - PX * s, y = lerp(cam.a[1], cam.b[1], k) - PY * s;
+  $('#escena').style.transform = `translate(${x.toFixed(2)}px,${y.toFixed(2)}px) scale(${s.toFixed(4)})`;
+  // el texto grande aparece cuando ya se ve el auto
+  const t = Math.max(0, Math.min(1, (vivo.p - .45) / .3));
+  gsap.set('#titulo, #bajada', {autoAlpha: t, y: (1 - t) * 30});
+  gsap.set('#velo', {opacity: .35 + .65 * Math.min(1, vivo.p / .5)});
+  if (vivo.p > .72 && !ponerCamara.guino) { ponerCamara.guino = true; guino(); }
+}
+function guino() {
+  if (reduce) { gsap.set('.faro', {opacity: .55}); return; }
+  gsap.timeline().to('.faro', {opacity: 1, duration: .08}).to('.faro', {opacity: .15, duration: .12}).to('.faro', {opacity: 1, duration: .08}, '+=.1').to('.faro', {opacity: .55, duration: .6});
+}
+encuadres(); ajustarPorta(); ponerCamara();
 
 // ── 2 · el stock ──
 const AUTOS = [
@@ -410,14 +450,16 @@ $('#lista').innerHTML = AUTOS.map((a, i) => `<button class="auto" type="button" 
   <div class="datos"><span class="nom-a">${a.nom}</span><div class="linea-a"><span class="anio">${a.anio}</span><span class="odo"><b>${odo(a.km)}</b> km</span></div>
   <div class="linea-a"><span class="precio">${usd(a.precio)}</span><span class="ver">Ver ficha →</span></div></div></button>`).join('');
 function filtrar(animar = true) {
-  const estado = Flip.getState('.auto');
-  let n = 0;
-  $$('.auto').forEach(el => { const a = AUTOS[+el.dataset.i], ok = (f.tipo === 'todos' || a.tipo === f.tipo) && a.precio <= f.tope; el.hidden = !ok; if (ok) n++; });
-  $('#cuenta').textContent = n === 1 ? '1 auto' : `${n} autos`;
-  $('#vacio').hidden = n > 0;
-  if (animar && !reduce) Flip.from(estado, {duration: .55, ease: 'power2.inOut', absolute: true, scale: true,
-    onEnter: els => gsap.fromTo(els, {opacity: 0, scale: .9}, {opacity: 1, scale: 1, duration: .4, ease: 'power2.out'}),
-    onLeave: els => gsap.to(els, {opacity: 0, scale: .9, duration: .3})});
+  // Los autos que cumplen pasan adelante y el resto queda atrás, apagado: la lista no cambia de alto y la sección de
+  // abajo no salta (con los autos ocultos, la sección oscura subía de golpe hasta el medio de la pantalla).
+  const estado = Flip.getState('.auto'), lista = $('#lista');
+  const cumple = el => { const a = AUTOS[+el.dataset.i]; return (f.tipo === 'todos' || a.tipo === f.tipo) && a.precio <= f.tope; };
+  const todos = $$('.auto').sort((x, y) => +x.dataset.i - +y.dataset.i);
+  const si = todos.filter(cumple), no = todos.filter(el => !cumple(el));
+  [...si, ...no].forEach(el => { lista.appendChild(el); el.classList.toggle('fuera', !cumple(el)); el.tabIndex = cumple(el) ? 0 : -1; });
+  $('#cuenta').textContent = si.length === 1 ? '1 auto' : `${si.length} autos`;
+  $('#vacio').hidden = si.length > 0;
+  if (animar && !reduce) Flip.from(estado, {duration: .6, ease: 'power2.inOut'});
 }
 $('#g-tipo').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; f.tipo = b.dataset.k; $$('#g-tipo .chip').forEach(x => x.classList.toggle('on', x === b)); filtrar(); });
 let tTope;
@@ -534,15 +576,14 @@ $('#mapa').src = `https://www.google.com/maps?q=${busqueda || 'Argentina'}&outpu
 $('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${busqueda}`;
 const cf = $('#c-foto'); cf.sizes = '(max-width:860px) 120vh, 100vw'; cf.srcset = juego(97079, [800, 1300, 1900]); cf.src = foto(97079, 1300);
 
-addEventListener('resize', () => { encuadre(); ajustarPlaca(); if ($('#capa').style.visibility !== 'visible') gsap.set('#ficha', cerrada()); });
+addEventListener('resize', () => { encuadres(); ponerCamara(); if ($('#capa').style.visibility !== 'visible') gsap.set('#ficha', cerrada()); });
 const mm = gsap.matchMedia();
 mm.add('(prefers-reduced-motion: no-preference)', () => {
-  // la patente sube, se atornilla y le pasa un reflejo, una sola vez
-  gsap.timeline({delay: .3})
-    .fromTo('#patente', {y: 80, rotationX: -55, autoAlpha: 0}, {y: 0, rotationX: 0, autoAlpha: 1, duration: 1, ease: 'power3.out', transformOrigin: '50% 100%'})
-    .fromTo('.tornillo', {rotation: -540}, {rotation: 0, duration: .7, ease: 'power2.out', stagger: .12}, '-=.35')
-    .to('#brillo', {xPercent: 260, duration: 1.1, ease: 'power2.inOut'}, '-=.2');
-  gsap.from('.tipo, .bajada, .acciones', {y: 20, autoAlpha: 0, duration: .8, stagger: .08, delay: .9, ease: 'power3.out'});
+  // la llegada: la cámara se acomoda sobre la patente y le pasa un reflejo; después, el scroll la aleja
+  gsap.to(vivo, {entrada: 0, duration: 1.8, ease: 'power3.out', onUpdate: ponerCamara});
+  gsap.to('#brillo', {xPercent: 240, duration: 1.2, delay: .9, ease: 'power2.inOut'});
+  gsap.from('.texto .tipo, .texto .acciones', {y: 16, autoAlpha: 0, duration: .8, stagger: .1, delay: .5, ease: 'power3.out'});
+  gsap.to(vivo, {p: 1, ease: 'none', onUpdate: ponerCamara, scrollTrigger: {trigger: '.intro', start: 'top top', end: 'bottom bottom', scrub: .4}});
   $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
   ScrollTrigger.create({trigger: '.tablero', start: 'top 72%', once: true, onEnter: () => moverAgujas(1.6)});
   if (!isNaN(R)) { const n = {v: 0}; gsap.to(n, {v: R, duration: 1.3, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 85%'},
@@ -550,8 +591,8 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
   gsap.fromTo('#c-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '.cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}});
   return () => {};
 });
-if (reduce) moverAgujas(0);
-document.fonts.ready.then(() => { ajustarPlaca(); ScrollTrigger.refresh(); });
+if (reduce) { moverAgujas(0); vivo.p = 1; vivo.entrada = 0; $('.intro').style.height = '100svh'; ponerCamara(); }
+document.fonts.ready.then(() => { ajustarPorta(); ScrollTrigger.refresh(); });
 addEventListener('load', () => ScrollTrigger.refresh());
 </script>
 </body></html>
