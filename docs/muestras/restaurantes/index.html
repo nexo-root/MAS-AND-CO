@@ -570,8 +570,8 @@ function escribir() {
   if (!reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
 }
 function cambio(animar = true) { calcularOcupadas(); controles(); actualizarPlano(animar); }
-$('#menos').addEventListener('click', () => { if (gente > 1) { gente--; aMano = false; cambio(); } });
-$('#mas').addEventListener('click', () => { if (gente < 16) { gente++; aMano = false; cambio(); } });
+$('#menos').addEventListener('click', () => { if (gente > 1) { gente--; aMano = false; mesa = null; cambio(); } });
+$('#mas').addEventListener('click', () => { if (gente < 16) { gente++; aMano = false; mesa = null; cambio(); } });
 $('#g-dia').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; dia = +b.dataset.k; if (paso(dia, turno)) turno = TURNOS.findIndex((_, t) => !paso(dia, t)); cambio(); });
 $('#g-hora').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b || b.disabled) return; turno = +b.dataset.k; cambio(); });
 function tocarMesa(g) {
