@@ -11,7 +11,8 @@
 /* Muestra completa para concesionarias y agencias de autos usados · Mas & Co · 12/10/2026.
    Una página para las de la lista: …/autos/?s=<slug> trae nombre, lugar, nota y opiniones.
    1. La portada (arquetipo 2, objeto protagonista, dentro de la foto a sangre): un auto de frente, de noche. Arranca
-      pegada a la patente, con el portapatente que llevan los autos de agencia y el nombre de la concesionaria; al bajar,
+      pegada a la placa, que lleva el nombre de la concesionaria en grande (sin matrícula: Felipe no quiere una patente
+      que parezca real); al bajar,
       la cámara se aleja hasta ver el auto entero y las luces hacen un guiño. (La v1, una patente gigante flotando sobre
       la foto, a Felipe no le gustó: «creo que lo podés hacer mejor».)
    2. El stock: filtros por tipo y por precio; los autos se reacomodan (GSAP Flip). Cada auto abre su ficha con
@@ -47,19 +48,20 @@ section{scroll-margin-top:70px}
 .intro-fijo{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:#fff;background:#0B0C0E}
 .escena{position:absolute;left:0;top:0;width:1600px;height:1067px;transform-origin:0 0}
 .escena img{position:absolute;inset:0;width:100%;height:100%;display:block}
-.porta{position:absolute;left:705px;top:679px;width:212px;height:96px;border-radius:7px;overflow:hidden;
+.porta{position:absolute;left:705px;top:679px;width:212px;height:92px;border-radius:7px;overflow:hidden;
   background:linear-gradient(180deg,#26282C,#0C0D0F 30%,#141518 70%,#08090A);box-shadow:0 2px 3px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.18);
   filter:brightness(.86) saturate(.9)}
 .porta-arriba{position:absolute;left:0;right:0;top:1.5px;height:8px;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:6.2px;
   letter-spacing:.16em;text-align:center;color:#C9CDD3;line-height:8px;white-space:nowrap;overflow:hidden}
-.placa{position:absolute;left:7px;top:9.5px;width:198px;height:64px;border-radius:4px;background:linear-gradient(180deg,#FFFFFF,#E6E9EE);
-  box-shadow:inset 0 0 0 1px #1B1D21;overflow:hidden}
+.placa{position:absolute;left:7px;top:10px;width:198px;height:76px;border-radius:4px;background:linear-gradient(180deg,#FFFFFF,#E6E9EE);
+  box-shadow:inset 0 0 0 1px #1B1D21,inset 0 0 0 3px #FFFFFF,inset 0 0 0 4px #2A3D93;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0 9px}
 .placa .banda-p{height:12px;background:#2A3D93;color:#fff;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:6.6px;letter-spacing:.2em;
   display:flex;align-items:center;justify-content:center;position:relative}
 .placa .mer{position:absolute;left:4px;top:2px;width:8px;height:8px;border-radius:50%;box-shadow:inset 0 0 0 .8px #fff}
 .placa .bandera{position:absolute;right:4px;top:2.5px;width:11px;height:7px;background:linear-gradient(180deg,#74ACDF 0 33%,#fff 33% 67%,#74ACDF 67%)}
-.placa b{display:block;text-align:center;font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:44px;line-height:52px;letter-spacing:.07em;color:#16181C;
-  transform:scaleY(1.06)}
+.placa b{display:block;text-align:center;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:30px;line-height:1.02;letter-spacing:.04em;color:#16181C;
+  text-transform:uppercase}
+.placa b span{display:block;white-space:nowrap}
 .porta-nombre{position:absolute;left:4px;right:4px;bottom:2.5px;height:17px;display:flex;align-items:center;justify-content:center;
   font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
   color:#E8EBEF;background:linear-gradient(180deg,#E8EBEF,#9BA1AA);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -265,8 +267,7 @@ section{scroll-margin-top:70px}
       <span class="faro i" aria-hidden="true"></span><span class="faro d" aria-hidden="true"></span>
       <div class="porta" id="porta" aria-hidden="true">
         <span class="porta-arriba" id="porta-arriba">BUENOS AIRES</span>
-        <div class="placa"><div class="banda-p"><i class="mer"></i>REPÚBLICA ARGENTINA<i class="bandera"></i></div><b>AF 482 KD</b></div>
-        <span class="porta-nombre" id="porta-nombre">SU CONCESIONARIA</span>
+        <div class="placa"><b id="placa-n">SU CONCESIONARIA</b></div>
         <span class="noche"></span><span class="brillo" id="brillo"></span>
       </div>
     </div>
@@ -277,7 +278,7 @@ section{scroll-margin-top:70px}
       <p class="bajada" id="bajada">Mirá los autos que tenemos, consultá por WhatsApp y traé tu usado como parte de pago.</p>
       <div class="acciones"><a class="btn" href="#stock">Ver los autos</a><a class="btn claro" href="#usado">Cotizá tu usado</a></div>
     </div>
-    <span class="ejemplo-h">Foto y patente de ejemplo</span>
+    <span class="ejemplo-h">Foto de ejemplo</span>
   </div>
 </section>
 
@@ -386,13 +387,20 @@ const usd = n => `USD ${miles(n)}`;
 // ── 1 · la portada: de la patente al auto entero ──
 const IW = 1600, IH = 1067, PX = 811, PY = 727;      // la escena mide como la foto; la patente cae en (811, 727)
 const fp = $('#foto-portada'); fp.sizes = '(max-width:860px) 700vw, 260vw'; fp.srcset = juego(7549092, [1600, 2400, 3200]); fp.src = foto(7549092, 2400);
-$('#porta-nombre').textContent = N.toUpperCase();
 $('#porta-arriba').textContent = (CIUDAD || 'Buenos Aires').toUpperCase();
-// el nombre del portapatente se achica hasta entrar en el marco
+// el nombre de la agencia va en la placa, en grande: en un renglón si entra y si no en dos parejos, y se achica hasta entrar
 function ajustarPorta() {
-  const n = $('#porta-nombre'); let fs = 13; n.style.fontSize = fs + 'px'; n.style.letterSpacing = '.06em';
-  while (fs > 6.5 && n.scrollWidth > n.clientWidth) { fs -= .5; n.style.fontSize = fs + 'px'; }
-  if (n.scrollWidth > n.clientWidth) n.style.letterSpacing = '0';
+  const b = $('#placa-n'), palabras = N.toUpperCase().split(/\s+/);
+  let lineas = [palabras.join(' ')];
+  if (palabras.length > 1) {
+    let mejor = null;
+    for (let i = 1; i < palabras.length; i++) { const a = palabras.slice(0, i).join(' '), z = palabras.slice(i).join(' '), d = Math.max(a.length, z.length); if (!mejor || d < mejor[0]) mejor = [d, [a, z]]; }
+    if (lineas[0].length > 12) lineas = mejor[1];
+  }
+  b.innerHTML = lineas.map(x => `<span>${x}</span>`).join('');
+  const caja = b.parentElement, anchoMax = caja.clientWidth - 18, altoMax = caja.clientHeight - 8;
+  let fs = 44; b.style.fontSize = fs + 'px';
+  while (fs > 8 && (b.scrollWidth > anchoMax || b.offsetHeight > altoMax)) { fs -= .5; b.style.fontSize = fs + 'px'; }
 }
 // dos encuadres: pegado a la patente y el auto entero; en el medio, la escala va en logaritmo y la patente viaja de un lugar al otro
 let cam = null;
