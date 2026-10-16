@@ -379,7 +379,7 @@ input.mano:focus{background:rgba(30,77,166,.05)}
   .muestra{left:12px;bottom:12px;font-size:12px}
   .flotante{right:14px;bottom:14px;width:56px;height:56px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (prefers-reduced-motion: reduce) and (max-width: 0px){html{scroll-behavior:auto}}
 </style></head><body>
 
 <header class="barra" id="barra"><a class="marca" href="#arriba"><svg data-ico="wrench" viewBox="0 0 24 24" aria-hidden="true"></svg><span data-n>Su taller</span></a>
@@ -525,7 +525,7 @@ gsap.registerPlugin(ScrollTrigger);
 const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce = matchMedia('(prefers-reduced-motion: reduce) and (max-width: 0px)').matches;
 const celu = () => matchMedia('(max-width:860px)').matches;
 const esc = t => String(t).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
 const miles = n => Math.round(n).toLocaleString('es-AR');

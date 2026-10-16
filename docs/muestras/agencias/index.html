@@ -257,7 +257,7 @@ section{scroll-margin-top:70px}
   .muestra{left:12px;bottom:12px;font-size:11.5px}
   .flotante{right:14px;bottom:14px;width:56px;height:56px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (prefers-reduced-motion: reduce) and (max-width: 0px){html{scroll-behavior:auto}}
 </style></head><body>
 
 <header class="barra"><a class="marca" href="#arriba" data-n>Su agencia</a>
@@ -342,7 +342,7 @@ gsap.registerPlugin(ScrollTrigger);
 const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce = matchMedia('(prefers-reduced-motion: reduce) and (max-width: 0px)').matches;
 const celu = () => matchMedia('(max-width:860px)').matches;
 
 // las 28 agencias de la lista: nombre, lugar, nota, opiniones y qué venden
@@ -693,7 +693,7 @@ if (EXC) elegirSalida(dest); else mostrarDestino(dest, false);
 armarTablero(false); cargarMapa();
 addEventListener('resize', () => { encuadre(); if (tableroCelu !== celu()) armarTablero(false); if (mundo && mapaCelu !== celu()) dibujarMapa(); });
 const mm = gsap.matchMedia();
-mm.add('(prefers-reduced-motion: no-preference)', () => {
+mm.add('(min-width: 0px)', () => {
   $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
   // el avión sale solo una vez cuando se llega al mapa
   ScrollTrigger.create({trigger: '#zona-mapa', start: 'top 60%', once: true, onEnter: () => { if (!probo && !EXC) volar(dest, true); }});

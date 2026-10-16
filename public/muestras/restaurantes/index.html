@@ -235,7 +235,7 @@ section{scroll-margin-top:70px}
   .muestra{left:12px;bottom:12px;font-size:11.5px}
   .flotante{right:14px;bottom:14px;width:56px;height:56px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (prefers-reduced-motion: reduce) and (max-width: 0px){html{scroll-behavior:auto}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="tiza" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3" result="r"/><feDisplacementMap in="SourceGraphic" in2="r" scale="2.4"/></filter></svg>
 
@@ -309,7 +309,7 @@ gsap.registerPlugin(ScrollTrigger);
 const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce = matchMedia('(prefers-reduced-motion: reduce) and (max-width: 0px)').matches;
 const celu = () => matchMedia('(max-width:860px)').matches;
 
 // los 34 restaurantes de la lista: nombre, lugar, nota, opiniones y qué cocina tienen
@@ -605,7 +605,7 @@ addEventListener('resize', () => {
   if (planoMovil !== celu()) { dibujarPlano(); elegirPlato(Math.max(actual, 0), 0); }
 });
 const mm = gsap.matchMedia();
-mm.add('(prefers-reduced-motion: no-preference)', () => {
+mm.add('(min-width: 0px)', () => {
   gsap.fromTo('#foto-portada', {scale: 1.06}, {scale: 1, duration: 2.6, ease: 'power2.out'});
   $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
   // la bandeja da una vuelta corta sola, una vez, para que se entienda que gira
