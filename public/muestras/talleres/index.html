@@ -1,0 +1,991 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Diseño de muestra para su taller mecánico · Mas & Co">
+<meta property="og:description" content="Recórrala completa: la cortina con su nombre, el tablero de testigos, la orden de trabajo que arma el turno y el aviso en cada paso.">
+<meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
+<title>Taller mecánico · diseño de muestra · Mas & Co</title>
+<link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&family=Shrikhand&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+/* Muestra completa para talleres mecánicos · Mas & Co · 14/10/2026. Una página para los de la lista:
+   …/talleres/?s=<slug> trae nombre, lugar, nota, opiniones y, si se sabe, el nombre del dueño.
+   Nació para Mecánica Da Silva (Santo Tomé): la portada fija del 10/10 (foto a sangre, Oswald + Work Sans, noche y
+   naranja, la orden de trabajo con birome) pasa a ser una página entera:
+   1. La cortina metálica (foto real de chapa, Pexels 2271100) con el nombre pintado a mano (Shrikhand + Kaushan Script,
+      multiply sobre las ondas). Se prende el tubo adentro, la luz se escapa por abajo y la cortina sube en tres tramos;
+      con el scroll termina de enrollarse en su cajón. Atrás, el taller (Pexels 34337558).
+   2. Se te prendió una luz: el tablero de noche. Al entrar se hace el control de luces (como al girar la llave);
+      cada testigo dice qué puede ser y si se puede seguir (orientativo) y se suma al turno.
+   3. La orden de trabajo ES el formulario: se encierra la marca, se escribe con birome, se tildan los trabajos.
+      Los kilómetros sugieren lo que toca (plan de ejemplo). El mensaje de WhatsApp se arma solo.
+   4. Te avisamos en cada paso: el auto avanza por el seguimiento y llegan los mensajes de ejemplo.
+   5. Horario y trabajos · 6. Nota de Google y mapa · 7. Cierre.
+   Fotos de Pexels. Precios, horarios, plan de service y mensajes de ejemplo. */
+:root{--noche:#141B22;--noche2:#1B252F;--negro:#0A0E12;--tiza:#F2EEE6;--naranja:#FF6B1A;--naranja2:#F05A08;--papel:#F7F1E3;--tinta:#26282B;--gris:#6B6A66;
+  --birome:#1E4DA6;--ambar:#FFB21A;--rojo:#FF3D2E;--cajon:68px}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--noche);color:var(--tiza);font-family:"Work Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+img{display:block}
+h1,h2,h3{font-weight:inherit;font-size:inherit}
+fieldset{border:0;min-width:0}
+section{scroll-margin-top:var(--cajon)}
+svg path{fill:currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;background:var(--naranja);color:var(--noche);font-weight:700;font-size:16.5px;
+  border-radius:999px;white-space:nowrap;transition:background .2s}
+.btn:hover{background:var(--naranja2)}
+.btn svg{width:21px;height:21px;flex:none}
+.btn.claro{background:rgba(10,14,18,.4);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7);backdrop-filter:blur(4px)}
+.btn.claro:hover{background:rgba(255,255,255,.12)}
+.nota-ej{font-size:13px;color:var(--gris)}
+
+/* la barra: arriba va apoyada sobre el cajón de la cortina; después del taller se pone sólida */
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:var(--cajon);display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;color:#fff}
+.barra.solida{background:rgba(20,27,34,.95);backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(255,255,255,.07)}
+.marca{display:flex;align-items:center;gap:10px;font-family:Oswald,sans-serif;font-weight:600;font-size:22px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;min-width:0}
+.marca span{overflow:hidden;text-overflow:ellipsis}
+.marca svg{width:24px;height:24px;color:var(--naranja);flex:none}
+.nav{display:flex;gap:28px;font-weight:600;font-size:15px;color:rgba(242,238,230,.82)}
+.nav a:hover{color:#fff}
+.barra .btn{min-height:44px;padding:0 20px;font-size:15px}
+
+/* 1 · la cortina */
+.intro{position:relative;height:calc(100vh + 70vh);height:calc(100svh + 70svh);background:var(--negro)}
+.intro-fijo{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.taller{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;transform-origin:50% 50%}
+.apagado{position:absolute;inset:0;background:#04070A;opacity:.93}
+.velo-p{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,18,0) 52%,rgba(10,14,18,.45) 68%,rgba(10,14,18,.9) 100%)}
+.portada{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:0 110px 42px 48px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px 40px}
+.rubro{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(46px,4.4vw,82px);line-height:.98;max-width:15ch;text-wrap:balance;text-shadow:0 3px 24px rgba(0,0,0,.5)}
+.duenio{margin-top:12px;font-size:19px;color:rgba(242,238,230,.92)}
+.acciones{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.lado{display:flex;flex-direction:column;align-items:flex-end;gap:10px;text-align:right}
+.chip-nota{display:inline-flex;align-items:center;gap:9px;background:rgba(20,27,34,.8);box-shadow:inset 0 0 0 1px rgba(242,238,230,.18);padding:10px 16px;border-radius:999px;font-size:15px;font-weight:600;backdrop-filter:blur(6px)}
+.chip-nota i{font-style:normal;color:var(--naranja)}
+.horas-h{font-size:15px;color:rgba(242,238,230,.85);line-height:1.45}
+.ejemplo-h{font-size:12.5px;color:rgba(242,238,230,.75)}
+.solo-celu{display:none}
+.chip-nota{white-space:nowrap}
+.vano{position:absolute;z-index:4;left:0;right:0;top:var(--cajon);bottom:0;overflow:hidden;pointer-events:none}
+.cortina{position:absolute;inset:0;will-change:transform;transform:translate3d(0,-3.6%,0);
+  background:repeating-linear-gradient(180deg,#8E959B 0 30px,#6F767C 30px 34px,#A3A9AE 34px 40px)}
+.chapa,.pint{position:absolute;inset:0}
+.chapa{background:var(--chapa) 50% 50%/cover;filter:brightness(.84) saturate(.8)}
+.pint .bloque{position:absolute;left:3%;right:3%;top:var(--py,58%);display:flex;flex-direction:column;align-items:center;text-align:center}
+.p-oficio{font-family:"Kaushan Script",cursive;font-size:max(14px,calc(var(--fs,100px)*.36));line-height:1.15;color:#16202A}
+.p-nombre{font-family:Shrikhand,serif;font-size:var(--fs,100px);line-height:1;text-transform:uppercase;color:var(--naranja);display:flex;flex-direction:column;align-items:center;margin:.02em 0 .14em}
+.p-nombre span{white-space:nowrap}
+.pint .lista{position:absolute;left:6%;right:6%;top:var(--py2,30%);display:flex;flex-wrap:wrap;justify-content:center;gap:.1em .55em;text-align:center;
+  font-family:Oswald,sans-serif;font-weight:600;font-size:var(--fs2,34px);line-height:1.15;letter-spacing:.07em;text-transform:uppercase;color:#16202A}
+.lista span{white-space:nowrap}
+.lista i{font-style:normal;color:#C24A0A}
+.pint.sombra{mix-blend-mode:multiply;opacity:.92}
+.sombra .p-oficio,.sombra .lista{visibility:hidden}
+.sombra .p-nombre{color:#0E141A;position:relative;left:.04em;top:.05em}
+.pint.relieve{background:var(--chapa) 50% 50%/cover;-webkit-background-clip:text;background-clip:text;filter:grayscale(1) brightness(1.5) contrast(1.6);mix-blend-mode:multiply}
+.pint.relieve *{color:transparent!important}
+.gastado{-webkit-mask-image:var(--ruido);mask-image:var(--ruido);-webkit-mask-size:640px 640px;mask-size:640px 640px}
+.noche-c{position:absolute;inset:0;background:#04070A;opacity:.42}
+.fuga{position:absolute;left:0;right:0;bottom:0;height:30%;opacity:0;mix-blend-mode:screen;
+  background:linear-gradient(0deg,rgba(255,243,222,.62),rgba(255,243,222,.2) 22%,rgba(255,243,222,.05) 60%,rgba(255,243,222,0))}
+.rendija-luz{position:absolute;left:0;right:0;bottom:0;height:90px;opacity:0;mix-blend-mode:screen;
+  background:linear-gradient(0deg,rgba(255,246,228,.35),rgba(255,246,228,.95))}
+.zocalo{position:absolute;left:0;right:0;bottom:0;height:max(16px,2.1%);background:linear-gradient(180deg,#B9BFC4,#7D858C 45%,#4B5259 80%,#2B3137);box-shadow:0 -2px 6px rgba(0,0,0,.35)}
+.zocalo i{position:absolute;top:28%;width:56px;height:46%;border-radius:3px;background:linear-gradient(180deg,#2A3037,#14181D);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.zocalo i:first-child{left:22%}.zocalo i:last-child{right:22%}
+.guia{position:absolute;z-index:5;top:var(--cajon);bottom:0;width:14px;pointer-events:none;
+  background:linear-gradient(90deg,#14181D,#555D66 35%,#7D858D 50%,#3A4148 70%,#101418);box-shadow:0 0 10px rgba(0,0,0,.5)}
+.guia.izq{left:0}.guia.der{right:0}
+.cajon{position:absolute;z-index:6;left:0;right:0;top:0;height:var(--cajon);pointer-events:none;
+  background:linear-gradient(180deg,#2E353D 0%,#20262D 40%,#171C22 85%,#0E1216 100%);box-shadow:0 8px 18px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08),inset 0 -2px 0 rgba(0,0,0,.6)}
+
+/* secciones */
+.sec{position:relative;padding:112px 48px}
+.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;max-width:1320px;margin:0 auto 44px}
+.cabeza h2{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(54px,5.4vw,104px);line-height:.92;max-width:13ch;text-wrap:balance}
+.cabeza h2 em{font-style:normal;color:var(--naranja)}
+.cabeza p{max-width:29em;font-size:18px;line-height:1.5;color:rgba(242,238,230,.76)}
+
+/* 2 · el tablero */
+.luces{background:var(--negro)}
+.tab{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;align-items:center}
+.cluster{position:relative;border-radius:230px 230px 46px 46px;padding:38px 40px 32px;background:linear-gradient(180deg,#161B21,#0C1014 70%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.05),inset 0 -30px 50px rgba(0,0,0,.6),0 40px 80px -40px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.04);
+  display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:20px;align-items:center;align-content:center}
+.dial{display:block;width:100%;height:auto;aspect-ratio:1}
+.centro{display:flex;flex-direction:column;gap:12px}
+.testigos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.testigo{aspect-ratio:1;min-height:44px;border-radius:12px;display:grid;place-items:center;background:#06080B;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);color:#29323B}
+.testigo svg{width:60%;height:60%}
+.testigo:hover{color:#3A4550}
+.testigo.on{color:var(--c)}
+.testigo.on svg{filter:drop-shadow(0 0 3px var(--c)) drop-shadow(0 0 10px var(--c))}
+.testigo.elegido{box-shadow:inset 0 0 0 2px rgba(242,238,230,.55)}
+.lcd{min-height:46px;border-radius:10px;padding:8px 12px;background:#05070A;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:Oswald,sans-serif;font-weight:500;font-size:14.5px;letter-spacing:.05em;text-transform:uppercase;color:#E9E4DA}
+.ficha-luz{background:#11161B;border-radius:26px;padding:28px 28px 22px;display:flex;flex-direction:column;gap:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.fl-cab{display:flex;gap:16px;align-items:center}
+.fl-ico{width:62px;height:62px;border-radius:15px;background:#06080B;display:grid;place-items:center;flex:none;color:var(--c)}
+.fl-ico svg{width:38px;height:38px;filter:drop-shadow(0 0 6px var(--c))}
+.fl-cab h3{font-family:Oswald,sans-serif;font-weight:600;font-size:28px;line-height:1.02;text-transform:uppercase}
+.fl-sem{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;margin-top:6px;color:#fff}
+.fl-sem::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--s);box-shadow:0 0 8px var(--s)}
+.fl-q{font-size:16.5px;line-height:1.5;color:rgba(242,238,230,.84)}
+.fl-q b{display:block;color:#fff;font-weight:700}
+.fl-acc{display:flex;align-items:center;gap:16px;margin-top:auto;padding-top:4px;flex-wrap:wrap}
+.fl-acc .btn{flex:1}
+.quitar{font-weight:600;font-size:15px;color:rgba(242,238,230,.7);min-height:44px;padding:0 4px;border-bottom:1px solid rgba(242,238,230,.35)}
+.luces .nota-ej{color:rgba(242,238,230,.55)}
+
+/* 3 · la orden de trabajo */
+.turno{background:var(--noche2)}
+.mesa{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:48px;align-items:start}
+.orden{position:relative;background:var(--papel);color:var(--tinta);border-radius:4px;padding:30px 38px 26px;box-shadow:0 34px 60px -26px rgba(0,0,0,.85)}
+.o-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:2.5px solid var(--tinta);padding-bottom:10px}
+.o-cab b{font-family:Oswald,sans-serif;font-weight:600;font-size:21px;letter-spacing:.12em}
+.o-cab span{font-size:14px;color:var(--gris);font-weight:500;text-align:right}
+.fila{display:flex;align-items:center;gap:14px;min-height:58px;padding:6px 0;border-bottom:1px solid rgba(38,40,43,.16)}
+.fila.alta{display:block;padding:12px 0 10px}
+.rot{flex:none;width:104px;font-size:14px;font-weight:700;color:#55534E}
+.fila.alta .rot{display:block;width:auto;margin-bottom:6px}
+.opciones{display:flex;flex-wrap:wrap;gap:2px 4px;padding:4px 6px;margin:-4px -6px}
+.op{position:relative;min-height:44px;padding:0 11px;font-weight:600;font-size:15.5px;border-radius:999px;white-space:nowrap;flex:none}
+.op:hover{background:rgba(38,40,43,.06)}
+.op[disabled]{opacity:.32;cursor:not-allowed;text-decoration:line-through}
+.circ{position:absolute;left:-5px;top:-2px;overflow:visible;pointer-events:none}
+.circ path,.caja path,.raya path{fill:none!important;stroke:var(--birome);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.linea-m{flex:1;min-width:0;display:flex;align-items:center;border-bottom:1.5px dotted rgba(38,40,43,.5)}
+.mano{font-family:Caveat,cursive;font-weight:700;color:var(--birome);font-size:29px;line-height:1.1}
+input.mano{width:100%;min-width:0;background:transparent;border:0;outline:none;padding:4px 2px 0;height:44px}
+input.mano::placeholder{color:rgba(30,77,166,.3)}
+input.mano:focus{background:rgba(30,77,166,.05)}
+.dos{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:24px}
+.dos .fila{border-bottom:0}
+.dos .anio .rot{width:auto}
+.sug{display:flex;gap:4px;align-items:center;padding:2px 0 8px 118px;border-bottom:1px solid rgba(38,40,43,.16);min-height:52px}
+.sug b{font-size:13px;font-weight:600;color:var(--gris);margin-right:4px;white-space:nowrap}
+.sug .op{font-size:14.5px;font-weight:500;padding:0 10px;color:#3C3B37}
+.km-v{flex:none;width:150px}
+.km input[type=range]{flex:1;min-width:0;height:44px;accent-color:var(--birome);cursor:pointer}
+.toca{display:flex;flex-direction:column;justify-content:flex-start;gap:4px;height:118px;padding:10px 0 10px 118px;border-bottom:1px solid rgba(38,40,43,.16)}
+.toca-fila{display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:4px 6px;margin:-4px -6px}
+.toca-fila::-webkit-scrollbar{display:none}
+.toca-fila>span{font-size:14.5px;font-weight:600;white-space:nowrap}
+.plan{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 13px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap;
+  box-shadow:inset 0 0 0 1.5px rgba(38,40,43,.35)}
+.plan:hover{background:rgba(38,40,43,.06)}
+.plan.ya{box-shadow:none;background:rgba(30,77,166,.1);color:var(--birome)}
+.toca small{font-size:13px;color:var(--gris);line-height:1.35}
+.toca .sigue{color:#4A4944;min-height:1.35em}
+.tildes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px}
+.tilde{display:flex;align-items:center;gap:12px;min-height:46px;font-weight:500;font-size:16px;text-align:left;cursor:pointer;line-height:1.2}
+.caja{position:relative;width:22px;height:22px;border:1.8px solid var(--tinta);border-radius:3px;flex:none}
+.caja svg{position:absolute;left:-2px;top:-12px;width:34px;height:34px;overflow:visible}
+.testigos-o{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:44px;flex:1}
+.testigos-o .vacio{font-size:14px;color:#8B8983}
+.testigos-o .t-o{display:inline-flex;align-items:center;gap:6px}
+.testigos-o .t-o svg{width:22px;height:22px;color:var(--birome)}
+.tilde-sola{display:flex;align-items:center;gap:12px;min-height:58px;font-weight:600;font-size:16px;cursor:pointer;padding-top:6px;text-align:left}
+.envio{position:sticky;top:calc(var(--cajon) + 28px);display:flex;flex-direction:column;gap:14px}
+.chat{background:#EFEAE2;border-radius:22px;overflow:hidden;color:#111B21;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.chat-cab{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F0F2F5}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--noche);color:var(--naranja);display:grid;place-items:center;flex:none}
+.avatar svg{width:24px;height:24px}
+.chat-cab b{display:block;font-size:15.5px;line-height:1.25}
+.chat-cab small{font-size:12.5px;color:#667781}
+.chat-cuerpo{padding:18px 14px 20px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}
+.burbuja{align-self:flex-end;max-width:92%;background:#D9FDD3;border-radius:12px 4px 12px 12px;padding:10px 13px 22px;font-size:15.5px;line-height:1.45;position:relative;box-shadow:0 1px .5px rgba(11,20,26,.13);overflow-wrap:anywhere}
+.burbuja small{position:absolute;right:10px;bottom:5px;font-size:12px;color:#667781}
+.envio .btn{width:100%;min-height:56px;font-size:17px}
+.envio .nota-ej{color:rgba(242,238,230,.6);text-align:center}
+
+/* 4 · el seguimiento */
+.seguimiento{background:var(--tiza);color:var(--tinta);padding-top:0;padding-bottom:0}
+.seg-fijo{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:118px 0 64px}
+.seg-fijo>*{width:100%}
+.seguimiento .cabeza p{color:#5E5C57}
+.ruta{position:relative;max-width:1320px;margin:0 auto}
+.linea{position:absolute;z-index:1;background:rgba(38,40,43,.16);border-radius:3px}
+.linea i{position:absolute;inset:0;background:var(--naranja);border-radius:3px;transform-origin:0 0}
+.pasos{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;position:relative}
+.paso{display:flex;flex-direction:column;gap:12px}
+.punto{position:relative;z-index:2;width:18px;height:18px;border-radius:50%;background:var(--tiza);box-shadow:inset 0 0 0 3px #B9B5AC;margin:19px 0 22px}
+.paso.hecho .punto{box-shadow:inset 0 0 0 9px var(--naranja)}
+.paso-t{display:flex;align-items:center;gap:10px}
+.paso-t svg{width:28px;height:28px;color:#A29E95;flex:none}
+.paso.hecho .paso-t svg{color:var(--naranja2)}
+.paso h3{font-family:Oswald,sans-serif;font-weight:600;font-size:25px;line-height:1.05;text-transform:uppercase}
+.paso .ok{font-size:14.5px;font-weight:700;color:#C24A0A}
+.msjs{display:flex;flex-direction:column;gap:8px}
+.msj{background:#fff;color:#111B21;border-radius:4px 14px 14px 14px;padding:11px 14px 23px;font-size:16px;line-height:1.45;position:relative;box-shadow:0 1px .5px rgba(11,20,26,.13);visibility:hidden}
+.msj.yo{background:#D9FDD3;border-radius:14px 4px 14px 14px;margin-left:16%}
+.msj small{position:absolute;right:10px;bottom:5px;font-size:12px;color:#667781}
+.auto-marca{position:absolute;z-index:3;left:0;top:0;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--noche);color:var(--naranja);display:grid;place-items:center;box-shadow:0 10px 22px -8px rgba(0,0,0,.55)}
+.auto-marca svg{width:34px;height:34px}
+.seguimiento .nota-ej{max-width:1320px;margin:28px auto 0}
+
+/* 5 · horario y trabajos */
+.info{background:var(--noche)}
+.info-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px}
+.info h2{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(44px,4vw,70px);line-height:.95;margin-bottom:24px}
+.info h2 em{font-style:normal;color:var(--naranja)}
+.dias{display:flex;flex-direction:column}
+.dias div{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:16px 0;border-bottom:1px solid rgba(242,238,230,.12)}
+.dias dt{font-size:18px;font-weight:600}
+.dias dd{font-family:Oswald,sans-serif;font-weight:500;font-size:26px;text-align:right}
+.dias .cerrado dd{color:rgba(242,238,230,.45)}
+.info .nota-ej{margin-top:14px;color:rgba(242,238,230,.55)}
+.serv{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.serv li{display:flex;align-items:center;gap:16px;padding:15px 0;border-bottom:1px solid rgba(242,238,230,.12);font-size:18px;font-weight:500}
+.serv svg{width:30px;height:30px;color:var(--naranja);flex:none}
+
+/* 6 · nota y mapa */
+.llegar{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;background:var(--tiza);color:var(--tinta)}
+.nota-g .grande{font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(150px,15vw,250px);line-height:.85}
+.estrellas{display:flex;gap:6px;margin:16px 0 10px;color:var(--naranja2)}
+.estrellas svg{width:28px;height:28px}
+.nota-g p{font-size:19px;font-weight:700}
+.nota-g a,.donde a{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-weight:700;border-bottom:1.5px solid var(--tinta)}
+.mapa{border-radius:20px;overflow:hidden;aspect-ratio:16/11;background:#DDD8CE}
+.mapa iframe{width:100%;height:100%;border:0;display:block}
+.donde{margin-top:18px;font-size:18px}
+.donde b{display:block;font-family:Oswald,sans-serif;font-weight:600;font-size:32px;text-transform:uppercase;line-height:1.05}
+
+/* 7 · cierre y pie */
+.cierre{position:relative;min-height:84vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;padding:110px 28px}
+.cierre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.cierre::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,18,.6),rgba(10,14,18,.72))}
+.cierre div{position:relative;z-index:2}
+.cierre h2{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(60px,7.4vw,136px);line-height:.9;max-width:12ch;margin:0 auto 18px;text-wrap:balance}
+.cierre p{font-size:19px;margin:0 auto 30px;max-width:30em;color:rgba(255,255,255,.9)}
+.cierre .btn{font-size:18px;min-height:58px;padding:0 32px}
+.cierre .ej{position:absolute;z-index:2;right:20px;bottom:16px;font-size:12.5px;color:rgba(255,255,255,.75)}
+.pie{background:var(--negro);color:rgba(242,238,230,.7);padding:34px 110px 84px 48px;display:flex;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
+.pie a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+
+.muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(10,14,18,.88);padding:7px 12px;border-radius:999px}
+.flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(0,0,0,.6)}
+.flotante svg{width:30px;height:30px}
+.flotante.oculto{opacity:0;visibility:hidden;transform:scale(.8)}
+.flotante{transition:opacity .3s,transform .3s,visibility .3s}
+.aviso{position:fixed;z-index:80;left:50%;bottom:96px;transform:translate(-50%,20px);width:max-content;max-width:min(92vw,460px);background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;
+  font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s cubic-bezier(.16,1,.3,1);box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
+.aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+@media (min-width:1700px){
+  .portada{padding:0 120px 54px 72px}
+  .sec{padding-left:72px;padding-right:72px}
+  .cabeza,.tab,.mesa,.ruta,.info-grid{max-width:1560px}
+  .mesa{grid-template-columns:minmax(0,1fr) 460px}
+  .seguimiento .nota-ej{max-width:1560px}
+  .msj{font-size:17px}
+}
+@media (max-width:1100px) and (min-width:861px){
+  .cluster{grid-template-columns:1fr 1fr;border-radius:160px 160px 36px 36px}
+  .centro{grid-column:1 / -1;order:3}
+  .mesa{grid-template-columns:minmax(0,1fr) 340px;gap:28px}
+  .pasos{gap:14px}
+}
+@media (max-width:860px){
+  :root{--cajon:56px}
+  .barra{padding:0 10px 0 16px;gap:10px}
+  .nav{display:none}
+  .marca{font-size:18px;gap:8px}
+  .marca svg{width:20px;height:20px}
+  .barra .btn{padding:0 16px;font-size:14.5px}
+  .intro{height:calc(100vh + 44vh);height:calc(100svh + 44svh)}
+  .taller{object-position:50% 40%}
+  .portada{display:block;padding:0 16px 58px}
+  .rubro{font-size:clamp(34px,10.4vw,46px)}
+  .duenio{font-size:16px;margin-top:8px}
+  .acciones{margin-top:16px}
+  .acciones .btn{width:100%;min-height:52px}
+  .acciones .claro{display:none}
+  .lado{flex-direction:row;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;text-align:left}
+  .chip-nota{font-size:13px;padding:8px 12px}
+  .horas-h,.solo-compu{display:none}
+  .solo-celu{display:inline}
+  .ejemplo-h{font-size:12px}
+  .guia{width:9px}
+  .zocalo i{width:40px}
+  .sec{padding:76px 16px}
+  .cabeza{display:block;margin-bottom:26px}
+  .cabeza h2{font-size:clamp(44px,12.6vw,58px)}
+  .cabeza p{font-size:16px;margin-top:12px}
+  .tab{grid-template-columns:minmax(0,1fr);gap:14px}
+  .cluster{grid-template-columns:1fr 1fr;border-radius:130px 130px 26px 26px;padding:24px 14px 14px;gap:10px 12px}
+  .centro{grid-column:1 / -1;order:3;gap:10px}
+  .testigos{gap:7px}
+  .lcd{font-size:13px;min-height:42px}
+  .ficha-luz{padding:20px 18px 18px;border-radius:20px;gap:12px}
+  .fl-ico{width:52px;height:52px}
+  .fl-ico svg{width:32px;height:32px}
+  .fl-cab h3{font-size:24px}
+  .fl-q{font-size:15.5px}
+  .mesa{grid-template-columns:minmax(0,1fr);gap:18px}
+  .orden{padding:18px 16px 16px}
+  .o-cab b{font-size:17px;letter-spacing:.1em}
+  .o-cab span{font-size:12.5px}
+  .rot{width:74px;font-size:13px}
+  .fila{gap:10px;min-height:54px}
+  .opciones.corre{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding-right:16px}
+  .opciones.corre::-webkit-scrollbar{display:none}
+  .op{padding:0 9px;font-size:15px}
+  .mano{font-size:27px}
+  .dos{grid-template-columns:minmax(0,1fr) 112px;gap:12px}
+  .sug{padding-left:0;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;margin-right:-16px;padding-right:16px}
+  .sug::-webkit-scrollbar{display:none}
+  .km{flex-wrap:wrap;row-gap:0}
+  .km-v{width:auto;flex:1}
+  .km input[type=range]{flex-basis:100%}
+  .toca{padding-left:0;height:156px}
+  .fila.dia{display:block;padding:10px 0 6px}
+  .fila.dia .rot{display:block;width:auto;margin-bottom:2px}
+  .fila.dia .opciones{justify-content:space-between}
+  .tildes{gap:0 12px}
+  .tilde{font-size:15px;gap:10px}
+  .envio{position:static}
+  .chat-cuerpo{min-height:0}
+  .seg-fijo{min-height:0;padding:76px 0 70px}
+  .pasos{grid-template-columns:minmax(0,1fr);gap:26px;padding-left:52px}
+  .punto{position:absolute;left:-41px;top:4px;margin:0}
+  .paso{position:relative}
+  .paso h3{font-size:22px}
+  .msj{font-size:15px;max-width:94%}
+  .msj.yo{margin-left:auto}
+  .auto-marca{width:48px;height:48px;margin:-24px 0 0 -24px}
+  .auto-marca svg{width:28px;height:28px}
+  .info-grid{grid-template-columns:minmax(0,1fr);gap:56px}
+  .info h2{font-size:46px;margin-bottom:14px}
+  .dias dt{font-size:16px}
+  .dias dd{font-size:21px}
+  .serv{grid-template-columns:1fr 1fr;gap:0 14px}
+  .serv li{font-size:15px;gap:10px;padding:13px 0}
+  .serv svg{width:24px;height:24px}
+  .llegar{display:block}
+  .nota-g .grande{font-size:140px}
+  .mapa{margin-top:32px;aspect-ratio:4/3.4}
+  .cierre{min-height:72vh;padding:90px 18px}
+  .cierre h2{font-size:56px}
+  .cierre p{font-size:16.5px}
+  .cierre .ej{right:auto;left:50%;transform:translateX(-50%);bottom:60px;white-space:nowrap}
+  .pie{display:block;padding:26px 18px 84px;font-size:13.5px}
+  .pie p+p{margin-top:10px}
+  .muestra{left:12px;bottom:12px;font-size:12px}
+  .flotante{right:14px;bottom:14px;width:56px;height:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+
+<header class="barra" id="barra"><a class="marca" href="#arriba"><svg data-ico="wrench" viewBox="0 0 24 24" aria-hidden="true"></svg><span data-n>Su taller</span></a>
+  <nav class="nav"><a href="#luces">Testigos</a><a href="#turno">Pedí turno</a><a href="#seguimiento">Cómo trabajamos</a><a href="#llegar">Dónde estamos</a></nav>
+  <a class="btn" href="#turno">Pedí turno</a></header>
+
+<section class="intro" id="arriba">
+  <div class="intro-fijo" id="intro-fijo">
+    <img class="taller" id="foto-taller" alt="Adentro del taller: dos elevadores, el banco y la pared de herramientas." fetchpriority="high" decoding="async">
+    <div class="apagado" id="apagado"></div>
+    <div class="velo-p"></div>
+    <div class="portada" id="portada">
+      <div>
+        <p class="rubro" id="rubro">Taller mecánico</p>
+        <p class="duenio" id="duenio" hidden></p>
+        <div class="acciones">
+          <a class="btn" href="#turno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Pedí turno por WhatsApp</a>
+          <a class="btn claro" href="#luces">¿Se te prendió una luz?</a>
+        </div>
+      </div>
+      <div class="lado">
+        <span class="chip-nota" id="chip-nota" hidden><i>★</i><span id="chip-nota-t"></span></span>
+        <span class="horas-h">Lunes a viernes de 8 a 12 y de 15 a 19<br>Sábados de 8 a 12</span>
+        <span class="ejemplo-h"><span class="solo-compu">Foto y horario de ejemplo</span><span class="solo-celu">Foto de ejemplo</span></span>
+      </div>
+    </div>
+    <div class="vano" id="vano">
+      <div class="rendija-luz" id="rendija-luz"></div>
+      <div class="cortina" id="cortina">
+        <div class="chapa"></div>
+        <div class="pint sombra gastado" aria-hidden="true"></div>
+        <div class="pint pintura gastado"></div>
+        <div class="pint relieve gastado" aria-hidden="true"></div>
+        <div class="noche-c" id="noche-c"></div>
+        <div class="fuga" id="fuga"></div>
+        <div class="zocalo"><i></i><i></i></div>
+      </div>
+    </div>
+    <span class="guia izq"></span><span class="guia der"></span>
+    <div class="cajon"></div>
+  </div>
+</section>
+
+<section class="sec luces" id="luces">
+  <div class="cabeza"><h2>¿Se te prendió <em>una luz?</em></h2><p>Tocala en el tablero: te decimos qué puede ser y si podés seguir andando. Si querés, la sumás al turno.</p></div>
+  <div class="tab">
+    <div class="cluster" id="cluster">
+      <svg class="dial" id="dial-rpm" role="img" aria-label="Cuentavueltas"></svg>
+      <div class="centro">
+        <div class="testigos" id="testigos"></div>
+        <div class="lcd" id="lcd" aria-hidden="true"></div>
+      </div>
+      <svg class="dial" id="dial-vel" role="img" aria-label="Velocímetro"></svg>
+    </div>
+    <div class="ficha-luz" id="ficha-luz" aria-live="polite">
+      <div class="fl-cab"><span class="fl-ico" id="fl-ico"></span><div><h3 id="fl-nom"></h3><span class="fl-sem" id="fl-sem"></span></div></div>
+      <p class="fl-q"><b>Qué puede ser</b><span id="fl-que"></span></p>
+      <p class="fl-q"><b>¿Puedo seguir andando?</b><span id="fl-andar"></span></p>
+      <div class="fl-acc"><button class="btn" type="button" id="fl-sumar">Sumar a mi turno</button><button class="quitar" type="button" id="fl-quitar" hidden>Quitar</button></div>
+      <p class="nota-ej">Orientativo, de ejemplo: lo confirma el mecánico con el auto en el taller.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec turno" id="turno">
+  <div class="cabeza"><h2>Pedí <em>turno</em></h2><p>Completá la orden como en el mostrador: tocá lo que corresponda y escribí lo que haga falta. El mensaje sale solo.</p></div>
+  <div class="mesa">
+    <form class="orden" id="orden" autocomplete="off" onsubmit="return false">
+      <div class="o-cab"><b>ORDEN DE TRABAJO</b><span data-n>Su taller</span></div>
+      <div class="fila"><span class="rot">Marca</span><div class="opciones corre" id="o-marca"></div></div>
+      <div class="dos">
+        <label class="fila"><span class="rot">Modelo</span><span class="linea-m"><input class="mano" id="o-modelo" maxlength="24" placeholder="Escribí el modelo"></span></label>
+        <label class="fila anio"><span class="rot">Año</span><span class="linea-m"><input class="mano" id="o-anio" maxlength="4" inputmode="numeric" placeholder="2014"></span></label>
+      </div>
+      <div class="sug" id="o-sug"></div>
+      <div class="fila km"><span class="rot">Kilómetros</span><output class="mano km-v" id="o-km-v">98.000 km</output><input type="range" id="o-km" min="0" max="300000" step="1000" value="98000" aria-label="Kilómetros del auto"></div>
+      <div class="toca" id="o-toca"></div>
+      <fieldset class="fila alta"><legend class="rot">Trabajos</legend><div class="tildes" id="o-trab"></div></fieldset>
+      <div class="fila"><span class="rot">Testigos</span><div class="testigos-o" id="o-testigos"></div></div>
+      <label class="fila"><span class="rot">Qué le pasa</span><span class="linea-m"><input class="mano" id="o-falla" maxlength="70" placeholder="Opcional: hace ruido al frenar"></span></label>
+      <div class="fila dia"><span class="rot">Día</span><div class="opciones corre" id="o-dia"></div></div>
+      <div class="fila"><span class="rot">Franja</span><div class="opciones" id="o-franja"></div></div>
+      <button class="tilde-sola" type="button" id="o-presu" aria-pressed="false"><span class="caja"></span>Quiero el presupuesto antes de que lo arreglen</button>
+    </form>
+    <aside class="envio">
+      <div class="chat">
+        <div class="chat-cab"><span class="avatar"><svg data-ico="wrench" viewBox="0 0 24 24" aria-hidden="true"></svg></span><div><b id="chat-para">Su taller</b><small>Tu mensaje, listo para mandar</small></div></div>
+        <div class="chat-cuerpo"><p class="burbuja" id="burbuja"></p></div>
+      </div>
+      <button class="btn" type="button" data-wsp><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Pedir turno por WhatsApp</button>
+      <p class="nota-ej">Plan de service y precios de ejemplo.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="sec seguimiento" id="seguimiento">
+  <div class="seg-fijo" id="seg-fijo">
+    <div class="cabeza"><h2>Te avisamos <em>en cada paso</em></h2><p id="seg-sub">Por WhatsApp, desde que lo dejás hasta que lo retirás. Nada se toca sin tu OK.</p></div>
+    <div class="ruta" id="ruta">
+      <div class="linea" id="linea"><i id="linea-hecha"></i></div>
+      <span class="auto-marca" id="auto-marca" aria-hidden="true"><svg data-ico="car-side" viewBox="0 0 24 24"></svg></span>
+      <ol class="pasos" id="pasos"></ol>
+    </div>
+    <p class="nota-ej">Mensajes, horarios y precios de ejemplo.</p>
+  </div>
+</section>
+
+<section class="sec info" id="horario">
+  <div class="info-grid">
+    <div>
+      <h2>Horario</h2>
+      <dl class="dias">
+        <div><dt>Lunes a viernes</dt><dd>8 a 12 · 15 a 19</dd></div>
+        <div><dt>Sábados</dt><dd>8 a 12</dd></div>
+        <div class="cerrado"><dt>Domingos y feriados</dt><dd>Cerrado</dd></div>
+      </dl>
+      <p class="nota-ej">Horario de ejemplo</p>
+    </div>
+    <div>
+      <h2>Lo que <em>hacemos</em></h2>
+      <ul class="serv" id="serv"></ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec llegar" id="llegar">
+  <div class="nota-g" id="nota-g"><div class="grande" id="nota-num">4,5</div><div class="estrellas" id="estrellas"></div>
+    <p><span id="opiniones">opiniones</span> en Google</p><a id="ver-opiniones" href="#" target="_blank" rel="noopener">Leer las opiniones →</a></div>
+  <div><div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="donde"><b data-n>Su taller</b><span data-lugar></span><br><a id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar →</a></div></div>
+</section>
+
+<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2>La cortina ya está arriba</h2><p id="c-sub">Pedí turno y traelo: te avisamos por WhatsApp en cada paso.</p><a class="btn" href="#turno">Pedí turno</a></div><span class="ej">Foto de ejemplo</span></section>
+<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su taller</span>.</p><p>Fotos, precios, horarios, plan de service y mensajes de ejemplo: con los de ustedes queda su página.</p></footer>
+<span class="muestra">Diseño de muestra</span>
+<button class="flotante oculto" type="button" data-wsp aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg></button>
+<p class="aviso" id="aviso" role="status"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const foto = (id, w = 1600) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const celu = () => matchMedia('(max-width:860px)').matches;
+const esc = t => String(t).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const miles = n => Math.round(n).toLocaleString('es-AR');
+const lista = a => a.length < 2 ? (a[0] || '') : `${a.slice(0, -1).join(', ')} y ${a[a.length - 1]}`;
+// íconos: Material Design Icons (Pictogrammers, Apache 2.0), copiados de @mdi/svg 7.4.47
+const ICON = {"engine-outline":"M8,10H16V18H11L9,16H7V11M7,4V6H10V8H7L5,10V13H3V10H1V18H3V15H5V18H8L10,20H18V16H20V19H23V9H20V12H18V8H12V6H15V4H7Z","oil":"M22,12.5C22,12.5 24,14.67 24,16A2,2 0 0,1 22,18A2,2 0 0,1 20,16C20,14.67 22,12.5 22,12.5M6,6H10A1,1 0 0,1 11,7A1,1 0 0,1 10,8H9V10H11C11.74,10 12.39,10.4 12.73,11L19.24,7.24L22.5,9.13C23,9.4 23.14,10 22.87,10.5C22.59,10.97 22,11.14 21.5,10.86L19.4,9.65L15.75,15.97C15.41,16.58 14.75,17 14,17H5A2,2 0 0,1 3,15V12A2,2 0 0,1 5,10H7V8H6A1,1 0 0,1 5,7A1,1 0 0,1 6,6M5,12V15H14L16.06,11.43L12.6,13.43L11.69,12H5M0.38,9.21L2.09,7.5C2.5,7.11 3.11,7.11 3.5,7.5C3.89,7.89 3.89,8.5 3.5,8.91L1.79,10.62C1.4,11 0.77,11 0.38,10.62C0,10.23 0,9.6 0.38,9.21Z","car-battery":"M4,3V6H1V20H23V6H20V3H14V6H10V3H4M3,8H21V18H3V8M15,10V12H13V14H15V16H17V14H19V12H17V10H15M5,12V14H11V12H5Z","coolant-temperature":"M11.5,1A1.5,1.5 0 0,0 10,2.5V14.5C9.37,14.97 9,15.71 9,16.5A2.5,2.5 0 0,0 11.5,19A2.5,2.5 0 0,0 14,16.5C14,15.71 13.63,15 13,14.5V13H17V11H13V9H17V7H13V5H17V3H13V2.5A1.5,1.5 0 0,0 11.5,1M0,15V17C0.67,17 0.79,17.21 1.29,17.71C1.79,18.21 2.67,19 4,19C5.33,19 6.21,18.21 6.71,17.71C6.82,17.59 6.91,17.5 7,17.41V15.16C6.21,15.42 5.65,15.93 5.29,16.29C4.79,16.79 4.67,17 4,17C3.33,17 3.21,16.79 2.71,16.29C2.21,15.79 1.33,15 0,15M16,15V17C16.67,17 16.79,17.21 17.29,17.71C17.79,18.21 18.67,19 20,19C21.33,19 22.21,18.21 22.71,17.71C23.21,17.21 23.33,17 24,17V15C22.67,15 21.79,15.79 21.29,16.29C20.79,16.79 20.67,17 20,17C19.33,17 19.21,16.79 18.71,16.29C18.21,15.79 17.33,15 16,15M8,20C6.67,20 5.79,20.79 5.29,21.29C4.79,21.79 4.67,22 4,22C3.33,22 3.21,21.79 2.71,21.29C2.35,20.93 1.79,20.42 1,20.16V22.41C1.09,22.5 1.18,22.59 1.29,22.71C1.79,23.21 2.67,24 4,24C5.33,24 6.21,23.21 6.71,22.71C7.21,22.21 7.33,22 8,22C8.67,22 8.79,22.21 9.29,22.71C9.73,23.14 10.44,23.8 11.5,23.96C11.66,24 11.83,24 12,24C13.33,24 14.21,23.21 14.71,22.71C15.21,22.21 15.33,22 16,22C16.67,22 16.79,22.21 17.29,22.71C17.79,23.21 18.67,24 20,24C21.33,24 22.21,23.21 22.71,22.71C22.82,22.59 22.91,22.5 23,22.41V20.16C22.21,20.42 21.65,20.93 21.29,21.29C20.79,21.79 20.67,22 20,22C19.33,22 19.21,21.79 18.71,21.29C18.21,20.79 17.33,20 16,20C14.67,20 13.79,20.79 13.29,21.29C12.79,21.79 12.67,22 12,22C11.78,22 11.63,21.97 11.5,21.92C11.22,21.82 11.05,21.63 10.71,21.29C10.21,20.79 9.33,20 8,20Z","car-brake-abs":"M24,12C24,15.31 22.66,18.31 20.5,20.5L19.42,19.42C21.32,17.5 22.5,14.9 22.5,12C22.5,9.11 21.32,6.5 19.42,4.58L20.5,3.5C22.66,5.69 24,8.69 24,12M20,9.6V8H16.8C15.92,8 15.2,8.72 15.2,9.6V11.2A1.6,1.6 0 0,0 16.8,12.8H18.4V14.4H15.2V16H18.4C19.28,16 20,15.28 20,14.4V12.8A1.6,1.6 0 0,0 18.4,11.2H16.8V9.6H20M8.42,6C9.47,5.37 10.69,5 12,5C13.31,5 14.53,5.37 15.58,6H18.69C17.05,4.16 14.66,3 12,3C9.34,3 6.95,4.16 5.31,6H8.42M13.2,12C13.84,12 14.4,12.56 14.4,13.2V14.4A1.6,1.6 0 0,1 12.8,16H9.6V8H12.8A1.6,1.6 0 0,1 14.4,9.6V10.8C14.4,11.44 13.84,12 13.2,12M12.8,12.8H11.2V14.4H12.8V12.8M12.8,9.6H11.2V11.2H12.8V9.6M4.58,4.58L3.5,3.5C1.34,5.69 0,8.69 0,12C0,15.31 1.34,18.31 3.5,20.5L4.58,19.42C2.68,17.5 1.5,14.9 1.5,12C1.5,9.11 2.68,6.5 4.58,4.58M7.2,16V12.8H5.6V16H4V9.6A1.6,1.6 0 0,1 5.6,8H7.2C8.08,8 8.8,8.72 8.8,9.6V16H7.2M7.2,11.2V9.6H5.6V11.2H7.2M15.58,18C14.53,18.63 13.31,19 12,19C10.69,19 9.47,18.63 8.42,18H5.31C6.95,19.84 9.34,21 12,21C14.66,21 17.05,19.84 18.69,18H15.58Z","car-brake-alert":"M11,15H13V17H11V15M11,7H13V13H11V7M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3M12,19C8.14,19 5,15.86 5,12C5,8.14 8.14,5 12,5C15.86,5 19,8.14 19,12C19,15.86 15.86,19 12,19M20.5,20.5C22.66,18.31 24,15.31 24,12C24,8.69 22.66,5.69 20.5,3.5L19.42,4.58C21.32,6.5 22.5,9.11 22.5,12C22.5,14.9 21.32,17.5 19.42,19.42L20.5,20.5M4.58,19.42C2.68,17.5 1.5,14.9 1.5,12C1.5,9.11 2.68,6.5 4.58,4.58L3.5,3.5C1.34,5.69 0,8.69 0,12C0,15.31 1.34,18.31 3.5,20.5L4.58,19.42Z","car-tire-alert":"M11,13H13V15H11V13M11,5H13V11H11V5M17,4.76C18.86,6.19 20,8.61 20,11C20,14 18.33,16.64 15.86,18H8.14C5.67,16.64 4,14 4,11C4,8.61 5.09,6.17 7,4.76V2H5V3.86C3.15,5.68 2,8.2 2,11C2,13.8 3.15,16.32 5,18.14V22H7V20H9V22H11V20H13V22H15V20H17V22H19V18.14C20.85,16.32 22,13.8 22,11C22,8.2 20.85,5.68 19,3.86V2H17V4.76Z","airbag":"M14,8A5,5 0 0,1 9,13A5,5 0 0,1 4,8A5,5 0 0,1 9,3A5,5 0 0,1 14,8M10.46,15.55L13,18.03L11,18.05L7.5,21.58L6,20.09L10.46,15.55M17,2C18.08,2 19,2.88 19,4C19,5.08 18.12,6 17,6C15.92,6 15,5.12 15,4C15,2.92 15.89,2 17,2M14.41,15H11.59L17.29,20.71L18.71,19.29L14.41,15M15.12,14.29L19.41,18.59L19.63,18.8C19.86,18.42 20,18 20,17.5V9.5A2.5,2.5 0 0,0 17.5,7A2.5,2.5 0 0,0 15,9.5V14.17L15.12,14.29Z","wrench":"M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.6,4.7C0.4,7.1 0.9,10.1 2.9,12.1C4.8,14 7.5,14.5 9.8,13.6L18.9,22.7C19.3,23.1 19.9,23.1 20.3,22.7L22.6,20.4C23.1,20 23.1,19.3 22.7,19Z","car-side":"M16,6L19,10H21C22.11,10 23,10.89 23,12V15H21A3,3 0 0,1 18,18A3,3 0 0,1 15,15H9A3,3 0 0,1 6,18A3,3 0 0,1 3,15H1V12C1,10.89 1.89,10 3,10L6,6H16M10.5,7.5H6.75L4.86,10H10.5V7.5M12,7.5V10H17.14L15.25,7.5H12M6,13.5A1.5,1.5 0 0,0 4.5,15A1.5,1.5 0 0,0 6,16.5A1.5,1.5 0 0,0 7.5,15A1.5,1.5 0 0,0 6,13.5M18,13.5A1.5,1.5 0 0,0 16.5,15A1.5,1.5 0 0,0 18,16.5A1.5,1.5 0 0,0 19.5,15A1.5,1.5 0 0,0 18,13.5Z","car-arrow-right":"M12 18C12 14.69 14.69 12 18 12C19.09 12 20.12 12.3 21 12.81V12L18.92 6C18.72 5.42 18.16 5 17.5 5H6.5C5.84 5 5.28 5.42 5.08 6L3 12V20C3 20.55 3.45 21 4 21H5C5.55 21 6 20.55 6 20V19H12.09C12.04 18.67 12 18.34 12 18M6.5 6.5H17.5L19 11H5L6.5 6.5M6.5 16C5.67 16 5 15.33 5 14.5S5.67 13 6.5 13 8 13.67 8 14.5 7.33 16 6.5 16M19 21V19H15V17H19V15L22 18L19 21","magnify-scan":"M17 22V20H20V17H22V20.5C22 20.89 21.84 21.24 21.54 21.54C21.24 21.84 20.89 22 20.5 22H17M7 22H3.5C3.11 22 2.76 21.84 2.46 21.54C2.16 21.24 2 20.89 2 20.5V17H4V20H7V22M17 2H20.5C20.89 2 21.24 2.16 21.54 2.46C21.84 2.76 22 3.11 22 3.5V7H20V4H17V2M7 2V4H4V7H2V3.5C2 3.11 2.16 2.76 2.46 2.46C2.76 2.16 3.11 2 3.5 2H7M10.5 6C13 6 15 8 15 10.5C15 11.38 14.75 12.2 14.31 12.9L17.57 16.16L16.16 17.57L12.9 14.31C12.2 14.75 11.38 15 10.5 15C8 15 6 13 6 10.5C6 8 8 6 10.5 6M10.5 8C9.12 8 8 9.12 8 10.5C8 11.88 9.12 13 10.5 13C11.88 13 13 11.88 13 10.5C13 9.12 11.88 8 10.5 8Z","file-document-edit-outline":"M8,12H16V14H8V12M10,20H6V4H13V9H18V12.1L20,10.1V8L14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H10V20M8,18H12.1L13,17.1V16H8V18M20.2,13C20.3,13 20.5,13.1 20.6,13.2L21.9,14.5C22.1,14.7 22.1,15.1 21.9,15.3L20.9,16.3L18.8,14.2L19.8,13.2C19.9,13.1 20,13 20.2,13M20.2,16.9L14.1,23H12V20.9L18.1,14.8L20.2,16.9Z","car-key":"M9 0C7.3 0 6 1.3 6 3S7.3 6 9 6C10.3 6 11.4 5.2 11.8 4H14V6H16V4H18V2H11.8C11.4 .8 10.3 0 9 0M9 2C9.6 2 10 2.4 10 3S9.6 4 9 4 8 3.6 8 3 8.4 2 9 2M6.5 8C5.8 8 5.3 8.4 5.1 9L3 15V23C3 23.6 3.4 24 4 24H5C5.6 24 6 23.6 6 23V22H18V23C18 23.6 18.4 24 19 24H20C20.6 24 21 23.6 21 23V15L18.9 9C18.7 8.4 18.1 8 17.5 8H6.5M6.5 9.5H17.5L19 14H5L6.5 9.5M6.5 16C7.3 16 8 16.7 8 17.5S7.3 19 6.5 19 5 18.3 5 17.5 5.7 16 6.5 16M17.5 16C18.3 16 19 16.7 19 17.5S18.3 19 17.5 19 16 18.3 16 17.5 16.7 16 17.5 16Z","car-brake-low-pressure":"M13 12C13 12.55 12.55 13 12 13S11 12.55 11 12 11.45 11 12 11 13 11.45 13 12M10 12L7 9V11H3V13H7V15L10 12M14 12L17 15V13H21V11H17V9L14 12M20.5 3.5L19.42 4.58C21.32 6.5 22.5 9.11 22.5 12C22.5 14.9 21.32 17.5 19.42 19.42L20.5 20.5C22.66 18.31 24 15.31 24 12S22.66 5.69 20.5 3.5M5.69 9C6.81 6.64 9.22 5 12 5S17.19 6.64 18.32 9H20.5C19.24 5.5 15.92 3 12 3S4.76 5.5 3.5 9H5.69M4.58 4.58L3.5 3.5C1.34 5.69 0 8.69 0 12S1.34 18.31 3.5 20.5L4.58 19.42C2.68 17.5 1.5 14.9 1.5 12C1.5 9.11 2.68 6.5 4.58 4.58M18.32 15C17.19 17.36 14.79 19 12 19S6.81 17.36 5.69 15H3.5C4.76 18.5 8.08 21 12 21S19.24 18.5 20.5 15H18.32Z","steering":"M13,19.92C14.8,19.7 16.35,18.95 17.65,17.65C18.95,16.35 19.7,14.8 19.92,13H16.92C16.7,14 16.24,14.84 15.54,15.54C14.84,16.24 14,16.7 13,16.92V19.92M10,8H14L17,11H19.92C19.67,9.05 18.79,7.38 17.27,6C15.76,4.66 14,4 12,4C10,4 8.24,4.66 6.73,6C5.21,7.38 4.33,9.05 4.08,11H7L10,8M11,19.92V16.92C10,16.7 9.16,16.24 8.46,15.54C7.76,14.84 7.3,14 7.08,13H4.08C4.3,14.77 5.05,16.3 6.35,17.6C7.65,18.9 9.2,19.67 11,19.92M12,2C14.75,2 17.1,3 19.05,4.95C21,6.9 22,9.25 22,12C22,14.75 21,17.1 19.05,19.05C17.1,21 14.75,22 12,22C9.25,22 6.9,21 4.95,19.05C3,17.1 2,14.75 2,12C2,9.25 3,6.9 4.95,4.95C6.9,3 9.25,2 12,2Z","car-clutch":"M10 18.84L14 20.7V23L8 20V14H5V10H8V4L14 1V3.3L10 5.16V18.84M19 10H15V5.41L12 6.8V17.2L15 18.6V14H19V10Z","engine":"M7,4V6H10V8H7L5,10V13H3V10H1V18H3V15H5V18H8L10,20H18V16H20V19H23V9H20V12H18V8H12V6H15V4H7Z","air-conditioner":"M6.59,0.66C8.93,-1.15 11.47,1.06 12.04,4.5C12.47,4.5 12.89,4.62 13.27,4.84C13.79,4.24 14.25,3.42 14.07,2.5C13.65,0.35 16.06,-1.39 18.35,1.58C20.16,3.92 17.95,6.46 14.5,7.03C14.5,7.46 14.39,7.89 14.16,8.27C14.76,8.78 15.58,9.24 16.5,9.06C18.63,8.64 20.38,11.04 17.41,13.34C15.07,15.15 12.53,12.94 11.96,9.5C11.53,9.5 11.11,9.37 10.74,9.15C10.22,9.75 9.75,10.58 9.93,11.5C10.35,13.64 7.94,15.39 5.65,12.42C3.83,10.07 6.05,7.53 9.5,6.97C9.5,6.54 9.63,6.12 9.85,5.74C9.25,5.23 8.43,4.76 7.5,4.94C5.37,5.36 3.62,2.96 6.59,0.66M5,16H7A2,2 0 0,1 9,18V24H7V22H5V24H3V18A2,2 0 0,1 5,16M5,18V20H7V18H5M12.93,16H15L12.07,24H10L12.93,16M18,16H21V18H18V22H21V24H18A2,2 0 0,1 16,22V18A2,2 0 0,1 18,16Z","flash":"M7,2V13H10V22L17,10H13L17,2H7Z","gas-cylinder":"M16,9V14L16,20A2,2 0 0,1 14,22H10A2,2 0 0,1 8,20V14L8,9C8,7.14 9.27,5.57 11,5.13V4H9V2H15V4H13V5.13C14.73,5.57 16,7.14 16,9Z","tire":"M19.66 9.64L19.3 8.7L21.16 8C20.24 5.88 18.6 4.18 16.54 3.14L15.74 4.92L14.82 4.5L15.62 2.7C14.5 2.26 13.28 2 12 2C10.94 2 9.92 2.22 8.96 2.5L9.64 4.34L8.7 4.7L8 2.84C5.88 3.76 4.18 5.4 3.14 7.46L4.92 8.26L4.5 9.18L2.7 8.38C2.26 9.5 2 10.72 2 12C2 13.06 2.22 14.08 2.5 15.04L4.34 14.36L4.7 15.3L2.84 16C3.76 18.12 5.4 19.82 7.46 20.86L8.26 19.08L9.18 19.5L8.38 21.3C9.5 21.74 10.72 22 12 22C13.06 22 14.08 21.78 15.04 21.5L14.36 19.66L15.3 19.3L16 21.16C18.12 20.24 19.82 18.6 20.86 16.54L19.08 15.74L19.5 14.82L21.3 15.62C21.74 14.5 22 13.28 22 12C22 10.94 21.78 9.92 21.5 8.96L19.66 9.64M14.3 17.54C11.24 18.8 7.72 17.36 6.46 14.3S6.64 7.72 9.7 6.46 16.28 6.64 17.54 9.7C18.82 12.76 17.36 16.28 14.3 17.54Z","clock-outline":"M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z","map-marker-outline":"M12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5M12,2A7,7 0 0,1 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9A7,7 0 0,1 12,2M12,4A5,5 0 0,0 7,9C7,10 7,12 12,18.71C17,12 17,10 17,9A5,5 0 0,0 12,4Z"};
+const ico = n => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[n]}"/></svg>`;
+$$('svg[data-ico]').forEach(s => s.innerHTML = `<path d="${ICON[s.dataset.ico]}"/>`);
+
+// los talleres de la lista: nombre, lugar, nota, opiniones y (si se sabe) el nombre del dueño
+const TALLERES = {"mecanica-da-silva":["Mecánica Da Silva","Santo Tomé, Corrientes",4.5,36,"Carlos"]};
+const q = new URLSearchParams(location.search);
+const M = TALLERES[(q.get('s') || '').toLowerCase()] || null;
+const N = (q.get('n') || '').trim() || (M && M[0]) || 'Taller El Pistón';
+const LUGAR = (q.get('c') || '').trim() || (M && M[1]) || '';
+const CIUDAD = LUGAR.split(',')[0].trim();
+const R = parseFloat((q.get('r') || '').replace(',', '.')) || (M && M[2]) || NaN;
+const O = parseInt((q.get('o') || '').replace(/\D/g, ''), 10) || (M && M[3]) || 0;
+const DUENIO = (q.get('d') || '').trim() || (M && M[4]) || '';
+const CON_DATOS = !!(M || q.get('n') || q.get('c'));
+
+$$('[data-n]').forEach(el => el.textContent = N);
+$$('[data-lugar]').forEach(el => el.textContent = LUGAR || 'Argentina');
+document.title = `${N} · diseño de muestra · Mas & Co`;
+$('#rubro').textContent = `Taller mecánico${CIUDAD ? ' en ' + CIUDAD : ''}`;
+if (DUENIO) { $('#duenio').textContent = `Te atiende ${DUENIO}, el dueño.`; $('#duenio').hidden = false; }
+if (!isNaN(R) && O) { $('#chip-nota-t').textContent = `${R.toFixed(1).replace('.', ',')} en Google · ${miles(O)} opiniones`; $('#chip-nota').hidden = false; }
+$('#chat-para').textContent = DUENIO ? `${DUENIO} · ${N}` : N;
+$('#seg-sub').textContent = `${DUENIO ? DUENIO + ' te escribe' : 'Te escribimos'} por WhatsApp, desde que lo dejás hasta que lo retirás. Nada se toca sin tu OK.`;
+function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); if (avisar._t) avisar._t.kill(); avisar._t = gsap.delayedCall(4.2, () => a.classList.remove('ver')); }
+$$('[data-wsp]').forEach(b => b.addEventListener('click', () => avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`)));
+
+// ── 1 · la cortina ──
+// La pintura va en tres capas iguales: la sombra (multiply), el color y el relieve (la misma foto de la chapa,
+// recortada a las letras y en multiply): así las ondas de la cortina se marcan sobre la pintura.
+const ruido = `url("data:image/svg+xml;utf8,${encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='640' height='640'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.018 .07' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.5 0 0 0 1.78'/></filter><rect width='100%' height='100%' filter='url(#f)'/></svg>")}")`;
+document.documentElement.style.setProperty('--ruido', ruido);
+const CHAPA = foto(2271100, celu() ? 2000 : 2600);
+document.documentElement.style.setProperty('--chapa', `url("${CHAPA}")`);
+const fijo = $('#intro-fijo'), cortina = $('#cortina'), fotoT = $('#foto-taller');
+fotoT.sizes = '(max-width:860px) 300vw, 115vw'; fotoT.srcset = juego(34337558, [1200, 1800, 2600, 3400]); fotoT.src = foto(34337558, 1800);
+function pintarCortina(renglones) {
+  const oficio = /taller/i.test(N) ? 'Mecánica en general' : 'Taller mecánico';
+  const trabajos = ['Service', 'Frenos', 'Tren delantero', 'Embrague', 'Escáner'].map(t => `<span>${t}</span>`).join('<i>·</i>');
+  $$('.pint').forEach(capa => {
+    const tag = capa.classList.contains('pintura') ? 'h1' : 'div';
+    capa.innerHTML = `<div class="lista">${trabajos}</div><div class="bloque"><span class="p-oficio">${oficio}</span><${tag} class="p-nombre">${renglones.map(l => `<span>${esc(l)}</span>`).join('')}</${tag}></div>`;
+  });
+}
+// las formas de partir el nombre: en uno, dos o tres renglones (gana la que deja la letra más grande)
+function formas(t) {
+  const w = t.split(/\s+/).filter(Boolean), largo = o => Math.max(...o.map(x => x.length)), out = [[w.join(' ')]];
+  let dos = null, tres = null;
+  for (let i = 1; i < w.length; i++) { const o = [w.slice(0, i).join(' '), w.slice(i).join(' ')]; if (!dos || largo(o) < largo(dos)) dos = o; }
+  for (let i = 1; i < w.length - 1; i++) for (let j = i + 1; j < w.length; j++) { const o = [w.slice(0, i).join(' '), w.slice(i, j).join(' '), w.slice(j).join(' ')]; if (!tres || largo(o) < largo(tres)) tres = o; }
+  return [out[0], dos, tres].filter(Boolean);
+}
+// est.sube: lo que subió al cargar (tramos) · est.p: el scroll, que la termina de enrollar · est.luz: el tubo de adentro
+const est = {luz: 0, sube: 0, p: 0};
+const RENDIJA = .036;
+let R_FIN = .42;
+let T0 = 0;   // cuánto baja la foto del taller mientras la cortina tapa la parte de arriba (paneo)
+function medirPortada() {
+  const H = fijo.clientHeight, W = fijo.clientWidth, cj = $('.cajon').offsetHeight, vanoH = H - cj, mov = celu();
+  const maxW = W * (mov ? .88 : .74), maxH = H * (mov ? .27 : .26), tope = mov ? 92 : 172;
+  const mArr = mov ? 22 : 28, mAba = mov ? 36 : 44;
+  // se prueba cada forma de partir el nombre y queda la de letra más grande
+  let mejor = null;
+  formas(N).forEach(f => {
+    pintarCortina(f); cortina.style.setProperty('--fs', '100px');
+    const nom = $('.pintura .p-nombre'), ancho = Math.max(...[...nom.children].map(x => x.offsetWidth)), alto = $('.pintura .bloque').offsetHeight;
+    const fs = Math.min(100 * maxW / ancho, 100 * maxH / alto, tope);
+    if (!mejor || fs > mejor[0] + .5) mejor = [fs, f];
+  });
+  pintarCortina(mejor[1]); cortina.style.setProperty('--fs', mejor[0].toFixed(2) + 'px');
+  const bloque = $('.pintura .bloque'), alto = bloque.offsetHeight;
+  // la franja de cortina que queda arriba cuando termina de subir: el cartel y un margen
+  const tope2 = $('#portada').offsetTop + ($('#portada').firstElementChild.offsetTop || 0) - (mov ? 24 : 40);
+  const B = Math.min(cj + mArr + alto + mAba, tope2);
+  R_FIN = Math.min(.8, Math.max(.26, (H - B) / vanoH));
+  const py = R_FIN * vanoH + mArr;
+  cortina.style.setProperty('--py', py.toFixed(1) + 'px');
+  // la lista de trabajos va pintada más arriba: se ve con la cortina baja y se enrolla primero
+  cortina.style.setProperty('--fs2', (mov ? Math.max(14, Math.min(26, mejor[0] * .32)) : Math.max(18, Math.min(46, mejor[0] * .3))).toFixed(1) + 'px');
+  const lista = $('.pintura .lista');
+  cortina.style.setProperty('--py2', Math.max(18, py * .46 - lista.offsetHeight / 2).toFixed(1) + 'px');
+  // la foto: con la cortina a medio subir se ve del 30 % de la foto para abajo; al enrollarse, sube a su lugar
+  const rw = Math.max(W, H / .75), rh = rw * .75, off = (H - rh) * .42;
+  T0 = Math.max(0, Math.min(B - 12, B + 16 - (off + .3 * rh)));
+}
+function ponerCortina() {
+  const base = Math.max(RENDIJA, est.sube), k = base + (1 - base) * est.p;
+  cortina.style.transform = `translate3d(0,${(-k * 100).toFixed(3)}%,0)`;
+  $('#apagado').style.opacity = (.93 * (1 - est.luz)).toFixed(3);
+  const abajo = Math.max(0, 1 - est.sube / .14);
+  $('#fuga').style.opacity = (est.luz * abajo).toFixed(3);
+  $('#rendija-luz').style.opacity = (est.luz * abajo).toFixed(3);
+  $('#noche-c').style.opacity = (.42 - .3 * est.luz).toFixed(3);
+  fotoT.style.transform = `translate3d(0,${(T0 * (1 - est.p)).toFixed(1)}px,0) scale(${(1.04 - .04 * est.p).toFixed(4)})`;
+}
+let arranco = false;
+function arrancar() {
+  if (arranco) return; arranco = true;
+  if (reduce) { est.luz = 1; est.sube = R_FIN; ponerCortina(); return; }
+  // el tubo titila (tic, tic, prende), la luz se escapa por abajo y la cortina sube en tres tramos, sin rebote
+  gsap.timeline({onUpdate: ponerCortina})
+    .to(est, {luz: .6, duration: .04, ease: 'none'}, .45)
+    .to(est, {luz: .05, duration: .06, ease: 'none'}, '+=.05')
+    .to(est, {luz: .45, duration: .03, ease: 'none'}, '+=.16')
+    .to(est, {luz: .03, duration: .08, ease: 'none'}, '+=.04')
+    .to(est, {luz: 1, duration: .06, ease: 'none'}, '+=.26')
+    .to(est, {sube: .14, duration: .5, ease: 'power1.inOut'}, '+=.42')
+    .to(est, {sube: .27, duration: .46, ease: 'power1.inOut'}, '+=.16')
+    .to(est, {sube: () => R_FIN, duration: .6, ease: 'power2.out'}, '+=.16');
+}
+medirPortada(); ponerCortina();
+// arranca cuando están la chapa y las letras (o a los 2,5 s, lo que pase primero)
+Promise.race([Promise.all([document.fonts.ready, new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = CHAPA; })]), new Promise(r => setTimeout(r, 2500))])
+  .then(() => { medirPortada(); ponerCortina(); arrancar(); });
+
+// ── 2 · el tablero ──
+// colores reales de cada testigo; urgencia: alta = rojo (pará), media = ámbar (con cuidado)
+const LUCES = [
+  {k: 'motor', ico: 'engine-outline', c: 'ambar', nom: 'Check engine', lcd: 'Falla de motor · revisar', urg: 'media', sem: 'Llegá al taller con cuidado', msj: 'del motor (check engine)',
+    que: 'La computadora del motor detectó una falla: un sensor, una bujía, la mezcla de combustible. Se lee con el escáner.',
+    andar: 'Si está fija, sí, con calma hasta el taller. Si parpadea, bajá la marcha y paralo: puede dañar el catalizador.'},
+  {k: 'aceite', ico: 'oil', c: 'rojo', nom: 'Presión de aceite', lcd: 'Presión de aceite baja', urg: 'alta', sem: 'Pará apenas puedas', msj: 'del aceite',
+    que: 'Le falta aceite o la bomba no le da presión.',
+    andar: 'No. Pará y apagá el motor apenas puedas: andar así lo puede fundir. Fijate el nivel con la varilla.'},
+  {k: 'bateria', ico: 'car-battery', c: 'rojo', nom: 'Batería', lcd: 'Falla de carga', urg: 'media', sem: 'Andá directo al taller', msj: 'de la batería',
+    que: 'El alternador no está cargando: la correa, el alternador o los bornes de la batería.',
+    andar: 'Unos kilómetros, con lo que le queda a la batería. Andá directo y apagá lo que no haga falta: aire, radio, luces altas.'},
+  {k: 'temp', ico: 'coolant-temperature', c: 'rojo', nom: 'Temperatura', lcd: 'Motor recalentado', urg: 'alta', sem: 'Pará apenas puedas', msj: 'de temperatura',
+    que: 'El motor se está calentando: falta líquido refrigerante, el electroventilador o la bomba de agua.',
+    andar: 'No. Pará, apagá y esperá que enfríe. Nunca abras la tapa del radiador en caliente.'},
+  {k: 'abs', ico: 'car-brake-abs', c: 'ambar', nom: 'ABS', lcd: 'ABS desactivado', urg: 'media', sem: 'Revisalo pronto', msj: 'del ABS',
+    que: 'El antibloqueo se desactivó; casi siempre es un sensor de rueda o su cable.',
+    andar: 'Sí: frena igual, pero sin ABS. Dejá más distancia y cuidado al frenar en mojado.'},
+  {k: 'freno', ico: 'car-brake-alert', c: 'rojo', nom: 'Frenos', lcd: 'Revisar sistema de frenos', urg: 'alta', sem: 'Pará apenas puedas', msj: 'de los frenos',
+    que: 'El freno de mano puesto, poco líquido de frenos o pastillas gastadas.',
+    andar: 'Primero fijate el freno de mano. Si no es eso, no sigas: puede haber una pérdida de líquido.'},
+  {k: 'cubiertas', ico: 'car-tire-alert', c: 'ambar', nom: 'Presión de cubiertas', lcd: 'Presión de neumáticos baja', urg: 'media', sem: 'Con cuidado, hasta la gomería', msj: 'de las cubiertas',
+    que: 'Una cubierta perdió presión: una pinchadura lenta, la válvula o el frío.',
+    andar: 'Sí, despacio, hasta inflarla. Si se vuelve a prender, hay que revisar la cubierta.'},
+  {k: 'airbag', ico: 'airbag', c: 'rojo', nom: 'Airbag', lcd: 'Falla de airbag', urg: 'media', sem: 'Revisalo pronto', msj: 'del airbag',
+    que: 'Una falla en el sistema: un sensor, un conector o la ficha debajo del asiento.',
+    andar: 'Sí, el auto anda. Pero en un choque el airbag podría no abrirse: no lo dejes pasar.'}];
+const COLOR = {ambar: '#FFB21A', rojo: '#FF3D2E'};
+let luzSel = 0;
+const sumadas = new Set();
+$('#testigos').innerHTML = LUCES.map((l, i) => `<button class="testigo" type="button" data-i="${i}" style="--c:${COLOR[l.c]}" aria-label="Testigo: ${l.nom}" aria-pressed="false">${ico(l.ico)}</button>`).join('');
+// los dos relojes: arco de 240°, marcas, números y la aguja naranja
+function dial(svg, max, mayor, rotulo, fmt, roja) {
+  const ang = v => -210 + v / max * 240, rad = d => d * Math.PI / 180, pt = (d, r) => [100 + r * Math.cos(rad(d)), 100 + r * Math.sin(rad(d))];
+  let s = `<circle cx="100" cy="100" r="97" fill="#07090C" stroke="#232A31" stroke-width="2"/>`;
+  if (roja) { const [x0, y0] = pt(ang(roja), 80), [x1, y1] = pt(ang(max), 80); s += `<path d="M${x0} ${y0} A80 80 0 0 1 ${x1} ${y1}" style="fill:none;stroke:#B8321F;stroke-width:6"/>`; }
+  for (let v = 0; v <= max + 1e-9; v += mayor / 2) {
+    const M = Math.abs((v / mayor) % 1) < 1e-9, [a, b] = pt(ang(v), M ? 70 : 75), [c, d] = pt(ang(v), 83);
+    s += `<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="${M ? '#E9E4DA' : '#59626C'}" stroke-width="${M ? 2.4 : 1.3}"/>`;
+    if (M) { const [tx, ty] = pt(ang(v), 54); s += `<text x="${tx}" y="${ty + 6}" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="500" font-size="17" fill="#A7AFB8">${fmt(v)}</text>`; }
+  }
+  s += `<text x="100" y="158" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="500" font-size="15" letter-spacing="1" fill="#7C8691">${rotulo}</text>`;
+  s += `<g class="aguja"><path d="M98.3 110 L100 24 L101.7 110 Z" style="fill:#FF6B1A"/></g><circle cx="100" cy="100" r="8.5" fill="#1B2229" stroke="#3A434D"/>`;
+  svg.setAttribute('viewBox', '0 0 200 200'); svg.innerHTML = s;
+  const g = $('.aguja', svg);
+  return f => g.setAttribute('transform', `rotate(${ang(f * max) + 90} 100 100)`);
+}
+const agujaRpm = dial($('#dial-rpm'), 8, 1, 'RPM × 1000', v => v, 6.5);
+const agujaVel = dial($('#dial-vel'), 220, 40, 'KM/H', v => v);
+const agujas = {rpm: 0, vel: 0};
+const ponerAgujas = () => { agujaRpm(agujas.rpm); agujaVel(agujas.vel); };
+ponerAgujas();
+function llenarFicha(i) {
+  const l = LUCES[i];
+  $('#fl-ico').innerHTML = ico(l.ico); $('#fl-ico').style.setProperty('--c', COLOR[l.c]);
+  $('#fl-nom').textContent = l.nom;
+  $('#fl-sem').textContent = l.sem; $('#fl-sem').style.setProperty('--s', l.urg === 'alta' ? COLOR.rojo : COLOR.ambar);
+  $('#fl-que').textContent = ' ' + l.que; $('#fl-andar').textContent = ' ' + l.andar;
+  const ya = sumadas.has(i);
+  $('#fl-sumar').textContent = ya ? 'Sumada · ver mi turno ↓' : 'Sumar a mi turno';
+  $('#fl-quitar').hidden = !ya;
+}
+function verLuz(i) {
+  luzSel = i;
+  $$('.testigo').forEach((b, j) => { b.classList.toggle('on', j === i || sumadas.has(j)); b.classList.toggle('elegido', j === i); b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+  $('#lcd').textContent = LUCES[i].lcd;
+  llenarFicha(i);
+}
+// la ficha no cambia de alto al cambiar de luz: se mide la más larga y queda ese alto
+function fijarAlto() {
+  const f = $('#ficha-luz'); f.style.minHeight = '';
+  let alto = 0;
+  LUCES.forEach((_, i) => { llenarFicha(i); alto = Math.max(alto, f.offsetHeight); });
+  f.style.minHeight = alto + 'px'; llenarFicha(luzSel);
+}
+let encendido = false, tlEnc = null;
+function encender() {
+  // como al girar la llave: se prenden todas, las agujas barren y vuelven, y queda la que está prendida
+  if (encendido) return; encendido = true;
+  if (reduce) { agujas.rpm = .1; ponerAgujas(); verLuz(luzSel); return; }
+  tlEnc = gsap.timeline()
+    .call(() => { $$('.testigo').forEach(b => b.classList.add('on')); $('#lcd').textContent = 'Control de luces'; })
+    .to(agujas, {rpm: 1, vel: 1, duration: .75, ease: 'power2.inOut', onUpdate: ponerAgujas}, .15)
+    .to(agujas, {rpm: 0, vel: 0, duration: .75, ease: 'power2.inOut', onUpdate: ponerAgujas})
+    .call(() => verLuz(luzSel), null, 1.75)
+    .to(agujas, {rpm: .1, duration: .6, ease: 'power2.out', onUpdate: ponerAgujas}, 1.8);
+}
+$('#testigos').addEventListener('click', e => { const b = e.target.closest('.testigo'); if (!b) return; encendido = true; if (tlEnc) tlEnc.kill(); gsap.killTweensOf(agujas); if (agujas.rpm > .1 || agujas.vel > 0) { agujas.rpm = .1; agujas.vel = 0; ponerAgujas(); } verLuz(+b.dataset.i); });
+$('#fl-sumar').addEventListener('click', () => {
+  if (sumadas.has(luzSel)) { $('#turno').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); return; }
+  sumadas.add(luzSel); verLuz(luzSel); ponerTestigosOrden(true); armar();
+});
+$('#fl-quitar').addEventListener('click', () => { sumadas.delete(luzSel); verLuz(luzSel); ponerTestigosOrden(false); armar(); });
+llenarFicha(0);
+
+// ── 3 · la orden de trabajo ──
+const MODELOS = {Volkswagen: ['Gol Trend', 'Suran', 'Amarok', 'Vento', 'Up'], Chevrolet: ['Onix', 'Corsa', 'Prisma', 'Cruze', 'S10'], Fiat: ['Cronos', 'Palio', 'Siena', 'Uno', 'Toro'],
+  Ford: ['Ka', 'Fiesta', 'EcoSport', 'Focus', 'Ranger'], Renault: ['Sandero', 'Clio', 'Kangoo', 'Logan', 'Duster'], Peugeot: ['208', '207', '308', '2008', 'Partner'],
+  Toyota: ['Etios', 'Corolla', 'Hilux', 'Yaris', 'SW4'], Otra: []};
+// [clave, en la orden, en el mensaje, en el seguimiento, precio de ejemplo]
+const TRABAJOS = [['service', 'Service', 'service', 'el service', 140000], ['frenos', 'Frenos', 'frenos', 'los frenos', 110000], ['tren', 'Tren delantero', 'tren delantero', 'el tren delantero', 210000],
+  ['embrague', 'Embrague', 'embrague', 'el embrague', 620000], ['distribucion', 'Distribución', 'distribución', 'la distribución', 420000], ['aire', 'Aire acondicionado', 'aire acondicionado', 'el aire', 85000],
+  ['electricidad', 'Electricidad', 'electricidad', 'la parte eléctrica', 70000], ['escaner', 'Diagnóstico con escáner', 'diagnóstico con escáner', 'el diagnóstico', 40000],
+  ['alineacion', 'Alineación y balanceo', 'alineación y balanceo', 'la alineación', 48000], ['gnc', 'GNC', 'GNC', 'el equipo de GNC', 60000]];
+const TRAB = Object.fromEntries(TRABAJOS.map(t => [t[0], t]));
+const DIAS = [['lunes', 'Lun'], ['martes', 'Mar'], ['miercoles', 'Mié', 'miércoles'], ['jueves', 'Jue'], ['viernes', 'Vie'], ['sabado', 'Sáb', 'sábado']];
+const FRANJAS = [['manana', 'Mañana', 'a la mañana'], ['tarde', 'Tarde', 'a la tarde']];
+// plan de service de ejemplo: [cada cuántos km, qué toca, qué trabajo tilda]
+const PLAN = [[10000, 'aceite y filtros', 'service'], [20000, 'rotación y balanceo', 'alineacion'], [40000, 'bujías y filtro de aire', 'service'], [50000, 'líquido de frenos', 'frenos'], [60000, 'correa de distribución', 'distribucion']];
+const u = {marca: 'Volkswagen', modelo: 'Gol Trend', anio: '2014', km: 98000, trab: new Set(['service', 'frenos']), falla: '', dia: 'jueves', franja: 'manana', presu: false};
+const NS = 'http://www.w3.org/2000/svg';
+$('#o-marca').innerHTML = Object.keys(MODELOS).map(m => `<button class="op" type="button" data-v="${m}">${m}</button>`).join('');
+$('#o-dia').innerHTML = DIAS.map(([k, t]) => `<button class="op" type="button" data-v="${k}">${t}</button>`).join('');
+$('#o-franja').innerHTML = FRANJAS.map(([k, t]) => `<button class="op" type="button" data-v="${k}">${t}</button>`).join('');
+$('#o-trab').innerHTML = TRABAJOS.map(([k, t]) => `<button class="tilde" type="button" data-v="${k}" aria-pressed="false"><span class="caja"></span>${t}</button>`).join('');
+$('#serv').innerHTML = [['oil', 'Service y cambio de aceite'], ['car-brake-low-pressure', 'Frenos'], ['steering', 'Tren delantero'], ['car-clutch', 'Embrague'], ['engine', 'Distribución'],
+  ['air-conditioner', 'Aire acondicionado'], ['flash', 'Electricidad'], ['magnify-scan', 'Diagnóstico con escáner'], ['tire', 'Alineación y balanceo'], ['gas-cylinder', 'GNC']]
+  .map(([i, t]) => `<li>${ico(i)}${t}</li>`).join('');
+// la birome: encierra una opción con un óvalo hecho a mano
+function circulo(btn, animar) {
+  let svg = $('.circ', btn);
+  if (!svg) { svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'circ'); svg.innerHTML = '<path/>'; btn.appendChild(svg); }
+  const w = btn.offsetWidth + 10, h = btn.offsetHeight + 4, p = svg.firstChild;
+  svg.setAttribute('width', w); svg.setAttribute('height', h); svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+  const P = (x, y) => `${(w * x).toFixed(1)} ${(h * y).toFixed(1)}`;
+  p.setAttribute('d', `M${P(.84, .16)} C${P(.6, .02)} ${P(.1, .06)} ${P(.05, .48)} C${P(.01, .9)} ${P(.48, 1)} ${P(.8, .9)} C${P(1.01, .83)} ${P(1.0, .3)} ${P(.72, .13)} C${P(.64, .08)} ${P(.54, .07)} ${P(.44, .1)}`);
+  const L = p.getTotalLength(); gsap.killTweensOf(p); p.style.strokeDasharray = L; svg.style.opacity = 1;
+  if (animar && !reduce) gsap.fromTo(p, {strokeDashoffset: L}, {strokeDashoffset: 0, duration: .42, ease: 'power1.inOut'}); else p.style.strokeDashoffset = 0;
+}
+const borrar = btn => { const s = $('.circ', btn); if (s) s.style.opacity = 0; };
+function elegir(grupo, v, animar) { $$('.op', grupo).forEach(b => { if (b.dataset.v === v) circulo(b, animar); else borrar(b); }); }
+// la tilde
+function tilde(btn, on, animar) {
+  const caja = $('.caja', btn);
+  if (!caja.firstChild) caja.innerHTML = '<svg viewBox="0 0 34 34"><path d="M6 19 C9 21 11 24 13.5 28 C17 19 22 10 31 3"/></svg>';
+  const p = $('path', caja), L = p.getTotalLength();
+  gsap.killTweensOf(p); p.style.strokeDasharray = L;
+  if (on) { p.style.opacity = 1; if (animar && !reduce) gsap.fromTo(p, {strokeDashoffset: L}, {strokeDashoffset: 0, duration: .3, ease: 'power1.in'}); else p.style.strokeDashoffset = 0; }
+  else p.style.opacity = 0;
+  btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+}
+// lo que se escribe con birome aparece de izquierda a derecha
+function escribir(el, dur) {
+  if (reduce) return;
+  const largo = (el.value != null ? el.value : el.textContent).length;
+  gsap.fromTo(el, {clipPath: 'inset(-30% 100% -30% 0)'}, {clipPath: 'inset(-30% 0% -30% 0)', duration: dur || Math.min(.8, .12 + .04 * largo), ease: 'none', clearProps: 'clipPath'});
+}
+function ponerSugeridos() {
+  const ms = MODELOS[u.marca] || [];
+  $('#o-sug').innerHTML = ms.length ? `<b>Los más comunes:</b>${ms.map(m => `<button class="op" type="button" data-v="${esc(m)}">${esc(m)}</button>`).join('')}` : '<b>Escribí la marca y el modelo arriba.</b>';
+}
+function ponerToca() {
+  const km = u.km, toca = [], prox = {};
+  PLAN.forEach(([cada, que, tr]) => {
+    const sig = Math.ceil(km / cada) * cada, ant = Math.floor(km / cada) * cada;
+    if (km >= 3000 && (sig - km <= 3000 || (ant > 0 && km - ant <= 1000))) toca.push([que, tr]);
+    else { const m = sig === km ? km + cada : sig; (prox[m] = prox[m] || []).push(que); }
+  });
+  const m = Math.min(...Object.keys(prox).map(Number));
+  const sigue = isFinite(m) ? `Después, a los ${miles(m)} km: ${lista(prox[m])}.` : '';
+  $('#o-toca').innerHTML = `<div class="toca-fila"><span>${toca.length ? `Con ${miles(km)} km te toca:` : `Con ${miles(km)} km no te toca nada del plan.`}</span>${toca.map(([que, tr]) => `<button class="plan${u.trab.has(tr) ? ' ya' : ''}" type="button" data-t="${tr}">${u.trab.has(tr) ? '✓ ' : '+ '}${que}</button>`).join('')}</div>
+    <small class="sigue">${sigue}</small><small>Plan de ejemplo: cada auto tiene el suyo según su manual.</small>`;
+}
+function ponerTestigosOrden(animar) {
+  const c = $('#o-testigos');
+  if (!sumadas.size) { c.innerHTML = '<span class="vacio">Si se te prendió una luz, sumala desde el tablero.</span>'; return; }
+  c.innerHTML = [...sumadas].sort((a, b) => a - b).map(i => `<span class="t-o">${ico(LUCES[i].ico)}<span class="mano">${LUCES[i].nom}</span></span>`).join('');
+  if (animar) $$('.t-o', c).slice(-1).forEach(el => escribir(el, .5));
+}
+const autoTexto = () => u.modelo.trim() || (u.marca !== 'Otra' ? u.marca : '');
+function armar() {
+  const auto = autoTexto(), anio = /^(19[6-9]\d|20[0-2]\d)$/.test(u.anio) ? ' ' + u.anio : '';
+  const trab = TRABAJOS.filter(t => u.trab.has(t[0])).map(t => t[2]);
+  let t = `Hola${DUENIO ? ' ' + DUENIO : ''}, quería pedir turno para ${auto ? 'un ' + auto : 'mi auto'}${anio} con ${miles(u.km)} km${trab.length ? ': ' + lista(trab) : ''}.`;
+  const luces = [...sumadas].sort((a, b) => a - b).map(i => LUCES[i].msj);
+  if (luces.length === 1) t += ` Se me prendió la luz ${luces[0]}.`;
+  if (luces.length > 1) t += ` Se me prendieron las luces ${lista(luces)}.`;
+  const falla = u.falla.trim();
+  if (falla) t += ` ${falla[0].toUpperCase()}${falla.slice(1)}${/[.!?]$/.test(falla) ? '' : '.'}`;
+  const dia = DIAS.find(d => d[0] === u.dia), fr = FRANJAS.find(f => f[0] === u.franja);
+  t += dia ? ` ¿Tienen lugar el ${dia[2] || dia[0]}${fr ? ' ' + fr[2] : ''}?` : ' ¿Cuándo tienen lugar?';
+  if (u.presu) t += ' Antes de arreglarlo, pásenme el presupuesto.';
+  const b = $('#burbuja'); b.textContent = t; b.insertAdjacentHTML('beforeend', '<small>ahora</small>');
+  textosSeguimiento();
+}
+// ¿lo escribió el visitante? entonces la escritura de muestra se termina de golpe y queda todo puesto
+let ordenLlena = false, tlOrden = null;
+function terminarEscritura() {
+  if (!ordenLlena) { ordenLlena = true; llenarOrden(false); }
+  else if (tlOrden) { tlOrden.kill(); tlOrden = null; llenarOrden(false); }
+}
+$('#orden').addEventListener('pointerdown', terminarEscritura, true);
+$('#orden').addEventListener('focusin', terminarEscritura);
+$('#o-marca').addEventListener('click', e => {
+  const b = e.target.closest('.op'); if (!b) return;
+  const antes = MODELOS[u.marca] || [];
+  u.marca = b.dataset.v; elegir($('#o-marca'), u.marca, true); ponerSugeridos();
+  // si el modelo era uno de los comunes de la otra marca, se cambia por el más común de esta
+  if (!u.modelo.trim() || antes.includes(u.modelo)) { u.modelo = (MODELOS[u.marca] || [])[0] || ''; $('#o-modelo').value = u.modelo; if (u.modelo) escribir($('#o-modelo')); }
+  armar();
+});
+$('#o-sug').addEventListener('click', e => { const b = e.target.closest('.op'); if (!b) return; u.modelo = b.dataset.v; $('#o-modelo').value = u.modelo; escribir($('#o-modelo')); armar(); });
+$('#o-modelo').addEventListener('input', e => { u.modelo = e.target.value; armar(); });
+$('#o-anio').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, ''); u.anio = e.target.value; armar(); });
+$('#o-falla').addEventListener('input', e => { u.falla = e.target.value; armar(); });
+$('#o-km').addEventListener('input', e => { u.km = +e.target.value; $('#o-km-v').textContent = `${miles(u.km)} km`; ponerToca(); armar(); });
+$('#o-toca').addEventListener('click', e => {
+  const b = e.target.closest('.plan'); if (!b) return;
+  const tr = b.dataset.t; if (u.trab.has(tr)) return;
+  u.trab.add(tr); tilde($(`#o-trab .tilde[data-v="${tr}"]`), true, true); ponerToca(); armar();
+});
+$('#o-trab').addEventListener('click', e => {
+  const b = e.target.closest('.tilde'); if (!b) return;
+  const k = b.dataset.v; u.trab.has(k) ? u.trab.delete(k) : u.trab.add(k);
+  tilde(b, u.trab.has(k), true); ponerToca(); armar();
+});
+function ponerFranjas(animar) {
+  // los sábados se atiende solo a la mañana (horario de ejemplo)
+  const tarde = $('#o-franja .op[data-v="tarde"]'), sab = u.dia === 'sabado';
+  tarde.disabled = sab; tarde.title = sab ? 'Los sábados, solo a la mañana' : '';
+  if (sab && u.franja === 'tarde') { u.franja = 'manana'; elegir($('#o-franja'), u.franja, animar); }
+}
+$('#o-dia').addEventListener('click', e => {
+  const b = e.target.closest('.op'); if (!b) return;
+  u.dia = u.dia === b.dataset.v ? '' : b.dataset.v; elegir($('#o-dia'), u.dia, true); ponerFranjas(true); armar();
+});
+$('#o-franja').addEventListener('click', e => {
+  const b = e.target.closest('.op'); if (!b || b.disabled) return;
+  u.franja = u.franja === b.dataset.v ? '' : b.dataset.v; elegir($('#o-franja'), u.franja, true); armar();
+});
+$('#o-presu').addEventListener('click', () => { u.presu = !u.presu; tilde($('#o-presu'), u.presu, true); armar(); });
+// el papel arranca en blanco y, al llegar, se llena solo con el ejemplo (como si lo escribiera el mecánico)
+function vaciarOrden() {
+  $('#o-modelo').value = ''; $('#o-anio').value = ''; $('#o-km-v').style.clipPath = 'inset(-30% 100% -30% 0)';
+}
+function llenarOrden(animar) {
+  $('#o-modelo').value = u.modelo; $('#o-anio').value = u.anio;
+  if (!animar || reduce) {
+    gsap.killTweensOf(['#o-modelo', '#o-anio', '#o-km-v']); gsap.set(['#o-modelo', '#o-anio', '#o-km-v'], {clearProps: 'clipPath'});
+    elegir($('#o-marca'), u.marca, false); elegir($('#o-dia'), u.dia, false); elegir($('#o-franja'), u.franja, false);
+    $$('#o-trab .tilde').forEach(b => tilde(b, u.trab.has(b.dataset.v), false)); tilde($('#o-presu'), u.presu, false);
+    return;
+  }
+  const ms = [...u.trab];
+  $('#o-modelo').style.clipPath = $('#o-anio').style.clipPath = 'inset(-30% 100% -30% 0)';
+  tlOrden = gsap.timeline({onComplete: () => { tlOrden = null; }})
+    .call(() => elegir($('#o-marca'), u.marca, true), null, .1)
+    .call(() => escribir($('#o-modelo'), .45), null, .55)
+    .call(() => escribir($('#o-anio'), .3), null, 1.05)
+    .call(() => escribir($('#o-km-v'), .4), null, 1.4);
+  ms.forEach((k, i) => tlOrden.call(() => tilde($(`#o-trab .tilde[data-v="${k}"]`), true, true), null, 1.9 + i * .35));
+  tlOrden.call(() => elegir($('#o-dia'), u.dia, true), null, 2.05 + ms.length * .35)
+    .call(() => elegir($('#o-franja'), u.franja, true), null, 2.5 + ms.length * .35)
+    .set({}, {}, 3 + ms.length * .35);
+}
+ponerSugeridos(); ponerToca(); ponerTestigosOrden(false); ponerFranjas(false); vaciarOrden();
+
+// ── 4 · el seguimiento ──
+const PASOS = [['car-arrow-right', 'Recibido'], ['magnify-scan', 'Diagnóstico'], ['file-document-edit-outline', 'Presupuesto por WhatsApp', 'Nada se toca sin tu OK.'], ['wrench', 'En reparación'], ['car-key', 'Listo para retirar']];
+$('#pasos').innerHTML = PASOS.map(([i, t, ok], n) => `<li class="paso" data-i="${n}"><span class="punto"></span><div class="paso-t">${ico(i)}<h3>${t}</h3></div>${ok ? `<span class="ok">${ok}</span>` : ''}<div class="msjs" id="msjs-${n}"></div></li>`).join('');
+const plata = n => `$ ${miles(n)}`;
+function textosSeguimiento() {
+  const auto = autoTexto() || 'auto', trab = TRABAJOS.filter(t => u.trab.has(t[0]));
+  const total = trab.reduce((s, t) => s + t[4], 0) || TRAB.escaner[4];
+  const que = trab.length ? lista(trab.map(t => t[2])) : 'diagnóstico con escáner';
+  const con = trab.length ? lista(trab.slice(0, 2).map(t => t[3])) : 'el diagnóstico';
+  const prox = Math.ceil((u.km + 1) / 10000) * 10000 + (Math.ceil((u.km + 1) / 10000) * 10000 - u.km < 3000 ? 10000 : 0);
+  const M = [
+    [['', `Hola, ya tenemos el ${auto} en el taller. Apenas lo revisemos te escribo.`, '8:15']],
+    [['', 'Lo subimos al elevador y le pasamos el escáner. Ya sabemos qué tiene: te armo el presupuesto.', '10:40']],
+    [['', `Te paso el presupuesto: ${que}, ${plata(total)} con mano de obra. ¿Le damos?`, '10:52'], ['yo', 'Dale, avancen.', '10:58']],
+    [['', `Ya estamos con ${con}. Te aviso cuando esté.`, '11:30']],
+    [['', `Listo el ${auto}, ya lo podés pasar a buscar. Te anoté el próximo service a los ${miles(prox)} km.`, '17:20']]];
+  M.forEach((ms, n) => {
+    const c = $('#msjs-' + n);
+    if (c.children.length !== ms.length) c.innerHTML = ms.map(([cl]) => `<p class="msj ${cl}"></p>`).join('');
+    ms.forEach(([, t, h], j) => { const p = c.children[j]; p.textContent = t; p.insertAdjacentHTML('beforeend', `<small>${h}</small>`); });
+  });
+}
+let puntos = [];
+function geometria() {
+  const r = $('#ruta').getBoundingClientRect();
+  puntos = $$('.punto').map(p => { const b = p.getBoundingClientRect(); return [b.left + b.width / 2 - r.left, b.top + b.height / 2 - r.top]; });
+  const [a, z] = [puntos[0], puntos[puntos.length - 1]], vertical = Math.abs(z[1] - a[1]) > Math.abs(z[0] - a[0]);
+  gsap.set('#linea', vertical ? {left: a[0] - 1.5, top: a[1], width: 3, height: z[1] - a[1]} : {left: a[0], top: a[1] - 1.5, width: z[0] - a[0], height: 3});
+  gsap.set('#linea-hecha', {transformOrigin: '0 0'});
+  geometria.vertical = vertical;
+  ponerSeg(segP, false);
+}
+let segP = 0;
+function ponerSeg(p, animar = true) {
+  segP = p; if (!puntos.length) return;
+  const x = p * (puntos.length - 1), i = Math.min(puntos.length - 2, Math.floor(x)), f = x - i;
+  const pos = [puntos[i][0] + (puntos[i + 1][0] - puntos[i][0]) * f, puntos[i][1] + (puntos[i + 1][1] - puntos[i][1]) * f];
+  gsap.set('#auto-marca', {x: pos[0], y: pos[1]});
+  gsap.set('#linea-hecha', geometria.vertical ? {scaleY: p, scaleX: 1} : {scaleX: p, scaleY: 1});
+  const llego = Math.floor(x + .03);
+  $$('.paso').forEach((li, n) => {
+    const on = n <= llego; if (on === li._on) return; li._on = on; li.classList.toggle('hecho', on);
+    const ms = $$('.msj', li);
+    // el mensaje llega cuando el auto llega al paso (la respuesta del cliente, un rato después)
+    if (on && animar && !reduce) gsap.fromTo(ms, {autoAlpha: 0, y: 10, scale: .97}, {autoAlpha: 1, y: 0, scale: 1, duration: .35, stagger: .45, ease: 'power2.out', overwrite: true, transformOrigin: '0 0'});
+    else gsap.set(ms, {autoAlpha: on ? 1 : 0, y: 0, scale: 1, overwrite: true});
+  });
+}
+
+// ── 5 · nota y mapa · cierre ──
+const busqueda = encodeURIComponent([N, LUGAR].filter(Boolean).join(', '));
+if (!isNaN(R) && O) {
+  $('#nota-num').textContent = R.toFixed(1).replace('.', ',');
+  $('#opiniones').textContent = `${miles(O)} opiniones`;
+  $('#ver-opiniones').href = `https://www.google.com/maps/search/?api=1&query=${busqueda}`;
+  const llenas = Math.round(R);
+  $('#estrellas').innerHTML = Array.from({length: 5}, (_, i) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path style="fill:${i < llenas ? 'currentColor' : 'none'};stroke:currentColor;stroke-width:1.5" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>`).join('');
+} else $('#nota-g').style.display = 'none';
+$('#mapa').src = `https://www.google.com/maps?q=${CON_DATOS ? busqueda : 'Argentina'}&output=embed`;
+$('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${CON_DATOS ? busqueda : 'Argentina'}`;
+const cf = $('#c-foto'); cf.sizes = '(max-width:860px) 220vw, 100vw'; cf.srcset = juego(4116231, [900, 1400, 2000, 2800]); cf.src = foto(4116231, 1400);
+if (CIUDAD) $('#c-sub').textContent = `Pedí turno y traelo a ${N}, en ${CIUDAD}: te avisamos por WhatsApp en cada paso.`;
+
+armar(); textosSeguimiento();
+addEventListener('resize', () => { medirPortada(); ponerCortina(); fijarAlto(); });
+ScrollTrigger.addEventListener('refresh', geometria);
+gsap.to(est, {p: 1, ease: 'none', onUpdate: ponerCortina, scrollTrigger: {trigger: '.intro', start: 'top top', end: 'bottom bottom', scrub: reduce ? true : .6}});
+ScrollTrigger.create({trigger: '.intro', start: 'bottom bottom', onEnter: () => $('#barra').classList.add('solida'), onLeaveBack: () => $('#barra').classList.remove('solida')});
+ScrollTrigger.create({trigger: '.intro', start: 'bottom 70%', onEnter: () => $('.flotante').classList.remove('oculto'), onLeaveBack: () => $('.flotante').classList.add('oculto')});
+ScrollTrigger.create({trigger: '#cluster', start: 'top 70%', once: true, onEnter: encender});
+ScrollTrigger.create({trigger: '#orden', start: 'top 62%', once: true, onEnter: () => { if (ordenLlena) return; ordenLlena = true; llenarOrden(true); }});
+const mm = gsap.matchMedia();
+mm.add('(min-width:861px) and (min-height:640px)', () => {
+  // en la compu la sección queda quieta mientras el auto recorre los cinco pasos
+  ScrollTrigger.create({trigger: '#seg-fijo', start: 'top top', end: '+=115%', pin: true, scrub: reduce ? true : .6, onUpdate: s => ponerSeg(s.progress)});
+});
+mm.add('(max-width:860px), (max-height:639px)', () => {
+  ScrollTrigger.create({trigger: '#pasos', start: 'top 62%', end: 'bottom 62%', scrub: reduce ? true : .5, onUpdate: s => ponerSeg(s.progress)});
+});
+if (reduce) { $('.intro').style.height = '100svh'; }
+document.fonts.ready.then(() => { medirPortada(); ponerCortina(); fijarAlto(); ScrollTrigger.refresh(); });
+addEventListener('load', () => { fijarAlto(); ScrollTrigger.refresh(); });
+fijarAlto(); geometria();
+
+</script>
+</body></html>
