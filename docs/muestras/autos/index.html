@@ -2,183 +2,267 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Diseño de muestra para su concesionaria · Mas & Co">
-<meta property="og:description" content="Recórrala completa: el portapatente con su nombre, el stock con filtros y el tablero para cotizar el usado.">
+<meta property="og:description" content="Recórrala completa: el portapatente con su nombre, el stock con filtros de verdad, la ficha con cuotas y prueba de manejo, y el tablero para cotizar el usado.">
 <meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
 <title>Concesionaria · diseño de muestra · Mas & Co</title>
 <link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="https://images.pexels.com/photos/31727920/pexels-photo-31727920.jpeg?auto=compress&cs=tinysrgb&w=700" media="(max-aspect-ratio: 9/10)" fetchpriority="high">
+<link rel="preload" as="image" href="https://images.pexels.com/photos/7549092/pexels-photo-7549092.jpeg?auto=compress&cs=tinysrgb&w=1000" media="(min-aspect-ratio: 9/10)" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Manrope:wght@400..800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-/* Muestra completa para concesionarias y agencias de autos usados · Mas & Co · 12/10/2026.
+/* Muestra completa para concesionarias y agencias de autos usados · Mas & Co · v2 14/10/2026.
    Una página para las de la lista: …/autos/?s=<slug> trae nombre, lugar, nota y opiniones.
-   1. La portada (arquetipo 2, objeto protagonista, dentro de la foto a sangre): un auto de frente, de noche. Arranca
-      pegada a la placa, que lleva el nombre de la concesionaria en grande (sin matrícula: Felipe no quiere una patente
-      que parezca real); al bajar,
-      la cámara se aleja hasta ver el auto entero y las luces hacen un guiño. (La v1, una patente gigante flotando sobre
-      la foto, a Felipe no le gustó: «creo que lo podés hacer mejor».)
-   2. El stock: filtros por tipo y por precio; los autos se reacomodan (GSAP Flip). Cada auto abre su ficha con
-      el cuentakilómetros y el mensaje ya escrito.
-   3. Tomamos tu usado: un tablero de auto. Año y kilómetros mueven las agujas; la pantalla arma el pedido de cotización.
+   1. La portada: un auto de frente, de noche, con la cámara pegada al portapatente, que lleva el nombre de la agencia
+      (sin matrícula: Felipe no quiere una patente que parezca real). Al cargar: a oscuras, una luz barre la escena y
+      enciende la patente (las patentes reflejan), después el auto prende los faros y la escena se ilumina. Con el scroll
+      la cámara se aleja hasta el auto entero y los faros hacen un guiño. En el celular la foto es vertical (otro auto,
+      encuadrado para la pantalla alta); la patente no se escala con transform: se dibuja a su tamaño real en cada
+      cuadro, así el texto queda nítido aunque esté ampliado.
+   2. El stock: filtros de concesionaria (tipo, marca, precio, año, kilómetros, combustible, caja) y orden. Los que
+      no cumplen se apagan y pasan al final: la página nunca cambia de alto. La ficha: galería, datos completos,
+      simulador de cuotas de ejemplo y prueba de manejo; todo lo elegido entra en el mensaje.
+   3. Tomamos tu usado: un tablero. Al aparecer hace el barrido de agujas y testigos de cuando se da contacto.
    4. La nota de Google y el mapa real. 5. Cierre.
-   Fotos de Pexels. Autos, precios y kilómetros de ejemplo. */
-:root{--asfalto:#0F1114;--asfalto2:#181B20;--claro:#F2F3F5;--tinta:#14171C;--gris:#646B76;--azul:#1F4FD1;--azul2:#173FAA;
-  --placa:#2A3D93;--cian:#3CCFFF;--suave:cubic-bezier(.16,1,.3,1)}
+   Fotos de Pexels. Autos, precios, kilómetros y cuotas de ejemplo. */
+:root{--asfalto:#0F1114;--claro:#F2F3F5;--tinta:#14171C;--gris:#5F6671;--linea:rgba(20,23,28,.1);--azul:#1F4FD1;--azul2:#173FAA;
+  --cian:#3CCFFF;--suave:cubic-bezier(.16,1,.3,1);--ancho:1320px;--barra:70px}
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{background:var(--claro);color:var(--tinta);font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%}
+[data-pagina][hidden]{display:none!important}
+body{background:var(--claro);color:var(--tinta);font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button,select,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
 img{display:block}
-section{scroll-margin-top:70px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--azul);color:#fff;font-weight:800;border-radius:10px;white-space:nowrap;transition:background .25s,transform .25s var(--suave)}
+section{scroll-margin-top:var(--barra)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;background:var(--azul);color:#fff;font-weight:800;border-radius:10px;white-space:nowrap;transition:background .25s}
 .btn:hover{background:var(--azul2)}
-.btn:active{transform:scale(.97)}
-.btn svg{width:20px;height:20px}
+.btn svg{width:20px;height:20px;flex:none}
 .nota-ej{font-size:13px;color:var(--gris)}
+.ico{width:18px;height:18px;flex:none;fill:currentColor}
 
-.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;
-  background:rgba(15,17,20,.86);backdrop-filter:blur(8px);color:#fff}
-.marca{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:26px;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44vw}
-.nav{display:flex;gap:26px;font-size:15px;font-weight:700;color:rgba(255,255,255,.8)}
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:var(--barra);display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;
+  background:rgba(13,15,18,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff}
+.marca{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:26px;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40vw}
+.nav{display:flex;gap:28px;font-size:15px;font-weight:700;color:rgba(255,255,255,.78)}
 .nav a:hover{color:#fff}
-.barra .btn{font-size:15px;padding:12px 18px}
+.barra .btn{font-size:15px;padding:0 18px;min-height:44px}
 
-/* 1 · la portada: la cámara se aleja desde la patente */
-.intro{position:relative;height:250vh;background:#0B0C0E}
-.intro-fijo{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:#fff;background:#0B0C0E}
+/* 1 · la portada */
+.intro{position:relative;height:240vh;background:#08090B}
+.intro-fijo{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:#fff;background:#08090B}
 .escena{position:absolute;left:0;top:0;width:1600px;height:1067px;transform-origin:0 0}
-.escena img{position:absolute;inset:0;width:100%;height:100%;display:block}
-.porta{position:absolute;left:705px;top:679px;width:212px;height:92px;border-radius:7px;overflow:hidden;
-  background:linear-gradient(180deg,#26282C,#0C0D0F 30%,#141518 70%,#08090A);box-shadow:0 2px 3px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.18);
-  filter:brightness(.86) saturate(.9)}
-.porta-arriba{position:absolute;left:0;right:0;top:1.5px;height:8px;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:6.2px;
-  letter-spacing:.16em;text-align:center;color:#C9CDD3;line-height:8px;white-space:nowrap;overflow:hidden}
-.placa{position:absolute;left:7px;top:10px;width:198px;height:76px;border-radius:4px;background:linear-gradient(180deg,#FFFFFF,#E6E9EE);
-  box-shadow:inset 0 0 0 1px #1B1D21,inset 0 0 0 3px #FFFFFF,inset 0 0 0 4px #2A3D93;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0 9px}
-.placa .banda-p{height:12px;background:#2A3D93;color:#fff;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:6.6px;letter-spacing:.2em;
-  display:flex;align-items:center;justify-content:center;position:relative}
-.placa .mer{position:absolute;left:4px;top:2px;width:8px;height:8px;border-radius:50%;box-shadow:inset 0 0 0 .8px #fff}
-.placa .bandera{position:absolute;right:4px;top:2.5px;width:11px;height:7px;background:linear-gradient(180deg,#74ACDF 0 33%,#fff 33% 67%,#74ACDF 67%)}
-.placa b{display:block;text-align:center;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:30px;line-height:1.02;letter-spacing:.04em;color:#16181C;
-  text-transform:uppercase}
+.escena img{position:absolute;inset:0;width:100%;height:100%}
+#foto-portada{opacity:0;transition:opacity .6s}
+#foto-portada.lista{opacity:1}
+.apagon{position:absolute;inset:0;background:#040507;pointer-events:none;-webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.haz{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:0;
+  background:linear-gradient(100deg,rgba(255,240,215,0) 41%,rgba(255,240,215,.13) 48%,rgba(255,244,228,.2) 50%,rgba(255,240,215,.13) 52%,rgba(255,240,215,0) 59%) no-repeat;background-size:300% 100%}
+.faro{position:absolute;left:0;top:0;width:100px;height:100px;border-radius:50%;pointer-events:none;mix-blend-mode:screen;opacity:0;transform-origin:0 0;
+  background:radial-gradient(circle,rgba(240,247,255,.95) 0,rgba(205,228,255,.5) 16%,rgba(160,200,255,.14) 40%,rgba(160,200,255,0) 70%)}
+/* el portapatente: sus medidas van en «u» (1u = 1px cuando la patente mide 212 de ancho); JS pone --u en cada cuadro */
+.porta{--u:1;--luz:0;position:absolute;left:0;top:0;width:calc(212px*var(--u));height:calc(92px*var(--u));border-radius:calc(7px*var(--u));overflow:hidden;
+  background:linear-gradient(180deg,#26282C,#0C0D0F 30%,#141518 70%,#08090A);box-shadow:0 calc(2px*var(--u)) calc(3px*var(--u)) rgba(0,0,0,.6),inset 0 calc(1px*var(--u)) 0 rgba(255,255,255,.16);pointer-events:none}
+.porta-arriba{position:absolute;left:0;right:0;top:calc(1.5px*var(--u));height:calc(8px*var(--u));font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:calc(6.2px*var(--u));
+  letter-spacing:.16em;text-align:center;color:#C9CDD3;line-height:calc(8px*var(--u));white-space:nowrap;overflow:hidden}
+.placa{position:absolute;left:calc(7px*var(--u));top:calc(10px*var(--u));width:calc(198px*var(--u));height:calc(76px*var(--u));border-radius:calc(4px*var(--u));
+  background:linear-gradient(180deg,#FFFFFF,#E3E6EB);overflow:hidden;display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 calc(1px*var(--u)) #1B1D21,inset 0 0 0 calc(3px*var(--u)) #FFFFFF,inset 0 0 0 calc(4px*var(--u)) #2A3D93}
+.placa b{display:block;text-align:center;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:calc(var(--fs,30)*1px*var(--u));line-height:1.02;letter-spacing:.04em;color:#16181C;text-transform:uppercase}
 .placa b span{display:block;white-space:nowrap}
-.porta-nombre{position:absolute;left:4px;right:4px;bottom:2.5px;height:17px;display:flex;align-items:center;justify-content:center;
-  font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
-  color:#E8EBEF;background:linear-gradient(180deg,#E8EBEF,#9BA1AA);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.noche{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(10,14,22,.18),rgba(10,14,22,.38));pointer-events:none}
-.brillo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 40%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 60%);
-  transform:translateX(-120%);mix-blend-mode:screen;border-radius:inherit}
-.faro{position:absolute;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;pointer-events:none;mix-blend-mode:screen;opacity:0;
-  background:radial-gradient(circle,rgba(235,244,255,.95) 0,rgba(200,225,255,.45) 18%,rgba(160,200,255,.12) 42%,rgba(160,200,255,0) 70%)}
-.faro.i{left:434px;top:523px}.faro.d{left:1183px;top:523px}
-.velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#0B0C0E 0%,rgba(11,12,14,.75) 16%,rgba(11,12,14,0) 42%,rgba(11,12,14,0) 74%,rgba(11,12,14,.85) 100%)}
-.texto{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:96px 24px 40px;pointer-events:none}
-.texto .tipo{font-size:17px;font-weight:700;color:rgba(255,255,255,.88)}
-.texto h1{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;line-height:.86;letter-spacing:.005em;margin-top:10px;
-  font-size:clamp(56px,9vw,150px);line-height:.98;max-width:14ch;text-wrap:balance;text-shadow:0 4px 30px rgba(0,0,0,.6)}
-.texto .bajada{margin-top:16px;font-size:19px;max-width:30em;color:rgba(255,255,255,.88);text-shadow:0 2px 14px rgba(0,0,0,.7)}
-.texto .acciones{margin-top:auto;pointer-events:auto}
+.noche{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,252,240,.05),rgba(10,14,22,.26) 55%,rgba(10,14,22,.42))}
+/* la patente sin luz: se va iluminando de izquierda a derecha cuando pasa el haz */
+.sombra-p{position:absolute;inset:0;background:rgba(3,5,9,.94);
+  -webkit-mask-image:linear-gradient(90deg,transparent calc(var(--luz)*140% - 40%),#000 calc(var(--luz)*140%));mask-image:linear-gradient(90deg,transparent calc(var(--luz)*140% - 40%),#000 calc(var(--luz)*140%))}
+.brillo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 40%,rgba(255,255,255,.6) 50%,rgba(255,255,255,0) 60%);
+  transform:translateX(calc(var(--luz)*360% - 120%));mix-blend-mode:screen}
+.velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#08090B 0%,rgba(8,9,11,.72) 15%,rgba(8,9,11,0) 40%,rgba(8,9,11,0) 72%,rgba(8,9,11,.86) 100%)}
+.texto{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:100px 24px 44px;pointer-events:none}
+.texto .tipo{font-size:17px;font-weight:700;color:rgba(255,255,255,.9);text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.texto h1{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.005em;margin-top:8px;
+  font-size:clamp(56px,8.6vw,150px);line-height:.94;max-width:14ch;text-wrap:balance;text-shadow:0 4px 30px rgba(0,0,0,.6);visibility:hidden}
+.texto h1.largo{font-size:clamp(48px,6.2vw,112px);max-width:20ch}
+.texto .bajada{margin-top:16px;font-size:19px;line-height:1.45;max-width:30em;color:rgba(255,255,255,.9);text-shadow:0 2px 14px rgba(0,0,0,.8);visibility:hidden}
+.texto .abajo{margin-top:auto;pointer-events:auto;display:flex;flex-direction:column;align-items:center;gap:12px}
 .acciones{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.acciones .btn{font-size:17px;padding:16px 26px}
-.btn.claro{background:rgba(10,12,15,.35);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75);color:#fff;backdrop-filter:blur(4px)}
-.btn.claro:hover{background:rgba(255,255,255,.12)}
-.ejemplo-h{position:absolute;z-index:3;right:20px;top:84px;font-size:12.5px;color:#fff;background:rgba(10,12,15,.6);padding:6px 11px;border-radius:999px}
+.acciones .btn{font-size:17px;padding:0 26px;min-height:54px}
+.btn.claro{background:rgba(10,12,15,.4);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75);color:#fff;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.btn.claro:hover{background:rgba(255,255,255,.14)}
+.intro.espera .tipo,.intro.espera .acciones{visibility:hidden}
+.ejemplo-h{position:absolute;z-index:3;right:20px;top:calc(var(--barra) + 14px);font-size:12.5px;color:#fff;background:rgba(10,12,15,.6);padding:6px 11px;border-radius:999px}
 
 /* secciones */
-.sec{position:relative;padding:112px 48px}
-.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:0 auto 34px;max-width:1240px}
-.cabeza h2{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(52px,6vw,100px);line-height:.88;letter-spacing:.005em;max-width:11ch;text-wrap:balance}
-.cabeza h2 em{font-style:normal;color:var(--azul)}
-.cabeza p{max-width:26em;font-size:17.5px;color:var(--gris);line-height:1.5}
+.sec{position:relative;padding:116px 48px}
+.cabeza{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:0 auto 38px;max-width:var(--ancho)}
+.cabeza :is(h1,h2){font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(52px,6vw,104px);line-height:.88;letter-spacing:.005em;max-width:11ch;text-wrap:balance}
+.cabeza :is(h1,h2) em{font-style:normal;color:var(--azul)}
+.cabeza p{max-width:27em;font-size:17.5px;color:var(--gris);line-height:1.5}
 
 /* 2 · el stock */
-.filtros{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;max-width:1240px;margin:0 auto 26px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:10px 15px;border-radius:999px;font-weight:700;font-size:15px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(20,23,28,.12);transition:background .2s,color .2s,box-shadow .2s}
-.chip:hover{box-shadow:inset 0 0 0 1.5px rgba(20,23,28,.35)}
+.stock-zona{display:grid;grid-template-columns:316px minmax(0,1fr);gap:34px;max-width:var(--ancho);margin:0 auto;align-items:start}
+.filtros{position:sticky;top:calc(var(--barra) + 20px);background:#fff;border-radius:18px;padding:20px 20px 14px;box-shadow:0 0 0 1px var(--linea),0 24px 44px -38px rgba(20,23,28,.55);
+  max-height:calc(100vh - var(--barra) - 78px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.filtros .chip{min-height:34px;padding:0 12px;font-size:14px}
+.f-grupo+.f-grupo,.f-mas .f-grupo{margin-top:16px}
+.f-grupo h3{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:13.5px;font-weight:800;color:var(--gris);margin-bottom:10px}
+.f-grupo h3 output{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:19px;color:var(--tinta);white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{min-height:38px;padding:0 14px;border-radius:999px;font-weight:700;font-size:14.5px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(20,23,28,.13);transition:background .2s,color .2s,box-shadow .2s;white-space:nowrap}
+.chip:hover{box-shadow:inset 0 0 0 1.5px rgba(20,23,28,.38)}
 .chip.on{background:var(--tinta);color:#fff;box-shadow:none}
-.tope{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;margin-left:auto}
-.tope input{width:200px;accent-color:var(--azul)}
-.tope output{font-family:"Saira Condensed",sans-serif;font-size:22px;min-width:7.2em}
-.cuenta{font-size:15px;color:var(--gris);font-weight:600}
-.stock{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1240px;margin:0 auto}
-.auto{position:relative;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px -32px rgba(20,23,28,.6),0 0 0 1px rgba(20,23,28,.06);display:flex;flex-direction:column;text-align:left;transition:transform .35s var(--suave),box-shadow .35s}
-.auto:hover{transform:translateY(-4px);box-shadow:0 30px 50px -30px rgba(20,23,28,.6),0 0 0 1px rgba(20,23,28,.1)}
-.auto .ft{aspect-ratio:4/3;overflow:hidden;background:#dfe2e6}
+.chip[disabled]{opacity:.35;cursor:default}
+input[type=range]{width:100%;accent-color:var(--azul);height:28px;cursor:pointer}
+.f-mas-cab,.f-fondo{display:none}
+.f-mas-pie{margin-top:18px;display:flex;gap:10px;align-items:center}
+.f-limpiar{font-weight:800;font-size:14.5px;color:var(--azul);min-height:40px}
+.f-mas-pie .btn{display:none}
+.res-barra{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;margin-bottom:14px}
+.cuenta{font-size:15.5px;font-weight:700;color:var(--gris)}
+.cuenta b{color:var(--tinta)}
+.res-acc{display:flex;align-items:center;gap:10px}
+.f-abrir{display:none}
+.orden{display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:700;color:var(--gris)}
+.orden select{appearance:none;-webkit-appearance:none;min-height:44px;padding:0 38px 0 14px;border-radius:10px;border:0;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(20,23,28,.13);
+  font-weight:800;font-size:15px;color:var(--tinta);cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z' fill='%2314171C'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:20px}
+.stock{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.auto{position:relative;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px -32px rgba(20,23,28,.6),0 0 0 1px rgba(20,23,28,.06);display:flex;flex-direction:column;text-align:left;
+  transition:box-shadow .35s,opacity .45s,filter .45s}
+.auto:hover{box-shadow:0 30px 50px -30px rgba(20,23,28,.55),0 0 0 1px rgba(20,23,28,.14)}
+.auto .ft{position:relative;aspect-ratio:4/3;overflow:hidden;background:#dfe2e6}
 .auto img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--suave)}
 .auto:hover img{transform:scale(1.04)}
 .auto .tipo-a{position:absolute;left:12px;top:12px;font-size:12.5px;font-weight:800;background:rgba(255,255,255,.94);padding:5px 10px;border-radius:999px}
-.auto .datos{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.auto .n-fotos{position:absolute;right:10px;bottom:10px;display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:800;color:#fff;background:rgba(10,12,15,.62);padding:4px 9px;border-radius:999px}
+.auto .n-fotos .ico{width:15px;height:15px}
+.auto .datos{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;flex:1}
 .auto .nom-a{display:block;font-size:17px;font-weight:800;line-height:1.2}
+.auto .ver-a{display:block;font-size:14px;font-weight:600;color:var(--gris);margin-top:-4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .linea-a{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .anio{font-weight:700;color:var(--gris);font-size:14.5px}
-.odo{font-family:"Share Tech Mono",monospace;font-size:14px;background:#101317;color:#E9F7FF;padding:3px 8px;border-radius:6px;letter-spacing:.06em}
+.odo{font-family:"Share Tech Mono",monospace;font-size:14px;background:#101317;color:#E9F7FF;padding:3px 8px;border-radius:6px;letter-spacing:.06em;white-space:nowrap}
 .odo b{font-weight:400;color:var(--cian)}
+.tags-a{font-size:13.5px;font-weight:700;color:var(--gris)}
 .precio{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:27px;line-height:1;margin-top:auto;padding-top:6px}
-.ver{font-weight:800;font-size:14px;color:var(--azul)}
-.vacio-s{max-width:1240px;margin:-10px auto 16px;font-size:16px;color:var(--gris)}
-.auto{transition:transform .35s var(--suave),box-shadow .35s,opacity .45s,filter .45s}
-.auto.fuera{opacity:.2;filter:grayscale(1);pointer-events:none;box-shadow:none}
+.auto .ver{font-weight:800;font-size:14px;color:var(--azul)}
+.auto.fuera{opacity:.22;filter:grayscale(1);pointer-events:none;box-shadow:none}
 
 /* la ficha de un auto */
 .capa{position:fixed;inset:0;z-index:60;visibility:hidden}
-.capa .fondo{position:absolute;inset:0;background:rgba(10,12,15,.55);opacity:0}
-.ficha{position:absolute;top:0;right:0;bottom:0;width:min(470px,100%);background:#fff;display:flex;flex-direction:column;overflow-y:auto}
-.ficha .ft{aspect-ratio:16/10;background:#dfe2e6;flex:none}
-.ficha .ft img{width:100%;height:100%;object-fit:cover}
-.ficha .cuerpo{padding:22px 24px 26px;display:flex;flex-direction:column;gap:14px}
-.ficha h3{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:38px;line-height:.95;text-transform:uppercase}
-.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.specs div{background:var(--claro);border-radius:10px;padding:10px 12px}
+.capa .fondo{position:absolute;inset:0;background:rgba(8,10,13,.6);opacity:0}
+.ficha{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px;align-items:start;max-width:var(--ancho);margin:0 auto;background:#fff;border-radius:22px;padding:22px;box-shadow:0 0 0 1px var(--linea)}
+.f-izq{min-width:0}
+.f-der{padding:8px 6px 6px 0;display:flex;flex-direction:column;gap:16px;min-width:0}
+.cerrar{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;z-index:3;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.cerrar .ico{width:22px;height:22px}
+.cerrar:focus-visible,.chip:focus-visible,.btn:focus-visible,.auto:focus-visible{outline:2.5px solid var(--azul);outline-offset:2px}
+.galeria{position:relative;background:#14171C}
+.gal-tira{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:4/3}
+.gal-tira::-webkit-scrollbar{display:none}
+.gal-tira img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;scroll-snap-stop:always}
+.gal-flecha{position:absolute;top:50%;width:46px;height:46px;margin-top:-23px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:opacity .25s}
+.gal-flecha.ant{left:14px}.gal-flecha.sig{right:14px}
+.gal-flecha[disabled]{opacity:0;pointer-events:none}
+.gal-flecha .ico{width:26px;height:26px}
+.gal-n{position:absolute;left:14px;bottom:14px;font-size:13px;font-weight:800;color:#fff;background:rgba(10,12,15,.62);padding:5px 10px;border-radius:999px}
+.gal-ej{position:absolute;right:14px;bottom:14px;font-size:12px;color:#fff;background:rgba(10,12,15,.62);padding:5px 10px;border-radius:999px}
+.gal-mini{display:flex;gap:8px;padding:10px 24px 0}
+.gal-mini button{flex:0 0 76px;height:56px;border-radius:8px;overflow:hidden;opacity:.5;box-shadow:inset 0 0 0 2px transparent;transition:opacity .2s;position:relative}
+.gal-mini button.on{opacity:1}
+.gal-mini button.on::after{content:"";position:absolute;inset:0;border-radius:8px;box-shadow:inset 0 0 0 2.5px var(--azul)}
+.gal-mini img{width:100%;height:100%;object-fit:cover}
+.specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:20px 24px 0}
+.specs h4{grid-column:1 / -1;font-size:14px;font-weight:800;color:var(--gris);margin-bottom:2px}
+.specs div{background:var(--claro);border-radius:10px;padding:9px 12px;min-width:0}
 .specs small{display:block;font-size:12.5px;color:var(--gris);font-weight:700}
-.specs b{font-size:16px}
-.specs .odo-g{grid-column:1 / -1;background:#101317;color:#E9F7FF;display:flex;align-items:center;justify-content:space-between}
-.specs .odo-g small{color:rgba(233,247,255,.6)}
-.digitos{font-family:"Share Tech Mono",monospace;font-size:30px;letter-spacing:.12em;color:var(--cian);text-shadow:0 0 10px rgba(60,207,255,.45)}
+.specs b{display:block;font-size:15px;line-height:1.3}
+.f-rapidos{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:15px;font-weight:700;color:var(--gris)}
+.f-rapidos .odo-g{display:inline-flex;align-items:baseline;gap:8px;background:#101317;border-radius:10px;padding:7px 12px}
+.f-rapidos .odo-g small{font-family:"Share Tech Mono",monospace;font-size:14px;color:rgba(233,247,255,.6)}
+.digitos{font-family:"Share Tech Mono",monospace;font-size:26px;line-height:1;letter-spacing:.1em;color:var(--cian);text-shadow:0 0 10px rgba(60,207,255,.45)}
+.f-titulo h1{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:40px;line-height:.95;text-transform:uppercase;padding-right:46px}
+.f-titulo p{margin-top:6px;font-size:15.5px;font-weight:700;color:var(--gris)}
+.f-precio{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.f-precio b{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:42px;line-height:1}
+.f-extra{font-weight:800;font-size:15px;color:var(--azul2);margin-top:-6px}
 .opciones-f{display:flex;flex-wrap:wrap;gap:8px}
-.cerrar{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.94);font-size:24px;line-height:1;z-index:2;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.burbuja{background:#D9FDD3;color:#111B21;border-radius:14px 14px 14px 4px;padding:13px 15px 22px;font-size:15.5px;line-height:1.45;position:relative}
-.burbuja small{position:absolute;right:12px;bottom:6px;font-size:11.5px;color:#667781}
-.burbuja.cambia{animation:latir .45s var(--suave)}
-@keyframes latir{0%{transform:scale(.985)}100%{transform:none}}
-.ficha .btn{width:100%;font-size:17px;padding:16px}
-.ir-usado{font-weight:800;font-size:15px;color:var(--azul);text-align:center}
+.opciones-f .chip{display:inline-flex;align-items:center;gap:7px;min-height:42px}
+.opciones-f .chip .ico{width:17px;height:17px}
+.caja-f{border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--linea);padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px;transition:box-shadow .3s,background .3s}
+.caja-f.activa{box-shadow:inset 0 0 0 2px var(--azul);background:#F6F8FE}
+.caja-cab{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.caja-cab b{font-size:16px;font-weight:800}
+.caja-cab span{font-size:12.5px;color:var(--gris);font-weight:600}
+.fila-r{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14.5px;font-weight:700;color:var(--gris)}
+.fila-r output{color:var(--tinta);font-weight:800}
+.caja-f .chips .chip{min-height:42px;padding:0 13px;font-size:14px}
+.cuotas-n{display:grid;grid-template-columns:repeat(4,1fr);margin-top:-6px}
+.cuotas-n .chip{padding:0;font-size:16px}
+.cuota{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-top:1px dashed rgba(20,23,28,.18);padding-top:12px}
+.cuota > span{font-size:14.5px;font-weight:700;color:var(--gris)}
+.cuota b{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:34px;line-height:1}
+.cuota b small{font-family:Manrope,sans-serif;font-size:14px;font-weight:700;color:var(--gris)}
+.cuota-n{font-size:12.5px;color:var(--gris);line-height:1.4;margin-top:-4px}
+.dias{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 2px}
+.dias::-webkit-scrollbar{display:none}
+.dias .chip{flex:none;display:flex;flex-direction:column;justify-content:center;line-height:1.1;min-height:52px;padding:0 13px;border-radius:12px}
+.dias .chip small{font-size:12px;font-weight:700;opacity:.75}
+.burbuja{background:#D9FDD3;color:#111B21;border-radius:14px 14px 14px 4px;padding:13px 15px 24px;font-size:15.5px;line-height:1.45;position:relative}
+.burbuja small{position:absolute;right:12px;bottom:6px;font-size:12px;color:#667781}
+.burbuja.cambia{animation:asentar .4s var(--suave)}
+@keyframes asentar{0%{transform:translateY(3px);opacity:.6}100%{transform:none;opacity:1}}
+.f-der .btn{width:100%;font-size:17px;min-height:56px}
+.ir-usado{font-weight:800;font-size:15px;color:var(--azul);text-align:center;min-height:40px;display:flex;align-items:center;justify-content:center}
 
 /* 3 · el tablero */
-.usado{background:radial-gradient(120% 90% at 50% 0%,#1F242C,#0D0F12 70%);color:#fff;overflow:hidden}
-.usado .cabeza h2 em{color:var(--cian)}
+.usado{background:linear-gradient(180deg,#1A1E25 0%,#0D0F12 60%);color:#fff;overflow:hidden}
+.usado .cabeza :is(h1,h2) em{color:var(--cian)}
 .usado .cabeza p,.usado .nota-ej{color:rgba(255,255,255,.7)}
-.tablero{max-width:1100px;margin:0 auto;border-radius:200px 200px 34px 34px;padding:34px 40px 30px;
+.tablero{max-width:1180px;margin:0 auto;border-radius:220px 220px 34px 34px;padding:34px 44px 30px;
   background:repeating-linear-gradient(45deg,#15181D 0 3px,#121418 3px 6px);box-shadow:inset 0 2px 0 rgba(255,255,255,.06),inset 0 -20px 40px rgba(0,0,0,.5),0 40px 80px -40px rgba(0,0,0,.9);
-  display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:20px;align-items:center}
+  display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:24px;align-items:center}
 .reloj{position:relative;aspect-ratio:1}
 .reloj svg{width:100%;height:100%;overflow:visible}
-.pantalla{background:#05080B;border-radius:18px;padding:18px 18px 16px;box-shadow:inset 0 0 0 1px rgba(60,207,255,.25),inset 0 0 30px rgba(60,207,255,.08);
-  font-family:"Share Tech Mono",monospace;color:var(--cian);text-shadow:0 0 8px rgba(60,207,255,.45);min-height:190px;display:flex;flex-direction:column;justify-content:center;gap:8px}
-.pantalla .p1{font-size:13px;letter-spacing:.2em;color:rgba(60,207,255,.65)}
-.pantalla .p2{font-size:26px;line-height:1.1;color:#E9F7FF;text-transform:uppercase;word-break:break-word}
-.pantalla .p3{display:flex;justify-content:space-between;font-size:20px}
-.pantalla .p4{font-size:13px;color:rgba(60,207,255,.8)}
-.mandos{max-width:1100px;margin:22px auto 0;display:grid;grid-template-columns:1.2fr 1fr;gap:22px;align-items:start}
-.panel-m{background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);border-radius:18px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:16px}
-.panel-m h3{font-size:14.5px;font-weight:800;color:rgba(255,255,255,.7);margin-bottom:8px}
+.pantalla{background:#05080B;border-radius:18px;padding:18px 18px 14px;box-shadow:inset 0 0 0 1px rgba(60,207,255,.25),inset 0 0 30px rgba(60,207,255,.08);
+  font-family:"Share Tech Mono",monospace;color:var(--cian);text-shadow:0 0 8px rgba(60,207,255,.45);min-height:220px;display:flex;flex-direction:column;justify-content:center;gap:8px;min-width:0}
+.pantalla .p1{font-size:13px;letter-spacing:.06em;color:rgba(60,207,255,.65)}
+.pantalla .p2{font-size:24px;line-height:1.1;color:#E9F7FF;text-transform:uppercase;overflow-wrap:anywhere}
+.pantalla .p3{display:flex;justify-content:space-between;gap:10px;font-size:20px}
+.pantalla .p5{display:flex;align-items:center;gap:8px;font-size:14px;color:#BFEFFF;text-transform:uppercase}
+.pantalla .p5 svg{width:24px;height:24px;flex:none;filter:drop-shadow(0 0 4px rgba(60,207,255,.5))}
+.pantalla .p4{font-size:13px;color:rgba(60,207,255,.8);text-transform:uppercase}
+.testigos{display:flex;gap:8px;margin-top:2px}
+.testigo{display:flex;align-items:center;gap:5px;height:26px;padding:0 8px;border-radius:6px;font-size:12.5px;color:#2C3640;box-shadow:inset 0 0 0 1px #1B232C;text-shadow:none;transition:color .25s,box-shadow .25s,background .25s}
+.testigo svg{width:15px;height:15px;fill:currentColor}
+.testigo.on{color:#7CFFB2;box-shadow:inset 0 0 0 1px rgba(124,255,178,.5);background:rgba(124,255,178,.08);text-shadow:0 0 8px rgba(124,255,178,.6)}
+.mandos{max-width:1180px;margin:22px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start}
+.panel-m{background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);border-radius:18px;padding:20px 20px 20px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.panel-m h3{font-size:14px;font-weight:800;color:rgba(255,255,255,.66);margin-bottom:9px}
+.panel-m h4{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:24px;text-transform:uppercase;letter-spacing:.01em;color:#fff;margin-bottom:-4px}
 .usado .chip{background:rgba(255,255,255,.07);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.usado .chip:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
 .usado .chip.on{background:#fff;color:var(--tinta)}
-.campo{width:100%;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font:inherit;font-size:16px;padding:11px 12px;outline:none}
+.chip .mues{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:7px;vertical-align:-2px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+.campo{width:100%;min-height:46px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-size:16px;padding:0 12px;outline:none}
+.campo::placeholder{color:rgba(255,255,255,.4)}
 .campo:focus{border-color:var(--cian)}
+.dos-campos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .deslizar{display:flex;align-items:center;gap:14px}
 .deslizar input{flex:1;accent-color:var(--cian)}
-.deslizar output{font-family:"Share Tech Mono",monospace;font-size:18px;min-width:6.2em;text-align:right;color:var(--cian)}
-.llave{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;cursor:pointer}
-.llave input{appearance:none;width:46px;height:26px;border-radius:13px;background:rgba(255,255,255,.18);position:relative;cursor:pointer;transition:background .2s;flex:none}
+.deslizar output{font-family:"Share Tech Mono",monospace;font-size:18px;min-width:6.4em;text-align:right;color:var(--cian)}
+.llaves{display:flex;flex-direction:column;gap:4px}
+.llave{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;cursor:pointer;min-height:42px}
+.llave input{appearance:none;-webkit-appearance:none;width:46px;height:26px;border-radius:13px;background:rgba(255,255,255,.18);position:relative;cursor:pointer;transition:background .2s;flex:none}
 .llave input::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .25s var(--suave)}
 .llave input:checked{background:var(--azul)}
 .llave input:checked::after{transform:translateX(20px)}
-.usado .btn{width:100%;font-size:17px;padding:16px;background:#fff;color:var(--tinta)}
+.usado .btn{width:100%;font-size:17px;min-height:56px;background:#fff;color:var(--tinta)}
 .usado .btn:hover{background:#E6E8EC}
 
 /* 4 · nota + mapa */
-.llegar{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;background:#fff}
+.llegar{background:#fff}
+.llegar-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;max-width:var(--ancho);margin:0 auto}
 .nota-g .grande{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:clamp(140px,16vw,250px);line-height:.82}
 .estrellas{display:flex;gap:6px;margin:16px 0 10px;color:var(--azul)}
 .estrellas svg{width:26px;height:26px}
@@ -196,53 +280,100 @@ section{scroll-margin-top:70px}
 .cierre div{position:relative;z-index:2}
 .cierre h2{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(62px,8vw,140px);line-height:.88;max-width:12ch;margin:0 auto 16px;text-wrap:balance}
 .cierre p{font-size:19px;margin-bottom:30px;color:rgba(255,255,255,.9)}
-.cierre .btn{font-size:18px;padding:18px 30px}
+.cierre .btn{font-size:18px;padding:0 30px;min-height:58px}
 .pie{background:var(--asfalto);color:rgba(255,255,255,.7);padding:34px 110px 84px 48px;display:flex;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
 .pie a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
 
 .muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-size:12.5px;font-weight:800;color:#fff;background:rgba(15,17,20,.88);padding:7px 12px;border-radius:999px}
 .flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(0,0,0,.5)}
 .flotante svg{width:30px;height:30px}
-.aviso{position:fixed;z-index:80;left:50%;bottom:96px;transform:translate(-50%,20px);max-width:min(92vw,460px);background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;
-  font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--suave)}
-.aviso.ver{opacity:1;transform:translate(-50%,0)}
+.aviso{position:fixed;z-index:90;left:16px;right:16px;margin:0 auto;width:fit-content;bottom:96px;transform:translateY(20px);max-width:460px;background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;
+  font-size:15.5px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--suave);box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
+.aviso.ver{opacity:1;transform:none}
 
-@media (max-width:1100px){.stock{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1700px){:root{--ancho:1440px}.stock-zona{grid-template-columns:330px minmax(0,1fr)}}
+@media (max-width:1180px){.stock{grid-template-columns:repeat(2,minmax(0,1fr))}.mandos{grid-template-columns:1fr 1fr}.mandos .panel-m:last-child{grid-column:1 / -1}}
+@media (max-width:1060px){
+  .ficha{grid-template-columns:1fr;max-width:720px}
+  .f-der{padding:4px 0 0}
+}
 @media (max-width:860px){
-  .barra{height:60px;padding:0 12px 0 16px}
+  :root{--barra:60px}
+  .barra{padding:0 12px 0 16px}
   .nav{display:none}
-  .marca{font-size:22px;max-width:56vw}
-  .texto{padding:78px 16px 92px}
+  .marca{font-size:22px;max-width:52vw}
+  .barra .btn{min-height:44px;padding:0 14px;font-size:14.5px}
+  .intro{height:165vh}
+  .texto{padding:76px 16px 88px}
   .texto .tipo{font-size:15px}
-  .texto h1{font-size:clamp(40px,12.5vw,58px)}
-  .texto .bajada{font-size:15.5px;margin-top:12px}
-  .acciones .btn{font-size:15px;padding:14px 18px}
-  .ejemplo-h{top:auto;bottom:62px;right:auto;left:50%;transform:translateX(-50%);font-size:11.5px;white-space:nowrap}
-  .sec{padding:72px 16px}
-  .cabeza{display:block;margin-bottom:22px}
-  .cabeza h2{font-size:54px}
+  .texto h1{font-size:clamp(40px,12.6vw,56px);line-height:.95;margin-top:6px}
+  .texto h1.largo{font-size:clamp(34px,9.6vw,44px)}
+  .texto .bajada{font-size:15.5px;margin-top:12px;max-width:22em}
+  .acciones .btn{font-size:15.5px;padding:0 18px;min-height:50px}
+  .ejemplo-h{top:auto;bottom:58px;right:auto;left:50%;transform:translateX(-50%);font-size:12px;white-space:nowrap}
+  .sec{padding:76px 16px}
+  .cabeza{display:block;margin-bottom:24px}
+  .cabeza :is(h1,h2){font-size:54px}
   .cabeza p{font-size:15.5px;margin-top:12px}
-  .filtros{gap:12px}
-  .filtros .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none;width:calc(100% + 32px)}
-  .filtros .chips::-webkit-scrollbar{display:none}
-  .chip{flex:none;font-size:14px;padding:9px 13px}
-  .tope{margin-left:0;width:100%}
-  .tope input{flex:1;width:auto}
+  .stock-zona{display:block}
+  .filtros{position:static;background:none;box-shadow:none;padding:0;border-radius:0}
+  .f-tipo h3{display:none}
+  .f-tipo .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none}
+  .f-tipo .chips::-webkit-scrollbar{display:none}
+  .chip,.filtros .chip{flex:none;font-size:14.5px;min-height:44px;padding:0 14px}
+  .filtros{max-height:none;overflow:visible}
+  /* en el celular, el resto de los filtros va en una hoja que sube desde abajo */
+  .f-mas{position:fixed;left:0;right:0;bottom:0;z-index:72;background:#fff;border-radius:22px 22px 0 0;max-height:88svh;display:flex;flex-direction:column;
+    transform:translateY(105%);visibility:hidden;transition:transform .45s var(--suave),visibility 0s .45s;box-shadow:0 -20px 50px -20px rgba(0,0,0,.4)}
+  .f-mas.abierta{transform:none;visibility:visible;transition:transform .45s var(--suave),visibility 0s}
+  .f-mas-cab{display:flex;align-items:center;justify-content:space-between;padding:12px 12px 6px 20px;font-size:20px;font-weight:800}
+  .f-mas-cab button{width:44px;height:44px;display:grid;place-items:center}
+  .f-mas-cuerpo{overflow-y:auto;padding:4px 20px 8px;overscroll-behavior:contain}
+  .f-mas .f-grupo:first-child{margin-top:6px}
+  .f-mas-pie{margin:0;padding:12px 20px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--linea);justify-content:space-between}
+  .f-mas-pie .btn{display:inline-flex;flex:1;font-size:16px;min-height:52px}
+  .f-limpiar{padding:0 6px}
+  .f-fondo{display:block;position:fixed;inset:0;z-index:71;background:rgba(8,10,13,.5);opacity:0;pointer-events:none;transition:opacity .35s}
+  .f-fondo.ver{opacity:1;pointer-events:auto}
+  .res-barra{margin:14px 0 12px;flex-wrap:wrap}
+  .cuenta{font-size:14.5px;order:2;width:100%}
+  .res-acc{width:100%;order:1}
+  .f-abrir{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:10px;background:var(--tinta);color:#fff;font-weight:800;font-size:15px;flex:none}
+  .f-abrir .ico{width:18px;height:18px}
+  .f-abrir em{font-style:normal;background:var(--cian);color:var(--tinta);border-radius:999px;font-size:12.5px;min-width:22px;height:22px;display:grid;place-items:center;padding:0 6px}
+  .orden{margin-left:auto}
+  .orden > span{display:none}
+  .orden select{font-size:14.5px;max-width:52vw}
   .stock{grid-template-columns:1fr 1fr;gap:10px}
-  .auto .datos{padding:10px 11px 12px;gap:6px}
-  .auto .nom-a{font-size:14.5px}
+  .auto .datos{padding:10px 11px 12px;gap:5px}
+  .auto .nom-a{font-size:15px}
+  .auto .ver-a{font-size:12.5px;margin-top:-2px}
   .anio{font-size:12.5px}
-  .odo{font-size:11.5px;padding:2px 5px}
-  .precio{font-size:21px}
-  .ver{display:none}
-  .auto .tipo-a{font-size:11px;left:8px;top:8px;padding:4px 8px}
-  .ficha{top:auto;width:100%;max-height:92svh;border-radius:20px 20px 0 0}
-  .ficha h3{font-size:32px}
-  .tablero{grid-template-columns:1fr 1fr;border-radius:120px 120px 24px 24px;padding:26px 16px 18px;gap:10px}
+  .odo{font-size:12px;padding:2px 5px}
+  .tags-a{font-size:12px}
+  .precio{font-size:22px}
+  .auto .ver{display:none}
+  .auto .tipo-a{font-size:12px;left:8px;top:8px;padding:4px 8px}
+  .auto .n-fotos{font-size:12px;right:7px;bottom:7px;padding:3px 7px}
+  .ficha{display:flex;flex-direction:column;align-items:stretch;padding:0;border-radius:0;box-shadow:none;background:none;gap:0}
+  .f-der,.f-der > *,.caja-f > *{min-width:0;max-width:100%}
+  /* en el celular: fotos, lo importante y lo que se elige; la ficha técnica al final */
+  .f-izq{display:contents}
+  .galeria{order:0;flex:none}.f-der{order:1;flex:none;min-height:0}.specs{order:2;flex:none;padding:0 0 10px}
+  .gal-tira{aspect-ratio:4/3}
+  .gal-flecha,.gal-mini{display:none}
+  .gal-n{left:12px;bottom:12px}.gal-ej{right:12px;bottom:12px}
+  .specs{grid-template-columns:1fr 1fr}
+  .f-der{padding:18px 0 26px;gap:14px}
+  .f-titulo h1{font-size:32px;padding-right:0}
+  .f-precio b{font-size:36px}
+  .dias{margin:0 -16px}
+  .tablero{grid-template-columns:1fr 1fr;border-radius:120px 120px 24px 24px;padding:26px 16px 18px;gap:12px}
   .pantalla{grid-column:1 / -1;order:3;min-height:0}
-  .pantalla .p2{font-size:22px}
-  .mandos{grid-template-columns:1fr}
-  .llegar{display:block}
+  .pantalla .p2{font-size:21px}
+  .mandos{grid-template-columns:1fr;gap:14px}
+  .panel-m{padding:18px 16px}
+  .llegar-in{display:block}
   .nota-g .grande{font-size:140px}
   .mapa{margin-top:32px;aspect-ratio:4/3.4}
   .cierre{min-height:68vh;padding:88px 18px}
@@ -250,112 +381,552 @@ section{scroll-margin-top:70px}
   .cierre p{font-size:16.5px}
   .pie{display:block;padding:26px 18px 84px;font-size:13.5px}
   .pie p+p{margin-top:10px}
-  .muestra{left:12px;bottom:12px;font-size:11.5px}
+  .muestra{left:12px;bottom:12px;font-size:12px}
   .flotante{right:14px;bottom:14px;width:56px;height:56px}
 }
-@media (prefers-reduced-motion: reduce) and (max-width: 0px){html{scroll-behavior:auto}}
+
+/* ── v3 · el sitio ── */
+.nav a{padding:10px 0}
+.nav a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 var(--cian)}
+.tabs{display:none}
+.pag{padding-top:calc(var(--barra) + 56px)}
+.link{font-weight:800;color:var(--azul);display:inline-flex;align-items:center;min-height:44px}
+.sel{appearance:none;-webkit-appearance:none;width:100%;min-height:48px;padding:0 40px 0 14px;border-radius:10px;border:0;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(20,23,28,.15);font-weight:800;font-size:15.5px;color:var(--tinta);cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z' fill='%2314171C'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:20px}
+/* tipos */
+.tipos{background:#fff}
+.tipos-g{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.25fr;gap:14px;max-width:var(--ancho);margin:0 auto}
+.tipo-p{position:relative;display:block;height:clamp(300px,28vw,420px);border-radius:18px;overflow:hidden;background:#1a1d22;color:#fff;isolation:isolate}
+.tipo-p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--suave)}
+.tipo-p:hover img{transform:scale(1.05)}
+.tipo-p::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,9,11,0) 42%,rgba(8,9,11,.84))}
+.tipo-t{position:absolute;left:18px;bottom:44px;z-index:2;font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:clamp(40px,3.6vw,62px);line-height:.9;text-transform:uppercase}
+.tipo-s{position:absolute;left:18px;right:14px;bottom:16px;z-index:2;font-size:14px;font-weight:700;color:rgba(255,255,255,.88)}
+.persiana{position:absolute;inset:0;z-index:3;background:repeating-linear-gradient(180deg,#2C3037 0 15px,#1B1E23 15px 17px,#3A3F47 17px 18px);box-shadow:inset 0 -7px 0 #121417}
+/* recomendador */
+.reco-in{display:grid;grid-template-columns:400px minmax(0,1fr);gap:28px;max-width:var(--ancho);margin:0 auto;align-items:start}
+.reco-preg{background:var(--tinta);color:#fff;border-radius:20px;padding:24px 24px 20px;display:flex;flex-direction:column;gap:22px;position:sticky;top:calc(var(--barra) + 20px)}
+.preg h3{font-size:16px;font-weight:800;color:rgba(255,255,255,.78)}
+.grande-v output{display:block;font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:44px;line-height:1;margin:6px 0 2px}
+.reco-preg input[type=range]{accent-color:var(--cian)}
+.reco-preg .llave{margin-top:6px}
+.reco-preg .chip{background:rgba(255,255,255,.07);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);display:inline-flex;align-items:center;gap:7px;min-height:44px}
+.reco-preg .chip.on{background:#fff;color:var(--tinta)}
+.usos{margin-top:10px}
+.reco-res{display:flex;flex-direction:column;gap:12px;min-width:0}
+.reco-titulo{font-size:18px;font-weight:800}
+.reco-lista{display:flex;flex-direction:column;gap:12px}
+.r-auto{display:grid;grid-template-columns:210px minmax(0,1fr);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px var(--linea),0 20px 40px -34px rgba(20,23,28,.6);transition:box-shadow .25s}
+.r-auto.on{box-shadow:0 0 0 2px var(--azul),0 20px 40px -30px rgba(31,79,209,.5)}
+.r-foto{display:block;position:relative;min-height:160px;background:#dfe2e6}
+.r-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.r-dat{padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:start}
+.r-nom{font-weight:800;font-size:18px;line-height:1.2}
+.r-nom span{display:block;font-size:14px;font-weight:700;color:var(--gris);margin-top:2px}
+.r-elegir{grid-column:2;grid-row:1;min-height:44px;padding:0 16px;border-radius:999px;font-weight:800;font-size:14px;box-shadow:inset 0 0 0 1.5px rgba(20,23,28,.2);white-space:nowrap}
+.r-auto.on .r-elegir{background:var(--azul);color:#fff;box-shadow:none}
+.r-plata{grid-column:1 / -1;font-size:15.5px}
+.r-plata b{font-family:"Saira Condensed",sans-serif;font-size:27px;font-weight:800}
+.r-auto.casi .r-plata{color:#B4441F;font-weight:800}
+.r-barra{grid-column:1 / -1;display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;color:var(--gris)}
+.r-barra > span{flex:1;max-width:220px;height:6px;border-radius:3px;background:#E3E6EB;overflow:hidden}
+.r-barra i{display:block;height:100%;background:var(--azul);border-radius:3px}
+.r-por{grid-column:1 / -1;font-size:14.5px;line-height:1.4}
+.reco-casi{font-size:15px;font-weight:700;color:var(--gris)}
+.reco-casi a{color:var(--azul);border-bottom:1.5px solid currentColor}
+.reco-res .btn{min-height:54px;font-size:16.5px}
+/* destacados y puertas */
+.dest,.puertas{background:#fff}
+.dest-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:var(--ancho);margin:0 auto}
+.puertas{padding-top:0}
+.puertas-g{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:var(--ancho);margin:0 auto}
+.puerta{position:relative;display:flex;flex-direction:column;gap:8px;min-height:260px;padding:28px;border-radius:20px;overflow:hidden;color:#fff;transition:background .3s}
+.p-fin{background:var(--azul)}.p-fin:hover{background:var(--azul2)}
+.p-usado{background:var(--tinta)}.p-usado:hover{background:#000}
+.p-t{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:40px;line-height:.95;text-transform:uppercase}
+.p-num{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:66px;line-height:1}
+.p-s{font-size:16px;line-height:1.45;color:rgba(255,255,255,.86);max-width:24em}
+.p-ir{margin-top:auto;font-weight:800;font-size:16px}
+.p-reloj{position:absolute;right:24px;top:22px;width:150px}
+/* entregas */
+.opis{background:var(--claro)}
+.opis .nota-g{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:16px;font-weight:700}
+.opis .nota-g b{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:64px;line-height:1}
+.opis .estrellas{margin:0;gap:3px}
+.opis .estrellas svg{width:22px;height:22px}
+.opis .nota-g a{margin:0;padding:0;color:var(--azul);border-bottom:1.5px solid currentColor;display:inline}
+.opis-ej{display:block;max-width:var(--ancho);margin:-14px auto 10px}
+.llavero{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;max-width:var(--ancho);margin:0 auto;padding-top:56px}
+.llavero::before{content:"";position:absolute;left:-10px;right:-10px;top:8px;height:12px;border-radius:6px;background:linear-gradient(180deg,#BCC3CB,#6E7680);box-shadow:0 6px 12px -6px rgba(0,0,0,.4)}
+.llave-t{position:relative;margin:0;background:#EDE3CC;color:#2B2418;border-radius:12px 12px 16px 16px;padding:38px 20px 20px;transform-origin:50% -36px;box-shadow:0 22px 34px -26px rgba(43,36,24,.7)}
+.llave-t::before{content:"";position:absolute;left:50%;top:-36px;width:2px;height:46px;margin-left:-1px;background:#7D6B48}
+.llave-t::after{content:"";position:absolute;left:50%;top:-42px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#8D959F}
+.ojal{position:absolute;left:50%;top:10px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--claro);box-shadow:inset 0 0 0 3px #C2AE84}
+.llave-t b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:26px;line-height:1;text-transform:uppercase}
+.llave-t .est{display:block;color:#A86F0C;letter-spacing:2px;margin:8px 0 6px;font-size:15px}
+.llave-t blockquote{font-size:15.5px;line-height:1.45}
+.quien{display:block;margin-top:12px;font-weight:800;font-size:14px;color:#6B5B3C}
+/* dónde */
+.donde-s{background:#fff}
+.donde-in{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;max-width:var(--ancho);margin:0 auto;align-items:stretch}
+.donde-s .mapa{aspect-ratio:auto;min-height:460px;margin:0}
+.donde-der{display:flex;flex-direction:column;gap:18px;min-width:0}
+.horario,.listo{border-radius:18px;padding:20px;box-shadow:inset 0 0 0 1.5px var(--linea)}
+.horario h3,.listo h3{font-size:17px;font-weight:800;margin-bottom:10px}
+.horario ul{list-style:none}
+.horario li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--linea);font-size:15.5px}
+.horario li:first-child{border-top:0}
+.horario li.hoy{font-weight:800}
+.horario li em{font-style:normal;font-size:12.5px;background:var(--tinta);color:#fff;border-radius:999px;padding:2px 8px;margin-left:6px}
+.listo{display:flex;flex-direction:column;gap:12px;background:var(--claro);box-shadow:none;min-width:0}
+.listo h3{margin:0}
+.listo .dias{margin:0 -20px;padding:0 20px 2px}
+.listo .btn{min-height:52px;font-size:16px}
+/* ficha */
+.ficha-pag,.fin-pag{background:var(--claro)}
+.miga{display:flex;align-items:center;gap:14px;flex-wrap:wrap;max-width:var(--ancho);margin:0 auto 12px;font-size:14.5px;font-weight:700;color:var(--gris)}
+.miga a{display:inline-flex;align-items:center;gap:6px;color:var(--azul);font-weight:800;min-height:44px}
+.miga svg{width:20px;height:20px;fill:currentColor}
+.ficha .galeria{border-radius:14px;overflow:hidden}
+.ficha .gal-mini{padding:10px 0 0}
+.ficha .specs{padding:20px 0 0}
+.f-links{display:flex;flex-wrap:wrap;gap:0 22px;justify-content:center}
+.parecidos{max-width:var(--ancho);margin:48px auto 0}
+.parecidos h2{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;font-size:44px;line-height:1;margin-bottom:18px}
+.parecidos .stock{grid-template-columns:repeat(4,minmax(0,1fr))}
+/* financiación */
+.simu{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;max-width:var(--ancho);margin:0 auto}
+.simu-mandos{background:#fff;border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:22px;box-shadow:0 0 0 1px var(--linea)}
+.campo-l > span{display:block;font-size:14px;font-weight:800;color:var(--gris);margin-bottom:8px}
+.simu-mandos .llave input,.donde-s .llave input{background:rgba(20,23,28,.2)}
+.simu-mandos .llave input:checked{background:var(--azul)}
+.simu-res{background:#0D0F12;color:#fff;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.r1{font-size:15px;font-weight:700;color:rgba(255,255,255,.72)}
+.r-cuota{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:clamp(64px,7vw,104px);line-height:.9}
+.r-cuota small{font-family:Manrope,sans-serif;font-size:16px;font-weight:700;color:rgba(255,255,255,.72)}
+.barra-p{display:flex;height:14px;border-radius:7px;overflow:hidden;background:#20242B}
+.barra-p i{display:block;height:100%;width:0}
+#s-b-ant{background:var(--cian)}#s-b-fin{background:rgba(255,255,255,.85)}
+.r-leyenda{display:flex;gap:18px;font-size:13px;color:rgba(255,255,255,.75)}
+.pt{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.pt.a{background:var(--cian)}.pt.f{background:rgba(255,255,255,.85)}
+.r-filas{display:grid;grid-template-columns:1fr auto;border-top:1px solid rgba(255,255,255,.12)}
+.r-filas dt,.r-filas dd{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:15.5px}
+.r-filas dt{color:rgba(255,255,255,.7)}.r-filas dd{text-align:right;font-weight:800}
+.simu-res .cuota-n{color:rgba(255,255,255,.62);margin:0}
+.req{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:var(--ancho);margin:20px auto 0}
+.req-izq,.req-der{background:#fff;border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 1px var(--linea);min-width:0}
+.req h2{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;font-size:38px;line-height:1}
+.req-der p:not(.burbuja){font-size:15.5px;color:var(--gris);line-height:1.45}
+.req-lista{display:flex;flex-direction:column;gap:8px}
+.req-i{display:flex;align-items:center;gap:12px;min-height:56px;padding:0 14px;border-radius:12px;background:var(--claro);text-align:left;font-weight:700;font-size:15px;width:100%;transition:background .25s}
+.req-i .ico{width:24px;height:24px;color:var(--gris)}
+.req-i span{flex:1}
+.req-i em{font-style:normal;font-size:13px;font-weight:800;color:var(--gris);white-space:nowrap}
+.req-i.on{background:#E6F6EC}
+.req-i.on .ico,.req-i.on em{color:#1E7F47}
+.req-der .btn{min-height:54px;font-size:16.5px}
+@media (max-width:1180px){.dest-g,.parecidos .stock{grid-template-columns:repeat(2,minmax(0,1fr))}.tipos-g{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){
+  :root{--tabs:64px}
+  .tabs{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;z-index:45;left:0;right:0;bottom:0;height:calc(var(--tabs) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);
+    background:rgba(13,15,18,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:rgba(255,255,255,.66);box-shadow:0 -1px 0 rgba(255,255,255,.08)}
+  .tabs a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;font-weight:700;min-height:44px}
+  .tabs svg{width:24px;height:24px;fill:currentColor}
+  .tabs a[aria-current]{color:#fff}.tabs a[aria-current] svg{fill:var(--cian)}
+  .muestra{bottom:calc(var(--tabs) + 10px + env(safe-area-inset-bottom))}
+  .flotante{bottom:calc(var(--tabs) + 12px + env(safe-area-inset-bottom))}
+  .aviso{bottom:calc(var(--tabs) + 84px)}
+  .marca{max-width:44vw}
+  .barra .btn{font-size:14px;padding:0 12px}
+  .texto{padding:72px 16px 118px}
+  .texto .acciones .claro{display:none}
+  .ejemplo-h{top:calc(var(--barra) + 10px);bottom:auto;left:auto;right:12px;transform:none}
+  .pie{padding-bottom:150px}
+  .pag{padding-top:calc(var(--barra) + 26px)}
+  .tipos-g{grid-template-columns:1fr 1fr;gap:10px}
+  .tipo-p{height:196px;border-radius:14px}
+  .tipo-t{font-size:34px;left:12px;bottom:36px}.tipo-s{left:12px;bottom:12px;font-size:12.5px}
+  .reco-in{display:flex;flex-direction:column;gap:16px}
+  .reco-preg{position:static;padding:18px 16px;gap:16px}
+  .grande-v output{font-size:36px}
+  .usos .ico{display:none}
+  .r-auto{grid-template-columns:112px minmax(0,1fr)}
+  .r-foto{min-height:0}
+  .r-dat{padding:10px 12px 12px;grid-template-columns:1fr;gap:5px}
+  .r-elegir{grid-column:1;grid-row:auto;justify-self:start}
+  .r-nom{font-size:16px}.r-plata b{font-size:23px}.r-plata{font-size:14.5px}.r-por{font-size:14px}
+  .dest-g,.parecidos .stock{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 6px;gap:10px;scrollbar-width:none}
+  .dest-g .auto,.parecidos .auto{flex:0 0 64%;scroll-snap-align:start}
+  .puertas-g{grid-template-columns:1fr;gap:10px}
+  .puerta{min-height:0;padding:20px}
+  .p-t{font-size:30px}.p-num{font-size:48px}.p-s{font-size:14.5px}
+  .p-reloj{width:96px;right:16px;top:16px}
+  .opis .nota-g b{font-size:52px}
+  .llavero{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:56px 16px 10px;gap:12px;scrollbar-width:none}
+  .llavero::before{display:none}
+  .llave-t{flex:0 0 76%;scroll-snap-align:center}
+  .donde-in{display:flex;flex-direction:column}
+  .donde-s .mapa{min-height:0;aspect-ratio:4/3.2;width:100%}
+  .ficha .galeria{margin:0 -16px;border-radius:0}
+  .parecidos{margin-top:28px}.parecidos h2{font-size:34px}
+  .simu,.req{grid-template-columns:1fr}
+  .simu-mandos,.simu-res,.req-izq,.req-der{padding:18px 16px}
+  .req h2{font-size:30px}
+}
+.nav a{padding:12px 0}
+@media (max-width:860px){
+  .intro{height:140vh}
+  .sec{padding:48px 16px}
+  .pag{padding-top:calc(var(--barra) + 22px)}
+  .cabeza{margin-bottom:20px}
+  .cabeza :is(h1,h2){font-size:46px}
+  .tipos .cabeza p{display:none}
+  .tipo-t{bottom:52px}
+  .puertas{padding-top:0}
+  .puertas-g{grid-template-columns:1fr 1fr}
+  .puerta{padding:16px 14px;gap:6px}
+  .p-t{font-size:22px}.p-num{font-size:38px}.p-s{display:none}.p-ir{font-size:14px}
+  .p-reloj{position:static;width:84px}
+  .cierre{min-height:46vh;padding:64px 18px}
+  .cierre h2{font-size:48px}
+  .opciones-f .chip,.caja-f .chips .chip{min-height:44px}
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 0px){html{scroll-behavior:auto}.f-mas,.f-mas.abierta{transition:none}}
 </style></head><body>
 
-<header class="barra"><a class="marca" href="#arriba" data-n>Su concesionaria</a>
-  <nav class="nav"><a href="#stock">Los autos</a><a href="#usado">Tomamos tu usado</a><a href="#llegar">Dónde estamos</a></nav>
-  <a class="btn" href="#stock">Ver los autos</a></header>
+<header class="barra"><a class="marca" data-ir="inicio" data-n>Su concesionaria</a>
+  <nav class="nav"><a data-ir="inicio">Inicio</a><a data-ir="stock">Los autos</a><a data-ir="financiacion">Financiación</a><a data-ir="usado">Tomamos tu usado</a><a data-ancla="donde">Dónde estamos</a></nav>
+  <a class="btn" data-ancla="reco">¿Cuál me conviene?</a></header>
+<nav class="tabs" aria-label="Secciones"><a data-ir="inicio" data-ico="casa">Inicio</a><a data-ir="stock" data-ico="auto">Autos</a><a data-ir="financiacion" data-ico="cuotas">Cuotas</a><a data-ir="usado" data-ico="canje">Tu usado</a><a data-ancla="donde" data-ico="lugar">Dónde</a></nav>
 
-<section class="intro" id="arriba">
+<div data-pagina="inicio">
+<section class="intro espera" id="arriba">
   <div class="intro-fijo">
     <div class="escena" id="escena">
-      <img id="foto-portada" alt="Auto de frente, de noche, con las luces prendidas, en un muelle frente a la ciudad." fetchpriority="high" decoding="async">
-      <span class="faro i" aria-hidden="true"></span><span class="faro d" aria-hidden="true"></span>
-      <div class="porta" id="porta" aria-hidden="true">
-        <span class="porta-arriba" id="porta-arriba">BUENOS AIRES</span>
-        <div class="placa"><b id="placa-n">SU CONCESIONARIA</b></div>
-        <span class="noche"></span><span class="brillo" id="brillo"></span>
-      </div>
+      <img id="foto-baja" alt="" fetchpriority="high">
+      <img id="foto-portada" alt="Auto de frente, de noche, con las luces prendidas." decoding="async">
+    </div>
+    <div class="apagon" id="apagon"></div>
+    <div class="haz" id="haz"></div>
+    <span class="faro" aria-hidden="true"></span><span class="faro" aria-hidden="true"></span>
+    <div class="porta" id="porta" aria-hidden="true">
+      <span class="porta-arriba" id="porta-arriba">BUENOS AIRES</span>
+      <div class="placa"><b id="placa-n">SU CONCESIONARIA</b></div>
+      <span class="noche"></span><span class="sombra-p"></span><span class="brillo" id="brillo"></span>
     </div>
     <div class="velo" id="velo"></div>
     <div class="texto">
-      <p class="tipo" id="tipo">Autos usados</p>
       <h1 id="titulo" data-n>Su concesionaria</h1>
-      <p class="bajada" id="bajada">Mirá los autos que tenemos, consultá por WhatsApp y traé tu usado como parte de pago.</p>
-      <div class="acciones"><a class="btn" href="#stock">Ver los autos</a><a class="btn claro" href="#usado">Cotizá tu usado</a></div>
+      <p class="bajada" id="bajada">Mirá los autos, decinos cuánto querés pagar por mes y te mostramos cuáles te entran. Tu usado lo tomamos como parte de pago.</p>
+      <div class="abajo"><p class="tipo" id="tipo">Autos usados</p>
+      <div class="acciones"><a class="btn" data-ir="stock">Ver los autos</a><a class="btn claro" data-ancla="reco">¿Cuál me conviene?</a></div></div>
     </div>
     <span class="ejemplo-h">Foto de ejemplo</span>
   </div>
 </section>
 
-<section class="sec" id="stock">
-  <div class="cabeza"><h2>Los autos <em>que tenemos</em></h2><p>Filtrá por tipo y por precio. Tocá un auto para ver su ficha y consultar por él.<br><span class="nota-ej">Autos, precios y kilómetros de ejemplo</span></p></div>
-  <div class="filtros">
-    <div class="chips" id="g-tipo"></div>
-    <label class="tope">Hasta <input type="range" id="tope" min="9000" max="45000" step="1000" value="45000" aria-label="Precio máximo"><output id="tope-v">USD 45.000</output></label>
-    <span class="cuenta" id="cuenta"></span>
-  </div>
-  <p class="vacio-s" id="vacio" hidden>No hay autos con esos filtros. Probá subir el precio o elegir otro tipo.</p>
-  <div class="stock" id="lista"></div>
+<section class="sec tipos" id="tipos">
+  <div class="cabeza"><h2>¿Qué <em>estás buscando?</em></h2><p>Entrá directo a los autos de cada tipo.<br><span class="nota-ej">Autos y precios de ejemplo</span></p></div>
+  <div class="tipos-g" id="tipos-g"></div>
 </section>
 
-<section class="sec usado" id="usado">
-  <div class="cabeza"><h2>Tomamos <em>tu usado</em></h2><p>Contanos qué auto tenés: el tablero arma el pedido y te pasamos cuánto te lo tomamos.<br><span class="nota-ej">Cotización a confirmar en la agencia</span></p></div>
+<section class="sec reco" id="reco">
+  <div class="cabeza"><h2>¿Cuál <em>te conviene?</em></h2><p>Contanos cuánto podés pagar y para qué lo querés: te mostramos los autos del salón que entran en tu cuota, y por qué.</p></div>
+  <div class="reco-in">
+    <div class="reco-preg">
+      <div class="preg"><h3>¿Cuánto querés pagar por mes?</h3><div class="grande-v"><output id="r-cuota-v">USD 400</output></div><input type="range" id="r-cuota" min="150" max="1200" step="25" value="400" aria-label="Cuota por mes"></div>
+      <div class="preg"><h3 id="r-ant-l">¿Cuánto tenés de anticipo?</h3><div class="grande-v"><output id="r-ant-v">USD 8.000</output></div><input type="range" id="r-ant" min="0" max="30000" step="500" value="8000" aria-label="Anticipo">
+        <label class="llave"><input type="checkbox" id="r-usado">Entrego mi usado como parte</label></div>
+      <div class="preg"><h3>¿Para qué lo usás?</h3><div class="chips usos" id="r-uso"></div></div>
+    </div>
+    <div class="reco-res">
+      <p class="reco-titulo" id="r-titulo"></p>
+      <div class="reco-lista" id="r-lista"></div>
+      <p class="reco-casi" id="r-casi" hidden></p>
+      <p class="burbuja" id="r-burbuja">…<small>ahora</small></p>
+      <button class="btn" type="button" data-wsp><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Consultar por WhatsApp</button>
+      <span class="nota-ej">Cuotas de ejemplo, sujetas a aprobación del crédito</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec dest" id="dest">
+  <div class="cabeza"><h2>Recién <em>llegados</em></h2><p>Los últimos que entraron al salón. <a class="link" data-ir="stock">Ver los <span id="n-autos">11</span> autos →</a></p></div>
+  <div class="dest-g" id="dest-g"></div>
+</section>
+
+<section class="sec puertas">
+  <div class="puertas-g">
+    <a class="puerta p-fin" data-ir="financiacion"><span class="p-t">Financiación</span><b class="p-num" id="p-num">USD 0</b><span class="p-s">por mes: el auto más accesible del salón, con la mitad de anticipo y 48 cuotas. Simulá la tuya y pedí la preaprobación.</span><span class="p-ir">Simulá tu cuota →</span></a>
+    <a class="puerta p-usado" data-ir="usado"><svg class="p-reloj" viewBox="0 0 120 70" aria-hidden="true"><path d="M10 64a50 50 0 0 1 100 0" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="6" stroke-linecap="round"/><path id="p-arco" d="M10 64a50 50 0 0 1 100 0" fill="none" stroke="#3CCFFF" stroke-width="6" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/><g id="p-aguja" transform="rotate(-90 60 64)"><path d="M58 64 L60 22 L62 64Z" fill="#FF5A3C"/></g><circle cx="60" cy="64" r="6" fill="#2A2F37" stroke="#5B6573"/></svg>
+      <span class="p-t">Tomamos<br>tu usado</span><span class="p-s">Contanos qué auto tenés y cómo está: te decimos cuánto te lo tomamos como parte de pago.</span><span class="p-ir">Cotizalo en el tablero →</span></a>
+  </div>
+</section>
+
+<section class="sec opis" id="opis">
+  <div class="cabeza"><h2>Ya se llevaron <em>el suyo</em></h2><div class="nota-g" id="nota-g"><b id="nota-num">4,5</b><span class="estrellas" id="estrellas"></span><span><span id="opiniones">opiniones</span> en Google · <a id="ver-opiniones" href="#" target="_blank" rel="noopener">leerlas</a></span></div></div>
+  <span class="nota-ej opis-ej">Opiniones de ejemplo: en su página van las suyas de Google</span>
+  <div class="llavero" id="llavero"></div>
+</section>
+
+<section class="sec donde-s" id="donde">
+  <div class="cabeza"><h2>Vení <em>a verlos</em></h2><p><b data-n>Su concesionaria</b> · <span data-lugar></span><br><a class="link" id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar →</a></p></div>
+  <div class="donde-in">
+    <div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="donde-der">
+      <div class="horario"><h3>Horario <span class="nota-ej">(de ejemplo)</span></h3><ul id="horario"></ul></div>
+      <div class="listo"><h3>Pedí que te lo tengamos listo para probar</h3>
+        <select class="sel" id="l-auto" aria-label="El auto que querés probar"></select>
+        <div class="chips dias" id="l-dia"></div>
+        <p class="burbuja" id="l-burbuja">…<small>ahora</small></p>
+        <button class="btn" type="button" data-wsp><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Pedir el turno por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2>Las llaves te esperan</h2><p id="c-sub"></p><a class="btn" data-ir="stock">Ver los autos</a></div></section>
+</div>
+
+<div data-pagina="stock" hidden><section class="sec pag" id="stock">
+  <div class="cabeza"><h1>Los autos <em>que tenemos</em></h1><p>Filtrá como en cualquier concesionaria: marca, año, kilómetros, combustible y caja. Tocá un auto para ver sus fotos, simular la cuota y pedir una prueba de manejo.<br><span class="nota-ej">Autos, fotos, precios y kilómetros de ejemplo</span></p></div>
+  <div class="stock-zona">
+    <aside class="filtros" id="filtros" aria-label="Filtros del stock">
+      <div class="f-grupo f-tipo"><h3>Tipo</h3><div class="chips" id="g-tipo"></div></div>
+      <div class="f-fondo" id="f-fondo"></div>
+      <div class="f-mas" id="f-mas" aria-label="Más filtros">
+        <div class="f-mas-cab"><span>Filtros</span><button type="button" id="f-cerrar" aria-label="Cerrar los filtros"><svg class="ico" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>
+        <div class="f-mas-cuerpo">
+          <div class="f-grupo"><h3>Marca</h3><div class="chips" id="fl-marca"></div></div>
+          <div class="f-grupo"><h3>Precio hasta <output id="tope-v">USD 42.000</output></h3><input type="range" id="tope" min="11000" max="42000" step="1000" value="42000" aria-label="Precio máximo"></div>
+          <div class="f-grupo"><h3>Año desde <output id="fl-anio-v">2012</output></h3><input type="range" id="fl-anio" min="2012" max="2021" step="1" value="2012" aria-label="Año desde"></div>
+          <div class="f-grupo"><h3>Kilómetros hasta <output id="fl-km-v">150.000 km</output></h3><input type="range" id="fl-km" min="40000" max="150000" step="10000" value="150000" aria-label="Kilómetros hasta"></div>
+          <div class="f-grupo"><h3>Combustible</h3><div class="chips" id="fl-comb"></div></div>
+          <div class="f-grupo"><h3>Caja</h3><div class="chips" id="fl-caja"></div></div>
+        </div>
+        <div class="f-mas-pie"><button type="button" class="f-limpiar" id="f-limpiar">Limpiar filtros</button><button type="button" class="btn" id="f-ver">Ver los autos</button></div>
+      </div>
+    </aside>
+    <div class="resultados">
+      <div class="res-barra">
+        <span class="cuenta" id="cuenta" aria-live="polite"></span>
+        <div class="res-acc">
+          <button type="button" class="f-abrir" id="f-abrir"><svg class="ico" viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>Filtros<em id="f-n" hidden></em></button>
+          <label class="orden"><span>Ordenar</span> <select id="orden" aria-label="Ordenar"><option value="dest">Destacados</option><option value="precio">Menor precio</option><option value="km">Menos kilómetros</option><option value="anio">Más nuevos</option></select></label>
+        </div>
+      </div>
+      <div class="stock" id="lista"></div>
+    </div>
+  </div>
+</section></div>
+
+<div data-pagina="auto" hidden><section class="sec pag ficha-pag">
+  <nav class="miga"><a data-ir="stock" data-ico="atras">Todos los autos</a><span id="f-miga"></span></nav>
+  <div class="ficha" id="ficha">
+    <div class="f-izq">
+      <div class="galeria">
+        <div class="gal-tira" id="f-gal" tabindex="0" aria-label="Fotos del auto"></div>
+        <button class="gal-flecha ant" type="button" id="gal-ant" aria-label="Foto anterior"><svg class="ico" viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+        <button class="gal-flecha sig" type="button" id="gal-sig" aria-label="Foto siguiente"><svg class="ico" viewBox="0 0 24 24"><path d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+        <span class="gal-n" id="gal-n">1 / 3</span><span class="gal-ej">Fotos de ejemplo</span>
+      </div>
+      <div class="gal-mini" id="gal-mini"></div>
+      <div class="specs" id="f-specs">
+        <h4>Ficha técnica</h4>
+        <div><small>Año</small><b id="f-anio"></b></div><div><small>Motor</small><b id="f-motor"></b></div><div><small>Combustible</small><b id="f-comb"></b></div>
+        <div><small>Caja</small><b id="f-caja"></b></div><div><small>Color</small><b id="f-color"></b></div><div><small>Puertas</small><b id="f-puertas"></b></div>
+        <div><small>Dueños</small><b id="f-duenos"></b></div><div><small>Service</small><b id="f-service"></b></div><div><small>Tipo</small><b id="f-tipo"></b></div>
+        <div><small>Financiación</small><b>Hasta 48 cuotas</b></div><div><small>Garantía</small><b>3 meses</b></div><div><small>Papeles</small><b>Al día, listo para transferir</b></div>
+      </div>
+    </div>
+    <div class="f-der">
+      <div class="f-titulo"><h1 id="f-nom"></h1><p id="f-version"></p></div>
+      <div class="f-precio"><b id="f-precio"></b><span class="nota-ej">Precio de ejemplo</span></div>
+      <p class="f-extra" id="f-extra" hidden></p>
+      <div class="f-rapidos"><span class="odo-g"><span class="digitos" id="f-km">000.000</span><small>km</small></span><span id="f-rapido"></span></div>
+      <div class="opciones-f" id="f-opc"></div>
+      <div class="caja-f" id="caja-fin">
+        <div class="caja-cab"><b>Simulá la cuota</b><span>De ejemplo, sujeta a aprobación</span></div>
+        <div><div class="fila-r"><span>Anticipo</span><output id="fin-ant-v"></output></div><input type="range" id="fin-ant" min="40" max="90" step="5" value="50" aria-label="Anticipo"></div>
+        <div class="fila-r"><span>Cuotas</span></div>
+        <div class="chips cuotas-n" id="fin-cuotas"></div>
+        <div class="cuota"><span>Cuota aprox.</span><b><span id="fin-cuota">USD 0</span> <small>por mes</small></b></div>
+        <p class="cuota-n" id="fin-nota"></p>
+      </div>
+      <div class="caja-f" id="caja-prueba">
+        <div class="caja-cab"><b>Prueba de manejo</b><span>Elegí el día y la franja</span></div>
+        <div class="chips dias" id="pr-dia"></div>
+        <div class="chips" id="pr-hora"></div>
+      </div>
+      <p class="burbuja" id="f-burbuja">…<small>ahora</small></p>
+      <button class="btn" type="button" data-wsp><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Consultar por WhatsApp</button>
+      <div class="f-links"><a class="ir-usado" data-ir="financiacion" id="f-fin">Ver la financiación completa →</a><a class="ir-usado" data-ir="usado" id="f-usado">Entregá tu usado por este →</a></div>
+    </div>
+  </div>
+  <div class="parecidos"><h2>Autos parecidos</h2><div class="stock" id="parecidos"></div></div>
+</section></div>
+
+<div data-pagina="financiacion" hidden><section class="sec pag fin-pag">
+  <div class="cabeza"><h1>Financiá <em>tu auto</em></h1><p>Elegí el auto, cuánto ponés y en cuántas cuotas: te mostramos la cuota y qué papeles hacen falta.<br><span class="nota-ej">Simulación de ejemplo, sujeta a aprobación del crédito</span></p></div>
+  <div class="simu">
+    <div class="simu-mandos">
+      <label class="campo-l"><span>El auto</span><select class="sel" id="s-auto"></select></label>
+      <div><div class="fila-r"><span>Anticipo</span><output id="s-ant-v"></output></div><input type="range" id="s-ant" min="40" max="90" step="5" value="50" aria-label="Anticipo"></div>
+      <label class="llave"><input type="checkbox" id="s-usado">Parte del anticipo es mi usado</label>
+      <div><div class="fila-r"><span>Cuotas fijas</span></div><div class="chips cuotas-n" id="s-cuotas" style="margin-top:8px"></div></div>
+    </div>
+    <div class="simu-res" aria-live="polite">
+      <span class="r1">Tu cuota aproximada</span>
+      <b class="r-cuota"><span id="s-cuota">USD 0</span><small>por mes</small></b>
+      <div class="barra-p" aria-hidden="true"><i id="s-b-ant"></i><i id="s-b-fin"></i></div>
+      <div class="r-leyenda"><span><i class="pt a"></i>Anticipo</span><span><i class="pt f"></i>Lo que financiás</span></div>
+      <dl class="r-filas" id="s-filas"></dl>
+      <p class="cuota-n">Tasa de ejemplo. La cuota real depende de la aprobación del crédito.</p>
+    </div>
+  </div>
+  <div class="req">
+    <div class="req-izq"><h2>Qué se necesita</h2><span class="nota-ej">Requisitos de ejemplo: tocá los que ya tenés</span>
+      <div class="chips" id="s-cobro"></div>
+      <div class="req-lista" id="s-req"></div></div>
+    <div class="req-der"><h2>Pedí tu preaprobación</h2><p>Te armamos el mensaje con lo que elegiste: lo mandás y te contestamos si te lo aprueban y qué falta.</p>
+      <p class="burbuja" id="s-burbuja">…<small>ahora</small></p>
+      <button class="btn" type="button" data-wsp><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Pedir la preaprobación</button></div>
+  </div>
+</section></div>
+
+<div data-pagina="usado" hidden><section class="sec usado pag" id="usado">
+  <div class="cabeza"><h1>Tomamos <em>tu usado</em></h1><p>Contanos qué auto tenés y cómo está: el tablero arma el pedido y te pasamos cuánto te lo tomamos.<br><span class="nota-ej">Cotización a confirmar en la agencia</span></p></div>
   <div class="tablero">
     <div class="reloj"><svg id="reloj-anio" viewBox="0 0 200 200" role="img" aria-label="Año del auto"></svg></div>
     <div class="pantalla" aria-live="polite">
       <span class="p1">TU AUTO</span>
       <span class="p2" id="lcd-auto">VOLKSWAGEN GOL TREND</span>
       <span class="p3"><span id="lcd-anio">2016</span><span id="lcd-km">085.000 KM</span></span>
+      <span class="p5"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="lcd-silueta" fill="#A9AFB7" d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg><span id="lcd-estado">GRIS PLATA · MUY BUENO</span></span>
+      <span class="testigos">
+        <span class="testigo" id="t-gnc">GNC</span>
+        <span class="testigo" id="t-service"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>SERVICE</span>
+        <span class="testigo" id="t-dueno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>1 DUEÑO</span>
+      </span>
       <span class="p4" id="lcd-por">PARTE DE PAGO</span>
     </div>
     <div class="reloj"><svg id="reloj-km" viewBox="0 0 200 200" role="img" aria-label="Kilómetros del auto"></svg></div>
   </div>
   <div class="mandos">
     <div class="panel-m">
+      <h4>Tu auto</h4>
       <div><h3>Marca</h3><div class="chips" id="g-marca"></div></div>
-      <div><h3>Modelo</h3><input class="campo" id="modelo" value="Gol Trend" maxlength="30" aria-label="Modelo"></div>
-      <div><h3>Año</h3><div class="deslizar"><input type="range" id="anio" min="2005" max="2025" step="1" value="2016" aria-label="Año"><output id="anio-v">2016</output></div></div>
-      <div><h3>Kilómetros</h3><div class="deslizar"><input type="range" id="km" min="0" max="300000" step="5000" value="85000" aria-label="Kilómetros"><output id="km-v">85.000 km</output></div></div>
+      <div class="dos-campos">
+        <div><h3>Modelo</h3><input class="campo" id="modelo" value="Gol Trend" maxlength="30" aria-label="Modelo" autocomplete="off"></div>
+        <div><h3>Versión</h3><input class="campo" id="version" value="" placeholder="Ej.: 1.6 Highline" maxlength="24" aria-label="Versión" autocomplete="off"></div>
+      </div>
+      <div><h3>Color</h3><div class="chips" id="g-color"></div></div>
     </div>
     <div class="panel-m">
+      <h4>Cómo está</h4>
+      <div><h3>Año</h3><div class="deslizar"><input type="range" id="anio" min="2005" max="2025" step="1" value="2016" aria-label="Año"><output id="anio-v">2016</output></div></div>
+      <div><h3>Kilómetros</h3><div class="deslizar"><input type="range" id="km" min="0" max="300000" step="5000" value="85000" aria-label="Kilómetros"><output id="km-v">85.000 km</output></div></div>
+      <div><h3>Estado general</h3><div class="chips" id="g-estado"></div></div>
+      <div class="llaves">
+        <label class="llave"><input type="checkbox" id="u-dueno">Único dueño</label>
+        <label class="llave"><input type="checkbox" id="u-service">Service oficial al día</label>
+        <label class="llave"><input type="checkbox" id="u-gnc">Tiene GNC</label>
+      </div>
+    </div>
+    <div class="panel-m">
+      <h4>Tu pedido</h4>
       <label class="llave"><input type="checkbox" id="financiar">Quiero financiar el resto</label>
       <p class="burbuja" id="burbuja">…<small>ahora</small></p>
       <button class="btn" type="button" data-wsp><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Pedir la cotización por WhatsApp</button>
     </div>
   </div>
-</section>
-
-<section class="sec llegar" id="llegar">
-  <div class="nota-g" id="nota-g"><div class="grande" id="nota-num">4,5</div><div class="estrellas" id="estrellas"></div>
-    <p><span id="opiniones">opiniones</span> en Google</p><a id="ver-opiniones" href="#" target="_blank" rel="noopener">Leer las opiniones →</a></div>
-  <div><div class="mapa"><iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-    <div class="donde"><b data-n>Su concesionaria</b><span data-lugar></span><br><a id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar →</a></div></div>
-</section>
-
-<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2>Las llaves te esperan</h2><p id="c-sub"></p><a class="btn" href="#stock">Ver los autos</a></div></section>
-<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su concesionaria</span>.</p><p>Fotos, autos, precios y kilómetros de ejemplo: con los de ustedes queda su página.</p></footer>
+</section></div>
+<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-n>su concesionaria</span>.</p><p>Fotos, autos, precios, kilómetros y cuotas de ejemplo: con los de ustedes queda su página.</p></footer>
 <span class="muestra">Diseño de muestra</span>
 <button class="flotante" type="button" data-wsp aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg></button>
 <p class="aviso" id="aviso" role="status"></p>
 
-<div class="capa" id="capa" role="dialog" aria-modal="true" aria-label="Ficha del auto">
-  <div class="fondo" id="capa-fondo"></div>
-  <div class="ficha" id="ficha">
-    <button class="cerrar" type="button" id="cerrar" aria-label="Cerrar">×</button>
-    <div class="ft"><img id="f-foto" alt="" decoding="async"></div>
-    <div class="cuerpo">
-      <h3 id="f-nom"></h3>
-      <div class="specs">
-        <div class="odo-g"><small>Kilómetros</small><span class="digitos" id="f-km">000.000</span></div>
-        <div><small>Año</small><b id="f-anio"></b></div><div><small>Precio</small><b id="f-precio"></b></div>
-        <div><small>Combustible</small><b id="f-comb"></b></div><div><small>Caja</small><b id="f-caja"></b></div>
-      </div>
-      <div class="opciones-f" id="f-opc"></div>
-      <p class="burbuja" id="f-burbuja">…<small>ahora</small></p>
-      <button class="btn" type="button" data-wsp><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Consultar por WhatsApp</button>
-      <a class="ir-usado" href="#usado" id="f-usado">Tengo un usado para entregar →</a>
-    </div>
-  </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+<script>
+const KIT = (() => {
+  const GUARDAR = ['s', 'n', 'c', 'r', 'o', 't', 'hora', 'u'];
+  const base = new URLSearchParams(location.search);
+  const hooks = {};
+  let actual = null;
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+
+  function url(p, extra = {}) {
+    const u = new URLSearchParams();
+    GUARDAR.forEach(k => { if (base.has(k)) u.set(k, base.get(k)); });
+    if (p && p !== 'inicio') u.set('p', p);
+    Object.entries(extra).forEach(([k, v]) => { if (v != null && v !== '') u.set(k, v); });
+    const q = u.toString();
+    return location.pathname + (q ? '?' + q : '');
+  }
+  function leer() {
+    const q = new URLSearchParams(location.search);
+    const extra = {};
+    q.forEach((v, k) => { if (!GUARDAR.includes(k) && k !== 'p') extra[k] = v; });
+    return { p: q.get('p') || 'inicio', extra };
+  }
+  function mostrar(p, extra = {}, animar = true) {
+    const destino = document.querySelector(`[data-pagina="${p}"]`) || document.querySelector('[data-pagina="inicio"]');
+    const nombre = destino.dataset.pagina;
+    const anterior = actual ? document.querySelector(`[data-pagina="${actual}"]`) : null;
+    const cambia = anterior && anterior !== destino;
+    if (actual && hooks[actual] && hooks[actual].salir) hooks[actual].salir();
+    const poner = () => {
+      document.querySelectorAll('[data-pagina]').forEach(el => { el.hidden = el !== destino; });
+      window.scrollTo(0, 0);
+      document.querySelectorAll('[data-ir]').forEach(a => {
+        if (a.dataset.ir === nombre && !a.dataset.id) a.setAttribute('aria-current', 'page');
+        else a.removeAttribute('aria-current');
+      });
+      actual = nombre;
+      if (hooks[nombre] && hooks[nombre].entrar) hooks[nombre].entrar(extra);
+      document.dispatchEvent(new CustomEvent('kit:pagina', { detail: { p: nombre, extra } }));
+      if (window.ScrollTrigger) requestAnimationFrame(() => ScrollTrigger.refresh());
+      if (animar && cambia && window.gsap) {
+        gsap.fromTo(destino, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .35, ease: 'power2.out', clearProps: 'opacity,transform' });
+      }
+    };
+    if (animar && cambia && window.gsap) {
+      gsap.to(anterior, { opacity: 0, duration: .14, ease: 'power1.in', onComplete: () => { gsap.set(anterior, { clearProps: 'opacity' }); poner(); } });
+    } else poner();
+  }
+  function ir(p, extra = {}, reemplazar = false) {
+    try { history[reemplazar ? 'replaceState' : 'pushState']({ p, extra }, '', url(p, extra)); } catch (e) { /* file:// */ }
+    mostrar(p, extra);
+  }
+  function en(p, entrar, salir) {
+    hooks[p] = { entrar, salir };
+    if (actual === p && entrar) entrar(leer().extra);
+  }
+  function enlaces(raiz = document) {
+    raiz.querySelectorAll('a[data-ir]').forEach(a => a.setAttribute('href', url(a.dataset.ir, a.dataset.id ? { id: a.dataset.id } : {})));
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-ir]');
+    if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;
+    e.preventDefault();
+    ir(a.dataset.ir, a.dataset.id ? { id: a.dataset.id } : {});
+  });
+  addEventListener('popstate', e => {
+    const s = (e.state && e.state.p) ? e.state : leer();
+    mostrar(s.p, s.extra || {});
+  });
+  function arrancar() {
+    enlaces();
+    const { p, extra } = leer();
+    try { history.replaceState({ p, extra }, '', location.href); } catch (e) {}
+    mostrar(p, extra, false);
+  }
+  return { url, ir, en, enlaces, arrancar, leer, get actual() { return actual; } };
+})();
+</script>
 <script>
 gsap.registerPlugin(ScrollTrigger, Flip);
 const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -379,16 +950,49 @@ $$('[data-lugar]').forEach(el => el.textContent = LUGAR || 'Argentina');
 document.title = `${N} · diseño de muestra · Mas & Co`;
 $('#tipo').textContent = `Autos usados${CIUDAD ? ' en ' + CIUDAD : ''}`;
 $('#c-sub').textContent = CIUDAD ? `En ${N}, ${CIUDAD}.` : `En ${N}.`;
+if (N.length > 22) $('#titulo').classList.add('largo');
 function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); if (avisar._t) avisar._t.kill(); avisar._t = gsap.delayedCall(4.2, () => a.classList.remove('ver')); }
-$$('[data-wsp]').forEach(b => b.addEventListener('click', () => avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`)));
+document.addEventListener('click', e => { if (e.target.closest('[data-wsp]')) avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`); });
 const miles = n => Math.round(n).toLocaleString('es-AR');
 const usd = n => `USD ${miles(n)}`;
+const lista = xs => xs.length < 2 ? (xs[0] || '') : xs.slice(0, -1).join(', ') + ' y ' + xs[xs.length - 1];
+const mayus1 = t => t.charAt(0).toUpperCase() + t.slice(1);
+const ICO = {
+  foto: 'M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zM9 2 7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z',
+  volante: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c3.71 0 6.82 2.55 7.73 6h-4.06a3.99 3.99 0 0 0-7.34 0H4.27C5.18 6.55 8.29 4 12 4zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-7.73-2h3.77c.4 1.71 1.79 3.04 3.46 3.38V20c-3.71-.3-6.75-3.3-7.23-8zm9.96 8v-4.62c1.67-.34 3.06-1.67 3.46-3.38h3.77c-.48 4.7-3.52 7.7-7.23 8z',
+  cuotas: 'M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z',
+  canje: 'M6.99 11 3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z'};
+const icono = (k, c = 'ico') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICO[k]}"/></svg>`;
 
-// ── 1 · la portada: de la patente al auto entero ──
-const IW = 1600, IH = 1067, PX = 811, PY = 727;      // la escena mide como la foto; la patente cae en (811, 727)
-const fp = $('#foto-portada'); fp.sizes = '(max-width:860px) 700vw, 260vw'; fp.srcset = juego(7549092, [1600, 2400, 3200]); fp.src = foto(7549092, 2400);
+// ── 1 · la portada ──
+// Dos fotos: la ancha para la compu y una vertical para el celular (el auto llena la pantalla alta).
+// En cada una: dónde está la patente (centro x, centro y, ancho; en fracciones de la foto), los faros y el encuadre final.
+const BARRA = () => celu() ? 60 : 70;
+const FOTOS = {
+  ancha: {id: 7549092, w: 5472, h: 3648, srcs: [1600, 2400, 3200], placa: [.5069, .6795, .1325], faros: [[.2713, .4902], [.7394, .4902]], faroD: .19, eje: .507,
+    fin(W, H, E) { const s = Math.max(W / E.w, H / E.h) * 1.02; return {s, x: W / 2 - this.eje * E.w * s, y: Math.min(0, Math.max(H - E.h * s, H * .34 - .24 * E.h * s))}; }},
+  alta: {id: 31727920, w: 3913, h: 5869, srcs: [1300, 1800, 2400], placa: [.516, .617, .19], faros: [[.30, .565], [.733, .565]], faroD: .25, eje: .515,
+    // el auto ocupa de .165 a .845 del ancho y de .41 a .71 del alto: que entre entero, abajo del título y arriba de los botones
+    fin(W, H, E) { const s = Math.max(.94 * W / (.68 * E.w), (H - 40) / E.h); const y = Math.max(H - E.h * s, Math.min(BARRA(), H * .77 - .71 * E.h * s)); return {s, x: W / 2 - this.eje * E.w * s, y}; }}};
+let F = null, E = null, cam = null;
+const escena = $('#escena'), porta = $('#porta'), faros = $$('.faro'), fp = $('#foto-portada'), fb = $('#foto-baja');
+function elegirFoto() {
+  const k = innerWidth / innerHeight < .9 ? 'alta' : 'ancha';
+  if (F && F.k === k) return false;
+  F = {...FOTOS[k], k}; E = {w: 1600, h: 1600 * F.h / F.w};
+  escena.style.width = E.w + 'px'; escena.style.height = E.h + 'px';
+  // el tamaño más grande en que se ve la foto es al principio, pegada a la patente
+  const anchoMax = (k === 'alta' ? .8 * innerWidth : Math.min(Math.max(.4 * innerWidth, 440), 660)) / F.placa[2];
+  // primero una liviana (la misma del preload, llega enseguida) y encima la grande, que aparece cuando termina de bajar
+  fb.src = foto(F.id, k === 'alta' ? 700 : 1000);
+  fp.classList.remove('lista'); fp.onload = () => fp.classList.add('lista');
+  fp.sizes = `${Math.round(Math.min(anchoMax, k === 'alta' ? 900 : 3000))}px`;
+  fp.srcset = juego(F.id, F.srcs); fp.src = foto(F.id, F.srcs[1]);
+  return true;
+}
 $('#porta-arriba').textContent = (CIUDAD || 'Buenos Aires').toUpperCase();
-// el nombre de la agencia va en la placa, en grande: en un renglón si entra y si no en dos parejos, y se achica hasta entrar
+// el nombre de la agencia va en la placa, en grande: en un renglón si entra y si no en dos parejos, y se achica hasta entrar.
+// Se mide con la patente a 4 veces su tamaño base (más precisión) y se guarda en unidades de la patente.
 function ajustarPorta() {
   const b = $('#placa-n'), palabras = N.toUpperCase().split(/\s+/);
   let lineas = [palabras.join(' ')];
@@ -398,126 +1002,301 @@ function ajustarPorta() {
     if (lineas[0].length > 12) lineas = mejor[1];
   }
   b.innerHTML = lineas.map(x => `<span>${x}</span>`).join('');
-  const caja = b.parentElement, anchoMax = caja.clientWidth - 18, altoMax = caja.clientHeight - 8;
-  let fs = 44; b.style.fontSize = fs + 'px';
-  while (fs > 8 && (b.scrollWidth > anchoMax || b.offsetHeight > altoMax)) { fs -= .5; b.style.fontSize = fs + 'px'; }
+  const antes = porta.style.getPropertyValue('--u'); porta.style.setProperty('--u', '4');
+  const caja = b.parentElement, anchoMax = caja.clientWidth - 18 * 4, altoMax = caja.clientHeight - 8 * 4;
+  let fs = 44; b.style.setProperty('--fs', fs);
+  while (fs > 8 && (b.scrollWidth > anchoMax || b.offsetHeight > altoMax)) { fs -= .5; b.style.setProperty('--fs', fs); }
+  b.style.setProperty('--fs', fs * .97);
+  porta.style.setProperty('--u', antes || '1');
 }
-// dos encuadres: pegado a la patente y el auto entero; en el medio, la escala va en logaritmo y la patente viaja de un lugar al otro
-let cam = null;
+// dos encuadres: pegado a la patente y el auto entero; en el medio la escala va en logaritmo y la patente viaja de un lugar al otro
 function encuadres() {
-  const W = innerWidth, H = innerHeight, mov = celu();
-  const s0 = (mov ? .84 : .44) * W / 212;
-  let s1, tx1, ty1;
-  if (mov) { s1 = .94 * W / (.56 * IW); tx1 = W / 2 - .507 * IW * s1; ty1 = H * .64 - .55 * IH * s1; }
-  else { s1 = Math.max(W / IW, H / IH) * 1.02; tx1 = W / 2 - .507 * IW * s1; ty1 = Math.min(0, Math.max(H - IH * s1, H * .34 - .24 * IH * s1)); }
-  cam = {s0, a: [W / 2, H * (mov ? .5 : .52)], s1, b: [tx1 + PX * s1, ty1 + PY * s1]};
+  const caja = $('.intro-fijo'), W = caja.clientWidth, H = caja.clientHeight, mov = F.k === 'alta';
+  const ancho0 = mov ? .8 * W : Math.min(Math.max(.4 * W, 440), 660);
+  const s0 = ancho0 / (F.placa[2] * E.w), fin = F.fin(W, H, E);
+  cam = {W, H, s0, a: [W / 2, H * (mov ? .5 : .53)], s1: fin.s, b: [fin.x + F.placa[0] * E.w * fin.s, fin.y + F.placa[1] * E.h * fin.s]};
 }
 const lerp = (a, b, k) => a + (b - a) * k;
-const curva = k => k * k * (3 - 2 * k);      // suave en las puntas, pareja en el medio: la cámara no se queda quieta al empezar
-const vivo = {p: 0, entrada: 1};
+// arranca con velocidad (el primer movimiento del dedo ya mueve la cámara) y frena suave al llegar al auto entero
+const curva = k => 1 - Math.pow(1 - k, 1.8);
+const vivo = {p: 0, entrada: 1, faros: 0, haz: -1, flash: 0};
+let rectPorta = [0, 0, 0];
 function ponerCamara() {
   if (!cam) encuadres();
-  const k = curva(Math.min(1, vivo.p / .8));
-  const s = Math.exp(lerp(Math.log(cam.s0), Math.log(cam.s1), k)) * (1 + .18 * vivo.entrada * (1 - k));
-  const x = lerp(cam.a[0], cam.b[0], k) - PX * s, y = lerp(cam.a[1], cam.b[1], k) - PY * s;
-  $('#escena').style.transform = `translate(${x.toFixed(2)}px,${y.toFixed(2)}px) scale(${s.toFixed(4)})`;
-  // el texto grande aparece cuando ya se ve el auto
-  const t = Math.max(0, Math.min(1, (vivo.p - .45) / .3));
-  gsap.set('#titulo, #bajada', {autoAlpha: t, y: (1 - t) * 30});
-  gsap.set('#velo', {opacity: .35 + .65 * Math.min(1, vivo.p / .5)});
-  if (vivo.p > .72 && !ponerCamara.guino) { ponerCamara.guino = true; guino(); }
+  const k = curva(Math.min(1, vivo.p / .78));
+  // al final la cámara sigue alejándose apenas: el scroll nunca deja la imagen quieta
+  const deriva = 1 - .045 * Math.max(0, (vivo.p - .78) / .22);
+  const s = Math.exp(lerp(Math.log(cam.s0), Math.log(cam.s1), k)) * (1 + .09 * vivo.entrada * (1 - k)) * deriva;
+  const cx = lerp(cam.a[0], cam.b[0], k), cy = lerp(cam.a[1], cam.b[1], k);
+  const x = cx - F.placa[0] * E.w * s, y = cy - F.placa[1] * E.h * s;
+  escena.style.transform = `translate(${x.toFixed(2)}px,${y.toFixed(2)}px) scale(${s.toFixed(5)})`;
+  // la patente no va adentro de la escena: se dibuja a su tamaño real en cada cuadro, así el texto queda nítido
+  const ancho = F.placa[2] * E.w * s, u = ancho / 212;
+  porta.style.setProperty('--u', u.toFixed(4));
+  porta.style.transform = `translate(${(cx - ancho / 2).toFixed(2)}px,${(cy - 46 * u).toFixed(2)}px)`;
+  rectPorta = [cx - ancho / 2, ancho];
+  const d = F.faroD * E.w * s * (1 + 1.5 * vivo.flash);   // al encenderse, el destello se derrama hasta adentro del cuadro
+  F.faros.forEach(([fu, fv], i) => { faros[i].style.transform = `translate(${(x + fu * E.w * s - d / 2).toFixed(1)}px,${(y + fv * E.h * s - d / 2).toFixed(1)}px) scale(${(d / 100).toFixed(4)})`; });
+  // el título aparece cuando ya se ve el auto
+  const t = Math.max(0, Math.min(1, (vivo.p - .4) / .3));
+  gsap.set('#titulo', {autoAlpha: t, y: (1 - t) * 34});
+  gsap.set('#bajada', {autoAlpha: Math.max(0, Math.min(1, (vivo.p - .5) / .26)), y: (1 - t) * 20});
+  gsap.set('#velo', {opacity: .3 + .7 * Math.min(1, vivo.p / .5)});
+  if (vivo.p > .6 && !ponerCamara.guino && vivo.faros > .3) { ponerCamara.guino = true; guino(); }
 }
+function pintarFaros() { gsap.set(faros, {opacity: vivo.faros}); }
+// el guiño: dos destellos cortos, como cuando un auto saluda
 function guino() {
-  if (reduce) { gsap.set('.faro', {opacity: .55}); return; }
-  gsap.timeline().to('.faro', {opacity: 1, duration: .08}).to('.faro', {opacity: .15, duration: .12}).to('.faro', {opacity: 1, duration: .08}, '+=.1').to('.faro', {opacity: .55, duration: .6});
+  if (reduce) return;
+  gsap.timeline().to(vivo, {faros: 1, duration: .07, onUpdate: pintarFaros}).to(vivo, {faros: .12, duration: .1, onUpdate: pintarFaros})
+    .to(vivo, {faros: 1, duration: .07, onUpdate: pintarFaros}, '+=.09').to(vivo, {faros: .62, duration: .7, ease: 'power2.out', onUpdate: pintarFaros});
 }
-encuadres(); ajustarPorta(); ponerCamara();
+// el haz de luz que barre la escena al cargar: un hueco en la oscuridad que viaja de izquierda a derecha
+function ponerHaz() {
+  const W = cam.W, hx = vivo.haz * W;
+  const mascara = 'linear-gradient(100deg,#000 0,#000 41%,rgba(0,0,0,.08) 48%,rgba(0,0,0,.08) 52%,#000 59%,#000 100%)';
+  const ap = $('#apagon'); ap.style.webkitMaskImage = ap.style.maskImage = mascara;
+  ap.style.webkitMaskPosition = ap.style.maskPosition = `${(hx - 1.5 * W).toFixed(1)}px 0`;
+  const hz = $('#haz'); hz.style.backgroundPosition = `${(hx - 1.5 * W).toFixed(1)}px 0`;
+  // la patente refleja: se enciende a medida que el haz la cruza
+  const luz = Math.max(0, Math.min(1, (hx - rectPorta[0] + .1 * W) / (rectPorta[1] + .2 * W)));
+  porta.style.setProperty('--luz', Math.max(luz, +porta.style.getPropertyValue('--luz') || 0).toFixed(3));
+}
+function entrada() {
+  $('.intro').classList.remove('espera');
+  if (reduce) { vivo.entrada = 0; vivo.faros = .62; pintarFaros(); porta.style.setProperty('--luz', 1); gsap.set('#apagon', {autoAlpha: 0}); ponerCamara(); return; }
+  gsap.timeline()
+    // 1 · la luz barre la escena y la patente se enciende con el nombre
+    .set('#haz', {opacity: 1}, 0)
+    .fromTo(vivo, {haz: -.3}, {haz: 1.3, duration: 1.15, ease: 'power1.inOut', onUpdate: ponerHaz}, .1)
+    .to('#haz', {opacity: 0, duration: .3}, 1.05)
+    // 2 · el auto prende los faros y la escena se ilumina
+    .to(vivo, {faros: 1, flash: 1, duration: .08, ease: 'power1.in', onUpdate: pintarFaros}, 1.05)
+    .to(vivo, {flash: 0, duration: 1.1, ease: 'power2.out'}, 1.13)
+    .to(vivo, {faros: .62, duration: .6, ease: 'power2.out', onUpdate: pintarFaros}, 1.13)
+    .to('#apagon', {autoAlpha: 0, duration: 1, ease: 'power2.out', onComplete: () => { const ap = $('#apagon'); ap.style.webkitMaskImage = ap.style.maskImage = 'none'; }}, 1.08)
+    // 3 · la cámara respira hacia atrás todo el tiempo, sin cortes
+    .to(vivo, {entrada: 0, duration: 2.8, ease: 'power3.out', onUpdate: ponerCamara}, 0)
+    // 4 · recién ahí, lo que se puede tocar
+    .fromTo('.texto .tipo', {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: .6, ease: 'power3.out'}, 1.45)
+    .fromTo('.texto .acciones', {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: .7, ease: 'power3.out'}, 1.6);
+}
+// la portada arranca la primera vez que se entra al inicio (en una página oculta no se puede medir)
+let arrancada = false, portadaLista = false;
+const arrancar = () => { if (arrancada) return; arrancada = true; ajustarPorta(); entrada(); };
+function iniciarPortada() {
+  portadaLista = true;
+  elegirFoto(); encuadres(); ajustarPorta(); ponerCamara();
+  // arranca cuando están la letra de la patente y la foto grande; si la grande tarda, con la liviana a los 0,9 s (tope: 2,2 s)
+  const letra = document.fonts.load('700 30px "Saira Condensed"').catch(() => {});
+  Promise.all([fp.decode().catch(() => {}), letra]).then(arrancar);
+  Promise.all([fb.decode().catch(() => {}), letra, new Promise(r => setTimeout(r, 900))]).then(arrancar);
+  setTimeout(arrancar, 2200);
+}
 
 // ── 2 · el stock ──
+// Fotos sin patente legible (revisadas a tamaño real el 16/10): las de Mike Bird traen la chapa en blanco.
 const AUTOS = [
-  {id: 34594185, marca: 'Toyota', nom: 'Toyota Hilux 3.0 SRV 4x4', anio: 2014, km: 168000, precio: 21000, tipo: 'pickup', comb: 'Diésel', caja: 'Manual', pos: '50% 55%'},
-  {id: 23247753, marca: 'Volkswagen', nom: 'Volkswagen Amarok V6 Highline', anio: 2020, km: 72000, precio: 38500, tipo: 'pickup', comb: 'Diésel', caja: 'Automática', pos: '50% 60%'},
-  {id: 36886635, marca: 'Toyota', nom: 'Toyota SW4 SRX', anio: 2019, km: 95000, precio: 41000, tipo: 'suv', comb: 'Diésel', caja: 'Automática', pos: '65% 60%'},
-  {id: 10015200, marca: 'Jeep', nom: 'Jeep Renegade Sport', anio: 2018, km: 61000, precio: 17900, tipo: 'suv', comb: 'Nafta', caja: 'Manual', pos: '30% 60%'},
-  {id: 37620310, marca: 'Toyota', nom: 'Toyota Corolla XEi', anio: 2012, km: 140000, precio: 11500, tipo: 'sedan', comb: 'Nafta', caja: 'Manual', pos: '60% 60%'},
-  {id: 27398832, marca: 'Volkswagen', nom: 'Volkswagen Vento 2.0 TSI', anio: 2016, km: 88000, precio: 16800, tipo: 'sedan', comb: 'Nafta', caja: 'Automática', pos: '55% 70%'},
-  {id: 20270367, marca: 'Chevrolet', nom: 'Chevrolet Cruze LT', anio: 2015, km: 102000, precio: 13200, tipo: 'sedan', comb: 'Nafta', caja: 'Manual', pos: '50% 70%'},
-  {id: 32422135, marca: 'Toyota', nom: 'Toyota Yaris XLS sedán', anio: 2019, km: 54000, precio: 15900, tipo: 'sedan', comb: 'Nafta', caja: 'Automática', pos: '50% 65%'},
-  {id: 6794821, marca: 'Honda', nom: 'Honda Civic 1.5 Turbo', anio: 2017, km: 79000, precio: 19500, tipo: 'hatch', comb: 'Nafta', caja: 'Automática', pos: '50% 60%'},
-  {id: 12992872, marca: 'Volkswagen', nom: 'Volkswagen Golf Highline', anio: 2017, km: 66000, precio: 18900, tipo: 'hatch', comb: 'Nafta', caja: 'Automática', pos: '55% 60%'},
-  {id: 5660825, marca: 'Peugeot', nom: 'Peugeot 208 Allure', anio: 2016, km: 83000, precio: 10900, tipo: 'hatch', comb: 'Nafta', caja: 'Manual', pos: '70% 65%'},
-  {id: 5763082, marca: 'Volkswagen', nom: 'Volkswagen Fox Highline', anio: 2017, km: 70000, precio: 9800, tipo: 'hatch', comb: 'Nafta', caja: 'Manual', pos: '45% 60%'}];
+  {id: 'toyota-hilux-2021', art: 'la', marca: 'Toyota', nom: 'Toyota Hilux', version: '2.8 SRV 4x4 AT', anio: 2021, km: 64000, precio: 39900, tipo: 'pickup', comb: 'Diésel', caja: 'Automática', motor: '2.8 turbodiésel', color: 'Gris oscuro', puertas: 4, duenos: 1, service: 'Oficial, al día', dest: true,
+    fotos: [[19143577, '50% 48%'], [19143580, '50% 55%'], [19143603, '50% 50%']],
+    usos: {f: [2, 'Doble cabina con cinco plazas y la caja para todo el equipaje'], t: [3, '4x4 y turbodiésel: banca el campo, el ripio y la carga'], c: [.5, 'Automática, aunque es grande para el centro']}},
+  {id: 'volkswagen-tiguan-2019', art: 'la', marca: 'Volkswagen', nom: 'Volkswagen Tiguan', version: '1.4 TSI Highline DSG', anio: 2019, km: 58000, precio: 31900, tipo: 'suv', comb: 'Nafta', caja: 'Automática', motor: '1.4 TSI de 150 CV', color: 'Gris', puertas: 5, duenos: 1, service: 'Oficial, al día', dest: true,
+    fotos: [[14038622, '50% 55%'], [14038627, '50% 55%'], [14038260, '50% 55%'], [14038273, '50% 55%']],
+    usos: {f: [3, 'Baúl de 615 litros y asiento trasero que se corre: entra todo'], t: [1.5, 'Alta y firme para calles de tierra'], c: [1.5, 'Caja DSG y cámara para estacionar']}},
+  {id: 'bmw-320i-2020', art: 'el', marca: 'BMW', nom: 'BMW 320i', version: '2.0 Sport Line', anio: 2020, km: 47000, precio: 41000, tipo: 'sedan', comb: 'Nafta', caja: 'Automática', motor: '2.0 turbo de 184 CV', color: 'Negro', puertas: 4, duenos: 1, service: 'Oficial, al día', dest: true,
+    fotos: [[18688726, '50% 55%'], [18393152, '50% 50%'], [18688735, '50% 55%']],
+    usos: {f: [2, 'Sedán amplio, firme y seguro para la ruta'], t: [1, 'Para visitar clientes y hacer kilómetros cómodo'], c: [2, 'Automático de 8 marchas, suave en el tránsito']}},
+  {id: 'ford-focus-2017', art: 'el', marca: 'Ford', nom: 'Ford Focus', version: '2.0 SE Plus AT', anio: 2017, km: 76000, precio: 14900, tipo: 'hatch', comb: 'Nafta', caja: 'Automática', motor: '2.0 de 170 CV', color: 'Gris plata', puertas: 5, duenos: 1, service: 'Oficial, al día', dest: true,
+    fotos: [[27138903, '50% 60%'], [27138982, '50% 60%'], [27138926, '50% 60%'], [27138867, '50% 50%']],
+    usos: {f: [2, 'Cinco puertas y lugar para dos sillitas atrás'], t: [1, 'Rinde en ruta y es barato de mantener'], c: [2.5, 'Automático y ágil para el día a día']}},
+  {id: 'ford-ranger-2018', art: 'la', marca: 'Ford', nom: 'Ford Ranger', version: '3.2 Wildtrak 4x4 AT', anio: 2018, km: 98000, precio: 31500, tipo: 'pickup', comb: 'Diésel', caja: 'Automática', motor: '3.2 turbodiésel', color: 'Naranja', puertas: 4, duenos: 2, service: 'Oficial, al día',
+    fotos: [[16058149, '50% 60%'], [16058152, '50% 55%']],
+    usos: {f: [2, 'Cinco plazas cómodas y caja con cobertor'], t: [3, '4x4 con reductora: para el campo y para tirar el tráiler'], c: [.5, 'Automática, pero larga para estacionar']}},
+  {id: 'kia-sportage-2017', art: 'la', marca: 'Kia', nom: 'Kia Sportage', version: '2.0 EX AT', anio: 2017, km: 89000, precio: 21500, tipo: 'suv', comb: 'Nafta', caja: 'Automática', motor: '2.0 de 155 CV', color: 'Gris oscuro', puertas: 5, duenos: 2, service: 'Al día, con libreta',
+    fotos: [[27286179, '50% 55%'], [27284257, '50% 55%']],
+    usos: {f: [3, 'SUV espaciosa a precio de auto mediano'], t: [1.5, 'Despeje alto para la ruta y la tierra'], c: [1.5, 'Automática y con sensores de estacionamiento']}},
+  {id: 'volkswagen-amarok-2014', art: 'la', marca: 'Volkswagen', nom: 'Volkswagen Amarok', version: '2.0 TDI Highline 4x4', anio: 2014, km: 132000, precio: 22500, tipo: 'pickup', comb: 'Diésel', caja: 'Automática', motor: '2.0 biturbo diésel', color: 'Blanco', puertas: 4, duenos: 2, service: 'Al día, con libreta', extra: 'Se entrega con la carpa de techo',
+    fotos: [[13872436, '50% 65%'], [13872444, '50% 65%']],
+    usos: {f: [2, 'Viene con carpa de techo: lista para salir de camping'], t: [3, '4x4 y la caja más ancha de su clase'], c: [.5, 'Cómoda, aunque grande para el centro']}},
+  {id: 'mercedes-a200-2016', art: 'el', marca: 'Mercedes-Benz', nom: 'Mercedes-Benz A200', version: '1.6 Urban AT', anio: 2016, km: 72000, precio: 22900, tipo: 'hatch', comb: 'Nafta', caja: 'Automática', motor: '1.6 turbo de 156 CV', color: 'Rojo', puertas: 5, duenos: 2, service: 'Oficial, al día',
+    fotos: [[9513400, '50% 55%'], [9513404, '50% 55%'], [9265833, '50% 55%']],
+    usos: {f: [1.5, 'Cinco puertas y seguridad de primera'], t: [1, 'Presencia para ir a ver clientes'], c: [2.5, 'Compacto, automático y con sensores']}},
+  {id: 'toyota-yaris-2019', art: 'el', marca: 'Toyota', nom: 'Toyota Yaris', version: '1.5 S CVT', anio: 2019, km: 54000, precio: 15900, tipo: 'hatch', comb: 'Nafta', caja: 'Automática', motor: '1.5 de 107 CV', color: 'Dorado', puertas: 5, duenos: 1, service: 'Oficial, al día',
+    fotos: [[5733711, '72% 62%']],
+    usos: {f: [1.5, 'Cinco puertas y lugar para salir los cuatro'], t: [1, 'Gasta poco y no te deja a pie'], c: [3, 'Automático y chico: se estaciona en cualquier lado']}},
+  {id: 'kia-picanto-2019', art: 'el', marca: 'Kia', nom: 'Kia Picanto', version: '1.2 EX', anio: 2019, km: 48000, precio: 11900, tipo: 'hatch', comb: 'Nafta', caja: 'Manual', motor: '1.25 de 84 CV', color: 'Blanco', puertas: 5, duenos: 1, service: 'Oficial, al día',
+    fotos: [[20475125, '50% 55%'], [20475132, '50% 55%'], [20475087, '50% 55%'], [20653980, '50% 50%']],
+    usos: {f: [1, 'Para una familia chica'], t: [1, 'El que menos gasta para ir y venir'], c: [3, 'El más fácil de estacionar y gasta muy poco']}},
+  {id: 'toyota-corolla-2012', art: 'el', marca: 'Toyota', nom: 'Toyota Corolla', version: '1.8 XEi', anio: 2012, km: 140000, precio: 11500, tipo: 'sedan', comb: 'GNC', caja: 'Manual', motor: '1.8 16v', color: 'Blanco', puertas: 4, duenos: 2, service: 'Al día',
+    fotos: [[37620310, '50% 60%'], [37620309, '50% 70%']],
+    usos: {f: [2, 'Baúl grande y la confianza de un Toyota'], t: [2, 'Con GNC: el kilómetro sale poco para viajar mucho'], c: [2, 'Con GNC llenás el tanque por poca plata']}}];
 const TIPOS = [['todos', 'Todos'], ['pickup', 'Pickups'], ['suv', 'SUV'], ['sedan', 'Sedanes'], ['hatch', 'Hatchback']];
 const NOM_TIPO = {pickup: 'Pickup', suv: 'SUV', sedan: 'Sedán', hatch: 'Hatchback'};
-const f = {tipo: 'todos', tope: 45000};
+const MARCAS_S = ['todas', ...[...new Set(AUTOS.map(a => a.marca))].sort((x, y) => AUTOS.filter(a => a.marca === y).length - AUTOS.filter(a => a.marca === x).length)];
+const COMBS = [['todos', 'Todos'], ['Nafta', 'Nafta'], ['Diésel', 'Diésel'], ['GNC', 'GNC']];
+const CAJAS = [['todas', 'Todas'], ['Manual', 'Manual'], ['Automática', 'Automática']];
+const BASE = {tipo: 'todos', marca: 'todas', tope: 42000, anio: 2012, km: 150000, comb: 'todos', caja: 'todas'};
+const f = {...BASE, orden: 'dest'};
 const odo = n => { const s = String(Math.round(n)).padStart(6, '0'); return `${s.slice(0, 3)}.${s.slice(3)}`; };
-$('#g-tipo').innerHTML = TIPOS.map(([k, t]) => `<button class="chip${k === 'todos' ? ' on' : ''}" type="button" data-k="${k}">${t}</button>`).join('');
-$('#lista').innerHTML = AUTOS.map((a, i) => `<button class="auto" type="button" data-i="${i}" aria-label="Ver la ficha: ${a.nom} ${a.anio}">
-  <div class="ft"><img src="${foto(a.id, 600)}" srcset="${juego(a.id, [400, 600, 900])}" sizes="(max-width:860px) 46vw, 300px" alt="" loading="lazy" decoding="async" style="object-position:${a.pos}"></div>
+const nomComb = a => a.comb === 'GNC' ? 'Nafta y GNC' : a.comb;
+const chipsDe = (el, items, k, on) => { el.innerHTML = items.map(([v, t]) => `<button class="chip${v === on ? ' on' : ''}" type="button" data-${k}="${v}">${t}</button>`).join(''); };
+chipsDe($('#g-tipo'), TIPOS, 'k', 'todos');
+chipsDe($('#fl-marca'), MARCAS_S.map(m => [m, m === 'todas' ? 'Todas' : m]), 'v', 'todas');
+chipsDe($('#fl-comb'), COMBS, 'v', 'todos');
+chipsDe($('#fl-caja'), CAJAS, 'v', 'todas');
+const tarjeta = (a, i) => `<a class="auto" data-ir="auto" data-id="${a.id}" data-i="${i}" aria-label="Ver la ficha: ${a.nom} ${a.version} ${a.anio}">
+  <div class="ft"><img src="${foto(a.fotos[0][0], 600)}" srcset="${juego(a.fotos[0][0], [400, 600, 900])}" sizes="(max-width:860px) 46vw, 360px" alt="" loading="lazy" decoding="async" style="object-position:${a.fotos[0][1]}">
+  <span class="n-fotos">${icono('foto')}${a.fotos.length}</span></div>
   <span class="tipo-a">${NOM_TIPO[a.tipo]}</span>
-  <div class="datos"><span class="nom-a">${a.nom}</span><div class="linea-a"><span class="anio">${a.anio}</span><span class="odo"><b>${odo(a.km)}</b> km</span></div>
-  <div class="linea-a"><span class="precio">${usd(a.precio)}</span><span class="ver">Ver ficha →</span></div></div></button>`).join('');
+  <div class="datos"><span class="nom-a">${a.nom}</span><span class="ver-a">${a.version}</span>
+  <div class="linea-a"><span class="anio">${a.anio}</span><span class="odo"><b>${odo(a.km)}</b> km</span></div>
+  <span class="tags-a">${nomComb(a)} · ${a.caja}</span>
+  <div class="linea-a"><span class="precio">${usd(a.precio)}</span><span class="ver">Ver ficha →</span></div></div></a>`;
+$('#lista').innerHTML = AUTOS.map(tarjeta).join('');
+const cumple = a => (f.tipo === 'todos' || a.tipo === f.tipo) && (f.marca === 'todas' || a.marca === f.marca) && a.precio <= f.tope && a.anio >= f.anio && a.km <= f.km
+  && (f.comb === 'todos' || a.comb === f.comb) && (f.caja === 'todas' || a.caja === f.caja);
+const ORDEN = {dest: (x, y) => x.i - y.i, precio: (x, y) => x.a.precio - y.a.precio, km: (x, y) => x.a.km - y.a.km, anio: (x, y) => y.a.anio - x.a.anio || x.a.km - y.a.km};
+function activos() { return Object.keys(BASE).filter(k => k !== 'tipo' && f[k] !== BASE[k]).length; }
 function filtrar(animar = true) {
-  // Los autos que cumplen pasan adelante y el resto queda atrás, apagado: la lista no cambia de alto y la sección de
-  // abajo no salta (con los autos ocultos, la sección oscura subía de golpe hasta el medio de la pantalla).
-  const estado = Flip.getState('.auto'), lista = $('#lista');
-  const cumple = el => { const a = AUTOS[+el.dataset.i]; return (f.tipo === 'todos' || a.tipo === f.tipo) && a.precio <= f.tope; };
-  const todos = $$('.auto').sort((x, y) => +x.dataset.i - +y.dataset.i);
-  const si = todos.filter(cumple), no = todos.filter(el => !cumple(el));
-  [...si, ...no].forEach(el => { lista.appendChild(el); el.classList.toggle('fuera', !cumple(el)); el.tabIndex = cumple(el) ? 0 : -1; });
-  $('#cuenta').textContent = si.length === 1 ? '1 auto' : `${si.length} autos`;
-  $('#vacio').hidden = si.length > 0;
-  if (animar && !reduce) Flip.from(estado, {duration: .6, ease: 'power2.inOut'});
+  // Los que cumplen pasan adelante (en el orden elegido) y el resto queda atrás, apagado: la lista nunca cambia de alto
+  // y la sección de abajo no salta.
+  const estado = animar && !reduce ? Flip.getState('#lista .auto') : null, lista = $('#lista');
+  const items = $$('#lista .auto').map(el => ({el, i: +el.dataset.i, a: AUTOS[+el.dataset.i]}));
+  const si = items.filter(x => cumple(x.a)).sort(ORDEN[f.orden]), no = items.filter(x => !cumple(x.a)).sort(ORDEN[f.orden]);
+  [...si, ...no].forEach((x, k) => { lista.appendChild(x.el); const ok = k < si.length; x.el.classList.toggle('fuera', !ok); x.el.tabIndex = ok ? 0 : -1; x.el.setAttribute('aria-hidden', ok ? 'false' : 'true'); });
+  const n = si.length, total = AUTOS.length;
+  $('#cuenta').innerHTML = n === 0 ? 'Ningún auto con esos filtros: probá ampliar el precio o los kilómetros.'
+    : n === total ? `<b>${total} autos</b> disponibles` : `<b>${n} de ${total}</b> autos con esos filtros`;
+  $('#f-ver').textContent = n === 0 ? 'Ningún auto' : n === 1 ? 'Ver 1 auto' : `Ver ${n} autos`;
+  const act = activos(); $('#f-n').hidden = !act; $('#f-n').textContent = act;
+  if (estado) Flip.from(estado, {duration: .6, ease: 'power2.inOut', absolute: false});
 }
-$('#g-tipo').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; f.tipo = b.dataset.k; $$('#g-tipo .chip').forEach(x => x.classList.toggle('on', x === b)); filtrar(); });
-let tTope;
-$('#tope').addEventListener('input', e => { f.tope = +e.target.value; $('#tope-v').textContent = usd(f.tope); clearTimeout(tTope); tTope = setTimeout(() => filtrar(), 120); });
+function grupoChips(sel, clave, attr = 'v') {
+  $(sel).addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; f[clave] = b.dataset[attr]; $$(sel + ' .chip').forEach(x => x.classList.toggle('on', x === b)); filtrar(); });
+}
+grupoChips('#g-tipo', 'tipo', 'k'); grupoChips('#fl-marca', 'marca'); grupoChips('#fl-comb', 'comb'); grupoChips('#fl-caja', 'caja');
+let tFiltro;
+function deslizador(id, clave, fmt) {
+  const el = $(id), out = $(id + '-v');
+  el.addEventListener('input', () => { f[clave] = +el.value; out.textContent = fmt(f[clave]); clearTimeout(tFiltro); tFiltro = setTimeout(() => filtrar(), 140); });
+}
+deslizador('#tope', 'tope', usd); deslizador('#fl-anio', 'anio', String); deslizador('#fl-km', 'km', v => `${miles(v)} km`);
+$('#orden').addEventListener('change', e => { f.orden = e.target.value; filtrar(); });
+$('#f-limpiar').addEventListener('click', () => {
+  Object.assign(f, {...BASE, tipo: f.tipo});
+  [['#tope', 'tope', usd], ['#fl-anio', 'anio', String], ['#fl-km', 'km', v => `${miles(v)} km`]].forEach(([id, k, fmt]) => { $(id).value = f[k]; $(id + '-v').textContent = fmt(f[k]); });
+  [['#fl-marca', 'marca'], ['#fl-comb', 'comb'], ['#fl-caja', 'caja']].forEach(([sel, k]) => $$(sel + ' .chip').forEach(x => x.classList.toggle('on', x.dataset.v === f[k])));
+  filtrar();
+});
+// en el celular, los filtros viven en una hoja que sube desde abajo
+function hojaFiltros(abrir) {
+  $('#f-mas').classList.toggle('abierta', abrir); $('#f-fondo').classList.toggle('ver', abrir);
+  document.documentElement.style.overflow = abrir ? 'hidden' : '';
+}
+$('#f-abrir').addEventListener('click', () => hojaFiltros(true));
+$('#f-cerrar').addEventListener('click', () => hojaFiltros(false)); $('#f-fondo').addEventListener('click', () => hojaFiltros(false));
+$('#f-ver').addEventListener('click', () => { hojaFiltros(false); $('#stock .resultados').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'}); });
 filtrar(false);
 
-// la ficha
+// ── la ficha ──
 let elegido = null, extras = new Set();
-// la ficha cerrada queda afuera de la pantalla: a la derecha en la compu, abajo en el celular (solo GSAP mueve el transform)
-const cerrada = () => celu() ? {x: 0, y: 0, xPercent: 0, yPercent: 100} : {x: 0, y: 0, xPercent: 100, yPercent: 0};
-gsap.set('#ficha', cerrada());
-const OPC = [['ver', 'Quiero verlo'], ['financiar', 'Me interesa financiarlo'], ['usado', 'Tengo un usado para entregar']];
-function mensajeFicha() {
+const fin = {ant: 50, n: 24}, prueba = {dia: null, hora: null};
+const TASA = .015;   // mensual, de ejemplo
+const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'], DC = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+const FRANJAS = [['m', 'Mañana', '9 a 12 h', 'a la mañana'], ['md', 'Mediodía', '12 a 15 h', 'al mediodía'], ['t', 'Tarde', '15 a 19 h', 'a la tarde']];
+const proximos = (() => { const r = [], d = new Date(); while (r.length < 6) { d.setDate(d.getDate() + 1); if (d.getDay() !== 0) r.push(new Date(d)); } return r; })();
+const OPC = [['ver', 'volante', 'Quiero probarlo'], ['financiar', 'cuotas', 'Quiero financiarlo'], ['usado', 'canje', 'Entrego mi usado']];
+$('#f-opc').innerHTML = OPC.map(([k, ic, t]) => `<button class="chip" type="button" data-k="${k}">${icono(ic)}${t}</button>`).join('');
+$('#fin-cuotas').innerHTML = [12, 24, 36, 48].map(n => `<button class="chip${n === fin.n ? ' on' : ''}" type="button" data-n="${n}" aria-label="${n} cuotas">${n}</button>`).join('');
+$('#pr-dia').innerHTML = proximos.map((d, i) => `<button class="chip" type="button" data-d="${i}">${DC[d.getDay()]} ${d.getDate()}<small>${i === 0 ? 'mañana' : DIAS[d.getDay()]}</small></button>`).join('');
+$('#pr-hora').innerHTML = FRANJAS.map(([k, t, h]) => `<button class="chip" type="button" data-h="${k}">${t} · ${h}</button>`).join('');
+function cuota(a) { const ant = a.precio * fin.ant / 100, p = a.precio - ant; return {ant, p, c: p * TASA / (1 - Math.pow(1 + TASA, -fin.n))}; }
+const cuotaVista = {v: 0};
+function pintarFin(animar = true) {
+  const a = AUTOS[elegido], r = cuota(a);
+  $('#fin-ant-v').textContent = `${usd(r.ant)} (${fin.ant}%)`;
+  $('#fin-nota').textContent = `Financiás ${usd(r.p)} en ${fin.n} cuotas fijas. Tasa de ejemplo; la cuota real depende de la aprobación del crédito.`;
+  gsap.to(cuotaVista, {v: r.c, duration: animar && !reduce ? .5 : 0, ease: 'power2.out', overwrite: true, onUpdate: () => $('#fin-cuota').textContent = usd(cuotaVista.v)});
+}
+function pintarPrueba() {
+  const d = prueba.dia != null ? proximos[prueba.dia] : null, sab = d && d.getDay() === 6;
+  $$('#pr-dia .chip').forEach(b => b.classList.toggle('on', +b.dataset.d === prueba.dia));
+  // los sábados se atiende solo a la mañana
+  $$('#pr-hora .chip').forEach(b => { const no = sab && b.dataset.h !== 'm'; b.disabled = no; b.classList.toggle('on', b.dataset.h === prueba.hora); });
+}
+function marcarOpc() {
+  $$('#f-opc .chip').forEach(b => b.classList.toggle('on', extras.has(b.dataset.k)));
+  $('#caja-fin').classList.toggle('activa', extras.has('financiar')); $('#caja-prueba').classList.toggle('activa', extras.has('ver'));
+}
+function mensajeFicha(animar = true) {
   const a = AUTOS[elegido];
-  let t = `Hola, me interesa el ${a.nom} ${a.anio} (${usd(a.precio)}). ¿Sigue disponible?`;
-  if (extras.has('ver')) t += ' ¿Lo puedo ir a ver esta semana?';
-  if (extras.has('financiar')) t += ' Me interesa financiarlo: ¿qué opciones tienen?';
+  let t = `Hola, me interesa ${a.art} ${a.nom} ${a.version} ${a.anio} (${usd(a.precio)}). ¿Sigue disponible?`;
+  if (extras.has('financiar')) { const r = cuota(a); t += ` ${a.art === 'la' ? 'La' : 'Lo'} quiero financiar: pongo ${usd(r.ant)} y el resto en ${fin.n} cuotas.`; }
+  if (extras.has('ver')) {
+    const d = prueba.dia != null ? proximos[prueba.dia] : null, fr = FRANJAS.find(x => x[0] === prueba.hora);
+    t += d ? ` ¿Puedo ir a probar${a.art === 'la' ? 'la' : 'lo'} el ${DIAS[d.getDay()]} ${d.getDate()}${fr ? ' ' + fr[3] : ''}?` : ` ¿Puedo ir a ver${a.art === 'la' ? 'la' : 'lo'} y probar${a.art === 'la' ? 'la' : 'lo'} esta semana?`;
+  }
   if (extras.has('usado')) t += ' Tengo un usado para entregar como parte de pago.';
   const b = $('#f-burbuja'); b.innerHTML = `${t}<small>ahora</small>`;
-  if (!reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
+  if (animar && !reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
 }
-function abrirFicha(i) {
-  elegido = i; extras = new Set(); const a = AUTOS[i];
-  $('#f-foto').src = foto(a.id, 940); $('#f-foto').style.objectPosition = a.pos;
-  $('#f-nom').textContent = a.nom; $('#f-anio').textContent = a.anio; $('#f-precio').textContent = usd(a.precio);
-  $('#f-comb').textContent = a.comb; $('#f-caja').textContent = a.caja;
-  $('#f-opc').innerHTML = OPC.map(([k, t]) => `<button class="chip" type="button" data-k="${k}">${t}</button>`).join('');
-  mensajeFicha();
-  const capa = $('#capa'); capa.style.visibility = 'visible'; document.documentElement.style.overflow = 'hidden';
-  gsap.fromTo('#ficha', cerrada(), {x: 0, y: 0, xPercent: 0, yPercent: 0, duration: reduce ? 0 : .55, ease: 'power3.out'});
-  gsap.to('#capa-fondo', {opacity: 1, duration: .35});
-  // el cuentakilómetros gira hasta los kilómetros del auto
-  const o = {v: 0}; gsap.to(o, {v: a.km, duration: reduce ? 0 : 1.3, ease: 'power2.out', delay: .25, onUpdate: () => $('#f-km').textContent = odo(o.v)});
-  $('#cerrar').focus({preventScroll: true});
-  dibujarLcd();
+// la galería: se desliza con el dedo (scroll-snap); en la compu, flechas y miniaturas
+const gal = $('#f-gal');
+function fotoActual() { return Math.round(gal.scrollLeft / Math.max(1, gal.clientWidth)); }
+function pintarGal() {
+  const i = fotoActual(), n = gal.children.length;
+  $('#gal-n').textContent = `${i + 1} / ${n}`;
+  $('#gal-ant').disabled = i <= 0; $('#gal-sig').disabled = i >= n - 1;
+  $$('#gal-mini button').forEach((b, k) => b.classList.toggle('on', k === i));
 }
-function cerrarFicha() {
-  gsap.to('#ficha', {...cerrada(), duration: reduce ? 0 : .35, ease: 'power2.in'});
-  gsap.to('#capa-fondo', {opacity: 0, duration: .3, onComplete: () => { $('#capa').style.visibility = 'hidden'; document.documentElement.style.overflow = ''; }});
+const irFoto = i => gal.scrollTo({left: i * gal.clientWidth, behavior: reduce ? 'auto' : 'smooth'});
+gal.addEventListener('scroll', () => requestAnimationFrame(pintarGal), {passive: true});
+$('#gal-ant').addEventListener('click', () => irFoto(fotoActual() - 1));
+$('#gal-sig').addEventListener('click', () => irFoto(fotoActual() + 1));
+$('#gal-mini').addEventListener('click', e => { const b = e.target.closest('button'); if (b) irFoto(+b.dataset.f); });
+function verAuto(i) {
+  elegido = i; extras = new Set(); prueba.dia = null; prueba.hora = null; fin.ant = 50; fin.n = 24;
+  const a = AUTOS[i], varias = a.fotos.length > 1;
+  gal.innerHTML = a.fotos.map(([id, pos], k) => `<img src="${foto(id, 1100)}" srcset="${juego(id, [700, 1100, 1600])}" sizes="(max-width:860px) 100vw, 760px" alt="${a.nom}, foto ${k + 1}" decoding="async"${k ? ' loading="lazy"' : ''} style="object-position:${pos}">`).join('');
+  gal.scrollLeft = 0;
+  $('#gal-mini').innerHTML = varias ? a.fotos.map(([id, pos], k) => `<button type="button" data-f="${k}" aria-label="Foto ${k + 1}"><img src="${foto(id, 200)}" alt="" loading="lazy" style="object-position:${pos}"></button>`).join('') : '';
+  $('#gal-ant').hidden = $('#gal-sig').hidden = !varias;
+  $('#f-nom').textContent = a.nom; $('#f-version').textContent = a.version; $('#f-precio').textContent = usd(a.precio);
+  $('#f-anio').textContent = a.anio; $('#f-motor').textContent = a.motor; $('#f-comb').textContent = nomComb(a); $('#f-caja').textContent = a.caja;
+  $('#f-color').textContent = a.color; $('#f-puertas').textContent = a.puertas; $('#f-duenos').textContent = a.duenos === 1 ? 'Único dueño' : `${a.duenos} dueños`;
+  $('#f-service').textContent = a.service; $('#f-tipo').textContent = NOM_TIPO[a.tipo];
+  $('#f-rapido').textContent = `${a.anio} · ${nomComb(a)} · ${a.caja}`;
+  $('#f-extra').hidden = !a.extra; $('#f-extra').textContent = a.extra || '';
+  $('#f-miga').textContent = `${NOM_TIPO[a.tipo]} · ${a.nom} ${a.anio}`;
+  $('#f-fin').dataset.id = $('#f-usado').dataset.id = a.id; KIT.enlaces($('#ficha'));
+  $('#fin-ant').value = fin.ant; $$('#fin-cuotas .chip').forEach(b => b.classList.toggle('on', +b.dataset.n === fin.n));
+  marcarOpc(); pintarPrueba(); pintarFin(false); mensajeFicha(false); pintarGal();
+  // el arranque de la ficha: el cuentakilómetros gira hasta los kilómetros del auto
+  $('#f-km').textContent = odo(0);
+  const o = {v: 0}; gsap.to(o, {v: a.km, duration: 1.4, ease: 'power2.out', delay: .35, onUpdate: () => $('#f-km').textContent = odo(o.v)});
+  const otros = AUTOS.map((b, k) => ({b, k})).filter(x => x.k !== i)
+    .sort((x, y) => (x.b.tipo !== a.tipo) - (y.b.tipo !== a.tipo) || Math.abs(x.b.precio - a.precio) - Math.abs(y.b.precio - a.precio)).slice(0, 4);
+  $('#parecidos').innerHTML = otros.map(x => tarjeta(x.b, x.k)).join(''); KIT.enlaces($('#parecidos'));
+  document.title = `${a.nom} ${a.anio} · ${N}`;
 }
-$('#lista').addEventListener('click', e => { const b = e.target.closest('.auto'); if (b) abrirFicha(+b.dataset.i); });
-$('#cerrar').addEventListener('click', cerrarFicha); $('#capa-fondo').addEventListener('click', cerrarFicha);
-addEventListener('keydown', e => { if (e.key === 'Escape' && $('#capa').style.visibility === 'visible') cerrarFicha(); });
-$('#f-opc').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const k = b.dataset.k; extras.has(k) ? extras.delete(k) : extras.add(k); b.classList.toggle('on', extras.has(k)); mensajeFicha(); });
-$('#f-usado').addEventListener('click', () => { cerrarFicha(); escribirUsado(); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && $('#f-mas').classList.contains('abierta')) hojaFiltros(false); });
+$('#f-opc').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const k = b.dataset.k; extras.has(k) ? extras.delete(k) : extras.add(k); marcarOpc(); mensajeFicha(); });
+// tocar el simulador o elegir un día ya lo suma al mensaje
+const sumar = k => { if (!extras.has(k)) { extras.add(k); marcarOpc(); } };
+$('#fin-ant').addEventListener('input', e => { fin.ant = +e.target.value; sumar('financiar'); pintarFin(); mensajeFicha(false); });
+$('#fin-cuotas').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; fin.n = +b.dataset.n; $$('#fin-cuotas .chip').forEach(x => x.classList.toggle('on', x === b)); sumar('financiar'); pintarFin(); mensajeFicha(); });
+$('#pr-dia').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; prueba.dia = +b.dataset.d; if (proximos[prueba.dia].getDay() === 6 && prueba.hora && prueba.hora !== 'm') prueba.hora = 'm'; sumar('ver'); pintarPrueba(); mensajeFicha(); });
+$('#pr-hora').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b || b.disabled) return; prueba.hora = b.dataset.h; sumar('ver'); pintarPrueba(); mensajeFicha(); });
 
 // ── 3 · el tablero ──
 const MARCAS = ['Volkswagen', 'Toyota', 'Ford', 'Chevrolet', 'Fiat', 'Renault', 'Peugeot', 'Otra'];
-const u = {marca: 'Volkswagen', modelo: 'Gol Trend', anio: 2016, km: 85000, financiar: false};
+const COLORES = [['blanco', 'Blanco', '#F4F5F7'], ['gris plata', 'Gris plata', '#A9AFB7'], ['negro', 'Negro', '#2A2D33'], ['rojo', 'Rojo', '#C8323A'], ['azul', 'Azul', '#2F63E6'], ['otro', 'Otro', '#6B7480']];
+const ESTADOS = [['impecable', 'Impecable', 'está impecable'], ['muy bueno', 'Muy bueno', 'está en muy buen estado'], ['bueno', 'Bueno', 'está en buen estado'], ['con detalles', 'Con detalles', 'tiene algunos detalles']];
+let usadoPor = null;   // el auto del salón por el que se entrega (viene de la ficha)
+const u = {marca: 'Volkswagen', modelo: 'Gol Trend', version: '', anio: 2016, km: 85000, color: 'gris plata', estado: 'muy bueno', dueno: false, service: false, gnc: false, financiar: false};
 $('#g-marca').innerHTML = MARCAS.map(m => `<button class="chip${m === u.marca ? ' on' : ''}" type="button" data-m="${m}">${m}</button>`).join('');
+$('#g-color').innerHTML = COLORES.map(([k, t, c]) => `<button class="chip${k === u.color ? ' on' : ''}" type="button" data-c="${k}"><span class="mues" style="background:${c}"></span>${t}</button>`).join('');
+$('#g-estado').innerHTML = ESTADOS.map(([k, t]) => `<button class="chip${k === u.estado ? ' on' : ''}" type="button" data-e="${k}">${t}</button>`).join('');
 // un reloj: arco de 240°, marcas, números y la aguja
 function reloj(svg, min, max, paso, rotulo, fmt) {
   const R = 84, cx = 100, cy = 100, a0 = -210, a1 = 30;
@@ -540,35 +1319,59 @@ function reloj(svg, min, max, paso, rotulo, fmt) {
 const angAnio = reloj($('#reloj-anio'), 2005, 2025, 5, 'AÑO', v => String(v).slice(2));
 const angKm = reloj($('#reloj-km'), 0, 300000, 50000, 'KM × 1000', v => v / 1000);
 const agujas = {anio: 2005, km: 0};
-function moverAgujas(dur = .7) {
-  gsap.to(agujas, {anio: u.anio, km: u.km, duration: reduce ? 0 : dur, ease: 'back.out(1.4)', overwrite: true, onUpdate: () => {
-    $('#reloj-anio-aguja').setAttribute('transform', `rotate(${angAnio(agujas.anio)} 100 100)`);
-    $('#reloj-km-aguja').setAttribute('transform', `rotate(${angKm(agujas.km)} 100 100)`);
-    $('#reloj-anio-arco').setAttribute('stroke-dasharray', `${Math.max(0, (agujas.anio - 2005) / 20 * 100)} 100`);
-    $('#reloj-km-arco').setAttribute('stroke-dasharray', `${Math.max(0, agujas.km / 300000 * 100)} 100`);
-    $('#lcd-km').textContent = `${odo(agujas.km)} KM`;
-  }});
+function pintarAgujas() {
+  $('#reloj-anio-aguja').setAttribute('transform', `rotate(${angAnio(agujas.anio)} 100 100)`);
+  $('#reloj-km-aguja').setAttribute('transform', `rotate(${angKm(agujas.km)} 100 100)`);
+  $('#reloj-anio-arco').setAttribute('stroke-dasharray', `${Math.max(0, (agujas.anio - 2005) / 20 * 100)} 100`);
+  $('#reloj-km-arco').setAttribute('stroke-dasharray', `${Math.max(0, agujas.km / 300000 * 100)} 100`);
+  $('#lcd-km').textContent = `${odo(agujas.km)} KM`;
 }
+function moverAgujas(dur = .7) {
+  gsap.to(agujas, {anio: u.anio, km: u.km, duration: reduce ? 0 : dur, ease: 'back.out(1.4)', overwrite: true, onUpdate: pintarAgujas});
+}
+// el contacto: como en un auto de verdad, las agujas van al tope y vuelven, y los testigos se prenden un instante
+function contacto() {
+  const t = $$('.testigo');
+  gsap.timeline()
+    .call(() => t.forEach(x => x.classList.add('on')))
+    .to(agujas, {anio: 2025, km: 300000, duration: .75, ease: 'power2.inOut', onUpdate: pintarAgujas})
+    .call(() => pintarTestigos(), null, '+=.15')
+    .to(agujas, {anio: u.anio, km: u.km, duration: 1.1, ease: 'power3.out', onUpdate: pintarAgujas});
+}
+function pintarTestigos() { $('#t-gnc').classList.toggle('on', u.gnc); $('#t-service').classList.toggle('on', u.service); $('#t-dueno').classList.toggle('on', u.dueno); }
+const nombreUsado = () => [u.marca === 'Otra' ? '' : u.marca, u.modelo.trim(), u.version.trim()].filter(Boolean).join(' ');
 function dibujarLcd() {
-  $('#lcd-auto').textContent = `${u.marca === 'Otra' ? '' : u.marca + ' '}${u.modelo || ''}`.trim().toUpperCase() || 'TU AUTO';
+  $('#lcd-auto').textContent = nombreUsado().toUpperCase() || 'TU AUTO';
   $('#lcd-anio').textContent = u.anio;
-  $('#lcd-por').textContent = elegido != null ? `X ${AUTOS[elegido].nom.toUpperCase()}` : (u.financiar ? 'PARTE DE PAGO + CUOTAS' : 'PARTE DE PAGO');
+  const col = COLORES.find(c => c[0] === u.color), est = ESTADOS.find(e => e[0] === u.estado);
+  $('#lcd-silueta').setAttribute('fill', col[2]);
+  $('#lcd-estado').textContent = `${u.color === 'otro' ? 'OTRO COLOR' : col[1].toUpperCase()} · ${est[1].toUpperCase()}`;
+  $('#lcd-por').textContent = usadoPor != null ? `X ${AUTOS[usadoPor].nom.toUpperCase()} ${AUTOS[usadoPor].anio}` : (u.financiar ? 'PARTE DE PAGO + CUOTAS' : 'PARTE DE PAGO');
 }
 function escribirUsado(animar = true) {
-  const auto = `${u.marca === 'Otra' ? '' : u.marca + ' '}${u.modelo.trim() || 'auto'}`.trim();
-  let t = `Hola, quiero entregar mi ${auto} ${u.anio} con ${miles(u.km)} km como parte de pago`;
-  t += elegido != null ? ` por el ${AUTOS[elegido].nom} ${AUTOS[elegido].anio}.` : '.';
-  if (u.financiar) t += ' El resto lo quiero financiar.';
-  t += ' ¿Cuánto me lo toman?';
+  const auto = nombreUsado() || 'auto', col = u.color === 'otro' ? '' : ' ' + u.color;
+  let t = `Hola, quiero entregar mi ${auto} ${u.anio}${col} con ${miles(u.km)} km como parte de pago`;
+  t += usadoPor != null ? ` por ${AUTOS[usadoPor].art} ${AUTOS[usadoPor].nom} ${AUTOS[usadoPor].anio}.` : '.';
+  const dice = [ESTADOS.find(e => e[0] === u.estado)[2]];
+  if (u.dueno) dice.push('es de único dueño');
+  if (u.service && u.gnc) dice.push('tiene el service oficial al día y GNC');
+  else if (u.service) dice.push('tiene el service oficial al día');
+  else if (u.gnc) dice.push('tiene GNC');
+  t += ` ${mayus1(lista(dice))}.`;
+  t += u.financiar ? ' ¿Cuánto me lo toman y cómo financio el resto?' : ' ¿Cuánto me lo toman?';
   const b = $('#burbuja'); b.innerHTML = `${t}<small>ahora</small>`;
   if (animar && !reduce) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); }
-  dibujarLcd();
+  dibujarLcd(); pintarTestigos();
 }
-$('#g-marca').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; u.marca = b.dataset.m; $$('#g-marca .chip').forEach(x => x.classList.toggle('on', x === b)); escribirUsado(); });
+const chipsUsado = (sel, attr, clave) => $(sel).addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; u[clave] = b.dataset[attr]; $$(sel + ' .chip').forEach(x => x.classList.toggle('on', x === b)); escribirUsado(); });
+chipsUsado('#g-marca', 'm', 'marca'); chipsUsado('#g-color', 'c', 'color'); chipsUsado('#g-estado', 'e', 'estado');
 $('#modelo').addEventListener('input', e => { u.modelo = e.target.value; escribirUsado(false); });
+$('#version').addEventListener('input', e => { u.version = e.target.value; escribirUsado(false); });
 $('#anio').addEventListener('input', e => { u.anio = +e.target.value; $('#anio-v').textContent = u.anio; moverAgujas(.45); escribirUsado(false); });
 $('#km').addEventListener('input', e => { u.km = +e.target.value; $('#km-v').textContent = `${miles(u.km)} km`; moverAgujas(.45); escribirUsado(false); });
-$('#financiar').addEventListener('change', e => { u.financiar = e.target.checked; escribirUsado(); });
+[['#u-dueno', 'dueno'], ['#u-service', 'service'], ['#u-gnc', 'gnc'], ['#financiar', 'financiar']].forEach(([id, k]) => $(id).addEventListener('change', e => { u[k] = e.target.checked; escribirUsado(); }));
+// en el celular, que el teclado no tape el campo que se está escribiendo
+$$('.campo').forEach(c => c.addEventListener('focus', () => { if (celu()) setTimeout(() => c.scrollIntoView({block: 'center', behavior: 'smooth'}), 320); }));
 escribirUsado(false);
 
 // ── 4 · nota y mapa · 5 · cierre ──
@@ -584,23 +1387,230 @@ $('#mapa').src = `https://www.google.com/maps?q=${busqueda || 'Argentina'}&outpu
 $('#como-llegar').href = `https://www.google.com/maps/dir/?api=1&destination=${busqueda}`;
 const cf = $('#c-foto'); cf.sizes = '(max-width:860px) 120vh, 100vw'; cf.srcset = juego(97079, [800, 1300, 1900]); cf.src = foto(97079, 1300);
 
-addEventListener('resize', () => { encuadres(); ponerCamara(); if ($('#capa').style.visibility !== 'visible') gsap.set('#ficha', cerrada()); });
-const mm = gsap.matchMedia();
-mm.add('(min-width: 0px)', () => {
-  // la llegada: la cámara se acomoda sobre la patente y le pasa un reflejo; después, el scroll la aleja
-  gsap.to(vivo, {entrada: 0, duration: 1.8, ease: 'power3.out', onUpdate: ponerCamara});
-  gsap.to('#brillo', {xPercent: 240, duration: 1.2, delay: .9, ease: 'power2.inOut'});
-  gsap.from('.texto .tipo, .texto .acciones', {y: 16, autoAlpha: 0, duration: .8, stagger: .1, delay: .5, ease: 'power3.out'});
-  gsap.to(vivo, {p: 1, ease: 'none', onUpdate: ponerCamara, scrollTrigger: {trigger: '.intro', start: 'top top', end: 'bottom bottom', scrub: .4}});
-  $$('.cabeza h2').forEach(h => gsap.from(h, {y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: {trigger: h, start: 'top 86%'}}));
-  ScrollTrigger.create({trigger: '.tablero', start: 'top 72%', once: true, onEnter: () => moverAgujas(1.6)});
-  if (!isNaN(R)) { const n = {v: 0}; gsap.to(n, {v: R, duration: 1.3, ease: 'power2.out', scrollTrigger: {trigger: '#nota-g', start: 'top 85%'},
-    onUpdate: () => { $('#nota-num').textContent = n.v.toFixed(1).replace('.', ','); }}); }
-  gsap.fromTo('#c-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '.cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}});
-  return () => {};
+let anchoAntes = innerWidth;
+addEventListener('resize', () => {
+  // en el celular, la barra del navegador que aparece y desaparece no reencuadra la portada (la caja mide 100svh)
+  const ver = portadaLista && KIT.actual === 'inicio', cambio = ver && elegirFoto();
+  if (ver && (cambio || innerWidth !== anchoAntes || !celu())) { encuadres(); ponerCamara(); }
+  anchoAntes = innerWidth;
+  if (!celu() && $('#f-mas').classList.contains('abierta')) hojaFiltros(false);
 });
-if (reduce) { moverAgujas(0); vivo.p = 1; vivo.entrada = 0; $('.intro').style.height = '100svh'; ponerCamara(); }
-document.fonts.ready.then(() => { ajustarPorta(); ScrollTrigger.refresh(); });
+// ── v3 · el sitio: inicio (tipos, recomendador, recién llegados, puertas, entregas, dónde), financiación y navegación ──
+const ICO2 = {
+  casa: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z',
+  auto: 'M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z',
+  lugar: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
+  atras: 'M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z',
+  fam: 'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
+  trabajo: 'M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z',
+  ciudad: 'M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z',
+  dni: 'M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V19z',
+  recibo: 'M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20z',
+  luz: 'M7 2v11h3v9l7-12h-4l4-8z'};
+const svgDe = (k, c = 'ico') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICO2[k] || ICO[k]}"/></svg>`;
+$$('[data-ico]').forEach(el => el.insertAdjacentHTML('afterbegin', svgDe(el.dataset.ico, '')));
+function burbuja(sel, t, animar = true) { const b = $(sel); b.innerHTML = `${t}<small>ahora</small>`; if (animar) { b.classList.remove('cambia'); void b.offsetWidth; b.classList.add('cambia'); } }
+const pagoMes = (monto, n) => monto * TASA / (1 - Math.pow(1 + TASA, -n));
+
+// anclas del inicio (el recomendador, dónde estamos): desde otra página primero vuelve al inicio
+function irAncla(id) {
+  const ir = () => { const el = document.getElementById(id); if (el) scrollTo({top: el.getBoundingClientRect().top + scrollY - BARRA() + 2, behavior: 'smooth'}); };
+  if (KIT.actual === 'inicio') ir(); else { KIT.ir('inicio'); setTimeout(ir, 480); }
+}
+$$('[data-ancla]').forEach(a => a.setAttribute('href', KIT.url('inicio') + '#' + a.dataset.ancla));
+document.addEventListener('click', e => { const a = e.target.closest('[data-ancla]'); if (!a || e.ctrlKey || e.metaKey) return; e.preventDefault(); irAncla(a.dataset.ancla); });
+
+// ── entradas por tipo: cada panel es el botón y abre el stock filtrado ──
+const TIPO_FOTO = {suv: [14038622, '50% 55%'], pickup: [16058149, '50% 60%'], sedan: [18688726, '50% 55%'], hatch: [27138903, '50% 60%']};
+const TIPO_TXT = {suv: 'SUV', pickup: 'Pickups', sedan: 'Sedanes', hatch: 'Hatch'};
+$('#tipos-g').innerHTML = ['suv', 'pickup', 'sedan', 'hatch'].map(t => {
+  const xs = AUTOS.filter(a => a.tipo === t), [id, pos] = TIPO_FOTO[t];
+  return `<a class="tipo-p" data-tipo="${t}" href="${KIT.url('stock', {tipo: t})}"><img src="${foto(id, 700)}" srcset="${juego(id, [500, 700, 1000])}" sizes="(max-width:860px) 46vw, 25vw" alt="" loading="lazy" decoding="async" style="object-position:${pos}"><span class="persiana" aria-hidden="true"></span><span class="tipo-t">${TIPO_TXT[t]}</span><span class="tipo-s">${xs.length} en el salón · desde ${usd(Math.min(...xs.map(a => a.precio)))}</span></a>`;
+}).join('');
+document.addEventListener('click', e => { const a = e.target.closest('[data-tipo]'); if (!a || e.ctrlKey || e.metaKey) return; e.preventDefault(); KIT.ir('stock', {tipo: a.dataset.tipo}); });
+$('#g-tipo').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; try { history.replaceState({p: 'stock', extra: b.dataset.k === 'todos' ? {} : {tipo: b.dataset.k}}, '', KIT.url('stock', b.dataset.k === 'todos' ? {} : {tipo: b.dataset.k})); } catch (er) {} });
+
+// ── el recomendador: cuota, anticipo y uso → 2 o 3 autos del salón que entran, con el porqué ──
+const USOS = [['f', 'Familia', 'fam', 'la familia'], ['t', 'Trabajo / campo', 'trabajo', 'el trabajo y el campo'], ['c', 'Ciudad', 'ciudad', 'moverme por la ciudad']];
+const rq = {cuota: 400, ant: 8000, usado: false, uso: 'f', sel: new Set(), tocado: false};
+$('#r-uso').innerHTML = USOS.map(([k, t, ic]) => `<button class="chip${k === rq.uso ? ' on' : ''}" type="button" data-u="${k}">${svgDe(ic)}${t}</button>`).join('');
+function evaluar(a) {
+  if (rq.ant >= a.precio) return {ok: true, contado: true, sobra: rq.ant - a.precio};
+  const monto = a.precio - rq.ant, n = [12, 24, 36, 48].find(k => pagoMes(monto, k) <= rq.cuota);
+  if (rq.ant >= a.precio * .4 && n) return {ok: true, n, c: pagoMes(monto, n)};
+  // lo que le falta de anticipo: para llegar al 40 % o para que la cuota en 48 entre en lo que puede pagar
+  const necesita = Math.max(a.precio * .4, a.precio - rq.cuota * (1 - Math.pow(1 + TASA, -48)) / TASA);
+  return {ok: false, falta: Math.max(100, Math.ceil((necesita - rq.ant) / 100) * 100)};
+}
+function fila(x) {
+  const a = x.a, e = x.e, [id, pos] = a.fotos[0], on = rq.sel.has(x.i);
+  const plata = e.contado ? `Te alcanza de contado${e.sobra ? ` y te sobran ${usd(e.sobra)}` : ''}` : e.ok ? `<b>${usd(e.c)}</b> por mes en ${e.n} cuotas` : `Te faltan ${usd(e.falta)} de anticipo`;
+  const pct = e.ok && !e.contado ? Math.round(e.c / rq.cuota * 100) : 0;
+  return `<div class="r-auto${e.ok ? '' : ' casi'}${on ? ' on' : ''}" data-i="${x.i}" data-flip-id="r${x.i}">
+    <a class="r-foto" data-ir="auto" data-id="${a.id}" aria-label="Ver la ficha: ${a.nom} ${a.anio}"><img src="${foto(id, 700)}" srcset="${juego(id, [500, 800, 1100])}" sizes="(max-width:860px) 42vw, 320px" alt="" loading="lazy" decoding="async" style="object-position:${pos}"></a>
+    <div class="r-dat"><a class="r-nom" data-ir="auto" data-id="${a.id}">${a.nom} <span>${a.anio} · ${miles(a.km)} km · ${usd(a.precio)}</span></a>
+    <button class="r-elegir" type="button" aria-pressed="${on}">${on ? 'Elegido' : 'Me interesa'}</button>
+    <p class="r-plata">${plata}</p>
+    ${pct ? `<span class="r-barra"><span><i style="width:${pct}%"></i></span>${pct} % de lo que querés pagar</span>` : ''}
+    <p class="r-por">${a.usos[rq.uso][1]}.</p></div></div>`;
+}
+function recomendar(animar = true) {
+  const ev = AUTOS.map((a, i) => ({a, i, e: evaluar(a), s: a.usos[rq.uso][0]}));
+  const si = ev.filter(x => x.e.ok).sort((x, y) => y.s - x.s || y.a.precio - x.a.precio);
+  const no = ev.filter(x => !x.e.ok).sort((x, y) => x.e.falta - y.e.falta);
+  let vistos = si.slice(0, 3);
+  if (vistos.length < 2) vistos = vistos.concat(no.slice(0, 2 - vistos.length));
+  const ids = vistos.map(x => x.i);
+  rq.sel = new Set([...rq.sel].filter(i => ids.includes(i)));
+  if (!rq.sel.size && !rq.tocado && vistos[0] && vistos[0].e.ok) rq.sel.add(vistos[0].i);
+  const estado = animar ? Flip.getState('#r-lista .r-auto') : null;
+  $('#r-titulo').textContent = !si.length ? 'Con esos números todavía no entra ninguno. Estos son los que están más cerca:'
+    : si.length === 1 ? 'Con esos números te entra este:' : `Con esos números te entran ${si.length} autos. Los que más te convienen:`;
+  $('#r-lista').innerHTML = vistos.map(fila).join('');
+  KIT.enlaces($('#r-lista'));
+  const peor = Math.min(...vistos.map(x => x.s)), casi = si.length >= 3 && no.find(x => x.s > peor && x.e.falta <= 4000);
+  $('#r-casi').hidden = !casi;
+  if (casi) { $('#r-casi').innerHTML = `Con ${usd(casi.e.falta)} más de anticipo también te entra <a data-ir="auto" data-id="${casi.a.id}">${casi.a.art} ${casi.a.nom} ${casi.a.anio}</a>, que para ${USOS.find(u => u[0] === rq.uso)[3].replace('moverme por ', '')} va muy bien.`; KIT.enlaces($('#r-casi')); }
+  if (estado) {
+    Flip.from(estado, {targets: '#r-lista .r-auto', duration: .5, ease: 'power2.inOut', onEnter: els => gsap.fromTo(els, {opacity: 0, y: 14}, {opacity: 1, y: 0, duration: .45, ease: 'power2.out'})});
+    gsap.from('#r-lista .r-barra i', {width: 0, duration: .7, ease: 'power2.out'});
+  }
+  mensajeReco(animar);
+}
+function mensajeReco(animar = true) {
+  const u = USOS.find(x => x[0] === rq.uso), sel = [...rq.sel].map(i => `${AUTOS[i].art} ${AUTOS[i].nom} ${AUTOS[i].anio}`);
+  let t = `Hola, busco un auto para ${u[3]}. Puedo pagar hasta ${usd(rq.cuota)} por mes y tengo ${usd(rq.ant)} de anticipo${rq.usado ? ', entregando mi usado' : ''}.`;
+  t += sel.length ? ` Me interesa${sel.length > 1 ? 'n' : ''} ${lista(sel)}. ¿Cómo me quedaría la cuota?` : ' ¿Qué me recomiendan?';
+  burbuja('#r-burbuja', t, animar);
+}
+let tReco;
+const recoLuego = () => { clearTimeout(tReco); tReco = setTimeout(() => recomendar(), 160); };
+$('#r-cuota').addEventListener('input', e => { rq.cuota = +e.target.value; $('#r-cuota-v').textContent = usd(rq.cuota); recoLuego(); });
+$('#r-ant').addEventListener('input', e => { rq.ant = +e.target.value; $('#r-ant-v').textContent = usd(rq.ant); recoLuego(); });
+$('#r-usado').addEventListener('change', e => { rq.usado = e.target.checked; $('#r-ant-l').textContent = rq.usado ? '¿Cuánto tenés de anticipo, contando tu usado?' : '¿Cuánto tenés de anticipo?'; mensajeReco(); });
+$('#r-uso').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; rq.uso = b.dataset.u; $$('#r-uso .chip').forEach(x => x.classList.toggle('on', x === b)); recomendar(); });
+$('#r-lista').addEventListener('click', e => {
+  const b = e.target.closest('.r-elegir'); if (!b) return;
+  const fl = b.closest('.r-auto'), i = +fl.dataset.i; rq.tocado = true;
+  rq.sel.has(i) ? rq.sel.delete(i) : rq.sel.add(i);
+  const on = rq.sel.has(i); fl.classList.toggle('on', on); b.textContent = on ? 'Elegido' : 'Me interesa'; b.setAttribute('aria-pressed', on); mensajeReco();
+});
+recomendar(false);
+
+// ── recién llegados, puertas y entregas ──
+$('#dest-g').innerHTML = AUTOS.map((a, i) => a.dest ? tarjeta(a, i) : '').join('');
+$('#n-autos').textContent = AUTOS.length;
+const cMin = pagoMes(Math.min(...AUTOS.map(a => a.precio)) * .5, 48);
+const ENTREGAS = [['Se llevó una Hilux 2017', 'Martín G.', 5, 'Fui a verla un sábado y el lunes ya la tenía. Me tomaron la Saveiro como parte de pago sin vueltas.'],
+  ['Se llevó un Cronos 2021', 'Carla S.', 5, 'Me explicaron la financiación con números claros y la cuota quedó como me dijeron.'],
+  ['Entregó su Gol y se llevó un 208', 'Diego R.', 5, 'Me cotizaron el Gol por WhatsApp y en la agencia me respetaron el precio.'],
+  ['Se llevó una Ranger 2019', 'Lucía P.', 4, 'La probé dos veces antes de decidirme y nunca me apuraron. Me la dieron con el service hecho.']];
+$('#llavero').innerHTML = ENTREGAS.map(([t, quien, n, txt]) => `<figure class="llave-t"><span class="ojal" aria-hidden="true"></span><figcaption><b>${t}</b><span class="est" aria-label="${n} de 5 estrellas">${'★'.repeat(n)}${'☆'.repeat(5 - n)}</span></figcaption><blockquote>${txt}</blockquote><span class="quien">${quien}</span></figure>`).join('');
+
+// ── dónde estamos: horario de ejemplo y «tenémelo listo para probar» ──
+const hoy = new Date().getDay();
+$('#horario').innerHTML = [['Lunes a viernes', '9 a 19 h', [1, 2, 3, 4, 5]], ['Sábados', '9 a 13 h', [6]], ['Domingos', 'Cerrado', [0]]]
+  .map(([d, hs, ds]) => `<li${ds.includes(hoy) ? ' class="hoy"' : ''}><span>${d}${ds.includes(hoy) ? '<em>hoy</em>' : ''}</span><b>${hs}</b></li>`).join('');
+const opcionesAutos = AUTOS.map((a, i) => `<option value="${i}">${a.nom} ${a.anio} · ${usd(a.precio)}</option>`).join('');
+$('#l-auto').innerHTML = opcionesAutos;
+$('#l-dia').innerHTML = proximos.map((d, i) => `<button class="chip${i === 0 ? ' on' : ''}" type="button" data-d="${i}">${DC[d.getDay()]} ${d.getDate()}<small>${d.getDay() === 6 ? 'a la mañana' : i === 0 ? 'mañana' : DIAS[d.getDay()]}</small></button>`).join('');
+const listo = {i: 0, d: 0};
+function mensajeListo(animar = true) { const a = AUTOS[listo.i], d = proximos[listo.d]; burbuja('#l-burbuja', `Hola, quiero ir a probar ${a.art} ${a.nom} ${a.anio} el ${DIAS[d.getDay()]} ${d.getDate()}${d.getDay() === 6 ? ' a la mañana' : ''}. ¿Me ${a.art === 'la' ? 'la' : 'lo'} pueden tener ${a.art === 'la' ? 'lista' : 'listo'}?`, animar); }
+$('#l-auto').addEventListener('change', e => { listo.i = +e.target.value; mensajeListo(); });
+$('#l-dia').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; listo.d = +b.dataset.d; $$('#l-dia .chip').forEach(x => x.classList.toggle('on', x === b)); mensajeListo(); });
+mensajeListo(false);
+
+// ── financiación: simulador grande, requisitos según cómo cobra y la preaprobación ──
+const sf = {i: 0, ant: 50, n: 36, usado: false, cobro: 'recibo', tengo: new Set(['dni'])};
+const COBROS = [['recibo', 'Recibo de sueldo', 'con recibo de sueldo', 'Tus últimos 3 recibos de sueldo', 'los recibos'], ['mono', 'Monotributo', 'como monotributista', 'Constancia de monotributo y los últimos pagos', 'la constancia de monotributo'],
+  ['ri', 'Responsable inscripto', 'como responsable inscripto', 'Tus últimas declaraciones juradas', 'las declaraciones juradas'], ['jub', 'Jubilación', 'una jubilación', 'Tu último recibo de haberes', 'el recibo de haberes']];
+const REQ = [['dni', 'dni', 'DNI vigente', 'el DNI'], ['ing', 'recibo', null, null], ['serv', 'luz', 'Un servicio a tu nombre (luz, gas o agua)', 'un servicio a mi nombre']];
+$('#s-auto').innerHTML = opcionesAutos;
+$('#s-cuotas').innerHTML = [12, 24, 36, 48].map(n => `<button class="chip${n === sf.n ? ' on' : ''}" type="button" data-n="${n}" aria-label="${n} cuotas">${n}</button>`).join('');
+$('#s-cobro').innerHTML = COBROS.map(([k, t]) => `<button class="chip${k === sf.cobro ? ' on' : ''}" type="button" data-c="${k}">${t}</button>`).join('');
+function pintarReq() {
+  const c = COBROS.find(x => x[0] === sf.cobro);
+  $('#s-req').innerHTML = REQ.map(([k, ic, t]) => { const on = sf.tengo.has(k); return `<button class="req-i${on ? ' on' : ''}" type="button" data-k="${k}" aria-pressed="${on}">${svgDe(ic)}<span>${t || c[3]}</span><em>${on ? 'Lo tengo' : '¿Lo tenés?'}</em></button>`; }).join('');
+}
+const vistaS = {c: 0};
+function pintarSimu(animar = true) {
+  const a = AUTOS[sf.i], ant = a.precio * sf.ant / 100, monto = a.precio - ant, c = pagoMes(monto, sf.n), d = animar ? .7 : 0;
+  $('#s-ant-v').textContent = `${usd(ant)} (${sf.ant}%)`;
+  $('#s-filas').innerHTML = [['Precio', usd(a.precio)], ['Anticipo', usd(ant) + (sf.usado ? ' · con tu usado' : '')], ['Financiás', usd(monto)], ['Cuotas fijas', `${sf.n} de ${usd(c)}`], ['Total aprox.', usd(ant + c * sf.n)]]
+    .map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+  gsap.to(vistaS, {c, duration: d, ease: 'power2.out', overwrite: true, onUpdate: () => $('#s-cuota').textContent = usd(vistaS.c)});
+  gsap.to('#s-b-ant', {width: sf.ant + '%', duration: d, ease: 'power2.out', overwrite: true});
+  gsap.to('#s-b-fin', {width: (100 - sf.ant) + '%', duration: d, ease: 'power2.out', overwrite: true});
+  mensajeSimu(animar);
+}
+function mensajeSimu(animar = true) {
+  const a = AUTOS[sf.i], ant = a.precio * sf.ant / 100, c = pagoMes(a.precio - ant, sf.n), cob = COBROS.find(x => x[0] === sf.cobro);
+  const tengo = REQ.filter(r => sf.tengo.has(r[0])).map(r => r[3] || cob[4]);
+  let t = `Hola, quiero pedir la preaprobación para ${a.art} ${a.nom} ${a.anio}: pongo ${usd(ant)}${sf.usado ? ' (parte con mi usado)' : ''} y el resto en ${sf.n} cuotas de unos ${usd(c)}. Cobro ${cob[2]}`;
+  t += tengo.length ? ` y tengo ${lista(tengo)}.` : '.';
+  burbuja('#s-burbuja', t + ' ¿Qué más necesitan?', animar);
+}
+$('#s-auto').addEventListener('change', e => { sf.i = +e.target.value; pintarSimu(); });
+$('#s-ant').addEventListener('input', e => { sf.ant = +e.target.value; pintarSimu(); });
+$('#s-usado').addEventListener('change', e => { sf.usado = e.target.checked; pintarSimu(); });
+$('#s-cuotas').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; sf.n = +b.dataset.n; $$('#s-cuotas .chip').forEach(x => x.classList.toggle('on', x === b)); pintarSimu(); });
+$('#s-cobro').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; sf.cobro = b.dataset.c; $$('#s-cobro .chip').forEach(x => x.classList.toggle('on', x === b)); pintarReq(); mensajeSimu(); });
+$('#s-req').addEventListener('click', e => { const b = e.target.closest('.req-i'); if (!b) return; const k = b.dataset.k; sf.tengo.has(k) ? sf.tengo.delete(k) : sf.tengo.add(k); pintarReq(); mensajeSimu(); });
+pintarReq(); pintarSimu(false);
+
+// ── los ScrollTrigger del inicio: se crean la primera vez que se ve y se apagan mientras está oculto ──
+const stInicio = [];
+let introAnim = null;
+function alEntrar(trigger, start, fn) { let hecho = false; stInicio.push(ScrollTrigger.create({trigger, start, onEnter: () => { if (!hecho && KIT.actual === 'inicio') { hecho = true; fn(); } }})); }
+function triggersInicio() {
+  introAnim = gsap.to(vivo, {p: 1, ease: 'none', onUpdate: ponerCamara, scrollTrigger: {trigger: '.intro', start: 'top top', end: 'bottom bottom', scrub: .6}});
+  stInicio.push(introAnim.scrollTrigger);
+  stInicio.push(gsap.fromTo('#c-foto', {scale: 1.12}, {scale: 1, ease: 'none', scrollTrigger: {trigger: '.cierre', start: 'top bottom', end: 'bottom bottom', scrub: true}}).scrollTrigger);
+  // el salón abre: las persianas de cada tipo se levantan
+  alEntrar('#tipos-g', 'top 82%', () => gsap.to('.persiana', {yPercent: -101, duration: .95, ease: 'power3.inOut', stagger: .1}));
+  // los cuentakilómetros de los recién llegados giran hasta sus kilómetros reales
+  const odos = $$('#dest-g .odo b'); odos.forEach(b => b.textContent = '000.000');
+  alEntrar('#dest-g', 'top 85%', () => odos.forEach((b, k) => { const o = {v: 0}, km = AUTOS[+b.closest('.auto').dataset.i].km; gsap.to(o, {v: km, duration: 1.4, delay: k * .08, ease: 'power2.out', onUpdate: () => b.textContent = odo(o.v)}); }));
+  // la puerta de la financiación cuenta la cuota; la del usado da contacto, como el tablero
+  alEntrar('.puertas', 'top 82%', () => {
+    const o = {v: 0}; gsap.to(o, {v: cMin, duration: 1.2, ease: 'power2.out', onUpdate: () => $('#p-num').textContent = usd(o.v)});
+    gsap.fromTo('#p-aguja', {rotation: -90, svgOrigin: '60 64'}, {rotation: 34, svgOrigin: '60 64', duration: 1.5, ease: 'back.out(1.5)'});
+    gsap.fromTo('#p-arco', {attr: {'stroke-dasharray': '0 100'}}, {attr: {'stroke-dasharray': '69 100'}, duration: 1.5, ease: 'back.out(1.5)'});
+  });
+  // las llaves entregadas se balancean colgadas del llavero, una vez
+  alEntrar('#llavero', 'top 82%', () => gsap.fromTo('.llave-t', {rotation: i => [-8, 6, -5, 7][i % 4]}, {rotation: 0, duration: 1.9, ease: 'elastic.out(1, .3)', stagger: .07}));
+  if (!isNaN(R)) alEntrar('#nota-g', 'top 88%', () => { const n = {v: 0}; gsap.to(n, {v: R, duration: 1.3, ease: 'power2.out', onUpdate: () => { $('#nota-num').textContent = n.v.toFixed(1).replace('.', ','); }}); });
+  ScrollTrigger.refresh();
+}
+
+// ── las páginas ──
+KIT.en('inicio', () => {
+  document.title = `${N} · diseño de muestra · Mas & Co`;
+  if (!portadaLista) { iniciarPortada(); requestAnimationFrame(triggersInicio); }
+  else { encuadres(); requestAnimationFrame(() => { if (introAnim) introAnim.progress(0); vivo.p = 0; ponerCamara(); stInicio.forEach(s => s.enable()); }); }
+}, () => { stInicio.forEach(s => s.disable(false)); });
+KIT.en('stock', extra => {
+  document.title = `Los autos · ${N}`;
+  f.tipo = TIPOS.some(t => t[0] === extra.tipo) ? extra.tipo : 'todos';
+  $$('#g-tipo .chip').forEach(x => x.classList.toggle('on', x.dataset.k === f.tipo));
+  filtrar(false);
+});
+KIT.en('auto', extra => verAuto(Math.max(0, AUTOS.findIndex(a => a.id === extra.id))));
+KIT.en('financiacion', extra => {
+  document.title = `Financiación · ${N}`;
+  const i = AUTOS.findIndex(a => a.id === extra.id); if (i >= 0) sf.i = i;
+  $('#s-auto').value = sf.i;
+  // el arranque: la cuota se arma desde cero y la barra se llena con el anticipo y lo financiado
+  vistaS.c = 0; gsap.set(['#s-b-ant', '#s-b-fin'], {width: 0}); pintarSimu(true);
+});
+KIT.en('usado', extra => {
+  document.title = `Tomamos tu usado · ${N}`;
+  const i = AUTOS.findIndex(a => a.id === extra.id); usadoPor = i >= 0 ? i : null;
+  escribirUsado(false); agujas.anio = 2005; agujas.km = 0; pintarAgujas(); contacto();
+});
+KIT.arrancar();
+
+document.fonts.ready.then(() => { if (portadaLista && KIT.actual === 'inicio') ajustarPorta(); ScrollTrigger.refresh(); });
 addEventListener('load', () => ScrollTrigger.refresh());
 </script>
 </body></html>
