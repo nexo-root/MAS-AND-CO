@@ -2,19 +2,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Diseño de muestra para su taller mecánico · Mas & Co">
-<meta property="og:description" content="Recórrala completa: la cortina con su nombre, qué le pasa al auto, los servicios con su ficha, el tablero de testigos, la orden de trabajo y el aviso en cada paso.">
+<meta property="og:description" content="Recórrala completa: su nombre en la portada, qué le pasa al auto, los servicios con su ficha, el tablero de testigos, la orden de trabajo y el aviso en cada paso.">
 <meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
 <title>Taller mecánico · diseño de muestra · Mas & Co</title>
+<script>document.documentElement.classList.add('tapa-espera'); setTimeout(function () { document.documentElement.classList.remove('tapa-espera'); }, 4000);</script>
 <link rel="preconnect" href="https://images.pexels.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&family=Shrikhand&family=Kaushan+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 /* Muestra completa para talleres mecánicos · Mas & Co · 14/10/2026. Una página para los de la lista:
    …/talleres/?s=<slug> trae nombre, lugar, nota, opiniones y, si se sabe, el nombre del dueño.
    Nació para Mecánica Da Silva (Santo Tomé): la portada fija del 10/10 (foto a sangre, Oswald + Work Sans, noche y
    naranja, la orden de trabajo con birome) pasa a ser una página entera:
-   1. La cortina metálica (foto real de chapa, Pexels 2271100) con el nombre pintado a mano (Shrikhand + Kaushan Script,
-      multiply sobre las ondas). Se prende el tubo adentro, la luz se escapa por abajo y la cortina sube en tres tramos;
-      con el scroll termina de enrollarse en su cajón. Atrás, el taller (Pexels 34337558).
+   1. La portada (20/10, elegida entre tres): el auto en el elevador de un taller limpio, a sangre (Pexels 8986070),
+      y la orden de trabajo de papel encima. Entra en tres golpes: el taller se asienta y sube el nombre, te dan la
+      orden, y se tilda con birome lo que se hizo y firma el dueño.
    2. Se te prendió una luz: el tablero de noche. Al entrar se hace el control de luces (como al girar la llave);
       cada testigo dice qué puede ser y si se puede seguir (orientativo) y se suma al turno.
    3. La orden de trabajo ES el formulario: se encierra la marca, se escribe con birome, se tildan los trabajos.
@@ -44,7 +45,7 @@ svg path{fill:currentColor}
 .btn.claro:hover{background:rgba(255,255,255,.12)}
 .nota-ej{font-size:13px;color:var(--gris)}
 
-/* la barra: arriba va apoyada sobre el cajón de la cortina; después del taller se pone sólida */
+/* la barra: arriba va transparente sobre la foto de la portada; pasando la portada se pone sólida */
 .barra{position:fixed;z-index:30;top:0;left:0;right:0;height:var(--cajon);display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px;color:#fff}
 .barra.solida{background:rgba(20,27,34,.95);backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(255,255,255,.07)}
 .marca{display:flex;align-items:center;gap:10px;font-family:Oswald,sans-serif;font-weight:600;font-size:22px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;min-width:0}
@@ -54,55 +55,43 @@ svg path{fill:currentColor}
 .nav a:hover{color:#fff}
 .barra .btn{min-height:44px;padding:0 20px;font-size:15px}
 
-/* 1 · la cortina */
-.intro{position:relative;height:calc(100vh + 70vh);height:calc(100svh + 70svh);background:var(--negro)}
-.intro-fijo{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.taller{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;transform-origin:50% 50%}
-.apagado{position:absolute;inset:0;background:#04070A;opacity:.93}
-.velo-p{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,18,0) 52%,rgba(10,14,18,.45) 68%,rgba(10,14,18,.9) 100%)}
-.portada{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:0 110px 42px 48px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px 40px}
-.rubro{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(46px,4.4vw,82px);line-height:.98;max-width:15ch;text-wrap:balance;text-shadow:0 3px 24px rgba(0,0,0,.5)}
-.duenio{margin-top:12px;font-size:19px;color:rgba(242,238,230,.92)}
-.acciones{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.lado{display:flex;flex-direction:column;align-items:flex-end;gap:10px;text-align:right}
-.chip-nota{display:inline-flex;align-items:center;gap:9px;background:rgba(20,27,34,.8);box-shadow:inset 0 0 0 1px rgba(242,238,230,.18);padding:10px 16px;border-radius:999px;font-size:15px;font-weight:600;backdrop-filter:blur(6px)}
-.chip-nota i{font-style:normal;color:var(--naranja)}
-.horas-h{font-size:15px;color:rgba(242,238,230,.85);line-height:1.45}
-.ejemplo-h{font-size:12.5px;color:rgba(242,238,230,.75)}
-.solo-celu{display:none}
-.chip-nota{white-space:nowrap}
-.vano{position:absolute;z-index:4;left:0;right:0;top:var(--cajon);bottom:0;overflow:hidden;pointer-events:none}
-.cortina{position:absolute;inset:0;will-change:transform;transform:translate3d(0,-3.6%,0);
-  background:repeating-linear-gradient(180deg,#8E959B 0 30px,#6F767C 30px 34px,#A3A9AE 34px 40px)}
-.chapa,.pint{position:absolute;inset:0}
-.chapa{background:var(--chapa) 50% 50%/cover;filter:brightness(.84) saturate(.8)}
-.pint .bloque{position:absolute;left:3%;right:3%;top:var(--py,58%);display:flex;flex-direction:column;align-items:center;text-align:center}
-.p-oficio{font-family:"Kaushan Script",cursive;font-size:max(14px,calc(var(--fs,100px)*.36));line-height:1.15;color:#16202A}
-.p-nombre{font-family:Shrikhand,serif;font-size:var(--fs,100px);line-height:1;text-transform:uppercase;color:var(--naranja);display:flex;flex-direction:column;align-items:center;margin:.02em 0 .14em}
-.p-nombre span{white-space:nowrap}
-.pint .lista{position:absolute;left:6%;right:6%;top:var(--py2,30%);display:flex;flex-wrap:wrap;justify-content:center;gap:.1em .55em;text-align:center;
-  font-family:Oswald,sans-serif;font-weight:600;font-size:var(--fs2,34px);line-height:1.15;letter-spacing:.07em;text-transform:uppercase;color:#16202A}
-.lista span{white-space:nowrap}
-.lista i{font-style:normal;color:#C24A0A}
-.pint.sombra{mix-blend-mode:multiply;opacity:.92}
-.sombra .p-oficio,.sombra .lista{visibility:hidden}
-.sombra .p-nombre{color:#0E141A;position:relative;left:.04em;top:.05em}
-.pint.relieve{background:var(--chapa) 50% 50%/cover;-webkit-background-clip:text;background-clip:text;filter:grayscale(1) brightness(1.5) contrast(1.6);mix-blend-mode:multiply}
-.pint.relieve *{color:transparent!important}
-.gastado{-webkit-mask-image:var(--ruido);mask-image:var(--ruido);-webkit-mask-size:640px 640px;mask-size:640px 640px}
-.noche-c{position:absolute;inset:0;background:#04070A;opacity:.42}
-.fuga{position:absolute;left:0;right:0;bottom:0;height:30%;opacity:0;mix-blend-mode:screen;
-  background:linear-gradient(0deg,rgba(255,243,222,.62),rgba(255,243,222,.2) 22%,rgba(255,243,222,.05) 60%,rgba(255,243,222,0))}
-.rendija-luz{position:absolute;left:0;right:0;bottom:0;height:90px;opacity:0;mix-blend-mode:screen;
-  background:linear-gradient(0deg,rgba(255,246,228,.35),rgba(255,246,228,.95))}
-.zocalo{position:absolute;left:0;right:0;bottom:0;height:max(16px,2.1%);background:linear-gradient(180deg,#B9BFC4,#7D858C 45%,#4B5259 80%,#2B3137);box-shadow:0 -2px 6px rgba(0,0,0,.35)}
-.zocalo i{position:absolute;top:28%;width:56px;height:46%;border-radius:3px;background:linear-gradient(180deg,#2A3037,#14181D);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
-.zocalo i:first-child{left:22%}.zocalo i:last-child{right:22%}
-.guia{position:absolute;z-index:5;top:var(--cajon);bottom:0;width:14px;pointer-events:none;
-  background:linear-gradient(90deg,#14181D,#555D66 35%,#7D858D 50%,#3A4148 70%,#101418);box-shadow:0 0 10px rgba(0,0,0,.5)}
-.guia.izq{left:0}.guia.der{right:0}
-.cajon{position:absolute;z-index:6;left:0;right:0;top:0;height:var(--cajon);pointer-events:none;
-  background:linear-gradient(180deg,#2E353D 0%,#20262D 40%,#171C22 85%,#0E1216 100%);box-shadow:0 8px 18px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08),inset 0 -2px 0 rgba(0,0,0,.6)}
+/* 1 · la portada: el auto en el elevador de un taller limpio (Pexels 8986070) y la orden de trabajo de papel encima */
+.tapa{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--negro)}
+.tapa-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.08);transform-origin:100% 55%}
+.tapa-velo{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,rgba(10,14,18,.9) 0%,rgba(10,14,18,.6) 26%,rgba(10,14,18,0) 56%),
+             linear-gradient(90deg,rgba(10,14,18,.55) 0%,rgba(10,14,18,0) 48%),
+             linear-gradient(180deg,rgba(10,14,18,.55) 0,rgba(10,14,18,0) 150px)}
+.tapa-cuerpo{position:absolute;z-index:2;left:clamp(24px,5.4vw,88px);right:clamp(24px,5.4vw,88px);bottom:clamp(64px,9vh,96px);
+  display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
+.tapa-texto{max-width:640px;min-width:0}
+.tapa h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:calc(clamp(58px,6.6vw,108px) * var(--k,1));line-height:.93;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.tapa h1 .l{display:block;overflow:hidden;padding-bottom:.03em}
+.tapa h1 .l>span{display:block}
+.tapa-lugar{margin-top:16px;font-size:21px;font-weight:500}
+.tapa-nota{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:9px 15px;border-radius:999px;font-size:15.5px;font-weight:600;
+  background:rgba(20,27,34,.8);box-shadow:inset 0 0 0 1px rgba(242,238,230,.16)}
+.tapa-nota svg{width:18px;height:18px;color:var(--naranja)}
+.tapa .acciones{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.tapa-ej{position:absolute;z-index:3;right:16px;bottom:16px;font-size:12px;color:rgba(255,255,255,.82);background:rgba(10,14,18,.55);padding:4px 10px;border-radius:999px}
+.ot{flex:none;width:372px;color:var(--tinta);border-radius:3px;padding:18px 22px 14px;
+  background:var(--papel) repeating-linear-gradient(180deg,transparent 0 37px,rgba(30,77,166,.11) 37px 38px);background-position:0 45px;
+  box-shadow:0 34px 60px -26px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.4) inset}
+.ot-cab{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--tinta);padding-bottom:8px;
+  font-family:Oswald,sans-serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+.ot-cab span{font-family:"Work Sans",sans-serif;font-weight:500;letter-spacing:0;font-size:14px;color:var(--gris)}
+.ot ul{list-style:none}
+.ot li,.ot-auto{height:38px;display:flex;align-items:center;gap:12px;font-size:16px;font-weight:500}
+.ot-auto{color:var(--gris);gap:8px}
+.ot-bir{font-family:Caveat,cursive;font-weight:700;font-style:normal;color:var(--birome);font-size:27px;line-height:1;display:inline-block}
+.ot-caja{position:relative;width:20px;height:20px;border:1.6px solid var(--tinta);border-radius:2px;flex:none}
+.ot-tilde{position:absolute;left:-4px;top:-12px;width:31px;height:31px;overflow:visible}
+.ot-tilde path{fill:none;stroke:var(--birome);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1}
+.ot-firma{height:42px;padding-top:4px;line-height:36px;font-size:15.5px;border-top:1px dashed rgba(38,40,43,.35);margin-top:2px}
+.ot-firma .ot-bir{font-size:30px;padding:0 1px 0 2px}
+/* hasta que arranca la entrada (la clase la pone el <head> y la saca entradaTapa) */
+.tapa-espera .tapa h1 .l>span,.tapa-espera .tapa .tarde,.tapa-espera .ot{visibility:hidden}
+.tapa-espera .ot-tilde path{stroke-dashoffset:1}
 
 /* secciones */
 .sec{position:relative;padding:112px 48px}
@@ -278,7 +267,6 @@ input.mano:focus{background:rgba(30,77,166,.05)}
 .aviso.ver{opacity:1;transform:translate(-50%,0)}
 
 @media (min-width:1700px){
-  .portada{padding:0 120px 54px 72px}
   .sec{padding-left:72px;padding-right:72px}
   .cabeza,.tab,.mesa,.ruta,.info-grid{max-width:1560px}
   .mesa{grid-template-columns:minmax(0,1fr) 460px}
@@ -298,21 +286,21 @@ input.mano:focus{background:rgba(30,77,166,.05)}
   .marca{font-size:18px;gap:8px}
   .marca svg{width:20px;height:20px}
   .barra .btn{padding:0 16px;font-size:14.5px}
-  .intro{height:calc(100vh + 44vh);height:calc(100svh + 44svh)}
-  .taller{object-position:50% 40%}
-  .portada{display:block;padding:0 16px 58px}
-  .rubro{font-size:clamp(34px,10.4vw,46px)}
-  .duenio{font-size:16px;margin-top:8px}
-  .acciones{margin-top:16px}
-  .acciones .btn{width:100%;min-height:52px}
-  .acciones .claro{display:none}
-  .lado{flex-direction:row;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;text-align:left}
-  .chip-nota{font-size:13px;padding:8px 12px}
-  .horas-h,.solo-compu{display:none}
-  .solo-celu{display:inline}
-  .ejemplo-h{font-size:12px}
-  .guia{width:9px}
-  .zocalo i{width:40px}
+  .tapa-foto{height:350px;object-position:58% 50%;transform:none;transform-origin:50% 45%}
+  .tapa-velo{background:linear-gradient(180deg,rgba(10,14,18,.6) 0,rgba(10,14,18,0) 70px,rgba(10,14,18,0) 215px,var(--negro) 350px)}
+  .tapa-cuerpo{left:16px;right:16px;bottom:calc(var(--tabs) + 54px);flex-direction:column-reverse;align-items:stretch;gap:18px}
+  .tapa h1{font-size:calc(clamp(40px,12vw,54px) * var(--k,1))}
+  .tapa-lugar{font-size:17.5px;margin-top:10px}
+  .tapa-nota{margin-top:12px;font-size:14px;padding:7px 13px}
+  .tapa .acciones{flex-direction:column;align-items:stretch;gap:10px;margin-top:16px}
+  .tapa-ej{top:calc(var(--cajon) + 10px);right:12px;bottom:auto;font-size:11.5px}
+  .ot{width:auto;padding:11px 16px 6px;background-position:0 38px}
+  .ot-cab{font-size:14px;padding-bottom:6px}
+  .ot-cab span{font-size:12.5px}
+  .ot li{height:33px;font-size:15px}
+  .ot .ot-compu{display:none}
+  .ot-firma{height:38px;line-height:32px;font-size:14.5px}
+  .ot-firma .ot-bir{font-size:27px}
   .sec{padding:76px 16px}
   .cabeza{display:block;margin-bottom:26px}
   .cabeza h2{font-size:clamp(44px,12.6vw,58px)}
@@ -616,7 +604,6 @@ body:not(.en-inicio) .flotante.oculto{opacity:1;visibility:visible;transform:non
   .flotante{bottom:calc(var(--tabs) + 12px + env(safe-area-inset-bottom))}
   .aviso{bottom:calc(var(--tabs) + 86px)}
   .pie{padding-bottom:calc(var(--tabs) + 64px)}
-  .intro-fijo{height:calc(100vh - var(--tabs));height:calc(100svh - var(--tabs))}
   [data-pagina]>.sec:first-child:not(.seguimiento){padding-top:calc(var(--cajon) + 34px)}
   .pag-cab{margin-bottom:22px}
   .pag-cab h1{font-size:clamp(46px,13vw,60px)}
@@ -719,41 +706,34 @@ body:not(.en-inicio) .flotante.oculto{opacity:1;visibility:visible;transform:non
 </nav>
 
 <main data-pagina="inicio">
-<section class="intro" id="arriba">
-  <div class="intro-fijo" id="intro-fijo">
-    <img class="taller" id="foto-taller" alt="Adentro del taller: dos elevadores, el banco y la pared de herramientas." fetchpriority="high" decoding="async">
-    <div class="apagado" id="apagado"></div>
-    <div class="velo-p"></div>
-    <div class="portada" id="portada">
-      <div>
-        <p class="rubro" id="rubro">Taller mecánico</p>
-        <p class="duenio" id="duenio" hidden></p>
-        <div class="acciones">
-          <a class="btn" data-ir="turno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Pedí turno por WhatsApp</a>
-          <a class="btn claro" data-ir="testigos">¿Se te prendió una luz?</a>
-        </div>
-      </div>
-      <div class="lado">
-        <span class="chip-nota" id="chip-nota" hidden><i>★</i><span id="chip-nota-t"></span></span>
-        <span class="horas-h">Lunes a viernes de 8 a 12 y de 15 a 19<br>Sábados de 8 a 12</span>
-        <span class="ejemplo-h"><span class="solo-compu">Foto y horario de ejemplo</span><span class="solo-celu">Foto de ejemplo</span></span>
+<section class="tapa" id="arriba">
+  <img class="tapa-foto" src="https://images.pexels.com/photos/8986070/pexels-photo-8986070.jpeg?auto=compress&cs=tinysrgb&w=1800"
+    srcset="https://images.pexels.com/photos/8986070/pexels-photo-8986070.jpeg?auto=compress&cs=tinysrgb&w=1200 1200w, https://images.pexels.com/photos/8986070/pexels-photo-8986070.jpeg?auto=compress&cs=tinysrgb&w=1800 1800w, https://images.pexels.com/photos/8986070/pexels-photo-8986070.jpeg?auto=compress&cs=tinysrgb&w=2600 2600w"
+    sizes="(max-width:860px) 140vw, 108vw" alt="Una camioneta en el elevador y el mecánico revisándola desde abajo, en un taller limpio y luminoso." fetchpriority="high" decoding="async">
+  <div class="tapa-velo"></div>
+  <div class="tapa-cuerpo">
+    <div class="tapa-texto">
+      <h1 id="tapa-nombre"></h1>
+      <p class="tapa-lugar tarde" id="tapa-lugar">Taller mecánico</p>
+      <p class="tapa-nota tarde" id="tapa-nota" hidden></p>
+      <div class="acciones tarde">
+        <a class="btn" data-ir="turno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></svg>Pedí turno por WhatsApp</a>
+        <a class="btn claro" data-ir="testigos">¿Se te prendió una luz?</a>
       </div>
     </div>
-    <div class="vano" id="vano">
-      <div class="rendija-luz" id="rendija-luz"></div>
-      <div class="cortina" id="cortina">
-        <div class="chapa"></div>
-        <div class="pint sombra gastado" aria-hidden="true"></div>
-        <div class="pint pintura gastado"></div>
-        <div class="pint relieve gastado" aria-hidden="true"></div>
-        <div class="noche-c" id="noche-c"></div>
-        <div class="fuga" id="fuga"></div>
-        <div class="zocalo"><i></i><i></i></div>
-      </div>
-    </div>
-    <span class="guia izq"></span><span class="guia der"></span>
-    <div class="cajon"></div>
+    <article class="ot" aria-label="Orden de trabajo de ejemplo">
+      <div class="ot-cab">ORDEN DE TRABAJO<span>N.º 0001</span></div>
+      <p class="ot-auto ot-compu">Vehículo: <i class="ot-bir">Forester 2004</i></p>
+      <ul>
+        <li><b class="ot-caja"><svg class="ot-tilde" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M3.2 12.6c1.7 1.1 3.1 2.9 4.3 5.3C10.2 11.1 14 6.4 20.8 2.6"/></svg></b>Revisión general</li>
+        <li class="ot-compu"><b class="ot-caja"><svg class="ot-tilde" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M3.6 12.1c1.5 1.3 2.9 3.2 3.9 5.6C10.6 10.6 14.3 6.9 20.4 3.4"/></svg></b>Aceite y filtro</li>
+        <li class="ot-compu"><b class="ot-caja"><svg class="ot-tilde" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M3 12.9c1.8 1 3.2 2.7 4.4 5.1C10 11.6 13.7 6.1 21 2.9"/></svg></b>Frenos</li>
+        <li><b class="ot-caja"><svg class="ot-tilde" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M3.4 12.4c1.6 1.2 3 3 4.1 5.4C10.4 10.9 14.1 6.6 20.6 3"/></svg></b>Aviso por WhatsApp en cada paso</li>
+      </ul>
+      <p class="ot-firma" id="ot-firma"></p>
+    </article>
   </div>
+  <span class="tapa-ej">Foto de ejemplo</span>
 </section>
 
 <section class="sec reco" id="reco">
@@ -805,7 +785,7 @@ body:not(.en-inicio) .flotante.oculto{opacity:1;visibility:visible;transform:non
   </div>
 </section>
 
-<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2>La cortina ya está arriba</h2><p id="c-sub">Pedí turno y traelo: te avisamos por WhatsApp en cada paso.</p><a class="btn" data-ir="turno">Pedí turno</a></div><span class="ej">Foto de ejemplo</span></section>
+<section class="cierre"><img id="c-foto" alt="" loading="lazy" decoding="async"><div><h2>Traelo y queda todo anotado</h2><p id="c-sub">Pedí turno y traelo: te avisamos por WhatsApp en cada paso.</p><a class="btn" data-ir="turno">Pedí turno</a></div><span class="ej">Foto de ejemplo</span></section>
 </main>
 
 <main data-pagina="testigos" hidden>
@@ -1024,99 +1004,50 @@ const CON_DATOS = !!(M || q.get('n') || q.get('c'));
 $$('[data-n]').forEach(el => el.textContent = N);
 $$('[data-lugar]').forEach(el => el.textContent = LUGAR || 'Argentina');
 document.title = `${N} · diseño de muestra · Mas & Co`;
-$('#rubro').textContent = `Taller mecánico${CIUDAD ? ' en ' + CIUDAD : ''}`;
-if (DUENIO) { $('#duenio').textContent = `Te atiende ${DUENIO}, el dueño.`; $('#duenio').hidden = false; }
-if (!isNaN(R) && O) { $('#chip-nota-t').textContent = `${R.toFixed(1).replace('.', ',')} en Google · ${miles(O)} opiniones`; $('#chip-nota').hidden = false; }
 $('#chat-para').textContent = DUENIO ? `${DUENIO} · ${N}` : N;
 $('#seg-sub').textContent = `${DUENIO ? DUENIO + ' te escribe' : 'Te escribimos'} por WhatsApp, desde que lo dejás hasta que lo retirás. Nada se toca sin tu OK.`;
 function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); if (avisar._t) avisar._t.kill(); avisar._t = gsap.delayedCall(4.2, () => a.classList.remove('ver')); }
 document.addEventListener('click', e => { if (e.target.closest('[data-wsp]')) avisar(`En su página, este botón le manda el mensaje directo al WhatsApp de ${N}.`); });
 
-// ── 1 · la cortina ──
-// La pintura va en tres capas iguales: la sombra (multiply), el color y el relieve (la misma foto de la chapa,
-// recortada a las letras y en multiply): así las ondas de la cortina se marcan sobre la pintura.
-const ruido = `url("data:image/svg+xml;utf8,${encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='640' height='640'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.018 .07' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.5 0 0 0 1.78'/></filter><rect width='100%' height='100%' filter='url(#f)'/></svg>")}")`;
-document.documentElement.style.setProperty('--ruido', ruido);
-const CHAPA = foto(2271100, celu() ? 2000 : 2600);
-document.documentElement.style.setProperty('--chapa', `url("${CHAPA}")`);
-const fijo = $('#intro-fijo'), cortina = $('#cortina'), fotoT = $('#foto-taller');
-fotoT.sizes = '(max-width:860px) 300vw, 115vw'; fotoT.srcset = juego(34337558, [1200, 1800, 2600, 3400]); fotoT.src = foto(34337558, 1800);
-function pintarCortina(renglones) {
-  const oficio = /taller/i.test(N) ? 'Mecánica en general' : 'Taller mecánico';
-  const trabajos = ['Service', 'Frenos', 'Tren delantero', 'Embrague', 'Escáner'].map(t => `<span>${t}</span>`).join('<i>·</i>');
-  $$('.pint').forEach(capa => {
-    const tag = capa.classList.contains('pintura') ? 'h1' : 'div';
-    capa.innerHTML = `<div class="lista">${trabajos}</div><div class="bloque"><span class="p-oficio">${oficio}</span><${tag} class="p-nombre">${renglones.map(l => `<span>${esc(l)}</span>`).join('')}</${tag}></div>`;
-  });
+// ── 1 · la portada: el auto en el elevador y la orden de trabajo ──
+// Entra en tres golpes: 1) el taller se asienta y sube el nombre; 2) te dan la orden de trabajo;
+// 3) se tilda con birome lo que se hizo y firma el dueño. Arranca la primera vez que se ve el Inicio.
+Object.assign(ICON, {star: 'M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z'});
+(function () {
+  // el nombre en renglones parejos: dos (tres si es largo); si un renglón queda largo, la letra se achica
+  const pal = N.split(/\s+/).filter(Boolean), n = pal.length < 2 ? 1 : (N.length > 24 && pal.length > 2 ? 3 : 2), ren = [];
+  for (let i = n; i > 0; i--) {
+    if (i === 1) { ren.push(pal.splice(0).join(' ')); break; }
+    const meta = pal.join(' ').length / i, r = [pal.shift()];
+    while (pal.length > i - 1 && (r.join(' ') + ' ' + pal[0]).length <= meta) r.push(pal.shift());
+    ren.push(r.join(' '));
+  }
+  const h1 = $('#tapa-nombre'), largo = Math.max(...ren.map(r => r.length));
+  h1.innerHTML = ren.map(r => `<span class="l"><span>${esc(r)}</span></span>`).join('');
+  h1.style.setProperty('--k', Math.max(.55, Math.min(1, 10 / largo)).toFixed(3));
+  $('#tapa-lugar').textContent = `Taller mecánico${CIUDAD ? ' en ' + CIUDAD : ''}`;
+  if (!isNaN(R) && O) { $('#tapa-nota').innerHTML = `${ico('star')}<span><b>${R.toFixed(1).replace('.', ',')}</b> · ${miles(O)} opiniones</span>`; $('#tapa-nota').hidden = false; }
+  $('#ot-firma').innerHTML = DUENIO ? `Te atiende <i class="ot-bir">${esc(DUENIO)}</i>, el dueño` : 'Te atiende <i class="ot-bir">el dueño</i>';
+})();
+let tlTapa = null;
+function entradaTapa() {
+  if (tlTapa) return;
+  const compu = !celu(), tildes = $$('.ot-tilde path').filter(p => p.getClientRects().length), firma = $('#ot-firma .ot-bir');
+  tlTapa = gsap.timeline({paused: true, defaults: {ease: 'power3.out'}})
+    // 1 · el taller se asienta y entra el nombre
+    .fromTo('.tapa-foto', {scale: compu ? 1.16 : 1.1}, {scale: compu ? 1.08 : 1, duration: 1.6, ease: 'power2.out', clearProps: 'transform'}, 0)
+    .fromTo('#tapa-nombre .l>span', {yPercent: 130, autoAlpha: 0}, {yPercent: 0, autoAlpha: 1, duration: .85, stagger: .1}, .2)
+    .fromTo('.tapa .tarde', {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0, duration: .55, clearProps: 'transform'}, .55)
+    // 2 · te dan la orden de trabajo
+    .fromTo('.ot', {autoAlpha: 0, y: 70}, {autoAlpha: 1, y: 0, duration: .8, clearProps: 'transform'}, .75)
+    // 3 · se tilda con birome lo que se hizo y firma el dueño
+    .fromTo(tildes, {strokeDashoffset: 1}, {strokeDashoffset: 0, duration: .26, ease: 'power1.inOut', stagger: .2}, 1.5)
+    .fromTo(firma, {clipPath: 'inset(0 100% 0 0)'}, {clipPath: 'inset(0 0% 0 0)', duration: .6, ease: 'power1.inOut', clearProps: 'clipPath'}, 1.6 + tildes.length * .2);
+  document.documentElement.classList.remove('tapa-espera');
+  // arranca cuando la foto y las letras están listas (máximo 1,5 s de espera)
+  const img = $('.tapa-foto');
+  Promise.race([Promise.all([img.decode ? img.decode().catch(() => {}) : 0, document.fonts.ready]), new Promise(r => setTimeout(r, 1500))]).then(() => tlTapa.play());
 }
-// las formas de partir el nombre: en uno, dos o tres renglones (gana la que deja la letra más grande)
-function formas(t) {
-  const w = t.split(/\s+/).filter(Boolean), largo = o => Math.max(...o.map(x => x.length)), out = [[w.join(' ')]];
-  let dos = null, tres = null;
-  for (let i = 1; i < w.length; i++) { const o = [w.slice(0, i).join(' '), w.slice(i).join(' ')]; if (!dos || largo(o) < largo(dos)) dos = o; }
-  for (let i = 1; i < w.length - 1; i++) for (let j = i + 1; j < w.length; j++) { const o = [w.slice(0, i).join(' '), w.slice(i, j).join(' '), w.slice(j).join(' ')]; if (!tres || largo(o) < largo(tres)) tres = o; }
-  return [out[0], dos, tres].filter(Boolean);
-}
-// est.sube: lo que subió al cargar (tramos) · est.p: el scroll, que la termina de enrollar · est.luz: el tubo de adentro
-const est = {luz: 0, sube: 0, p: 0};
-const RENDIJA = .036;
-let R_FIN = .42;
-let T0 = 0;   // cuánto baja la foto del taller mientras la cortina tapa la parte de arriba (paneo)
-function medirPortada() {
-  const H = fijo.clientHeight, W = fijo.clientWidth, cj = $('.cajon').offsetHeight, vanoH = H - cj, mov = celu();
-  const maxW = W * (mov ? .88 : .74), maxH = H * (mov ? .27 : .26), tope = mov ? 92 : 172;
-  const mArr = mov ? 22 : 28, mAba = mov ? 36 : 44;
-  // se prueba cada forma de partir el nombre y queda la de letra más grande
-  let mejor = null;
-  formas(N).forEach(f => {
-    pintarCortina(f); cortina.style.setProperty('--fs', '100px');
-    const nom = $('.pintura .p-nombre'), ancho = Math.max(...[...nom.children].map(x => x.offsetWidth)), alto = $('.pintura .bloque').offsetHeight;
-    const fs = Math.min(100 * maxW / ancho, 100 * maxH / alto, tope);
-    if (!mejor || fs > mejor[0] + .5) mejor = [fs, f];
-  });
-  pintarCortina(mejor[1]); cortina.style.setProperty('--fs', mejor[0].toFixed(2) + 'px');
-  const bloque = $('.pintura .bloque'), alto = bloque.offsetHeight;
-  // la franja de cortina que queda arriba cuando termina de subir: el cartel y un margen
-  const tope2 = $('#portada').offsetTop + ($('#portada').firstElementChild.offsetTop || 0) - (mov ? 24 : 40);
-  const B = Math.min(cj + mArr + alto + mAba, tope2);
-  R_FIN = Math.min(.8, Math.max(.26, (H - B) / vanoH));
-  const py = R_FIN * vanoH + mArr;
-  cortina.style.setProperty('--py', py.toFixed(1) + 'px');
-  // la lista de trabajos va pintada más arriba: se ve con la cortina baja y se enrolla primero
-  cortina.style.setProperty('--fs2', (mov ? Math.max(14, Math.min(26, mejor[0] * .32)) : Math.max(18, Math.min(46, mejor[0] * .3))).toFixed(1) + 'px');
-  const lista = $('.pintura .lista');
-  cortina.style.setProperty('--py2', Math.max(18, py * .46 - lista.offsetHeight / 2).toFixed(1) + 'px');
-  // la foto: con la cortina a medio subir se ve del 30 % de la foto para abajo; al enrollarse, sube a su lugar
-  const rw = Math.max(W, H / .75), rh = rw * .75, off = (H - rh) * .42;
-  T0 = Math.max(0, Math.min(B - 12, B + 16 - (off + .3 * rh)));
-}
-function ponerCortina() {
-  const base = Math.max(RENDIJA, est.sube), k = base + (1 - base) * est.p;
-  cortina.style.transform = `translate3d(0,${(-k * 100).toFixed(3)}%,0)`;
-  $('#apagado').style.opacity = (.93 * (1 - est.luz)).toFixed(3);
-  const abajo = Math.max(0, 1 - est.sube / .14);
-  $('#fuga').style.opacity = (est.luz * abajo).toFixed(3);
-  $('#rendija-luz').style.opacity = (est.luz * abajo).toFixed(3);
-  $('#noche-c').style.opacity = (.42 - .3 * est.luz).toFixed(3);
-  fotoT.style.transform = `translate3d(0,${(T0 * (1 - est.p)).toFixed(1)}px,0) scale(${(1.04 - .04 * est.p).toFixed(4)})`;
-}
-let arranco = false;
-function arrancar() {
-  if (arranco) return; arranco = true;
-  if (reduce) { est.luz = 1; est.sube = R_FIN; ponerCortina(); return; }
-  // el tubo titila (tic, tic, prende), la luz se escapa por abajo y la cortina sube en tres tramos, sin rebote
-  gsap.timeline({onUpdate: ponerCortina})
-    .to(est, {luz: .6, duration: .04, ease: 'none'}, .45)
-    .to(est, {luz: .05, duration: .06, ease: 'none'}, '+=.05')
-    .to(est, {luz: .45, duration: .03, ease: 'none'}, '+=.16')
-    .to(est, {luz: .03, duration: .08, ease: 'none'}, '+=.04')
-    .to(est, {luz: 1, duration: .06, ease: 'none'}, '+=.26')
-    .to(est, {sube: .14, duration: .5, ease: 'power1.inOut'}, '+=.42')
-    .to(est, {sube: .27, duration: .46, ease: 'power1.inOut'}, '+=.16')
-    .to(est, {sube: () => R_FIN, duration: .6, ease: 'power2.out'}, '+=.16');
-}
-// arranca cuando están la chapa y las letras (o a los 2,5 s, lo que pase primero); la mide el inicio al entrar
-const listoPortada = Promise.race([Promise.all([document.fonts.ready, new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = CHAPA; })]), new Promise(r => setTimeout(r, 2500))]);
 
 // ── 2 · el tablero ──
 // colores reales de cada testigo; urgencia: alta = rojo (pará), media = ámbar (con cuidado)
@@ -1641,7 +1572,7 @@ function escribirOrden() {
 }
 function barraInicio() {
   if (KIT.actual !== 'inicio') return;
-  const fin = $('.intro').offsetHeight - innerHeight;
+  const fin = $('#arriba').offsetHeight - $('#barra').offsetHeight;
   $('#barra').classList.toggle('solida', scrollY >= fin - 2); $('.flotante').classList.toggle('oculto', scrollY < fin - innerHeight * .3);
 }
 addEventListener('scroll', barraInicio, {passive: true});
@@ -1657,12 +1588,9 @@ document.addEventListener('click', e => {
 });
 let iniHecho = false;
 KIT.en('inicio', () => {
-  gsap.killTweensOf(est, 'p'); est.p = 0;
-  medirPortada(); ponerCortina(); fijarTicket(); barraInicio();
+  fijarTicket(); barraInicio();
   if (iniHecho) return; iniHecho = true;
-  listoPortada.then(() => { if (KIT.actual === 'inicio') { medirPortada(); ponerCortina(); } arrancar(); });
-  // con el scroll la cortina termina de enrollarse en su cajón
-  ScrollTrigger.create({trigger: '.intro', start: 'top top', end: 'bottom bottom', onUpdate: s => gsap.to(est, {p: s.progress, duration: .6, ease: 'power3.out', overwrite: 'auto', onUpdate: ponerCortina})});
+  entradaTapa();
   ScrollTrigger.create({trigger: '.impresora', start: 'top 78%', once: true, onEnter: () => { if (!impreso) ponerTicket(true); }});
   gsap.set('#ac-chat > *', {autoAlpha: 0, y: 10});
   // los mensajes llegan en el orden del día: recibido, presupuesto, listo
@@ -1714,12 +1642,11 @@ KIT.en('seguimiento', () => {
 
 armar(); textosSeguimiento();
 addEventListener('resize', () => {
-  if (KIT.actual === 'inicio') { medirPortada(); ponerCortina(); fijarTicket(); }
+  if (KIT.actual === 'inicio') { fijarTicket(); barraInicio(); }
   if (KIT.actual === 'testigos') fijarAlto();
 });
 ScrollTrigger.addEventListener('refresh', () => { if (KIT.actual === 'seguimiento') geometria(); });
-if (reduce) { $('.intro').style.height = '100svh'; }
-document.fonts.ready.then(() => { if (KIT.actual === 'inicio') { medirPortada(); ponerCortina(); fijarTicket(); } if (KIT.actual === 'testigos') fijarAlto(); ScrollTrigger.refresh(); });
+document.fonts.ready.then(() => { if (KIT.actual === 'inicio') fijarTicket(); if (KIT.actual === 'testigos') fijarAlto(); ScrollTrigger.refresh(); });
 addEventListener('load', () => { if (KIT.actual === 'testigos') fijarAlto(); ScrollTrigger.refresh(); });
 KIT.arrancar();
 
