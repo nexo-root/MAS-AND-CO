@@ -509,6 +509,7 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 .ficha-cab{display:flex;align-items:baseline;justify-content:space-between;gap:4px 12px;flex-wrap:wrap}
 .rotulo-plano{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--marfil3)}
 .plano{position:relative;margin-top:12px;border-radius:14px;overflow:hidden;background:#171513;aspect-ratio:532/324}
+html,body{touch-action:manipulation}
 .plano svg{width:100%;height:100%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .plano.zoom svg{touch-action:none;cursor:grab}
 .pl-zoom{position:absolute;top:8px;right:8px;display:flex;gap:4px}
@@ -966,7 +967,7 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
           <svg id="pl-svg" viewBox="-12 -14 532 324" role="img" aria-label="Plano de ejemplo del salón a escala (22 × 14 m), armado con lo que elegiste"><g id="pl-fijo"></g><g id="pl-piezas"></g></svg>
           <div class="pl-zoom"><button type="button" data-z="1" aria-label="Acercar el plano">+</button><button type="button" data-z="-1" aria-label="Alejar el plano">−</button><button type="button" data-z="0" aria-label="Ver el plano entero">⤢</button></div>
           <div class="pl-vista" id="pl-vista" hidden><button type="button" data-v="ceremonia">Ceremonia</button><button type="button" data-v="fiesta">Fiesta</button></div>
-          <p class="pl-ayuda">Pellizcá o tocá dos veces para ampliar</p>
+          <p class="pl-ayuda">Pellizcá o usá + y − para ampliar</p>
         </div>
         <p class="pl-estado" id="pl-estado" aria-live="polite"></p>
         <p class="ficha-pie" id="ficha-pie"></p>
@@ -1973,7 +1974,7 @@ function verPlano() {
 <text class="rot" x="220" y="300" text-anchor="middle">entrada</text>
 <path class="escala" d="M0 288 H100"/>${regla}<text class="rot" x="0" y="306">0</text><text class="rot" x="20" y="306" text-anchor="middle">1</text><text class="rot" x="100" y="306" text-anchor="middle">5 m</text><text class="rot" x="440" y="306" text-anchor="end">salón 22 × 14 m</text>`;
 })();
-// acercar y alejar: botones, doble toque, pellizco y arrastre
+// acercar y alejar: botones, pellizco y arrastre (sin doble toque)
 const VB = {x: -12, y: -14, w: 532, h: 324}, zoom = {k: 1, cx: VB.x + VB.w / 2, cy: VB.y + VB.h / 2};
 function aplicarZoom() {
   const w = VB.w / zoom.k, h = VB.h / zoom.k;
@@ -1984,7 +1985,7 @@ function aplicarZoom() {
 function zoomA(k, cx = zoom.cx, cy = zoom.cy) { gsap.to(zoom, {k: cl(k, 1, 4), cx, cy, duration: quieto ? 0 : .35, ease: 'power2.out', onUpdate: aplicarZoom}); }
 const aU = (px, py) => { const r = plSvg.getBoundingClientRect(), w = VB.w / zoom.k, h = VB.h / zoom.k; return [zoom.cx - w / 2 + (px - r.left) / r.width * w, zoom.cy - h / 2 + (py - r.top) / r.height * h]; };
 $('.pl-zoom').addEventListener('click', e => { const b = e.target.closest('[data-z]'); if (!b) return; const z = +b.dataset.z; if (!z) zoomA(1, VB.x + VB.w / 2, VB.y + VB.h / 2); else zoomA(zoom.k * (z > 0 ? 1.6 : 1 / 1.6)); });
-plSvg.addEventListener('dblclick', e => { if (zoom.k > 1.01) zoomA(1, VB.x + VB.w / 2, VB.y + VB.h / 2); else { const [x, y] = aU(e.clientX, e.clientY); zoomA(2.2, x, y); } });
+if (0) plSvg.addEventListener('dblclick', e => { if (zoom.k > 1.01) zoomA(1, VB.x + VB.w / 2, VB.y + VB.h / 2); else { const [x, y] = aU(e.clientX, e.clientY); zoomA(2.2, x, y); } });
 const ptr = new Map(); let pin = null;
 plSvg.addEventListener('pointerdown', e => {
   if (e.pointerType === 'mouse' && zoom.k <= 1.01) return;
