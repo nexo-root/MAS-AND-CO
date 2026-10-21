@@ -206,15 +206,6 @@ dialog#player::backdrop{background:rgba(10,9,8,.92)}
 
 /* ── el salón, por dentro ── */
 .adentro{background:var(--marfil2)}
-.mosaico{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:620px}
-.mosaico figure{position:relative;overflow:hidden;border-radius:16px;background:var(--humo);color:var(--marfil)}
-.mosaico figure:first-child{grid-row:1/3}
-.mosaico img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.mosaico figure:hover img{transform:scale(1.04)}
-.mosaico figcaption{position:absolute;left:20px;right:20px;bottom:18px;z-index:1}
-.mosaico figcaption::before{content:"";position:absolute;inset:-60px -20px -18px;background:linear-gradient(0deg,rgba(20,18,16,.8),transparent);z-index:-1}
-.mosaico figcaption b{display:block;font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:.04em}
-.mosaico figcaption span{display:block;font-size:.95rem;color:var(--marfil2);margin-top:3px}
 .datos3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
 .datos3 div{padding:20px 22px;border-radius:14px;background:var(--marfil);border:1px solid var(--borde2)}
 .datos3 b{display:block;font-family:var(--serif);font-weight:700;font-size:1.9rem;letter-spacing:.02em;line-height:1.1}
@@ -343,12 +334,6 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 .f-cta .frase{max-width:30ch;margin:0 auto 24px}
 
 /* ── el salón ── */
-.esp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.esp{display:grid;grid-template-columns:200px 1fr;gap:20px;border:1px solid var(--borde2);border-radius:16px;overflow:hidden;background:var(--marfil)}
-.esp img{width:200px;height:100%;min-height:170px;object-fit:cover}
-.esp div{padding:18px 20px 18px 0}
-.esp b{display:block;font-family:var(--serif);font-weight:600;font-size:1.1rem;letter-spacing:.03em}
-.esp p{color:var(--tinta2);font-size:.95rem;margin-top:6px}
 .cap-lista{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .cap-lista li{padding:22px;border-radius:16px;background:var(--marfil);border:1px solid var(--borde2)}
 .cap-lista b{display:block;font-family:var(--serif);font-weight:700;font-size:2.2rem;line-height:1}
@@ -382,24 +367,6 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 .ficha{position:sticky;top:calc(var(--barra) + 16px);background:var(--carbon);color:var(--marfil);border-radius:20px;padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.3)}
 .ficha .ficha-tit{font-family:var(--serif);font-weight:600;letter-spacing:.04em;font-size:1.05rem}
 .ficha .ficha-tit em{font-family:var(--frase);font-style:italic;font-size:1.25em;color:var(--champ2)}
-.plano{margin-top:14px;border-radius:12px;overflow:hidden;background:var(--humo)}
-.plano svg{width:100%;height:auto}
-.plano .p-suelo{fill:#2A2622}
-.plano .p-pared{fill:none;stroke:var(--champ);stroke-width:2.2;stroke-linecap:round}
-.plano .p-puerta{fill:none;stroke:var(--champ2);stroke-width:1.2;stroke-dasharray:3 2}
-.plano .d1{fill:#E9E1D2}.plano .d2{fill:#1B1816}
-.plano .p-pista-borde{fill:none;stroke:var(--champ);stroke-width:1}
-.plano .escalon{fill:#4A4038;stroke:#6B5C4D;stroke-width:.6}
-.plano .mesa .tapa{fill:#F3EDE2}.plano .mesa .silla{fill:#C9A96E}.plano .mesa .centro{fill:#C9A96E}
-.plano .principal{fill:#E2CC9C}
-.plano .ext{fill:rgba(201,169,110,.22);stroke:var(--champ);stroke-width:.8}
-.plano .ext-ico,.plano .marca-ico{fill:#F3EDE2}
-.plano .marca{fill:rgba(201,169,110,.9)}
-.plano .marca-ico{fill:#1B1816}
-.plano .halo{fill:rgba(226,204,156,.14)}
-.plano .luz{fill:#E2CC9C}
-.plano .guirnalda{fill:none;stroke:#E2CC9C;stroke-width:1;stroke-dasharray:2 3}
-.plano .rotulo{font-family:var(--sans);font-size:6.5px;fill:rgba(243,237,226,.7);letter-spacing:.05em}
 .ficha-pie{margin-top:12px;font-size:.92rem;color:var(--marfil3)}
 .ficha-pie b{color:var(--marfil);font-weight:500}
 .estimado{margin-top:10px;padding-top:10px;border-top:1px solid rgba(243,237,226,.12);font-size:.92rem;color:var(--marfil3)}
@@ -491,8 +458,136 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 .rev{opacity:0}
 
 /* ── celular ── */
+/* ── el salón: los espacios, en columnas desfasadas (en el celu, carrusel con el dedo) ── */
+.espacios{display:grid;align-items:start}
+.espacios.cuatro{grid-template-columns:repeat(4,1fr);gap:20px;padding-bottom:8px}
+.espacios.cuatro .esp-c:nth-child(even){margin-top:56px}
+.espacios.seis{grid-template-columns:repeat(3,1fr);column-gap:28px;row-gap:44px}
+.espacios.seis .esp-c:nth-child(3n+2){margin-top:72px}
+.esp-c{margin:0}
+.esp-f{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:18px;background:var(--humo)}
+.esp-f img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.esp-c:hover .esp-f img{transform:scale(1.035)}
+.esp-c figcaption{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:baseline;padding:16px 2px 0}
+.esp-c figcaption i{font-style:normal;font-family:var(--serif);font-size:.78rem;letter-spacing:.14em;color:var(--champ3)}
+.esp-c figcaption b{font-family:var(--serif);font-weight:600;font-size:1.12rem;letter-spacing:.04em}
+.esp-c figcaption span{grid-column:2;color:var(--tinta2);font-size:.95rem;line-height:1.45;margin-top:4px}
+.desliza{display:none}
+.adentro .datos3{margin-top:40px}
+/* la portada del salón: la foto en su columna, nunca más grande que su resolución */
+.s-portada{background:var(--carbon);color:var(--marfil);padding:calc(var(--barra) + 56px) 0 80px}
+.s-port-env{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+.s-portada h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,1.4rem + 4vw,4.6rem);letter-spacing:.04em;line-height:1.02}
+.s-portada .frase{margin-top:16px;color:var(--marfil2);max-width:30ch}
+.s-portada .btn{margin-top:28px}
+.s-medidas{display:flex;flex-wrap:wrap;gap:14px 30px;margin-top:38px;padding-top:22px;border-top:1px solid rgba(243,237,226,.14);list-style:none}
+.s-medidas b{display:block;font-family:var(--serif);font-weight:600;font-size:1.45rem;letter-spacing:.03em;color:var(--champ2);line-height:1.1}
+.s-medidas span{font-size:.85rem;color:var(--marfil3)}
+.s-portada .nota-ej{color:var(--marfil3);border-color:rgba(243,237,226,.25);margin-top:14px}
+.s-port-foto{margin:0;max-width:1000px}
+.s-port-foto img{width:100%;aspect-ratio:1600/1064;object-fit:cover;border-radius:20px;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.s-port-foto figcaption{margin-top:12px;font-size:.85rem;color:var(--marfil3)}
+/* ── armá tu fiesta: opciones ── */
+.opc-grupo{margin-bottom:16px}
+.opc-grupo>p{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta3);margin-bottom:8px}
+.formatos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.formato{text-align:left;padding:12px 14px;border:1px solid var(--borde2);border-radius:12px;transition:background .2s,border-color .2s,color .2s}
+.formato b{display:flex;align-items:center;gap:8px;font-weight:500}
+.formato .ico{width:18px;height:18px;color:var(--champ3)}
+.formato span{display:block;font-size:.84rem;color:var(--tinta2);margin-top:2px}
+.formato.on{border-color:var(--carbon);background:var(--carbon);color:var(--marfil)}
+.formato.on span{color:var(--marfil3)}.formato.on .ico{color:var(--champ2)}
+.serv>span{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.serv small{font-size:.78rem;color:var(--tinta3);margin-top:2px}
+.serv .tag{font-style:normal;font-size:.66rem;letter-spacing:.04em;color:var(--champ3);border:1px solid var(--borde);border-radius:999px;padding:1px 7px;margin-left:auto;white-space:nowrap}
+.serv.on .tag+*{display:none}
+.serv:has(.tag)::after{margin-left:8px}
+.serv.dep{opacity:.5}
+.servicios{grid-template-columns:repeat(2,minmax(0,1fr))}
+.serv>span{overflow-wrap:anywhere}
+/* ── el plano a escala ── */
+.ficha-cab{display:flex;align-items:baseline;justify-content:space-between;gap:4px 12px;flex-wrap:wrap}
+.rotulo-plano{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--marfil3)}
+.plano{position:relative;margin-top:12px;border-radius:14px;overflow:hidden;background:#171513;aspect-ratio:532/324}
+.plano svg{width:100%;height:100%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.plano.zoom svg{touch-action:none;cursor:grab}
+.pl-zoom{position:absolute;top:8px;right:8px;display:flex;gap:4px}
+.pl-zoom button{width:30px;height:30px;border-radius:9px;background:rgba(20,18,16,.78);color:var(--marfil);border:1px solid rgba(226,204,156,.3);display:grid;place-items:center;font-size:1rem;line-height:1}
+.pl-zoom button:hover{border-color:var(--champ)}
+.pl-vista{position:absolute;left:8px;bottom:8px;display:flex;padding:3px;border-radius:999px;background:rgba(20,18,16,.85);border:1px solid rgba(226,204,156,.3)}
+.pl-vista[hidden]{display:none}
+.pl-vista button{padding:5px 12px;border-radius:999px;font-size:.78rem;color:var(--marfil3)}
+.pl-vista button.on{background:var(--champ);color:var(--tinta)}
+.pl-ayuda{display:none}
+.pl-estado{margin-top:10px;font-size:.9rem;line-height:1.4;color:var(--marfil2);min-height:2.8em}
+.pl-estado.aviso{color:var(--champ2)}
+.plano .suelo{fill:#2A2622}
+.plano .raya{stroke:rgba(201,169,110,.16);stroke-width:1.2}
+.plano .anexo{fill:#1C1917}
+.plano .muro{fill:none;stroke:var(--champ);stroke-width:3;stroke-linecap:square}
+.plano .muro-i{fill:none;stroke:rgba(201,169,110,.6);stroke-width:1.6}
+.plano .puerta{fill:none;stroke:var(--champ2);stroke-width:1;stroke-dasharray:3 2}
+.plano .d1{fill:#E9E1D2}.plano .d2{fill:#1B1816}
+.plano .pista-b{fill:none;stroke:var(--champ);stroke-width:1.2}
+.plano .pista-pill{fill:rgba(20,18,16,.82)}.plano .pista-rot{font-size:9.5px;fill:var(--champ2)}
+.plano.sin-pista .pista-pill,.plano.sin-pista .pista-rot{display:none}
+.plano .pista-g{transition:opacity .4s}
+.plano.sin-pista .pista-g{opacity:.3}
+.plano .escalon{fill:#4A4038;stroke:#6B5C4D;stroke-width:.6}
+.plano .mueble{fill:#3A332C;stroke:rgba(226,204,156,.55);stroke-width:.8}
+.plano .rot{font-family:var(--sans);font-size:11px;fill:rgba(243,237,226,.74);letter-spacing:.04em}
+.plano .rot.chico{font-size:8.5px;fill:#2A2622;font-weight:500}
+.plano .rot.claro{fill:var(--champ2)}
+.plano .escala{stroke:rgba(243,237,226,.6);stroke-width:1;fill:none}
+.plano .ico-pl{fill:rgba(243,237,226,.85)}
+.plano .ico-m{fill:#5E4C2E}
+.plano .asiento{fill:#C9A96E}.plano .respaldo{fill:#7A6238}
+.plano .sillac .asiento{fill:#E8B4A0}.plano .sillac .respaldo{fill:#A86F5A}
+.plano .tapa{fill:#F3EDE2}
+.plano .honor .tapa{fill:#E2CC9C}
+.plano .honor-ico{fill:#8F7440}
+.plano .baja .tapa{fill:#F6D9CC}
+.plano .platos circle{fill:none;stroke:#B89A62;stroke-width:.8}
+.plano .platos,.plano .centro{display:none}
+.plano.con-cena .platos{display:inline}
+.plano.con-deco .centro{display:inline;fill:#9DB38A}
+.plano .alta{fill:#F3EDE2;stroke:#C9A96E;stroke-width:1}.plano .alta-c{fill:#C9A96E}
+.plano .sofa{fill:#6E5D4B;stroke:#9C8366;stroke-width:.8}.plano .mesita{fill:#F3EDE2}
+.plano .fx-linea{fill:none;stroke:var(--champ2);stroke-width:1.2;stroke-dasharray:4 3}
+.plano .glow{fill:rgba(226,204,156,.16)}
+.plano .alfombra{fill:none;stroke:rgba(201,169,110,.3);stroke-width:18;stroke-linecap:round}
+.plano .lucecita{fill:#FFE3A8}
+.plano .bola{fill:url(#gBola)}
+.plano .haz{fill:rgba(255,227,168,.12)}
+.plano .marca{fill:var(--champ)}.plano .marca-ico{fill:#1B1816}
+.plano .pelotas circle:nth-child(3n){fill:#E7A9A0}.plano .pelotas circle:nth-child(3n+1){fill:#A9C5E0}.plano .pelotas circle:nth-child(3n+2){fill:#F2D58A}
+.plano .tinte{fill:rgba(201,169,110,.2)}
+.plano.con-dj .cabina-dj .mueble{fill:#5A4A33;stroke:var(--champ2)}
+@media (min-width:1100px){.armar-env{grid-template-columns:1fr 520px}}
 @media (max-width:860px){
   :root{--barra:56px;--tabs:64px}
+  .formato{padding:10px 12px}
+  .ficha .plano{margin-top:8px}
+  .plano .rot{font-size:14px}.plano .rot.chico{font-size:10px}.plano .pista-rot{font-size:10px}
+  .pl-zoom button{width:34px;height:34px}
+  .pl-ayuda{display:block;position:absolute;left:10px;top:10px;font-size:.68rem;color:var(--marfil3);pointer-events:none;text-shadow:0 1px 2px #000}
+  .plano.zoom .pl-ayuda{display:none}
+  .pl-estado{font-size:.82rem;min-height:2.7em;margin-top:8px}
+  .rotulo-plano{font-size:.62rem}
+  .espacios.cuatro,.espacios.seis{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:74%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 6px;scroll-padding:0 16px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .espacios::-webkit-scrollbar{display:none}
+  .espacios .esp-c{scroll-snap-align:start;margin-top:0!important}
+  .esp-c figcaption{padding-top:12px}
+  .desliza{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:.84rem;color:var(--tinta3)}
+  .desliza .ico{width:16px;height:16px}
+  .adentro .datos3{margin-top:24px}
+  .s-portada{padding:var(--barra) 0 44px}
+  .s-port-env{grid-template-columns:1fr;gap:22px}
+  .s-port-foto{order:-1;margin:0 -16px}
+  .s-port-foto img{border-radius:0;aspect-ratio:4/3;box-shadow:none}
+  .s-port-foto figcaption{padding:0 16px}
+  .s-medidas{gap:12px 22px;margin-top:26px}
+  .s-medidas b{font-size:1.2rem}
   body{font-size:16px}
   .envase{width:min(1180px,100% - 32px)}
   .sec{padding:64px 0}
@@ -541,9 +636,6 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
   .vcard{flex:0 0 74vw;scroll-snap-align:center}
   .pl{padding:0}
   .pl-caja{height:100dvh;border-radius:0;aspect-ratio:auto;width:100%}
-  .mosaico{grid-template-columns:1fr 1fr;grid-template-rows:auto;height:auto}
-  .mosaico figure{aspect-ratio:1}
-  .mosaico figure:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}
   .datos3{grid-template-columns:1fr;gap:8px}
   .datos3 div{display:flex;align-items:baseline;gap:12px;padding:14px 18px}
   .datos3 b{font-size:1.5rem}
@@ -572,10 +664,6 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
   .f-video{grid-template-columns:1fr;gap:22px}
   .f-video .vcard{max-width:100%}
   .f-video .vcard .marco{aspect-ratio:9/13;max-width:300px;margin:0 auto}
-  .esp-grid{grid-template-columns:1fr;gap:10px}
-  .esp{grid-template-columns:120px 1fr;gap:12px}
-  .esp img{width:120px;min-height:130px}
-  .esp div{padding:12px 14px 12px 0}
   .cap-lista{grid-template-columns:1fr;gap:8px}
   .cap-lista li{display:flex;align-items:baseline;gap:12px;padding:14px 18px}
   .cap-lista b{font-size:1.6rem}
@@ -586,7 +674,6 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
   .ficha{position:sticky;top:var(--barra);z-index:15;border-radius:0 0 18px 18px;padding:12px 14px 14px;margin:0 -16px 10px;box-shadow:0 14px 30px rgba(0,0,0,.25)}
   .ficha .ficha-tit{font-size:.95rem}
   .ficha .plano{margin-top:8px}
-  .ficha .plano svg{height:150px;width:100%;object-fit:contain}
   .ficha-pie,.estimado{display:none}
   .ficha .burbuja,.ficha .btn{display:none}
   .resumen-cel{display:block;margin-top:14px}
@@ -610,7 +697,6 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 @media (min-width:1600px){
   .envase{width:min(1320px,100% - 80px)}
   body{font-size:18px}
-  .mosaico{height:720px}
 }
 </style>
 </head>
@@ -782,12 +868,9 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 
 <section class="sec adentro" id="adentro">
   <div class="envase">
-    <div class="cabeza rev"><h2>El salón, <em>por dentro</em></h2><p>Lo que lo hace Festus: la escalera para la entrada, la pista con piso a cuadros y bolas de espejo, y la barra.</p></div>
-    <div class="mosaico">
-      <figure><img src="fotos/f10-640.webp" srcset="fotos/f10-640.webp 640w, fotos/f10-1080.webp 1080w, fotos/f10-1600.webp 1600w" sizes="(max-width:860px) 100vw, 55vw" width="1600" height="1064" loading="lazy" decoding="async" alt="La escalera de Festus con la quinceañera"><figcaption><b>La escalera</b><span>La pasarela de la entrada, con las luces bajas.</span></figcaption></figure>
-      <figure><img src="fotos/f03-640.webp" srcset="fotos/f03-640.webp 640w, fotos/f03-719.webp 719w" sizes="(max-width:860px) 50vw, 45vw" width="719" height="719" loading="lazy" decoding="async" alt="La pista con piso a cuadros"><figcaption><b>La pista</b><span>Piso a cuadros y bolas de espejo.</span></figcaption></figure>
-      <figure><img src="fotos/f15-640.webp" srcset="fotos/f15-640.webp 640w, fotos/f15-1080.webp 1080w" sizes="(max-width:860px) 50vw, 45vw" width="1080" height="720" loading="lazy" decoding="async" alt="La barra de Festus"><figcaption><b>La barra</b><span>Tragos y bebidas durante toda la noche.</span></figcaption></figure>
-    </div>
+    <div class="cabeza rev"><h2>El salón, <em>por dentro</em></h2><p>La escalera, la pista, la barra y el rincón de fotos: cuadros de fiestas reales, de noche.</p></div>
+    <div class="espacios cuatro" aria-label="Los espacios del salón"><figure class="esp-c"><div class="esp-f"><img src="fotos/s-escalera-640.webp" srcset="fotos/s-escalera-640.webp 640w, fotos/s-escalera-720.webp 720w" sizes="(max-width:860px) 74vw, (min-width:1600px) 340px, 290px" width="720" height="960" loading="lazy" decoding="async" alt="La escalera de Festus con las luces encendidas"></div><figcaption><i>01</i><b>La escalera</b><span>La entrada de la noche, con las luces encendidas.</span></figcaption></figure><figure class="esp-c"><div class="esp-f"><img src="fotos/s-pista-640.webp" srcset="fotos/s-pista-640.webp 640w, fotos/s-pista-720.webp 720w" sizes="(max-width:860px) 74vw, (min-width:1600px) 340px, 290px" width="720" height="960" loading="lazy" decoding="async" alt="La pista a cuadros con el escenario iluminado"></div><figcaption><i>02</i><b>La pista</b><span>Piso a cuadros, bolas de espejos y las luces del DJ.</span></figcaption></figure><figure class="esp-c"><div class="esp-f"><img src="fotos/f15-1080.webp" width="1080" height="720" loading="lazy" decoding="async" alt="La barra de Festus"></div><figcaption><i>03</i><b>La barra</b><span>Tragos y bebidas durante toda la noche.</span></figcaption></figure><figure class="esp-c"><div class="esp-f"><img src="fotos/s-rincon-640.webp" srcset="fotos/s-rincon-640.webp 640w, fotos/s-rincon-720.webp 720w" sizes="(max-width:860px) 74vw, (min-width:1600px) 340px, 290px" width="720" height="960" loading="lazy" decoding="async" alt="El rincón de fotos con la estrella de luces y los globos"></div><figcaption><i>04</i><b>El rincón de fotos</b><span>La estrella de luces y los globos, para las fotos.</span></figcaption></figure></div>
+    <p class="desliza"><svg class="ico" aria-hidden="true"><use href="#i-fwd"/></svg>Deslizá para ver los cuatro</p>
     <div class="datos3">
       <div><b id="d-capacidad">250</b><span>personas de capacidad <span class="nota-ej">dato de ejemplo</span></span></div>
       <div><b>1</b><span>escalera para la entrada</span></div>
@@ -855,8 +938,8 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 
 <!-- ════════ EL SALÓN ════════ -->
 <div data-pagina="salon" hidden>
-<section class="f-portada"><img src="fotos/f03-640.webp" srcset="fotos/f03-640.webp 640w, fotos/f03-719.webp 719w" sizes="100vw" width="719" height="719" loading="lazy" decoding="async" alt="El salón de Festus con la pista a cuadros"><div class="envase"><h1>El salón</h1><p class="frase">Un solo espacio que se arma distinto para cada fiesta: la escalera, la pista a cuadros, la barra.</p><a class="btn" data-ir="armar">Armá tu evento como quieras<svg class="ico"><use href="#i-fwd"/></svg></a></div></section>
-<section class="sec" id="s-espacios"><div class="envase"><div class="cabeza"><h2>Los <em>espacios</em></h2></div><div class="esp-grid" id="esp-grid"></div></div></section>
+<section class="s-portada"><div class="envase s-port-env"><div class="s-port-txt"><h1>El salón</h1><p class="frase">Un solo espacio que se arma distinto para cada fiesta: la escalera, la pista a cuadros, la barra.</p><a class="btn" data-ir="armar">Armá tu evento como quieras<svg class="ico"><use href="#i-fwd"/></svg></a><ul class="s-medidas"><li><b>22 × 14 m</b><span>de salón</span></li><li><b>6 × 6 m</b><span>de pista a cuadros</span></li><li><b id="s-cap">250</b><span>personas de capacidad</span></li></ul><span class="nota-ej">medidas y capacidad de ejemplo</span></div><figure class="s-port-foto"><img src="fotos/f10-1080.webp" srcset="fotos/f10-640.webp 640w, fotos/f10-1080.webp 1080w, fotos/f10-1600.webp 1600w" sizes="(max-width:860px) 100vw, 58vw" width="1600" height="1064" fetchpriority="high" decoding="async" alt="La quinceañera bajando la escalera de Festus"><figcaption>La escalera, la noche de unos XV.</figcaption></figure></div></section>
+<section class="sec" id="s-espacios"><div class="envase"><div class="cabeza"><h2>Los <em>espacios</em></h2><p>Fotos de fiestas reales en Festus. Deslizá o recorrelos uno por uno.</p></div><div class="espacios seis" id="esp-grid"></div></div></section>
 <section class="sec oscuro" id="s-galeria"><div class="envase"><div class="cabeza"><h2>En <em>fotos</em></h2><p>Las que Festus elige mostrar desde su panel.</p></div><div class="galeria" id="s-gal"></div></div></section>
 <section class="sec adentro" id="s-capac"><div class="envase"><div class="cabeza"><h2>¿Cuántos <em>entran</em>?</h2><p>Depende de cómo se arme. <span class="nota-ej">Capacidades de ejemplo</span></p></div><ul class="cap-lista" id="cap-lista"></ul></div></section>
 <section class="sec" id="s-fechas"><div class="envase"><div class="cabeza"><h2>Fechas <em>libres</em></h2><p>Tocá un día libre y pedilo.</p></div><div class="leyenda-cal"><span><i></i>Libre</span><span><i class="senada"></i>Señada</span><span><i class="ocupada"></i>Ocupada</span></div><div class="cal-nav"><button type="button" data-cal-nav="-1" aria-label="Mes anterior"><svg class="ico"><use href="#i-left"/></svg></button><button type="button" data-cal-nav="1" aria-label="Mes siguiente"><svg class="ico"><use href="#i-right"/></svg></button></div><div class="cal-tira" id="cal-salon"></div></div></section>
@@ -872,34 +955,20 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
         <div class="paso"><h3>¿Qué festejás?</h3><div class="chips" id="a-fiesta"></div></div>
         <div class="paso"><h3>¿Qué día? <small>tocá un día libre</small></h3><div class="cal-nav"><button type="button" data-cal-nav="-1" aria-label="Mes anterior"><svg class="ico"><use href="#i-left"/></svg></button><button type="button" data-cal-nav="1" aria-label="Mes siguiente"><svg class="ico"><use href="#i-right"/></svg></button></div><div class="cal-tira" id="cal-armar"></div><div class="otra"><label for="a-otra">¿Otra fecha, más adelante?</label><input type="date" id="a-otra"></div></div>
         <div class="paso"><h3>¿Cuántos invitados?</h3><div class="stepper"><button type="button" data-d="-1" aria-label="Menos invitados"><svg class="ico"><use href="#i-menos"/></svg></button><output id="a-gente">150</output><button type="button" data-d="1" aria-label="Más invitados"><svg class="ico"><use href="#i-add"/></svg></button></div></div>
-        <div class="paso"><h3>¿Cómo lo querés?</h3><div class="modos"><button class="modo on" type="button" data-m="all"><b>All Inclusive</b><span>Todo listo: salón, DJ, catering, decoración, fotografía y coordinación. La familia solo disfruta.</span></button><button class="modo" type="button" data-m="solo"><b>Salón solo + lo que elijas</b><span>Te brindamos el salón y vos lo armás como querés.</span></button></div></div>
-        <div class="paso"><h3>Servicios <small>con el salón solo, elegís vos</small></h3><div class="servicios" id="a-serv"></div></div>
+        <div class="paso"><h3>¿Cómo lo querés?</h3><div class="modos"><button class="modo on" type="button" data-m="all"><b>All Inclusive</b><span></span></button><button class="modo" type="button" data-m="solo"><b>Salón solo + lo que elijas</b><span>Te brindamos el salón y vos lo armás como querés.</span></button></div></div>
+        <div class="paso"><h3>¿Qué querés en tu fiesta? <small>tocá para sumar o sacar</small></h3><div id="a-opc"></div></div>
         <div class="paso"><h3>¿Cómo te llamás? <small>opcional</small></h3><input type="text" id="a-nombre" placeholder="Tu nombre" autocomplete="off" maxlength="40"></div>
         <div class="resumen-cel"><p class="burbuja" id="burbuja-cel"></p><a class="btn wa" id="enviar-cel" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Mandar por WhatsApp</a></div>
       </div>
       <div class="ficha" id="ficha">
-        <p class="ficha-tit">Tu fiesta en <em>Festus</em></p>
+        <div class="ficha-cab"><p class="ficha-tit">Tu fiesta en <em>Festus</em></p><p class="rotulo-plano">Plano de ejemplo · medidas aproximadas</p></div>
         <div class="plano" id="plano">
-          <svg viewBox="0 0 400 250" role="img" aria-label="Plano de ejemplo del salón, armado con lo que elegiste">
-            <defs><pattern id="damero" width="12" height="12" patternUnits="userSpaceOnUse"><rect class="d1" width="12" height="12"/><rect class="d2" width="6" height="6"/><rect class="d2" x="6" y="6" width="6" height="6"/></pattern></defs>
-            <rect class="p-suelo" x="6" y="6" width="388" height="238" rx="10"/>
-            <g id="p-escalera"><rect class="escalon" x="14" y="14" width="56" height="9"/><rect class="escalon" x="14" y="23" width="56" height="9"/><rect class="escalon" x="14" y="32" width="56" height="9"/><rect class="escalon" x="14" y="41" width="56" height="9"/><rect class="escalon" x="14" y="50" width="56" height="9"/><rect class="escalon" x="14" y="59" width="56" height="9"/><rect class="escalon" x="14" y="68" width="56" height="9"/><text class="rotulo" x="42" y="88" text-anchor="middle">escalera</text></g>
-            <rect x="140" y="32" width="120" height="70" rx="3" fill="url(#damero)"/><rect class="p-pista-borde" x="140" y="32" width="120" height="70" rx="3"/>
-            <text class="rotulo" x="200" y="112" text-anchor="middle">pista</text>
-            <g data-x="decoracion"><rect class="guirnalda" x="134" y="26" width="132" height="82" rx="6"/><rect class="guirnalda" x="10" y="10" width="64" height="82" rx="4"/></g>
-            <g data-x="dj"><circle class="halo" cx="147" cy="39" r="10"/><circle class="halo" cx="253" cy="39" r="10"/><circle class="halo" cx="147" cy="95" r="10"/><circle class="halo" cx="253" cy="95" r="10"/><circle class="luz" cx="147" cy="39" r="3.2"/><circle class="luz" cx="253" cy="39" r="3.2"/><circle class="luz" cx="147" cy="95" r="3.2"/><circle class="luz" cx="253" cy="95" r="3.2"/><rect class="ext" x="178" y="12" width="44" height="15" rx="3"/><use class="ext-ico" href="#i-music" x="194" y="13.5" width="12" height="12"/></g>
-            <g data-x="barra"><rect class="ext" x="13" y="120" width="16" height="96" rx="4"/><use class="ext-ico" href="#i-bar" x="15" y="162" width="12" height="12"/></g>
-            <g data-x="mesadulce"><rect class="ext" x="371" y="40" width="16" height="80" rx="4"/><use class="ext-ico" href="#i-cake" x="373" y="74" width="12" height="12"/></g>
-            <g data-x="catering"><rect class="ext" x="300" y="222" width="86" height="16" rx="3"/><use class="ext-ico" href="#i-restaurant" x="337" y="224" width="12" height="12"/></g>
-            <g data-x="fotografia"><circle class="marca" cx="92" cy="24" r="9"/><use class="marca-ico" href="#i-camera" x="86" y="18" width="12" height="12"/></g>
-            <g data-x="coordinacion"><circle class="marca" cx="200" cy="232" r="9"/><use class="marca-ico" href="#i-coord" x="194" y="226" width="12" height="12"/></g>
-            <g data-x="pantalla"><rect class="ext" x="146" y="7" width="108" height="4.5" rx="2"/></g>
-            <g id="p-principal"><rect class="principal" x="170" y="118" width="60" height="11" rx="2"/></g>
-            <g id="p-mesas"></g>
-            <path class="p-pared" d="M182 244H16a10 10 0 0 1-10-10V16A10 10 0 0 1 16 6h368a10 10 0 0 1 10 10v218a10 10 0 0 1-10 10H218"/>
-            <path class="p-puerta" d="M182 244V210A34 34 0 0 1 216 244"/>
-          </svg>
+          <svg id="pl-svg" viewBox="-12 -14 532 324" role="img" aria-label="Plano de ejemplo del salón a escala (22 × 14 m), armado con lo que elegiste"><g id="pl-fijo"></g><g id="pl-piezas"></g></svg>
+          <div class="pl-zoom"><button type="button" data-z="1" aria-label="Acercar el plano">+</button><button type="button" data-z="-1" aria-label="Alejar el plano">−</button><button type="button" data-z="0" aria-label="Ver el plano entero">⤢</button></div>
+          <div class="pl-vista" id="pl-vista" hidden><button type="button" data-v="ceremonia">Ceremonia</button><button type="button" data-v="fiesta">Fiesta</button></div>
+          <p class="pl-ayuda">Pellizcá o tocá dos veces para ampliar</p>
         </div>
+        <p class="pl-estado" id="pl-estado" aria-live="polite"></p>
         <p class="ficha-pie" id="ficha-pie"></p>
         <p class="estimado" id="estimado"></p>
         <p class="burbuja" id="burbuja"></p>
@@ -997,6 +1066,8 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
         <div class="campo dos"><div><label for="v-dj">DJ y luces (USD)</label><input type="number" id="v-dj" min="1"></div><div><label for="v-catering">Catering, por persona (USD)</label><input type="number" id="v-catering" min="1"></div></div>
         <div class="campo dos"><div><label for="v-deco">Decoración (USD)</label><input type="number" id="v-deco" min="1"></div><div><label for="v-foto">Fotografía (USD)</label><input type="number" id="v-foto" min="1"></div></div>
         <div class="campo dos"><div><label for="v-coord">Coordinación (USD)</label><input type="number" id="v-coord" min="1"></div><div><label for="v-mesadulce">Mesa dulce (USD)</label><input type="number" id="v-mesadulce" min="1"></div></div>
+        <div class="campo dos"><div><label for="v-cabina">Cabina 360 o de fotos (USD)</label><input type="number" id="v-cabina" min="1"></div><div><label for="v-tragos">Barra de tragos, por persona (USD)</label><input type="number" id="v-tragos" min="1"></div></div>
+        <div class="campo dos"><div><label for="v-anima">Animación infantil (USD)</label><input type="number" id="v-anima" min="1"></div><div><label for="v-pelotero">Pelotero (USD)</label><input type="number" id="v-pelotero" min="1"></div></div>
         <div class="btn-fila"><button class="btn" type="button" id="v-guardar"><svg class="ico"><use href="#i-check"/></svg>Guardar valores</button><button class="btn fant" type="button" id="pn-reset">Volver a la demo original</button></div>
       </div>
     </div>
@@ -1128,10 +1199,10 @@ const fechaLarga = d => `${DIAS[d.getDay()]} ${d.getDate()} de ${MESES[d.getMont
 const fechaCorta = d => `${d.getDate()}/${d.getMonth() + 1}`;
 const usd = n => `${Math.round(n).toLocaleString('es-AR')} USD`;
 const mas = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
-const FOTOS = ['f02', 'f03', 'f04', 'f05', 'f06', 'f07', 'f08', 'f10', 'f11', 'f13', 'f14', 'f15'];
-const ALT = {f02: 'Globos de un cumpleaños', f03: 'El salón con la pista a cuadros', f04: 'Quinceañera de vestido rojo', f05: 'Evento de empresa, el auditorio', f06: 'Un orador en un evento de empresa', f07: 'Invitados de un evento', f08: 'La mesa dulce', f10: 'La quinceañera en la escalera', f11: 'Cumpleaños infantil con mesa dulce', f13: 'Bailando en la pista', f14: 'Amigas en la pista', f15: 'La barra'};
+const FOTOS = ['s-escalera', 's-pista', 's-armado', 's-rincon', 's-letras', 's-mesa', 'f02', 'f04', 'f05', 'f06', 'f07', 'f08', 'f10', 'f11', 'f13', 'f14', 'f15'];
+const ALT = {f02: 'Globos de un cumpleaños', 's-escalera': 'La escalera con las luces encendidas', 's-pista': 'La pista a cuadros con el escenario iluminado', 's-armado': 'El salón armado con las mesas de una fiesta', 's-rincon': 'El rincón de fotos con la estrella de luces', 's-letras': 'Las letras XV iluminadas sobre la pista', 's-mesa': 'Una mesa servida, con flores y copas', f04: 'Quinceañera de vestido rojo', f05: 'Evento de empresa, el auditorio', f06: 'Un orador en un evento de empresa', f07: 'Invitados de un evento', f08: 'La mesa dulce', f10: 'La quinceañera en la escalera', f11: 'Cumpleaños infantil con mesa dulce', f13: 'Bailando en la pista', f14: 'Amigas en la pista', f15: 'La barra'};
 /* fotos en WebP, en 2-3 anchos: el navegador baja la que necesita según el tamaño en pantalla */
-const DIM = {f02: [1125, 1406], f03: [719, 719], f04: [1080, 1440], f05: [1536, 1536], f06: [1080, 1080], f07: [1080, 1080], f08: [1200, 1600], f10: [1600, 1064], f11: [1108, 1386], f13: [1080, 1080], f14: [1080, 1080], f15: [1080, 720]};
+const DIM = {f02: [1125, 1406], 's-escalera': [720, 960], 's-pista': [720, 960], 's-armado': [720, 960], 's-rincon': [720, 960], 's-letras': [720, 960], 's-mesa': [720, 960], f04: [1080, 1440], f05: [1536, 1536], f06: [1080, 1080], f07: [1080, 1080], f08: [1200, 1600], f10: [1600, 1064], f11: [1108, 1386], f13: [1080, 1080], f14: [1080, 1080], f15: [1080, 720]};
 const anchos = id => [640, 1080].filter(w => w <= DIM[id][0] * .9).concat(Math.min(1600, DIM[id][0]));
 const foto = (id, w = 640) => `fotos/${id}-${w}.webp`;
 const srcset = id => anchos(id).map(w => `${foto(id, w)} ${w}w`).join(', ');
@@ -1147,11 +1218,15 @@ const DEF = () => ({
     {id: 'makeup', titulo: 'Experiencia Makeup', fecha: '2026-11-11', horas: '15:00 y 19:00', precio: '$20.000', con: 'Paula Natalia MakeUp', foto: 'f14', texto: 'Aprendé a maquillarte para tu fiesta, en el salón, con Paula Natalia MakeUp. Dos turnos, cupos limitados.'},
     {id: 'empresas', titulo: 'Eventos de empresa, diciembre', fecha: '2026-12-01', horas: 'lunes a jueves', precio: '', con: '', foto: 'f05', texto: 'Abrimos la agenda de diciembre para cenas y fiestas de fin de año: salón, DJ, sonido y luces, catering y decoración.'}
   ],
-  valores: {cuota: 100, capacidad: 250, horario: 'Lunes a viernes de 9 a 18 h, con turno.', allinc: 85, salon: 1200, dj: 450, catering: 45, deco: 600, foto: 400, coord: 250, mesadulce: 300},
-  fotos: ['f03', 'f10', 'f15', 'f04', 'f13', 'f14', 'f08', 'f11', 'f05', 'f07']
+  valores: {cuota: 100, capacidad: 250, horario: 'Lunes a viernes de 9 a 18 h, con turno.', allinc: 85, salon: 1200, dj: 450, catering: 45, deco: 600, foto: 400, coord: 250, mesadulce: 300, cabina: 350, tragos: 9, anima: 250, pelotero: 180},
+  fotos: ['f10', 's-armado', 's-pista', 'f15', 's-letras', 'f04', 'f14', 'f08', 's-mesa']
 });
 let STORE = DEF();
 try { const g = JSON.parse(localStorage.getItem(CLAVE) || 'null'); if (g && g.valores) STORE = Object.assign(DEF(), g); } catch (e) {}
+/* lo guardado de antes puede nombrar fotos que ya no están: se limpian */
+STORE.valores = Object.assign(DEF().valores, STORE.valores);
+STORE.fotos = STORE.fotos.filter(k => DIM[k]); if (!STORE.fotos.length) STORE.fotos = DEF().fotos;
+[...(STORE.promos || []), ...(STORE.agenda || [])].forEach(x => { if (x && x.foto && !DIM[x.foto]) x.foto = 'f10'; });
 function guardar(aviso = 'Guardado') {
   try { localStorage.setItem(CLAVE, JSON.stringify(STORE)); } catch (e) {}
   pintarTodo();
@@ -1168,19 +1243,19 @@ const FIESTAS = {
     noche: [['21:00', 'Llegan los invitados', 'Recepción en la barra y fotos en la escalera.'], ['22:00', 'La entrada', 'La pasarela por la escalera, con las luces bajas.'], ['22:30', 'El vals y el brindis', 'Con la familia, en la pista a cuadros.'], ['23:00', 'La cena', 'Servida en las mesas.'], ['00:30', 'Abre la pista', 'DJ y luces, hasta que nadie se quiera ir.'], ['02:00', 'La carioca', 'Cotillón y la segunda tanda de la pista.'], ['03:30', 'La torta y el cierre', 'La última foto, todos juntos en la escalera.']],
     videoTit: 'Así se vive <em>un XV en Festus</em>', videoSub: 'El resumen de una fiesta, grabado por Festus.'},
   cumple: {nombre: 'Cumpleaños', corto: 'Cumples', verf: 'un cumpleaños', lema: 'Te brindamos el salón: vos lo armás como querés.', foto: 'f11', bajada: 'Infantiles, de 40, de 50: con lo que vos elijas, o con todo armado.',
-    galeria: ['f11', 'f02', 'f08', 'f03'], video: null, defGente: 80, modo: 'solo',
+    galeria: ['f11', 'f02', 'f08', 's-letras'], video: null, defGente: 80, modo: 'solo',
     incluye: [['salon', 'El salón', 'Mesas, sillas, la pista a cuadros y el espacio para la mesa dulce.'], ['cake', 'Mesa dulce', 'El rincón para la torta y la decoración temática, si la querés.'], ['music', 'DJ y luces', 'Lo sumás si querés pista; para los chicos, animación.'], ['restaurant', 'Catering', 'Merienda, pizzas o cena: lo que pida tu cumple.'], ['flor', 'Decoración', 'Globos y ambientación a tono con el tema.'], ['camera', 'Fotografía', 'Para no mirar el cumple por el celular.']],
     nocheTit: 'La tarde, <em>paso a paso</em>', nocheSub: 'Así suele ir un cumple infantil.',
     noche: [['15:00', 'Llegan los chicos', 'Con los globos y la mesa dulce ya armados.'], ['15:30', 'Juegos y animación', 'En la pista.'], ['17:00', 'La merienda', 'Servida en las mesas largas.'], ['18:00', 'La torta', 'Las velitas y las fotos.'], ['19:00', 'El cierre', 'Las bolsitas y a casa.']],
     videoTit: '', videoSub: ''},
   casamiento: {nombre: 'Casamientos', corto: 'Casamientos', verf: 'un casamiento', lema: 'Armá tu evento como quieras.', foto: 'f13', bajada: 'La recepción, la cena y la fiesta en el mismo salón, con la escalera para la entrada.',
-    galeria: ['f13', 'f07', 'f15', 'f03', 'f08'], video: null, defGente: 150, modo: 'all',
+    galeria: ['f13', 'f07', 'f15', 's-armado', 'f08'], video: null, defGente: 150, modo: 'all',
     incluye: [['salon', 'El salón', 'La escalera para la entrada de los novios, la pista y la barra.'], ['music', 'DJ, sonido y luces', 'Del vals al final de la fiesta.'], ['restaurant', 'Catering', 'Recepción, cena y mesa dulce.'], ['flor', 'Decoración', 'La mesa principal, las mesas y la escalera.'], ['bar', 'La barra', 'Tragos toda la noche.'], ['coord', 'Coordinación', 'Alguien de Festus lleva los tiempos para que ustedes no.']],
     nocheTit: 'La noche, <em>hora por hora</em>', nocheSub: 'Así suele ir un casamiento en Festus.',
     noche: [['21:00', 'La recepción', 'Los invitados llegan a la barra.'], ['22:00', 'La entrada de los novios', 'Por la escalera.'], ['22:30', 'El brindis y la cena', ''], ['00:30', 'El vals y la pista', ''], ['02:30', 'La carioca', ''], ['04:00', 'La torta y el cierre', '']],
     videoTit: '', videoSub: ''},
   empresa: {nombre: 'Empresas', corto: 'Empresas', verf: 'un evento de empresa', lema: 'Agenda de diciembre: de lunes a jueves.', foto: 'f05', bajada: 'Cenas de fin de año, capacitaciones y lanzamientos: salón, DJ, sonido y luces, catering y decoración.',
-    galeria: ['f05', 'f06', 'f07', 'f03'], video: null, defGente: 100, modo: 'all',
+    galeria: ['f05', 'f06', 'f07', 's-armado'], video: null, defGente: 100, modo: 'all',
     incluye: [['salon', 'El salón', 'Formato auditorio, cena o cóctel.'], ['tv', 'Pantalla y micrófono', 'Para las presentaciones y los brindis.'], ['music', 'DJ, sonido y luces', 'Para que la cena termine en fiesta.'], ['restaurant', 'Catering', 'Cóctel, cena o asado.'], ['flor', 'Decoración', 'Con los colores de la empresa.'], ['coord', 'Coordinación', 'Un contacto de Festus durante todo el evento.']],
     nocheTit: 'El evento, <em>paso a paso</em>', nocheSub: 'Así suele ir una cena de fin de año.',
     noche: [['20:30', 'Recepción', 'En la barra, con cóctel.'], ['21:30', 'Las palabras', 'Con pantalla y micrófono.'], ['22:00', 'La cena', ''], ['00:00', 'Abre la pista', 'DJ y luces.'], ['02:00', 'El cierre', '']],
@@ -1293,7 +1368,8 @@ function revelarInicio() {
   // las cuatro fiestas: la foto se descubre como si subiera un telón
   gsap.fromTo('#paneles .telon', {scaleY: 1}, {scaleY: 0, duration: 1, ease: 'power3.inOut', stagger: .1, scrollTrigger: {trigger: '#paneles', start: 'top 80%', once: true}});
   // el salón por dentro: la cámara se acomoda
-  $$('.mosaico img').forEach(i => gsap.fromTo(i, {scale: 1.12}, {scale: 1, duration: 1.4, ease: 'power2.out', scrollTrigger: {trigger: i, start: 'top 85%', once: true}, clearProps: 'transform'}));
+  gsap.fromTo('.espacios.cuatro .esp-c', {opacity: 0, y: 36}, {opacity: 1, y: 0, duration: .9, stagger: .09, ease: 'power3.out', clearProps: 'all', scrollTrigger: {trigger: '.espacios.cuatro', start: 'top 85%', once: true}});
+  $$('.espacios.cuatro img').forEach(i => gsap.fromTo(i, {scale: 1.1}, {scale: 1, duration: 1.4, ease: 'power2.out', scrollTrigger: {trigger: i, start: 'top 90%', once: true}, clearProps: 'transform'}));
 }
 
 /* ── promos ── */
@@ -1499,10 +1575,11 @@ function pintarFiesta(id) {
 }
 
 /* ── el salón ── */
-const ESPACIOS = [['f10', 'La escalera', 'La entrada de la quinceañera o de los novios: la pasarela con las luces bajas, y el lugar de la última foto.'], ['f03', 'La pista', 'Piso a cuadros blanco y negro, bolas de espejo y las luces del DJ.'], ['f15', 'La barra', 'Tragos y bebidas durante toda la noche, con su propio rincón.'], ['f08', 'El rincón de la mesa dulce', 'Con la decoración de tu fiesta: arcos, globos y la torta.'], ['f05', 'Formato auditorio', 'Para empresas: sillas en filas, pantalla y micrófono.'], ['f13', 'Las luces', 'Azules, cálidas o del color de tu fiesta.']];
+const ESPACIOS = [['s-escalera', 'La escalera', 'La entrada de la quinceañera o de los novios: baja con las luces encendidas, y es la última foto de la noche.'], ['s-pista', 'La pista', 'Piso a cuadros blanco y negro de 6 × 6 m, con las bolas de espejos y las luces del DJ.'], ['s-armado', 'El salón armado', 'Mesas redondas de 10 alrededor de la pista, vestidas con los colores de tu fiesta.'], ['f15', 'La barra', 'Tragos y bebidas durante toda la noche, con su propio rincón.'], ['s-rincon', 'El rincón de fotos', 'La estrella de luces y los globos: el fondo para las fotos con los invitados.'], ['f08', 'La mesa dulce', 'Contra la pared, con la torta, los dulces y la decoración de tu fiesta.']];
 let salonPintado = false;
 function pintarSalon() {
-  $('#esp-grid').innerHTML = ESPACIOS.map(([k, t, s]) => `<div class="esp">${img(k, '', '(max-width:860px) 120px, 200px')}<div><b>${esc(t)}</b><p>${esc(s)}</p></div></div>`).join('');
+  $('#esp-grid').innerHTML = ESPACIOS.map(([k, t, s], i) => `<figure class="esp-c"><div class="esp-f">${k === 'f15' ? `<img src="fotos/f15-1080.webp" width="1080" height="720" alt="${esc(ALT.f15)}" loading="lazy" decoding="async">` : img(k, '', '(max-width:860px) 74vw, (min-width:1600px) 430px, 380px')}</div><figcaption><i>0${i + 1}</i><b>${esc(t)}</b><span>${esc(s)}</span></figcaption></figure>`).join('');
+  $('#s-cap').textContent = V().capacidad;
   pintarGaleriaSalon();
   const c = V().capacidad;
   $('#cap-lista').innerHTML = [[Math.round(c * .72 / 10) * 10, 'sentados en mesas redondas, con pista'], [c, 'de pie, formato cóctel'], [Math.round(c * .88 / 10) * 10, 'en formato auditorio, con pantalla']].map(([n, t]) => `<li><b>${n}</b><span>${t}</span></li>`).join('');
@@ -1510,101 +1587,450 @@ function pintarSalon() {
 }
 function pintarGaleriaSalon() { $('#s-gal').innerHTML = STORE.fotos.map((k, i) => `<figure>${img(k, '', i ? undefined : '(max-width:860px) 100vw, 50vw')}</figure>`).join(''); }
 
-/* ── armá tu fiesta ── */
+/* ── armá tu fiesta: opciones reales por tipo de fiesta y plano a escala ── */
+const OPC = {
+  escalera: {t: 'Entrada por la escalera', s: 'la pasarela con luces', i: 'stairs', m: 'entrada por la escalera'},
+  vals: {t: 'Vals en la pista', s: 'con la luz baja', i: 'music', m: 'vals en la pista'},
+  principal: {t: 'Mesa principal', s: 'la de la quinceañera', i: 'diamond', m: 'mesa principal'},
+  mesadulce: {t: 'Mesa dulce', s: 'contra la pared', i: 'cake', m: 'mesa dulce', v: 'mesadulce', inc: true},
+  cabina360: {t: 'Cabina 360', s: 'el video que gira', i: 'camera', m: 'cabina 360', v: 'cabina'},
+  carioca: {t: 'Carioca y fin de fiesta', s: 'el cotillón, junto al DJ', i: 'campaign', m: 'carioca'},
+  dj: {t: 'DJ e iluminación', s: 'bolas de espejos y luces', i: 'music', m: 'DJ e iluminación', v: 'dj', inc: true},
+  infantil: {t: 'Es infantil', s: 'para los chicos', i: 'groups', m: ''},
+  mesasbajas: {t: 'Mesas bajas', s: 'para los chicos, de 12', i: 'groups', m: 'mesas bajas para los chicos', dep: 'infantil'},
+  pelotero: {t: 'Pelotero', s: '3 × 3 m, sobre la pista', i: 'groups', m: 'pelotero', v: 'pelotero', dep: 'infantil'},
+  animacion: {t: 'Animación', s: 'juegos en la pista', i: 'mic', m: 'animación', v: 'anima'},
+  novios: {t: 'Mesa de novios', s: 'frente a la pista', i: 'diamond', m: 'mesa de novios'},
+  honor: {t: 'Mesa de honor', s: 'padres y padrinos', i: 'star', m: 'mesa de honor'},
+  ceremonia: {t: 'Ceremonia civil', s: 'en el salón, con pasillo', i: 'flor', m: 'ceremonia civil en el salón'},
+  tragos: {t: 'Barra de tragos', s: 'con mesas altas', i: 'bar', m: 'barra de tragos', v: 'tragos', pp: true},
+  cabinafotos: {t: 'Cabina de fotos', s: 'fondo y accesorios', i: 'photos', m: 'cabina de fotos', v: 'cabina'},
+  pantalla: {t: 'Pantalla y proyector', s: 'con micrófono', i: 'tv', m: 'pantalla con proyector'},
+  deco: {t: 'Decoración', s: 'centros de mesa y guirnaldas', i: 'flor', m: 'decoración', v: 'deco', inc: true},
+  foto: {t: 'Fotografía', s: 'toda la noche', i: 'camera', m: 'fotografía', v: 'foto', inc: true},
+  coord: {t: 'Coordinación', s: 'alguien de Festus', i: 'coord', m: 'coordinación', v: 'coord', inc: true}
+};
+const OPC_F = {
+  cumple: {mesadulce: {t: 'Mesa de torta', s: 'la torta y los dulces', m: 'mesa de torta'}, dj: {t: 'DJ', s: 'música y luces', m: 'DJ'}},
+  casamiento: {dj: {t: 'Pista con DJ', s: 'bolas de espejos y luces', m: 'pista con DJ'}},
+  empresa: {dj: {t: 'DJ', s: 'para cerrar con baile', m: 'DJ'}}
+};
+const txtOpc = (k, f = arm.f) => Object.assign({}, OPC[k], (OPC_F[f] || {})[k]);
+const MODOS_ALL = ['All Inclusive', 'Todo listo: salón, DJ, catering, decoración, fotografía y coordinación. La familia solo disfruta.'];
+const ARMADO = {
+  xv: {lista: ['escalera', 'vals', 'principal', 'mesadulce', 'cabina360', 'carioca', 'dj', 'deco', 'foto', 'coord'], orden: ['escalera', 'vals', 'principal', 'CAT', 'mesadulce', 'cabina360', 'carioca', 'dj', 'deco', 'foto', 'coord'],
+    cat: [['cena', 'Cena de 3 pasos'], ['lunch', 'Lunch'], ['', 'Sin catering']], def: ['escalera', 'vals', 'principal', 'mesadulce', 'carioca', 'dj', 'deco', 'foto', 'coord'], defCat: 'cena', modos: MODOS_ALL},
+  cumple: {lista: ['infantil', 'mesasbajas', 'pelotero', 'mesadulce', 'animacion', 'dj', 'deco', 'foto', 'coord'], orden: ['mesasbajas', 'pelotero', 'mesadulce', 'animacion', 'CAT', 'dj', 'deco', 'foto', 'coord'],
+    cat: [['lunch', 'Lunch'], ['', 'Sin catering']], def: ['mesadulce', 'dj'], defCat: '', modos: ['Con servicios', 'El salón con DJ, catering, decoración y fotografía, todo resuelto.']},
+  casamiento: {lista: ['novios', 'honor', 'dj', 'ceremonia', 'tragos', 'cabinafotos', 'deco', 'foto', 'coord'], orden: ['ceremonia', 'novios', 'honor', 'CAT', 'dj', 'tragos', 'cabinafotos', 'deco', 'foto', 'coord'],
+    cat: [['cena', 'Cena de 3 pasos'], ['lunch', 'Lunch'], ['', 'Sin catering']], def: ['novios', 'honor', 'dj', 'deco', 'foto', 'coord'], defCat: 'cena', modos: MODOS_ALL},
+  empresa: {lista: ['pantalla', 'dj', 'deco', 'foto', 'coord'], orden: ['pantalla', 'CAT', 'dj', 'deco', 'foto', 'coord'],
+    fmt: [['banquete', 'Banquete', 'mesas redondas de 10', 'restaurant'], ['coctel', 'Cóctel', 'mesas altas y livings', 'bar'], ['auditorio', 'Auditorio', 'filas, pantalla y proyector', 'school'], ['cena', 'Cena de fin de año', 'mesas imperiales y pista', 'cal']],
+    cat: [['si', ''], ['', 'Sin catering']], def: ['pantalla', 'deco', 'coord'], defCat: 'si', defFmt: 'banquete', modos: ['Todo incluido', 'Salón, catering, sonido, decoración y coordinación, con un contacto de Festus.']}
+};
+const CAT_EMP = {banquete: 'Cena servida', coctel: 'Finger food', auditorio: 'Coffee break', cena: 'Cena'};
+const SUST_EMP = {banquete: 'un banquete de empresa', coctel: 'un cóctel de empresa', auditorio: 'un evento de empresa en formato auditorio', cena: 'la cena de fin de año de la empresa'};
+function fiestaDef(f) { const A = ARMADO[f]; return {f, gente: FIESTAS[f].defGente, modo: FIESTAS[f].modo, o: new Set(A.def), cat: A.defCat, fmt: A.defFmt || 'banquete', vista: 'fiesta'}; }
+Object.assign(arm, fiestaDef(arm.f));
+const activo = k => ARMADO[arm.f].lista.includes(k) && arm.o.has(k) && (!OPC[k].dep || arm.o.has(OPC[k].dep));
+const catTxt = () => arm.f === 'empresa' ? (arm.cat ? CAT_EMP[arm.fmt].toLowerCase() : '') : ({cena: 'cena de 3 pasos', lunch: 'lunch'}[arm.cat] || '');
+
+/* las opciones */
 $('#a-fiesta').innerHTML = Object.entries(FIESTAS).map(([k, f]) => `<button class="chip" type="button" data-f="${k}">${esc(f.corto)}</button>`).join('');
-$('#a-serv').innerHTML = SERV.map(([k, t, i]) => `<button class="serv" type="button" data-s="${k}">${icono(i)}<span>${esc(t)}</span></button>`).join('');
+function htmlOpc(f = arm.f, modo = arm.modo, fmt = arm.fmt) {
+  const A = ARMADO[f]; let h = '';
+  if (A.fmt) h += `<div class="opc-grupo"><p>Formato</p><div class="formatos">${A.fmt.map(([k, t, s, i]) => `<button type="button" class="formato" data-fmt="${k}"><b>${icono(i)}${esc(t)}</b><span>${esc(s)}</span></button>`).join('')}</div></div>`;
+  h += `<div class="opc-grupo"><p>Catering</p><div class="chips">${A.cat.map(([k, t]) => `<button type="button" class="chip" data-cat="${k}">${esc(t || CAT_EMP[fmt])}</button>`).join('')}</div></div>`;
+  h += `<div class="opc-grupo"><p>Lo que querés en el salón</p><div class="servicios">${A.lista.map(k => { const o = txtOpc(k, f); return `<button type="button" class="serv" data-o="${k}">${icono(o.i)}<span>${esc(o.t)}<small>${esc(o.s)}</small></span>${modo === 'all' && o.inc ? '<em class="tag">incluido</em>' : ''}</button>`; }).join('')}</div></div>`;
+  return h;
+}
+function pintarOpc() {
+  $('#a-opc').innerHTML = htmlOpc();
+  const M0 = ARMADO[arm.f].modos;
+  $('.modo[data-m="all"] b').textContent = M0[0]; $('.modo[data-m="all"] span').textContent = M0[1];
+  $('.modo[data-m="solo"] b').textContent = arm.f === 'cumple' ? 'Salón solo' : 'Salón solo + lo que elijas';
+}
+// el bloque de opciones mide lo que mide el más alto: cambiar de fiesta no mueve la página
+function calibrarOpc() {
+  const box = $('#a-opc'); if (!box.offsetWidth) return;
+  const clon = box.cloneNode(false); clon.removeAttribute('id'); clon.style.cssText = `position:absolute;visibility:hidden;left:0;top:0;min-height:0;width:${box.getBoundingClientRect().width}px`;
+  box.parentNode.appendChild(clon); let max = 0;
+  Object.keys(ARMADO).forEach(f => ['all', 'solo'].forEach(m => { clon.innerHTML = htmlOpc(f, m, 'auditorio'); max = Math.max(max, clon.offsetHeight); }));
+  clon.remove(); box.style.minHeight = max + 'px';
+}
 function marcarArm() {
   $$('#a-fiesta .chip').forEach(b => b.classList.toggle('on', b.dataset.f === arm.f));
   $$('.modo').forEach(b => b.classList.toggle('on', b.dataset.m === arm.modo));
-  $('#a-serv').classList.toggle('apagado', arm.modo === 'all');
-  $$('#a-serv .serv').forEach(b => b.classList.toggle('on', arm.modo === 'all' || arm.serv.has(b.dataset.s)));
+  $$('#a-opc [data-o]').forEach(b => { const k = b.dataset.o, d = OPC[k].dep, on = arm.o.has(k) && (!d || arm.o.has(d)); b.classList.toggle('on', on); b.classList.toggle('dep', !!d && !arm.o.has(d)); b.setAttribute('aria-pressed', on); });
+  $$('#a-opc [data-cat]').forEach(b => b.classList.toggle('on', b.dataset.cat === arm.cat));
+  $$('#a-opc [data-fmt]').forEach(b => b.classList.toggle('on', b.dataset.fmt === arm.fmt));
   $('#a-gente').textContent = arm.gente;
   $$('#cal-armar .cd').forEach(b => b.classList.toggle('on', !!arm.fecha && b.dataset.f === iso(arm.fecha)));
+  const cer = arm.f === 'casamiento' && activo('ceremonia');
+  $('#pl-vista').hidden = !cer;
+  $$('#pl-vista [data-v]').forEach(b => b.classList.toggle('on', b.dataset.v === arm.vista));
 }
-function servActivos() { return arm.modo === 'all' ? SERV.map(s => s[0]) : [...arm.serv]; }
-function estimar() {
-  const g = arm.gente, t = arm.modo === 'all' ? costoAll(g) : costoSolo(g, arm.serv);
-  $('#estimado').innerHTML = `Referencia: <b>≈ ${usd(t)}</b><small>Valores de ejemplo, se confirman en la reunión.</small>`;
+
+/* lo que sale: referencia en USD (valores del panel) y el mensaje */
+function costoArm() {
+  const v = V(), g = arm.gente, x = k => activo(k) ? (OPC[k].pp ? v[OPC[k].v] * g : v[OPC[k].v]) : 0;
+  const extras = ['cabina360', 'cabinafotos', 'tragos', 'animacion', 'pelotero'].reduce((t, k) => t + (x(k) || 0), 0);
+  if (arm.modo === 'all') return costoAll(g) + extras;
+  let t = v.salon + extras + (arm.cat ? v.catering * g : 0);
+  ['dj', 'mesadulce', 'deco', 'foto', 'coord'].forEach(k => { t += x(k) || 0; });
+  return t;
 }
+function estimar() { $('#estimado').innerHTML = `Referencia: <b>≈ ${usd(costoArm())}</b><small>Valores de ejemplo, se confirman en la reunión.</small>`; }
 function textoFecha() { return arm.fecha ? fechaLarga(arm.fecha) : 'una fecha a confirmar'; }
 function mensaje() {
-  const F = FIESTAS[arm.f], quien = arm.nombre.trim() ? `Hola, soy ${arm.nombre.trim()}. ` : 'Hola. ';
-  const que = arm.modo === 'all' ? 'Me interesa el All Inclusive.' : `Quiero el salón solo${arm.serv.size ? ', con ' + lista(SERV.filter(s => arm.serv.has(s[0])).map(s => s[1].toLowerCase())) : ''}.`;
-  return `${quien}Quiero pedir fecha en Festus para ${F.verf}: ${textoFecha()}, para ${arm.gente} invitados. ${que} ¿Me pasan la propuesta?`;
+  const A = ARMADO[arm.f], nombre = arm.nombre.trim(), d = arm.fecha;
+  const sust = arm.f === 'empresa' ? SUST_EMP[arm.fmt] : arm.f === 'cumple' ? (activo('infantil') ? 'un cumpleaños infantil' : 'un cumpleaños') : FIESTAS[arm.f].verf.replace(/^los XV$/, 'un XV');
+  const modo = arm.modo === 'all' && arm.f !== 'empresa' ? (arm.f === 'cumple' ? ' con servicios' : ' All Inclusive') : '';
+  const fecha = d ? ` el ${DIAS[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}${d.getFullYear() !== hoy.getFullYear() ? ' de ' + d.getFullYear() : ''}` : '';
+  const items = A.orden.map(k => k === 'CAT' ? catTxt() : (activo(k) && !(arm.modo === 'all' && OPC[k].inc && k !== 'mesadulce') ? txtOpc(k).m : '')).filter(Boolean);
+  const cola = arm.modo === 'solo' ? `, salón solo${items.length ? ' con ' + lista(items) : ''}` : arm.f === 'empresa' ? `, con todo incluido${items.length ? ': ' + lista(items) : ''}` : (items.length ? ': ' + lista(items) : '');
+  return `${nombre ? `Hola, soy ${nombre}. Quiero` : 'Hola, quiero'} pedir fecha en Festus para ${sust}${modo}${fecha}, unos ${arm.gente} invitados${cola}. ${d ? '¿Me pasan la propuesta?' : '¿Me pasan la propuesta y las fechas libres?'}`;
 }
 const lista = a => a.length < 2 ? (a[0] || '') : `${a.slice(0, -1).join(', ')} y ${a[a.length - 1]}`;
 function escribir() {
   const m = mensaje();
   ['#burbuja', '#burbuja-cel'].forEach(s => { $(s).innerHTML = `${esc(m)}<small>ahora</small>`; });
   ['#enviar', '#enviar-cel'].forEach(s => { $(s).href = wa(m); });
-  $('#ficha-pie').innerHTML = `<b>${esc(FIESTAS[arm.f].nombre)}</b> · ${esc(textoFecha())} · ${arm.gente} invitados · ${arm.modo === 'all' ? 'All Inclusive' : 'salón solo' + (arm.serv.size ? ' + ' + arm.serv.size + (arm.serv.size === 1 ? ' servicio' : ' servicios') : '')}`;
+  const modoN = arm.modo === 'all' ? ARMADO[arm.f].modos[0] : 'salón solo';
+  $('#ficha-pie').innerHTML = `<b>${esc(arm.f === 'empresa' ? 'Empresa · ' + ARMADO.empresa.fmt.find(x => x[0] === arm.fmt)[1] : FIESTAS[arm.f].nombre)}</b> · ${esc(textoFecha())} · ${arm.gente} invitados · ${esc(modoN)}`;
   estimar();
 }
-// el plano: se arma solo con lo elegido
-const XS = [100, 124, 148, 172, 196, 220, 244, 268, 292, 316, 340], YS = [26, 52, 78, 104, 134, 160, 186, 212];
-const SLOTS = XS.flatMap(x => YS.map(y => [x, y])).sort((a, b) => Math.hypot(a[0] - 200, a[1] - 67) - Math.hypot(b[0] - 200, b[1] - 67));
-const BLOQ = [[6, 6, 96, 100], [125, 15, 275, 124], [170, 124, 230, 250], [130, 5, 270, 20]];
-const ZONAS = {barra: [[0, 110, 40, 225]], mesadulce: [[355, 30, 400, 130]], catering: [[285, 212, 400, 250]], coordinacion: [[185, 218, 215, 250]]};
-const capaMesas = $('#p-mesas');
-let mesas = [], planoVisto = false;
-function tipoMesa() { return arm.f === 'cumple' || arm.f === 'empresa' ? 'larga' : 'redonda'; }
-function mesaSVG(t) {
-  if (t === 'larga') return `<rect class="tapa" x="-11" y="-4" width="22" height="8" rx="1.5"/>${[0, 1, 2, 3].map(k => `<circle class="silla" cx="${-8.2 + k * 5.5}" cy="-6.8" r="1.6"/><circle class="silla" cx="${-8.2 + k * 5.5}" cy="6.8" r="1.6"/>`).join('')}<circle class="centro" r="1.6"/>`;
-  return `<circle class="tapa" r="7"/>${Array.from({length: 10}, (_, k) => { const a = k * Math.PI / 5; return `<circle class="silla" cx="${(10.2 * Math.cos(a)).toFixed(2)}" cy="${(10.2 * Math.sin(a)).toFixed(2)}" r="1.7"/>`; }).join('')}<circle class="centro" r="2.2"/>`;
-}
-function dibujar() {
-  const act = servActivos().map(k => SERV_PLANO[k]), anim = planoVisto;
-  if (arm.f === 'empresa') act.push('pantalla');
-  $$('#plano [data-x]').forEach(g => {
-    const on = act.includes(g.dataset.x);
-    if (g.dataset.on === String(on)) return;
-    g.dataset.on = on;
-    if (!anim) gsap.set(g, {autoAlpha: on && planoVisto ? 1 : 0, scale: 1, transformOrigin: '50% 50%'});
-    else if (on) gsap.fromTo(g, {autoAlpha: 0, scale: .6}, {autoAlpha: 1, scale: 1, transformOrigin: '50% 50%', duration: .5, ease: 'power3.out', overwrite: true});
-    else gsap.to(g, {autoAlpha: 0, scale: .8, transformOrigin: '50% 50%', duration: .3, ease: 'power2.in', overwrite: true});
-  });
-  const principal = arm.f === 'xv' || arm.f === 'casamiento';
-  gsap.to('#p-principal', {autoAlpha: principal && planoVisto ? 1 : 0, duration: anim ? .4 : 0});
-  const bloq = [...BLOQ]; act.forEach(k => { if (ZONAS[k]) bloq.push(...ZONAS[k]); });
-  if (principal) bloq.push([160, 108, 240, 140]);
-  const libres = SLOTS.filter(([x, y]) => !bloq.some(([a, b, c, d]) => x > a && x < c && y > b && y < d));
-  const t = tipoMesa(), n = Math.min(libres.length, Math.ceil(arm.gente / 10));
-  for (let i = 0; i < n; i++) {
-    const [x, y] = libres[i];
-    let m = mesas[i];
-    if (m && m.t !== t) { const viejo = m.g; gsap.to(viejo, {scale: 0, autoAlpha: 0, duration: anim ? .25 : 0, onComplete: () => viejo.remove()}); m = null; }
-    if (!m) {
-      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      g.setAttribute('class', 'mesa'); g.innerHTML = mesaSVG(t); capaMesas.appendChild(g);
-      mesas[i] = m = {g, t};
-      gsap.set(g, {x, y, scale: 0, autoAlpha: 0, transformOrigin: '50% 50%'});
-      if (planoVisto) gsap.to(g, {scale: 1, autoAlpha: 1, duration: anim ? .45 : 0, ease: 'power3.out'});
-    } else if (anim) gsap.to(m.g, {x, y, duration: .6, ease: 'power3.inOut', overwrite: 'auto'});
-    else gsap.set(m.g, {x, y});
+
+/* ── el plano: 1 m = 20 unidades; salón de 22 × 14 m, con la cocina y los baños al costado ── */
+const M = 20, SAL = {W: 22, H: 14}, PISTA = {x: 8, y: 3, w: 6, h: 6}, CX = 11, CY = 6;
+const ZFIJAS = [{x: 0, y: 0, w: 6.2, h: 2.4}, {x: 14.5, y: 0, w: 2.4, h: 1.9}, {x: 19.4, y: .9, w: 2.6, h: 5.4}, {x: 20.6, y: 6.2, w: 1.4, h: 1.6}, {x: 20.6, y: 10.7, w: 1.4, h: 1.6}, {x: 9.4, y: 12.2, w: 3.2, h: 1.8}];
+const RS = .995, RF = 1.245;   // centro de la silla y huella de la mesa redonda (1,50 m + sillas de 45 cm)
+const r2 = n => Math.round(n * 100) / 100, cl = (v, a, b) => Math.min(b, Math.max(a, v));
+const dRect = (z, x, y) => Math.hypot(Math.max(z.x - x, 0, x - z.x - z.w), Math.max(z.y - y, 0, y - z.y - z.h));
+const num = n => n.toLocaleString('es-AR', {maximumFractionDigits: 1});
+// mesas redondas (o mesas altas): se prueban separaciones de mayor a menor (nunca menos de 1,2 m entre mesas) en tresbolillo o en filas
+function ubicarCirc(n, Z, conPista, pref, R = RF, pasos = [3.4, 3.2, 3.0, 2.85, 2.7]) {
+  const W = SAL.W, H = SAL.H, zonas = conPista ? Z.concat({...PISTA, c: .5}) : Z;
+  const libre = (x, y) => x - R >= .2 && x + R <= W - .2 && y - R >= .2 && y + R <= H - .2 && zonas.every(z => dRect(z, x, y) >= R + (z.c ?? .25));
+  const d0 = ([x, y]) => Math.hypot(x - CX, (y - CY) * 1.15);
+  let max = [];
+  for (const paso of pasos) for (const pat of pref) {
+    const dy = pat === 'hex' ? paso * .866 : paso; let mejor = null;
+    for (let fx = 0; fx < 4; fx++) for (let j = 0; j < 10; j++) {
+      const pts = [];
+      for (let y = .2 + R + j * dy / 10, fila = 0; y <= H - .2 - R; y += dy, fila++) {
+        const off = fx * paso / 4 + (pat === 'hex' && fila % 2 ? paso / 2 : 0);
+        for (let x = ((CX + off) % paso + paso) % paso; x <= W; x += paso) if (libre(x, y)) pts.push([r2(x), r2(y)]);
+      }
+      if (pts.length > max.length) max = pts;
+      if (pts.length < n) continue;
+      pts.sort((a, b) => d0(a) - d0(b));
+      const el = pts.slice(0, n), sc = el.reduce((t, p) => t + d0(p), 0);
+      if (!mejor || sc < mejor.sc) mejor = {pts: el, sc, pat, paso};
+    }
+    if (mejor) return mejor;
   }
-  mesas.slice(n).forEach(m => { const g = m.g; gsap.to(g, {scale: 0, autoAlpha: 0, duration: anim ? .25 : 0, ease: 'power2.in', onComplete: () => g.remove()}); });
-  mesas.length = n;
+  return {pts: max.sort((a, b) => d0(a) - d0(b)), tope: true, pat: pref[0], paso: pasos[pasos.length - 1]};
+}
+// mesas largas (imperiales o bajas para chicos) en franjas horizontales
+function restar(ints, a, b) { return ints.flatMap(([p, q]) => (b <= p || a >= q) ? [[p, q]] : [[p, a], [b, q]].filter(([u, v]) => v - u > .01)); }
+function ubicarLargas(asientos, Z, conPista, t) {
+  const banda = t.ancho + 2 * (t.s + .02), dy = banda + t.pasillo, zonas = conPista ? Z.concat({...PISTA, c: .5}) : Z;
+  let mejor = null;
+  for (let j = 0; j < 12; j++) {
+    const mesas = [];
+    for (let y0 = .35 + j * dy / 12; y0 + banda <= SAL.H - .35; y0 += dy) {
+      let ints = [[.35, SAL.W - .35]];
+      zonas.forEach(z => { const c = z.c ?? .35; if (z.y - c < y0 + banda && z.y + z.h + c > y0) ints = restar(ints, z.x - c, z.x + z.w + c); });
+      ints.forEach(([a, b]) => {
+        const ls = []; let rest = b - a;
+        while (rest >= t.min - 1e-6) { const l = Math.min(t.max, Math.floor((rest + 1e-6) / t.paso) * t.paso); ls.push(l); rest -= l + t.pasillo; }
+        const usado = ls.reduce((u, l) => u + l, 0) + Math.max(0, ls.length - 1) * t.pasillo; let x = a + (b - a - usado) / 2;
+        ls.forEach(l => { mesas.push({x: r2(x + l / 2), y: r2(y0 + banda / 2), l: r2(l)}); x += l + t.pasillo; });
+      });
+    }
+    const cap = mesas.reduce((s, m) => s + 2 * Math.round(m.l / t.paso), 0);
+    if (!mejor || cap > mejor.cap) mejor = {mesas, cap};
+  }
+  mejor.mesas.sort((p, q) => Math.hypot(p.x - CX, p.y - CY) - Math.hypot(q.x - CX, q.y - CY));
+  const out = []; let falta = asientos;
+  for (const m of mejor.mesas) {
+    if (falta <= 0) break;
+    const porLado = Math.min(Math.round(m.l / t.paso), Math.ceil(falta / 2)), l = Math.max(t.min, porLado * t.paso), cab = 2 * Math.round(l / t.paso);
+    out.push({x: m.x, y: m.y, l: r2(l), n: Math.min(falta, cab)}); falta -= cab;
+  }
+  return {mesas: out, cap: mejor.cap, falta: Math.max(0, falta)};
+}
+// filas de sillas con pasillo central alineado con la puerta (auditorio y ceremonia)
+function ubicarFilas(n, pasillo, y1, Z) {
+  const pS = .55, pF = .95, lado = Math.min(CX - pasillo / 2 - .825, 18.975 - CX - pasillo / 2), cMax = Math.floor((lado - .225) / pS) + 1, fMax = Math.floor((11.775 - y1) / pF) + 1;
+  let c = Math.min(cMax, Math.max(4, Math.ceil(Math.sqrt(n / 2) * 1.15)));
+  while (c < cMax && c * 2 * fMax < n * 1.08) c++;
+  const ocupa = (x, y) => Z.some(z => x + .225 > z.x - .1 && x - .225 < z.x + z.w + .1 && y + .225 > z.y - .1 && y - .225 < z.y + z.h + .1);
+  const pos = []; let filas = 0;
+  for (let i = 0; i < fMax && pos.length < n; i++) {
+    const y = r2(y1 + i * pF); filas = i + 1;
+    for (let j = 0; j < c && pos.length < n; j++) for (const s of [-1, 1]) { if (pos.length >= n) break; const x = r2(CX + s * (pasillo / 2 + .225 + j * pS)); if (!ocupa(x, y)) pos.push([x, y]); }
+  }
+  return {pos, filas, tope: pos.length < n};
+}
+const IMPERIAL = {ancho: 1.0, s: .45, paso: .6, pasillo: 1.2, min: 2.4, max: 7.2}, BAJAS = {ancho: .7, s: .32, paso: .45, pasillo: 1.0, min: 1.35, max: 2.7};
+
+function armarPlano() {
+  const f = arm.f, g = arm.gente, Z = ZFIJAS.map(z => ({...z})), P = [], tiene = activo;
+  let si = 0, est = '', aviso = false, pista = true;
+  const silla = (x, y, a, id) => P.push({id: id || 's' + si++, k: 'silla', x: r2(x), y: r2(y), a});
+  const fx = id => P.push({id, k: 'fx'});
+  const zona = (x, y, w, h, c) => Z.push({x, y, w, h, c});
+  const rect = (id, x, y, w, h, extra = {}) => P.push({id, k: 'rect', x, y, w, h, ...extra});
+  const cer = f === 'casamiento' && tiene('ceremonia') && arm.vista === 'ceremonia';
+  const cat = f === 'empresa' ? (arm.cat ? (arm.fmt === 'coctel' || arm.fmt === 'auditorio' ? 'lunch' : 'cena') : '') : arm.cat;
+  const conDJ = tiene('dj') && !cer;
+  if (conDJ) fx('luces');
+  if (tiene('deco')) fx('guirnalda');
+  if (tiene('foto')) fx('foto');
+  if (tiene('coord')) fx('coord');
+  if (cat) fx('cocina');
+  if (tiene('mesadulce')) { rect('dulce', 13.75, 1.5, .8, 2.4, {ico: 'cake'}); zona(13.1, 0, 1.4, 3.0); }
+  if (cat === 'lunch') { rect('buffet', 21.3, 9.3, .8, 2.2, {ico: 'restaurant'}); zona(19.6, 8.0, 2.4, 2.6); }
+  if (tiene('cabina360')) { fx('cabina360'); zona(16.9, .3, 2.6, 2.6); }
+  if (tiene('cabinafotos')) { fx('cabinafotos'); zona(.3, 10.2, 3.0, 3.5); }
+  if (tiene('carioca')) { rect('cotillon', 15.7, 1.85, 1.1, .5, {ico: 'campaign'}); zona(14.5, 1.2, 2.4, 1.1); }
+  if (tiene('escalera')) { fx('pasarela'); zona(4.4, 0, 3.8, 2.9); }
+  if (tiene('tragos')) { fx('tragos'); [2.3, 3.7, 5.1].forEach((y, i) => P.push({id: 'h' + i, k: 'alta', x: 18.7, y})); zona(18.1, 1.5, 1.3, 4.3); }
+  const redondas = (n, pref, conPista) => {
+    let r = ubicarCirc(n, Z, conPista, pref), sin = false;
+    if (r.tope && conPista) { const r0 = ubicarCirc(n, Z, false, pref); sin = true; r = r0; }
+    const pts = r.pts.slice(0, n).sort((a, b) => a[1] - b[1] || a[0] - b[0]);
+    let hon = -1;
+    if (f === 'casamiento' && tiene('honor') && pts.length) { let dm = 1e9; pts.forEach(([x, y], i) => { const d = Math.hypot(x - CX, y - 1.4); if (d < dm) { dm = d; hon = i; } }); }
+    pts.forEach(([x, y], i) => {
+      P.push({id: i === hon ? 'honor' : 'm' + i, k: 'redonda', x, y, honor: i === hon});
+      for (let k = 0; k < 10; k++) { const a = 18 + k * 36, rad = a * Math.PI / 180; silla(x + RS * Math.cos(rad), y + RS * Math.sin(rad), a); }
+    });
+    return {n: pts.length, sin, tope: pts.length < n, pat: r.pat, paso: r.paso};
+  };
+  const txtRed = (r, alrededor = true) => r.tope ? (aviso = true, `Para ${g} invitados no entran todos sentados: el tope de ejemplo es ${r.n * 10} en mesas de 10.`)
+    : r.sin ? (aviso = true, `Para ${g} invitados, el salón se arma sin pista central.`)
+    : `${r.n} ${r.n === 1 ? 'mesa redonda' : 'mesas redondas'} de 10, ${r.pat === 'hex' ? 'en tresbolillo' : 'en filas'}${alrededor ? ' alrededor de la pista' : ''}, con ${num(r.paso - 1.5)} m entre mesas para circular.`;
+
+  if (f === 'xv') {
+    if (tiene('vals')) fx('vals');
+    if (tiene('principal')) { rect('principal', 11, 1.4, 3.6, .8, {txt: 'principal'}); for (let k = 0; k < 7; k++) silla(9.5 + k * .5, .755, -90, 'sp' + k); zona(8.9, 0, 4.2, 2.4); }
+    const r = redondas(Math.ceil(g / 10), ['hex', 'grid'], true); pista = !r.sin; est = txtRed(r);
+  } else if (f === 'casamiento') {
+    if (cer) {
+      rect('juez', 11, 1.25, 1.4, .7, {txt: 'juez'}); silla(11, .655, -90, 'sj'); silla(10.6, 2.05, 90, 'sn0'); silla(11.4, 2.05, 90, 'sn1'); zona(9.8, 0, 2.4, 2.5);
+      const fl = ubicarFilas(g, 1.4, 3.0, Z); fl.pos.forEach(([x, y]) => silla(x, y, 90)); pista = false;
+      est = fl.tope ? (aviso = true, `Para ${g} invitados la ceremonia no entra sentada: el tope de ejemplo es ${fl.pos.length}.`) : `Ceremonia: ${g} sillas en ${fl.filas} filas, con pasillo central hasta la puerta. Después se reacomodan en ${Math.ceil(g / 10)} mesas de 10.`;
+    } else {
+      if (tiene('novios')) { rect('novios', 11, 1.4, 2.0, .8, {txt: 'novios'}); silla(10.5, .755, -90, 'sn0'); silla(11.5, .755, -90, 'sn1'); zona(9.6, 0, 2.8, 2.4); }
+      const r = redondas(Math.ceil(g / 10), ['hex', 'grid'], true); pista = !r.sin; est = txtRed(r);
+    }
+  } else if (f === 'cumple') {
+    const chicos = tiene('mesasbajas') ? Math.round(g * .6) : 0;
+    let lb = null, sinB = false;
+    if (chicos) {
+      lb = ubicarLargas(chicos, Z, true, BAJAS);
+      if (lb.falta) { lb = ubicarLargas(chicos, Z, false, BAJAS); sinB = true; }
+      lb.mesas.forEach((m, i) => {
+        P.push({id: 'b' + i, k: 'rect', cls: 'baja', x: m.x, y: m.y, w: m.l, h: BAJAS.ancho});
+        const ps = Math.round(m.l / BAJAS.paso); let c = 0;
+        for (let k = 0; k < ps; k++) for (const s of [-1, 1]) { if (c++ >= m.n) break; P.push({id: 'c' + i + '-' + k + (s < 0 ? 'a' : 'b'), k: 'sillac', x: r2(m.x - m.l / 2 + BAJAS.paso / 2 + k * BAJAS.paso), y: r2(m.y + s * (BAJAS.ancho / 2 + .02 + BAJAS.s / 2)), a: s * 90}); }
+        zona(m.x - m.l / 2, m.y - BAJAS.ancho / 2 - .34, m.l, BAJAS.ancho + .68, 1.0);
+      });
+    }
+    const conP = !sinB;
+    if (conP && tiene('pelotero')) fx('pelotero');
+    if (conP && tiene('animacion')) fx('anima');
+    const grandes = g - chicos, r = grandes > 0 ? redondas(Math.ceil(grandes / 10), ['grid', 'hex'], conP) : {n: 0};
+    if (r.sin) for (let q = P.length - 1; q >= 0; q--) if (P[q].id === 'pelotero' || P[q].id === 'anima') P.splice(q, 1);
+    pista = conP && !r.sin;
+    est = r.tope || r.sin || (lb && lb.falta) ? (aviso = true, (lb && lb.falta) || r.tope ? `Para ${g} invitados no entran todos sentados con este armado.` : `Para ${g} invitados, el salón se arma sin pista central.`)
+      : chicos ? `${lb.mesas.length} ${lb.mesas.length === 1 ? 'mesa baja' : 'mesas bajas'} para ${chicos} chicos y ${r.n} ${r.n === 1 ? 'mesa' : 'mesas'} de 10 para los grandes, con la pista libre.` : txtRed(r);
+  } else {
+    const fm = arm.fmt;
+    if (tiene('pantalla') || fm === 'auditorio') { fx('pantalla'); fx('proyector'); rect('atril', 13.7, 1.15, .6, .5, {}); zona(8.6, 0, 5.8, 1.9); }
+    if (fm === 'auditorio') {
+      rect('oradores', 11, 1.4, 2.8, .7, {ico: 'mic'}); [10.2, 11, 11.8].forEach((x, i) => silla(x, .805, -90, 'so' + i)); zona(9.4, 0, 3.2, 2.2);
+      const fl = ubicarFilas(g, 1.2, 2.9, Z); fl.pos.forEach(([x, y]) => silla(x, y, 90)); pista = false;
+      est = fl.tope ? (aviso = true, `Para ${g} invitados el auditorio no entra: el tope de ejemplo es ${fl.pos.length}.`) : `Auditorio: ${g} sillas en ${fl.filas} filas, con pasillo central, frente a la pantalla.`;
+    } else if (fm === 'coctel') {
+      const L = [[17.7, 3.4, 90], [1.6, 5.0, 0], [1.6, 11.3, 0]];
+      L.forEach(([x, y, a], i) => { P.push({id: 'l' + i, k: 'living', x, y, a}); const w = a ? 2.9 : 2.0, h = a ? 2.0 : 2.9; zona(x - w / 2, y - h / 2, w, h, .5); });
+      const r = ubicarCirc(Math.ceil(g / 7), Z, conDJ, ['hex', 'grid'], .3, [2.8, 2.6, 2.4, 2.2]);
+      r.pts.slice(0, Math.ceil(g / 7)).sort((a, b) => a[1] - b[1] || a[0] - b[0]).forEach(([x, y], i) => P.push({id: 'a' + i, k: 'alta', x, y}));
+      pista = conDJ;
+      est = r.tope ? (aviso = true, `Para ${g} invitados el cóctel queda justo: entran ${Math.min(r.pts.length, Math.ceil(g / 7))} mesas altas.`) : `Cóctel: ${Math.ceil(g / 7)} mesas altas para estar de pie y 3 livings para 18 sentados${conDJ ? ', con la pista libre' : ''}.`;
+    } else if (fm === 'cena') {
+      let li = ubicarLargas(g, Z, conDJ, IMPERIAL), sin = false;
+      if (li.falta && conDJ) { li = ubicarLargas(g, Z, false, IMPERIAL); sin = true; }
+      li.mesas.forEach((m, i) => {
+        P.push({id: 'i' + i, k: 'rect', x: m.x, y: m.y, w: m.l, h: IMPERIAL.ancho});
+        const ps = Math.round(m.l / IMPERIAL.paso); let c = 0;
+        for (let k = 0; k < ps; k++) for (const s of [-1, 1]) { if (c++ >= m.n) break; silla(m.x - m.l / 2 + IMPERIAL.paso / 2 + k * IMPERIAL.paso, m.y + s * (IMPERIAL.ancho / 2 + .02 + .225), s * 90); }
+      });
+      pista = conDJ && !sin;
+      est = li.falta ? (aviso = true, `Para ${g} invitados no entran todos en mesas imperiales: el tope de ejemplo es ${li.cap}.`) : sin ? (aviso = true, `Para ${g} invitados, el salón se arma sin pista central.`) : `${li.mesas.length} ${li.mesas.length === 1 ? 'mesa imperial' : 'mesas imperiales'} para ${g}${conDJ ? ', con la pista libre para el baile' : ', en filas'}.`;
+    } else {
+      const r = redondas(Math.ceil(g / 10), ['grid', 'hex'], conDJ); pista = conDJ && !r.sin;
+      est = conDJ ? txtRed(r) : r.tope ? txtRed(r) : `${r.n} mesas redondas de 10, ${r.pat === 'hex' ? 'en tresbolillo' : 'en filas'}, con ${num(r.paso - 1.5)} m entre mesas${tiene('pantalla') ? ', frente a la pantalla' : ''}.`;
+    }
+  }
+  return {P, est, aviso, pista, cls: {'con-dj': conDJ, 'con-cena': cat === 'cena', 'con-deco': tiene('deco'), 'sin-pista': !pista}, cat};
+}
+
+/* el dibujo */
+const svgNS = 'http://www.w3.org/2000/svg', plSvg = $('#pl-svg'), plPiezas = $('#pl-piezas'), plano = $('#plano');
+const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const u = n => r2(n * M);
+const PLATOS = Array.from({length: 10}, (_, k) => { const a = (18 + k * 36) * Math.PI / 180; return `<circle cx="${r2(10.6 * Math.cos(a))}" cy="${r2(10.6 * Math.sin(a))}" r="2.2"/>`; }).join('');
+const lucecitas = (pts) => pts.map(([x, y]) => `<circle class="lucecita" cx="${x}" cy="${y}" r="1.3"/>`).join('');
+const FX = {
+  luces: () => `<path class="haz" d="M160 60 L196 92 L188 100 Z M280 60 L244 92 L252 100 Z M160 180 L196 148 L188 140 Z M280 180 L244 148 L252 140 Z"/><circle class="bola" cx="200" cy="104" r="6"/><circle class="bola" cx="240" cy="136" r="6"/>`,
+  guirnalda: () => `<path class="fx-linea" d="M8 6 Q20 14 32 6 T56 6 T80 6"/>${lucecitas([[20, 10], [44, 10], [68, 10]])}`,
+  foto: () => `<circle class="marca" cx="112" cy="40" r="8"/><use class="marca-ico" href="#i-camera" x="106" y="34" width="12" height="12"/>`,
+  coord: () => `<circle class="marca" cx="256" cy="266" r="8"/><use class="marca-ico" href="#i-coord" x="250" y="260" width="12" height="12"/>`,
+  cocina: () => `<rect class="tinte" x="441.5" y="1.5" width="65" height="149"/><use class="ico-pl" href="#i-restaurant" x="464" y="86" width="20" height="20"/><text class="rot claro" x="474" y="122" text-anchor="middle">${arm.f === 'empresa' ? CAT_EMP[arm.fmt].toLowerCase() : (arm.cat === 'cena' ? 'cena' : 'lunch')}</text>`,
+  cabina360: () => `<circle class="glow" cx="364" cy="32" r="26"/><circle class="fx-linea" cx="364" cy="32" r="26"/><circle class="mueble" data-obst cx="364" cy="26" r="10"/><use class="ico-pl" href="#i-camera" x="357" y="19" width="14" height="14"/><text class="rot claro" x="364" y="52" text-anchor="middle">360</text>`,
+  cabinafotos: () => `<rect class="mueble" data-obst x="12" y="216" width="40" height="32" rx="2"/><path class="fx-linea" d="M12 252 H52"/><use class="ico-pl" href="#i-photos" x="25" y="225" width="14" height="14"/><text class="rot" x="32" y="270" text-anchor="middle">cabina de fotos</text>`,
+  pasarela: () => `<path class="alfombra" d="M92 20 C128 20 150 30 166 62"/><path class="fx-linea" d="M92 20 C128 20 150 30 166 62"/>${lucecitas([[100, 10], [124, 11], [146, 18], [164, 34], [104, 30], [128, 31], [148, 38], [158, 52]])}`,
+  vals: () => `<circle class="glow" cx="220" cy="120" r="34"/><circle class="fx-linea" cx="220" cy="120" r="34"/><text class="rot claro" x="220" y="124" text-anchor="middle">vals</text>`,
+  tragos: () => `<rect class="tinte" x="404" y="20" width="28" height="104" rx="4"/><text class="rot claro" transform="translate(398 72) rotate(-90)" text-anchor="middle">tragos</text>`,
+  pelotero: () => `<rect class="mueble" data-obst x="212" y="92" width="60" height="60" rx="6"/><g class="pelotas">${Array.from({length: 25}, (_, i) => `<circle cx="${220 + (i % 5) * 11}" cy="${100 + Math.floor(i / 5) * 11}" r="3.2"/>`).join('')}</g><text class="rot" x="242" y="166" text-anchor="middle">pelotero</text>`,
+  anima: () => `<circle class="glow" cx="186" cy="120" r="22"/><circle class="fx-linea" cx="186" cy="120" r="22"/><use class="ico-pl" href="#i-mic" x="179" y="106" width="14" height="14"/><text class="rot claro" x="186" y="134" text-anchor="middle">show</text>`,
+  pantalla: () => `<rect class="mueble" data-obst x="180" y="1" width="80" height="4"/><text class="rot" x="220" y="-3" text-anchor="middle">pantalla y proyector</text>`,
+  proyector: () => `<path class="fx-linea" d="M220 172 L182 6 M220 172 L258 6"/><rect class="mueble" x="214" y="168" width="12" height="8" rx="1.5"/>`
+};
+const DIBUJO = {
+  silla: () => `<rect class="asiento" x="-4.5" y="-4.5" width="9" height="9" rx="1.6"/><rect class="respaldo" x="2.7" y="-4.5" width="1.8" height="9" rx=".9"/>`,
+  sillac: () => `<rect class="asiento" x="-3.2" y="-3.2" width="6.4" height="6.4" rx="1.2"/><rect class="respaldo" x="1.9" y="-3.2" width="1.3" height="6.4" rx=".6"/>`,
+  redonda: p => `<circle class="tapa" r="15"/><g class="platos">${PLATOS}</g><circle class="centro" r="3.4"/>${p.honor ? '<use class="honor-ico" href="#i-star" x="-6" y="-6" width="12" height="12"/>' : ''}`,
+  rect: p => `<rect class="tapa tapa-r" rx="1.5"/>${p.txt ? `<text class="rot chico" text-anchor="middle" dy="3">${p.txt}</text>` : ''}${p.ico ? `<use class="ico-m" href="#i-${p.ico}" x="-6" y="-6" width="12" height="12"/>` : ''}`,
+  alta: () => `<circle class="alta" r="6"/><circle class="alta-c" r="2.2"/>`,
+  living: () => `<rect class="sofa" x="-20" y="-29" width="40" height="17" rx="4"/><rect class="mesita" x="-10" y="-5" width="20" height="10" rx="2"/><rect class="sofa" x="-20" y="12" width="40" height="17" rx="4"/>`,
+  fx: p => FX[p.id]()
+};
+const vivas = new Map(); let planoVisto = false;
+function pintarP(v) {
+  const s = v.st; v.el.setAttribute('transform', `translate(${u(s.x)} ${u(s.y)}) rotate(${r2(s.a)}) scale(${r2(s.s)})`); v.el.style.opacity = s.o;
+  if (v.tapa) { v.tapa.setAttribute('x', u(-s.w / 2)); v.tapa.setAttribute('y', u(-s.h / 2)); v.tapa.setAttribute('width', u(s.w)); v.tapa.setAttribute('height', u(s.h)); }
+}
+function crearP(p) {
+  const el = document.createElementNS(svgNS, 'g');
+  el.setAttribute('class', `pz ${p.k}${p.k === 'redonda' || p.k === 'rect' || p.k === 'alta' ? ' mesa' : ''}${p.cls ? ' ' + p.cls : ''}${p.honor ? ' honor' : ''}`);
+  el.dataset.id = p.id; el.innerHTML = DIBUJO[p.k](p); plPiezas.appendChild(el);
+  return {el, k: p.k, fx: p.k === 'fx', key: p.k + (p.txt || '') + (p.ico || '') + (p.honor ? 'h' : '') + (p.k === 'fx' ? FX[p.id]() : ''), tapa: el.querySelector('.tapa-r'), st: {x: 0, y: 0, a: 0, w: 0, h: 0, s: 1, o: 0}};
+}
+let ultimo = null;
+function dibujar() {
+  const L = ultimo = armarPlano(), dur = quieto || !planoVisto ? 0 : .55, ids = new Set(L.P.map(p => p.id));
+  Object.entries(L.cls).forEach(([c, on]) => plano.classList.toggle(c, on));
+  vivas.forEach((v, id) => { if (ids.has(id)) return; vivas.delete(id); gsap.killTweensOf(v.st); if (!dur) { v.el.remove(); return; } gsap.to(v.st, {o: 0, s: v.fx ? 1 : .6, duration: .22, ease: 'power2.in', onUpdate: () => pintarP(v), onComplete: () => v.el.remove()}); });
+  let i = 0;
+  L.P.forEach(p => {
+    const fin = {x: p.x || 0, y: p.y || 0, a: p.a || 0, w: p.w || 0, h: p.h || 0, s: 1, o: 1};
+    let v = vivas.get(p.id);
+    if (v) { const k2 = p.k + (p.txt || '') + (p.ico || '') + (p.honor ? 'h' : '') + (p.k === 'fx' ? FX[p.id]() : ''); if (k2 !== v.key) { gsap.killTweensOf(v.st); v.el.remove(); vivas.delete(p.id); v = null; } }
+    if (!v) {
+      v = crearP(p); vivas.set(p.id, v);
+      Object.assign(v.st, fin, {o: 0, s: v.fx ? 1 : .55});
+      if (planoVisto && !dur) Object.assign(v.st, fin);
+      pintarP(v);
+      if (planoVisto && dur) gsap.to(v.st, {...fin, duration: .45, delay: .12 + Math.min(i++ * .004, .3), ease: 'power3.out', onUpdate: () => pintarP(v)});
+      return;
+    }
+    gsap.killTweensOf(v.st);
+    if (!planoVisto) { Object.assign(v.st, fin, {o: 0, s: v.fx ? 1 : .55}); pintarP(v); return; }
+    fin.a = v.st.a + (((fin.a - v.st.a) % 360 + 540) % 360 - 180);
+    if (!dur) { Object.assign(v.st, fin); pintarP(v); return; }
+    gsap.to(v.st, {...fin, duration: dur, ease: 'power3.inOut', onUpdate: () => pintarP(v)});
+  });
+  const e = $('#pl-estado'); e.textContent = L.est; e.classList.toggle('aviso', L.aviso);
 }
 function verPlano() {
   if (planoVisto) return;
   planoVisto = true;
-  const act = servActivos().map(k => SERV_PLANO[k]); if (arm.f === 'empresa') act.push('pantalla');
-  gsap.to('#p-principal', {autoAlpha: (arm.f === 'xv' || arm.f === 'casamiento') ? 1 : 0, duration: .4});
-  gsap.fromTo(mesas.map(m => m.g), {scale: 0, autoAlpha: 0}, {scale: 1, autoAlpha: 1, duration: .5, ease: 'power3.out', stagger: .03, transformOrigin: '50% 50%'});
-  gsap.fromTo($$('#plano [data-x]').filter(g => act.includes(g.dataset.x)), {autoAlpha: 0, scale: .6}, {autoAlpha: 1, scale: 1, transformOrigin: '50% 50%', duration: .5, ease: 'power3.out', stagger: .1, delay: .3});
+  let i = 0;
+  vivas.forEach(v => { gsap.killTweensOf(v.st); gsap.to(v.st, {o: 1, s: 1, duration: quieto ? 0 : .5, delay: quieto ? 0 : Math.min(i++ * .006, .5), ease: 'power3.out', onUpdate: () => pintarP(v)}); });
 }
-function armar(cambio = {}) {
+// lo fijo del salón
+(function fijo() {
+  const esc0 = Array.from({length: 14}, (_, i) => `<rect class="escalon" x="${6 + i * 6}" y="6" width="6" height="28"/>`).join('');
+  const regla = [0, 1, 2, 3, 4, 5].map(m => `<path class="escala" d="M${m * 20} 288 v${m % 5 ? 4 : 7}"/>`).join('');
+  $('#pl-fijo').innerHTML = `<defs><pattern id="damero" width="20" height="20" patternUnits="userSpaceOnUse"><rect class="d1" width="20" height="20"/><rect class="d2" width="10" height="10"/><rect class="d2" x="10" y="10" width="10" height="10"/></pattern>
+<pattern id="rayas" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="anexo" width="7" height="7"/><line class="raya" x1="0" y1="0" x2="0" y2="7"/></pattern>
+<radialGradient id="gBola" cx=".35" cy=".35"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#cfd3d8"/><stop offset="1" stop-color="#6d7278"/></radialGradient></defs>
+<rect class="suelo" x="0" y="0" width="440" height="280"/><rect x="440" y="0" width="68" height="280" fill="url(#rayas)"/>
+<text class="rot" x="474" y="70" text-anchor="middle">cocina</text><text class="rot" x="474" y="222" text-anchor="middle">baños</text>
+<g class="pista-g"><rect id="pl-pista" x="160" y="60" width="120" height="120" fill="url(#damero)"/><rect class="pista-b" x="160" y="60" width="120" height="120"/></g>
+<rect class="pista-pill" x="182" y="63" width="76" height="15" rx="7.5"/><text class="rot pista-rot" x="220" y="74" text-anchor="middle">pista 6 × 6 m</text>
+<g data-obst="escalera">${esc0}</g><path class="fx-linea" d="M14 20 H84 M78 15 L84 20 L78 25"/><text class="rot" x="48" y="46" text-anchor="middle">escalera</text>
+<rect class="mueble" data-obst="barra" x="410" y="24" width="16" height="96" rx="2"/><text class="rot" transform="translate(404 72) rotate(-90)" text-anchor="middle">barra</text>
+<g class="cabina-dj"><rect class="mueble" data-obst="dj" x="294" y="7" width="40" height="20" rx="2"/><use class="ico-pl" href="#i-music" x="307" y="10" width="14" height="14"/><text class="rot" x="314" y="37" text-anchor="middle">DJ</text></g>
+<path class="muro" d="M196 280 H0 V0 H440 V130 M440 150 V220 M440 240 V280 H244"/><path class="muro-i" d="M440 0 H508 V280 H440 M440 152 H508"/>
+<path class="puerta" d="M196 280 V256 A24 24 0 0 1 220 280 M244 280 V256 A24 24 0 0 0 220 280 M440 130 H460 A20 20 0 0 1 440 150 M440 220 H460 A20 20 0 0 1 440 240"/>
+<text class="rot" x="220" y="300" text-anchor="middle">entrada</text>
+<path class="escala" d="M0 288 H100"/>${regla}<text class="rot" x="0" y="306">0</text><text class="rot" x="20" y="306" text-anchor="middle">1</text><text class="rot" x="100" y="306" text-anchor="middle">5 m</text><text class="rot" x="440" y="306" text-anchor="end">salón 22 × 14 m</text>`;
+})();
+// acercar y alejar: botones, doble toque, pellizco y arrastre
+const VB = {x: -12, y: -14, w: 532, h: 324}, zoom = {k: 1, cx: VB.x + VB.w / 2, cy: VB.y + VB.h / 2};
+function aplicarZoom() {
+  const w = VB.w / zoom.k, h = VB.h / zoom.k;
+  zoom.cx = cl(zoom.cx, VB.x + w / 2, VB.x + VB.w - w / 2); zoom.cy = cl(zoom.cy, VB.y + h / 2, VB.y + VB.h - h / 2);
+  plSvg.setAttribute('viewBox', `${r2(zoom.cx - w / 2)} ${r2(zoom.cy - h / 2)} ${r2(w)} ${r2(h)}`);
+  plano.classList.toggle('zoom', zoom.k > 1.01);
+}
+function zoomA(k, cx = zoom.cx, cy = zoom.cy) { gsap.to(zoom, {k: cl(k, 1, 4), cx, cy, duration: quieto ? 0 : .35, ease: 'power2.out', onUpdate: aplicarZoom}); }
+const aU = (px, py) => { const r = plSvg.getBoundingClientRect(), w = VB.w / zoom.k, h = VB.h / zoom.k; return [zoom.cx - w / 2 + (px - r.left) / r.width * w, zoom.cy - h / 2 + (py - r.top) / r.height * h]; };
+$('.pl-zoom').addEventListener('click', e => { const b = e.target.closest('[data-z]'); if (!b) return; const z = +b.dataset.z; if (!z) zoomA(1, VB.x + VB.w / 2, VB.y + VB.h / 2); else zoomA(zoom.k * (z > 0 ? 1.6 : 1 / 1.6)); });
+plSvg.addEventListener('dblclick', e => { if (zoom.k > 1.01) zoomA(1, VB.x + VB.w / 2, VB.y + VB.h / 2); else { const [x, y] = aU(e.clientX, e.clientY); zoomA(2.2, x, y); } });
+const ptr = new Map(); let pin = null;
+plSvg.addEventListener('pointerdown', e => {
+  if (e.pointerType === 'mouse' && zoom.k <= 1.01) return;
+  ptr.set(e.pointerId, [e.clientX, e.clientY]);
+  if (ptr.size === 2) { const [a, b] = [...ptr.values()]; pin = {d: Math.hypot(a[0] - b[0], a[1] - b[1]) || 1, k: zoom.k, m: aU((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)}; }
+});
+plSvg.addEventListener('pointermove', e => {
+  if (!ptr.has(e.pointerId)) return;
+  const prev = ptr.get(e.pointerId); ptr.set(e.pointerId, [e.clientX, e.clientY]);
+  const r = plSvg.getBoundingClientRect();
+  if (ptr.size === 2 && pin) {
+    const [a, b] = [...ptr.values()]; zoom.k = cl(pin.k * Math.hypot(a[0] - b[0], a[1] - b[1]) / pin.d, 1, 4);
+    const w = VB.w / zoom.k, h = VB.h / zoom.k; zoom.cx = pin.m[0] - (((a[0] + b[0]) / 2 - r.left) / r.width - .5) * w; zoom.cy = pin.m[1] - (((a[1] + b[1]) / 2 - r.top) / r.height - .5) * h; aplicarZoom();
+  } else if (ptr.size === 1 && zoom.k > 1.01) { zoom.cx -= (e.clientX - prev[0]) / r.width * VB.w / zoom.k; zoom.cy -= (e.clientY - prev[1]) / r.height * VB.h / zoom.k; aplicarZoom(); }
+});
+['pointerup', 'pointercancel', 'pointerleave'].forEach(t => plSvg.addEventListener(t, e => { ptr.delete(e.pointerId); if (ptr.size < 2) pin = null; }));
+
+function armar(cambio = {}, repintar = false) {
+  const antes = arm.f + arm.modo + arm.fmt;
   Object.assign(arm, cambio);
+  if (repintar || antes !== arm.f + arm.modo + arm.fmt || !$('#a-opc').children.length) pintarOpc();
   marcarArm(); dibujar(); escribir();
 }
-$('#a-fiesta').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (!b) return; const f = b.dataset.f; armar({f, gente: FIESTAS[f].defGente, modo: FIESTAS[f].modo}); });
+$('#a-fiesta').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (b) armar(fiestaDef(b.dataset.f)); });
 $$('.modo').forEach(b => b.addEventListener('click', () => armar({modo: b.dataset.m})));
-$('#a-serv').addEventListener('click', e => { const b = e.target.closest('[data-s]'); if (!b) return; arm.serv.has(b.dataset.s) ? arm.serv.delete(b.dataset.s) : arm.serv.add(b.dataset.s); armar(); });
+$('#a-opc').addEventListener('click', e => {
+  const o = e.target.closest('[data-o]'), c = e.target.closest('[data-cat]'), fm = e.target.closest('[data-fmt]');
+  if (o) {
+    const k = o.dataset.o, d = OPC[k].dep, s = arm.o, cambio = {};
+    if (d && !s.has(d)) { s.add(d); s.add(k); }
+    else if (s.has(k)) { s.delete(k); if (k === 'infantil') { s.delete('mesasbajas'); s.delete('pelotero'); } }
+    else { s.add(k); if (k === 'infantil') s.add('mesasbajas'); }
+    if (k === 'ceremonia') cambio.vista = s.has('ceremonia') ? 'ceremonia' : 'fiesta';
+    armar(cambio);
+  }
+  if (c) armar({cat: c.dataset.cat});
+  if (fm) armar({fmt: fm.dataset.fmt});
+});
+$('#pl-vista').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) armar({vista: b.dataset.v}); });
 $('#armar .stepper').addEventListener('click', e => { const b = e.target.closest('[data-d]'); if (b) armar({gente: Math.min(V().capacidad, Math.max(20, arm.gente + (+b.dataset.d) * 10))}); });
 $('#cal-armar').addEventListener('click', e => { const b = e.target.closest('.cd.libre'); if (b) { armar({fecha: deIso(b.dataset.f)}); $('#a-otra').value = ''; } });
 $('#a-otra').addEventListener('change', e => { if (!e.target.value) return; const d = deIso(e.target.value); if (d < hoy) { e.target.value = ''; return; } armar({fecha: d}); });
-$('#a-nombre').addEventListener('input', e => armar({nombre: e.target.value}));
+$('#a-nombre').addEventListener('input', e => { arm.nombre = e.target.value; escribir(); });
 $('#a-otra').min = iso(hoy);
+let anchoOpc = innerWidth;
+addEventListener('resize', () => { if (innerWidth === anchoOpc) return; anchoOpc = innerWidth; clearTimeout(calibrarOpc._t); calibrarOpc._t = setTimeout(calibrarOpc, 150); });
 
 /* ── el panel ── */
 const pn = $('#pn'), gate = $('#pn-gate');
@@ -1675,7 +2101,7 @@ $('#ag-guardar').addEventListener('click', () => {
   guardar('Publicado en la agenda');
 });
 // valores
-const CAMPOS_V = ['cuota', 'capacidad', 'horario', 'allinc', 'salon', 'dj', 'catering', 'deco', 'foto', 'coord', 'mesadulce'];
+const CAMPOS_V = ['cuota', 'capacidad', 'horario', 'allinc', 'salon', 'dj', 'catering', 'deco', 'foto', 'coord', 'mesadulce', 'cabina', 'tragos', 'anima', 'pelotero'];
 function pintarPanelValores() { CAMPOS_V.forEach(k => { $('#v-' + k).value = V()[k]; }); }
 $('#v-guardar').addEventListener('click', () => { CAMPOS_V.forEach(k => { const v = $('#v-' + k).value; V()[k] = k === 'horario' ? (v.trim() || DEF().valores.horario) : Math.max(1, parseInt(v, 10) || DEF().valores[k]); }); guardar('Valores guardados'); });
 $('#pn-reset').addEventListener('click', () => { STORE = DEF(); try { localStorage.removeItem(CLAVE); } catch (e) {} guardar('Demo restablecida'); });
@@ -1702,10 +2128,10 @@ KIT.en('fiesta', extra => { pintarFiesta(extra.id); });
 KIT.en('salon', () => { if (!salonPintado) pintarSalon(); });
 KIT.en('armar', extra => {
   const c = {};
-  if (extra.f && FIESTAS[extra.f]) { c.f = extra.f; c.gente = FIESTAS[extra.f].defGente; c.modo = FIESTAS[extra.f].modo; }
+  if (extra.f && FIESTAS[extra.f]) Object.assign(c, fiestaDef(extra.f));
   if (extra.gente) c.gente = Math.min(V().capacidad, Math.max(20, parseInt(extra.gente, 10) || arm.gente));
   if (extra.modo) c.modo = extra.modo === 'solo' ? 'solo' : 'all';
-  if (extra.serv != null) arm.serv = new Set(extra.serv.split(',').filter(Boolean));
+  if (extra.serv != null) { const A = ARMADO[c.f || arm.f], sv = extra.serv.split(',').filter(Boolean); c.o = new Set(A.def.filter(k => !OPC[k].v)); c.cat = sv.includes('catering') ? A.cat[0][0] : ''; sv.forEach(k => { if (OPC[k]) c.o.add(k); }); }
   if (extra.fecha) { const d = deIso(extra.fecha); if (d >= hoy) { c.fecha = d; arm.calDesde = new Date(d.getFullYear(), d.getMonth(), 1); } }
   if (extra.anio && extra.mes != null) {   // desde la calculadora: el primer sábado libre de ese mes
     const a = +extra.anio, m = +extra.mes; let d = new Date(a, m, 1); while (d.getMonth() === m && !(d.getDay() === 6 && estado(d) === 'libre')) d = mas(d, 1);
@@ -1714,7 +2140,8 @@ KIT.en('armar', extra => {
   }
   if (c.fecha) { pintarCalendario($('#cal-armar'), arm.calDesde, 2, {marcada: iso(c.fecha)}); $('#a-otra').value = iso(c.fecha); }
   $('#a-nombre').value = arm.nombre;
-  armar(c);
+  armar(c, true);
+  requestAnimationFrame(calibrarOpc);
   setTimeout(verPlano, 250);
 });
 KIT.en('agenda', () => pintarAgenda());
