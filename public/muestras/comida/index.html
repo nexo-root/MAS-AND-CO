@@ -83,16 +83,16 @@ h2{font-size:clamp(38px,4.6vw,64px)}
 /* ── portada: el primer plano ── */
 .hero{position:relative;height:100vh;min-height:660px;max-height:1120px;overflow:hidden;background:var(--carbon)}
 .hc-fotos{position:absolute;top:var(--barra);bottom:0;right:0;left:40%;overflow:hidden;background:#2A120B}
-.hc-f{position:absolute;inset:0;margin:0;overflow:hidden;visibility:hidden}
+.hc-f{position:absolute;inset:0;margin:0;overflow:hidden;visibility:hidden;clip-path:polygon(0 0,calc(var(--k,1) * 113.6%) 0,calc(var(--k,1) * 113.6% - 13.6%) 100%,0 100%)}
 .hc-f.ya{visibility:visible}
-.hc-f img{width:100%;height:100%;object-fit:cover;object-position:var(--p,50% 50%);transform-origin:var(--o,50% 50%)}
-.hc-panel{position:absolute;z-index:2;top:var(--barra);bottom:0;left:0;width:51%;background:var(--brasa);clip-path:polygon(0 0,100% 0,84% 100%,0 100%)}
+.hc-f img{width:100%;height:100%;object-fit:cover;object-position:var(--p,50% 50%)}
+.hc-panel{position:absolute;z-index:2;top:var(--barra);bottom:0;left:0;width:51%;background:var(--brasa);clip-path:polygon(0 0,calc(var(--c,1) * 100%) 0,calc(var(--c,1) * 100% - 16%) 100%,0 100%)}
 .hc-texto{position:absolute;z-index:3;left:max(40px,calc((100vw - var(--ancho)) / 2 + 40px));top:calc(var(--barra) + (100% - var(--barra)) / 2);transform:translateY(-50%);width:min(640px,44vw)}
 .h-estado{margin-bottom:18px;font-size:16px;flex-wrap:wrap}
 .h-estado span:last-child{font-weight:600;color:rgba(247,239,230,.9)}
 .hc-preg{font-size:clamp(64px,7.1vw,118px);line-height:.9;letter-spacing:-.012em;font-variation-settings:'wdth' 75,'opsz' 96}
-.hc-preg .l{display:block;overflow:hidden;padding:.02em 0 .05em}
-.hc-preg .l>span{display:block}
+.hc-preg .l{display:block;padding:.02em 0 .05em}
+.hc-preg .pa{display:inline-block}
 .hc-giro{display:inline-block;vertical-align:top;margin-top:.08em;background:var(--mostaza);color:var(--tinta);border-radius:.12em;padding:.04em .16em .02em;overflow:hidden;white-space:nowrap}
 .hc-gin{display:block;position:relative}
 .hc-giro .w{display:block}
@@ -101,6 +101,7 @@ h2{font-size:clamp(38px,4.6vw,64px)}
 .hc-precio b{font-weight:600;color:var(--tinta);background:var(--crema);padding:2px 8px;border-radius:6px;white-space:nowrap}
 .hc-firma{margin-top:20px;font-size:18px;font-weight:700}
 .hc-firma b{font-weight:800}
+#h-sub-c{display:none}
 .hc-acc{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 .hc-acc .btn.claro{background:var(--crema);color:var(--tinta)}
 .hc-acc .btn.claro:hover{background:#fff}
@@ -121,7 +122,7 @@ h2{font-size:clamp(38px,4.6vw,64px)}
 .tk-tot{border-top:1.5px dashed rgba(30,24,19,.42);margin-top:10px;padding-top:9px;font-weight:600;font-size:16px}
 .tk-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;width:100%;min-height:46px;background:var(--tinta);color:var(--papel);border-radius:10px;font-family:var(--texto);font-weight:800;font-size:15.5px}
 .tk-btn:hover{background:#3A2F27}
-html.intro .hc-panel,html.intro .hc-preg .l>span,html.intro .hc-giro,html.intro #h-estado,html.intro .hc-precio,html.intro .hc-firma,html.intro .hc-acc{visibility:hidden}
+html.intro .hc-panel,html.intro .hc-preg .pa,html.intro .hc-giro,html.intro #h-estado,html.intro .hc-precio,html.intro .hc-firma,html.intro .hc-acc{visibility:hidden}
 
 /* ── secciones ── */
 .sec{padding:110px 0}
@@ -375,13 +376,17 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .sec-cab p{font-size:16px}
 
   .hero{height:auto;min-height:100svh;max-height:none;display:flex;flex-direction:column;padding-bottom:calc(112px + env(safe-area-inset-bottom))}
-  .hc-fotos{position:relative;top:auto;left:auto;right:auto;bottom:auto;margin-top:var(--barra);height:38svh;min-height:270px;flex:none}
-  .hc-panel{top:calc(var(--barra) + max(38svh,270px) - 34px);width:auto;right:0;clip-path:polygon(0 34px,100% 0,100% 100%,0 100%)}
+  .hc-fotos{position:relative;top:auto;left:auto;right:auto;bottom:auto;margin-top:var(--barra);height:35svh;min-height:260px;flex:none}
+  .hc-panel{top:calc(var(--barra) + max(35svh,260px) - 34px);width:auto;right:0;clip-path:polygon(0 calc((1 - var(--c,1)) * 100% + 34px),100% calc((1 - var(--c,1)) * 100%),100% 100%,0 100%)}
+  .hc-f{clip-path:polygon(0 calc((1 - var(--k,1)) * (100% + 34px)),100% calc((1 - var(--k,1)) * (100% + 34px) - 34px),100% 100%,0 100%)}
   .hc-texto{position:relative;left:auto;top:auto;transform:none;width:auto;padding:4px 16px 0}
   .h-estado{font-size:14.5px;margin-bottom:10px}
   .hc-preg{font-size:clamp(44px,13.6vw,60px)}
-  .hc-precio{margin-top:12px;font-size:14px}
+  .hc-precio{margin-top:12px;font-size:14px;flex-wrap:nowrap}
+  .hc-precio span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .hc-firma{margin-top:12px;font-size:16px}
+  #h-sub{display:none}
+  #h-sub-c{display:inline}
   .hc-acc{flex-wrap:nowrap;gap:10px;margin-top:12px}
   .hc-acc .btn{flex:1;padding:0 12px;font-size:16px;min-height:50px}
   .seg.desliza{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 2px}
@@ -518,10 +523,10 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
     <div class="hc-panel" aria-hidden="true"></div>
     <div class="hc-texto">
       <p class="estado h-estado" id="h-estado"><span class="punto"></span><b id="h-ab">Abierto ahora</b><span id="h-hasta"></span></p>
-      <h1 class="hc-preg"><span class="l"><span>¿Qué pedimos</span></span><span class="l"><span>hoy?</span></span>
+      <h1 class="hc-preg"><span class="l"><span class="pa">¿Qué</span> <span class="pa">pedimos</span></span><span class="l"><span class="pa">hoy?</span></span>
         <span class="hc-giro" id="hc-giro" aria-live="polite"><span class="hc-gin"><span class="w"></span></span></span></h1>
       <p class="hc-precio"><span id="hc-pt"></span><b id="hc-pv"></b></p>
-      <p class="hc-firma"><b data-n>Su local</b> · <span id="h-sub"></span></p>
+      <p class="hc-firma"><b data-n>Su local</b> · <span id="h-sub"></span><span id="h-sub-c"></span></p>
       <div class="hc-acc"><a class="btn claro" id="hc-pedir" href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path data-ic="bolsa"/></svg>Pedí ahora</a><a class="btn borde" data-ir="menu">Ver el menú</a></div>
     </div>
     <span class="ej h-ej">Fotos de ejemplo</span>
@@ -921,19 +926,19 @@ const SABORES = ['cuchillo', 'suave', 'jyq', 'polloe', 'humita', 'caprese', 'ver
 
 // ── todo lo que cambia según el tipo de local ──
 const TIPOD = {
-  hamburguesas: {kicker: 'Hamburguesería', icono: 'burger', sub: 'Hamburguesas a la plancha, papas y combos', macro: [29250659, '50% 55%', '56% 62%', 2.7], giro: [['doble', '¿Doble cheddar?', 'Dos medallones y doble cheddar'], ['smash', '¿Una smash?', 'Aplastada, de bordes crocantes'], ['papasch', '¿Papas cheddar?', 'Con panceta crocante y verdeo'], ['bacon', '¿Una bacon?', 'Panceta crocante y barbacoa'], ['casa', '¿La de la casa?', '180 g, cebolla caramelizada']],
+  hamburguesas: {kicker: 'Hamburguesería', icono: 'burger', sub: 'Hamburguesas a la plancha, papas y combos', macro: [29250659, '50% 55%'], giro: [['doble', '¿Doble cheddar?', 'Doble medallón y cheddar'], ['smash', '¿Una smash?', 'Aplastada, bordes crocantes'], ['papasch', '¿Papas cheddar?', 'Con panceta y verdeo'], ['bacon', '¿Una bacon?', 'Panceta crocante y barbacoa'], ['casa', '¿La de la casa?', '180 g, cebolla caramelizada']],
     horario: [[1170, 1470]], hTxt: [['Todos los días', '19:30 a 00:30'], ['Viernes y sábados', 'hasta la 01:30']], cocina: 'A la plancha', llega: 'Caliente, con las papas crocantes',
     top: ['doble', 'pareja', 'casa', 'papasch'],
     porPersona: 18000},
-  pizzas: {kicker: 'Pizzería', icono: 'pizza', sub: 'Pizzas a la piedra, empanadas y combos para compartir', macro: [365459, '58% 50%', '50% 55%', 2.2], giro: [['muzza', '¿Una muzza?', 'Mucha muzzarella y orégano'], ['fuga', '¿Fugazzeta?', 'Muzzarella y mucha cebolla'], ['napo', '¿Napolitana?', 'Tomate en rodajas, ajo y albahaca'], ['cuatroq', '¿Cuatro quesos?', 'Roquefort, provolone y parmesano'], ['empa6', '¿Y empanadas?', 'Media docena, de carne']],
+  pizzas: {kicker: 'Pizzería', icono: 'pizza', sub: 'Pizzas a la piedra, empanadas y combos para compartir', macro: [365459, '58% 50%'], giro: [['muzza', '¿Una muzza?', 'Mucha muzzarella y orégano'], ['fuga', '¿Fugazzeta?', 'Muzzarella y mucha cebolla'], ['napo', '¿Napolitana?', 'Tomate, ajo y albahaca'], ['cuatroq', '¿Cuatro quesos?', 'Con roquefort y provolone'], ['empa6', '¿Y empanadas?', 'Media docena, de carne']],
     horario: [[690, 900], [1140, 1440]], hTxt: [['Mediodía', '11:30 a 15:00'], ['Noche', '19:00 a 00:00']], cocina: 'Al horno de piedra', llega: 'Entera, sin que se corra el queso',
     top: ['muzza', 'combop2', 'fuga', 'empa6'],
     porPersona: 12000},
-  lomitos: {kicker: 'Lomitería', icono: 'fast', sub: 'Lomitos completos, sándwiches y platos con papas', macro: [30350297, '50% 50%', '50% 50%', 2], giro: [['combol', '¿Combo lomito?', 'Lomito completo, papas y gaseosa'], ['completo', '¿Lomito completo?', 'Con jamón, queso y huevo frito'], ['especiall', '¿Lomito especial?', 'Cheddar, panceta y barbacoa'], ['arabe', '¿Uno árabe?', 'Lomo en tiras, en pan árabe'], ['mila', '¿Una milanesa?', 'Sándwich en pan francés']],
+  lomitos: {kicker: 'Lomitería', icono: 'fast', sub: 'Lomitos completos, sándwiches y platos con papas', macro: [30350297, '50% 50%'], giro: [['combol', '¿Combo lomito?', 'Lomito, papas y gaseosa'], ['completo', '¿Lomito completo?', 'Jamón, queso y huevo frito'], ['especiall', '¿Lomito especial?', 'Cheddar, panceta y barbacoa'], ['arabe', '¿Uno árabe?', 'Lomo en tiras, pan árabe'], ['mila', '¿Una milanesa?', 'Sándwich en pan francés']],
     horario: [[1170, 1500]], hTxt: [['Todos los días', '19:30 a 01:00'], ['Domingos', 'también al mediodía']], cocina: 'A la plancha', llega: 'Caliente y bien envuelto',
     top: ['completo', 'superlomo', 'especiall', 'combol'],
     porPersona: 22000},
-  empanadas: {kicker: 'Empanadas', icono: 'empa', sub: 'Empanadas al horno y fritas, por unidad o por docena', macro: [36905236, '50% 50%', '50% 50%', 2], giro: [['docena', '¿Una docena?', 'Surtida, de los gustos que quieras'], ['cuchillo', '¿De cuchillo?', 'Carne cortada a cuchillo'], ['humita', '¿Humita?', 'Choclo cremoso y queso'], ['jyq', '¿Jamón y queso?', 'Muzzarella que se estira'], ['fritas', '¿Unas fritas?', 'Fritas en el momento']],
+  empanadas: {kicker: 'Empanadas', icono: 'empa', sub: 'Empanadas al horno y fritas, por unidad o por docena', macro: [36905236, '50% 50%'], giro: [['docena', '¿Una docena?', 'Surtida, a tu gusto'], ['cuchillo', '¿De cuchillo?', 'Carne cortada a cuchillo'], ['humita', '¿Humita?', 'Choclo cremoso y queso'], ['jyq', '¿Jamón y queso?', 'Muzzarella que se estira'], ['fritas', '¿Unas fritas?', 'Fritas en el momento']],
     horario: [[660, 900], [1110, 1410]], hTxt: [['Mediodía', '11:00 a 15:00'], ['Noche', '18:30 a 23:30']], cocina: 'Al horno', llega: 'Calentitas, marcadas por gusto',
     top: ['docena', 'cuchillo', 'humita', 'jyq'],
     porPersona: 9000}
@@ -973,6 +978,7 @@ gsap.registerPlugin(ScrollTrigger, Flip);
 $$('[data-n]').forEach(el => el.textContent = N);
 document.title = `${N} · diseño de muestra · Mas & Co`;
 $('#h-sub').textContent = min1(TIPOD.sub) + (CIUDAD ? ' en ' + CIUDAD : '');
+$('#h-sub-c').textContent = min1(TIPOD.kicker) + (CIUDAD ? ' en ' + CIUDAD : '');
 
 // ── horario de ejemplo (minutos desde la medianoche; más de 1440 = pasada la medianoche) · ?hora=21:30 para probar ──
 const AHORA = (() => { const d = new Date(), h = (q.get('hora') || '').match(/^(\d{1,2}):?(\d{2})$/); if (h) d.setHours(+h[1], +h[2], 0, 0); return d; })();
@@ -1093,13 +1099,14 @@ document.addEventListener('click', e => {
 // ══ INICIO ══
 const tkLinea = (p, o, n, por) => { const det = detalle(p, o, true); return `<div class="tk-l"><span>${n} ${esc(p.t)}${det ? `<small>${esc(det)}</small>` : ''}${por ? `<span class="por">${esc(por)}</span>` : ''}</span><span class="px">${miles(unidad(p, o) * n)}</span></div>`; };
 
-// la portada: el primer plano · 1) pegados al macro del tipo, nos alejamos mientras entra el panel · 2) «¿Qué pedimos hoy?»
-// · 3) la respuesta en mostaza va girando entre productos del menú del tipo, cada uno con su foto, su precio y el botón que lo abre
-const GIRO = TIPOD.giro.map(([id, q, l], i) => { const p = prod(id); return {p, q, l, f: i ? p.f : TIPOD.macro[0], pos: i ? '50% 50%' : TIPOD.macro[1], o: i ? '50% 50%' : TIPOD.macro[2],
+// la portada: el primer plano. Entrada en 1,6 s, sin zoom: 1) el corte: el panel tomate entra barriendo en la diagonal de su borde
+// (en el celu sube desde abajo) · 2) la pregunta cae palabra por palabra · 3) la caja mostaza se pinta como resaltador, sube el producto,
+// el precio, y al final los botones y el estado. Después el producto gira cada 2,6 s: la palabra como un tambor, la foto con el mismo corte.
+const GIRO = TIPOD.giro.map(([id, q, l], i) => { const p = prod(id); return {p, q, l, f: i ? p.f : TIPOD.macro[0], pos: i ? '50% 50%' : TIPOD.macro[1],
   px: pesos(unidad(p, defecto(p))) + (TIPO === 'empanadas' && p.cat === 'principal' ? ' c/u' : '')}; });
-$('#hc-fotos').innerHTML = GIRO.map((g, i) => `<figure class="hc-f" style="--p:${g.pos};--o:${g.o}"><img alt="${esc(g.p.n)}" src="${foto(g.f, 1400)}" srcset="${juego(g.f, [800, 1400, 2000])}" sizes="(max-width:860px) 100vw, 60vw"${i ? '' : ' fetchpriority="high"'}></figure>`).join('');
+$('#hc-fotos').innerHTML = GIRO.map((g, i) => `<figure class="hc-f" style="--p:${g.pos}"><img alt="${esc(g.p.n)}" src="${foto(g.f, 1400)}" srcset="${juego(g.f, [800, 1400, 2000])}" sizes="(max-width:860px) 100vw, 60vw"${i ? '' : ' fetchpriority="high"'}></figure>`).join('');
 const hcF = $$('.hc-f'), hcGiro = $('#hc-giro'), hcGin = $('.hc-gin'), hcPedir = $('#hc-pedir');
-let hcK = 0, hcReloj = 0, portadaHecha = false;
+let hcK = 0, hcReloj = null, portadaHecha = false;
 const hcPinta = g => { $('#hc-pt').textContent = g.l; $('#hc-pv').textContent = g.px; hcPedir.setAttribute('aria-label', `Pedí ${g.p.n}`); };
 hcGin.querySelector('.w').textContent = GIRO[0].q; hcPinta(GIRO[0]); hcF[0].classList.add('ya');
 hcPedir.addEventListener('click', e => { e.preventDefault(); KIT.ir('producto', {id: GIRO[hcK].p.id}); });
@@ -1120,40 +1127,46 @@ function hcCambiar() {
   const f = hcF[hcK], g = GIRO[hcK], nw = document.createElement('span');
   nw.className = 'w'; nw.textContent = g.q; hcGin.appendChild(nw);
   gsap.timeline({defaults: {ease: 'power3.out'}})
+    // la palabra gira como un tambor y la caja se acomoda al ancho nuevo
     .to(hcGiro, {width: hcAncho(g.q) + hcPad(), duration: .45, ease: 'power3.inOut'}, 0)
-    .to(vw, {yPercent: -110, duration: .35, ease: 'power3.in'}, 0)
-    .fromTo(nw, {yPercent: 110}, {yPercent: 0, duration: .45}, .25)
-    .call(() => { vw.remove(); nw.style.position = ''; }, null, .72)
-    .set(f, {zIndex: 2}, .2).set(viejo, {zIndex: 1}, .2)
-    .call(() => f.classList.add('ya'), null, .2)
-    .fromTo(f, {clipPath: 'inset(100% 0% 0% 0%)'}, {clipPath: 'inset(0% 0% 0% 0%)', duration: .5, ease: 'power4.out'}, .2)
-    .fromTo(f.querySelector('img'), {scale: 1.45}, {scale: 1, duration: 1.6, ease: 'expo.out'}, .2)
-    .call(() => viejo.classList.remove('ya'), null, .75)
-    .to('.hc-precio', {autoAlpha: 0, y: -6, duration: .18, ease: 'power2.in'}, .1)
-    .call(() => hcPinta(g), null, .3)
-    .to('.hc-precio', {autoAlpha: 1, y: 0, duration: .3}, .32);
+    .to(vw, {yPercent: -105, duration: .4, ease: 'power3.inOut'}, 0)
+    .fromTo(nw, {yPercent: 105}, {yPercent: 0, duration: .4, ease: 'power3.inOut'}, 0)
+    .call(() => { vw.remove(); nw.style.position = ''; }, null, .42)
+    // el precio cambia junto con la palabra
+    .to('.hc-precio', {yPercent: -40, autoAlpha: 0, duration: .16, ease: 'power2.in'}, 0)
+    .call(() => hcPinta(g), null, .17)
+    .fromTo('.hc-precio', {yPercent: 40, autoAlpha: 0}, {yPercent: 0, autoAlpha: 1, duration: .24, immediateRender: false}, .17)
+    // la foto nueva entra con el mismo corte en diagonal del panel
+    .set(f, {zIndex: 2, '--k': 0}, 0).set(viejo, {zIndex: 1}, 0)
+    .call(() => f.classList.add('ya'), null, 0)
+    .to(f, {'--k': 1, duration: .55, ease: 'expo.out'}, 0)
+    .call(() => viejo.classList.remove('ya'), null, .56);
 }
-const hcGirar = () => { if (!hcReloj) hcReloj = setInterval(hcCambiar, 2600); };
+const hcGirar = () => { if (!hcReloj) hcReloj = gsap.delayedCall(2.6, function tic() { hcCambiar(); hcReloj = gsap.delayedCall(2.6, tic); }); };
 function intro() {
   hcAjustar();
   gsap.timeline({defaults: {ease: 'power3.out'}, onComplete: hcGirar})
-    .fromTo(hcF[0].querySelector('img'), {scale: TIPOD.macro[3]}, {scale: 1, duration: 1.9, ease: 'expo.inOut'}, 0)
-    .fromTo('.hc-panel', {xPercent: -101}, {xPercent: 0, duration: .7, ease: 'power4.out'}, .25)
-    .fromTo('#h-estado', {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: .45}, .55)
-    .fromTo('.hc-preg .l>span', {yPercent: 115}, {yPercent: 0, duration: .65, stagger: .12, ease: 'power4.out'}, .6)
-    .fromTo(hcGiro, {scaleX: 0, transformOrigin: '0 50%'}, {scaleX: 1, duration: .4, ease: 'power4.out'}, 1.25)
-    .fromTo('.hc-giro .w', {yPercent: 110}, {yPercent: 0, duration: .45}, 1.4)
-    .fromTo('.hc-precio, .hc-firma, .hc-acc', {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0, duration: .45, stagger: .08}, 1.55);
+    // 1 · el corte: la foto ya está quieta y encuadrada; el panel barre en la diagonal de su borde
+    .fromTo('.hc-panel', {'--c': 0, visibility: 'visible'}, {'--c': 1, duration: .55, ease: 'power3.out'}, 0)
+    // 2 · la pregunta cae palabra por palabra, con peso
+    .fromTo('.hc-preg .pa', {y: -40, rotation: (i) => [-7, 5, -4][i % 3], autoAlpha: 0}, {y: 0, rotation: 0, duration: .5, stagger: .08, ease: 'back.out(1.4)'}, .35)
+    .to('.hc-preg .pa', {autoAlpha: 1, duration: .12, stagger: .08, ease: 'none'}, .35)
+    // 3 · la respuesta: el resaltador mostaza, el producto que sube, el precio y al final los botones con el estado
+    .fromTo(hcGiro, {scaleX: 0, transformOrigin: '0 50%', visibility: 'visible'}, {scaleX: 1, duration: .36, ease: 'power3.inOut'}, .8)
+    .fromTo('.hc-giro .w', {yPercent: 105}, {yPercent: 0, duration: .38}, .98)
+    .fromTo('.hc-precio', {autoAlpha: 0, y: 8}, {autoAlpha: 1, y: 0, duration: .28}, 1.16)
+    .fromTo('#h-estado, .hc-firma, .hc-acc', {autoAlpha: 0, y: 8}, {autoAlpha: 1, y: 0, duration: .28}, 1.32);
   document.documentElement.classList.remove('intro');
 }
 function sinIntro() { document.documentElement.classList.remove('intro'); hcAjustar(); hcGirar(); }
 const listo = Promise.all([document.fonts.ready, (im => im.decode ? im.decode().catch(() => {}) : 0)(hcF[0].querySelector('img'))]);
-// la entrada arranca la primera vez que se ve el Inicio
+// la entrada arranca la primera vez que se ve el Inicio, cuando ya cargaron la foto y las letras (tope 1,2 s)
 function portada() {
   if (portadaHecha) return; portadaHecha = true;
-  Promise.race([listo, new Promise(r => setTimeout(r, 1400))]).then(() => {
+  Promise.race([listo, new Promise(r => setTimeout(r, 1200))]).then(() => {
     if (KIT.actual !== 'inicio') { portadaHecha = false; return; }
-    (scrollY < 60 ? intro : sinIntro)(); ScrollTrigger.refresh();
+    // si el respaldo de 5 s ya mostró la portada quieta, no la rearmamos (sería un salto)
+    (scrollY < 60 && document.documentElement.classList.contains('intro') ? intro : sinIntro)(); ScrollTrigger.refresh();
   });
 }
 addEventListener('resize', () => { if (portadaHecha && KIT.actual === 'inicio') hcAjustar(); });
