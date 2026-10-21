@@ -794,11 +794,10 @@ const KIT = (() => {
 const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const foto = (id, w = 1200) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
-// fotos cuyo encuadre original no queda centrado: 4080534 (clásica) tiene la hamburguesa
-// corrida a la izquierda con medio cuadro de fondo negro vacío; 8879369 (papas) es una
+// fotos cuyo encuadre original no queda centrado: 8879369 (papas) es una
 // foto vertical con el pucho de papas abajo y mucho aire arriba. object-position a medida
 // para que el recorte en cover no las deje "a la mitad".
-const FOCO = {4080534: '14% 56%', 8879369: '50% 66%'};
+const FOCO = {8879369: '50% 66%'};
 const posDe = id => FOCO[id] || '50% 50%';
 const celu = () => matchMedia('(max-width:860px)').matches;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
@@ -864,7 +863,7 @@ const COMUNES = {
 const c = k => COMUNES[k];
 const MENUS = {
   hamburguesas: [
-    ['clasica', 'principal', 'Clásica con cheddar', 'CLASICA', 'Medallón de 120 g, cheddar, lechuga, tomate y salsa de la casa, en pan de papa.', 11900, 4080534, 's', 'carne', '', ['lechuga', 'tomate', 'salsa de la casa'], ['punto', 'pan', 'xb', 'combo']],
+    ['clasica', 'principal', 'Clásica con cheddar', 'CLASICA', 'Medallón de 120 g, cheddar, lechuga, tomate y salsa de la casa, en pan de papa.', 11900, 1639557, 's', 'carne', '', ['lechuga', 'tomate', 'salsa de la casa'], ['punto', 'pan', 'xb', 'combo']],
     ['doble', 'principal', 'Doble cheddar', 'DOBLE CHEDDAR', 'Dos medallones de 120 g, doble cheddar, cebolla picada y pepinos.', 14900, 6697455, 's', 'carne', '', ['cebolla', 'pepinos', 'ketchup', 'mostaza'], ['punto', 'pan', 'xb', 'combo']],
     ['bacon', 'principal', 'Bacon', 'BACON', 'Doble medallón, cheddar, panceta crocante y salsa barbacoa.', 15900, 15010289, 's', 'carne y panceta', '', ['salsa barbacoa', 'cebolla'], ['punto', 'pan', 'xb', 'combo']],
     ['smash', 'principal', 'Smash doble', 'SMASH DOBLE', 'Dos medallones aplastados en la plancha, bordes crocantes, cheddar y cebolla.', 15500, 14709732, 's', 'carne', '', ['cebolla', 'lechuga', 'salsa de la casa'], ['pan', 'xb', 'combo']],
@@ -927,7 +926,7 @@ const CATS = [
   ['principal', PRINCIPAL], ['combos', 'Combos'], ['papas', TIPO === 'hamburguesas' ? 'Papas y para picar' : 'Para acompañar'], ['bebidas', 'Bebidas'], ['postres', 'Postres']
 ];
 const CAT_N = Object.fromEntries(CATS);
-const CAT_FOTO = {principal: {hamburguesas: 4080534, pizzas: 15478006, lomitos: 6003977, empanadas: 36905236}[TIPO], combos: prod(PROD.find(p => p.cat === 'combos').id).f, papas: 8879369, bebidas: 8879617, postres: 11867534};
+const CAT_FOTO = {principal: {hamburguesas: 1639557, pizzas: 15478006, lomitos: 6003977, empanadas: 36905236}[TIPO], combos: prod(PROD.find(p => p.cat === 'combos').id).f, papas: 8879369, bebidas: 8879617, postres: 11867534};
 const SABORES = ['cuchillo', 'suave', 'jyq', 'polloe', 'humita', 'caprese', 'verdura'];
 
 // ── todo lo que cambia según el tipo de local ──
