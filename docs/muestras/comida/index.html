@@ -9,7 +9,7 @@
 <!--
   Muestra v3 de LOCALES DE COMIDA RÁPIDA (hamburgueserías, pizzerías, lomiterías, empanadas) · Mas & Co · 20/10/2026
   Un sitio en un solo archivo, con el kit de navegación v3: Inicio · Menú · Ficha (?p=producto&id=) · Tu pedido (?p=pedido).
-  1. Portada: foto a sangre y la comandera: el ticket del pedido sale impreso del riel, a saltos, como de la impresora térmica.
+  1. Portada: el primer plano. Arranca pegada al macro y se aleja; «¿Qué pedimos hoy?» y la respuesta gira entre productos del menú, con su foto y su precio.
   2. Recomendador: cuántos son, cuánto quieren gastar, veggie/celíaco, hambre → un pedido armado con combos y el porqué.
   3. Menú por partes con filtros que apagan y explican (veggie, sin TACC, para compartir), sin cambiar el alto.
   4. Ficha: sacar ingredientes, extras con precio, punto/tamaño/masa/pan según el tipo, mitad y mitad, docena surtida, combo.
@@ -80,30 +80,32 @@ h2{font-size:clamp(38px,4.6vw,64px)}
 .tot{font-variant-numeric:tabular-nums}
 .cant[hidden]{display:none}
 
-/* ── portada: la comandera ── */
-.hero{position:relative;height:100vh;min-height:660px;max-height:1120px;overflow:hidden;background:#0B0807}
-.h-foto{position:absolute;inset:0}
-.h-foto img{width:100%;height:100%;object-fit:cover;object-position:var(--pos-d,50% 50%);transform-origin:60% 50%}
-.h-velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,8,6,.88) 0%,rgba(11,8,6,.6) 30%,rgba(11,8,6,0) 56%),linear-gradient(0deg,rgba(11,8,6,.75) 0%,rgba(11,8,6,0) 42%),linear-gradient(180deg,rgba(11,8,6,.55) 0%,rgba(11,8,6,0) 18%)}
-.h-izq{position:absolute;left:max(40px,calc((100vw - var(--ancho)) / 2 + 40px));bottom:10vh;width:min(640px,52vw);z-index:2}
-.h-estado{margin-bottom:16px;font-size:16px}
-.h-estado span:last-child{font-weight:600;color:rgba(247,239,230,.82)}
-.h-nombre{font-size:clamp(70px,9.2vw,150px);text-transform:uppercase;line-height:.86;letter-spacing:-.005em;overflow-wrap:break-word}
-.h-nombre.largo{font-size:clamp(54px,6.4vw,104px)}
-.h-nombre.muy-largo{font-size:clamp(44px,4.8vw,78px)}
-.h-nombre .linea{display:block;overflow:hidden;padding:.04em 0 .06em}
-.h-nombre .linea>span{display:block}
-.h-sub{font-size:19px;line-height:1.45;max-width:34ch;color:rgba(247,239,230,.9);margin-top:20px}
-.h-acc{display:flex;align-items:center;gap:22px;margin-top:26px;flex-wrap:wrap}
-.h-link{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-underline-offset:6px;font-size:16px}
-.h-link:hover{border-color:#fff}
-.h-ej{position:absolute;right:16px;bottom:14px;z-index:2;color:rgba(247,239,230,.75)}
-.comandera{position:absolute;z-index:3;top:calc(var(--barra) + 30px);right:max(40px,calc((100vw - var(--ancho)) / 2 + 40px));width:340px}
-.riel{position:relative;height:16px;border-radius:8px;background:linear-gradient(180deg,#E4DFDA 0%,#A39C96 45%,#5E5853 100%);box-shadow:0 8px 16px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.7);z-index:2}
-.riel::before,.riel::after{content:"";position:absolute;top:16px;width:4px;height:16px;background:#4A4541;border-radius:0 0 2px 2px}
-.riel::before{left:26px}.riel::after{right:26px}
-.ranura{position:relative;overflow:hidden;margin:-6px 0 0;padding:0 16px 34px}
-.ranura.suelta{overflow:visible}
+/* ── portada: el primer plano ── */
+.hero{position:relative;height:100vh;min-height:660px;max-height:1120px;overflow:hidden;background:var(--carbon)}
+.hc-fotos{position:absolute;top:var(--barra);bottom:0;right:0;left:40%;overflow:hidden;background:#2A120B}
+.hc-f{position:absolute;inset:0;margin:0;overflow:hidden;visibility:hidden}
+.hc-f.ya{visibility:visible}
+.hc-f img{width:100%;height:100%;object-fit:cover;object-position:var(--p,50% 50%);transform-origin:var(--o,50% 50%)}
+.hc-panel{position:absolute;z-index:2;top:var(--barra);bottom:0;left:0;width:51%;background:var(--brasa);clip-path:polygon(0 0,100% 0,84% 100%,0 100%)}
+.hc-texto{position:absolute;z-index:3;left:max(40px,calc((100vw - var(--ancho)) / 2 + 40px));top:calc(var(--barra) + (100% - var(--barra)) / 2);transform:translateY(-50%);width:min(640px,44vw)}
+.h-estado{margin-bottom:18px;font-size:16px;flex-wrap:wrap}
+.h-estado span:last-child{font-weight:600;color:rgba(247,239,230,.9)}
+.hc-preg{font-size:clamp(64px,7.1vw,118px);line-height:.9;letter-spacing:-.012em;font-variation-settings:'wdth' 75,'opsz' 96}
+.hc-preg .l{display:block;overflow:hidden;padding:.02em 0 .05em}
+.hc-preg .l>span{display:block}
+.hc-giro{display:inline-block;vertical-align:top;margin-top:.08em;background:var(--mostaza);color:var(--tinta);border-radius:.12em;padding:.04em .16em .02em;overflow:hidden;white-space:nowrap}
+.hc-gin{display:block;position:relative}
+.hc-giro .w{display:block}
+.hc-giro .w+.w{position:absolute;left:0;top:0}
+.hc-precio{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:20px;font:600 16px/1.3 var(--mono);color:#FFF1E6;min-height:1.3em}
+.hc-precio b{font-weight:600;color:var(--tinta);background:var(--crema);padding:2px 8px;border-radius:6px;white-space:nowrap}
+.hc-firma{margin-top:20px;font-size:18px;font-weight:700}
+.hc-firma b{font-weight:800}
+.hc-acc{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.hc-acc .btn.claro{background:var(--crema);color:var(--tinta)}
+.hc-acc .btn.claro:hover{background:#fff}
+.hc-acc .btn.borde{border:2px solid rgba(247,239,230,.8)}
+.h-ej{position:absolute;right:16px;bottom:14px;z-index:4;color:rgba(247,239,230,.88);background:rgba(18,14,12,.6);padding:3px 9px;border-radius:999px;font-size:12px}
 .ticket{position:relative;background:var(--papel);color:var(--tinta);font-family:var(--mono);font-size:14px;line-height:1.45;padding:22px 20px 30px;transform-origin:50% 0;
   box-shadow:0 22px 32px -14px rgba(0,0,0,.65);
   -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x;
@@ -119,8 +121,7 @@ h2{font-size:clamp(38px,4.6vw,64px)}
 .tk-tot{border-top:1.5px dashed rgba(30,24,19,.42);margin-top:10px;padding-top:9px;font-weight:600;font-size:16px}
 .tk-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;width:100%;min-height:46px;background:var(--tinta);color:var(--papel);border-radius:10px;font-family:var(--texto);font-weight:800;font-size:15.5px}
 .tk-btn:hover{background:#3A2F27}
-.tk-pie{font-size:12.5px;color:var(--tinta2);text-align:center;margin-top:9px}
-html.intro #ticket,html.intro .h-nombre .linea>span,html.intro .h-pie>*,html.intro #h-estado{visibility:hidden}
+html.intro .hc-panel,html.intro .hc-preg .l>span,html.intro .hc-giro,html.intro #h-estado,html.intro .hc-precio,html.intro .hc-firma,html.intro .hc-acc{visibility:hidden}
 
 /* ── secciones ── */
 .sec{padding:110px 0}
@@ -373,37 +374,24 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .sec-cab{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:26px}
   .sec-cab p{font-size:16px}
 
-  .hero{height:auto;min-height:100svh;max-height:none;display:grid;grid-template-columns:16px minmax(0,1fr) 10px 204px 10px;grid-template-rows:auto auto;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-  .h-foto{position:relative;inset:auto;grid-column:1/-1;grid-row:1;height:max(400px,50svh)}
-  .h-foto img{object-position:var(--pos-c,50% 50%)}
+  .hero{height:auto;min-height:100svh;max-height:none;display:flex;flex-direction:column;padding-bottom:calc(112px + env(safe-area-inset-bottom))}
+  .hc-fotos{position:relative;top:auto;left:auto;right:auto;bottom:auto;margin-top:var(--barra);height:38svh;min-height:270px;flex:none}
+  .hc-panel{top:calc(var(--barra) + max(38svh,270px) - 34px);width:auto;right:0;clip-path:polygon(0 34px,100% 0,100% 100%,0 100%)}
+  .hc-texto{position:relative;left:auto;top:auto;transform:none;width:auto;padding:4px 16px 0}
+  .h-estado{font-size:14.5px;margin-bottom:10px}
+  .hc-preg{font-size:clamp(44px,13.6vw,60px)}
+  .hc-precio{margin-top:12px;font-size:14px}
+  .hc-firma{margin-top:12px;font-size:16px}
+  .hc-acc{flex-wrap:nowrap;gap:10px;margin-top:12px}
+  .hc-acc .btn{flex:1;padding:0 12px;font-size:16px;min-height:50px}
   .seg.desliza{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 2px}
   .seg.desliza::-webkit-scrollbar{display:none}
-  .h-velo{bottom:auto;height:max(400px,50svh);background:linear-gradient(180deg,rgba(11,8,6,.82) 0%,rgba(11,8,6,.35) 34%,rgba(11,8,6,0) 52%),linear-gradient(0deg,#0B0807 0%,rgba(11,8,6,0) 26%)}
-  .h-izq{display:contents}
-  .h-texto{grid-column:2/5;grid-row:1;align-self:start;position:relative;z-index:2;padding-top:calc(var(--barra) + 18px)}
-  .h-estado{font-size:14.5px;margin-bottom:10px;flex-wrap:wrap}
-  .h-nombre{font-size:clamp(50px,16vw,74px)}
-  .h-nombre.largo{font-size:clamp(40px,11.5vw,54px)}
-  .h-nombre.muy-largo{font-size:clamp(32px,9vw,42px)}
-  .h-pie{grid-column:2;grid-row:2;padding-top:26px;position:relative;z-index:2}
-  .h-sub{font-size:15.5px;margin-top:0}
-  .h-acc{flex-direction:column;align-items:stretch;gap:10px;margin-top:16px}
-  .h-acc .btn{min-height:50px;font-size:16px;padding:0 14px}
-  .h-link,.h-sub .mas{display:none}
-  .comandera{position:relative;top:auto;right:auto;grid-column:4;grid-row:2;width:auto;margin-top:-18px}
-  .ranura{padding:0 6px 26px}
-  .ticket{font-size:12.5px;padding:15px 12px 22px}
-  #ticket{font-size:12px;padding:13px 11px 20px}
-  #ticket .tk-pie{display:none}
-  #ticket .tk-l+.tk-l small{display:none}
-  .h-acc .mas{display:none}
   .tk-cab b{font-size:14.5px}
   .tk-cab span{font-size:12px}
   .tk-l small{font-size:12px}
   .tk-tot{font-size:14px}
   .tk-btn{min-height:44px;font-size:14.5px}
-  .tk-pie{font-size:12px}
-  .h-ej{top:calc(max(400px,50svh) - 28px);bottom:auto;left:16px;right:auto;font-size:12px}
+  .h-ej{top:calc(var(--barra) + 10px);right:10px;bottom:auto;font-size:11.5px}
 
   .reco{grid-template-columns:1fr;gap:34px}
   .preg{gap:28px}
@@ -505,7 +493,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .comanda{position:static}
 }
 @media (max-width:380px){
-  .hero{grid-template-columns:12px minmax(0,1fr) 10px 172px 10px}
   .marca b{max-width:130px}
 }
 </style>
@@ -527,20 +514,17 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 <!-- ═══ INICIO ═══ -->
 <div data-pagina="inicio">
   <section class="hero" id="hero" aria-label="Portada">
-    <picture class="h-foto"><source id="h-src-celu" media="(max-width:860px)"><img id="h-img" alt="" fetchpriority="high"></picture>
-    <div class="h-velo"></div>
-    <div class="h-izq">
-      <div class="h-texto">
-        <p class="estado h-estado" id="h-estado"><span class="punto"></span><b id="h-ab">Abierto ahora</b><span id="h-hasta"></span></p>
-        <h1 class="h-nombre" id="h-nombre"><span class="linea"><span data-n>Su local</span></span></h1>
-      </div>
-      <div class="h-pie">
-        <p class="h-sub" id="h-sub"></p>
-        <div class="h-acc"><a class="btn" data-ir="menu">Ver el menú<span class="mas">&nbsp;y pedir</span></a><a class="h-link" href="#reco" id="h-reco" data-ancla="reco">¿No sabés qué pedir? Te armamos uno</a></div>
-      </div>
+    <div class="hc-fotos" id="hc-fotos"></div>
+    <div class="hc-panel" aria-hidden="true"></div>
+    <div class="hc-texto">
+      <p class="estado h-estado" id="h-estado"><span class="punto"></span><b id="h-ab">Abierto ahora</b><span id="h-hasta"></span></p>
+      <h1 class="hc-preg"><span class="l"><span>¿Qué pedimos</span></span><span class="l"><span>hoy?</span></span>
+        <span class="hc-giro" id="hc-giro" aria-live="polite"><span class="hc-gin"><span class="w"></span></span></span></h1>
+      <p class="hc-precio"><span id="hc-pt"></span><b id="hc-pv"></b></p>
+      <p class="hc-firma"><b data-n>Su local</b> · <span id="h-sub"></span></p>
+      <div class="hc-acc"><a class="btn claro" id="hc-pedir" href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path data-ic="bolsa"/></svg>Pedí ahora</a><a class="btn borde" data-ir="menu">Ver el menú</a></div>
     </div>
-    <div class="comandera" id="comandera"><div class="riel"></div><div class="ranura" id="ranura"><article class="ticket" id="ticket" aria-label="Pedido de ejemplo"></article></div></div>
-    <span class="ej h-ej">Foto de ejemplo</span>
+    <span class="ej h-ej">Fotos de ejemplo</span>
   </section>
 
   <section class="sec" id="reco" aria-labelledby="reco-t">
@@ -937,21 +921,21 @@ const SABORES = ['cuchillo', 'suave', 'jyq', 'polloe', 'humita', 'caprese', 'ver
 
 // ── todo lo que cambia según el tipo de local ──
 const TIPOD = {
-  hamburguesas: {kicker: 'Hamburguesería', icono: 'burger', sub: 'Hamburguesas a la plancha, papas y combos', heroD: [19247575, '50% 50%'], heroC: [28828554, '50% 64%'],
+  hamburguesas: {kicker: 'Hamburguesería', icono: 'burger', sub: 'Hamburguesas a la plancha, papas y combos', macro: [29250659, '50% 55%', '56% 62%', 2.7], giro: [['doble', '¿Doble cheddar?', 'Dos medallones y doble cheddar'], ['smash', '¿Una smash?', 'Aplastada, de bordes crocantes'], ['papasch', '¿Papas cheddar?', 'Con panceta crocante y verdeo'], ['bacon', '¿Una bacon?', 'Panceta crocante y barbacoa'], ['casa', '¿La de la casa?', '180 g, cebolla caramelizada']],
     horario: [[1170, 1470]], hTxt: [['Todos los días', '19:30 a 00:30'], ['Viernes y sábados', 'hasta la 01:30']], cocina: 'A la plancha', llega: 'Caliente, con las papas crocantes',
-    dest: [['doble', {extras: ['panceta'], punto: 'jugosa'}, 1], ['papasch', {}, 1], ['gaseosa', {}, 1]], top: ['doble', 'pareja', 'casa', 'papasch'],
+    top: ['doble', 'pareja', 'casa', 'papasch'],
     porPersona: 18000},
-  pizzas: {kicker: 'Pizzería', icono: 'pizza', sub: 'Pizzas a la piedra, empanadas y combos para compartir', heroD: [365459, '58% 50%'], heroC: [9419407, '50% 55%'],
+  pizzas: {kicker: 'Pizzería', icono: 'pizza', sub: 'Pizzas a la piedra, empanadas y combos para compartir', macro: [365459, '58% 50%', '50% 55%', 2.2], giro: [['muzza', '¿Una muzza?', 'Mucha muzzarella y orégano'], ['fuga', '¿Fugazzeta?', 'Muzzarella y mucha cebolla'], ['napo', '¿Napolitana?', 'Tomate en rodajas, ajo y albahaca'], ['cuatroq', '¿Cuatro quesos?', 'Roquefort, provolone y parmesano'], ['empa6', '¿Y empanadas?', 'Media docena, de carne']],
     horario: [[690, 900], [1140, 1440]], hTxt: [['Mediodía', '11:30 a 15:00'], ['Noche', '19:00 a 00:00']], cocina: 'Al horno de piedra', llega: 'Entera, sin que se corra el queso',
-    dest: [['muzza', {tam: 'grande'}, 1], ['empa6', {}, 1], ['gaseosa15', {}, 1]], top: ['muzza', 'combop2', 'fuga', 'empa6'],
+    top: ['muzza', 'combop2', 'fuga', 'empa6'],
     porPersona: 12000},
-  lomitos: {kicker: 'Lomitería', icono: 'fast', sub: 'Lomitos completos, sándwiches y platos con papas', heroD: [30350297, '50% 50%'], heroC: [36869210, '50% 60%'],
+  lomitos: {kicker: 'Lomitería', icono: 'fast', sub: 'Lomitos completos, sándwiches y platos con papas', macro: [30350297, '50% 50%', '50% 50%', 2], giro: [['combol', '¿Combo lomito?', 'Lomito completo, papas y gaseosa'], ['completo', '¿Lomito completo?', 'Con jamón, queso y huevo frito'], ['especiall', '¿Lomito especial?', 'Cheddar, panceta y barbacoa'], ['arabe', '¿Uno árabe?', 'Lomo en tiras, en pan árabe'], ['mila', '¿Una milanesa?', 'Sándwich en pan francés']],
     horario: [[1170, 1500]], hTxt: [['Todos los días', '19:30 a 01:00'], ['Domingos', 'también al mediodía']], cocina: 'A la plancha', llega: 'Caliente y bien envuelto',
-    dest: [['completo', {punto: 'apunto'}, 1], ['papas', {}, 1], ['gaseosa', {}, 1]], top: ['completo', 'superlomo', 'especiall', 'combol'],
+    top: ['completo', 'superlomo', 'especiall', 'combol'],
     porPersona: 22000},
-  empanadas: {kicker: 'Empanadas', icono: 'empa', sub: 'Empanadas al horno y fritas, por unidad o por docena', heroD: [36905236, '50% 50%'], heroC: [30771118, '50% 50%'],
+  empanadas: {kicker: 'Empanadas', icono: 'empa', sub: 'Empanadas al horno y fritas, por unidad o por docena', macro: [36905236, '50% 50%', '50% 50%', 2], giro: [['docena', '¿Una docena?', 'Surtida, de los gustos que quieras'], ['cuchillo', '¿De cuchillo?', 'Carne cortada a cuchillo'], ['humita', '¿Humita?', 'Choclo cremoso y queso'], ['jyq', '¿Jamón y queso?', 'Muzzarella que se estira'], ['fritas', '¿Unas fritas?', 'Fritas en el momento']],
     horario: [[660, 900], [1110, 1410]], hTxt: [['Mediodía', '11:00 a 15:00'], ['Noche', '18:30 a 23:30']], cocina: 'Al horno', llega: 'Calentitas, marcadas por gusto',
-    dest: [['docena', {}, 1], ['gaseosa15', {}, 1]], top: ['docena', 'cuchillo', 'humita', 'jyq'],
+    top: ['docena', 'cuchillo', 'humita', 'jyq'],
     porPersona: 9000}
 }[TIPO];
 
@@ -988,9 +972,7 @@ gsap.registerPlugin(ScrollTrigger, Flip);
 // ── el negocio ──
 $$('[data-n]').forEach(el => el.textContent = N);
 document.title = `${N} · diseño de muestra · Mas & Co`;
-const hn = $('#h-nombre');
-if (N.length > 22) hn.classList.add('muy-largo'); else if (N.length > 11) hn.classList.add('largo');
-$('#h-sub').innerHTML = `${esc(TIPOD.sub)}${CIUDAD ? ' en ' + esc(CIUDAD) : ''}.<span class="mas"> Pedí por acá: te llega caliente o lo pasás a buscar.</span>`;
+$('#h-sub').textContent = min1(TIPOD.sub) + (CIUDAD ? ' en ' + CIUDAD : '');
 
 // ── horario de ejemplo (minutos desde la medianoche; más de 1440 = pasada la medianoche) · ?hora=21:30 para probar ──
 const AHORA = (() => { const d = new Date(), h = (q.get('hora') || '').match(/^(\d{1,2}):?(\d{2})$/); if (h) d.setHours(+h[1], +h[2], 0, 0); return d; })();
@@ -1109,35 +1091,73 @@ document.addEventListener('click', e => {
 });
 
 // ══ INICIO ══
-// la comandera de la portada: el pedido más pedido, impreso
 const tkLinea = (p, o, n, por) => { const det = detalle(p, o, true); return `<div class="tk-l"><span>${n} ${esc(p.t)}${det ? `<small>${esc(det)}</small>` : ''}${por ? `<span class="por">${esc(por)}</span>` : ''}</span><span class="px">${miles(unidad(p, o) * n)}</span></div>`; };
-(() => {
-  const its = TIPOD.dest.map(([id, o, n]) => ({p: prod(id), o: {...defecto(prod(id)), ...o}, n}));
-  const tot = its.reduce((s, it) => s + unidad(it.p, it.o) * it.n, 0);
-  const num = String(100 + (AHORA.getDate() * 37 + AHORA.getHours() * 11) % 900).padStart(4, '0');
-  $('#ticket').innerHTML = `<div class="tk-cab"><b>${esc(N)}</b><span>Comanda ${num} · ${hhmm(minAhora)} · Delivery</span></div>
-    ${its.map(it => tkLinea(it.p, it.o, it.n)).join('')}
-    <div class="tk-l tk-tot"><span>TOTAL</span><span class="px">${pesos(tot)}</span></div>
-    <button type="button" class="tk-btn" id="tk-pedir">${svg('bolsa')}Pedir este</button><p class="tk-pie">El más pedido · de ejemplo</p>`;
-  $('#tk-pedir').addEventListener('click', () => { its.forEach(it => sumar(it.p.id, it.o, it.n, true)); avisar('Listo: lo sumamos a tu pedido.'); KIT.ir('pedido'); });
-})();
-const hImg = $('#h-img'), [hd, pd] = TIPOD.heroD, [hc, pc] = TIPOD.heroC;
-document.documentElement.style.setProperty('--pos-d', pd); document.documentElement.style.setProperty('--pos-c', pc);
-$('#h-src-celu').srcset = juego(hc, [600, 900, 1300]); $('#h-src-celu').sizes = '100vw';
-hImg.sizes = '100vw'; hImg.srcset = juego(hd, [1280, 1920, 2600]); hImg.src = foto(hd, 1920);
 
-// entrada: 1) la foto se enciende · 2) el nombre sube · 3) la comandera imprime el ticket a saltos y queda colgado
+// la portada: el primer plano · 1) pegados al macro del tipo, nos alejamos mientras entra el panel · 2) «¿Qué pedimos hoy?»
+// · 3) la respuesta en mostaza va girando entre productos del menú del tipo, cada uno con su foto, su precio y el botón que lo abre
+const GIRO = TIPOD.giro.map(([id, q, l], i) => { const p = prod(id); return {p, q, l, f: i ? p.f : TIPOD.macro[0], pos: i ? '50% 50%' : TIPOD.macro[1], o: i ? '50% 50%' : TIPOD.macro[2],
+  px: pesos(unidad(p, defecto(p))) + (TIPO === 'empanadas' && p.cat === 'principal' ? ' c/u' : '')}; });
+$('#hc-fotos').innerHTML = GIRO.map((g, i) => `<figure class="hc-f" style="--p:${g.pos};--o:${g.o}"><img alt="${esc(g.p.n)}" src="${foto(g.f, 1400)}" srcset="${juego(g.f, [800, 1400, 2000])}" sizes="(max-width:860px) 100vw, 60vw"${i ? '' : ' fetchpriority="high"'}></figure>`).join('');
+const hcF = $$('.hc-f'), hcGiro = $('#hc-giro'), hcGin = $('.hc-gin'), hcPedir = $('#hc-pedir');
+let hcK = 0, hcReloj = 0, portadaHecha = false;
+const hcPinta = g => { $('#hc-pt').textContent = g.l; $('#hc-pv').textContent = g.px; hcPedir.setAttribute('aria-label', `Pedí ${g.p.n}`); };
+hcGin.querySelector('.w').textContent = GIRO[0].q; hcPinta(GIRO[0]); hcF[0].classList.add('ya');
+hcPedir.addEventListener('click', e => { e.preventDefault(); KIT.ir('producto', {id: GIRO[hcK].p.id}); });
+const hcAncho = t => { const s = document.createElement('span'); s.className = 'w'; s.textContent = t; s.style.cssText = 'position:absolute;visibility:hidden'; hcGin.appendChild(s); const w = s.offsetWidth; s.remove(); return w; };
+const hcPad = () => parseFloat(getComputedStyle(hcGiro).paddingLeft) * 2;
+// si la respuesta más larga no entra en la columna, la caja se achica para todas
+function hcAjustar() {
+  gsap.set(hcGiro, {clearProps: 'width,fontSize'});
+  const t = $('.hc-texto'), cs = getComputedStyle(t), max = t.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - 4;
+  const w = Math.max(...GIRO.map(g => hcAncho(g.q))) + hcPad();
+  if (w > max) hcGiro.style.fontSize = (max / w).toFixed(3) + 'em';
+  gsap.set(hcGiro, {width: hcAncho(GIRO[hcK].q) + hcPad()});
+}
+function hcCambiar() {
+  if (KIT.actual !== 'inicio' || scrollY > innerHeight) return;
+  const viejo = hcF[hcK], vw = hcGin.querySelector('.w');
+  hcK = (hcK + 1) % GIRO.length;
+  const f = hcF[hcK], g = GIRO[hcK], nw = document.createElement('span');
+  nw.className = 'w'; nw.textContent = g.q; hcGin.appendChild(nw);
+  gsap.timeline({defaults: {ease: 'power3.out'}})
+    .to(hcGiro, {width: hcAncho(g.q) + hcPad(), duration: .45, ease: 'power3.inOut'}, 0)
+    .to(vw, {yPercent: -110, duration: .35, ease: 'power3.in'}, 0)
+    .fromTo(nw, {yPercent: 110}, {yPercent: 0, duration: .45}, .25)
+    .call(() => { vw.remove(); nw.style.position = ''; }, null, .72)
+    .set(f, {zIndex: 2}, .2).set(viejo, {zIndex: 1}, .2)
+    .call(() => f.classList.add('ya'), null, .2)
+    .fromTo(f, {clipPath: 'inset(100% 0% 0% 0%)'}, {clipPath: 'inset(0% 0% 0% 0%)', duration: .5, ease: 'power4.out'}, .2)
+    .fromTo(f.querySelector('img'), {scale: 1.45}, {scale: 1, duration: 1.6, ease: 'expo.out'}, .2)
+    .call(() => viejo.classList.remove('ya'), null, .75)
+    .to('.hc-precio', {autoAlpha: 0, y: -6, duration: .18, ease: 'power2.in'}, .1)
+    .call(() => hcPinta(g), null, .3)
+    .to('.hc-precio', {autoAlpha: 1, y: 0, duration: .3}, .32);
+}
+const hcGirar = () => { if (!hcReloj) hcReloj = setInterval(hcCambiar, 2600); };
 function intro() {
-  const tl = gsap.timeline({onComplete: () => $('#ranura').classList.add('suelta')});
-  tl.fromTo(hImg, {scale: 1.07, filter: 'brightness(.45)'}, {scale: 1, filter: 'brightness(1)', duration: 1.8, ease: 'power2.out', clearProps: 'filter'}, 0)
-    .fromTo('#h-estado', {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: .6, ease: 'power2.out'}, .3)
-    .fromTo('#h-nombre .linea>span', {yPercent: 105, y: 0}, {yPercent: 0, y: 0, duration: 1, ease: 'power4.out'}, .35)
-    .fromTo('#ticket', {yPercent: -101, y: 0}, {yPercent: 0, y: 0, duration: 1.6, ease: 'steps(15)'}, 1.05)
-    .to('#ticket', {rotation: -1.8, duration: .9, ease: 'power2.out'}, 2.65)
-    .fromTo('.h-pie>*', {opacity: 0, y: 14}, {opacity: 1, y: 0, duration: .7, ease: 'power3.out', stagger: .12}, 2.2);
+  hcAjustar();
+  gsap.timeline({defaults: {ease: 'power3.out'}, onComplete: hcGirar})
+    .fromTo(hcF[0].querySelector('img'), {scale: TIPOD.macro[3]}, {scale: 1, duration: 1.9, ease: 'expo.inOut'}, 0)
+    .fromTo('.hc-panel', {xPercent: -101}, {xPercent: 0, duration: .7, ease: 'power4.out'}, .25)
+    .fromTo('#h-estado', {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: .45}, .55)
+    .fromTo('.hc-preg .l>span', {yPercent: 115}, {yPercent: 0, duration: .65, stagger: .12, ease: 'power4.out'}, .6)
+    .fromTo(hcGiro, {scaleX: 0, transformOrigin: '0 50%'}, {scaleX: 1, duration: .4, ease: 'power4.out'}, 1.25)
+    .fromTo('.hc-giro .w', {yPercent: 110}, {yPercent: 0, duration: .45}, 1.4)
+    .fromTo('.hc-precio, .hc-firma, .hc-acc', {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0, duration: .45, stagger: .08}, 1.55);
   document.documentElement.classList.remove('intro');
 }
-function sinIntro() { document.documentElement.classList.remove('intro'); gsap.set('#ticket', {rotation: -1.8}); $('#ranura').classList.add('suelta'); }
+function sinIntro() { document.documentElement.classList.remove('intro'); hcAjustar(); hcGirar(); }
+const listo = Promise.all([document.fonts.ready, (im => im.decode ? im.decode().catch(() => {}) : 0)(hcF[0].querySelector('img'))]);
+// la entrada arranca la primera vez que se ve el Inicio
+function portada() {
+  if (portadaHecha) return; portadaHecha = true;
+  Promise.race([listo, new Promise(r => setTimeout(r, 1400))]).then(() => {
+    if (KIT.actual !== 'inicio') { portadaHecha = false; return; }
+    (scrollY < 60 ? intro : sinIntro)(); ScrollTrigger.refresh();
+  });
+}
+addEventListener('resize', () => { if (portadaHecha && KIT.actual === 'inicio') hcAjustar(); });
+
 
 // recomendador
 const RC = {n: 2, plata: 0, tocada: false, veg: false, cel: false, h: 'normal'};
@@ -1546,6 +1566,7 @@ document.addEventListener('click', e => {
 let rutaHecha = false;
 KIT.en('inicio', () => {
   document.title = `${N} · diseño de muestra · Mas & Co`;
+  portada();
   if (rutaHecha) return; rutaHecha = true;
   // la moto lleva el pedido del local a la puerta mientras bajás (scrub, sin fijar la pantalla)
   requestAnimationFrame(() => gsap.fromTo('#ruta', {'--t': 0}, {'--t': 1, ease: 'none', onUpdate() { marcarParadas(this.progress()); },
@@ -1562,8 +1583,6 @@ KIT.en('pedido', () => { document.title = `Tu pedido · ${N} · diseño de muest
 document.addEventListener('kit:pagina', e => { document.documentElement.dataset.p = e.detail.p; barra(); $('#flota').classList.toggle('ver', cuantos() > 0 && e.detail.p !== 'pedido'); });
 KIT.arrancar();
 cambioCarrito(false);
-const listo = Promise.all([document.fonts.ready, hImg.decode ? hImg.decode().catch(() => {}) : 0]);
-Promise.race([listo, new Promise(r => setTimeout(r, 1400))]).then(() => { if (KIT.actual === 'inicio' && scrollY < 60) intro(); else sinIntro(); ScrollTrigger.refresh(); });
 setTimeout(() => document.documentElement.classList.remove('intro'), 5000);
 addEventListener('load', () => ScrollTrigger.refresh());
 </script>
