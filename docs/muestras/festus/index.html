@@ -7,8 +7,14 @@
 <meta property="og:image" content="fotos/f10.jpg">
 <title>Festus Salón de Eventos · Posadas</title>
 <link rel="icon" href="ig/perfil-chico.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preload" as="image" href="fotos/portada-xv-cel-828.webp" imagesrcset="fotos/portada-xv-cel-640.webp 640w, fotos/portada-xv-cel-828.webp 828w, fotos/portada-xv-cel-1170.webp 1170w" imagesizes="100vw" media="(max-width:860px)" fetchpriority="high">
+<link rel="preload" as="image" href="fotos/portada-xv-1920.webp" imagesrcset="fotos/portada-xv-1280.webp 1280w, fotos/portada-xv-1920.webp 1920w, fotos/portada-xv-2880.webp 2880w" imagesizes="100vw" media="(min-width:861px)" fetchpriority="high">
+<!-- la letra de FESTUS, precargada solo en celu: Google le da este mismo archivo a Chrome Android y a Safari iPhone (a Chrome de compu le da otro) -->
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/cinzel/v26/8vIJ7ww63mVu7gt79mT7PkRXMw.woff2" media="(max-width:860px)" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>/* la entrada de la portada arranca tapada; si el script no llega, a los 4,5 s se ve igual */
 window.__entraT = setTimeout(function () { document.documentElement.classList.remove('entra'); }, 4500);</script>
 <style>
@@ -67,8 +73,8 @@ input,select,textarea{font:inherit;color:inherit}
 .chip .ico{width:18px;height:18px}
 
 /* ── barra de arriba ── */
-#barra{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--barra);display:flex;align-items:center;gap:28px;padding:0 28px;color:var(--marfil);transition:background .35s,box-shadow .35s,backdrop-filter .35s}
-#barra.solida,#barra.claro{background:rgba(20,18,16,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(201,169,110,.18)}
+#barra{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--barra);display:flex;align-items:center;gap:28px;padding:0 28px;color:var(--marfil);transition:background .35s,box-shadow .35s}
+#barra.solida,#barra.claro{background:rgba(20,18,16,.95);box-shadow:0 1px 0 rgba(201,169,110,.18)}
 #barra .logo{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:600;letter-spacing:.22em;font-size:1.05rem;margin-right:auto}
 #barra .logo img{height:36px;width:auto}
 #barra nav{display:flex;gap:4px}
@@ -78,7 +84,7 @@ input,select,textarea{font:inherit;color:inherit}
 #barra nav a.panel-link .ico{width:16px;height:16px}
 #barra .btn{min-height:42px;padding:8px 18px}
 #tabs-cel{display:none}
-.previa{position:fixed;left:12px;bottom:calc(12px + var(--tabs));z-index:60;font-size:.74rem;letter-spacing:.02em;background:rgba(20,18,16,.86);color:var(--marfil2);padding:6px 11px;border-radius:999px;border:1px solid rgba(201,169,110,.35);backdrop-filter:blur(6px);pointer-events:none}
+.previa{position:fixed;left:12px;bottom:calc(12px + var(--tabs));z-index:60;font-size:.74rem;letter-spacing:.02em;background:rgba(20,18,16,.9);color:var(--marfil2);padding:6px 11px;border-radius:999px;border:1px solid rgba(201,169,110,.35);pointer-events:none}
 #wa-flot{position:fixed;right:18px;bottom:calc(18px + var(--tabs));z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;color:#0b1f12;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .25s}
 #wa-flot:hover{transform:scale(1.06)}
 #wa-flot .ico{width:30px;height:30px}
@@ -93,11 +99,13 @@ input,select,textarea{font:inherit;color:inherit}
 .p-velo{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,9,8,.8) 0%,rgba(10,9,8,.46) 30%,rgba(10,9,8,0) 54%),radial-gradient(70% 60% at 0% 100%,rgba(10,9,8,.72) 0%,rgba(10,9,8,0) 100%),linear-gradient(180deg,rgba(10,9,8,.45) 0%,rgba(10,9,8,0) 16%)}
 .p-puertas{display:none;position:absolute;inset:0;z-index:4;perspective:1500px;transform-origin:50% 50%}
 .entra .p-puertas{display:block}
-.p-hoja{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;background:linear-gradient(180deg,#1c1815 0%,#13100e 50%,#0c0a09 100%);backface-visibility:hidden;will-change:transform}
+.p-hoja{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;background:linear-gradient(180deg,#1c1815 0%,#13100e 50%,#0c0a09 100%);backface-visibility:hidden}
+.entra .p-hoja,.entra .p-puertas,.entra .p-fondo img,.entra .p-haz,.entra .p-brillo b{will-change:transform}.entra .p-sombra,.entra .p-oscura{will-change:opacity}
 .p-hoja.izq{left:0;transform-origin:0 50%;box-shadow:inset -1px 0 0 rgba(226,204,156,.3),inset -3px 0 0 rgba(0,0,0,.55)}
 .p-hoja.der{right:0;transform-origin:100% 50%;box-shadow:inset 1px 0 0 rgba(226,204,156,.3),inset 3px 0 0 rgba(0,0,0,.55)}
 .p-hoja svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-.p-brillo{position:absolute;inset:0;mix-blend-mode:screen;background:linear-gradient(100deg,rgba(255,238,210,0) 30%,rgba(255,238,210,.045) 41%,rgba(255,238,210,.1) 48%,rgba(255,238,210,.03) 55%,rgba(255,238,210,0) 66%);background-size:260% 100%;background-position:85% 0%}
+.p-brillo{position:absolute;inset:0;mix-blend-mode:screen;overflow:hidden}
+.p-brillo b{position:absolute;top:0;bottom:0;left:0;width:260%;background:linear-gradient(100deg,rgba(255,238,210,0) 30%,rgba(255,238,210,.045) 41%,rgba(255,238,210,.1) 48%,rgba(255,238,210,.03) 55%,rgba(255,238,210,0) 66%);transform:translateX(-52.3077%)}
 .p-hoja.der .p-brillo{transform:scaleX(-1)}
 .p-oscura{position:absolute;inset:0;background:#000;opacity:0}
 .p-escudo{position:absolute;top:calc(34% - 66px);height:132px;width:114px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
@@ -128,6 +136,8 @@ input,select,textarea{font:inherit;color:inherit}
 .paneles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 8px}
 .panel{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;border-radius:14px;color:var(--marfil);background:var(--humo)}
 .panel img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.panel img:not([src]){visibility:hidden}
+.panel .telon{position:absolute;inset:-1px;z-index:3;background:var(--marfil);transform-origin:50% 0;transform:scaleY(0);pointer-events:none}
 .panel:hover img{transform:scale(1.05)}
 .panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,0) 40%,rgba(20,18,16,.85) 100%)}
 .panel .pn{position:absolute;left:22px;right:22px;bottom:22px;z-index:1}
@@ -306,7 +316,7 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 .f-portada h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,1.4rem + 3.6vw,4.4rem);letter-spacing:.04em;line-height:1.05}
 .f-portada .frase{margin-top:14px;color:var(--marfil2);max-width:34ch}
 .f-portada .btn{margin-top:26px}
-.f-tabs{position:sticky;top:var(--barra);z-index:20;background:rgba(243,237,226,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--borde2)}
+.f-tabs{position:sticky;top:var(--barra);z-index:20;background:rgba(243,237,226,.97);border-bottom:1px solid var(--borde2)}
 .f-tabs .envase{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 .f-tabs a{padding:16px 18px;white-space:nowrap;font-weight:500;color:var(--tinta2);border-bottom:2px solid transparent;margin-bottom:-1px}
 .f-tabs a.on{color:var(--tinta);border-color:var(--champ)}
@@ -492,7 +502,7 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
   #barra .logo img{height:32px}
   #barra .logo span{font-size:.95rem}
   #barra .btn{min-height:38px;padding:6px 14px;font-size:.9rem}
-  #tabs-cel{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:55;height:var(--tabs);background:rgba(20,18,16,.96);backdrop-filter:blur(10px);border-top:1px solid rgba(201,169,110,.22);padding-bottom:env(safe-area-inset-bottom)}
+  #tabs-cel{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:55;height:var(--tabs);background:rgba(20,18,16,.97);border-top:1px solid rgba(201,169,110,.22);padding-bottom:env(safe-area-inset-bottom)}
   #tabs-cel a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:.68rem;letter-spacing:.02em;color:rgba(243,237,226,.7)}
   #tabs-cel a .ico{width:22px;height:22px}
   #tabs-cel a[aria-current]{color:var(--champ2)}
@@ -674,10 +684,10 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 <!-- ════════ INICIO ════════ -->
 <div data-pagina="inicio">
 <section class="portada" id="portada" aria-label="Festus Salón de Eventos">
-  <div class="p-fondo"><picture><source media="(max-width:860px)" srcset="fotos/portada-xv-cel.jpg"><img src="fotos/portada-xv.jpg" alt="Quinceañera de vestido rojo en la escalera del salón Festus" fetchpriority="high"></picture></div>
+  <div class="p-fondo"><picture><source type="image/webp" media="(max-width:860px)" srcset="fotos/portada-xv-cel-640.webp 640w, fotos/portada-xv-cel-828.webp 828w, fotos/portada-xv-cel-1170.webp 1170w" sizes="100vw"><source type="image/webp" srcset="fotos/portada-xv-1280.webp 1280w, fotos/portada-xv-1920.webp 1920w, fotos/portada-xv-2880.webp 2880w" sizes="100vw"><source media="(max-width:860px)" srcset="fotos/portada-xv-cel.jpg"><img src="fotos/portada-xv.jpg" width="2880" height="1916" alt="Quinceañera de vestido rojo en la escalera del salón Festus" fetchpriority="high"></picture></div>
   <div class="p-sombra"></div><div class="p-haz"></div><div class="p-velo"></div>
   <div class="p-puertas" id="p-puertas" aria-hidden="true">
-    <div class="p-hoja izq"><span class="p-brillo"></span><span class="p-escudo"><i></i></span><span class="p-oscura"></span></div><div class="p-hoja der"><span class="p-brillo"></span><span class="p-escudo"><i></i></span><span class="p-oscura"></span></div><span class="p-rendija"></span>
+    <div class="p-hoja izq"><span class="p-brillo"><b></b></span><span class="p-escudo"><i></i></span><span class="p-oscura"></span></div><div class="p-hoja der"><span class="p-brillo"><b></b></span><span class="p-escudo"><i></i></span><span class="p-oscura"></span></div><span class="p-rendija"></span>
   </div>
   <div class="p-centro">
     <h1 class="p-nombre" id="p-nombre">FESTUS</h1>
@@ -745,7 +755,7 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
         <li><svg class="ico"><use href="#i-ok"/></svg><span>La fecha queda señada con la primera cuota.</span></li>
         <li><svg class="ico"><use href="#i-groups"/></svg><span>La familia solo disfruta.</span></li>
       </ul>
-      <div class="xv-foto"><img src="fotos/f04.jpg" alt="Quinceañera con vestido rojo frente a la pared de lentejuelas" loading="lazy"><img src="fotos/f14.jpg" alt="Amigas de la quinceañera en la pista" loading="lazy"></div>
+      <div class="xv-foto"><img src="fotos/f04-640.webp" srcset="fotos/f04-640.webp 640w, fotos/f04-1080.webp 1080w" sizes="(max-width:860px) 50vw, 22vw" width="1080" height="1440" loading="lazy" decoding="async" alt="Quinceañera con vestido rojo frente a la pared de lentejuelas"><img src="fotos/f14-640.webp" srcset="fotos/f14-640.webp 640w, fotos/f14-1080.webp 1080w" sizes="(max-width:860px) 50vw, 22vw" width="1080" height="1080" loading="lazy" decoding="async" alt="Amigas de la quinceañera en la pista"></div>
     </div>
     <div class="calc" id="calc">
       <h3>¿Cuándo es la fiesta?</h3>
@@ -774,9 +784,9 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
   <div class="envase">
     <div class="cabeza rev"><h2>El salón, <em>por dentro</em></h2><p>Lo que lo hace Festus: la escalera para la entrada, la pista con piso a cuadros y bolas de espejo, y la barra.</p></div>
     <div class="mosaico">
-      <figure><img src="fotos/f10.jpg" alt="La escalera de Festus con la quinceañera" loading="lazy"><figcaption><b>La escalera</b><span>La pasarela de la entrada, con las luces bajas.</span></figcaption></figure>
-      <figure><img src="fotos/f03.jpg" alt="La pista con piso a cuadros" loading="lazy"><figcaption><b>La pista</b><span>Piso a cuadros y bolas de espejo.</span></figcaption></figure>
-      <figure><img src="fotos/f15.jpg" alt="La barra de Festus" loading="lazy"><figcaption><b>La barra</b><span>Tragos y bebidas durante toda la noche.</span></figcaption></figure>
+      <figure><img src="fotos/f10-640.webp" srcset="fotos/f10-640.webp 640w, fotos/f10-1080.webp 1080w, fotos/f10-1600.webp 1600w" sizes="(max-width:860px) 100vw, 55vw" width="1600" height="1064" loading="lazy" decoding="async" alt="La escalera de Festus con la quinceañera"><figcaption><b>La escalera</b><span>La pasarela de la entrada, con las luces bajas.</span></figcaption></figure>
+      <figure><img src="fotos/f03-640.webp" srcset="fotos/f03-640.webp 640w, fotos/f03-719.webp 719w" sizes="(max-width:860px) 50vw, 45vw" width="719" height="719" loading="lazy" decoding="async" alt="La pista con piso a cuadros"><figcaption><b>La pista</b><span>Piso a cuadros y bolas de espejo.</span></figcaption></figure>
+      <figure><img src="fotos/f15-640.webp" srcset="fotos/f15-640.webp 640w, fotos/f15-1080.webp 1080w" sizes="(max-width:860px) 50vw, 45vw" width="1080" height="720" loading="lazy" decoding="async" alt="La barra de Festus"><figcaption><b>La barra</b><span>Tragos y bebidas durante toda la noche.</span></figcaption></figure>
     </div>
     <div class="datos3">
       <div><b id="d-capacidad">250</b><span>personas de capacidad <span class="nota-ej">dato de ejemplo</span></span></div>
@@ -834,7 +844,7 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 
 <!-- ════════ FIESTA ════════ -->
 <div data-pagina="fiesta" hidden>
-<section class="f-portada" id="f-portada"><img id="f-foto" alt=""><div class="envase"><h1 id="f-titulo">XV All Inclusive</h1><p class="frase" id="f-lema"></p><a class="btn" id="f-btn" href="#">Armá tu fiesta<svg class="ico"><use href="#i-fwd"/></svg></a></div></section>
+<section class="f-portada" id="f-portada"><img id="f-foto" alt="" sizes="100vw" decoding="async"><div class="envase"><h1 id="f-titulo">XV All Inclusive</h1><p class="frase" id="f-lema"></p><a class="btn" id="f-btn" href="#">Armá tu fiesta<svg class="ico"><use href="#i-fwd"/></svg></a></div></section>
 <nav class="f-tabs" aria-label="Las fiestas"><div class="envase" id="f-tabs"></div></nav>
 <section class="sec" id="f-incluye"><div class="envase"><div class="cabeza"><h2 id="f-inc-tit">Qué <em>incluye</em></h2><p id="f-inc-sub"></p></div><div class="incluye-grid" id="f-inc"></div></div></section>
 <section class="sec oscuro" id="f-noche"><div class="envase noche-env"><div class="cabeza"><h2 id="f-noche-tit">La noche, <em>hora por hora</em></h2><p id="f-noche-sub"></p><p style="margin-top:14px"><span class="nota-ej">cronograma de ejemplo</span></p></div><ol class="linea" id="f-linea"></ol></div></section>
@@ -845,7 +855,7 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 
 <!-- ════════ EL SALÓN ════════ -->
 <div data-pagina="salon" hidden>
-<section class="f-portada"><img src="fotos/f03.jpg" alt="El salón de Festus con la pista a cuadros"><div class="envase"><h1>El salón</h1><p class="frase">Un solo espacio que se arma distinto para cada fiesta: la escalera, la pista a cuadros, la barra.</p><a class="btn" data-ir="armar">Armá tu evento como quieras<svg class="ico"><use href="#i-fwd"/></svg></a></div></section>
+<section class="f-portada"><img src="fotos/f03-640.webp" srcset="fotos/f03-640.webp 640w, fotos/f03-719.webp 719w" sizes="100vw" width="719" height="719" loading="lazy" decoding="async" alt="El salón de Festus con la pista a cuadros"><div class="envase"><h1>El salón</h1><p class="frase">Un solo espacio que se arma distinto para cada fiesta: la escalera, la pista a cuadros, la barra.</p><a class="btn" data-ir="armar">Armá tu evento como quieras<svg class="ico"><use href="#i-fwd"/></svg></a></div></section>
 <section class="sec" id="s-espacios"><div class="envase"><div class="cabeza"><h2>Los <em>espacios</em></h2></div><div class="esp-grid" id="esp-grid"></div></div></section>
 <section class="sec oscuro" id="s-galeria"><div class="envase"><div class="cabeza"><h2>En <em>fotos</em></h2><p>Las que Festus elige mostrar desde su panel.</p></div><div class="galeria" id="s-gal"></div></div></section>
 <section class="sec adentro" id="s-capac"><div class="envase"><div class="cabeza"><h2>¿Cuántos <em>entran</em>?</h2><p>Depende de cómo se arme. <span class="nota-ej">Capacidades de ejemplo</span></p></div><ul class="cap-lista" id="cap-lista"></ul></div></section>
@@ -1018,14 +1028,12 @@ footer .fin{grid-column:1/-1;margin-top:30px;padding-top:18px;border-top:1px sol
 <div class="previa">Vista previa para Festus · Mas &amp; Co</div>
 
 <dialog id="player"><div class="pl"><div class="pl-caja" id="pl-caja">
-  <video id="pl-video" playsinline preload="metadata"></video>
+  <video id="pl-video" playsinline preload="none"></video>
   <button class="pl-big" id="pl-big" type="button" aria-label="Reproducir"><span><svg class="ico"><use href="#i-play"/></svg></span></button>
   <p class="pl-tit" id="pl-tit"></p>
   <button class="pl-cerrar" id="pl-cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="#i-close"/></svg></button>
   <div class="pl-ctl"><button type="button" id="pl-play" aria-label="Reproducir o pausar"><svg class="ico"><use href="#i-play"/></svg></button><div class="barra-t" id="pl-barra"><i><b id="pl-prog"></b></i></div><time id="pl-t">0:00</time><button type="button" id="pl-mute" aria-label="Silenciar"><svg class="ico"><use href="#i-volon"/></svg></button></div>
 </div></div></dialog>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
 /* ═══ KIT v3 · navegación interna (Mas & Co, 16/10/2026) ═══ */
 const KIT = (() => {
@@ -1103,8 +1111,9 @@ const KIT = (() => {
   return { url, ir, en, enlaces, arrancar, leer, get actual() { return actual; } };
 })();
 </script>
-<script>
+<script>document.addEventListener('DOMContentLoaded', () => {
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({autoRefreshEvents: 'visibilitychange,DOMContentLoaded,resize'});
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 const celu = () => matchMedia('(max-width:860px)').matches;
@@ -1121,8 +1130,12 @@ const usd = n => `${Math.round(n).toLocaleString('es-AR')} USD`;
 const mas = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
 const FOTOS = ['f02', 'f03', 'f04', 'f05', 'f06', 'f07', 'f08', 'f10', 'f11', 'f13', 'f14', 'f15'];
 const ALT = {f02: 'Globos de un cumpleaños', f03: 'El salón con la pista a cuadros', f04: 'Quinceañera de vestido rojo', f05: 'Evento de empresa, el auditorio', f06: 'Un orador en un evento de empresa', f07: 'Invitados de un evento', f08: 'La mesa dulce', f10: 'La quinceañera en la escalera', f11: 'Cumpleaños infantil con mesa dulce', f13: 'Bailando en la pista', f14: 'Amigas en la pista', f15: 'La barra'};
-const foto = id => `fotos/${id}.jpg`;
-const img = (id, extra = '') => `<img src="${foto(id)}" alt="${esc(ALT[id] || '')}" loading="lazy" decoding="async"${extra}>`;
+/* fotos en WebP, en 2-3 anchos: el navegador baja la que necesita según el tamaño en pantalla */
+const DIM = {f02: [1125, 1406], f03: [719, 719], f04: [1080, 1440], f05: [1536, 1536], f06: [1080, 1080], f07: [1080, 1080], f08: [1200, 1600], f10: [1600, 1064], f11: [1108, 1386], f13: [1080, 1080], f14: [1080, 1080], f15: [1080, 720]};
+const anchos = id => [640, 1080].filter(w => w <= DIM[id][0] * .9).concat(Math.min(1600, DIM[id][0]));
+const foto = (id, w = 640) => `fotos/${id}-${w}.webp`;
+const srcset = id => anchos(id).map(w => `${foto(id, w)} ${w}w`).join(', ');
+const img = (id, extra = '', sizes = '(max-width:860px) 50vw, 25vw') => `<img src="${foto(id)}" srcset="${srcset(id)}" sizes="${sizes}" width="${DIM[id][0]}" height="${DIM[id][1]}" alt="${esc(ALT[id] || '')}" loading="lazy" decoding="async"${extra}>`;
 const icono = (k, cls = 'ico') => `<svg class="${cls}" aria-hidden="true"><use href="#i-${k}"/></svg>`;
 
 /* ── lo que Festus maneja desde el panel: en memoria + localStorage (demostración) ── */
@@ -1223,9 +1236,14 @@ document.addEventListener('kit:pagina', e => {
 /* ── portada: «Abrimos las puertas». La puerta cerrada con la luz en la rendija, se abren las dos hojas pesadas, entra la luz, el nombre ── */
 const entrando = () => document.documentElement.classList.contains('entra');
 addEventListener('resize', () => { if (entrando()) armarPuertas(); });
+const trasEntrada = [];
+function despues(fn) { if (entrando()) trasEntrada.push(fn); else fn(); }
+function cargarDiferidas() { $$('img[data-src]').forEach(i => { i.srcset = i.dataset.srcset; i.src = i.dataset.src; i.removeAttribute('data-src'); }); }
 function finEntrada() {
   clearTimeout(window.__entraT);
+  cargarDiferidas();
   document.documentElement.classList.remove('entra');
+  const cola = trasEntrada.splice(0); if (cola.length) (window.requestIdleCallback || setTimeout)(() => cola.forEach(f => f()), {timeout: 600});
   gsap.set(['.p-centro > *', '#barra', '.p-fondo img', '.p-sombra', '.p-haz'], {clearProps: 'opacity,transform'});
 }
 function abrirPuertas() {
@@ -1238,7 +1256,7 @@ function abrirPuertas() {
     .to('.p-hoja.izq', {rotateY: 98, duration: 1.4, ease: 'power2.inOut'}, .85)
     .to('.p-hoja.der', {rotateY: -98, duration: 1.4, ease: 'power2.inOut'}, .85)
     .to('.p-oscura', {opacity: .6, duration: 1.2, ease: 'power1.in'}, .85)
-    .to('.p-brillo', {backgroundPosition: '15% 0%', duration: 1.3, ease: 'power1.inOut'}, .85)
+    .fromTo('.p-brillo b', {x: 0, xPercent: -52.3077}, {xPercent: -9.2308, duration: 1.3, ease: 'power1.inOut'}, .85)
     .to('.p-rendija', {opacity: 0, duration: .3, ease: 'none'}, .95)
     .to('.p-puertas', {scale: 1.32, duration: 1.4, ease: 'power2.in'}, .85)
     .to('.p-hoja', {opacity: 0, duration: .3, ease: 'none'}, 1.95)
@@ -1250,16 +1268,19 @@ function abrirPuertas() {
     .to('.p-nombre', {opacity: 1, y: 0, duration: .85, ease: 'power3.out'}, 1.7)
     .fromTo('.p-regla', {scaleX: 0}, {opacity: 1, y: 0, scaleX: 1, duration: .6, ease: 'power2.inOut'}, 1.95)
     .to(['.p-sub', '.p-botones'], {opacity: 1, y: 0, duration: .6, stagger: .1}, 2.0)
-    .to('#barra', {opacity: 1, duration: .6}, 2.1);
+    .to('#barra', {opacity: 1, duration: .6}, 2.1)
+    .call(cargarDiferidas, null, 2.3);
   window.__portada = tl;
 }
 function entradaPortada() {
-  if (!entrando()) return;
+  if (!entrando()) { cargarDiferidas(); return; }
   if ($('[data-pagina="inicio"]').hidden) { finEntrada(); return; }
   // espera la foto y las letras, con tope de 1,2 s: mientras tanto se ve la puerta cerrada
   const foto = $('.p-fondo img');
-  const letras = ['700 1em Cinzel', '500 1em Jost'].map(f => document.fonts.load(f).catch(() => {}));
-  Promise.race([Promise.all([foto.decode ? foto.decode().catch(() => {}) : null, ...letras]), new Promise(r => setTimeout(r, 1200))]).then(abrirPuertas);
+  const letras = ['700 1em Cinzel', '500 1em Jost', '500 1em "Cormorant Garamond"', 'italic 600 1em "Cormorant Garamond"'].map(f => document.fonts.load(f).catch(() => {}));
+  Promise.race([Promise.all([foto.decode ? foto.decode().catch(() => {}) : null, ...letras]), new Promise(r => setTimeout(r, 1200))])
+    // dos cuadros de respiro: que el navegador termine de pintar lo recién armado antes del primer cuadro del giro
+    .then(() => requestAnimationFrame(() => requestAnimationFrame(abrirPuertas)));
 }
 gsap.to('.p-centro', {y: -90, opacity: .15, ease: 'none', scrollTrigger: {trigger: '#portada', start: 'top top', end: 'bottom top', scrub: .6}});
 
@@ -1270,7 +1291,7 @@ function revelar(raiz) {
 function revelarInicio() {
   revelar($('[data-pagina="inicio"]'));
   // las cuatro fiestas: la foto se descubre como si subiera un telón
-  gsap.fromTo('#paneles .panel', {clipPath: 'inset(100% 0 0 0)'}, {clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'power3.inOut', stagger: .1, scrollTrigger: {trigger: '#paneles', start: 'top 80%', once: true}, clearProps: 'clipPath'});
+  gsap.fromTo('#paneles .telon', {scaleY: 1}, {scaleY: 0, duration: 1, ease: 'power3.inOut', stagger: .1, scrollTrigger: {trigger: '#paneles', start: 'top 80%', once: true}});
   // el salón por dentro: la cámara se acomoda
   $$('.mosaico img').forEach(i => gsap.fromTo(i, {scale: 1.12}, {scale: 1, duration: 1.4, ease: 'power2.out', scrollTrigger: {trigger: i, start: 'top 85%', once: true}, clearProps: 'transform'}));
 }
@@ -1281,12 +1302,12 @@ function pintarPromos() {
   const s = $('#promo'), act = STORE.promos.filter(vigente);
   if (!act.length) { s.hidden = true; s.innerHTML = ''; return; }
   const p = act[0], v = deIso(p.vence);
-  s.innerHTML = `<div class="envase">${img(p.foto)}<div><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p><small>Válida hasta el ${v.getDate()} de ${MESES[v.getMonth()]}</small></div><a class="btn" href="${wa(`Hola, vi la promo «${p.titulo}» en la web. ¿Me cuentan cómo es?`)}" target="_blank" rel="noopener">${icono('wa')}Quiero aprovecharla</a></div>`;
+  s.innerHTML = `<div class="envase">${img(p.foto, '', '150px')}<div><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p><small>Válida hasta el ${v.getDate()} de ${MESES[v.getMonth()]}</small></div><a class="btn" href="${wa(`Hola, vi la promo «${p.titulo}» en la web. ¿Me cuentan cómo es?`)}" target="_blank" rel="noopener">${icono('wa')}Quiero aprovecharla</a></div>`;
   s.hidden = false;
 }
 
 /* ── lo que festejamos ── */
-$('#paneles').innerHTML = Object.entries(FIESTAS).map(([k, f]) => `<a class="panel" data-ir="fiesta" data-id="${k}">${img(f.foto)}<span class="pn"><b>${esc(f.nombre)}</b><i>${esc(f.lema)}</i><em>Ver la fiesta ${icono('fwd')}</em></span></a>`).join('');
+$('#paneles').innerHTML = Object.entries(FIESTAS).map(([k, f]) => `<a class="panel" data-ir="fiesta" data-id="${k}">${img(f.foto).replace(' src=', ' data-src=').replace(' srcset=', ' data-srcset=')}<i class="telon" aria-hidden="true"></i><span class="pn"><b>${esc(f.nombre)}</b><i>${esc(f.lema)}</i><em>Ver la fiesta ${icono('fwd')}</em></span></a>`).join('');
 
 /* ── Mis XV: la calculadora ── */
 const calc = {anio: hoy.getFullYear() + 1, mes: 10};
@@ -1313,11 +1334,11 @@ $('#calc-btn').addEventListener('click', e => { e.preventDefault(); KIT.ir('arma
 ['#f-btn', '#f-btn2'].forEach(s => $(s).addEventListener('click', e => { e.preventDefault(); KIT.ir('armar', {f: fiestaActual || 'xv'}); }));
 
 /* ── los videos de las familias y el reproductor ── */
-const vcard = id => { const v = VIDEOS[id]; return `<button class="vcard" type="button" data-video="${id}"><span class="marco"><img src="videos/${id}.jpg" alt="" loading="lazy"><span class="play">${icono('play')}</span><span class="dur">${v.dur}</span></span><h3>${esc(v.titulo)}</h3><p>${esc(v.texto)}</p><small>${esc(v.de)}</small></button>`; };
+const vcard = id => { const v = VIDEOS[id]; return `<button class="vcard" type="button" data-video="${id}"><span class="marco"><img src="videos/${id}.webp" width="540" height="960" alt="" loading="lazy" decoding="async"><span class="play">${icono('play')}</span><span class="dur">${v.dur}</span></span><h3>${esc(v.titulo)}</h3><p>${esc(v.texto)}</p><small>${esc(v.de)}</small></button>`; };
 $('#vgrid').innerHTML = ['jazmin-entrevista', 'laura-walter', 'jazmin-allinclusive'].map(vcard).join('');
 const player = $('#player'), plV = $('#pl-video'), plCaja = $('#pl-caja');
 function abrirVideo(id) {
-  plV.src = `videos/${id}.web.mp4`; plV.poster = `videos/${id}.jpg`; $('#pl-tit').textContent = VIDEOS[id].titulo;
+  plV.src = `videos/${id}.web.mp4`; plV.poster = `videos/${id}.webp`; $('#pl-tit').textContent = VIDEOS[id].titulo;
   plV.muted = false; $('#pl-mute use').setAttribute('href', '#i-volon');
   if (!player.open) player.showModal();
   plV.play().catch(() => {});
@@ -1422,7 +1443,8 @@ function calibrarResp() {
   Object.keys(FIESTAS).forEach(f => PRESU.forEach((_, i) => { clon.innerHTML = htmlResp(f, reco.gente, recomendar(f, reco.gente, i)); max = Math.max(max, clon.offsetHeight); }));
   clon.remove(); resp.style.minHeight = max + 'px';
 }
-addEventListener('resize', () => { clearTimeout(calibrarResp._t); calibrarResp._t = setTimeout(calibrarResp, 150); });
+let anchoResp = innerWidth;
+addEventListener('resize', () => { if (innerWidth === anchoResp) return; anchoResp = innerWidth; clearTimeout(calibrarResp._t); calibrarResp._t = setTimeout(calibrarResp, 150); });
 function recomendarUI(animar = true) {
   $('#r-fiesta').innerHTML = Object.entries(FIESTAS).map(([k, f]) => `<button class="chip${k === reco.f ? ' on' : ''}" type="button" data-f="${k}">${esc(f.corto)}</button>`).join('');
   $('#r-presu').innerHTML = PRESU.map((p, i) => `<button class="chip${i === reco.presu ? ' on' : ''}" type="button" data-p="${i}">${p[0]}</button>`).join('');
@@ -1444,7 +1466,7 @@ $('#reco').addEventListener('click', e => {
 /* ── agenda: cursos y eventos abiertos ── */
 function agHTML(a, pagina = false) {
   const f = deIso(a.fecha);
-  return `<article class="ag">${img(a.foto)}<div><h3>${esc(a.titulo)}</h3><div class="cuando"><span>${icono('cal')}${DIAS[f.getDay()]} ${f.getDate()} de ${MESES[f.getMonth()]}</span>${a.horas ? `<span>${icono('schedule')}${esc(a.horas)}</span>` : ''}</div>${a.con ? `<p>Con ${esc(a.con)}.</p>` : ''}${pagina || !a.con ? `<p>${esc(a.texto)}</p>` : ''}${a.precio ? `<p class="precio">${esc(a.precio)} por persona</p>` : ''}<a class="btn chico" href="${wa(`Hola, quiero anotarme en «${a.titulo}» del ${f.getDate()}/${f.getMonth() + 1}. ¿Hay lugar?`)}" target="_blank" rel="noopener">${icono('wa')}Inscribirme por WhatsApp</a></div></article>`;
+  return `<article class="ag">${img(a.foto, '', '120px')}<div><h3>${esc(a.titulo)}</h3><div class="cuando"><span>${icono('cal')}${DIAS[f.getDay()]} ${f.getDate()} de ${MESES[f.getMonth()]}</span>${a.horas ? `<span>${icono('schedule')}${esc(a.horas)}</span>` : ''}</div>${a.con ? `<p>Con ${esc(a.con)}.</p>` : ''}${pagina || !a.con ? `<p>${esc(a.texto)}</p>` : ''}${a.precio ? `<p class="precio">${esc(a.precio)} por persona</p>` : ''}<a class="btn chico" href="${wa(`Hola, quiero anotarme en «${a.titulo}» del ${f.getDate()}/${f.getMonth() + 1}. ¿Hay lugar?`)}" target="_blank" rel="noopener">${icono('wa')}Inscribirme por WhatsApp</a></div></article>`;
 }
 function pintarAgenda() {
   const prox = STORE.agenda.filter(a => a.fecha >= iso(hoy)).sort((a, b) => a.fecha.localeCompare(b.fecha));
@@ -1456,7 +1478,7 @@ function pintarAgenda() {
 let fiestaActual = null;
 function pintarFiesta(id) {
   const F = FIESTAS[id] || FIESTAS.xv; id = FIESTAS[id] ? id : 'xv'; fiestaActual = id;
-  $('#f-foto').src = foto(F.foto); $('#f-foto').alt = ALT[F.foto];
+  $('#f-foto').srcset = srcset(F.foto); $('#f-foto').src = foto(F.foto, 1080); $('#f-foto').alt = ALT[F.foto];
   $('#f-titulo').textContent = F.nombre; $('#f-lema').textContent = F.lema;
   $('#f-btn').href = $('#f-btn2').href = KIT.url('armar', {f: id});
   $('#f-tabs').innerHTML = Object.entries(FIESTAS).map(([k, f]) => `<a data-ir="fiesta" data-id="${k}" class="${k === id ? 'on' : ''}">${esc(f.nombre)}</a>`).join('');
@@ -1466,7 +1488,7 @@ function pintarFiesta(id) {
   $('#f-inc').innerHTML = F.incluye.map(([i, t, s]) => `<div class="inc">${icono(i)}<div><b>${esc(t)}</b><span>${esc(s)}</span></div></div>`).join('');
   $('#f-noche-tit').innerHTML = F.nocheTit; $('#f-noche-sub').textContent = F.nocheSub;
   $('#f-linea').innerHTML = F.noche.map(([h, t, s]) => `<li><time>${h}</time><div><b>${esc(t)}</b>${s ? `<span>${esc(s)}</span>` : ''}</div></li>`).join('');
-  $('#f-gal').innerHTML = F.galeria.map(k => `<figure>${img(k)}</figure>`).join('');
+  $('#f-gal').innerHTML = F.galeria.map((k, i) => `<figure>${img(k, '', i ? undefined : '(max-width:860px) 100vw, 50vw')}</figure>`).join('');
   const vs = $('#f-video-sec');
   if (F.video) { vs.hidden = false; $('#f-video-tit').innerHTML = F.videoTit; $('#f-video-sub').textContent = F.videoSub; $('#f-video').innerHTML = vcard(F.video) + (F.video2 ? `<p style="margin-top:14px"><button class="chip" type="button" data-video="${F.video2}">${icono('play')}${esc(VIDEOS[F.video2].titulo)}</button></p>` : ''); }
   else vs.hidden = true;
@@ -1480,13 +1502,13 @@ function pintarFiesta(id) {
 const ESPACIOS = [['f10', 'La escalera', 'La entrada de la quinceañera o de los novios: la pasarela con las luces bajas, y el lugar de la última foto.'], ['f03', 'La pista', 'Piso a cuadros blanco y negro, bolas de espejo y las luces del DJ.'], ['f15', 'La barra', 'Tragos y bebidas durante toda la noche, con su propio rincón.'], ['f08', 'El rincón de la mesa dulce', 'Con la decoración de tu fiesta: arcos, globos y la torta.'], ['f05', 'Formato auditorio', 'Para empresas: sillas en filas, pantalla y micrófono.'], ['f13', 'Las luces', 'Azules, cálidas o del color de tu fiesta.']];
 let salonPintado = false;
 function pintarSalon() {
-  $('#esp-grid').innerHTML = ESPACIOS.map(([k, t, s]) => `<div class="esp">${img(k)}<div><b>${esc(t)}</b><p>${esc(s)}</p></div></div>`).join('');
+  $('#esp-grid').innerHTML = ESPACIOS.map(([k, t, s]) => `<div class="esp">${img(k, '', '(max-width:860px) 120px, 200px')}<div><b>${esc(t)}</b><p>${esc(s)}</p></div></div>`).join('');
   pintarGaleriaSalon();
   const c = V().capacidad;
   $('#cap-lista').innerHTML = [[Math.round(c * .72 / 10) * 10, 'sentados en mesas redondas, con pista'], [c, 'de pie, formato cóctel'], [Math.round(c * .88 / 10) * 10, 'en formato auditorio, con pantalla']].map(([n, t]) => `<li><b>${n}</b><span>${t}</span></li>`).join('');
   salonPintado = true;
 }
-function pintarGaleriaSalon() { $('#s-gal').innerHTML = STORE.fotos.map(k => `<figure>${img(k)}</figure>`).join(''); }
+function pintarGaleriaSalon() { $('#s-gal').innerHTML = STORE.fotos.map((k, i) => `<figure>${img(k, '', i ? undefined : '(max-width:860px) 100vw, 50vw')}</figure>`).join(''); }
 
 /* ── armá tu fiesta ── */
 $('#a-fiesta').innerHTML = Object.entries(FIESTAS).map(([k, f]) => `<button class="chip" type="button" data-f="${k}">${esc(f.corto)}</button>`).join('');
@@ -1629,7 +1651,7 @@ $('#pn-promos').addEventListener('click', e => {
   if (r) { const p = STORE.promos.find(x => x.id === r.dataset.rep); p.vence = iso(mas(hoy, 15)); guardar('Promo publicada en el inicio'); }
   if (b) { STORE.promos = STORE.promos.filter(x => x.id !== b.dataset.borrarPromo); guardar('Promo borrada'); }
 });
-function picker(cont, elegida) { cont.innerHTML = FOTOS.map(k => `<button type="button" data-k="${k}" class="${k === elegida ? 'on' : ''}">${img(k)}</button>`).join(''); }
+function picker(cont, elegida) { cont.innerHTML = FOTOS.map(k => `<button type="button" data-k="${k}" class="${k === elegida ? 'on' : ''}">${img(k, '', '160px')}</button>`).join(''); }
 ['#pr-foto', '#ag-foto'].forEach(s => { picker($(s), s === '#pr-foto' ? 'f13' : 'f14'); $(s).addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (!b) return; $$('button', $(s)).forEach(x => x.classList.toggle('on', x === b)); }); });
 $('#pr-vence').value = iso(mas(hoy, 30)); $('#pr-vence').min = iso(hoy);
 $('#pr-guardar').addEventListener('click', () => {
@@ -1659,7 +1681,7 @@ $('#v-guardar').addEventListener('click', () => { CAMPOS_V.forEach(k => { const 
 $('#pn-reset').addEventListener('click', () => { STORE = DEF(); try { localStorage.removeItem(CLAVE); } catch (e) {} guardar('Demo restablecida'); });
 // fotos
 function pintarPanelFotos() {
-  $('#pn-fotos').innerHTML = FOTOS.map(k => `<button type="button" data-k="${k}" class="${STORE.fotos.includes(k) ? 'on' : ''}">${img(k)}</button>`).join('');
+  $('#pn-fotos').innerHTML = FOTOS.map(k => `<button type="button" data-k="${k}" class="${STORE.fotos.includes(k) ? 'on' : ''}">${img(k, '', '160px')}</button>`).join('');
   $('#pn-fotos-n').textContent = `${STORE.fotos.length} de ${FOTOS.length} en la galería`;
 }
 $('#pn-fotos').addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (!b) return; const k = b.dataset.k; STORE.fotos = STORE.fotos.includes(k) ? STORE.fotos.filter(x => x !== k) : [...STORE.fotos, k]; guardar(STORE.fotos.includes(k) ? 'Foto agregada a la galería' : 'Foto sacada de la galería'); });
@@ -1675,7 +1697,7 @@ function pintarTodo() {
 
 /* ── las páginas ── */
 let inicioRevelado = false;
-KIT.en('inicio', () => { if (!inicioRevelado) { inicioRevelado = true; revelarInicio(); } calibrarResp(); });
+KIT.en('inicio', () => { if (!inicioRevelado) { inicioRevelado = true; revelarInicio(); } despues(calibrarResp); });
 KIT.en('fiesta', extra => { pintarFiesta(extra.id); });
 KIT.en('salon', () => { if (!salonPintado) pintarSalon(); });
 KIT.en('armar', extra => {
@@ -1704,7 +1726,8 @@ recomendarUI(false);
 pintarCalc(false);
 KIT.arrancar();
 entradaPortada();
-document.fonts.ready.then(() => { calibrarResp(); ScrollTrigger.refresh(); });
-addEventListener('load', () => ScrollTrigger.refresh());
-</script>
+document.fonts.ready.then(() => despues(() => { calibrarResp(); ScrollTrigger.refresh(); }));
+const alCargar = () => despues(() => ScrollTrigger.refresh());
+if (document.readyState === 'complete') alCargar(); else addEventListener('load', alCargar);
+});</script>
 </body></html>
