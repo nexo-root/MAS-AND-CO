@@ -794,6 +794,12 @@ const KIT = (() => {
 const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const foto = (id, w = 1200) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 const juego = (id, ws) => ws.map(w => `${foto(id, w)} ${w}w`).join(', ');
+// fotos cuyo encuadre original no queda centrado: 4080534 (clásica) tiene la hamburguesa
+// corrida a la izquierda con medio cuadro de fondo negro vacío; 8879369 (papas) es una
+// foto vertical con el pucho de papas abajo y mucho aire arriba. object-position a medida
+// para que el recorte en cover no las deje "a la mitad".
+const FOCO = {4080534: '14% 56%', 8879369: '50% 66%'};
+const posDe = id => FOCO[id] || '50% 50%';
 const celu = () => matchMedia('(max-width:860px)').matches;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 const pesos = n => '$ ' + Math.round(n).toLocaleString('es-AR');
@@ -1085,7 +1091,7 @@ function tags(p) {
 }
 const precioTxt = p => pesos(p.$) + (p.op.includes('tam') ? '<small>grande</small>' : p.op.includes('cant') ? '<small>c/u</small>' : '');
 const tarjeta = (p, rank) => `<article class="pc" data-k="${p.id}">
-  <a class="pc-link" data-ir="producto" data-id="${p.id}"><div class="pc-foto"><img loading="lazy" alt="${esc(p.n)}" src="${foto(p.f, 600)}" srcset="${juego(p.f, [300, 600, 900])}" sizes="(max-width:860px) 240px, 320px">${rank ? `<span class="rank">${rank}</span>` : ''}</div>
+  <a class="pc-link" data-ir="producto" data-id="${p.id}"><div class="pc-foto"><img loading="lazy" alt="${esc(p.n)}" src="${foto(p.f, 600)}" srcset="${juego(p.f, [300, 600, 900])}" sizes="(max-width:860px) 240px, 320px" style="object-position:${posDe(p.f)}">${rank ? `<span class="rank">${rank}</span>` : ''}</div>
   <div class="pc-txt"><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p><div class="pc-tags">${tags(p)}</div></div></a>
   <div class="pc-pie"><span class="precio">${precioTxt(p)}</span><button type="button" class="sumar" data-sumar="${p.id}" aria-label="Sumar ${esc(p.n)}">${svg('mas')}Sumar</button></div>
   <span class="por"></span></article>`;
@@ -1319,7 +1325,7 @@ pintarPlata(); pintarReco();
 // categorías y los más pedidos
 $('#cats').innerHTML = CATS.map(([k, nom], i) => {
   const ps = PROD.filter(p => p.cat === k), desde = Math.min(...ps.map(p => p.$));
-  return `<a class="cat${i ? '' : ' grande'}" data-ir="menu" data-id="${k}"><img loading="lazy" alt="" src="${foto(CAT_FOTO[k], i ? 700 : 1300)}"><span class="flecha">${svg('ir')}</span><b>${nom}</b><span>${ps.length} ${ps.length === 1 ? 'opción' : 'opciones'} · desde ${pesos(desde)}${ps[0].op.includes('cant') ? ' c/u' : ''}</span></a>`;
+  return `<a class="cat${i ? '' : ' grande'}" data-ir="menu" data-id="${k}"><img loading="lazy" alt="" src="${foto(CAT_FOTO[k], i ? 700 : 1300)}" style="object-position:${posDe(CAT_FOTO[k])}"><span class="flecha">${svg('ir')}</span><b>${nom}</b><span>${ps.length} ${ps.length === 1 ? 'opción' : 'opciones'} · desde ${pesos(desde)}${ps[0].op.includes('cant') ? ' c/u' : ''}</span></a>`;
 }).join('');
 $('#top-l').innerHTML = TIPOD.top.map((id, i) => tarjeta(prod(id), i + 1)).join('');
 
@@ -1414,7 +1420,7 @@ function ficha(id) {
   const p = prod(id) || PROD[0];
   fi = {p, o: defecto(p), q: p.op.includes('cant') ? 6 : 1};
   const gr = ORDEN_G.filter(k => k === 'sacar' ? p.ing.length : p.op.includes(k));
-  $('#ficha').innerHTML = `<div class="fi-foto"><img alt="${esc(p.n)}" src="${foto(p.f, 1200)}" srcset="${juego(p.f, [700, 1200, 1800])}" sizes="(max-width:860px) 100vw, 640px"><span class="ej">Foto de ejemplo</span></div>
+  $('#ficha').innerHTML = `<div class="fi-foto"><img alt="${esc(p.n)}" src="${foto(p.f, 1200)}" srcset="${juego(p.f, [700, 1200, 1800])}" sizes="(max-width:860px) 100vw, 640px" style="object-position:${posDe(p.f)}"><span class="ej">Foto de ejemplo</span></div>
     <div class="fi">
       <p class="migas"><a data-ir="menu">Menú</a><span>/</span><a data-ir="menu" data-id="${p.cat}">${CAT_N[p.cat]}</a></p>
       <h1>${esc(p.n)}</h1><p class="fi-desc">${esc(p.d)}</p>
@@ -1541,7 +1547,7 @@ function pintarPedido() {
   $('#p-sub').innerHTML = estadoHTML();
   $('#items').innerHTML = carrito.map((it, i) => {
     const p = prod(it.id), det = detalle(p, it.o), u = unidad(p, it.o);
-    return `<div class="it"><a data-ir="producto" data-id="${p.id}" aria-label="${esc(p.n)}"><img src="${foto(p.f, 200)}" alt=""></a><div><b>${esc(p.n)}</b>${det ? `<small>${esc(det)}</small>` : ''}${it.q > 1 ? `<small>${pesos(u)} c/u</small>` : ''}</div>
+    return `<div class="it"><a data-ir="producto" data-id="${p.id}" aria-label="${esc(p.n)}"><img src="${foto(p.f, 200)}" alt="" style="object-position:${posDe(p.f)}"></a><div><b>${esc(p.n)}</b>${det ? `<small>${esc(det)}</small>` : ''}${it.q > 1 ? `<small>${pesos(u)} c/u</small>` : ''}</div>
       <div class="it-der"><span class="precio">${pesos(u * it.q)}</span><div class="stepper chico" data-i="${i}"><button type="button" data-d="-1" aria-label="${it.q === 1 ? 'Sacar del pedido' : 'Uno menos'}">${svg(it.q === 1 ? 'borrar' : 'menos')}</button><output>${it.q}</output><button type="button" data-d="1" aria-label="Uno más">${svg('mas')}</button></div></div></div>`;
   }).join('') + (vacio ? '' : `<div class="it-sub"><span>Subtotal</span><b>${pesos(subtotal())}</b></div>`);
   KIT.enlaces($('#items'));
