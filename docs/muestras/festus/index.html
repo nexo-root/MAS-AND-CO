@@ -1,5 +1,6 @@
 <!doctype html><html lang="es" class="entra"><head>
 <meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<script>if(/[?&]sp=1/.test(location.search))document.documentElement.classList.add("sin-panel")</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#141210">
 <meta property="og:title" content="Festus Salón de Eventos · Posadas">
@@ -700,6 +701,8 @@ html,body{touch-action:manipulation}
   body{font-size:18px}
 }
 
+/* ?sp=1: sin el panel de administración, para mostrarla como ejemplo */
+.sin-panel [data-ir="panel"]{display:none!important}
 /* reglas fijas de Felipe (22/10/2026): sin zoom por doble toque, sin selección azul y sin cursor de texto fuera de los campos */
 html{touch-action:manipulation}
 body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;cursor:default}
@@ -1116,7 +1119,7 @@ img{-webkit-user-drag:none}
 <script>
 /* ═══ KIT v3 · navegación interna (Mas & Co, 16/10/2026) ═══ */
 const KIT = (() => {
-  const GUARDAR = ['s', 'n', 'c', 'r', 'o', 't', 'hora', 'u'];
+  const GUARDAR = ['s', 'n', 'c', 'r', 'o', 't', 'hora', 'u', 'sp'];
   const base = new URLSearchParams(location.search);
   const hooks = {};
   let actual = null;
