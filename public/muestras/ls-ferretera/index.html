@@ -49,8 +49,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width:420px){.marca span{display:none}}
 
 /* portada: el logo al frente, sobre el azul de la marca con el corte cobre de sus flyers */
-.portada{position:relative;min-height:100svh;padding:calc(var(--barra) + 30px) 0 150px;display:flex;align-items:center;overflow:hidden;isolation:isolate;text-align:center;
-  background:radial-gradient(60% 55% at 50% 38%,rgba(64,124,184,.45),transparent 70%),linear-gradient(170deg,var(--navy2) 0%,var(--navy) 50%,var(--navy3) 100%)}
+.portada{position:relative;min-height:100svh;padding:calc(var(--barra) + 30px) 0 150px;display:flex;align-items:center;overflow:hidden;isolation:isolate;text-align:center;background:var(--navy3)}
 .portada::before{content:"";position:absolute;z-index:-1;left:-10%;right:-10%;bottom:-1px;height:15%;background:var(--crema);clip-path:polygon(0 70%,100% 0,100% 100%,0 100%)}
 .portada::after{content:"";position:absolute;z-index:-1;left:-10%;right:-10%;bottom:calc(15% - 34px);height:44px;background:var(--cobre-g);clip-path:polygon(0 78%,100% 0,100% 22%,0 100%);opacity:.95}
 .portada .env{display:flex;flex-direction:column;align-items:center}
@@ -63,16 +62,15 @@ a{color:inherit;text-decoration:none}
 .portada .acciones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
 .portada .btn-borde{border-color:rgba(255,255,255,.55);color:#fff}
 .portada .btn-borde:hover{background:rgba(255,255,255,.08)}
-@media (max-width:700px){.portada{min-height:0;padding-bottom:110px}.portada h1{max-width:14ch}.portada .acciones{width:100%}.portada .acciones .btn{flex:1 1 auto}.portada::before{height:12%}.portada::after{bottom:calc(12% - 30px);height:34px}}
+@media (max-width:700px){.fondo-portada::after{background:linear-gradient(180deg,rgba(10,33,57,.55),rgba(10,33,57,.82) 45%,rgba(10,33,57,.9))}.portada{min-height:0;padding-bottom:110px}.portada h1{max-width:14ch}.portada .acciones{width:100%}.portada .acciones .btn{flex:1 1 auto}.portada::before{height:12%}.portada::after{bottom:calc(12% - 30px);height:34px}}
 
-.orbita img{position:absolute;z-index:0;width:clamp(96px,10vw,150px);aspect-ratio:1;object-fit:cover;border-radius:50%;border:5px solid #fff;box-shadow:0 18px 40px rgba(0,0,0,.4);transition:transform .9s cubic-bezier(.2,.8,.2,1.05),opacity .6s var(--ease)}
-.orbita .o1{left:7%;top:18%}.orbita .o2{left:15%;top:48%;width:clamp(80px,8vw,120px)}.orbita .o3{left:6%;top:70%}
-.orbita .o4{right:7%;top:16%}.orbita .o5{right:15%;top:46%;width:clamp(80px,8vw,120px)}.orbita .o6{right:6%;top:69%}
+/* portada: pared de herramientas teñida con el azul de la marca */
+.fondo-portada{position:absolute;inset:0;z-index:-2}
+.fondo-portada img{width:100%;height:100%;object-fit:cover;filter:saturate(.75) contrast(1.08)}
+.fondo-portada::after{content:"";position:absolute;inset:0;background:radial-gradient(34% 58% at 50% 46%,rgba(10,33,57,.86),rgba(10,33,57,.55) 70%,rgba(10,33,57,.28) 100%),linear-gradient(180deg,rgba(10,33,57,.35),rgba(10,33,57,0) 30%,rgba(10,33,57,.55))}
 .portada .env{position:relative;z-index:1}
-.entra .orbita img{opacity:0;transform:scale(.4)}
-.listo .orbita img{transition-delay:.5s}.listo .orbita .o2,.listo .orbita .o5{transition-delay:.62s}.listo .orbita .o3,.listo .orbita .o6{transition-delay:.74s}
-@media (max-width:1100px){.orbita .o2,.orbita .o5{display:none}}
-@media (max-width:700px){.orbita img{width:66px;border-width:3px}.orbita .o1{left:4%;top:13%}.orbita .o4{right:4%;top:13%}.orbita .o3{left:5%;top:33%;width:54px}.orbita .o6{right:5%;top:33%;width:54px}}
+.entra .fondo-portada img{transform:scale(1.08)}
+.listo .fondo-portada img{transform:none;transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
 
 /* así de fácil */
 .pasos-ped{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
@@ -306,7 +304,7 @@ img{-webkit-user-drag:none}
 
 <main>
 <section class="portada" id="inicio" aria-label="Portada">
-  <div class="orbita" aria-hidden="true"><img class="o1" src="fotos/x-taladro.webp" alt="" data-p="18"><img class="o2" src="fotos/x-cinta-metrica.webp" alt="" data-p="10"><img class="o3" src="fotos/x-lampara-led.webp" alt="" data-p="24"><img class="o4" src="fotos/x-candado.webp" alt="" data-p="14"><img class="o5" src="fotos/x-pinceles.webp" alt="" data-p="22"><img class="o6" src="fotos/x-tornillos.webp" alt="" data-p="12"></div>
+  <div class="fondo-portada" aria-hidden="true"><img src="fotos/fondo-herramientas-2000.webp" srcset="fotos/fondo-herramientas-1100.webp 1100w, fotos/fondo-herramientas-2000.webp 2000w" sizes="100vw" alt="" fetchpriority="high"></div>
   <div class="env">
     <div class="sello"><svg viewBox="0 0 209 229" role="img" aria-label="L&amp;S Ferretera"><use href="#ls-logo"/></svg><i></i></div>
     <h1>Stock permanente <span>y entrega inmediata.</span></h1>
@@ -625,12 +623,6 @@ $('#como-llegar').href = 'https://www.google.com/maps/dir/?api=1&destination=' +
 $('#link-google').href = L.google;
 new IntersectionObserver(([e], o) => { if (!e.isIntersecting) return; $('#mapa').innerHTML = `<iframe title="Mapa de L&S Ferretera" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${L.pin}&z=16&output=embed"></iframe>`; o.disconnect(); }, { rootMargin: '400px' }).observe($('#mapa'));
 
-/* portada: los productos siguen un poco al mouse (solo compu) */
-const orb = $$('.orbita img');
-if (matchMedia('(hover:hover)').matches) $('#inicio').addEventListener('pointermove', e => {
-  const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
-  orb.forEach(i => { const p = +i.dataset.p; i.style.transform = `translate(${x * p}px, ${y * p}px)`; });
-});
 $$('.pie-rubros a').forEach(a => a.addEventListener('click', () => { cat = a.dataset.cat; $('#buscar').value = ''; filtrar(); }));
 $('#pie-wa2').href = wa('Hola, L&S. Quería hacer una consulta.');
 pintar();
