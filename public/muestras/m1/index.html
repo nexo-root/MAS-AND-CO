@@ -50,27 +50,28 @@ a{color:inherit;text-decoration:none}
 @media (max-width:900px){.barra nav{display:none}}
 
 /* portada */
-.portada{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate;cursor:crosshair;background:#0b0c10}
-.portada-fondo,#chapa{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.portada-fondo{z-index:-3;filter:brightness(.92);transform:scale(1.053)}
-#chapa{z-index:-2;opacity:0;transition:opacity .6s var(--ease)}
-#chapa.ve{opacity:1}
-.portada::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(75% 85% at 18% 52%,rgba(9,9,11,.86) 0%,rgba(9,9,11,.5) 55%,rgba(9,9,11,0) 85%),linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,0) 24%),linear-gradient(180deg,rgba(9,9,11,.55) 0%,rgba(9,9,11,0) 18%)}
-.portada::after{content:"";position:absolute;inset:-10% -60%;z-index:-1;pointer-events:none;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.13) 50%,transparent 58%);transform:translateX(-60%);opacity:0}
-.portada.brilla::after{animation:brillo 1.3s var(--ease) forwards}
-@keyframes brillo{0%{opacity:1;transform:translateX(-60%)}100%{opacity:1;transform:translateX(60%)}}
-.portada-env{padding:calc(var(--barra) + 28px) 0 120px}
-.portada-texto{pointer-events:none;max-width:820px}
+.portada{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate;background:radial-gradient(60% 70% at 70% 55%,#1b1d23 0%,#0c0d11 58%,var(--negro) 100%)}
+.camioneta{position:absolute;z-index:-2;right:-3vw;top:50%;width:72vw;aspect-ratio:3/2;transform:translateY(-47%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 93%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 84%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 93%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 84%,transparent 100%);mask-composite:intersect}
+.camioneta img,.camioneta canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.camioneta img{object-fit:cover;filter:brightness(.86) contrast(1.05)}
+.camioneta canvas{opacity:0;transition:opacity .6s var(--ease)}
+.camioneta canvas.ve{opacity:1}
+.portada.chapa{cursor:crosshair}
+.portada::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(55% 75% at 10% 55%,rgba(9,9,11,.92) 0%,rgba(9,9,11,.55) 55%,rgba(9,9,11,0) 85%),linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,0) 20%)}
+.portada-env{padding:calc(var(--barra) + 28px) 0 110px}
+.portada-texto{pointer-events:none;max-width:560px}
 .portada-texto a,.portada-texto button{pointer-events:auto}
-.portada-logo{display:block;width:clamp(300px,50vw,780px);height:auto;margin-left:-.6%;filter:drop-shadow(0 20px 44px rgba(0,0,0,.65))}
-.portada h1{font-stretch:118%;font-weight:800;font-style:italic;letter-spacing:-.01em;font-size:clamp(1.6rem,2.8vw,2.6rem);line-height:1.06;margin-top:20px;max-width:24ch}
+.portada-logo{display:block;width:clamp(280px,36vw,560px);height:auto;margin-left:-.6%;filter:drop-shadow(0 20px 44px rgba(0,0,0,.65))}
+.portada h1{font-stretch:118%;font-weight:800;font-style:italic;letter-spacing:-.01em;font-size:clamp(1.6rem,2.6vw,2.5rem);line-height:1.06;margin-top:20px;max-width:22ch}
 .portada h1 span{background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.1em}
-.portada .bajada{color:#c9ccd3;max-width:50ch}
+.portada .bajada{color:#c9ccd3;max-width:46ch}
 .portada .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .lugares{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:24px;color:#b9bdc5;font-size:.92rem;font-weight:500}
 .lugares span{display:inline-flex;align-items:center;gap:7px}
 .lugares svg{width:17px;height:17px;fill:var(--rojo2)}
-.toca{position:absolute;z-index:2;pointer-events:none;display:flex;align-items:center;gap:9px;font-size:.84rem;font-weight:600;color:#fff;background:rgba(9,9,11,.6);border:1px solid var(--borde2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:8px 14px 8px 10px;border-radius:999px;opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.toca{position:absolute;z-index:2;pointer-events:none;display:flex;align-items:center;gap:9px;font-size:.84rem;font-weight:600;color:#fff;background:rgba(9,9,11,.62);border:1px solid var(--borde2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:8px 14px 8px 10px;border-radius:999px;opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
 .toca.ve{opacity:1;transform:none}
 .toca svg{width:20px;height:20px;fill:#fff}
 .cinta{position:absolute;left:0;right:0;bottom:0;height:60px;border-top:1px solid var(--borde);background:rgba(9,9,11,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden;display:flex;align-items:center;pointer-events:none}
@@ -87,10 +88,12 @@ a{color:inherit;text-decoration:none}
 .barra .marca{transition:opacity .3s var(--ease)}
 .barra:not(.solida) .marca{opacity:0;pointer-events:none}
 @media (max-width:760px){
-  .portada{align-items:flex-end}
-  .portada::before{background:linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,.92) 42%,rgba(9,9,11,.3) 66%,rgba(9,9,11,.15) 100%)}
-  .portada-env{padding:0 0 86px}
-  .portada-logo{width:min(92vw,520px);margin-left:-1.5%}
+  .portada{display:block;min-height:0}
+  .camioneta{right:auto;left:-14vw;top:calc(var(--barra) - 6px);width:128vw;transform:none;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 78%,transparent 100%)}
+  .portada::before{background:linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,.88) 50%,rgba(9,9,11,0) 66%)}
+  .portada-env{padding:calc(var(--barra) + 70vw) 0 78px}
+  .portada-logo{width:min(90vw,500px);margin-left:-1.5%}
   .portada h1{margin-top:14px}
   .portada .acciones .btn{flex:1 1 auto}
   .cinta{height:50px}.cinta span{font-size:.95rem}.cinta-pista{gap:20px;padding-left:20px}
@@ -260,9 +263,12 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 
 <main>
 <section class="portada" id="inicio" aria-label="Portada">
-  <img class="portada-fondo" id="fondo" src="fotos/hero-1280.webp" srcset="fotos/hero-1280.webp 1280w, fotos/hero-2048.webp 2048w" sizes="100vw" alt="" fetchpriority="high">
-  <canvas id="chapa" aria-hidden="true"></canvas>
-  <div class="toca" id="toca"><svg viewBox="0 0 24 24"><path d="M9 11.24V7.5a2.5 2.5 0 0 1 5 0v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/></svg><span>Tocá el auto</span></div>
+  <!-- foto de la camioneta: Alfonso Romo, Pexels (licencia libre) -->
+  <div class="camioneta" id="camioneta">
+    <img id="fondo" src="fotos/camioneta-1600.webp" srcset="fotos/camioneta-1600.webp 1600w, fotos/camioneta-2400.webp 2400w" sizes="(max-width:760px) 128vw, 72vw" alt="" fetchpriority="high">
+    <canvas id="chapa" aria-hidden="true"></canvas>
+  </div>
+  <div class="toca" id="toca"><svg viewBox="0 0 24 24"><path d="M9 11.24V7.5a2.5 2.5 0 0 1 5 0v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/></svg><span>Tocá la chapa</span></div>
   <div class="env portada-env">
     <div class="portada-texto">
       <img class="portada-logo" src="fotos/logo-grande.webp" alt="M1 Sacabollo" width="1247" height="625">
@@ -439,49 +445,69 @@ requestAnimationFrame(() => requestAnimationFrame(() => { document.body.classLis
 const barra = $('#barra');
 addEventListener('scroll', () => barra.classList.toggle('solida', scrollY > 40), { passive: true });
 
-/* ---------- portada: el auto real que se abolla y se arregla solo ---------- */
+/* ---------- portada: la camioneta se abolla solo en la chapa y se arregla sola ---------- */
 (() => {
   const cinta = ['Sacabollos', 'Daños por granizo', 'Chapa y pintura', 'Paragolpes', 'Autos siniestrados', 'Cristales', 'Cerraduras', 'Levantacristales', 'Pulido de ópticas', 'Tratamiento cerámico', 'Polarizado', 'Lavado premium', 'Diamantado de llantas'];
   const una = cinta.map(t => `<span>${t}</span><i></i>`).join('');
   $('#cinta').innerHTML = una + una;
 
-  const cv = $('#chapa'), sec = $('#inicio'), toca = $('#toca'), fondo = $('#fondo');
-  const gl = cv.getContext('webgl', { antialias: false, alpha: false, preserveDrawingBuffer: false });
+  const sec = $('#inicio'), cv = $('#chapa'), toca = $('#toca'), fondo = $('#fondo');
+  // las partes de chapa, en % de la foto (x, y desde arriba). sx/sy: cuánto achica la perspectiva el bollo en ese panel;
+  // rot: inclinación del panel; k: tamaño según qué tan lejos está
+  const PANELES = [
+    { sx: 1, sy: .38, rot: .14, k: .9, p: [[13, 50.5], [22, 47.5], [35, 45], [46, 43.5], [52, 47], [48, 50], [36, 51], [24, 52]] },
+    { sx: .5, sy: .95, rot: .04, k: 1, p: [[38, 50], [52, 48], [52.5, 60], [49, 57], [44, 55.5], [39, 56]] },
+    { sx: .62, sy: 1, rot: .04, k: 1, p: [[52.5, 50], [64.5, 49], [65, 69], [53, 70]] },
+    { sx: .58, sy: .95, rot: .04, k: .92, p: [[65, 49], [77, 48.5], [77, 67.5], [65, 69]] },
+    { sx: .52, sy: .9, rot: .04, k: .85, p: [[77.5, 48.5], [90, 48], [90.5, 57], [88, 58], [85, 57], [81, 58], [78, 61]] }
+  ];
+  const adentro = (x, y, p) => { let d = false; for (let i = 0, j = p.length - 1; i < p.length; j = i++) { const [xi, yi] = p[i], [xj, yj] = p[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) d = !d; } return d; };
+  const gl = cv.getContext('webgl', { antialias: false, alpha: false });
   if (!gl) return; // sin WebGL queda la foto quieta
-  const MAX = 10;
+  const MAX = 8, Z = .96;
   const sh = (tipo, src) => { const s = gl.createShader(tipo); gl.shaderSource(s, src); gl.compileShader(s); return s; };
   const pr = gl.createProgram();
   gl.attachShader(pr, sh(gl.VERTEX_SHADER, 'attribute vec2 a;varying vec2 v;void main(){v=a*.5+.5;gl_Position=vec4(a,0.,1.);}'));
-  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, `precision highp float;varying vec2 v;uniform sampler2D uI;uniform vec2 uR,uS,uP;uniform vec4 uD[${MAX}];uniform vec4 uB;uniform vec2 uL;
+  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, `precision highp float;varying vec2 v;uniform sampler2D uI,uM;uniform vec2 uR,uP;uniform vec4 uA[${MAX}],uB[${MAX}];
+    /* un bollo de verdad: hundido irregular con dos pliegues, llevado al plano del panel */
+    float hd(vec2 p,vec4 a,vec4 b){
+      vec2 q=p-a.xy;if(dot(q,q)>9.*a.z*a.z)return 0.;
+      float c=cos(b.z),s=sin(b.z);q=vec2(c*q.x+s*q.y,-s*q.x+c*q.y)/vec2(b.x,b.y)/a.z;
+      float t=b.w,ct=cos(t),st=sin(t);vec2 u=vec2(ct*q.x+st*q.y,-st*q.x+ct*q.y);
+      float an=atan(u.y,u.x),r=length(u*vec2(1.,1.3))*(1.+.22*sin(3.*an+t*3.)+.12*sin(5.*an+t*7.));
+      float taza=exp(-r*r*1.7);
+      float plie=exp(-abs(u.y+.2*sin(u.x*2.4+t))*11.)*exp(-u.x*u.x*.5);
+      float plie2=exp(-abs(.75*u.x+.65*u.y+.25*sin(u.y*3.+t*2.))*10.)*exp(-dot(u,u)*1.1);
+      return -a.w*(taza*.6+plie*.5+plie2*.3)*a.z*.32;}
+    float H(vec2 p){float h=0.;for(int i=0;i<${MAX};i++){if(uA[i].w>.001)h+=hd(p,uA[i],uB[i]);}return h;}
     void main(){
-      vec2 p=v*uR,off=vec2(0.),gr=vec2(0.);
-      for(int i=0;i<${MAX};i++){vec4 d=uD[i];if(d.w<.001)continue;vec2 q=p-d.xy;float k=1.9/(d.z*d.z);float g=d.w*exp(-dot(q,q)*k);
-        off+=q*g*.62;gr+=q*g*2.*k*d.z*.4;}
-      vec2 pw=p-off,uv=pw/uR;float sr=uR.x/uR.y,ir=uS.x/uS.y;vec2 s=sr>ir?vec2(1.,ir/sr):vec2(sr/ir,1.);
-      vec3 c=texture2D(uI,clamp((uv-.5)*s*.95+.5+uP,0.,1.)).rgb*.92;
-      vec3 n=normalize(vec3(-gr,1.)),L=normalize(vec3(-.45,.55,.7));float dl=dot(n,L)-L.z;
-      c*=1.+dl*1.2;
-      /* las líneas de la lámpara, reflejadas en la chapa: se tuercen donde hay un bollo */
-      float per=uL.x,y=pw.y+(pw.x-uR.x*.5)*.06,f=abs(fract(y/per)-.5)*per;
-      float nucleo=1.-smoothstep(per*.1,per*.1+1.6*uL.y,f),halo=exp(-f*f/(per*per*.018));
-      float banda=1.-smoothstep(uB.y*.72,uB.y,abs(pw.y-uB.x)),lado=uB.w>uB.z?smoothstep(uB.z,uB.w,pw.x):1.;
-      c+=vec3(1.,.95,.86)*(nucleo*.78+halo*.22)*banda*lado*(1.+dl*.8);
-      c+=max(0.,dl)*max(0.,dl)*.6;
+      vec2 p=v*uR,tuv=(v-.5)*${Z}+.5+uP;float e=1.2;
+      vec2 g=vec2(H(p+vec2(e,0.))-H(p-vec2(e,0.)),H(p+vec2(0.,e))-H(p-vec2(0.,e)))/(2.*e);
+      g*=texture2D(uM,tuv).r;
+      vec3 c=texture2D(uI,tuv-g*.012).rgb;
+      vec3 n=normalize(vec3(-g,1.)),L=normalize(vec3(-.25,.75,.6));float dl=dot(n,L)-L.z;
+      c*=1.+dl*1.6;c+=max(0.,dl)*max(0.,dl)*1.1;
+      c=(c*.86-.5)*1.05+.5;
       gl_FragColor=vec4(c,1.);}`));
   gl.linkProgram(pr); gl.useProgram(pr);
   if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
-  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
   const la = gl.getAttribLocation(pr, 'a'); gl.enableVertexAttribArray(la); gl.vertexAttribPointer(la, 2, gl.FLOAT, false, 0, 0);
-  const U = n => gl.getUniformLocation(pr, n), uR = U('uR'), uS = U('uS'), uP = U('uP'), uD = U('uD[0]'), uB = U('uB'), uL = U('uL');
-  const datos = new Float32Array(MAX * 4);
-  let W = 0, H = 0, dpr = 1, dents = [], pan = [0, 0], panT = [0, 0], raf = 0, visible = true, listo = false, tocado = false, pista = false, t0 = 0, ultimo = null;
-  const cel = () => W < 760, easeOut = x => 1 - Math.pow(1 - x, 3);
-  // un bollo: golpe rápido y después los empujes [segundos desde el golpe, cuánto queda]
-  const bollo = (x, y, R, cuando, pasos) => ({ x, y, R, t: cuando, pasos });
+  const U = n => gl.getUniformLocation(pr, n), uR = U('uR'), uP = U('uP'), uA = U('uA[0]'), uB = U('uB[0]');
+  const A = new Float32Array(MAX * 4), B = new Float32Array(MAX * 4);
+  let W = 0, H = 0, dpr = 1, dents = [], pan = [0, 0], panT = [0, 0], raf = 0, visible = true, listo = false, tocado = false, pista = false, t0 = 0;
+  const easeOut = x => 1 - Math.pow(1 - x, 3);
+  // pantalla (px del canvas) <-> foto (fracciones, y desde arriba)
+  const aFoto = (x, y) => [(x / W - .5) * Z + .5 + pan[0], .5 - (.5 - y / H) * Z - pan[1]];
+  const aPantalla = (u, vt) => [((u - .5 - pan[0]) / Z + .5) * W, (1 - ((1 - vt - .5 - pan[1]) / Z + .5)) * H];
+  const panelEn = (x, y) => { const [u, vt] = aFoto(x, y); return PANELES.find(P => adentro(u * 100, vt * 100, P.p)); };
+  function bollo(x, y, P, cuando, pasos, tam = 1) {
+    return { x, y, R: Math.max(9, W * .024 * P.k * tam), P, t: cuando, pasos, s: Math.random() * 6.283 };
+  }
   function amp(d, now) {
     const t = (now - d.t) / 1000; if (t < 0) return 0;
-    if (t < .12) return easeOut(t / .12);
+    if (t < .1) return easeOut(t / .1);
     let a = 1;
     for (const [ts, nv] of d.pasos) {
       if (t < ts) break;
@@ -492,25 +518,22 @@ addEventListener('scroll', () => barra.classList.toggle('solida', scrollY > 40),
     }
     return Math.max(0, a);
   }
-  function granizo(now) { // la entrada: unos bollos de granizo que se arreglan de a uno
-    const c = cel(), m = Math.min(W, H), pos = c
-      ? [[.22, .16, .2], [.62, .1, .15], [.8, .3, .19], [.4, .33, .16], [.14, .4, .13]]
-      : [[.58, .22, .14], [.82, .17, .1], [.7, .5, .16], [.9, .62, .11], [.55, .72, .1], [.8, .84, .09]];
-    dents = pos.map(([x, y, r], i) => bollo(x * W, y * H, r * m, now + 250 + i * 110, [[1.1 + i * .32, .55], [1.5 + i * .32, .2], [1.85 + i * .32, 0]]));
+  function entrada(now) { // granizo sobre la chapa: aparecen de a uno y se arreglan de a uno
+    const puntos = [[59, 58, 2], [46, 53, 1], [71, 56, 3], [33, 47.6, 0], [84.5, 54, 4], [62, 64, 2]];
+    dents = puntos.map(([u, vt, i], n) => { const [x, y] = aPantalla(u / 100, vt / 100); return bollo(x, y, PANELES[i], now + 300 + n * 140, [[1.15 + n * .3, .55], [1.5 + n * .3, .2], [1.85 + n * .3, 0]]); });
   }
   function tam() {
-    dpr = Math.min(devicePixelRatio || 1, 1.75); W = cv.clientWidth; H = cv.clientHeight;
+    dpr = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); gl.viewport(0, 0, cv.width, cv.height);
-    gl.uniform2f(uR, cv.width, cv.height);
-    // la franja de la lámpara: a la derecha en la compu (lejos del texto), arriba en el celular
-    if (cel()) { gl.uniform4f(uB, H * .76 * dpr, H * .2 * dpr, -1, -2); gl.uniform2f(uL, H * .058 * dpr, dpr); }
-    else { gl.uniform4f(uB, H * .5 * dpr, H * .34 * dpr, W * .46 * dpr, W * .66 * dpr); gl.uniform2f(uL, H * .085 * dpr, dpr); }
-    if (listo) dibujar(performance.now());
+    gl.uniform2f(uR, cv.width, cv.height); if (listo) dibujar(performance.now());
   }
   function dibujar(now) {
-    datos.fill(0);
-    dents.slice(-MAX).forEach((d, i) => { datos.set([d.x * dpr, (H - d.y) * dpr, d.R * dpr, amp(d, now)], i * 4); });
-    gl.uniform4fv(uD, datos); gl.uniform2f(uP, pan[0], pan[1]);
+    A.fill(0); B.fill(0);
+    dents.slice(-MAX).forEach((d, i) => {
+      A.set([d.x * dpr, (H - d.y) * dpr, d.R * dpr, amp(d, now)], i * 4);
+      B.set([d.P.sx, d.P.sy, d.P.rot, d.s], i * 4);
+    });
+    gl.uniform4fv(uA, A); gl.uniform4fv(uB, B); gl.uniform2f(uP, pan[0], pan[1]);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   }
   const vivo = (d, now) => (now - d.t) / 1000 < d.pasos[d.pasos.length - 1][0] + .4;
@@ -518,46 +541,47 @@ addEventListener('scroll', () => barra.classList.toggle('solida', scrollY > 40),
     pan[0] += (panT[0] - pan[0]) * .07; pan[1] += (panT[1] - pan[1]) * .07;
     dibujar(now);
     dents = dents.filter(d => vivo(d, now));
-    if (!pista && !tocado && t0 && now - t0 > 3600) {
-      pista = true; sec.classList.add('brilla');
-      const x = cel() ? W * .5 : W * .74, y = cel() ? H * .24 : H * .42;
-      toca.style.left = Math.min(W - 170, Math.max(16, x - 70)) + 'px'; toca.style.top = y + 'px';
-      toca.querySelector('span').textContent = matchMedia('(hover:hover)').matches ? 'Hacé clic en el auto' : 'Tocá el auto';
+    if (!pista && !tocado && t0 && now - t0 > 3900) {
+      pista = true; const r = cv.getBoundingClientRect(), s = sec.getBoundingClientRect(), [x, y] = aPantalla(.6, .6);
+      toca.style.left = Math.min(s.width - 190, Math.max(12, r.left - s.left + x - 60)) + 'px'; toca.style.top = (r.top - s.top + y - 18) + 'px';
+      toca.querySelector('span').textContent = matchMedia('(hover:hover)').matches ? 'Hacé clic en la chapa' : 'Tocá la chapa';
       toca.classList.add('ve');
     }
-    const quieto = !dents.length && Math.abs(panT[0] - pan[0]) < 1e-4 && Math.abs(panT[1] - pan[1]) < 1e-4 && now - t0 > 3800;
+    const quieto = !dents.length && Math.abs(panT[0] - pan[0]) < 1e-4 && Math.abs(panT[1] - pan[1]) < 1e-4 && now - t0 > 4200;
     raf = !quieto && visible ? requestAnimationFrame(cuadro) : 0;
   }
   const arrancar = () => { if (listo && !raf && visible) raf = requestAnimationFrame(cuadro); };
-  function golpear(e, R) {
-    const r = cv.getBoundingClientRect(), now = performance.now();
-    dents.push(bollo(e.clientX - r.left, e.clientY - r.top, R, now, [[.55, .5], [.95, .18], [1.3, 0]]));
-    if (dents.length > MAX) dents.shift();
-    ultimo = [e.clientX, e.clientY];
-    if (!tocado) { tocado = true; toca.classList.remove('ve'); }
-    arrancar();
-  }
+  const local = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
   sec.addEventListener('pointerdown', e => {
     if (!listo || e.target.closest('a,button')) return;
-    golpear(e, Math.min(W, H) * (cel() ? .17 : .1));
+    const [x, y] = local(e), P = panelEn(x, y); if (!P) return; // solo se abolla la chapa
+    dents.push(bollo(x, y, P, performance.now(), [[.6, .5], [1, .18], [1.35, 0]], .8 + Math.random() * .5));
+    if (dents.length > MAX) dents.shift();
+    if (!tocado) { tocado = true; toca.classList.remove('ve'); }
+    arrancar();
   });
   sec.addEventListener('pointermove', e => {
     if (!listo || e.pointerType !== 'mouse') return;
-    const r = sec.getBoundingClientRect();
-    panT = [((e.clientX - r.left) / r.width - .5) * .02, (.5 - (e.clientY - r.top) / r.height) * .02];
-    // con el botón apretado, arrastrar deja una fila de bollos
-    if (e.buttons === 1 && ultimo && Math.hypot(e.clientX - ultimo[0], e.clientY - ultimo[1]) > 70 && !e.target.closest('a,button')) golpear(e, Math.min(W, H) * .07);
-    arrancar();
+    const [x, y] = local(e);
+    sec.classList.toggle('chapa', !!panelEn(x, y) && !e.target.closest('a,button'));
+    panT = [(x / W - .5) * .012, (.5 - y / H) * .012]; arrancar();
   });
   new IntersectionObserver(([e]) => { visible = e.isIntersecting; arrancar(); }).observe(sec);
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(tam, 120); });
-  function cargar() {
-    const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, fondo); } catch (e) { return; } // si falla, queda la foto quieta
+  function textura(unidad, fuente) {
+    const tx = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + unidad); gl.bindTexture(gl.TEXTURE_2D, tx);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, fuente);
     [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]].forEach(([k, v]) => gl.texParameteri(gl.TEXTURE_2D, k, v));
-    gl.uniform2f(uS, fondo.naturalWidth, fondo.naturalHeight);
-    listo = true; tam(); t0 = performance.now(); granizo(t0); dibujar(t0); cv.classList.add('ve'); arrancar();
+  }
+  function cargar() {
+    // la máscara de la chapa se dibuja acá mismo con los paneles
+    const m = document.createElement('canvas'); m.width = 600; m.height = 400; const c = m.getContext('2d');
+    c.fillStyle = '#000'; c.fillRect(0, 0, 600, 400); c.filter = 'blur(2px)'; c.fillStyle = '#fff';
+    PANELES.forEach(P => { c.beginPath(); P.p.forEach(([x, y], i) => c[i ? 'lineTo' : 'moveTo'](x * 6, y * 4)); c.closePath(); c.fill(); });
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    try { textura(0, fondo); textura(1, m); } catch (e) { return; } // si falla, queda la foto quieta
+    gl.uniform1i(U('uI'), 0); gl.uniform1i(U('uM'), 1);
+    listo = true; tam(); t0 = performance.now(); entrada(t0); dibujar(t0); cv.classList.add('ve'); arrancar();
   }
   fondo.complete && fondo.naturalWidth ? cargar() : fondo.addEventListener('load', cargar, { once: true });
 })();
