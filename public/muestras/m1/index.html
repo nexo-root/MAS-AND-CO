@@ -4,7 +4,7 @@
 <title>M1 Sacabollo · Chapa, pintura y sacabollos en Eldorado y Montecarlo</title>
 <meta name="description" content="Sacabollos, chapa y pintura, cristales, cerraduras, pulido y estética del auto en Eldorado y Montecarlo, Misiones. Cotizá desde el celular y te respondemos por WhatsApp.">
 <meta name="theme-color" content="#09090b">
-<script>try{if(sessionStorage.getItem("m1-intro")!=="1")document.documentElement.classList.add("intro")}catch(e){}</script>
+<script>document.documentElement.classList.add("intro");if("scrollRestoration" in history)history.scrollRestoration="manual";</script>
 <link rel="icon" href="fotos/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
@@ -257,6 +257,12 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 /* aparición de títulos: solo una línea de máscara, sin fundidos en cadena */
 .rev-t{clip-path:inset(0 0 98% 0)}
 .rev-t.visto{clip-path:inset(0 0 0 0);transition:clip-path .8s var(--ease)}
+
+/* reglas fijas de Felipe (22/10/2026): sin zoom por doble toque, sin selección azul y sin cursor de texto fuera de los campos */
+html{touch-action:manipulation}
+body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;cursor:default}
+input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:text;cursor:text}
+img{-webkit-user-drag:none}
 </style>
 </head>
 <body class="entra">
@@ -493,9 +499,7 @@ addEventListener('scroll', () => barra.classList.toggle('solida', scrollY > 40),
 (() => {
   const P = $('#inicio'), R = document.documentElement;
   const fin = () => { P.classList.add('fin'); R.classList.remove('intro'); };
-  let visto = false; // la entrada se ve una vez por visita
-  try { visto = sessionStorage.getItem('m1-intro') === '1'; sessionStorage.setItem('m1-intro', '1'); } catch (e) {}
-  if (!window.gsap || visto) { fin(); return; }
+  if (!window.gsap) { fin(); return; } // la entrada se ve cada vez que se carga la página
   R.classList.add('intro');
   const S = s => '#inicio ' + s;
   const tl = gsap.timeline({ paused: true, onComplete: fin });

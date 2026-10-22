@@ -699,6 +699,12 @@ html,body{touch-action:manipulation}
   .envase{width:min(1320px,100% - 80px)}
   body{font-size:18px}
 }
+
+/* reglas fijas de Felipe (22/10/2026): sin zoom por doble toque, sin selección azul y sin cursor de texto fuera de los campos */
+html{touch-action:manipulation}
+body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;cursor:default}
+input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:text;cursor:text}
+img{-webkit-user-drag:none}
 </style>
 </head>
 <body>
