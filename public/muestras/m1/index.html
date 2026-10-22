@@ -258,6 +258,61 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 .rev-t{clip-path:inset(0 0 98% 0)}
 .rev-t.visto{clip-path:inset(0 0 0 0);transition:clip-path .8s var(--ease)}
 
+
+/* celular: todo más proporcionado (Felipe, 22/10/2026) */
+@media (max-width:760px){
+  :root{--barra:58px}
+  body{font-size:15.5px}
+  .barra .btn{min-height:38px;padding:0 14px;font-size:.86rem}
+  .seccion{padding:52px 0}
+  .tit{font-size:clamp(1.55rem,7.2vw,2rem)}
+  .bajada{font-size:.94rem;margin-top:10px}
+  .btn{min-height:46px;padding:0 18px;font-size:.92rem}
+  /* portada: la foto en una franja de alto fijo, sin depender del alto de la pantalla */
+  .portada{height:auto;min-height:0;display:flex;flex-direction:column;padding-top:var(--barra)}
+  .portada .foto{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:4/3;flex:none}
+  .portada .foto img{object-position:62% 58%}
+  .portada .foto::after{background:linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,0) 42%),linear-gradient(180deg,rgba(9,9,11,.5),transparent 28%)}
+  .portada-texto{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none;width:auto;padding:0 16px 30px;margin-top:-34px}
+  .logo-w{width:min(62vw,280px)}
+  .portada h1{font-size:1.4rem;margin-top:12px}
+  .portada .bajada{font-size:.9rem}
+  .portada .acciones{margin-top:18px}
+  .franja-fila>div{padding:13px 10px;gap:10px}
+  .franja svg{width:22px;height:22px}
+  .franja b{font-size:.9rem}
+  .franja p{font-size:.78rem}
+  .bento{gap:10px;margin-top:22px}
+  .serv,.serv.ancho{min-height:140px;padding:14px}
+  .serv.grande{min-height:180px}
+  .serv h3,.serv.grande h3{font-size:1.1rem}
+  .serv p{font-size:.82rem;margin-top:4px}
+  .serv .ir{font-size:.82rem;margin-top:8px}
+  .coti{gap:12px;margin-top:22px}
+  .bloque{padding:16px;border-radius:16px}
+  .bloque h3{font-size:1rem}
+  .bloque h3 small{font-size:.78rem}
+  .chips{gap:6px;margin-top:12px}
+  .chip{min-height:40px;padding:0 12px;font-size:.85rem}
+  .auto svg{max-width:180px;max-height:360px}
+  .campo input{min-height:44px}
+  .msj{font-size:.85rem;min-height:90px}
+  .fotos-tip div{font-size:.83rem}
+  .seguros .caja{padding:20px;gap:16px;border-radius:18px}
+  .aseguradoras{gap:6px;margin-top:14px}
+  .aseguradoras li{padding:7px 11px;font-size:.88rem}
+  .galeria{margin-top:22px}
+  .galeria button{margin-bottom:8px}
+  .faq{margin-top:20px}
+  .faq details{padding:0 16px}
+  .faq summary{font-size:.95rem;padding:15px 0}
+  .faq p{font-size:.9rem}
+  .talleres{gap:12px;margin-top:22px}
+  .taller .mapa{aspect-ratio:16/9}
+  .taller .datos{padding:16px}
+  .taller h3{font-size:1.3rem}
+  .barra-cel .btn{min-height:46px}
+}
 /* reglas fijas de Felipe (22/10/2026): sin zoom por doble toque, sin selección azul y sin cursor de texto fuera de los campos */
 html{touch-action:manipulation}
 body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;cursor:default}
