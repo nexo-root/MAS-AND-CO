@@ -1,0 +1,200 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>M1 Sacabollo · tres presentaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{--negro:#09090b;--texto:#f3f4f6;--rojo:#e3131c;--rojo2:#ff3d46;--borde:rgba(255,255,255,.09);--borde2:rgba(255,255,255,.16);
+--cromo:linear-gradient(180deg,#ffffff 0%,#d9dce1 40%,#8d939c 52%,#c9cdd3 68%,#f4f5f7 100%);--barra:64px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{touch-action:manipulation}
+body{background:#050506;color:var(--texto);font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+img{display:block;max-width:100%;-webkit-user-drag:none}
+a{color:inherit;text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;font-weight:700;font-stretch:110%;font-size:1rem;white-space:nowrap}
+.btn-rojo{background:var(--rojo);color:#fff;box-shadow:0 10px 30px rgba(227,19,28,.35),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-borde{border:1.5px solid var(--borde2)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.barra{position:fixed;inset:0 0 auto;height:var(--barra);z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 max(16px,calc((100vw - 1200px)/2));opacity:0}
+.barra img{height:32px;width:auto}
+.barra .btn{min-height:42px;padding:0 18px;font-size:.92rem}
+.env{width:min(100% - 32px,1200px);margin-inline:auto}
+.v{display:none;position:relative;height:100svh;overflow:hidden;isolation:isolate}
+body[data-v="1"] #v1,body[data-v="2"] #v2,body[data-v="3"] #v3{display:block}
+.logo-w{position:relative;display:block;width:clamp(260px,34vw,540px)}
+.logo-w img{width:100%;height:auto;filter:drop-shadow(0 20px 44px rgba(0,0,0,.65))}
+.logo-w i{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.9) 50%,transparent 60%) no-repeat;background-size:260% 100%;background-position:160% 0;
+  -webkit-mask-image:url(../fotos/logo-grande.webp);-webkit-mask-size:100% 100%;mask-image:url(../fotos/logo-grande.webp);mask-size:100% 100%}
+h1{font-stretch:118%;font-weight:800;font-style:italic;letter-spacing:-.01em;line-height:1.06}
+h1 .l{display:block;overflow:hidden;padding:0 .12em .06em 0}h1 .l>span{display:block}
+h1 em{font-style:italic;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.baj{color:#c9ccd3;font-size:clamp(.98rem,1.4vw,1.12rem);line-height:1.55;max-width:46ch;margin-top:12px}
+.acc{display:flex;gap:10px;margin-top:22px}
+.lug{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:18px;color:#b9bdc5;font-size:.9rem;font-weight:500}
+.lug b{color:var(--rojo2);font-weight:900;margin-right:5px}
+@media (max-width:760px){.acc .btn{flex:1 1 auto;padding:0 14px;font-size:.92rem}.lug{display:none}}
+
+/* ===== 1 · LUZ DE GARAGE ===== */
+#v1 .cam{position:absolute;z-index:-2;right:-3vw;top:50%;width:72vw;aspect-ratio:3/2;transform:translateY(-47%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 93%,transparent 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 84%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 93%,transparent 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 84%,transparent 100%);mask-composite:intersect}
+#v1 .cam img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.86) contrast(1.05);opacity:0}
+#v1 .faro{position:absolute;border-radius:50%;opacity:0;transform:scale(.7);mix-blend-mode:screen;filter:blur(6px)}
+#v1 .f1{left:24%;top:50%;width:13%;height:12%;background:radial-gradient(closest-side,rgba(255,120,60,.95),rgba(255,60,30,.5) 45%,transparent)}
+#v1 .f2{left:10%;top:47%;width:12%;height:7%;background:radial-gradient(closest-side,rgba(255,80,60,.9),rgba(255,40,30,.4) 50%,transparent)}
+#v1 .cono{position:absolute;left:46%;top:-6%;width:44%;height:60%;opacity:0;mix-blend-mode:screen;background:radial-gradient(50% 60% at 50% 20%,rgba(235,245,255,.55),rgba(200,220,255,.12) 55%,transparent 75%)}
+#v1::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(55% 75% at 10% 55%,rgba(5,5,6,.92),rgba(5,5,6,.5) 55%,transparent 85%),linear-gradient(0deg,#050506,transparent 18%)}
+#v1 .env{height:100%;display:flex;align-items:center}
+#v1 .txt{max-width:560px;padding-top:var(--barra)}
+#v1 h1{font-size:clamp(1.6rem,2.6vw,2.5rem);margin-top:16px;max-width:22ch}
+@media (max-width:760px){
+  #v1 .cam{right:auto;left:-9vw;top:50px;width:118vw;transform:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 76%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 76%,transparent 100%)}
+  #v1::before{background:linear-gradient(0deg,#050506 0%,rgba(5,5,6,.9) 48%,transparent 64%)}
+  #v1 .env{align-items:flex-start}#v1 .txt{padding-top:calc(50px + 62vw)}#v1 .logo-w{width:min(84vw,460px)}
+}
+
+/* ===== 2 · PASADA DE PULIDO ===== */
+#v2{background:var(--negro)}
+#v2 .foto{position:absolute;inset:0;overflow:hidden}
+#v2 .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 55%}
+#v2 .mate{filter:saturate(.1) brightness(.48) contrast(.82) blur(.8px)}
+#v2 .brillo{--p:-30%;filter:saturate(1.15) contrast(1.08);-webkit-mask-image:linear-gradient(118deg,#000 calc(var(--p) - 2%),transparent calc(var(--p) + 6%));mask-image:linear-gradient(118deg,#000 calc(var(--p) - 2%),transparent calc(var(--p) + 6%))}
+#v2 .pasada{--p:-30%;position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(118deg,transparent calc(var(--p) - 3%),rgba(255,255,255,.8) var(--p),transparent calc(var(--p) + 3%))}
+#v2 .txt{position:absolute;left:max(16px,calc((100vw - 1200px)/2));top:50%;transform:translateY(-46%);width:min(40vw,560px)}
+#v2 h1{font-size:clamp(1.6rem,2.6vw,2.5rem);margin-top:16px;max-width:22ch}
+@media (max-width:760px){#v2 .txt{left:16px;right:16px;top:auto;bottom:34px;transform:none;width:auto}#v2 .logo-w{width:min(80vw,420px)}#v2 .baj{font-size:.95rem}}
+
+/* ===== 3 · SELLO M1 ===== */
+#v3{background:radial-gradient(70% 60% at 85% 0%,rgba(227,19,28,.16),transparent 60%),var(--negro)}
+#v3 .tajo{position:absolute;left:-10%;top:50%;width:120%;height:5px;transform-origin:left center;background:linear-gradient(90deg,transparent,#ff3d46 30%,#fff 50%,#ff3d46 70%,transparent);filter:drop-shadow(0 0 12px rgba(255,61,70,.9));transform:rotate(-7deg) scaleX(0)}
+#v3 .sello{position:absolute;left:50%;top:48%;width:min(64vw,760px);z-index:5}
+#v3 .sello .logo-w{width:100%}
+#v3 .cont{padding-top:calc(var(--barra) + 26px)}
+#v3 h1{font-size:clamp(2.3rem,5.2vw,4.6rem);line-height:.98;font-weight:850;font-stretch:122%}
+#v3 .grilla{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+#v3 .t{position:relative;aspect-ratio:16/9.4;border-radius:18px;overflow:hidden;border:1px solid var(--borde);display:flex;flex-direction:column;justify-content:flex-end;padding:14px 16px;isolation:isolate}
+#v3 .t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+#v3 .t::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(9,9,11,.92),rgba(9,9,11,.25) 60%,rgba(9,9,11,.05))}
+#v3 .t b{font-stretch:118%;font-weight:850;font-style:italic;font-size:clamp(1.2rem,1.9vw,1.65rem);line-height:1}
+#v3 .t small{color:#c4c7ce;font-size:.86rem;margin-top:4px}
+@media (max-width:760px){#v3 .sello{width:86vw}#v3 .grilla{grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}#v3 .t{aspect-ratio:4/3.1;padding:10px 12px;border-radius:14px}#v3 .t small{font-size:.76rem}}
+
+.selector{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:30;display:flex;gap:4px;background:rgba(20,20,24,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px}
+.selector a,.selector button{font:inherit;font-weight:700;font-size:.85rem;color:#c9ccd3;background:none;border:0;padding:9px 13px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.selector .on{background:var(--rojo);color:#fff}
+.grabar .selector{display:none}
+</style></head>
+<body data-v="1">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-flecha" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></symbol></svg>
+<header class="barra"><img id="logo-barra" src="../fotos/logo.webp" alt="M1 Sacabollo"><a class="btn btn-rojo" href="#">Cotizar</a></header>
+
+<section class="v" id="v1" aria-label="Presentación 1: luz de garage">
+  <div class="cam"><img src="../fotos/camioneta-2400.webp" alt=""><i class="cono"></i><i class="faro f2"></i><i class="faro f1"></i></div>
+  <div class="env"><div class="txt">
+    <div class="logo-w"><img src="../fotos/logo-grande.webp" alt="M1 Sacabollo"><i></i></div>
+    <h1><span class="l"><span>Sacamos el bollo</span></span><span class="l"><span><em>sin tocar la pintura.</em></span></span></h1>
+    <p class="baj">Chapa y pintura, sacabollos, cristales, cerraduras y estética del auto. Cotizá desde el celular y te respondemos por WhatsApp.</p>
+    <div class="acc"><a class="btn btn-rojo" href="#">Cotizar mi arreglo <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" href="#">Ver servicios</a></div>
+    <div class="lug"><span><b>/</b>Eldorado</span><span><b>/</b>Montecarlo</span><span>Trabajamos con compañías de seguro</span></div>
+  </div></div>
+</section>
+
+<section class="v" id="v2" aria-label="Presentación 2: pasada de pulido">
+  <div class="foto"><img class="mate" src="../fotos/ranger-1600.webp" alt=""><img class="brillo" src="../fotos/ranger-1600.webp" alt="Ford Ranger azul terminada en M1"><i class="pasada"></i></div>
+  <div class="txt">
+    <div class="logo-w"><img src="../fotos/logo-grande.webp" alt="M1 Sacabollo"><i></i></div>
+    <h1><span class="l"><span>Sacamos el bollo</span></span><span class="l"><span><em>sin tocar la pintura.</em></span></span></h1>
+    <p class="baj">Chapa y pintura, sacabollos, cristales, cerraduras y estética del auto, en Eldorado y Montecarlo.</p>
+    <div class="acc"><a class="btn btn-rojo" href="#">Cotizar mi arreglo <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" href="#">Servicios</a></div>
+    <div class="lug"><span><b>/</b>Trabajamos con compañías de seguro</span></div>
+  </div>
+</section>
+
+<section class="v" id="v3" aria-label="Presentación 3: sello M1">
+  <i class="tajo"></i>
+  <div class="sello"><div class="logo-w"><img src="../fotos/logo-grande.webp" alt="M1 Sacabollo"><i></i></div></div>
+  <div class="env cont">
+    <h1><span class="l"><span>¿Qué le pasó</span></span><span class="l"><span><em>a tu auto?</em></span></span></h1>
+    <p class="baj">Tocá lo que necesitás y te armamos la consulta por WhatsApp. Eldorado y Montecarlo.</p>
+    <div class="grilla">
+      <a class="t" href="#"><img src="../fotos/p1-720.webp" alt=""><b>Un bollo</b><small>Sacabollos, sin pintar</small></a>
+      <a class="t" href="#"><img src="../fotos/s-bollo-720.webp" alt=""><b>Granizo</b><small>Capó, techo, todo el auto</small></a>
+      <a class="t" href="#"><img src="../fotos/s-siniestro-720.webp" alt=""><b>Un choque</b><small>Particular o por seguro</small></a>
+      <a class="t" href="#"><img src="../fotos/s-cristales-720.webp" alt=""><b>Un vidrio</b><small>Cristales y levantacristales</small></a>
+      <a class="t" href="#"><img src="../fotos/s-chapa-720.webp" alt=""><b>La pintura</b><small>Chapa, pintura, paragolpes</small></a>
+      <a class="t" href="#"><img src="../fotos/s-pulido-720.webp" alt=""><b>Que brille</b><small>Pulido, cerámico, lavado</small></a>
+    </div>
+  </div>
+</section>
+
+<nav class="selector" aria-label="Elegir presentación"><a href="?v=1" data-v="1">1 · Luz</a><a href="?v=2" data-v="2">2 · Pulido</a><a href="?v=3" data-v="3">3 · Sello</a><button type="button" id="otra" aria-label="Ver de nuevo">↻</button></nav>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+const q = new URLSearchParams(location.search);
+const V = ['1', '2', '3'].includes(q.get('v')) ? q.get('v') : '1';
+document.body.dataset.v = V;
+if (q.has('grabar')) document.body.classList.add('grabar');
+document.querySelectorAll('.selector [data-v]').forEach(a => a.classList.toggle('on', a.dataset.v === V));
+const cel = () => innerWidth <= 760;
+const S = s => '#v' + V + ' ' + s;
+// la pasada de luz sobre el logo cromado (la misma en las tres)
+const brilloLogo = (tl, cuando) => tl.fromTo(S('.logo-w i'), { backgroundPosition: '160% 0' }, { backgroundPosition: '-60% 0', duration: .9, ease: 'power2.inOut' }, cuando);
+const textoEntra = (tl, cuando) => tl
+  .from(S('h1 .l>span'), { yPercent: 110, duration: .75, stagger: .09, ease: 'power3.out' }, cuando)
+  .from([S('.baj'), S('.acc'), S('.lug')], { opacity: 0, y: 14, duration: .6, stagger: .1, ease: 'power2.out' }, cuando + .25);
+
+function luz() { // todo apagado → prenden los faros → titila el tubo del techo → aparece la camioneta
+  const tl = gsap.timeline();
+  const tubo = [{ opacity: .55, duration: .08 }, { opacity: .04, duration: .06 }, { opacity: .7, duration: .1 }, { opacity: .15, duration: .06 }, { opacity: .92, duration: .14 }, { opacity: .6, duration: .06 }, { opacity: 1, duration: .22 }];
+  tl.to(S('.f2'), { opacity: 1, scale: 1, duration: .45, ease: 'power2.out' }, .25)
+    .to(S('.f1'), { opacity: 1, scale: 1, duration: .45, ease: 'power2.out' }, .4)
+    .to(S('.cam img'), { keyframes: tubo, ease: 'none' }, 1)
+    .to(S('.cono'), { keyframes: [...tubo.slice(0, -1), { opacity: .35, duration: .5 }], ease: 'none' }, 1)
+    .fromTo(S('.cam img'), { scale: 1.07 }, { scale: 1, duration: 2.4, ease: 'power3.out' }, 1)
+    .to(S('.faro'), { opacity: .5, duration: .6 }, 1.9)
+    .fromTo(S('.logo-w'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .9, ease: 'power3.inOut' }, 2.05);
+  brilloLogo(tl, 2.75); textoEntra(tl, 2.55);
+  return tl.to('.barra', { opacity: 1, duration: .5 }, 3.3).to({}, { duration: 1.1 });
+}
+function pulido() { // la Ranger real arranca opaca, una pasada en diagonal la deja brillando y se corre para dejar lugar
+  const tl = gsap.timeline(), c = cel();
+  gsap.set(S('.foto'), { clipPath: 'inset(0% 0% 0% 0%)' });
+  tl.from(S('.foto'), { opacity: 0, duration: .45 }, 0)
+    .fromTo([S('.brillo'), S('.pasada')], { '--p': '-30%' }, { '--p': '135%', duration: 1.5, ease: 'power2.inOut' }, .45)
+    .to(S('.pasada'), { opacity: 0, duration: .3 }, 1.9)
+    .to(S('.foto'), { clipPath: c ? 'inset(0% 0% 50% 0%)' : 'inset(0% 0% 0% 46%)', duration: 1.05, ease: 'power3.inOut' }, 2.05)
+    .to(S('.foto img'), { xPercent: c ? 0 : 21, yPercent: c ? -16 : 0, duration: 1.05, ease: 'power3.inOut' }, 2.05)
+    .fromTo(S('.logo-w'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .9, ease: 'power3.inOut' }, 2.5);
+  brilloLogo(tl, 3.15); textoEntra(tl, 2.85);
+  return tl.to('.barra', { opacity: 1, duration: .5 }, 3.5).to({}, { duration: 1 });
+}
+function sello() { // un tajo rojo cruza, el logo se arma con un brillo, sube a la barra y aparece la pregunta
+  const tl = gsap.timeline();
+  gsap.set(S('.sello'), { xPercent: -50, yPercent: -50 });
+  const a = document.querySelector('#v3 .sello').getBoundingClientRect(), b = document.getElementById('logo-barra').getBoundingClientRect();
+  const dx = (b.left + b.width / 2) - (a.left + a.width / 2), dy = (b.top + b.height / 2) - (a.top + a.height / 2), k = b.width / a.width;
+  gsap.set('.barra', { opacity: 1 }); gsap.set('#logo-barra', { opacity: 0 });
+  gsap.set(S('.cont'), { opacity: 1 });
+  tl.to(S('.tajo'), { scaleX: 1, rotate: -7, duration: .55, ease: 'power3.out' }, .2)
+    .fromTo(S('.sello .logo-w'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .75, ease: 'power3.inOut' }, .5)
+    .to(S('.tajo'), { opacity: 0, scaleY: .3, duration: .5, ease: 'power2.in' }, 1.05);
+  brilloLogo(tl, 1.15);
+  tl.to(S('.sello'), { x: dx, y: dy, scale: k, duration: .9, ease: 'power3.inOut' }, 2)
+    .set('#logo-barra', { opacity: 1 }, 2.9).set(S('.sello'), { opacity: 0 }, 2.9)
+    .from(S('h1 .l>span'), { yPercent: 110, duration: .75, stagger: .09, ease: 'power3.out' }, 2.45)
+    .from(S('.baj'), { opacity: 0, y: 12, duration: .6, ease: 'power2.out' }, 2.7)
+    .fromTo(S('.t'), { clipPath: 'inset(0% 100% 0% 0% round 16px)' }, { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: .8, stagger: .07, ease: 'power3.inOut' }, 2.8)
+    .from('.barra .btn', { opacity: 0, duration: .4 }, 3.1);
+  return tl.to({}, { duration: 1 });
+}
+const imgs = [...document.querySelectorAll('#v' + V + ' img, #logo-barra')].map(i => i.decode ? i.decode().catch(() => {}) : 0);
+Promise.all([...imgs, document.fonts.ready]).then(() => {
+  const tl = { 1: luz, 2: pulido, 3: sello }[V]();
+  if (q.has('grabar')) { tl.pause(0); window.__tl = tl; }
+  window.__listo = true;
+  document.getElementById('otra').onclick = () => location.reload();
+});
+</script>
+</body></html>
