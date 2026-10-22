@@ -65,6 +65,23 @@ a{color:inherit;text-decoration:none}
 .portada .btn-borde:hover{background:rgba(255,255,255,.08)}
 @media (max-width:700px){.portada{min-height:0;padding-bottom:110px}.portada h1{max-width:14ch}.portada .acciones{width:100%}.portada .acciones .btn{flex:1 1 auto}.portada::before{height:12%}.portada::after{bottom:calc(12% - 30px);height:34px}}
 
+.orbita img{position:absolute;z-index:0;width:clamp(96px,10vw,150px);aspect-ratio:1;object-fit:cover;border-radius:50%;border:5px solid #fff;box-shadow:0 18px 40px rgba(0,0,0,.4);transition:transform .9s cubic-bezier(.2,.8,.2,1.05),opacity .6s var(--ease)}
+.orbita .o1{left:7%;top:18%}.orbita .o2{left:15%;top:48%;width:clamp(80px,8vw,120px)}.orbita .o3{left:6%;top:70%}
+.orbita .o4{right:7%;top:16%}.orbita .o5{right:15%;top:46%;width:clamp(80px,8vw,120px)}.orbita .o6{right:6%;top:69%}
+.portada .env{position:relative;z-index:1}
+.entra .orbita img{opacity:0;transform:scale(.4)}
+.listo .orbita img{transition-delay:.5s}.listo .orbita .o2,.listo .orbita .o5{transition-delay:.62s}.listo .orbita .o3,.listo .orbita .o6{transition-delay:.74s}
+@media (max-width:1100px){.orbita .o2,.orbita .o5{display:none}}
+@media (max-width:700px){.orbita img{width:66px;border-width:3px}.orbita .o1{left:4%;top:13%}.orbita .o4{right:4%;top:13%}.orbita .o3{left:5%;top:33%;width:54px}.orbita .o6{right:5%;top:33%;width:54px}}
+
+/* así de fácil */
+.pasos-ped{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.paso-p{background:#fff;border:1px solid var(--borde);border-radius:18px;padding:22px;display:flex;gap:16px;align-items:flex-start}
+.paso-p b{flex:none;width:46px;height:46px;border-radius:12px;background:var(--navy);color:#fff;font-family:'Barlow Condensed';font-size:1.6rem;font-weight:800;display:grid;place-items:center}
+.paso-p h3{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:1.3rem;color:var(--navy);line-height:1.05}
+.paso-p p{color:var(--texto2);font-size:.93rem;margin-top:4px}
+@media (max-width:800px){.pasos-ped{grid-template-columns:1fr}}
+
 /* franja */
 .franja{background:var(--navy);color:#fff}
 .franja-fila{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -77,7 +94,7 @@ a{color:inherit;text-decoration:none}
 
 /* ofertas: sus flyers, uno al lado del otro */
 .cinta-ofertas{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px max(16px,calc((100vw - var(--max))/2)) 18px;scrollbar-width:thin}
-.oferta{flex:none;width:min(72vw,280px);scroll-snap-align:start;background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--borde);box-shadow:0 10px 26px rgba(15,47,82,.08);display:flex;flex-direction:column}
+.oferta{flex:none;width:min(46vw,270px);scroll-snap-align:start;background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--borde);box-shadow:0 10px 26px rgba(15,47,82,.08);display:flex;flex-direction:column}
 .oferta button.ver{display:block}
 .oferta img{width:100%;height:auto}
 .oferta .pie-of{display:flex;gap:8px;padding:12px;margin-top:auto}
@@ -107,15 +124,18 @@ a{color:inherit;text-decoration:none}
 @media (max-width:1000px){.productos{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:700px){.productos{grid-template-columns:1fr 1fr;gap:10px}.prod h3{font-size:1.1rem}.prod p{display:none}.prod .agregar{margin:10px;font-size:.88rem}}
 
-/* rubros */
-.rubros{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:26px}
-.rubro{background:#fff;border:1px solid var(--borde);border-radius:16px;padding:16px 14px;text-align:left;display:flex;flex-direction:column;gap:6px;transition:transform .2s var(--ease),box-shadow .2s,border-color .2s}
-.rubro:hover{transform:translateY(-3px);box-shadow:0 14px 26px rgba(15,47,82,.12);border-color:rgba(15,47,82,.3)}
-.rubro svg{width:34px;height:34px;fill:var(--navy2);background:#eaf0f6;border-radius:10px;padding:6px}
-.rubro b{font-family:'Barlow Condensed';font-size:1.3rem;font-weight:800;text-transform:uppercase;color:var(--navy);line-height:1.05;margin-top:4px}
-.rubro span{font-size:.84rem;color:var(--texto2);line-height:1.35}
-@media (max-width:1000px){.rubros{grid-template-columns:repeat(4,1fr)}}
-@media (max-width:640px){.rubros{grid-template-columns:repeat(2,1fr);gap:10px}}
+/* rubros con foto */
+.rubros{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.rubro{position:relative;overflow:hidden;min-height:180px;border-radius:18px;color:#fff;display:flex;align-items:flex-end;text-align:left;isolation:isolate;background:var(--navy)}
+.rubro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s var(--ease)}
+.rubro::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(10,33,57,.95) 0%,rgba(10,33,57,.55) 50%,rgba(10,33,57,.1) 100%)}
+.rubro:hover img{transform:scale(1.06)}
+.rb{display:flex;flex-direction:column;gap:3px;padding:16px}
+.rb svg{width:34px;height:34px;fill:var(--navy);background:#fff;border-radius:10px;padding:6px;margin-bottom:6px}
+.rb b{font-family:'Barlow Condensed';font-size:1.45rem;font-weight:800;text-transform:uppercase;line-height:1}
+.rb small{font-size:.86rem;color:#d5e0ec;line-height:1.3}
+@media (max-width:1000px){.rubros{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:640px){.rubros{grid-template-columns:repeat(2,1fr);gap:10px}.rubro{min-height:128px}.rb{padding:12px}.rb svg{width:28px;height:28px;padding:5px}.rb b{font-size:1.15rem}.rb small{display:none}}
 /* buscador, «nuevo» y marcas */
 .buscar{position:relative;margin-top:24px;max-width:560px}
 .buscar svg{position:absolute;left:14px;top:50%;width:22px;height:22px;transform:translateY(-50%);fill:var(--texto2)}
@@ -198,11 +218,18 @@ a{color:inherit;text-decoration:none}
 .colab{position:relative;border-radius:20px;overflow:hidden;flex:1;min-height:240px}
 .colab img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .colab p{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(255,255,255,.92);border-radius:12px;padding:10px 12px;font-weight:600;font-size:.92rem;color:var(--navy)}
-@media (max-width:900px){.local{grid-template-columns:1fr}}
+@media (max-width:900px){.local{grid-template-columns:1fr}.colab{min-height:190px}.mapa{min-height:260px}}
+@media (max-width:640px){.oferta .btn{font-size:.85rem;min-height:40px}.oferta .pie-of{padding:8px}.prod .foto{aspect-ratio:1/1}}
 
 /* pie */
 .pie{background:var(--navy3);color:#b9c6d4;padding:44px 0 calc(44px + env(safe-area-inset-bottom));font-size:.92rem}
-.pie .env{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+.pie-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px}
+.pie h4{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;color:#fff;font-size:1.15rem;margin-bottom:10px}
+.pie ul{list-style:none;display:grid;gap:7px}
+.pie-marca p{margin:10px 0 14px}.pie-marca b{color:#fff}
+.pie-fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.86rem}
+@media (max-width:900px){.pie-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.pie-grid{grid-template-columns:1fr}}
 .pie-logo{height:52px;width:auto}
 .pie a{color:#e3b597}
 @media (max-width:700px){.pie{padding-bottom:calc(110px + env(safe-area-inset-bottom))}}
@@ -279,6 +306,7 @@ img{-webkit-user-drag:none}
 
 <main>
 <section class="portada" id="inicio" aria-label="Portada">
+  <div class="orbita" aria-hidden="true"><img class="o1" src="fotos/x-taladro.webp" alt="" data-p="18"><img class="o2" src="fotos/x-cinta-metrica.webp" alt="" data-p="10"><img class="o3" src="fotos/x-lampara-led.webp" alt="" data-p="24"><img class="o4" src="fotos/x-candado.webp" alt="" data-p="14"><img class="o5" src="fotos/x-pinceles.webp" alt="" data-p="22"><img class="o6" src="fotos/x-tornillos.webp" alt="" data-p="12"></div>
   <div class="env">
     <div class="sello"><svg viewBox="0 0 209 229" role="img" aria-label="L&amp;S Ferretera"><use href="#ls-logo"/></svg><i></i></div>
     <h1>Stock permanente <span>y entrega inmediata.</span></h1>
@@ -307,15 +335,15 @@ img{-webkit-user-drag:none}
 <section class="seccion" id="rubros" style="padding-top:30px">
   <div class="env">
     <h2 class="tit">Todo para la casa <span>y la obra.</span></h2>
-    <p class="bajada">Tocá un rubro: te mostramos lo que tenemos o lo sumamos a tu consulta. Si no lo ves, preguntanos.</p>
-    <div class="rubros"><button class="rubro" type="button" data-cat="Plomería" data-rubro="Plomería"><svg><use href="#i-agua"/></svg><b>Plomería</b><span>Canillas, llaves de paso, caños, rejillas</span></button><button class="rubro" type="button" data-cat="" data-rubro="Electricidad"><svg><use href="#i-rayo"/></svg><b>Electricidad</b><span>Cables, tomas, llaves, cinta aisladora</span></button><button class="rubro" type="button" data-cat="Herramientas" data-rubro="Herramientas"><svg><use href="#i-llave"/></svg><b>Herramientas</b><span>Pinzas, martillos, serruchos, discos</span></button><button class="rubro" type="button" data-cat="Construcción" data-rubro="Pinturería"><svg><use href="#i-rodillo"/></svg><b>Pinturería</b><span>Pinceles, rodillos, bandejas, enduido</span></button><button class="rubro" type="button" data-cat="Cerraduras" data-rubro="Cerrajería"><svg><use href="#i-candado"/></svg><b>Cerrajería</b><span>Cerraduras, candados, bisagras</span></button><button class="rubro" type="button" data-cat="" data-rubro="Tornillería"><svg><use href="#i-tuerca"/></svg><b>Tornillería</b><span>Tornillos, tarugos, clavos, bulones</span></button><button class="rubro" type="button" data-cat="Construcción" data-rubro="Construcción"><svg><use href="#i-ladrillos"/></svg><b>Construcción</b><span>Polietileno, alambre, mallas, cal</span></button><button class="rubro" type="button" data-cat="" data-rubro="Iluminación"><svg><use href="#i-lampara"/></svg><b>Iluminación</b><span>Lámparas, reflectores, portalámparas</span></button><button class="rubro" type="button" data-cat="Climatización" data-rubro="Climatización"><svg><use href="#i-frio"/></svg><b>Climatización</b><span>Soportes para split, cinta, caños</span></button><button class="rubro" type="button" data-cat="" data-rubro="Jardín"><svg><use href="#i-hoja"/></svg><b>Jardín</b><span>Mangueras, picos, tijeras de podar</span></button><button class="rubro" type="button" data-cat="" data-rubro="Gas"><svg><use href="#i-fuego"/></svg><b>Gas</b><span>Llaves de gas, flexibles, reguladores</span></button><button class="rubro" type="button" data-cat="Seguridad" data-rubro="Seguridad"><svg><use href="#i-escudo"/></svg><b>Seguridad</b><span>Cables antirrobo, guantes, anteojos</span></button></div>
+    <p class="bajada">Tocá un rubro y te mostramos lo que hay.</p>
+    <div class="rubros"><button class="rubro" type="button" data-cat="Plomería" data-rubro="Plomería"><img src="fotos/x-llave-paso.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-agua"/></svg><b>Plomería</b><small>Canillas, llaves de paso, rejillas</small></span></button><button class="rubro" type="button" data-cat="Electricidad" data-rubro="Electricidad"><img src="fotos/x-cable.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-rayo"/></svg><b>Electricidad</b><small>Cables, tomas, zapatillas</small></span></button><button class="rubro" type="button" data-cat="Herramientas" data-rubro="Herramientas"><img src="fotos/x-llaves.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-llave"/></svg><b>Herramientas</b><small>Pinzas, llaves, martillos, niveles</small></span></button><button class="rubro" type="button" data-cat="Herramientas eléctricas" data-rubro="Herramientas eléctricas"><img src="fotos/x-taladro.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-rayo"/></svg><b>Herramientas eléctricas</b><small>Taladros y amoladoras</small></span></button><button class="rubro" type="button" data-cat="Pinturería" data-rubro="Pinturería"><img src="fotos/x-rodillo.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-rodillo"/></svg><b>Pinturería</b><small>Rodillos, pinceles, látex, siliconas</small></span></button><button class="rubro" type="button" data-cat="Cerraduras" data-rubro="Cerrajería"><img src="fotos/x-candado.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-candado"/></svg><b>Cerrajería</b><small>Cerraduras y candados</small></span></button><button class="rubro" type="button" data-cat="Tornillería" data-rubro="Tornillería"><img src="fotos/x-tornillos.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-tuerca"/></svg><b>Tornillería</b><small>Tornillos, tarugos y clavos</small></span></button><button class="rubro" type="button" data-cat="Construcción" data-rubro="Construcción"><img src="fotos/of-polietileno.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-ladrillos"/></svg><b>Construcción</b><small>Polietileno y bandejas</small></span></button><button class="rubro" type="button" data-cat="Iluminación" data-rubro="Iluminación"><img src="fotos/x-lampara-led.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-lampara"/></svg><b>Iluminación</b><small>Lámparas LED</small></span></button><button class="rubro" type="button" data-cat="Climatización" data-rubro="Climatización"><img src="fotos/of-soportes-aa.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-frio"/></svg><b>Climatización</b><small>Soportes para aire split</small></span></button><button class="rubro" type="button" data-cat="Jardín" data-rubro="Jardín"><img src="fotos/x-manguera.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-hoja"/></svg><b>Jardín</b><small>Mangueras y riego</small></span></button><button class="rubro" type="button" data-cat="Seguridad" data-rubro="Seguridad"><img src="fotos/x-guantes.webp" alt="" loading="lazy"><span class="rb"><svg><use href="#i-escudo"/></svg><b>Seguridad</b><small>Guantes, anteojos, antirrobo</small></span></button></div>
   </div>
 </section>
 
 <section class="seccion" id="productos" style="padding-top:20px">
   <div class="env">
     <h2 class="tit">Lo que <span>tenemos.</span></h2>
-    <p class="bajada">Algunos de los artículos que siempre hay en el local. Si buscás otra cosa, sumala en «¿Algo más?» y te decimos si la tenemos.</p>
+    <p class="bajada">Más de 40 artículos para la casa y la obra. Buscá, filtrá por rubro y sumalos a tu pedido. Si no lo encontrás, preguntanos.</p>
     <div class="buscar"><svg><use href="#i-lupa"/></svg><input id="buscar" type="search" placeholder="Buscá: canilla, pinza, cerradura…" aria-label="Buscar productos"></div>
     <div class="filtros" id="filtros"></div>
     <div class="productos" id="lista-productos"></div>
@@ -350,7 +378,11 @@ img{-webkit-user-drag:none}
 <section class="seccion pedido-sec" id="pedido">
   <div class="env">
     <h2 class="tit">Tu pedido, <span>en un mensaje.</span></h2>
-    <p class="bajada">Armá la lista con las cantidades y mandala por WhatsApp. Te confirmamos precio, descuento y disponibilidad.</p>
+    <div class="pasos-ped">
+      <div class="paso-p"><b>1</b><div><h3>Elegí lo que necesitás</h3><p>Sumá artículos, ofertas o escribí lo que buscás.</p></div></div>
+      <div class="paso-p"><b>2</b><div><h3>Mandalo por WhatsApp</h3><p>Te llega el pedido escrito, con cantidades.</p></div></div>
+      <div class="paso-p"><b>3</b><div><h3>Retiralo o recibilo</h3><p>Te confirmamos precio y disponibilidad y coordinamos.</p></div></div>
+    </div>
     <div class="pedido">
       <div class="caja">
         <h3>Lo que llevás</h3>
@@ -413,12 +445,13 @@ img{-webkit-user-drag:none}
 </main>
 
 <footer class="pie">
-  <div class="env">
-    <div style="display:flex;gap:14px;align-items:center"><svg class="pie-logo" viewBox="6 6 198 168" role="img" aria-label="L&amp;S Ferretera"><use href="#ls-bloque"/></svg><p>L&amp;S Ferretera · Posadas, Misiones<br>Stock permanente · Entrega inmediata</p></div>
-    <a id="pie-wa" href="#" target="_blank" rel="noopener">WhatsApp 3764 63-1382</a>
-    <p style="width:100%">© 2026 L&amp;S Ferretera · Página hecha por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas &amp; Co</a></p>
-    <p style="width:100%;font-size:.85rem"><a href="legal.html">Privacidad, términos y aviso legal</a> · <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener">Defensa de las y los Consumidores. Para reclamos ingrese aquí</a></p>
+  <div class="env pie-grid">
+    <div class="pie-marca"><svg class="pie-logo" viewBox="6 6 198 168" role="img" aria-label="L&amp;S Ferretera"><use href="#ls-bloque"/></svg><p><b>L&amp;S Ferretera</b><br>Stock permanente · Entrega inmediata</p><a class="btn btn-wa" id="pie-wa2" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>3764 63-1382</a></div>
+    <div><h4>Rubros</h4><ul class="pie-rubros"><li><a href="#productos" data-cat="Plomería">Plomería</a></li><li><a href="#productos" data-cat="Electricidad">Electricidad</a></li><li><a href="#productos" data-cat="Herramientas">Herramientas</a></li><li><a href="#productos" data-cat="Herramientas eléctricas">Herramientas eléctricas</a></li><li><a href="#productos" data-cat="Pinturería">Pinturería</a></li><li><a href="#productos" data-cat="Cerraduras">Cerrajería</a></li><li><a href="#productos" data-cat="Tornillería">Tornillería</a></li><li><a href="#productos" data-cat="Construcción">Construcción</a></li></ul></div>
+    <div><h4>Contacto</h4><ul><li>Calle 75b 8557, Posadas, Misiones</li><li><a id="pie-wa" href="#" target="_blank" rel="noopener">WhatsApp 3764 63-1382</a></li><li>Horarios: consultá por WhatsApp</li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="legal.html">Privacidad, términos y aviso legal</a></li><li><a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener">Defensa de las y los Consumidores. Para reclamos ingrese aquí</a></li></ul></div>
   </div>
+  <div class="env pie-fin"><span>© 2026 L&amp;S Ferretera</span><span>Página hecha por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas &amp; Co</a></span></div>
 </footer>
 
 <div class="barra-ped" id="barra-ped"><a class="btn btn-navy" href="#pedido"><svg><use href="#i-carro"/></svg><span id="barra-ped-t">Ver mi pedido</span></a></div>
@@ -453,7 +486,32 @@ const PROD = [
   { id: 'pinzas', nuevo: 1, n: 'Pinzas Metz', m: 'Varios tamaños', c: 'Herramientas', f: 'p-pinzas' },
   { id: 'alicates', nuevo: 1, n: 'Alicates', m: 'Varios modelos', c: 'Herramientas', f: 'p-alicates' },
   { id: 'disco', n: 'Disco de corte', m: 'Para amoladora', nuevo: 1, c: 'Herramientas', f: 'p-disco' },
-  { id: 'cable', nuevo: 1, n: 'Cable antirrobo para bicicleta', m: 'Triple C', c: 'Seguridad', f: 'p-cable' }
+  { id: 'cable', nuevo: 1, n: 'Cable antirrobo para bicicleta', m: 'Triple C', c: 'Seguridad', f: 'p-cable' },
+  { id: 'x-taladro', n: 'Taladro percutor', m: 'Para hormigón, madera y metal', c: 'Herramientas eléctricas', f: 'x-taladro' },
+  { id: 'x-amoladora', n: 'Amoladora angular', m: 'Para cortar y desbastar', c: 'Herramientas eléctricas', f: 'x-amoladora' },
+  { id: 'x-destornilladores', n: 'Juego de destornilladores', m: 'Planos y Phillips, en estuche', c: 'Herramientas', f: 'x-destornilladores' },
+  { id: 'x-llave-francesa', n: 'Llave francesa', m: 'Ajustable', c: 'Herramientas', f: 'x-llave-francesa' },
+  { id: 'x-llaves', n: 'Juego de llaves combinadas', m: 'Boca y estrella', c: 'Herramientas', f: 'x-llaves' },
+  { id: 'x-cinta-metrica', n: 'Cinta métrica', m: 'Varios largos', c: 'Herramientas', f: 'x-cinta-metrica' },
+  { id: 'x-nivel', n: 'Nivel de burbuja', m: 'Varios largos', c: 'Herramientas', f: 'x-nivel' },
+  { id: 'x-cutter', n: 'Cutter', m: 'Con hojas de repuesto', c: 'Herramientas', f: 'x-cutter' },
+  { id: 'x-teflon', n: 'Llave para caños', m: 'Tipo Stillson', c: 'Plomería', f: 'x-teflon' },
+  { id: 'x-llave-paso', n: 'Llaves de paso', m: 'Esféricas, varias medidas', c: 'Plomería', f: 'x-llave-paso' },
+  { id: 'x-tornillos', n: 'Tornillos', m: 'Para madera, chapa y durlock', c: 'Tornillería', f: 'x-tornillos' },
+  { id: 'x-tarugos', n: 'Tarugos', m: 'Varias medidas', c: 'Tornillería', f: 'x-tarugos' },
+  { id: 'x-clavos', n: 'Clavos', m: 'Varias medidas', c: 'Tornillería', f: 'x-clavos' },
+  { id: 'x-cable', n: 'Cable unipolar', m: 'En rollo y por metro', c: 'Electricidad', f: 'x-cable' },
+  { id: 'x-tomacorriente', n: 'Tomacorrientes', m: 'Simples y dobles', c: 'Electricidad', f: 'x-tomacorriente' },
+  { id: 'x-zapatilla', n: 'Zapatillas y prolongadores', m: 'Con y sin USB', c: 'Electricidad', f: 'x-zapatilla' },
+  { id: 'x-lampara-led', n: 'Lámparas LED', m: 'Luz fría y cálida', c: 'Iluminación', f: 'x-lampara-led' },
+  { id: 'x-rodillo', n: 'Rodillos', m: 'De lana y de espuma', c: 'Pinturería', f: 'x-rodillo' },
+  { id: 'x-pinceles', n: 'Pinceles', m: 'Varios anchos', c: 'Pinturería', f: 'x-pinceles' },
+  { id: 'x-latex', n: 'Látex interior y exterior', m: 'En varias presentaciones', c: 'Pinturería', f: 'x-latex' },
+  { id: 'x-silicona', n: 'Siliconas y selladores', m: 'Con pistola aplicadora', c: 'Pinturería', f: 'x-silicona' },
+  { id: 'x-manguera', n: 'Mangueras', m: 'Con y sin enrollador', c: 'Jardín', f: 'x-manguera' },
+  { id: 'x-candado', n: 'Candados', m: 'Varias medidas', c: 'Cerraduras', f: 'x-candado' },
+  { id: 'x-guantes', n: 'Guantes de trabajo', m: 'Moteados y de cuero', c: 'Seguridad', f: 'x-guantes' },
+  { id: 'x-anteojos', n: 'Anteojos de seguridad', m: 'Transparentes y oscuros', c: 'Seguridad', f: 'x-anteojos' }
 ];
 const P = Object.fromEntries(PROD.map(p => [p.id, p]));
 
@@ -567,6 +625,14 @@ $('#como-llegar').href = 'https://www.google.com/maps/dir/?api=1&destination=' +
 $('#link-google').href = L.google;
 new IntersectionObserver(([e], o) => { if (!e.isIntersecting) return; $('#mapa').innerHTML = `<iframe title="Mapa de L&S Ferretera" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${L.pin}&z=16&output=embed"></iframe>`; o.disconnect(); }, { rootMargin: '400px' }).observe($('#mapa'));
 
+/* portada: los productos siguen un poco al mouse (solo compu) */
+const orb = $$('.orbita img');
+if (matchMedia('(hover:hover)').matches) $('#inicio').addEventListener('pointermove', e => {
+  const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+  orb.forEach(i => { const p = +i.dataset.p; i.style.transform = `translate(${x * p}px, ${y * p}px)`; });
+});
+$$('.pie-rubros a').forEach(a => a.addEventListener('click', () => { cat = a.dataset.cat; $('#buscar').value = ''; filtrar(); }));
+$('#pie-wa2').href = wa('Hola, L&S. Quería hacer una consulta.');
 pintar();
 </script>
 </body></html>
