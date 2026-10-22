@@ -4,6 +4,7 @@
 <title>M1 Sacabollo · Chapa, pintura y sacabollos en Eldorado y Montecarlo</title>
 <meta name="description" content="Sacabollos, chapa y pintura, cristales, cerraduras, pulido y estética del auto en Eldorado y Montecarlo, Misiones. Cotizá desde el celular y te respondemos por WhatsApp.">
 <meta name="theme-color" content="#09090b">
+<script>try{if(sessionStorage.getItem("m1-intro")!=="1")document.documentElement.classList.add("intro")}catch(e){}</script>
 <link rel="icon" href="fotos/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
@@ -49,14 +50,12 @@ a{color:inherit;text-decoration:none}
 .barra .btn{min-height:42px;padding:0 18px;font-size:.92rem}
 @media (max-width:900px){.barra nav{display:none}}
 
-/* portada: la Ranger real arranca opaca, una pasada de pulido la deja brillando y se corre (presentación 2) */
+/* portada: se prenden las luces, sube la persiana y aparece el taller de M1 por dentro (idea de Sofía) */
 .portada{position:relative;height:100svh;min-height:600px;overflow:hidden;isolation:isolate;background:var(--negro)}
-.portada .foto{position:absolute;inset:0;overflow:hidden}
-.portada .foto::after{content:"";position:absolute;inset:0 0 auto;height:130px;background:linear-gradient(180deg,rgba(9,9,11,.65),transparent);pointer-events:none}
-.portada .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 55%}
-.portada .mate{filter:saturate(.1) brightness(.48) contrast(.82) blur(.8px)}
-.portada .brillo{--p:-30%;filter:saturate(1.15) contrast(1.08);-webkit-mask-image:linear-gradient(118deg,#000 calc(var(--p) - 2%),transparent calc(var(--p) + 6%));mask-image:linear-gradient(118deg,#000 calc(var(--p) - 2%),transparent calc(var(--p) + 6%))}
-.portada .pasada{--p:-30%;position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(118deg,transparent calc(var(--p) - 3%),rgba(255,255,255,.8) var(--p),transparent calc(var(--p) + 3%))}
+.portada .foto{position:absolute;top:0;right:0;bottom:0;width:54%;overflow:hidden}
+.portada .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;filter:contrast(1.06) saturate(1.05)}
+.portada .foto::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--negro) 0%,rgba(9,9,11,0) 24%),linear-gradient(180deg,rgba(9,9,11,.65),transparent 20%)}
+.portada .foto .apagado{position:absolute;inset:0;z-index:1;background:#000;opacity:.62}
 .portada-texto{position:absolute;left:clamp(20px,4.5vw,88px);top:50%;transform:translateY(-46%);width:min(39vw,700px)}
 .logo-w{position:relative;display:block;width:clamp(280px,37vw,680px)}
 .logo-w img{width:100%;height:auto;filter:drop-shadow(0 20px 44px rgba(0,0,0,.65))}
@@ -69,22 +68,35 @@ a{color:inherit;text-decoration:none}
 .lugares{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:18px;color:#b9bdc5;font-size:.9rem;font-weight:500}
 .lugares span{display:inline-flex;align-items:center;gap:7px}
 .lugares svg{width:17px;height:17px;fill:var(--rojo2)}
-/* antes de la entrada (si no carga la animación, .fin deja todo en su lugar) */
-.portada:not(.fin) .foto{opacity:0}
+/* la persiana metálica, con el logo en el medio */
+.persiana{position:absolute;inset:0;z-index:30;overflow:hidden;background:#15171b;will-change:transform}
+.persiana .chapas{position:absolute;inset:0;background:repeating-linear-gradient(180deg,#3b3f47 0,#4b5059 5px,#30333a 13px,#16181c 15px,#2a2d33 17px)}
+.persiana .chapas::after{content:"";position:absolute;inset:0;background:radial-gradient(85% 60% at 50% 0%,rgba(255,255,255,.24),transparent 70%),linear-gradient(90deg,rgba(0,0,0,.5),transparent 18%,transparent 82%,rgba(0,0,0,.5))}
+.persiana .zocalo{position:absolute;left:0;right:0;bottom:0;height:26px;background:linear-gradient(180deg,#5d626b,#2a2d33 60%,#0c0d10);box-shadow:0 -3px 12px rgba(0,0,0,.5)}
+.persiana .manija{position:absolute;left:50%;bottom:7px;width:96px;height:10px;margin-left:-48px;border-radius:5px;background:linear-gradient(180deg,#a3a9b2,#4b5058)}
+.persiana .logo-p{position:absolute;left:50%;top:46%;width:min(58vw,640px);transform:translate(-50%,-50%);filter:brightness(.2) drop-shadow(0 0 0 rgba(227,19,28,0))}
+.persiana .oscuro{position:absolute;inset:0;background:#000;opacity:.93}
+.tubos{position:absolute;left:0;right:0;top:0;z-index:31;display:flex;justify-content:center;gap:9vw;pointer-events:none}
+.tubos i{width:16vw;height:6px;margin-top:12px;border-radius:3px;background:#fff;box-shadow:0 0 18px 4px rgba(220,235,255,.85),0 0 70px 14px rgba(200,220,255,.35);opacity:0}
+/* antes de la entrada (sin la animación, .fin deja todo en su lugar) */
 .portada:not(.fin) .logo-w{clip-path:inset(0 100% 0 0)}
 .portada:not(.fin) h1 .l>span{transform:translateY(110%)}
 .portada:not(.fin) .bajada,.portada:not(.fin) .acciones,.portada:not(.fin) .lugares{opacity:0}
-.portada.fin .foto{clip-path:inset(0 0 0 46%)}.portada.fin .foto img{transform:translateX(21%)}
-.portada.fin .brillo,.portada.fin .pasada{--p:135%}.portada.fin .pasada{opacity:0}
+.portada.fin .persiana,.portada.fin .tubos{display:none}
+.portada.fin .foto .apagado{opacity:0}
+html.intro .barra,html.intro .fab{opacity:0;pointer-events:none}
+.barra{transition:opacity .5s var(--ease),background .3s,border-color .3s,backdrop-filter .3s}
 .barra .marca{transition:opacity .3s var(--ease)}
 .barra:not(.solida) .marca{opacity:0;pointer-events:none}
 @media (max-width:760px){
+  .portada .foto{left:0;width:auto;bottom:auto;height:52%}
+  .portada .foto::after{background:linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,0) 32%),linear-gradient(180deg,rgba(9,9,11,.65),transparent 22%)}
   .portada-texto{left:16px;right:16px;top:auto;bottom:34px;transform:none;width:auto}
   .logo-w{width:min(80vw,420px)}
   .portada .bajada{font-size:.95rem}
   .portada .lugares{display:none}
   .portada .acciones .btn{flex:1 1 auto;padding:0 14px;font-size:.92rem}
-  .portada.fin .foto{clip-path:inset(0 0 50% 0)}.portada.fin .foto img{transform:translateY(-16%)}
+  .persiana .logo-p{width:82vw}.tubos{gap:6vw}.tubos i{width:24vw}
 }
 
 /* promo */
@@ -268,7 +280,9 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 
 <main>
 <section class="portada" id="inicio" aria-label="Portada">
-  <div class="foto"><img class="mate" src="fotos/ranger-1600.webp" srcset="fotos/ranger-1000.webp 1000w, fotos/ranger-1600.webp 1600w" sizes="100vw" alt="" fetchpriority="high"><img class="brillo" src="fotos/ranger-1600.webp" srcset="fotos/ranger-1000.webp 1000w, fotos/ranger-1600.webp 1600w" sizes="100vw" alt="Ford Ranger azul terminada en M1"><i class="pasada"></i></div>
+  <div class="foto"><img src="fotos/taller-1400.webp" srcset="fotos/taller-900.webp 900w, fotos/taller-1400.webp 1400w" sizes="(max-width:760px) 100vw, 54vw" alt="El taller de M1 en Eldorado, con el cartel, las herramientas y un auto en reparación" fetchpriority="high"><i class="apagado"></i></div>
+  <div class="persiana" aria-hidden="true"><div class="chapas"></div><img class="logo-p" src="fotos/logo-grande.webp" alt=""><div class="zocalo"><i class="manija"></i></div><i class="oscuro"></i></div>
+  <div class="tubos" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="portada-texto">
     <div class="logo-w"><img src="fotos/logo-grande.webp" alt="M1 Sacabollo" width="1247" height="625"><i></i></div>
     <h1><span class="l"><span>Sacamos el bollo</span></span><span class="l"><span><em>sin tocar la pintura.</em></span></span></h1>
@@ -475,25 +489,31 @@ requestAnimationFrame(() => requestAnimationFrame(() => { document.body.classLis
 const barra = $('#barra');
 addEventListener('scroll', () => barra.classList.toggle('solida', scrollY > 40), { passive: true });
 
-/* ---------- portada: la pasada de pulido (presentación 2) ---------- */
+/* ---------- portada: se prenden las luces y sube la persiana del taller (idea de Sofía) ---------- */
 (() => {
-  const P = $('#inicio');
-  if (!window.gsap) { P.classList.add('fin'); return; } // sin la librería queda todo en su lugar final
-  const S = s => '#inicio ' + s, cel = innerWidth <= 760;
-  const tl = gsap.timeline({ paused: true, onComplete: () => P.classList.add('fin') });
-  tl.to(S('.foto'), { opacity: 1, duration: .45 }, 0)
-    .fromTo([S('.brillo'), S('.pasada')], { '--p': '-30%' }, { '--p': '135%', duration: 1.5, ease: 'power2.inOut' }, .45)
-    .to(S('.pasada'), { opacity: 0, duration: .3 }, 1.9)
-    .fromTo(S('.foto'), { clipPath: 'inset(0% 0% 0% 0%)' }, { clipPath: cel ? 'inset(0% 0% 50% 0%)' : 'inset(0% 0% 0% 46%)', duration: 1.05, ease: 'power3.inOut' }, 2.05)
-    .to(S('.foto img'), { xPercent: cel ? 0 : 21, yPercent: cel ? -16 : 0, duration: 1.05, ease: 'power3.inOut' }, 2.05)
-    .fromTo(S('.logo-w'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .9, ease: 'power3.inOut' }, 2.5)
-    .fromTo(S('.logo-w i'), { backgroundPosition: '160% 0' }, { backgroundPosition: '-60% 0', duration: .9, ease: 'power2.inOut' }, 3.15)
-    .fromTo(S('h1 .l>span'), { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, duration: .75, stagger: .09, ease: 'power3.out' }, 2.85)
-    .fromTo([S('.bajada'), S('.acciones'), S('.lugares')], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .6, stagger: .1, ease: 'power2.out' }, 3.1);
+  const P = $('#inicio'), R = document.documentElement;
+  const fin = () => { P.classList.add('fin'); R.classList.remove('intro'); };
+  let visto = false; // la entrada se ve una vez por visita
+  try { visto = sessionStorage.getItem('m1-intro') === '1'; sessionStorage.setItem('m1-intro', '1'); } catch (e) {}
+  if (!window.gsap || visto) { fin(); return; }
+  R.classList.add('intro');
+  const S = s => '#inicio ' + s;
+  const tl = gsap.timeline({ paused: true, onComplete: fin });
+  tl.to(S('.tubos i'), { keyframes: [{ opacity: .9, duration: .06 }, { opacity: .1, duration: .07 }, { opacity: 1, duration: .08 }, { opacity: .3, duration: .05 }, { opacity: 1, duration: .12 }], stagger: .12, ease: 'none' }, .3)
+    .to(S('.persiana .oscuro'), { keyframes: [{ opacity: .5, duration: .06 }, { opacity: .85, duration: .07 }, { opacity: .25, duration: .08 }, { opacity: .6, duration: .05 }, { opacity: 0, duration: .35 }], ease: 'none' }, .3)
+    .to(S('.logo-p'), { filter: 'brightness(1) drop-shadow(0 0 28px rgba(227,19,28,.55))', duration: .6, ease: 'power2.out' }, .8)
+    .to(S('.persiana'), { y: -4, duration: .05, yoyo: true, repeat: 5, ease: 'none' }, 1.45) // arranca el motor
+    .to(S('.persiana'), { yPercent: -100, duration: 1.45, ease: 'power2.inOut' }, 1.75)
+    .to(S('.tubos'), { opacity: 0, duration: .5 }, 2.6)
+    .to(S('.foto .apagado'), { opacity: 0, duration: 1, ease: 'power2.out' }, 2.4)
+    .fromTo(S('.logo-w'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .9, ease: 'power3.inOut' }, 2.8)
+    .fromTo(S('.logo-w i'), { backgroundPosition: '160% 0' }, { backgroundPosition: '-60% 0', duration: .9, ease: 'power2.inOut' }, 3.45)
+    .fromTo(S('h1 .l>span'), { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, duration: .75, stagger: .09, ease: 'power3.out' }, 3.1)
+    .fromTo([S('.bajada'), S('.acciones'), S('.lugares')], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .6, stagger: .1, ease: 'power2.out' }, 3.35)
+    .add(() => R.classList.remove('intro'), 3.5);
+  P.addEventListener('pointerdown', () => tl.progress(1), { once: true }); // un toque saltea la entrada
   const imgs = [...P.querySelectorAll('img')].map(i => i.decode ? i.decode().catch(() => {}) : 0);
   Promise.all(imgs).then(() => tl.play());
-  // si cambia el tamaño después de la entrada, manda el estado final del CSS
-  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (tl.progress() === 1) gsap.set(P.querySelectorAll('.foto, .foto img'), { clearProps: 'clipPath,transform' }); }, 150); });
 })();
 
 /* ---------- apariciones ---------- */
