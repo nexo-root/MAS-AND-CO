@@ -52,9 +52,9 @@ a{color:inherit;text-decoration:none}
 
 /* portada: se prenden las luces, sube la persiana y aparece el taller de M1 por dentro (idea de Sofía) */
 .portada{position:relative;height:100svh;min-height:600px;overflow:hidden;isolation:isolate;background:var(--negro)}
-.portada .foto{position:absolute;top:0;right:0;bottom:0;width:54%;overflow:hidden}
-.portada .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;filter:contrast(1.06) saturate(1.05)}
-.portada .foto::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--negro) 0%,rgba(9,9,11,0) 24%),linear-gradient(180deg,rgba(9,9,11,.65),transparent 20%)}
+.portada .foto{position:absolute;inset:0;overflow:hidden}
+.portada .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;filter:brightness(.92) contrast(1.05)}
+.portada .foto::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 90% at 12% 55%,rgba(9,9,11,.88) 0%,rgba(9,9,11,.55) 50%,rgba(9,9,11,0) 80%),linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,0) 22%),linear-gradient(180deg,rgba(9,9,11,.6),transparent 20%)}
 .portada .foto .apagado{position:absolute;inset:0;z-index:1;background:#000;opacity:.62}
 .portada-texto{position:absolute;left:clamp(20px,4.5vw,88px);top:50%;transform:translateY(-46%);width:min(39vw,700px)}
 .logo-w{position:relative;display:block;width:clamp(280px,37vw,680px)}
@@ -89,8 +89,8 @@ html.intro .barra,html.intro .fab{opacity:0;pointer-events:none}
 .barra .marca{transition:opacity .3s var(--ease)}
 .barra:not(.solida) .marca{opacity:0;pointer-events:none}
 @media (max-width:760px){
-  .portada .foto{left:0;width:auto;bottom:auto;height:52%}
-  .portada .foto::after{background:linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,0) 32%),linear-gradient(180deg,rgba(9,9,11,.65),transparent 22%)}
+  .portada .foto img{object-position:72% 55%}
+  .portada .foto::after{background:linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,.9) 40%,rgba(9,9,11,.15) 66%,rgba(9,9,11,.45) 100%)}
   .portada-texto{left:16px;right:16px;top:auto;bottom:34px;transform:none;width:auto}
   .logo-w{width:min(80vw,420px)}
   .portada .bajada{font-size:.95rem}
@@ -280,7 +280,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 
 <main>
 <section class="portada" id="inicio" aria-label="Portada">
-  <div class="foto"><img src="fotos/taller-1400.webp" srcset="fotos/taller-900.webp 900w, fotos/taller-1400.webp 1400w" sizes="(max-width:760px) 100vw, 54vw" alt="El taller de M1 en Eldorado, con el cartel, las herramientas y un auto en reparación" fetchpriority="high"><i class="apagado"></i></div>
+  <div class="foto"><!-- foto de fondo: Danila Rusanov, Pexels (licencia libre) --><img src="fotos/fondo-1600.webp" srcset="fotos/fondo-1000.webp 1000w, fotos/fondo-1600.webp 1600w, fotos/fondo-2400.webp 2400w" sizes="100vw" alt="" fetchpriority="high"><i class="apagado"></i></div>
   <div class="persiana" aria-hidden="true"><div class="chapas"></div><img class="logo-p" src="fotos/logo-grande.webp" alt=""><div class="zocalo"><i class="manija"></i></div><i class="oscuro"></i></div>
   <div class="tubos" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="portada-texto">
