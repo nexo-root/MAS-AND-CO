@@ -204,6 +204,18 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:45;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.45);transition:transform .3s var(--ease),opacity .3s}
 .fab svg{width:30px;height:30px;fill:#fff}
 .fab.fuera{transform:scale(.6);opacity:0;pointer-events:none}
+.txt-cel{display:none}
+/* barra fija para cotizar en el celular: aparece al dejar la portada y se esconde junto al botón del cotizador */
+.barra-cel{display:none}
+@media (max-width:760px){
+  .txt-pc{display:none}.txt-cel{display:inline}
+  .portada .acciones .btn-rojo svg{display:none}
+  .fab{display:none}
+  .barra-cel{display:block;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(9,9,11,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--borde);transform:translateY(110%);transition:transform .35s var(--ease)}
+  .barra-cel.ve{transform:none}
+  .barra-cel .btn{width:100%}
+  .pie{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+}
 
 /* aparición de títulos: solo una línea de máscara, sin fundidos en cadena */
 .rev-t{clip-path:inset(0 0 98% 0)}
@@ -236,7 +248,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
     <div class="logo-w"><img src="fotos/logo-grande.webp" alt="M1 Sacabollo" width="1247" height="625"><i></i></div>
     <h1><span class="l"><span>Sacamos el bollo</span></span><span class="l"><span><em>sin tocar la pintura.</em></span></span></h1>
     <p class="bajada">Chapa y pintura, sacabollos, cristales, cerraduras y estética del auto, en Eldorado y Montecarlo.</p>
-    <div class="acciones"><a class="btn btn-rojo" href="#cotizar">Cotizar mi arreglo <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" href="#servicios">Servicios</a></div>
+    <div class="acciones"><a class="btn btn-rojo" href="#cotizar">Cotizar mi arreglo <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" id="hero-foto" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span class="txt-pc">Mandanos una foto</span><span class="txt-cel">Mandar foto</span></a></div>
     <div class="lugares"><span><svg><use href="#i-pin"/></svg>Eldorado</span><span><svg><use href="#i-pin"/></svg>Montecarlo</span><span>Trabajamos con compañías de seguro</span></div>
   </div>
 </section>
@@ -360,6 +372,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
   </div>
 </footer>
 
+<div class="barra-cel" id="barra-cel"><a class="btn btn-wa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Cotizar por WhatsApp</a></div>
 <a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Escribir a M1 por WhatsApp"><svg><use href="#i-wa"/></svg></a>
 <dialog class="visor" id="visor"><button class="cerrar" type="button" aria-label="Cerrar">×</button><img alt=""></dialog>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -483,10 +496,16 @@ pintar();
 
 /* ---------- WhatsApp general ---------- */
 const general = wa(M1.talleres[0].wa, 'Hola, M1. Quería hacer una consulta.');
-$('#fab').href = general; $('#pie-wa').href = general; $('#otra-cosa').href = general;
+$('#fab').href = general;
+$('#hero-foto').href = wa(M1.talleres[0].wa, 'Hola, M1. Les mando una foto del daño para que me coticen.');
+$('#barra-cel a').href = wa(M1.talleres[0].wa, 'Hola, M1. Quería cotizar un arreglo.'); $('#pie-wa').href = general; $('#otra-cosa').href = general;
 $('#wa-seguro').href = wa(M1.talleres[0].wa, 'Hola, M1. Quería consultar por un arreglo por seguro.');
 const fab = $('#fab');
 new IntersectionObserver(([e]) => fab.classList.toggle('fuera', e.isIntersecting)).observe(enviar);
+const barraCel = $('#barra-cel'); let enPortada = true, enEnviar = false;
+const verBarra = () => barraCel.classList.toggle('ve', !enPortada && !enEnviar);
+new IntersectionObserver(([e]) => { enPortada = e.isIntersecting; verBarra(); }, { threshold: .25 }).observe($('#inicio'));
+new IntersectionObserver(([e]) => { enEnviar = e.isIntersecting; verBarra(); }).observe(enviar);
 
 /* ---------- promo del mes ---------- */
 if (M1.promo && new Date(M1.promo.hasta + 'T23:59') >= new Date()) {
