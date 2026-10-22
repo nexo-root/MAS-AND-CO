@@ -36,7 +36,7 @@ a{color:inherit;text-decoration:none}
 .barra{position:fixed;inset:0 0 auto;height:var(--barra);z-index:40;display:flex;align-items:center;background:rgba(244,239,230,.88);backdrop-filter:blur(12px) saturate(150%);-webkit-backdrop-filter:blur(12px) saturate(150%);border-bottom:1px solid var(--borde)}
 .barra .env{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .marca{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed';font-weight:800;font-size:1.25rem;color:var(--navy);letter-spacing:.02em}
-.marca img{height:44px;width:auto;border-radius:8px}
+.marca-logo{height:40px;width:auto;display:block}
 .barra nav{display:flex;gap:26px;font-weight:600;color:var(--texto2)}
 .barra nav a:hover{color:var(--navy)}
 .barra .btn{min-height:44px;padding:0 16px;font-size:.95rem}
@@ -55,7 +55,7 @@ a{color:inherit;text-decoration:none}
 .portada::after{content:"";position:absolute;z-index:-1;left:-10%;right:-10%;bottom:calc(15% - 34px);height:44px;background:var(--cobre-g);clip-path:polygon(0 78%,100% 0,100% 22%,0 100%);opacity:.95}
 .portada .env{display:flex;flex-direction:column;align-items:center}
 .sello{position:relative;width:clamp(200px,19vw,280px);border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 30px 70px rgba(0,0,0,.45),0 0 0 6px rgba(255,255,255,.08)}
-.sello img{width:100%;height:auto}
+.sello svg{display:block;width:100%;height:auto;padding:7% 7% 4%}
 .sello i{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.75) 50%,transparent 62%);transform:translateX(-120%)}
 .portada h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;line-height:.95;font-size:clamp(2.2rem,4.4vw,4rem);color:#fff;margin-top:28px;max-width:20ch}
 .portada h1 span{background:var(--cobre-g);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -106,6 +106,51 @@ a{color:inherit;text-decoration:none}
 .prod.oculto{display:none}
 @media (max-width:1000px){.productos{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:700px){.productos{grid-template-columns:1fr 1fr;gap:10px}.prod h3{font-size:1.1rem}.prod p{display:none}.prod .agregar{margin:10px;font-size:.88rem}}
+
+/* rubros */
+.rubros{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:26px}
+.rubro{background:#fff;border:1px solid var(--borde);border-radius:16px;padding:16px 14px;text-align:left;display:flex;flex-direction:column;gap:6px;transition:transform .2s var(--ease),box-shadow .2s,border-color .2s}
+.rubro:hover{transform:translateY(-3px);box-shadow:0 14px 26px rgba(15,47,82,.12);border-color:rgba(15,47,82,.3)}
+.rubro svg{width:34px;height:34px;fill:var(--navy2);background:#eaf0f6;border-radius:10px;padding:6px}
+.rubro b{font-family:'Barlow Condensed';font-size:1.3rem;font-weight:800;text-transform:uppercase;color:var(--navy);line-height:1.05;margin-top:4px}
+.rubro span{font-size:.84rem;color:var(--texto2);line-height:1.35}
+@media (max-width:1000px){.rubros{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:640px){.rubros{grid-template-columns:repeat(2,1fr);gap:10px}}
+/* buscador, «nuevo» y marcas */
+.buscar{position:relative;margin-top:24px;max-width:560px}
+.buscar svg{position:absolute;left:14px;top:50%;width:22px;height:22px;transform:translateY(-50%);fill:var(--texto2)}
+.buscar input{width:100%;min-height:52px;border-radius:14px;border:1.5px solid var(--borde);background:#fff;padding:0 16px 0 46px;font:inherit;font-size:16px;color:var(--texto)}
+.buscar input:focus{outline:none;border-color:var(--navy)}
+.prod .foto{position:relative}
+.prod .nuevo{position:absolute;top:10px;left:10px;background:var(--cobre);color:#fff;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:.85rem;padding:3px 9px;border-radius:6px}
+.sin-result{margin-top:18px;padding:16px;border:2px dashed var(--borde);border-radius:14px;color:var(--texto2)}
+.sin-result button{color:var(--navy2);font-weight:700;text-decoration:underline}
+.marcas{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:28px;padding-top:22px;border-top:1px solid var(--borde)}
+.marcas span{color:var(--texto2);font-weight:600;margin-right:6px}
+.marcas b{font-family:'Barlow Condensed';font-weight:800;font-size:1.25rem;text-transform:uppercase;color:var(--navy);background:#fff;border:1px solid var(--borde);border-radius:10px;padding:6px 14px}
+/* calculadora de pintura */
+.pintura{background:#fff}
+.pintura-env{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.calc .campo+.campo,.calc .calc-fila+.campo{margin-top:14px}
+.calc-fila{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.calc-res{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:18px 0 14px;padding:14px 16px;background:var(--crema);border-radius:14px}
+.calc-res b{font-family:'Barlow Condensed';font-size:2.4rem;font-weight:800;color:var(--navy);line-height:1}
+.calc-res span{color:var(--texto2)}
+.calc .btn{width:100%}
+@media (max-width:900px){.pintura-env{grid-template-columns:1fr}}
+/* profesionales */
+.profes{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;padding:34px 0}
+.profes-env{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.profes h2{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:clamp(1.6rem,2.6vw,2.3rem);line-height:1}
+.profes p{color:#c9d6e4;margin-top:6px}
+/* preguntas */
+.faq{margin-top:28px;display:grid;gap:10px;max-width:860px}
+.faq details{background:#fff;border:1px solid var(--borde);border-radius:16px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:700;font-size:1.05rem;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--cobre);font-size:1.5rem;line-height:1;transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--texto2);padding:0 0 18px;margin-top:-4px}
 
 /* el pedido */
 .pedido-sec{background:linear-gradient(180deg,var(--crema),var(--crema2))}
@@ -158,7 +203,7 @@ a{color:inherit;text-decoration:none}
 /* pie */
 .pie{background:var(--navy3);color:#b9c6d4;padding:44px 0 calc(44px + env(safe-area-inset-bottom));font-size:.92rem}
 .pie .env{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
-.pie img{height:56px;border-radius:10px}
+.pie-logo{height:52px;width:auto}
 .pie a{color:#e3b597}
 @media (max-width:700px){.pie{padding-bottom:calc(110px + env(safe-area-inset-bottom))}}
 
@@ -192,6 +237,14 @@ img{-webkit-user-drag:none}
 </head>
 <body class="entra">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="ls-azul" cx="48%" cy="45%" r="70%"><stop offset="0" stop-color="#0e5a92"/><stop offset=".55" stop-color="#063e69"/><stop offset="1" stop-color="#002741"/></radialGradient>
+    <linearGradient id="ls-cobre" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7ebe2"/><stop offset=".3" stop-color="#dcae91"/><stop offset=".5" stop-color="#b97e5d"/><stop offset=".68" stop-color="#f3dccb"/><stop offset="1" stop-color="#c8936f"/></linearGradient>
+  </defs>
+  <symbol id="ls-bloque" viewBox="6 6 198 168"><path d="M9 9H200V129A42 42 0 0 1 158 171H9Z" fill="url(#ls-azul)"/><path fill="url(#ls-cobre)" fill-rule="evenodd" d="M30 30H46.5V135.5H110L115.5 150.5H30Z M77.20 31.90 C74.45 33.58 72.80 36.98 71.60 38.80 C70.40 40.62 70.37 41.47 70.00 42.80 C69.63 44.13 69.32 44.82 69.40 46.80 C69.48 48.78 69.73 51.92 70.50 54.70 C71.27 57.48 72.92 61.40 74.00 63.50 C75.08 65.60 76.48 66.28 77.00 67.30 C77.52 68.32 77.32 68.88 77.10 69.60 C76.88 70.32 77.50 70.05 75.70 71.60 C73.90 73.15 68.68 76.62 66.30 78.90 C63.92 81.18 62.93 82.25 61.40 85.30 C59.87 88.35 57.75 93.37 57.10 97.20 C56.45 101.03 56.67 105.13 57.50 108.30 C58.33 111.47 59.97 113.83 62.10 116.20 C64.23 118.57 68.15 121.15 70.30 122.50 C72.45 123.85 72.58 123.90 75.00 124.30 C77.42 124.70 82.00 124.95 84.80 124.90 C87.60 124.85 89.68 124.42 91.80 124.00 C93.92 123.58 95.47 123.27 97.50 122.40 C99.53 121.53 102.23 119.40 104.00 118.80 C105.77 118.20 107.02 118.33 108.10 118.80 C109.18 119.27 107.53 116.72 110.50 121.60 C113.47 126.48 122.82 143.42 125.90 148.10 C128.98 152.78 127.77 149.32 129.00 149.70 C130.23 150.08 129.10 150.35 133.30 150.40 C137.50 150.45 149.07 150.73 154.20 150.00 C159.33 149.27 161.38 147.43 164.10 146.00 C166.82 144.57 168.72 143.27 170.50 141.40 C172.28 139.53 173.83 136.55 174.80 134.80 C175.77 133.05 175.93 133.22 176.30 130.90 C176.67 128.58 177.03 123.25 177.00 120.90 C176.97 118.55 177.02 119.03 176.10 116.80 C175.18 114.57 172.92 109.90 171.50 107.50 C170.08 105.10 169.43 105.30 167.60 102.40 C165.77 99.50 162.25 92.88 160.50 90.10 C158.75 87.32 158.48 88.00 157.10 85.70 C155.72 83.40 154.78 80.55 152.20 76.30 C149.62 72.05 144.07 64.57 141.60 60.20 C139.13 55.83 137.98 52.32 137.40 50.10 C136.82 47.88 137.30 47.85 138.10 46.90 C138.90 45.95 137.93 44.77 142.20 44.40 C146.47 44.03 159.82 44.77 163.70 44.70 C167.58 44.63 164.97 44.43 165.50 44.00 C166.03 43.57 166.70 42.77 166.90 42.10 C167.10 41.43 167.33 41.07 166.70 40.00 C166.07 38.93 164.00 36.98 163.10 35.70 C162.20 34.42 161.87 33.08 161.30 32.30 C160.73 31.52 160.33 31.30 159.70 31.00 C159.07 30.70 160.67 30.62 157.50 30.50 C154.33 30.38 145.13 30.13 140.70 30.30 C136.27 30.47 133.28 30.87 130.90 31.50 C128.52 32.13 127.78 32.92 126.40 34.10 C125.02 35.28 123.47 37.32 122.60 38.60 C121.73 39.88 121.60 39.78 121.20 41.80 C120.80 43.82 119.80 47.55 120.20 50.70 C120.60 53.85 119.35 52.85 123.60 60.70 C127.85 68.55 140.28 89.05 145.70 97.80 C151.12 106.55 154.17 109.98 156.10 113.20 C158.03 116.42 157.02 115.00 157.30 117.10 C157.58 119.20 157.93 123.75 157.80 125.80 C157.67 127.85 156.93 128.57 156.50 129.40 C156.07 130.23 156.67 129.90 155.20 130.80 C153.73 131.70 150.58 134.03 147.70 134.80 C144.82 135.57 140.18 135.43 137.90 135.40 C135.62 135.37 135.07 135.07 134.00 134.60 C132.93 134.13 134.15 136.73 131.50 132.60 C128.85 128.47 120.30 113.97 118.10 109.80 C115.90 105.63 118.02 108.42 118.30 107.60 C118.58 106.78 118.75 106.23 119.80 104.90 C120.85 103.57 123.13 101.47 124.60 99.60 C126.07 97.73 127.98 94.97 128.60 93.70 C129.22 92.43 128.75 92.85 128.30 92.00 C127.85 91.15 126.57 89.83 125.90 88.60 C125.23 87.37 124.92 85.52 124.30 84.60 C123.68 83.68 122.93 83.33 122.20 83.10 C121.47 82.87 120.65 82.92 119.90 83.20 C119.15 83.48 119.17 83.18 117.70 84.80 C116.23 86.42 112.58 91.45 111.10 92.90 C109.62 94.35 109.40 93.52 108.80 93.50 C108.20 93.48 109.45 95.37 107.50 92.80 C105.55 90.23 100.37 83.10 97.10 78.10 C93.83 73.10 90.13 66.97 87.90 62.80 C85.67 58.63 84.53 55.60 83.70 53.10 C82.87 50.60 82.80 49.28 82.90 47.80 C83.00 46.32 83.48 45.18 84.30 44.20 C85.12 43.22 86.17 42.32 87.80 41.90 C89.43 41.48 92.63 41.43 94.10 41.70 C95.57 41.97 96.00 42.87 96.60 43.50 C97.20 44.13 97.57 43.70 97.70 45.50 C97.83 47.30 97.13 51.83 97.40 54.30 C97.67 56.77 98.60 59.00 99.30 60.30 C100.00 61.60 100.78 61.88 101.60 62.10 C102.42 62.32 103.15 62.48 104.20 61.60 C105.25 60.72 106.85 58.97 107.90 56.80 C108.95 54.63 110.47 51.77 110.50 48.60 C110.53 45.43 109.62 40.65 108.10 37.80 C106.58 34.95 104.22 33.07 101.40 31.50 C98.58 29.93 93.42 28.87 91.20 28.40 C88.98 27.93 90.43 28.12 88.10 28.70 C85.77 29.28 79.95 30.22 77.20 31.90Z M85.70 82.10 C86.55 82.38 86.83 82.50 87.90 83.90 C88.97 85.30 91.08 88.58 92.10 90.50 C93.12 92.42 93.23 94.00 94.00 95.40 C94.77 96.80 96.12 97.95 96.70 98.90 C97.28 99.85 97.40 100.27 97.50 101.10 C97.60 101.93 97.70 102.98 97.30 103.90 C96.90 104.82 96.12 105.88 95.10 106.60 C94.08 107.32 93.00 107.75 91.20 108.20 C89.40 108.65 86.58 109.20 84.30 109.30 C82.02 109.40 79.00 109.07 77.50 108.80 C76.00 108.53 76.12 108.50 75.30 107.70 C74.48 106.90 73.17 105.05 72.60 104.00 C72.03 102.95 71.90 102.97 71.90 101.40 C71.90 99.83 72.22 96.37 72.60 94.60 C72.98 92.83 73.07 92.53 74.20 90.80 C75.33 89.07 77.97 85.63 79.40 84.20 C80.83 82.77 81.75 82.55 82.80 82.20 C83.85 81.85 84.85 81.82 85.70 82.10Z"/></symbol>
+  <symbol id="ls-logo" viewBox="0 0 209 229"><path d="M9 9H200V129A42 42 0 0 1 158 171H9Z" fill="url(#ls-azul)"/><path fill="url(#ls-cobre)" fill-rule="evenodd" d="M30 30H46.5V135.5H110L115.5 150.5H30Z M77.20 31.90 C74.45 33.58 72.80 36.98 71.60 38.80 C70.40 40.62 70.37 41.47 70.00 42.80 C69.63 44.13 69.32 44.82 69.40 46.80 C69.48 48.78 69.73 51.92 70.50 54.70 C71.27 57.48 72.92 61.40 74.00 63.50 C75.08 65.60 76.48 66.28 77.00 67.30 C77.52 68.32 77.32 68.88 77.10 69.60 C76.88 70.32 77.50 70.05 75.70 71.60 C73.90 73.15 68.68 76.62 66.30 78.90 C63.92 81.18 62.93 82.25 61.40 85.30 C59.87 88.35 57.75 93.37 57.10 97.20 C56.45 101.03 56.67 105.13 57.50 108.30 C58.33 111.47 59.97 113.83 62.10 116.20 C64.23 118.57 68.15 121.15 70.30 122.50 C72.45 123.85 72.58 123.90 75.00 124.30 C77.42 124.70 82.00 124.95 84.80 124.90 C87.60 124.85 89.68 124.42 91.80 124.00 C93.92 123.58 95.47 123.27 97.50 122.40 C99.53 121.53 102.23 119.40 104.00 118.80 C105.77 118.20 107.02 118.33 108.10 118.80 C109.18 119.27 107.53 116.72 110.50 121.60 C113.47 126.48 122.82 143.42 125.90 148.10 C128.98 152.78 127.77 149.32 129.00 149.70 C130.23 150.08 129.10 150.35 133.30 150.40 C137.50 150.45 149.07 150.73 154.20 150.00 C159.33 149.27 161.38 147.43 164.10 146.00 C166.82 144.57 168.72 143.27 170.50 141.40 C172.28 139.53 173.83 136.55 174.80 134.80 C175.77 133.05 175.93 133.22 176.30 130.90 C176.67 128.58 177.03 123.25 177.00 120.90 C176.97 118.55 177.02 119.03 176.10 116.80 C175.18 114.57 172.92 109.90 171.50 107.50 C170.08 105.10 169.43 105.30 167.60 102.40 C165.77 99.50 162.25 92.88 160.50 90.10 C158.75 87.32 158.48 88.00 157.10 85.70 C155.72 83.40 154.78 80.55 152.20 76.30 C149.62 72.05 144.07 64.57 141.60 60.20 C139.13 55.83 137.98 52.32 137.40 50.10 C136.82 47.88 137.30 47.85 138.10 46.90 C138.90 45.95 137.93 44.77 142.20 44.40 C146.47 44.03 159.82 44.77 163.70 44.70 C167.58 44.63 164.97 44.43 165.50 44.00 C166.03 43.57 166.70 42.77 166.90 42.10 C167.10 41.43 167.33 41.07 166.70 40.00 C166.07 38.93 164.00 36.98 163.10 35.70 C162.20 34.42 161.87 33.08 161.30 32.30 C160.73 31.52 160.33 31.30 159.70 31.00 C159.07 30.70 160.67 30.62 157.50 30.50 C154.33 30.38 145.13 30.13 140.70 30.30 C136.27 30.47 133.28 30.87 130.90 31.50 C128.52 32.13 127.78 32.92 126.40 34.10 C125.02 35.28 123.47 37.32 122.60 38.60 C121.73 39.88 121.60 39.78 121.20 41.80 C120.80 43.82 119.80 47.55 120.20 50.70 C120.60 53.85 119.35 52.85 123.60 60.70 C127.85 68.55 140.28 89.05 145.70 97.80 C151.12 106.55 154.17 109.98 156.10 113.20 C158.03 116.42 157.02 115.00 157.30 117.10 C157.58 119.20 157.93 123.75 157.80 125.80 C157.67 127.85 156.93 128.57 156.50 129.40 C156.07 130.23 156.67 129.90 155.20 130.80 C153.73 131.70 150.58 134.03 147.70 134.80 C144.82 135.57 140.18 135.43 137.90 135.40 C135.62 135.37 135.07 135.07 134.00 134.60 C132.93 134.13 134.15 136.73 131.50 132.60 C128.85 128.47 120.30 113.97 118.10 109.80 C115.90 105.63 118.02 108.42 118.30 107.60 C118.58 106.78 118.75 106.23 119.80 104.90 C120.85 103.57 123.13 101.47 124.60 99.60 C126.07 97.73 127.98 94.97 128.60 93.70 C129.22 92.43 128.75 92.85 128.30 92.00 C127.85 91.15 126.57 89.83 125.90 88.60 C125.23 87.37 124.92 85.52 124.30 84.60 C123.68 83.68 122.93 83.33 122.20 83.10 C121.47 82.87 120.65 82.92 119.90 83.20 C119.15 83.48 119.17 83.18 117.70 84.80 C116.23 86.42 112.58 91.45 111.10 92.90 C109.62 94.35 109.40 93.52 108.80 93.50 C108.20 93.48 109.45 95.37 107.50 92.80 C105.55 90.23 100.37 83.10 97.10 78.10 C93.83 73.10 90.13 66.97 87.90 62.80 C85.67 58.63 84.53 55.60 83.70 53.10 C82.87 50.60 82.80 49.28 82.90 47.80 C83.00 46.32 83.48 45.18 84.30 44.20 C85.12 43.22 86.17 42.32 87.80 41.90 C89.43 41.48 92.63 41.43 94.10 41.70 C95.57 41.97 96.00 42.87 96.60 43.50 C97.20 44.13 97.57 43.70 97.70 45.50 C97.83 47.30 97.13 51.83 97.40 54.30 C97.67 56.77 98.60 59.00 99.30 60.30 C100.00 61.60 100.78 61.88 101.60 62.10 C102.42 62.32 103.15 62.48 104.20 61.60 C105.25 60.72 106.85 58.97 107.90 56.80 C108.95 54.63 110.47 51.77 110.50 48.60 C110.53 45.43 109.62 40.65 108.10 37.80 C106.58 34.95 104.22 33.07 101.40 31.50 C98.58 29.93 93.42 28.87 91.20 28.40 C88.98 27.93 90.43 28.12 88.10 28.70 C85.77 29.28 79.95 30.22 77.20 31.90Z M85.70 82.10 C86.55 82.38 86.83 82.50 87.90 83.90 C88.97 85.30 91.08 88.58 92.10 90.50 C93.12 92.42 93.23 94.00 94.00 95.40 C94.77 96.80 96.12 97.95 96.70 98.90 C97.28 99.85 97.40 100.27 97.50 101.10 C97.60 101.93 97.70 102.98 97.30 103.90 C96.90 104.82 96.12 105.88 95.10 106.60 C94.08 107.32 93.00 107.75 91.20 108.20 C89.40 108.65 86.58 109.20 84.30 109.30 C82.02 109.40 79.00 109.07 77.50 108.80 C76.00 108.53 76.12 108.50 75.30 107.70 C74.48 106.90 73.17 105.05 72.60 104.00 C72.03 102.95 71.90 102.97 71.90 101.40 C71.90 99.83 72.22 96.37 72.60 94.60 C72.98 92.83 73.07 92.53 74.20 90.80 C75.33 89.07 77.97 85.63 79.40 84.20 C80.83 82.77 81.75 82.55 82.80 82.20 C83.85 81.85 84.85 81.82 85.70 82.10Z"/><text x="104.5" y="216" text-anchor="middle" textLength="190" lengthAdjust="spacingAndGlyphs" font-family="Barlow, Arial, sans-serif" font-weight="700" font-size="30" fill="#0a3d66">FERRETERA</text></symbol>
+</svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></symbol>
   <symbol id="i-mas" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></symbol>
   <symbol id="i-ok" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
@@ -200,13 +253,26 @@ img{-webkit-user-drag:none}
   <symbol id="i-der" viewBox="0 0 24 24"><path d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></symbol>
   <symbol id="i-caja" viewBox="0 0 24 24"><path d="M20 2H4c-1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-1-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4l16-.02V7z"/></symbol>
   <symbol id="i-camion" viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9 1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></symbol>
+  <symbol id="i-agua" viewBox="0 0 24 24"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8z"/></symbol>
+  <symbol id="i-rayo" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></symbol>
+  <symbol id="i-llave" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></symbol>
+  <symbol id="i-rodillo" viewBox="0 0 24 24"><path d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"/></symbol>
+  <symbol id="i-candado" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></symbol>
+  <symbol id="i-tuerca" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></symbol>
+  <symbol id="i-ladrillos" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z"/></symbol>
+  <symbol id="i-lampara" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></symbol>
+  <symbol id="i-frio" viewBox="0 0 24 24"><path d="M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z"/></symbol>
+  <symbol id="i-hoja" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></symbol>
+  <symbol id="i-fuego" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
   <symbol id="i-desc" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></symbol>
 </svg>
 
 <header class="barra">
   <div class="env">
-    <a class="marca" href="#inicio"><img src="fotos/logo.webp" alt="L&amp;S Ferretera" width="44" height="48"><span>L&amp;S Ferretera</span></a>
-    <nav aria-label="Secciones"><a href="#ofertas">Ofertas</a><a href="#productos">Productos</a><a href="#pedido">Tu pedido</a><a href="#local">Dónde estamos</a></nav>
+    <a class="marca" href="#inicio"><svg class="marca-logo" viewBox="6 6 198 168" role="img" aria-label="L&amp;S Ferretera"><use href="#ls-bloque"/></svg><span>L&amp;S Ferretera</span></a>
+    <nav aria-label="Secciones"><a href="#ofertas">Ofertas</a><a href="#rubros">Rubros</a><a href="#productos">Productos</a><a href="#pintura">Pintura</a><a href="#local">Dónde estamos</a></nav>
     <a class="btn btn-navy pedido-ico" href="#pedido"><svg><use href="#i-carro"/></svg>Mi pedido<b id="cuenta">0</b></a>
   </div>
 </header>
@@ -214,7 +280,7 @@ img{-webkit-user-drag:none}
 <main>
 <section class="portada" id="inicio" aria-label="Portada">
   <div class="env">
-    <div class="sello"><img src="fotos/logo.webp" alt="L&amp;S Ferretera" width="627" height="687"><i></i></div>
+    <div class="sello"><svg viewBox="0 0 209 229" role="img" aria-label="L&amp;S Ferretera"><use href="#ls-logo"/></svg><i></i></div>
     <h1>Stock permanente <span>y entrega inmediata.</span></h1>
     <p class="bajada">Ferretería en Posadas: plomería, herramientas, cerraduras y materiales. Armá tu pedido acá y te lo confirmamos por WhatsApp.</p>
     <div class="acciones"><a class="btn btn-wa" id="wa-portada" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>3764 63-1382</a><a class="btn btn-borde" href="#ofertas">Ver las ofertas</a></div>
@@ -238,12 +304,46 @@ img{-webkit-user-drag:none}
   <div class="cinta-ofertas" id="cinta-ofertas"></div>
 </section>
 
-<section class="seccion" id="productos" style="padding-top:40px">
+<section class="seccion" id="rubros" style="padding-top:30px">
+  <div class="env">
+    <h2 class="tit">Todo para la casa <span>y la obra.</span></h2>
+    <p class="bajada">Tocá un rubro: te mostramos lo que tenemos o lo sumamos a tu consulta. Si no lo ves, preguntanos.</p>
+    <div class="rubros"><button class="rubro" type="button" data-cat="Plomería" data-rubro="Plomería"><svg><use href="#i-agua"/></svg><b>Plomería</b><span>Canillas, llaves de paso, caños, rejillas</span></button><button class="rubro" type="button" data-cat="" data-rubro="Electricidad"><svg><use href="#i-rayo"/></svg><b>Electricidad</b><span>Cables, tomas, llaves, cinta aisladora</span></button><button class="rubro" type="button" data-cat="Herramientas" data-rubro="Herramientas"><svg><use href="#i-llave"/></svg><b>Herramientas</b><span>Pinzas, martillos, serruchos, discos</span></button><button class="rubro" type="button" data-cat="Construcción" data-rubro="Pinturería"><svg><use href="#i-rodillo"/></svg><b>Pinturería</b><span>Pinceles, rodillos, bandejas, enduido</span></button><button class="rubro" type="button" data-cat="Cerraduras" data-rubro="Cerrajería"><svg><use href="#i-candado"/></svg><b>Cerrajería</b><span>Cerraduras, candados, bisagras</span></button><button class="rubro" type="button" data-cat="" data-rubro="Tornillería"><svg><use href="#i-tuerca"/></svg><b>Tornillería</b><span>Tornillos, tarugos, clavos, bulones</span></button><button class="rubro" type="button" data-cat="Construcción" data-rubro="Construcción"><svg><use href="#i-ladrillos"/></svg><b>Construcción</b><span>Polietileno, alambre, mallas, cal</span></button><button class="rubro" type="button" data-cat="" data-rubro="Iluminación"><svg><use href="#i-lampara"/></svg><b>Iluminación</b><span>Lámparas, reflectores, portalámparas</span></button><button class="rubro" type="button" data-cat="Climatización" data-rubro="Climatización"><svg><use href="#i-frio"/></svg><b>Climatización</b><span>Soportes para split, cinta, caños</span></button><button class="rubro" type="button" data-cat="" data-rubro="Jardín"><svg><use href="#i-hoja"/></svg><b>Jardín</b><span>Mangueras, picos, tijeras de podar</span></button><button class="rubro" type="button" data-cat="" data-rubro="Gas"><svg><use href="#i-fuego"/></svg><b>Gas</b><span>Llaves de gas, flexibles, reguladores</span></button><button class="rubro" type="button" data-cat="Seguridad" data-rubro="Seguridad"><svg><use href="#i-escudo"/></svg><b>Seguridad</b><span>Cables antirrobo, guantes, anteojos</span></button></div>
+  </div>
+</section>
+
+<section class="seccion" id="productos" style="padding-top:20px">
   <div class="env">
     <h2 class="tit">Lo que <span>tenemos.</span></h2>
     <p class="bajada">Algunos de los artículos que siempre hay en el local. Si buscás otra cosa, sumala en «¿Algo más?» y te decimos si la tenemos.</p>
+    <div class="buscar"><svg><use href="#i-lupa"/></svg><input id="buscar" type="search" placeholder="Buscá: canilla, pinza, cerradura…" aria-label="Buscar productos"></div>
     <div class="filtros" id="filtros"></div>
     <div class="productos" id="lista-productos"></div>
+    <p class="sin-result" id="sin-result" hidden>No lo encontramos en la lista, pero puede que lo tengamos. <button type="button" id="pedir-buscado">Sumalo a tu pedido</button> y te confirmamos.</p>
+    <div class="marcas"><span>Algunas marcas que trabajamos</span><b>Medio Giro</b><b>Metz</b><b>Cerratex</b><b>Triple C</b></div>
+  </div>
+</section>
+
+<section class="seccion pintura" id="pintura">
+  <div class="env pintura-env">
+    <div>
+      <h2 class="tit">¿Cuánta pintura <span>necesitás?</span></h2>
+      <p class="bajada">Poné el tamaño de las paredes y te decimos cuántos litros llevar. Es un cálculo aproximado: el rendimiento real depende de la pintura y de la pared.</p>
+    </div>
+    <div class="caja calc">
+      <div class="calc-fila"><div class="campo"><label for="c-largo">Largo de paredes (m)</label><input id="c-largo" type="number" inputmode="decimal" min="0" step="0.5" value="12"></div><div class="campo"><label for="c-alto">Alto (m)</label><input id="c-alto" type="number" inputmode="decimal" min="0" step="0.1" value="2.6"></div></div>
+      <div class="campo"><label>Pintura</label><div class="chips" id="c-tipo"><button class="chip" type="button" data-v="10" data-n="látex interior" aria-pressed="true">Látex interior</button><button class="chip" type="button" data-v="8" data-n="látex exterior" aria-pressed="false">Látex exterior</button><button class="chip" type="button" data-v="12" data-n="esmalte" aria-pressed="false">Esmalte</button></div></div>
+      <div class="campo"><label>Manos</label><div class="chips" id="c-manos"><button class="chip" type="button" data-v="1" aria-pressed="false">1</button><button class="chip" type="button" data-v="2" aria-pressed="true">2</button><button class="chip" type="button" data-v="3" aria-pressed="false">3</button></div></div>
+      <div class="calc-res"><b id="c-litros">0 L</b><span id="c-detalle"></span></div>
+      <button class="btn btn-navy" type="button" id="c-sumar">Sumar al pedido</button>
+    </div>
+  </div>
+</section>
+
+<section class="profes">
+  <div class="env profes-env">
+    <div><h2>¿Sos plomero, electricista, pintor o tenés una obra?</h2><p>Mandanos tu lista completa y te pasamos el precio por cantidad.</p></div>
+    <a class="btn btn-wa" id="wa-profes" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Mandar mi lista</a>
   </div>
 </section>
 
@@ -283,6 +383,19 @@ img{-webkit-user-drag:none}
   </div>
 </section>
 
+<section class="seccion" id="preguntas" style="padding-top:0">
+  <div class="env">
+    <h2 class="tit">Preguntas <span>frecuentes.</span></h2>
+    <div class="faq">
+      <details open><summary>¿Tienen descuentos por cantidad?</summary><p>Sí. Según el artículo, desde 5 o 10 unidades. En las ofertas del mes figura el descuento de cada uno.</p></details>
+      <details><summary>¿Puedo pedir algo que no está en la página?</summary><p>Sí. Escribilo en «¿Algo más?» del pedido y te decimos si lo tenemos.</p></details>
+      <details><summary>¿Cómo me llega el pedido?</summary><p>Lo retirás en el local o coordinamos la entrega por WhatsApp: escribinos la dirección y te decimos cómo y cuándo.</p></details>
+      <details><summary>¿Cómo se paga?</summary><p>Te pasamos los medios de pago cuando confirmamos tu pedido.</p></details>
+      <details><summary>¿Qué horarios tienen?</summary><p>Escribinos por WhatsApp y te los pasamos.</p></details>
+    </div>
+  </div>
+</section>
+
 <section class="seccion" id="local" style="padding-top:0">
   <div class="env">
     <h2 class="tit">Dónde <span>estamos.</span></h2>
@@ -301,7 +414,7 @@ img{-webkit-user-drag:none}
 
 <footer class="pie">
   <div class="env">
-    <div style="display:flex;gap:14px;align-items:center"><img src="fotos/logo.webp" alt="L&amp;S Ferretera" width="51" height="56" loading="lazy"><p>L&amp;S Ferretera · Posadas, Misiones<br>Stock permanente · Entrega inmediata</p></div>
+    <div style="display:flex;gap:14px;align-items:center"><svg class="pie-logo" viewBox="6 6 198 168" role="img" aria-label="L&amp;S Ferretera"><use href="#ls-bloque"/></svg><p>L&amp;S Ferretera · Posadas, Misiones<br>Stock permanente · Entrega inmediata</p></div>
     <a id="pie-wa" href="#" target="_blank" rel="noopener">WhatsApp 3764 63-1382</a>
     <p style="width:100%">© 2026 L&amp;S Ferretera · Página hecha por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas &amp; Co</a></p>
     <p style="width:100%;font-size:.85rem"><a href="legal.html">Privacidad, términos y aviso legal</a> · <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener">Defensa de las y los Consumidores. Para reclamos ingrese aquí</a></p>
@@ -332,15 +445,15 @@ const PROD = [
   { id: 'rejillas', n: 'Rejillas y tapas de acero inoxidable', m: 'Con marco y tornillos · varias medidas', c: 'Plomería', f: 'of-rejillas', of: '10 % comprando 5 o más' },
   { id: 'soportes', n: 'Soportes para aire split', m: 'Art. 858 (42 cm) y 859 (50 cm)', c: 'Climatización', f: 'of-soportes-aa', of: '5 % a partir del segundo par' },
   { id: 'polietileno', n: 'Rollos de polietileno', m: 'Negro de 200 y 100 micrones · transparente de 200', c: 'Construcción', f: 'of-polietileno', of: 'Stock permanente' },
-  { id: 'bandeja', n: 'Bandeja de pintor de colgar', m: 'Art. 952 · nuevo producto', c: 'Construcción', f: 'of-bandeja', of: 'Nuevo producto' },
+  { id: 'bandeja', nuevo: 1, n: 'Bandeja de pintor de colgar', m: 'Art. 952 · nuevo producto', c: 'Construcción', f: 'of-bandeja', of: 'Nuevo producto' },
   { id: 'cerraduras', n: 'Cerraduras Cerratex', m: 'Art. 101, 2102 y 3000', c: 'Cerraduras', f: 'of-cerraduras', of: 'Stock permanente' },
-  { id: 'serrucho', n: 'Serrucho de costilla', m: 'Nuevo ingreso', c: 'Herramientas', f: 'p-serrucho' },
-  { id: 'martillos', n: 'Martillos', m: 'Con cabo de madera', c: 'Herramientas', f: 'p-martillos' },
-  { id: 'pinza-loro', n: 'Pinza pico de loro', m: 'Metz', c: 'Herramientas', f: 'p-pinza-loro' },
-  { id: 'pinzas', n: 'Pinzas Metz', m: 'Varios tamaños', c: 'Herramientas', f: 'p-pinzas' },
-  { id: 'alicates', n: 'Alicates', m: 'Varios modelos', c: 'Herramientas', f: 'p-alicates' },
-  { id: 'disco', n: 'Disco de corte', m: 'Nuevo ingreso', c: 'Herramientas', f: 'p-disco' },
-  { id: 'cable', n: 'Cable antirrobo para bicicleta', m: 'Triple C', c: 'Seguridad', f: 'p-cable' }
+  { id: 'serrucho', n: 'Serrucho de costilla', m: 'Hoja de 300 mm', nuevo: 1, c: 'Herramientas', f: 'p-serrucho' },
+  { id: 'martillos', nuevo: 1, n: 'Martillos', m: 'Con cabo de madera', c: 'Herramientas', f: 'p-martillos' },
+  { id: 'pinza-loro', nuevo: 1, n: 'Pinza pico de loro', m: 'Metz', c: 'Herramientas', f: 'p-pinza-loro' },
+  { id: 'pinzas', nuevo: 1, n: 'Pinzas Metz', m: 'Varios tamaños', c: 'Herramientas', f: 'p-pinzas' },
+  { id: 'alicates', nuevo: 1, n: 'Alicates', m: 'Varios modelos', c: 'Herramientas', f: 'p-alicates' },
+  { id: 'disco', n: 'Disco de corte', m: 'Para amoladora', nuevo: 1, c: 'Herramientas', f: 'p-disco' },
+  { id: 'cable', nuevo: 1, n: 'Cable antirrobo para bicicleta', m: 'Triple C', c: 'Seguridad', f: 'p-cable' }
 ];
 const P = Object.fromEntries(PROD.map(p => [p.id, p]));
 
@@ -363,12 +476,37 @@ visor.addEventListener('click', () => visor.close());
 const CATS = ['Todo', ...new Set(PROD.map(p => p.c))];
 let cat = 'Todo';
 $('#filtros').innerHTML = CATS.map(c => `<button class="filtro" type="button" data-c="${c}" aria-pressed="${c === cat}">${c}</button>`).join('');
-$('#lista-productos').innerHTML = PROD.map(p => `<article class="prod" data-c="${p.c}"><div class="foto"><img src="fotos/${p.f}.webp" alt="${p.n}" loading="lazy"></div><div class="info"><small>${p.c}</small><h3>${p.n}</h3><p>${p.m}${p.of && p.of !== 'Stock permanente' ? ' · ' + p.of : ''}</p></div><button class="agregar" type="button" data-agregar="${p.id}"></button></article>`).join('');
-$('#filtros').addEventListener('click', e => {
-  const b = e.target.closest('.filtro'); if (!b) return; cat = b.dataset.c;
+$('#lista-productos').innerHTML = PROD.map(p => `<article class="prod" data-c="${p.c}" data-t="${(p.n + ' ' + p.m + ' ' + p.c).toLowerCase()}"><div class="foto"><img src="fotos/${p.f}.webp" alt="${p.n}" loading="lazy">${p.nuevo ? '<span class="nuevo">Nuevo</span>' : ''}</div><div class="info"><small>${p.c}</small><h3>${p.n}</h3><p>${p.m}${p.of && p.of !== 'Stock permanente' ? ' · ' + p.of : ''}</p></div><button class="agregar" type="button" data-agregar="${p.id}"></button></article>`).join('');
+const sinAcento = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+function filtrar() {
+  const q = sinAcento($('#buscar').value.trim()); let vistos = 0;
   $$('.filtro').forEach(x => x.setAttribute('aria-pressed', x.dataset.c === cat));
-  $$('.prod').forEach(x => x.classList.toggle('oculto', cat !== 'Todo' && x.dataset.c !== cat));
-});
+  $$('.prod').forEach(x => { const ok = (cat === 'Todo' || x.dataset.c === cat) && (!q || sinAcento(x.dataset.t).includes(q)); x.classList.toggle('oculto', !ok); vistos += ok; });
+  $('#sin-result').hidden = vistos > 0 || !q;
+}
+$('#filtros').addEventListener('click', e => { const b = e.target.closest('.filtro'); if (!b) return; cat = b.dataset.c; filtrar(); });
+$('#buscar').addEventListener('input', filtrar);
+const sumarTexto = t => { const m = $('#f-mas'); m.value = (m.value.trim() ? m.value.trim() + '\n' : '') + t; pintar(); };
+$('#pedir-buscado').onclick = () => { sumarTexto($('#buscar').value.trim()); $('#pedido').scrollIntoView({ behavior: 'smooth' }); };
+/* rubros: si hay artículos de ese rubro se muestran; si no, se suma a la consulta */
+$$('.rubro').forEach(b => b.addEventListener('click', () => {
+  if (b.dataset.cat) { cat = b.dataset.cat; $('#buscar').value = ''; filtrar(); $('#productos').scrollIntoView({ behavior: 'smooth' }); }
+  else { sumarTexto('Consulta de ' + b.dataset.rubro.toLowerCase() + ': '); $('#pedido').scrollIntoView({ behavior: 'smooth' }); setTimeout(() => $('#f-mas').focus({ preventScroll: true }), 700); }
+}));
+/* calculadora de pintura: m² × manos ÷ rendimiento */
+let rinde = 10, tipoPintura = 'látex interior', manos = 2;
+function calcular() {
+  const m2 = Math.max(0, (+$('#c-largo').value || 0) * (+$('#c-alto').value || 0));
+  const litros = Math.ceil(m2 * manos / rinde);
+  $('#c-litros').textContent = litros + ' L';
+  $('#c-detalle').textContent = `${m2.toLocaleString('es-AR', { maximumFractionDigits: 1 })} m² · ${manos} ${manos > 1 ? 'manos' : 'mano'} de ${tipoPintura}`;
+  return { m2, litros };
+}
+$('#c-tipo').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; rinde = +b.dataset.v; tipoPintura = b.dataset.n; $$('#c-tipo .chip').forEach(x => x.setAttribute('aria-pressed', x === b)); calcular(); });
+$('#c-manos').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; manos = +b.dataset.v; $$('#c-manos .chip').forEach(x => x.setAttribute('aria-pressed', x === b)); calcular(); });
+$$('#c-largo,#c-alto').forEach(i => i.addEventListener('input', calcular));
+$('#c-sumar').onclick = () => { const r = calcular(); if (!r.litros) return; sumarTexto(`Pintura ${tipoPintura}: unos ${r.litros} litros (${r.m2.toLocaleString('es-AR', { maximumFractionDigits: 1 })} m², ${manos} ${manos > 1 ? 'manos' : 'mano'})`); $('#pedido').scrollIntoView({ behavior: 'smooth' }); };
+calcular();
 
 /* agregar y quitar */
 document.addEventListener('click', e => {
@@ -424,6 +562,7 @@ new IntersectionObserver(([e]) => { enPedido = e.isIntersecting; verBarra(); }, 
 $('#wa-portada').href = wa('Hola, L&S. Quería hacer una consulta.');
 $('#pie-wa').href = wa('Hola, L&S. Quería hacer una consulta.');
 $('#wa-local').href = wa('Hola, L&S. ¿Qué horarios tienen?');
+$('#wa-profes').href = wa('Hola, L&S. Trabajo en obra y quiero precio por cantidad para esta lista:');
 $('#como-llegar').href = 'https://www.google.com/maps/dir/?api=1&destination=' + L.pin;
 $('#link-google').href = L.google;
 new IntersectionObserver(([e], o) => { if (!e.isIntersecting) return; $('#mapa').innerHTML = `<iframe title="Mapa de L&S Ferretera" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${L.pin}&z=16&output=embed"></iframe>`; o.disconnect(); }, { rootMargin: '400px' }).observe($('#mapa'));
