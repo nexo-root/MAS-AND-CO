@@ -399,6 +399,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
     <div><img src="fotos/logo.webp" alt="M1 Sacabollo" width="69" height="34" loading="lazy"><p style="margin-top:10px">Pintura y carrocería automotriz · Eldorado y Montecarlo, Misiones</p></div>
     <div class="redes"><a id="pie-wa" href="#" target="_blank" rel="noopener">WhatsApp 3751 59-4184</a><a href="https://www.instagram.com/m1_pinturaycarroceria/" target="_blank" rel="noopener" aria-label="Instagram de M1"><svg width="22" height="22" style="color:var(--texto2)"><use href="#i-ig"/></svg></a></div>
     <p style="width:100%">© 2026 M1 Sacabollo · Página hecha por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas &amp; Co</a></p>
+    <p style="width:100%;font-size:.85rem"><a href="legal.html">Privacidad, términos y aviso legal</a> · <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener">Defensa de las y los Consumidores. Para reclamos ingrese aquí</a></p>
   </div>
 </footer>
 
@@ -410,8 +411,8 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 /* datos de M1: cuando haya una encargada por taller, se cambia el wa de cada uno */
 const M1 = {
   talleres: [
-    { id: 'eldorado', n: 'Eldorado', wa: '5493751594184', q: 'Eldorado, Misiones' },
-    { id: 'montecarlo', n: 'Montecarlo', wa: '5493751594184', q: 'Montecarlo, Misiones' }
+    { id: 'eldorado', n: 'Eldorado', wa: '5493751594184', q: 'Eldorado, Misiones', dir: '', pin: '' }, // pin: 'lat,lng' del taller cuando lo pase Matías
+    { id: 'montecarlo', n: 'Montecarlo', wa: '5493751594184', q: 'Montecarlo, Misiones', dir: '', pin: '' }
   ],
   // promo del mes: { texto: 'Daños por granizo: 10 % off al contado para particulares', hasta: '2026-11-30', servicio: 'granizo' }
   promo: null
@@ -550,8 +551,11 @@ gal.addEventListener('click', e => { const b = e.target.closest('button'); if (!
 visor.addEventListener('click', () => visor.close());
 
 /* ---------- talleres ---------- */
-$('#lista-talleres').innerHTML = M1.talleres.map(t => `<article class="taller"><div class="mapa" data-q="${t.q}"></div><div class="datos"><h3>${t.n}</h3><p>Pintura y carrocería · sacabollos</p><p>Escribinos y te pasamos la ubicación exacta.</p><div class="acciones"><a class="btn btn-wa" href="${wa(t.wa, 'Hola, M1 ' + t.n + '. Quería hacer una consulta.')}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Escribir</a><a class="btn btn-borde" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.q)}" target="_blank" rel="noopener">Cómo llegar</a></div></div></article>`).join('');
-const mapaOjo = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; e.target.innerHTML = `<iframe title="Mapa de ${e.target.dataset.q}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(e.target.dataset.q)}&output=embed"></iframe>`; mapaOjo.unobserve(e.target); }), { rootMargin: '400px' });
+// con el pin, el mapa marca el taller y «Cómo llegar» abre el recorrido; sin pin, se pide la ubicación por WhatsApp
+$('#lista-talleres').innerHTML = M1.talleres.map(t => `<article class="taller"><div class="mapa" data-q="${t.pin || t.q}"></div><div class="datos"><h3>${t.n}</h3><p>Pintura y carrocería · sacabollos</p><p>${t.dir || 'Escribinos y te pasamos la ubicación exacta.'}</p><div class="acciones"><a class="btn btn-wa" href="${wa(t.wa, 'Hola, M1 ' + t.n + '. Quería hacer una consulta.')}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Escribir</a>${t.pin
+  ? `<a class="btn btn-borde" href="https://www.google.com/maps/dir/?api=1&destination=${t.pin}" target="_blank" rel="noopener">Cómo llegar</a>`
+  : `<a class="btn btn-borde" href="${wa(t.wa, 'Hola, M1. ¿Me pasan la ubicación del taller de ' + t.n + '?')}" target="_blank" rel="noopener">Pedir ubicación</a>`}</div></div></article>`).join('');
+const mapaOjo = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; e.target.innerHTML = `<iframe title="Mapa de ${e.target.dataset.q}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(e.target.dataset.q)}&z=${/^-?\d/.test(e.target.dataset.q) ? 16 : 13}&output=embed"></iframe>`; mapaOjo.unobserve(e.target); }), { rootMargin: '400px' });
 $$('.taller .mapa').forEach(m => mapaOjo.observe(m));
 </script>
 </body></html>
