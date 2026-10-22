@@ -49,54 +49,42 @@ a{color:inherit;text-decoration:none}
 .barra .btn{min-height:42px;padding:0 18px;font-size:.92rem}
 @media (max-width:900px){.barra nav{display:none}}
 
-/* portada */
-.portada{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate;background:radial-gradient(60% 70% at 70% 55%,#1b1d23 0%,#0c0d11 58%,var(--negro) 100%)}
-.camioneta{position:absolute;z-index:-2;right:-3vw;top:50%;width:72vw;aspect-ratio:3/2;transform:translateY(-47%);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 93%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 84%,transparent 100%);-webkit-mask-composite:source-in;
-  mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 93%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 84%,transparent 100%);mask-composite:intersect}
-.camioneta img,.camioneta canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.camioneta img{object-fit:cover;filter:brightness(.86) contrast(1.05)}
-.camioneta canvas{opacity:0;transition:opacity .6s var(--ease)}
-.camioneta canvas.ve{opacity:1}
-.portada.chapa{cursor:crosshair}
-.portada::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(55% 75% at 10% 55%,rgba(9,9,11,.92) 0%,rgba(9,9,11,.55) 55%,rgba(9,9,11,0) 85%),linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,0) 20%)}
-.portada-env{padding:calc(var(--barra) + 28px) 0 110px}
-.portada-texto{pointer-events:none;max-width:560px}
-.portada-texto a,.portada-texto button{pointer-events:auto}
-.portada-logo{display:block;width:clamp(280px,36vw,560px);height:auto;margin-left:-.6%;filter:drop-shadow(0 20px 44px rgba(0,0,0,.65))}
-.portada h1{font-stretch:118%;font-weight:800;font-style:italic;letter-spacing:-.01em;font-size:clamp(1.6rem,2.6vw,2.5rem);line-height:1.06;margin-top:20px;max-width:22ch}
-.portada h1 span{background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.1em}
-.portada .bajada{color:#c9ccd3;max-width:46ch}
-.portada .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.lugares{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:24px;color:#b9bdc5;font-size:.92rem;font-weight:500}
+/* portada: la Ranger real arranca opaca, una pasada de pulido la deja brillando y se corre (presentación 2) */
+.portada{position:relative;height:100svh;min-height:600px;overflow:hidden;isolation:isolate;background:var(--negro)}
+.portada .foto{position:absolute;inset:0;overflow:hidden}
+.portada .foto::after{content:"";position:absolute;inset:0 0 auto;height:130px;background:linear-gradient(180deg,rgba(9,9,11,.65),transparent);pointer-events:none}
+.portada .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 55%}
+.portada .mate{filter:saturate(.1) brightness(.48) contrast(.82) blur(.8px)}
+.portada .brillo{--p:-30%;filter:saturate(1.15) contrast(1.08);-webkit-mask-image:linear-gradient(118deg,#000 calc(var(--p) - 2%),transparent calc(var(--p) + 6%));mask-image:linear-gradient(118deg,#000 calc(var(--p) - 2%),transparent calc(var(--p) + 6%))}
+.portada .pasada{--p:-30%;position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(118deg,transparent calc(var(--p) - 3%),rgba(255,255,255,.8) var(--p),transparent calc(var(--p) + 3%))}
+.portada-texto{position:absolute;left:max(16px,calc((100vw - 1200px)/2));top:50%;transform:translateY(-46%);width:min(40vw,560px)}
+.logo-w{position:relative;display:block;width:clamp(260px,34vw,540px)}
+.logo-w img{width:100%;height:auto;filter:drop-shadow(0 20px 44px rgba(0,0,0,.65))}
+.logo-w i{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.9) 50%,transparent 60%) no-repeat;background-size:260% 100%;background-position:160% 0;-webkit-mask-image:url(fotos/logo-grande.webp);-webkit-mask-size:100% 100%;mask-image:url(fotos/logo-grande.webp);mask-size:100% 100%}
+.portada h1{font-stretch:118%;font-weight:800;font-style:italic;letter-spacing:-.01em;line-height:1.06;font-size:clamp(1.6rem,2.6vw,2.5rem);margin-top:16px;max-width:22ch}
+.portada h1 .l{display:block;overflow:hidden;padding:0 .12em .06em 0}.portada h1 .l>span{display:block}
+.portada h1 em{font-style:italic;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.portada .bajada{color:#c9ccd3;max-width:46ch;margin-top:12px}
+.portada .acciones{display:flex;gap:10px;margin-top:22px}
+.lugares{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:18px;color:#b9bdc5;font-size:.9rem;font-weight:500}
 .lugares span{display:inline-flex;align-items:center;gap:7px}
 .lugares svg{width:17px;height:17px;fill:var(--rojo2)}
-.toca{position:absolute;z-index:2;pointer-events:none;display:flex;align-items:center;gap:9px;font-size:.84rem;font-weight:600;color:#fff;background:rgba(9,9,11,.62);border:1px solid var(--borde2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:8px 14px 8px 10px;border-radius:999px;opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
-.toca.ve{opacity:1;transform:none}
-.toca svg{width:20px;height:20px;fill:#fff}
-.cinta{position:absolute;left:0;right:0;bottom:0;height:60px;border-top:1px solid var(--borde);background:rgba(9,9,11,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden;display:flex;align-items:center;pointer-events:none}
-.cinta-pista{display:flex;align-items:center;gap:26px;padding-left:26px;white-space:nowrap;flex:none;animation:cinta 48s linear infinite}
-.cinta span{font-stretch:125%;font-weight:800;font-style:italic;text-transform:uppercase;font-size:1.15rem;letter-spacing:.01em;color:#e9ebef}
-.cinta i{width:9px;height:9px;background:var(--rojo);transform:skewX(-20deg);flex:none}
-@keyframes cinta{to{transform:translateX(-50%)}}
-/* entrada: el logo se descubre como una pasada de pulido */
-.entra .portada-logo{clip-path:inset(0 100% 0 0)}
-.entra .portada h1,.entra .portada .bajada,.entra .portada .acciones,.entra .portada .lugares{opacity:0;transform:translateY(14px)}
-.listo .portada-logo{clip-path:inset(0 0 0 0);transition:clip-path 1s var(--ease)}
-.listo .portada h1,.listo .portada .bajada,.listo .portada .acciones,.listo .portada .lugares{opacity:1;transform:none;transition:opacity .6s .45s var(--ease),transform .6s .45s var(--ease)}
-.listo .portada .bajada{transition-delay:.55s}.listo .portada .acciones{transition-delay:.65s}.listo .portada .lugares{transition-delay:.75s}
+/* antes de la entrada (si no carga la animación, .fin deja todo en su lugar) */
+.portada:not(.fin) .foto{opacity:0}
+.portada:not(.fin) .logo-w{clip-path:inset(0 100% 0 0)}
+.portada:not(.fin) h1 .l>span{transform:translateY(110%)}
+.portada:not(.fin) .bajada,.portada:not(.fin) .acciones,.portada:not(.fin) .lugares{opacity:0}
+.portada.fin .foto{clip-path:inset(0 0 0 46%)}.portada.fin .foto img{transform:translateX(21%)}
+.portada.fin .brillo,.portada.fin .pasada{--p:135%}.portada.fin .pasada{opacity:0}
 .barra .marca{transition:opacity .3s var(--ease)}
 .barra:not(.solida) .marca{opacity:0;pointer-events:none}
 @media (max-width:760px){
-  .portada{display:block;min-height:0}
-  .camioneta{right:auto;left:-14vw;top:calc(var(--barra) - 6px);width:128vw;transform:none;
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 78%,transparent 100%)}
-  .portada::before{background:linear-gradient(0deg,var(--negro) 0%,rgba(9,9,11,.88) 50%,rgba(9,9,11,0) 66%)}
-  .portada-env{padding:calc(var(--barra) + 70vw) 0 78px}
-  .portada-logo{width:min(90vw,500px);margin-left:-1.5%}
-  .portada h1{margin-top:14px}
-  .portada .acciones .btn{flex:1 1 auto}
-  .cinta{height:50px}.cinta span{font-size:.95rem}.cinta-pista{gap:20px;padding-left:20px}
+  .portada-texto{left:16px;right:16px;top:auto;bottom:34px;transform:none;width:auto}
+  .logo-w{width:min(80vw,420px)}
+  .portada .bajada{font-size:.95rem}
+  .portada .lugares{display:none}
+  .portada .acciones .btn{flex:1 1 auto;padding:0 14px;font-size:.92rem}
+  .portada.fin .foto{clip-path:inset(0 0 50% 0)}.portada.fin .foto img{transform:translateY(-16%)}
 }
 
 /* promo */
@@ -263,25 +251,14 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 
 <main>
 <section class="portada" id="inicio" aria-label="Portada">
-  <!-- foto de la camioneta: Alfonso Romo, Pexels (licencia libre) -->
-  <div class="camioneta" id="camioneta">
-    <img id="fondo" src="fotos/camioneta-1600.webp" srcset="fotos/camioneta-1600.webp 1600w, fotos/camioneta-2400.webp 2400w" sizes="(max-width:760px) 128vw, 72vw" alt="" fetchpriority="high">
-    <canvas id="chapa" aria-hidden="true"></canvas>
+  <div class="foto"><img class="mate" src="fotos/ranger-1600.webp" srcset="fotos/ranger-1000.webp 1000w, fotos/ranger-1600.webp 1600w" sizes="100vw" alt="" fetchpriority="high"><img class="brillo" src="fotos/ranger-1600.webp" srcset="fotos/ranger-1000.webp 1000w, fotos/ranger-1600.webp 1600w" sizes="100vw" alt="Ford Ranger azul terminada en M1"><i class="pasada"></i></div>
+  <div class="portada-texto">
+    <div class="logo-w"><img src="fotos/logo-grande.webp" alt="M1 Sacabollo" width="1247" height="625"><i></i></div>
+    <h1><span class="l"><span>Sacamos el bollo</span></span><span class="l"><span><em>sin tocar la pintura.</em></span></span></h1>
+    <p class="bajada">Chapa y pintura, sacabollos, cristales, cerraduras y estética del auto, en Eldorado y Montecarlo.</p>
+    <div class="acciones"><a class="btn btn-rojo" href="#cotizar">Cotizar mi arreglo <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" href="#servicios">Servicios</a></div>
+    <div class="lugares"><span><svg><use href="#i-pin"/></svg>Eldorado</span><span><svg><use href="#i-pin"/></svg>Montecarlo</span><span>Trabajamos con compañías de seguro</span></div>
   </div>
-  <div class="toca" id="toca"><svg viewBox="0 0 24 24"><path d="M9 11.24V7.5a2.5 2.5 0 0 1 5 0v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/></svg><span>Tocá la chapa</span></div>
-  <div class="env portada-env">
-    <div class="portada-texto">
-      <img class="portada-logo" src="fotos/logo-grande.webp" alt="M1 Sacabollo" width="1247" height="625">
-      <h1>Sacamos el bollo <span>sin tocar la pintura.</span></h1>
-      <p class="bajada">Chapa y pintura, sacabollos, cristales, cerraduras y estética del auto. Cotizá desde el celular y te respondemos por WhatsApp.</p>
-      <div class="acciones">
-        <a class="btn btn-rojo" href="#cotizar">Cotizar mi arreglo <svg><use href="#i-flecha"/></svg></a>
-        <a class="btn btn-borde" href="#servicios">Ver servicios</a>
-      </div>
-      <div class="lugares"><span><svg><use href="#i-pin"/></svg>Eldorado</span><span><svg><use href="#i-pin"/></svg>Montecarlo</span><span>Trabajamos con compañías de seguro</span></div>
-    </div>
-  </div>
-  <div class="cinta" aria-hidden="true"><div class="cinta-pista" id="cinta"></div></div>
 </section>
 
 <div class="promo" id="promo" role="note"><span id="promo-texto"></span><button type="button" id="promo-ir">Cotizar con la promo</button></div>
@@ -423,6 +400,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 
 <a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Escribir a M1 por WhatsApp"><svg><use href="#i-wa"/></svg></a>
 <dialog class="visor" id="visor"><button class="cerrar" type="button" aria-label="Cerrar">×</button><img alt=""></dialog>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script>
 /* datos de M1: cuando haya una encargada por taller, se cambia el wa de cada uno */
 const M1 = {
@@ -445,145 +423,25 @@ requestAnimationFrame(() => requestAnimationFrame(() => { document.body.classLis
 const barra = $('#barra');
 addEventListener('scroll', () => barra.classList.toggle('solida', scrollY > 40), { passive: true });
 
-/* ---------- portada: la camioneta se abolla solo en la chapa y se arregla sola ---------- */
+/* ---------- portada: la pasada de pulido (presentación 2) ---------- */
 (() => {
-  const cinta = ['Sacabollos', 'Daños por granizo', 'Chapa y pintura', 'Paragolpes', 'Autos siniestrados', 'Cristales', 'Cerraduras', 'Levantacristales', 'Pulido de ópticas', 'Tratamiento cerámico', 'Polarizado', 'Lavado premium', 'Diamantado de llantas'];
-  const una = cinta.map(t => `<span>${t}</span><i></i>`).join('');
-  $('#cinta').innerHTML = una + una;
-
-  const sec = $('#inicio'), cv = $('#chapa'), toca = $('#toca'), fondo = $('#fondo');
-  // las partes de chapa, en % de la foto (x, y desde arriba). sx/sy: cuánto achica la perspectiva el bollo en ese panel;
-  // rot: inclinación del panel; k: tamaño según qué tan lejos está
-  const PANELES = [
-    { sx: 1, sy: .38, rot: .14, k: .9, p: [[13, 50.5], [22, 47.5], [35, 45], [46, 43.5], [52, 47], [48, 50], [36, 51], [24, 52]] },
-    { sx: .5, sy: .95, rot: .04, k: 1, p: [[38, 50], [52, 48], [52.5, 60], [49, 57], [44, 55.5], [39, 56]] },
-    { sx: .62, sy: 1, rot: .04, k: 1, p: [[52.5, 50], [64.5, 49], [65, 69], [53, 70]] },
-    { sx: .58, sy: .95, rot: .04, k: .92, p: [[65, 49], [77, 48.5], [77, 67.5], [65, 69]] },
-    { sx: .52, sy: .9, rot: .04, k: .85, p: [[77.5, 48.5], [90, 48], [90.5, 57], [88, 58], [85, 57], [81, 58], [78, 61]] }
-  ];
-  const adentro = (x, y, p) => { let d = false; for (let i = 0, j = p.length - 1; i < p.length; j = i++) { const [xi, yi] = p[i], [xj, yj] = p[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) d = !d; } return d; };
-  const gl = cv.getContext('webgl', { antialias: false, alpha: false });
-  if (!gl) return; // sin WebGL queda la foto quieta
-  const MAX = 8, Z = .96;
-  const sh = (tipo, src) => { const s = gl.createShader(tipo); gl.shaderSource(s, src); gl.compileShader(s); return s; };
-  const pr = gl.createProgram();
-  gl.attachShader(pr, sh(gl.VERTEX_SHADER, 'attribute vec2 a;varying vec2 v;void main(){v=a*.5+.5;gl_Position=vec4(a,0.,1.);}'));
-  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, `precision highp float;varying vec2 v;uniform sampler2D uI,uM;uniform vec2 uR,uP;uniform vec4 uA[${MAX}],uB[${MAX}];
-    /* un bollo de verdad: hundido irregular con dos pliegues, llevado al plano del panel */
-    float hd(vec2 p,vec4 a,vec4 b){
-      vec2 q=p-a.xy;if(dot(q,q)>9.*a.z*a.z)return 0.;
-      float c=cos(b.z),s=sin(b.z);q=vec2(c*q.x+s*q.y,-s*q.x+c*q.y)/vec2(b.x,b.y)/a.z;
-      float t=b.w,ct=cos(t),st=sin(t);vec2 u=vec2(ct*q.x+st*q.y,-st*q.x+ct*q.y);
-      float an=atan(u.y,u.x),r=length(u*vec2(1.,1.3))*(1.+.22*sin(3.*an+t*3.)+.12*sin(5.*an+t*7.));
-      float taza=exp(-r*r*1.7);
-      float plie=exp(-abs(u.y+.2*sin(u.x*2.4+t))*11.)*exp(-u.x*u.x*.5);
-      float plie2=exp(-abs(.75*u.x+.65*u.y+.25*sin(u.y*3.+t*2.))*10.)*exp(-dot(u,u)*1.1);
-      return -a.w*(taza*.6+plie*.5+plie2*.3)*a.z*.32;}
-    float H(vec2 p){float h=0.;for(int i=0;i<${MAX};i++){if(uA[i].w>.001)h+=hd(p,uA[i],uB[i]);}return h;}
-    void main(){
-      vec2 p=v*uR,tuv=(v-.5)*${Z}+.5+uP;float e=1.2;
-      vec2 g=vec2(H(p+vec2(e,0.))-H(p-vec2(e,0.)),H(p+vec2(0.,e))-H(p-vec2(0.,e)))/(2.*e);
-      g*=texture2D(uM,tuv).r;
-      vec3 c=texture2D(uI,tuv-g*.012).rgb;
-      vec3 n=normalize(vec3(-g,1.)),L=normalize(vec3(-.25,.75,.6));float dl=dot(n,L)-L.z;
-      c*=1.+dl*1.6;c+=max(0.,dl)*max(0.,dl)*1.1;
-      c=(c*.86-.5)*1.05+.5;
-      gl_FragColor=vec4(c,1.);}`));
-  gl.linkProgram(pr); gl.useProgram(pr);
-  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
-  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
-  const la = gl.getAttribLocation(pr, 'a'); gl.enableVertexAttribArray(la); gl.vertexAttribPointer(la, 2, gl.FLOAT, false, 0, 0);
-  const U = n => gl.getUniformLocation(pr, n), uR = U('uR'), uP = U('uP'), uA = U('uA[0]'), uB = U('uB[0]');
-  const A = new Float32Array(MAX * 4), B = new Float32Array(MAX * 4);
-  let W = 0, H = 0, dpr = 1, dents = [], pan = [0, 0], panT = [0, 0], raf = 0, visible = true, listo = false, tocado = false, pista = false, t0 = 0;
-  const easeOut = x => 1 - Math.pow(1 - x, 3);
-  // pantalla (px del canvas) <-> foto (fracciones, y desde arriba)
-  const aFoto = (x, y) => [(x / W - .5) * Z + .5 + pan[0], .5 - (.5 - y / H) * Z - pan[1]];
-  const aPantalla = (u, vt) => [((u - .5 - pan[0]) / Z + .5) * W, (1 - ((1 - vt - .5 - pan[1]) / Z + .5)) * H];
-  const panelEn = (x, y) => { const [u, vt] = aFoto(x, y); return PANELES.find(P => adentro(u * 100, vt * 100, P.p)); };
-  function bollo(x, y, P, cuando, pasos, tam = 1) {
-    return { x, y, R: Math.max(9, W * .024 * P.k * tam), P, t: cuando, pasos, s: Math.random() * 6.283 };
-  }
-  function amp(d, now) {
-    const t = (now - d.t) / 1000; if (t < 0) return 0;
-    if (t < .1) return easeOut(t / .1);
-    let a = 1;
-    for (const [ts, nv] of d.pasos) {
-      if (t < ts) break;
-      const k = Math.min(1, (t - ts) / .34), prev = a;
-      a = prev + (nv - prev) * easeOut(k) - Math.sin(k * Math.PI) * .05;
-      if (k < 1) return Math.max(0, a);
-      a = nv;
-    }
-    return Math.max(0, a);
-  }
-  function entrada(now) { // granizo sobre la chapa: aparecen de a uno y se arreglan de a uno
-    const puntos = [[59, 58, 2], [46, 53, 1], [71, 56, 3], [33, 47.6, 0], [84.5, 54, 4], [62, 64, 2]];
-    dents = puntos.map(([u, vt, i], n) => { const [x, y] = aPantalla(u / 100, vt / 100); return bollo(x, y, PANELES[i], now + 300 + n * 140, [[1.15 + n * .3, .55], [1.5 + n * .3, .2], [1.85 + n * .3, 0]]); });
-  }
-  function tam() {
-    dpr = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); gl.viewport(0, 0, cv.width, cv.height);
-    gl.uniform2f(uR, cv.width, cv.height); if (listo) dibujar(performance.now());
-  }
-  function dibujar(now) {
-    A.fill(0); B.fill(0);
-    dents.slice(-MAX).forEach((d, i) => {
-      A.set([d.x * dpr, (H - d.y) * dpr, d.R * dpr, amp(d, now)], i * 4);
-      B.set([d.P.sx, d.P.sy, d.P.rot, d.s], i * 4);
-    });
-    gl.uniform4fv(uA, A); gl.uniform4fv(uB, B); gl.uniform2f(uP, pan[0], pan[1]);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-  }
-  const vivo = (d, now) => (now - d.t) / 1000 < d.pasos[d.pasos.length - 1][0] + .4;
-  function cuadro(now) {
-    pan[0] += (panT[0] - pan[0]) * .07; pan[1] += (panT[1] - pan[1]) * .07;
-    dibujar(now);
-    dents = dents.filter(d => vivo(d, now));
-    if (!pista && !tocado && t0 && now - t0 > 3900) {
-      pista = true; const r = cv.getBoundingClientRect(), s = sec.getBoundingClientRect(), [x, y] = aPantalla(.6, .6);
-      toca.style.left = Math.min(s.width - 190, Math.max(12, r.left - s.left + x - 60)) + 'px'; toca.style.top = (r.top - s.top + y - 18) + 'px';
-      toca.querySelector('span').textContent = matchMedia('(hover:hover)').matches ? 'Hacé clic en la chapa' : 'Tocá la chapa';
-      toca.classList.add('ve');
-    }
-    const quieto = !dents.length && Math.abs(panT[0] - pan[0]) < 1e-4 && Math.abs(panT[1] - pan[1]) < 1e-4 && now - t0 > 4200;
-    raf = !quieto && visible ? requestAnimationFrame(cuadro) : 0;
-  }
-  const arrancar = () => { if (listo && !raf && visible) raf = requestAnimationFrame(cuadro); };
-  const local = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
-  sec.addEventListener('pointerdown', e => {
-    if (!listo || e.target.closest('a,button')) return;
-    const [x, y] = local(e), P = panelEn(x, y); if (!P) return; // solo se abolla la chapa
-    dents.push(bollo(x, y, P, performance.now(), [[.6, .5], [1, .18], [1.35, 0]], .8 + Math.random() * .5));
-    if (dents.length > MAX) dents.shift();
-    if (!tocado) { tocado = true; toca.classList.remove('ve'); }
-    arrancar();
-  });
-  sec.addEventListener('pointermove', e => {
-    if (!listo || e.pointerType !== 'mouse') return;
-    const [x, y] = local(e);
-    sec.classList.toggle('chapa', !!panelEn(x, y) && !e.target.closest('a,button'));
-    panT = [(x / W - .5) * .012, (.5 - y / H) * .012]; arrancar();
-  });
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; arrancar(); }).observe(sec);
-  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(tam, 120); });
-  function textura(unidad, fuente) {
-    const tx = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + unidad); gl.bindTexture(gl.TEXTURE_2D, tx);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, fuente);
-    [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]].forEach(([k, v]) => gl.texParameteri(gl.TEXTURE_2D, k, v));
-  }
-  function cargar() {
-    // la máscara de la chapa se dibuja acá mismo con los paneles
-    const m = document.createElement('canvas'); m.width = 600; m.height = 400; const c = m.getContext('2d');
-    c.fillStyle = '#000'; c.fillRect(0, 0, 600, 400); c.filter = 'blur(2px)'; c.fillStyle = '#fff';
-    PANELES.forEach(P => { c.beginPath(); P.p.forEach(([x, y], i) => c[i ? 'lineTo' : 'moveTo'](x * 6, y * 4)); c.closePath(); c.fill(); });
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    try { textura(0, fondo); textura(1, m); } catch (e) { return; } // si falla, queda la foto quieta
-    gl.uniform1i(U('uI'), 0); gl.uniform1i(U('uM'), 1);
-    listo = true; tam(); t0 = performance.now(); entrada(t0); dibujar(t0); cv.classList.add('ve'); arrancar();
-  }
-  fondo.complete && fondo.naturalWidth ? cargar() : fondo.addEventListener('load', cargar, { once: true });
+  const P = $('#inicio');
+  if (!window.gsap) { P.classList.add('fin'); return; } // sin la librería queda todo en su lugar final
+  const S = s => '#inicio ' + s, cel = innerWidth <= 760;
+  const tl = gsap.timeline({ paused: true, onComplete: () => P.classList.add('fin') });
+  tl.to(S('.foto'), { opacity: 1, duration: .45 }, 0)
+    .fromTo([S('.brillo'), S('.pasada')], { '--p': '-30%' }, { '--p': '135%', duration: 1.5, ease: 'power2.inOut' }, .45)
+    .to(S('.pasada'), { opacity: 0, duration: .3 }, 1.9)
+    .fromTo(S('.foto'), { clipPath: 'inset(0% 0% 0% 0%)' }, { clipPath: cel ? 'inset(0% 0% 50% 0%)' : 'inset(0% 0% 0% 46%)', duration: 1.05, ease: 'power3.inOut' }, 2.05)
+    .to(S('.foto img'), { xPercent: cel ? 0 : 21, yPercent: cel ? -16 : 0, duration: 1.05, ease: 'power3.inOut' }, 2.05)
+    .fromTo(S('.logo-w'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .9, ease: 'power3.inOut' }, 2.5)
+    .fromTo(S('.logo-w i'), { backgroundPosition: '160% 0' }, { backgroundPosition: '-60% 0', duration: .9, ease: 'power2.inOut' }, 3.15)
+    .fromTo(S('h1 .l>span'), { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, duration: .75, stagger: .09, ease: 'power3.out' }, 2.85)
+    .fromTo([S('.bajada'), S('.acciones'), S('.lugares')], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .6, stagger: .1, ease: 'power2.out' }, 3.1);
+  const imgs = [...P.querySelectorAll('img')].map(i => i.decode ? i.decode().catch(() => {}) : 0);
+  Promise.all(imgs).then(() => tl.play());
+  // si cambia el tamaño después de la entrada, manda el estado final del CSS
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (tl.progress() === 1) gsap.set(P.querySelectorAll('.foto, .foto img'), { clearProps: 'clipPath,transform' }); }, 150); });
 })();
 
 /* ---------- apariciones ---------- */
