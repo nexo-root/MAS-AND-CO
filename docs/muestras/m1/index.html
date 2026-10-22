@@ -313,6 +313,16 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
   .taller .datos{padding:16px}
   .taller h3{font-size:1.3rem}
 }
+
+/* botones de la portada en el celular: texto corto, sin desbordes */
+.txt-cel{display:none}
+@media (max-width:760px){
+  .txt-pc{display:none}.txt-cel{display:inline}
+  .portada .acciones{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .portada .acciones .btn{min-width:0;padding:0 10px;font-size:.9rem;font-stretch:100%;gap:8px}
+  .portada .acciones .btn-rojo svg{display:none}
+  .portada .acciones .btn svg{width:18px;height:18px}
+}
 /* reglas fijas de Felipe (22/10/2026): sin zoom por doble toque, sin selección azul y sin cursor de texto fuera de los campos */
 html{touch-action:manipulation}
 body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;cursor:default}
@@ -354,7 +364,7 @@ img{-webkit-user-drag:none}
     <div class="logo-w"><img src="fotos/logo-grande.webp" alt="M1 Sacabollo" width="1247" height="625"><i></i></div>
     <h1><span class="l"><span>Sacamos el bollo</span></span><span class="l"><span><em>sin tocar la pintura.</em></span></span></h1>
     <p class="bajada">Chapa y pintura, sacabollos, cristales, cerraduras y estética del auto, en Eldorado y Montecarlo.</p>
-    <div class="acciones"><a class="btn btn-rojo" href="#cotizar">Cotizar mi arreglo <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" id="hero-foto" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span class="txt-pc">Mandanos una foto</span><span class="txt-cel">Mandar foto</span></a></div>
+    <div class="acciones"><a class="btn btn-rojo" href="#cotizar"><span class="txt-pc">Cotizar mi arreglo</span><span class="txt-cel">Cotizar</span> <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" id="hero-foto" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span class="txt-pc">Mandanos una foto</span><span class="txt-cel">Mandar foto</span></a></div>
     <div class="lugares"><span><svg><use href="#i-pin"/></svg>Eldorado</span><span><svg><use href="#i-pin"/></svg>Montecarlo</span><span>Presupuesto sin costo</span></div>
   </div>
 </section>
