@@ -57,11 +57,11 @@ a{color:inherit;text-decoration:none}
 .portada .mate{filter:saturate(.1) brightness(.48) contrast(.82) blur(.8px)}
 .portada .brillo{--p:-30%;filter:saturate(1.15) contrast(1.08);-webkit-mask-image:linear-gradient(118deg,#000 calc(var(--p) - 2%),transparent calc(var(--p) + 6%));mask-image:linear-gradient(118deg,#000 calc(var(--p) - 2%),transparent calc(var(--p) + 6%))}
 .portada .pasada{--p:-30%;position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(118deg,transparent calc(var(--p) - 3%),rgba(255,255,255,.8) var(--p),transparent calc(var(--p) + 3%))}
-.portada-texto{position:absolute;left:max(16px,calc((100vw - 1200px)/2));top:50%;transform:translateY(-46%);width:min(40vw,560px)}
-.logo-w{position:relative;display:block;width:clamp(260px,34vw,540px)}
+.portada-texto{position:absolute;left:clamp(20px,4.5vw,88px);top:50%;transform:translateY(-46%);width:min(39vw,700px)}
+.logo-w{position:relative;display:block;width:clamp(280px,37vw,680px)}
 .logo-w img{width:100%;height:auto;filter:drop-shadow(0 20px 44px rgba(0,0,0,.65))}
 .logo-w i{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.9) 50%,transparent 60%) no-repeat;background-size:260% 100%;background-position:160% 0;-webkit-mask-image:url(fotos/logo-grande.webp);-webkit-mask-size:100% 100%;mask-image:url(fotos/logo-grande.webp);mask-size:100% 100%}
-.portada h1{font-stretch:118%;font-weight:800;font-style:italic;letter-spacing:-.01em;line-height:1.06;font-size:clamp(1.6rem,2.6vw,2.5rem);margin-top:16px;max-width:22ch}
+.portada h1{font-stretch:118%;font-weight:800;font-style:italic;letter-spacing:-.01em;line-height:1.06;font-size:clamp(1.6rem,2.7vw,3rem);margin-top:18px;max-width:22ch}
 .portada h1 .l{display:block;overflow:hidden;padding:0 .12em .06em 0}.portada h1 .l>span{display:block}
 .portada h1 em{font-style:italic;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
 .portada .bajada{color:#c9ccd3;max-width:46ch;margin-top:12px}
@@ -115,26 +115,6 @@ a{color:inherit;text-decoration:none}
 /* barrido de entrada (como una pasada de pulido), solo en las tarjetas */
 .serv.rev{clip-path:inset(0 99% 0 0 round var(--r))}
 .serv.rev.visto{clip-path:inset(0 0 0 0 round var(--r));transition:clip-path .9s var(--ease)}
-
-/* pasos */
-.pasos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);margin-top:48px;align-items:start}
-.pasos-foto{position:sticky;top:calc(var(--barra) + 24px);aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;border:1px solid var(--borde);background:var(--chapa)}
-.pasos-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .7s var(--ease),transform 1.2s var(--ease)}
-.pasos-foto img.on{opacity:1;transform:none}
-.pasos-foto .barrita{position:absolute;left:18px;right:18px;bottom:18px;height:3px;border-radius:3px;background:rgba(255,255,255,.18);overflow:hidden}
-.pasos-foto .barrita i{position:absolute;inset:0;background:var(--rojo);transform-origin:left;transform:scaleX(.333);transition:transform .6s var(--ease)}
-.paso{min-height:62vh;display:flex;flex-direction:column;justify-content:center;padding:24px 0;opacity:.35;transition:opacity .5s var(--ease)}
-.paso.on{opacity:1}
-.paso .n{font-stretch:125%;font-weight:900;font-style:italic;font-size:4.2rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.35)}
-.paso.on .n{-webkit-text-stroke-color:var(--rojo2)}
-.paso h3{font-stretch:115%;font-weight:800;font-style:italic;font-size:clamp(1.5rem,2.4vw,2rem);margin-top:10px;line-height:1.1}
-.paso p{color:var(--texto2);margin-top:10px;max-width:46ch}
-.paso img{display:none}
-@media (max-width:860px){
-  .pasos{grid-template-columns:1fr}.pasos-foto{display:none}
-  .paso{min-height:0;opacity:1;padding:0 0 40px}
-  .paso img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);margin-top:18px;border:1px solid var(--borde)}
-}
 
 /* cotizador */
 .cotizar{background:linear-gradient(180deg,var(--negro),#0d0e12 30%,#0d0e12 70%,var(--negro))}
@@ -244,7 +224,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 <header class="barra" id="barra">
   <div class="env">
     <a class="marca" href="#inicio" aria-label="M1 Sacabollo, inicio"><img src="fotos/logo.webp" alt="M1 Sacabollo" width="77" height="38"></a>
-    <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#sacabollos">Sacabollos</a><a href="#seguros">Seguros</a><a href="#talleres">Talleres</a></nav>
+    <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#seguros">Seguros</a><a href="#talleres">Talleres</a></nav>
     <a class="btn btn-rojo" href="#cotizar">Cotizar</a>
   </div>
 </header>
@@ -275,24 +255,6 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
       <button class="serv rev" data-servicio="opticas,ceramico"><img src="fotos/s-pulido-720.webp" alt="Capó negro pulido con el reflejo de la lámpara" loading="lazy"><h3>Pulido y cerámico</h3><p>Pulido de ópticas y tratamiento cerámico en autos y camionetas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv ancho rev" data-servicio="lavado,interior,polarizado,llantas"><img src="fotos/s-estetica-720.webp" srcset="fotos/s-estetica-720.webp 720w, fotos/s-estetica-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Camioneta azul recién lavada en la puerta del taller" loading="lazy"><h3>Estética y llantas</h3><p>Lavado integral y premium, limpieza interior, polarizado y diamantado de llantas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <a class="serv ancho otro rev" id="otra-cosa" href="#" target="_blank" rel="noopener"><h3>¿Es otra cosa?</h3><p>Contanos qué le pasó al auto y te decimos si lo hacemos.</p><span class="ir">Escribir por WhatsApp <svg><use href="#i-flecha"/></svg></span></a>
-    </div>
-  </div>
-</section>
-
-<section class="seccion" id="sacabollos" style="padding-top:0">
-  <div class="env">
-    <h2 class="tit rev-t">Así sacamos un bollo <em>sin pintar.</em></h2>
-    <p class="bajada">Con la técnica de sacabollos, el auto conserva su pintura original.</p>
-    <div class="pasos">
-      <div class="pasos-foto" aria-hidden="true">
-        <img class="on" src="fotos/p1-720.webp" alt="" data-paso="0"><img src="fotos/p2-720.webp" alt="" data-paso="1" loading="lazy"><img src="fotos/p3-720.webp" alt="" data-paso="2" loading="lazy">
-        <div class="barrita"><i id="barrita"></i></div>
-      </div>
-      <div>
-        <div class="paso on" data-paso="0"><span class="n">01</span><h3>Primero, la lámpara</h3><p>La luz de la lámpara se refleja en la chapa y muestra dónde está el bollo y cuánto hunde.</p><img src="fotos/p1-720.webp" alt="Lámpara de sacabollos armada al lado de un auto en el taller" loading="lazy"></div>
-        <div class="paso" data-paso="1"><span class="n">02</span><h3>Después, empuje a empuje</h3><p>Con herramientas especiales, la chapa vuelve a su lugar de a poco, desde adentro o desde afuera.</p><img src="fotos/p2-720.webp" alt="Trabajo de sacabollos en el portón de una camioneta" loading="lazy"></div>
-        <div class="paso" data-paso="2"><span class="n">03</span><h3>Al final, el reflejo derecho</h3><p>Cuando las líneas de la lámpara se ven derechas, el bollo ya no está. El auto queda con su pintura original.</p><img src="fotos/p3-720.webp" alt="Techo de un auto reflejando el cielo sin marcas" loading="lazy"></div>
-      </div>
     </div>
   </div>
 </section>
@@ -447,17 +409,6 @@ addEventListener('scroll', () => barra.classList.toggle('solida', scrollY > 40),
 /* ---------- apariciones ---------- */
 const ojo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visto'); ojo.unobserve(e.target); } }), { threshold: 0, rootMargin: '0px 0px -10% 0px' });
 $$('.rev,.rev-t').forEach(el => ojo.observe(el));
-
-/* ---------- los tres pasos del sacabollos ---------- */
-const fotosPaso = $$('.pasos-foto img'), pasos = $$('.paso'), barrita = $('#barrita');
-const pasoOjo = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return;
-  const i = +e.target.dataset.paso;
-  pasos.forEach(p => p.classList.toggle('on', +p.dataset.paso === i));
-  fotosPaso.forEach(f => f.classList.toggle('on', +f.dataset.paso === i));
-  barrita.style.transform = `scaleX(${(i + 1) / 3})`;
-}), { rootMargin: '-45% 0px -45% 0px' });
-pasos.forEach(p => pasoOjo.observe(p));
 
 /* ---------- cotizador ---------- */
 const SERV = [['bollo', 'Sacar un bollo', 1], ['granizo', 'Daños por granizo', 1], ['chapa', 'Chapa y pintura', 1], ['paragolpe', 'Paragolpes', 1], ['siniestro', 'Auto siniestrado', 1], ['cristal', 'Cambio de cristal', 1], ['cerradura', 'Cerradura o levantacristales', 1], ['llantas', 'Llantas', 0], ['opticas', 'Pulido de ópticas', 0], ['ceramico', 'Pulido y cerámico', 0], ['polarizado', 'Polarizado', 0], ['lavado', 'Lavado integral o premium', 0], ['interior', 'Limpieza interior', 0]];
