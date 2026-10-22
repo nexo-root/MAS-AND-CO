@@ -173,6 +173,27 @@ a{color:inherit;text-decoration:none}
 .seguros .acciones{display:flex;flex-direction:column;gap:12px;align-items:stretch}
 @media (max-width:860px){.seguros .caja{grid-template-columns:1fr}}
 
+/* lo que tiene que saber el cliente */
+.franja{border-top:1px solid var(--borde);border-bottom:1px solid var(--borde);background:#0d0e12}
+.franja-fila{display:grid;grid-template-columns:repeat(4,1fr)}
+.franja-fila>div{display:flex;gap:14px;align-items:flex-start;padding:26px 22px;border-left:1px solid var(--borde)}
+.franja-fila>div:first-child{border-left:0;padding-left:0}
+.franja svg{width:28px;height:28px;flex:none;fill:var(--rojo2)}
+.franja p{font-size:.9rem;color:var(--texto2);line-height:1.45}
+.franja b{display:block;color:var(--texto);font-size:1.02rem;font-stretch:110%;font-weight:800;margin-bottom:2px}
+@media (max-width:900px){.franja-fila{grid-template-columns:1fr 1fr}.franja-fila>div{padding:20px 14px;border-left:0;border-top:1px solid var(--borde)}.franja-fila>div:nth-child(-n+2){border-top:0}.franja-fila>div:nth-child(even){border-left:1px solid var(--borde)}.franja-fila>div:first-child{padding-left:14px}}
+@media (max-width:420px){.franja-fila>div{flex-direction:column;gap:8px}}
+.aseguradoras{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;list-style:none}
+.aseguradoras li{padding:10px 16px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid var(--borde2);font-weight:800;font-stretch:112%;font-size:1.02rem}
+/* preguntas frecuentes */
+.faq{margin-top:34px;display:grid;gap:10px;max-width:860px}
+.faq details{background:var(--grafito);border:1px solid var(--borde);border-radius:16px;padding:0 22px}
+.faq summary{cursor:pointer;list-style:none;padding:20px 0;font-weight:800;font-stretch:110%;font-size:1.08rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--rojo2);font-size:1.5rem;line-height:1;transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--texto2);padding:0 0 20px;margin-top:-6px;max-width:70ch}
+
 /* trabajos */
 .galeria{columns:4 220px;column-gap:14px;margin-top:44px}
 .galeria button{display:block;width:100%;margin:0 0 14px;border-radius:16px;overflow:hidden;position:relative;break-inside:avoid;border:1px solid var(--borde);background:var(--chapa)}
@@ -240,7 +261,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 <header class="barra" id="barra">
   <div class="env">
     <a class="marca" href="#inicio" aria-label="M1 Sacabollo, inicio"><img src="fotos/logo.webp" alt="M1 Sacabollo" width="77" height="38"></a>
-    <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#seguros">Seguros</a><a href="#talleres">Talleres</a></nav>
+    <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#seguros">Seguros</a><a href="#preguntas">Preguntas</a><a href="#talleres">Talleres</a></nav>
     <a class="btn btn-rojo" href="#cotizar">Cotizar</a>
   </div>
 </header>
@@ -253,11 +274,20 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
     <h1><span class="l"><span>Sacamos el bollo</span></span><span class="l"><span><em>sin tocar la pintura.</em></span></span></h1>
     <p class="bajada">Chapa y pintura, sacabollos, cristales, cerraduras y estética del auto, en Eldorado y Montecarlo.</p>
     <div class="acciones"><a class="btn btn-rojo" href="#cotizar">Cotizar mi arreglo <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" id="hero-foto" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span class="txt-pc">Mandanos una foto</span><span class="txt-cel">Mandar foto</span></a></div>
-    <div class="lugares"><span><svg><use href="#i-pin"/></svg>Eldorado</span><span><svg><use href="#i-pin"/></svg>Montecarlo</span><span>Trabajamos con compañías de seguro</span></div>
+    <div class="lugares"><span><svg><use href="#i-pin"/></svg>Eldorado</span><span><svg><use href="#i-pin"/></svg>Montecarlo</span><span>Presupuesto sin costo</span></div>
   </div>
 </section>
 
 <div class="promo" id="promo" role="note"><span id="promo-texto"></span><button type="button" id="promo-ir">Cotizar con la promo</button></div>
+
+<section class="franja" aria-label="Lo que tenés que saber">
+  <div class="env franja-fila">
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><p><b>Presupuesto sin costo</b>Por WhatsApp o en el taller</p></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><p><b>Un paño o un paragolpe</b>en unos dos días</p></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg><p><b>Tarjeta, débito o efectivo</b>También cheque al día y echeq</p></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><p><b>Seis compañías de seguro</b>Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná</p></div>
+  </div>
+</section>
 
 <section class="seccion" id="servicios">
   <div class="env">
@@ -266,7 +296,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
     <div class="bento">
       <button class="serv grande rev" data-servicio="bollo,granizo"><img src="fotos/s-bollo-720.webp" srcset="fotos/s-bollo-720.webp 720w, fotos/s-bollo-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Capó con daños por granizo bajo la luz de la lámpara de sacabollos" loading="lazy"><h3>Sacabollos y granizo</h3><p>Bollos de estacionamiento, puertazos y daños por granizo. Si la pintura está sana, se saca sin pintar.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv rev" data-servicio="chapa,paragolpe"><img src="fotos/s-chapa-720.webp" alt="Auto encintado y listo para pintar" loading="lazy"><h3>Chapa y pintura</h3><p>Paragolpes, llantas, chapa y pintura.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="siniestro" data-seguro="1"><img src="fotos/s-siniestro-720.webp" alt="Utilitario con el frente desarmado para reparar" loading="lazy"><h3>Autos siniestrados</h3><p>Trabajamos con varias compañías de seguro.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="siniestro" data-seguro="1"><img src="fotos/s-siniestro-720.webp" alt="Utilitario con el frente desarmado para reparar" loading="lazy"><h3>Autos siniestrados</h3><p>Trabajamos con Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv rev" data-servicio="cristal,cerradura"><img src="fotos/s-cristales-720.webp" alt="Auto con la luneta rota" loading="lazy"><h3>Cristales y cerraduras</h3><p>Cambio de cristales, cerraduras y levantacristales.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv rev" data-servicio="opticas,ceramico"><img src="fotos/s-pulido-720.webp" alt="Capó negro pulido con el reflejo de la lámpara" loading="lazy"><h3>Pulido y cerámico</h3><p>Pulido de ópticas y tratamiento cerámico en autos y camionetas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv ancho rev" data-servicio="lavado,interior,polarizado,llantas"><img src="fotos/s-estetica-720.webp" srcset="fotos/s-estetica-720.webp 720w, fotos/s-estetica-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Camioneta azul recién lavada en la puerta del taller" loading="lazy"><h3>Estética y llantas</h3><p>Lavado integral y premium, limpieza interior, polarizado y diamantado de llantas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
@@ -342,7 +372,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
           </div>
           <p class="ayuda" style="margin-top:16px">¿Es por seguro?</p>
           <div class="chips" id="c-seguro" style="margin-top:8px"><button class="chip" type="button" data-v="no" aria-pressed="true">Particular</button><button class="chip" type="button" data-v="si" aria-pressed="false">Por seguro</button></div>
-          <div class="campos oculto" id="f-seguro"><div class="campo ancho"><label for="f-compania">Compañía de seguro</label><input id="f-compania" autocomplete="off" placeholder="Ej.: el nombre de tu compañía"></div></div>
+          <div class="oculto" id="f-seguro"><p class="ayuda" style="margin-top:16px">¿Qué compañía?</p><div class="chips" id="c-compania" style="margin-top:8px"></div><div class="campos"><div class="campo ancho"><label for="f-compania">Si es otra, escribila</label><input id="f-compania" autocomplete="off" placeholder="Nombre de tu compañía"></div></div></div>
         </div>
         <div class="bloque"><h3><b id="n-sigue">4</b>¿Cómo seguimos?</h3>
           <div class="chips" id="c-modo"><button class="chip" type="button" data-v="visita" aria-pressed="true">Visita para presupuesto</button><button class="chip" type="button" data-v="llamada" aria-pressed="false">Que me llamen</button><button class="chip" type="button" data-v="chat" aria-pressed="false">Solo consultar</button></div>
@@ -372,8 +402,9 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 
 <section class="seccion seguros" id="seguros" style="padding-top:0">
   <div class="env"><div class="caja">
-    <div><h2 class="tit rev-t">¿Es por seguro? <em>Trabajamos con varias compañías.</em></h2>
-      <p class="bajada">Elegí «Por seguro» en el cotizador y poné el nombre de tu compañía. Te decimos qué necesitamos para arrancar.</p></div>
+    <div><h2 class="tit rev-t">¿Es por seguro? <em>Trabajamos con estas compañías.</em></h2>
+      <ul class="aseguradoras" id="aseguradoras" aria-label="Compañías de seguro"></ul>
+      <p class="bajada">Elegí «Por seguro» en el cotizador y marcá tu compañía. Te decimos qué necesitamos para arrancar. Si es otra, consultanos.</p></div>
     <div class="acciones"><button class="btn btn-rojo" type="button" id="ir-seguro">Cotizar por seguro <svg><use href="#i-flecha"/></svg></button><a class="btn btn-borde" id="wa-seguro" href="#" target="_blank" rel="noopener">Preguntar por WhatsApp</a></div>
   </div></div>
 </section>
@@ -383,6 +414,19 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
     <h2 class="tit rev-t">En el <em>taller.</em></h2>
     <p class="bajada">Fotos reales de nuestro trabajo en Eldorado y Montecarlo.</p>
     <div class="galeria" id="galeria"></div>
+  </div>
+</section>
+
+<section class="seccion" id="preguntas" style="padding-top:0">
+  <div class="env">
+    <h2 class="tit rev-t">Preguntas <em>frecuentes.</em></h2>
+    <div class="faq">
+      <details open><summary>¿El presupuesto se cobra?</summary><p>No, el presupuesto es sin costo. Escribinos por WhatsApp o usá el cotizador de esta página.</p></details>
+      <details><summary>¿Cuánto tarda un arreglo?</summary><p>Depende del trabajo. Un paño de chapa y pintura o un paragolpe lleva más o menos dos días. El plazo de tu arreglo te lo confirmamos en el presupuesto.</p></details>
+      <details><summary>¿Trabajan con mi seguro?</summary><p>Trabajamos con Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná. Si tu compañía es otra, consultanos.</p></details>
+      <details><summary>¿Cómo se paga?</summary><p>Con tarjeta de crédito, débito, cheque al día, echeq o efectivo.</p></details>
+      <details><summary>¿Dónde están?</summary><p>Tenemos un taller en Eldorado y otro en Montecarlo, Misiones. Escribinos y te pasamos la ubicación.</p></details>
+    </div>
   </div>
 </section>
 
@@ -415,7 +459,9 @@ const M1 = {
     { id: 'montecarlo', n: 'Montecarlo', wa: '5493751594184', q: 'Montecarlo, Misiones', dir: '', pin: '' }
   ],
   // promo del mes: { texto: 'Daños por granizo: 10 % off al contado para particulares', hasta: '2026-11-30', servicio: 'granizo' }
-  promo: null
+  promo: null,
+  // compañías de seguro con las que trabaja (Matías, 22/10/2026)
+  seguros: ['Sancor', 'Triunfo', 'SMG', 'San Cristóbal', 'Berkley', 'Paraná']
 };
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const wa = (num, t) => 'https://wa.me/' + num + '?text=' + encodeURIComponent(t);
@@ -475,6 +521,10 @@ $$('#auto .z').forEach(z => {
 });
 $('#todo-auto').addEventListener('click', () => { S.todo = !S.todo; pintar(); });
 $$('#f-modelo,#f-anio,#f-compania,#f-nombre').forEach(i => i.addEventListener('input', pintar));
+const cComp = $('#c-compania'), fComp = $('#f-compania');
+cComp.innerHTML = M1.seguros.concat('Otra').map(n => `<button class="chip" type="button" data-v="${n}">${n}</button>`).join('');
+cComp.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; if (b.dataset.v === 'Otra') { fComp.value = ''; fComp.focus(); } else fComp.value = b.dataset.v; pintar(); });
+$('#aseguradoras').innerHTML = M1.seguros.map(n => `<li>${n}</li>`).join('');
 const marcar = (sel, v) => $$(sel + ' .chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === v));
 function mensaje() {
   const L = ['Hola, M1. Quiero consultar por un arreglo.'];
@@ -500,6 +550,7 @@ function pintar() {
   $('#todo-auto').setAttribute('aria-pressed', S.todo);
   $('#zonas-elegidas').innerHTML = S.todo ? '<span>Todo el auto</span>' : S.zonas.size ? [...S.zonas].map(k => `<span>${ZN[k]}</span>`).join('') : '<span class="vacio">Todavía no marcaste nada.</span>';
   $('#f-seguro').classList.toggle('oculto', S.seguro !== 'si');
+  $$('#c-compania .chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === 'Otra' ? !!fComp.value && !M1.seguros.includes(fComp.value) : b.dataset.v === fComp.value));
   $('#f-dia').classList.toggle('oculto', S.modo !== 'visita');
   $('#f-franja').classList.toggle('oculto', S.modo === 'chat');
   $('#t-franja').textContent = S.modo === 'llamada' ? '¿Cuándo te llamamos?' : '¿A qué hora?';
