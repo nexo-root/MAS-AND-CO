@@ -84,7 +84,7 @@ a{color:inherit;text-decoration:none}
 .portada:not(.fin) .bajada,.portada:not(.fin) .acciones,.portada:not(.fin) .lugares{opacity:0}
 .portada.fin .persiana,.portada.fin .tubos{display:none}
 .portada.fin .foto .apagado{opacity:0}
-html.intro .barra,html.intro .fab{opacity:0;pointer-events:none}
+html.intro .barra,html.intro .dock{opacity:0;pointer-events:none}
 .barra{transition:opacity .5s var(--ease),background .3s,border-color .3s,backdrop-filter .3s}
 .barra .marca{transition:opacity .3s var(--ease)}
 .barra:not(.solida) .marca{opacity:0;pointer-events:none}
@@ -237,21 +237,22 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
 .pie a{color:var(--texto2)}.pie a:hover{color:var(--texto)}
 .pie .redes{display:flex;gap:18px;align-items:center}
 
-/* WhatsApp flotante */
-.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:45;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.45);transition:transform .3s var(--ease),opacity .3s}
-.fab svg{width:30px;height:30px;fill:#fff}
-.fab.fuera{transform:scale(.6);opacity:0;pointer-events:none}
-.txt-cel{display:none}
-/* barra fija para cotizar en el celular: aparece al dejar la portada y se esconde junto al botón del cotizador */
-.barra-cel{display:none}
+/* barra de secciones: abajo, con la sección actual iluminada */
+.dock{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));z-index:45;display:flex;gap:2px;padding:6px;border-radius:999px;background:rgba(17,18,22,.84);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.5);transform:translateX(-50%);transition:opacity .4s var(--ease),transform .5s var(--ease)}
+.dock a{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 14px 7px;border-radius:999px;color:#a9adb6;font-size:.72rem;font-weight:700;letter-spacing:.01em;transition:color .3s var(--ease),transform .2s var(--ease)}
+.dock a svg{width:21px;height:21px;fill:currentColor;transition:transform .45s cubic-bezier(.2,.8,.2,1.4)}
+.dock a:hover{color:#fff}
+.dock a:active{transform:scale(.9)}
+.dock a.on{color:#fff}
+.dock a.on svg{transform:translateY(-1px) scale(1.18)}
+.dock-luz{position:absolute;z-index:0;top:6px;bottom:6px;left:0;width:0;border-radius:999px;background:linear-gradient(180deg,var(--rojo2),var(--rojo));box-shadow:0 6px 18px rgba(227,19,28,.45),inset 0 1px 0 rgba(255,255,255,.3);opacity:0;transition:transform .5s cubic-bezier(.2,.8,.2,1),width .5s cubic-bezier(.2,.8,.2,1),opacity .3s var(--ease)}
+.dock.con-luz .dock-luz{opacity:1}
+.pie{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
 @media (max-width:760px){
-  .txt-pc{display:none}.txt-cel{display:inline}
-  .portada .acciones .btn-rojo svg{display:none}
-  .fab{display:none}
-  .barra-cel{display:block;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(9,9,11,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--borde);transform:translateY(110%);transition:transform .35s var(--ease)}
-  .barra-cel.ve{transform:none}
-  .barra-cel .btn{width:100%}
-  .pie{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  .dock{left:8px;right:8px;transform:none;justify-content:space-between;gap:0;padding:5px;bottom:calc(8px + env(safe-area-inset-bottom))}
+  .dock a{flex:1;padding:7px 0 6px;font-size:.6rem;gap:2px}
+  .dock a svg{width:19px;height:19px}
+  .dock-luz{top:5px;bottom:5px}
 }
 
 /* aparición de títulos: solo una línea de máscara, sin fundidos en cadena */
@@ -311,7 +312,6 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
   .taller .mapa{aspect-ratio:16/9}
   .taller .datos{padding:16px}
   .taller h3{font-size:1.3rem}
-  .barra-cel .btn{min-height:46px}
 }
 /* reglas fijas de Felipe (22/10/2026): sin zoom por doble toque, sin selección azul y sin cursor de texto fuera de los campos */
 html{touch-action:manipulation}
@@ -328,13 +328,19 @@ img{-webkit-user-drag:none}
   <symbol id="i-cam" viewBox="0 0 24 24"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zM9 2 7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9z"/></symbol>
   <symbol id="i-lupa" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
   <symbol id="i-sol" viewBox="0 0 24 24"><path d="M6.76 4.84 4.96 3.05 3.55 4.46l1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></symbol>
+  <symbol id="d-cotizar" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></symbol>
+  <symbol id="d-servicios" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></symbol>
+  <symbol id="d-seguros" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></symbol>
+  <symbol id="d-talleres" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol>
+  <symbol id="d-trabajos" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></symbol>
+  <symbol id="d-preguntas" viewBox="0 0 24 24"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></symbol>
 </svg>
 
 <header class="barra" id="barra">
   <div class="env">
     <a class="marca" href="#inicio" aria-label="M1 Sacabollo, inicio"><img src="fotos/logo.webp" alt="M1 Sacabollo" width="77" height="38"></a>
-    <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#seguros">Seguros</a><a href="#preguntas">Preguntas</a><a href="#talleres">Talleres</a></nav>
+    <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#seguros">Seguros</a><a href="#talleres">Talleres</a><a href="#trabajos">Trabajos</a><a href="#preguntas">Preguntas</a></nav>
     <a class="btn btn-rojo" href="#cotizar">Cotizar</a>
   </div>
 </header>
@@ -355,39 +361,13 @@ img{-webkit-user-drag:none}
 
 <div class="promo" id="promo" role="note"><span id="promo-texto"></span><button type="button" id="promo-ir">Cotizar con la promo</button></div>
 
-<section class="franja" aria-label="Lo que tenés que saber">
-  <div class="env franja-fila">
-    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><p><b>Presupuesto sin costo</b>Por WhatsApp o en el taller</p></div>
-    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><p><b>Un paño o un paragolpe</b>en unos dos días</p></div>
-    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg><p><b>Tarjeta, débito o efectivo</b>También cheque al día y echeq</p></div>
-    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><p><b>Seis compañías de seguro</b>Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná</p></div>
-  </div>
-</section>
-
-<section class="seccion" id="servicios">
-  <div class="env">
-    <h2 class="tit rev-t">Todo lo que el auto necesita, <em>en un solo lugar.</em></h2>
-    <p class="bajada">Tocá un servicio y te armamos la consulta.</p>
-    <div class="bento">
-      <button class="serv grande rev" data-servicio="bollo,granizo"><img src="fotos/s-bollo-720.webp" srcset="fotos/s-bollo-720.webp 720w, fotos/s-bollo-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Capó con daños por granizo bajo la luz de la lámpara de sacabollos" loading="lazy"><h3>Sacabollos y granizo</h3><p>Bollos de estacionamiento, puertazos y daños por granizo. Si la pintura está sana, se saca sin pintar.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="chapa,paragolpe"><img src="fotos/s-chapa-720.webp" alt="Auto encintado y listo para pintar" loading="lazy"><h3>Chapa y pintura</h3><p>Paragolpes, llantas, chapa y pintura.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="siniestro" data-seguro="1"><img src="fotos/s-siniestro-720.webp" alt="Utilitario con el frente desarmado para reparar" loading="lazy"><h3>Autos siniestrados</h3><p>Trabajamos con Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="cristal,cerradura"><img src="fotos/s-cristales-720.webp" alt="Auto con la luneta rota" loading="lazy"><h3>Cristales y cerraduras</h3><p>Cambio de cristales, cerraduras y levantacristales.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="opticas,ceramico"><img src="fotos/s-pulido-720.webp" alt="Capó negro pulido con el reflejo de la lámpara" loading="lazy"><h3>Pulido y cerámico</h3><p>Pulido de ópticas y tratamiento cerámico en autos y camionetas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv ancho rev" data-servicio="lavado,interior,polarizado,llantas"><img src="fotos/s-estetica-720.webp" srcset="fotos/s-estetica-720.webp 720w, fotos/s-estetica-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Camioneta azul recién lavada en la puerta del taller" loading="lazy"><h3>Estética y llantas</h3><p>Lavado integral y premium, limpieza interior, polarizado y diamantado de llantas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <a class="serv ancho otro rev" id="otra-cosa" href="#" target="_blank" rel="noopener"><h3>¿Es otra cosa?</h3><p>Contanos qué le pasó al auto y te decimos si lo hacemos.</p><span class="ir">Escribir por WhatsApp <svg><use href="#i-flecha"/></svg></span></a>
-    </div>
-  </div>
-</section>
-
 <section class="seccion cotizar" id="cotizar">
   <div class="env">
-    <h2 class="tit rev-t">Cotizá en <em>un minuto.</em></h2>
-    <p class="bajada">Elegí qué necesitás y nos llega todo escrito por WhatsApp. Después nos mandás las fotos en el mismo chat.</p>
+    <h2 class="tit rev-t">¿Qué le pasó <em>a tu auto?</em></h2>
+    <p class="bajada">Tocá dónde está el daño y qué necesitás: nos llega todo escrito por WhatsApp. El presupuesto es sin costo.</p>
     <div class="coti">
       <div>
-        <div class="bloque"><h3><b>1</b>¿Qué necesitás?<small>podés elegir más de uno</small></h3><div class="chips" id="c-serv"></div></div>
-        <div class="bloque" id="b-zonas"><h3><b>2</b>¿Dónde está el daño?<small>tocá el auto</small></h3>
+        <div class="bloque" id="b-zonas"><h3><b>1</b>¿Dónde está el daño?<small>tocá el auto</small></h3>
           <div class="auto-env">
             <div class="auto"><svg viewBox="0 0 260 540" id="auto" role="group" aria-label="Plano del auto visto desde arriba">
               <defs>
@@ -440,6 +420,7 @@ img{-webkit-user-drag:none}
             </div>
           </div>
         </div>
+        <div class="bloque"><h3><b>2</b>¿Qué necesitás?<small>podés elegir más de uno</small></h3><div class="chips" id="c-serv"></div></div>
         <div class="bloque"><h3><b id="n-auto">3</b>Tu auto</h3>
           <div class="campos">
             <div class="campo"><label for="f-modelo">Marca y modelo</label><input id="f-modelo" autocomplete="off" placeholder="Ej.: Gol Trend"></div>
@@ -475,6 +456,31 @@ img{-webkit-user-drag:none}
   </div>
 </section>
 
+<section class="franja" aria-label="Lo que tenés que saber">
+  <div class="env franja-fila">
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><p><b>Presupuesto sin costo</b>Por WhatsApp o en el taller</p></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><p><b>Un paño o un paragolpe</b>en unos dos días</p></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg><p><b>Tarjeta, débito o efectivo</b>También cheque al día y echeq</p></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><p><b>Seis compañías de seguro</b>Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná</p></div>
+  </div>
+</section>
+
+<section class="seccion" id="servicios">
+  <div class="env">
+    <h2 class="tit rev-t">Todo lo que el auto necesita, <em>en un solo lugar.</em></h2>
+    <p class="bajada">Tocá un servicio y te armamos la consulta.</p>
+    <div class="bento">
+      <button class="serv grande rev" data-servicio="bollo,granizo"><img src="fotos/s-bollo-720.webp" srcset="fotos/s-bollo-720.webp 720w, fotos/s-bollo-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Capó con daños por granizo bajo la luz de la lámpara de sacabollos" loading="lazy"><h3>Sacabollos y granizo</h3><p>Bollos de estacionamiento, puertazos y daños por granizo. Si la pintura está sana, se saca sin pintar.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="chapa,paragolpe"><img src="fotos/s-chapa-720.webp" alt="Auto encintado y listo para pintar" loading="lazy"><h3>Chapa y pintura</h3><p>Paragolpes, llantas, chapa y pintura.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="siniestro" data-seguro="1"><img src="fotos/s-siniestro-720.webp" alt="Utilitario con el frente desarmado para reparar" loading="lazy"><h3>Autos siniestrados</h3><p>Trabajamos con Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="cristal,cerradura"><img src="fotos/s-cristales-720.webp" alt="Auto con la luneta rota" loading="lazy"><h3>Cristales y cerraduras</h3><p>Cambio de cristales, cerraduras y levantacristales.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="opticas,ceramico"><img src="fotos/s-pulido-720.webp" alt="Capó negro pulido con el reflejo de la lámpara" loading="lazy"><h3>Pulido y cerámico</h3><p>Pulido de ópticas y tratamiento cerámico en autos y camionetas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv ancho rev" data-servicio="lavado,interior,polarizado,llantas"><img src="fotos/s-estetica-720.webp" srcset="fotos/s-estetica-720.webp 720w, fotos/s-estetica-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Camioneta azul recién lavada en la puerta del taller" loading="lazy"><h3>Estética y llantas</h3><p>Lavado integral y premium, limpieza interior, polarizado y diamantado de llantas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <a class="serv ancho otro rev" id="otra-cosa" href="#" target="_blank" rel="noopener"><h3>¿Es otra cosa?</h3><p>Contanos qué le pasó al auto y te decimos si lo hacemos.</p><span class="ir">Escribir por WhatsApp <svg><use href="#i-flecha"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
 <section class="seccion seguros" id="seguros" style="padding-top:0">
   <div class="env"><div class="caja">
     <div><h2 class="tit rev-t">¿Es por seguro? <em>Trabajamos con estas compañías.</em></h2>
@@ -484,6 +490,12 @@ img{-webkit-user-drag:none}
   </div></div>
 </section>
 
+<section class="seccion" id="talleres" style="padding-top:0">
+  <div class="env">
+    <h2 class="tit rev-t">Dos talleres <em>en Misiones.</em></h2>
+    <div class="talleres" id="lista-talleres"></div>
+  </div>
+</section>
 <section class="seccion" id="trabajos" style="padding-top:0">
   <div class="env">
     <h2 class="tit rev-t">En el <em>taller.</em></h2>
@@ -505,12 +517,6 @@ img{-webkit-user-drag:none}
   </div>
 </section>
 
-<section class="seccion" id="talleres" style="padding-top:0">
-  <div class="env">
-    <h2 class="tit rev-t">Dos talleres <em>en Misiones.</em></h2>
-    <div class="talleres" id="lista-talleres"></div>
-  </div>
-</section>
 </main>
 
 <footer class="pie">
@@ -522,8 +528,7 @@ img{-webkit-user-drag:none}
   </div>
 </footer>
 
-<div class="barra-cel" id="barra-cel"><a class="btn btn-wa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Cotizar por WhatsApp</a></div>
-<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Escribir a M1 por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+<nav class="dock" id="dock" aria-label="Ir a una sección"><i class="dock-luz" id="dock-luz"></i><a href="#cotizar" data-sec="cotizar"><svg><use href="#d-cotizar"/></svg><span>Cotizar</span></a><a href="#servicios" data-sec="servicios"><svg><use href="#d-servicios"/></svg><span>Servicios</span></a><a href="#seguros" data-sec="seguros"><svg><use href="#d-seguros"/></svg><span>Seguros</span></a><a href="#talleres" data-sec="talleres"><svg><use href="#d-talleres"/></svg><span>Talleres</span></a><a href="#trabajos" data-sec="trabajos"><svg><use href="#d-trabajos"/></svg><span>Trabajos</span></a><a href="#preguntas" data-sec="preguntas"><svg><use href="#d-preguntas"/></svg><span>Preguntas</span></a></nav>
 <dialog class="visor" id="visor"><button class="cerrar" type="button" aria-label="Cerrar">×</button><img alt=""></dialog>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script>
@@ -647,7 +652,7 @@ function pintar() {
 enviar.addEventListener('click', e => { if (!S.serv.size) e.preventDefault(); });
 function elegir(servicios, seguro) {
   S.serv = new Set(servicios); if (seguro) S.seguro = 'si'; pintar();
-  $('#cotizar').scrollIntoView({ behavior: 'smooth' });
+  irA($('#cotizar'));
 }
 $$('.serv[data-servicio]').forEach(b => b.addEventListener('click', () => elegir(b.dataset.servicio.split(','), b.dataset.seguro)));
 $('#ir-seguro').addEventListener('click', () => elegir(['siniestro'], 1));
@@ -655,16 +660,39 @@ pintar();
 
 /* ---------- WhatsApp general ---------- */
 const general = wa(M1.talleres[0].wa, 'Hola, M1. Quería hacer una consulta.');
-$('#fab').href = general;
 $('#hero-foto').href = wa(M1.talleres[0].wa, 'Hola, M1. Les mando una foto del daño para que me coticen.');
-$('#barra-cel a').href = wa(M1.talleres[0].wa, 'Hola, M1. Quería cotizar un arreglo.'); $('#pie-wa').href = general; $('#otra-cosa').href = general;
+$('#pie-wa').href = general; $('#otra-cosa').href = general;
 $('#wa-seguro').href = wa(M1.talleres[0].wa, 'Hola, M1. Quería consultar por un arreglo por seguro.');
-const fab = $('#fab');
-new IntersectionObserver(([e]) => fab.classList.toggle('fuera', e.isIntersecting)).observe(enviar);
-const barraCel = $('#barra-cel'); let enPortada = true, enEnviar = false;
-const verBarra = () => barraCel.classList.toggle('ve', !enPortada && !enEnviar);
-new IntersectionObserver(([e]) => { enPortada = e.isIntersecting; verBarra(); }, { threshold: .25 }).observe($('#inicio'));
-new IntersectionObserver(([e]) => { enEnviar = e.isIntersecting; verBarra(); }).observe(enviar);
+/* ---------- navegación: scroll fluido y la barra de secciones ---------- */
+const RAIZ = document.documentElement;
+function irA(el) {
+  if (!el) return;
+  const barra = parseInt(getComputedStyle(RAIZ).getPropertyValue('--barra')) || 64;
+  const y0 = scrollY, y1 = Math.max(0, el.getBoundingClientRect().top + scrollY - barra - 10), d = y1 - y0;
+  if (Math.abs(d) < 2) return;
+  const dur = Math.min(1000, 420 + Math.abs(d) * .22), t0 = performance.now();
+  const curva = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  RAIZ.style.scrollBehavior = 'auto';
+  (function paso(now) { const k = Math.min(1, (now - t0) / dur); scrollTo(0, y0 + d * curva(k)); if (k < 1) requestAnimationFrame(paso); else RAIZ.style.scrollBehavior = ''; })(t0);
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const id = a.getAttribute('href'); if (id.length < 2) return;
+  const el = document.querySelector(id); if (!el) return;
+  e.preventDefault(); irA(el);
+});
+const dock = $('#dock'), luz = $('#dock-luz'), botones = $$('#dock a');
+function marcarSeccion(id) {
+  const b = botones.find(x => x.dataset.sec === id);
+  botones.forEach(x => x.classList.toggle('on', x === b));
+  dock.classList.toggle('con-luz', !!b);
+  if (b) { luz.style.width = b.offsetWidth + 'px'; luz.style.transform = `translateX(${b.offsetLeft}px)`; }
+}
+const secs = botones.map(b => $('#' + b.dataset.sec));
+const vigia = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) marcarSeccion(e.target.id); }), { rootMargin: '-40% 0px -55% 0px' });
+secs.forEach(x => vigia.observe(x));
+new IntersectionObserver(([e]) => { if (e.isIntersecting) marcarSeccion(null); }, { rootMargin: '-40% 0px -55% 0px' }).observe($('#inicio'));
+addEventListener('resize', () => { const b = botones.find(x => x.classList.contains('on')); if (b) marcarSeccion(b.dataset.sec); });
 
 /* ---------- promo del mes ---------- */
 if (M1.promo && new Date(M1.promo.hasta + 'T23:59') >= new Date()) {
