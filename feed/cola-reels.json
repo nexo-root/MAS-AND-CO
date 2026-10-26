@@ -1,5 +1,5 @@
 {
-  "_doc": "Reels de Mas & Co: uno cada tres dias, a las 19:30 de Argentina, en Instagram y en la pagina de Facebook. Lo publica publicar_reel.py desde el workflow reels.yml. Los videos traen la musica pegada adentro del archivo. Los dias van corridos respecto de TikTok a proposito, para no repetir lo mismo el mismo dia. | 23/09: la musica va PEGADA en el MP4: beats de hip-hop serios de Pixabay (sin Content ID), en negocio/v5-editorial/musica/cool/. La musica RF de Instagram no se puede bajar. | 30/09: v8 con zona segura (nada tapado por la interfaz de TikTok ni de Reels) y musica nueva sin voces (Vanish Mode, Urban y Confident, de Pixabay, sin Content ID). Sale r04-cabanas: muestra la pagina de Pehuen-Co, que no se muestra (Felipe, 26/09). | 30/09 (tarde): v9 con /total-animations. Cada corte cae en el uno de un compas del tema (grilla medida sobre los golpes reales, negocio/reels-manychat/_afinar_beats.py), la caida de la musica pega en el segundo 1 y hay un solo movimiento por escena. Los subtitulos largos se achican solos para no quedar debajo del texto de la cuenta.",
+  "_doc": "Reels de Mas & Co: uno cada tres dias, a las 19:30 de Argentina, en Instagram y en la pagina de Facebook. Lo publica publicar_reel.py desde el workflow reels.yml. Los videos traen la musica pegada adentro del archivo. Los dias van corridos respecto de TikTok a proposito, para no repetir lo mismo el mismo dia. | 23/09: la musica va PEGADA en el MP4: beats de hip-hop serios de Pixabay (sin Content ID), en negocio/v5-editorial/musica/cool/. La musica RF de Instagram no se puede bajar. | 30/09: v8 con zona segura (nada tapado por la interfaz de TikTok ni de Reels) y musica nueva sin voces (Vanish Mode, Urban y Confident, de Pixabay, sin Content ID). Sale r04-cabanas: muestra la pagina de Pehuen-Co, que no se muestra (Felipe, 26/09). | 30/09 (tarde): v9 con /total-animations. Cada corte cae en el uno de un compas del tema (grilla medida sobre los golpes reales, negocio/reels-manychat/_afinar_beats.py), la caida de la musica pega en el segundo 1 y hay un solo movimiento por escena. Los subtitulos largos se achican solos para no quedar debajo del texto de la cuenta. | 26/10: tanda diaria de 10 reels paradoja con voz de Carlos (r15-r24), del 26/10 al 04/11; TikTok va por Metricool a la misma hora.",
   "base_url": "https://raw.githubusercontent.com/nexo-root/MAS-AND-CO/main/feed/reels/",
   "reels": [
     {
@@ -61,6 +61,56 @@
       "fecha": "2026-10-25",
       "video": "r05-barberia.mp4",
       "caption": "Para barberías y estética: tus trabajos, tus horarios y turnos por WhatsApp, en una página propia.\n\nEscribinos por WhatsApp con el rubro de tu negocio y te pasamos ejemplos y el presupuesto en el día.\n\n#paginaweb #negocios #emprendedores #argentina"
+    },
+    {
+      "fecha": "2026-10-26",
+      "video": "r15.mp4",
+      "caption": "Para salones de eventos: el de enfrente es más chico y tiene los sábados llenos, porque el cliente ve todo antes de reservar.\n\nCon una página propia ven la noche hora por hora, arman su fiesta con sus invitados y miran qué fechas están libres. La consulta te llega armada.\n\nEscribinos la palabra SALÓN y te mostramos cómo quedaría el tuyo.\n\n#salondeeventos #fiestas #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-10-27",
+      "video": "r16.mp4",
+      "caption": "Para mueblerías: la de enfrente es más chica y siempre tiene gente eligiendo, porque el cliente ve el catálogo antes de ir.\n\nCon una página propia ven cada mueble, arman su comedor a medida y saben cuándo se lo entregan. La consulta te llega armada.\n\nEscribinos la palabra MUEBLERÍA y te mostramos cómo quedaría la tuya.\n\n#muebleria #muebles #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-10-28",
+      "video": "r17.mp4",
+      "caption": "Para restaurantes: el de enfrente tiene todas las mesas llenas, porque la gente ve la carta antes de ir.\n\nCon una página propia ven cada plato, eligen horario y cuántos son, y la reserva te llega armada.\n\nEscribinos la palabra RESTAURANTE y te mostramos cómo quedaría el tuyo.\n\n#restaurante #gastronomia #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-10-29",
+      "video": "r18.mp4",
+      "caption": "Para inmobiliarias: la de enfrente tiene menos propiedades y sus carteles pasan a vendido, porque el cliente las ve antes de ir.\n\nCon una página propia ven cada casa, buscan por dormitorios y piden la visita con la consulta armada.\n\nEscribinos la palabra INMOBILIARIA y te mostramos cómo quedaría la tuya.\n\n#inmobiliaria #propiedades #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-10-30",
+      "video": "r19.mp4",
+      "caption": "Para agencias de viaje: la de enfrente tiene menos destinos y fila con valijas, porque el cliente ve los viajes antes de ir.\n\nCon una página propia ven cada destino, arman su viaje y miran las próximas salidas. La consulta te llega armada.\n\nEscribinos la palabra AGENCIA y te mostramos cómo quedaría la tuya.\n\n#agenciadeviajes #turismo #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-10-31",
+      "video": "r20.mp4",
+      "caption": "Para corralones: el de enfrente tiene menos material y los camiones salen cargados, porque el cliente ve el stock antes de ir.\n\nCon una página propia ven cada material, calculan lo que necesitan para su obra y el pedido te llega armado.\n\nEscribinos la palabra CORRALÓN y te mostramos cómo quedaría el tuyo.\n\n#corralon #materialesdeconstruccion #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-11-01",
+      "video": "r21.mp4",
+      "caption": "Para cabañas y alojamientos: la de enfrente es más simple y tiene los fines de semana llenos, porque el huésped la ve antes de reservar.\n\nCon una página propia ven cada cabaña, eligen para cuántos y miran las fechas libres. La consulta te llega armada.\n\nEscribinos la palabra CABAÑA y te mostramos cómo quedaría la tuya.\n\n#cabañas #alojamiento #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-11-02",
+      "video": "r22.mp4",
+      "caption": "Para constructoras: la de enfrente hizo menos obras y tiene la agenda llena, porque el cliente ve lo que hizo antes de llamar.\n\nCon una página propia se ven tus obras terminadas, cómo trabajás paso a paso y dónde estás. La consulta para la visita te llega armada.\n\nEscribinos la palabra CONSTRUCTORA y te mostramos cómo quedaría la tuya.\n\n#constructora #construccion #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-11-03",
+      "video": "r23.mp4",
+      "caption": "Para productores de seguros: la de enfrente trabaja con menos compañías y recibe pedidos de cotización todos los días, porque el cliente confía antes de escribir.\n\nCon una página propia se ven tu matrícula y tus compañías, los pasos ante un choque quedan a mano y la cotización te llega armada.\n\nEscribinos la palabra SEGUROS y te mostramos cómo quedaría el tuyo.\n\n#seguros #productordeseguros #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-11-04",
+      "video": "r24.mp4",
+      "caption": "Para financieras: la de enfrente tiene menos clientes y recibe más consultas, porque el cliente ve con quién está tratando.\n\nCon una página propia se ven tu dirección y tu CUIT, los papeles que pedís están claros y la consulta te llega ordenada.\n\nEscribinos la palabra FINANCIERA y te mostramos cómo quedaría la tuya.\n\n#financiera #paginaweb #negocios"
     }
   ]
 }
