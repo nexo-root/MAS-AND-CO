@@ -1,0 +1,1186 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Diseño de muestra para su productora de seguros · Mas & Co">
+<meta property="og:description" content="Recórrala completa: la portada de las 22:10, el cotizador por reglas, los pasos si chocaste, la matrícula y las compañías a la vista.">
+<meta property="og:image" content="https://masandcoweb.com/og-masandco.png">
+<title>Seguros · diseño de muestra · Mas &amp; Co</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..600,0..1,0&icon_names=arrow_forward,badge,block,call,car_crash,chat,check,check_circle,chips,close,description,directions_car,done,event,fact_check,group,help,home,input,location_on,near_me,request_quote,schedule,shield,star,storefront,sum,tab,text,transform,verified_user,warning&display=block" rel="stylesheet">
+<style>
+/* Muestra de seguros para productores y asesores · Mas & Co · 26/10/2026.
+   Sale del kit de la muestra de agencias (barra, páginas con ?p=, chips, burbuja, aviso, mapa) con portada y páginas propias:
+   1. Portada “Sábado 22:10, choque”: las balizas titilan, el reloj pasa de 22:09 a 22:10 y la página responde con los primeros pasos.
+   2. Cotizá: un cotizador por reglas (auto, hogar o comercio): qué cobertura tiene sentido y por qué. Sin precios.
+   3. Si chocaste: pasos que se tildan, teléfonos a mano y el aviso que arma el mensaje.
+   4. Matrícula y compañías a la vista (todo de ejemplo). 5. Escribinos: la consulta que arma el WhatsApp.
+   Con ?n=Nombre&c=Ciudad (y ?r= y ?o= si se conocen) se personaliza. Sin parámetros: “Tu productora de seguros”.
+   Todo lo que no es del negocio dice “de ejemplo”. Nada depende de la preferencia de movimiento reducido del sistema. */
+:root{--noche:#0A1424;--noche2:#111F35;--papel:#F4F1EA;--papel2:#E9E4D8;--tinta:#0E1A2B;--gris:#566272;--linea:#D8D2C3;--mar:#1553C8;--mar2:#0F43A6;--sol:#FFB11F;--cian:#3CCFFF;--ok:#1F9D55;--suave:cubic-bezier(.16,1,.3,1);--ancho:1220px;--barra:68px}
+@media (min-width:1360px){:root{--ancho:1280px}}
+@media (min-width:1800px){:root{--ancho:1520px}}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font-family:Barlow,system-ui,sans-serif;font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+img{display:block;max-width:100%}
+.ms{font-family:"Material Symbols Outlined";font-weight:400;font-style:normal;font-size:22px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr;-webkit-font-smoothing:antialiased;font-variation-settings:"FILL" 0,"wght" 400,"GRAD" 0,"opsz" 24;flex:none;user-select:none;width:1em;overflow:hidden}
+.ms.lleno{font-variation-settings:"FILL" 1,"wght" 500,"GRAD" 0,"opsz" 24}
+.envoltura{width:min(var(--ancho),100% - 64px);margin:0 auto}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,4.4vw,64px);line-height:1;letter-spacing:-.01em}
+h2 em,h1 em{font-style:italic;color:var(--mar)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;background:var(--mar);color:#fff;font-weight:700;font-size:16.5px;border-radius:999px;white-space:nowrap;transition:background .25s}
+.btn:hover{background:var(--mar2)}
+.btn .ms{font-size:21px}
+.btn.claro{background:#fff;color:var(--tinta)}
+.btn.claro:hover{background:var(--papel)}
+.btn.borde{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.btn.borde:hover{background:var(--tinta);color:#fff}
+.btn.wsp{background:#1F9D55}.btn.wsp:hover{background:#17834A}
+.enlace{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--mar);min-height:44px}
+.enlace .ms{font-size:20px;transition:transform .3s var(--suave)}
+.enlace:hover .ms{transform:translateX(4px)}
+.ej{font-size:12.5px;color:var(--gris);font-weight:500}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* barra de arriba */
+.barra{position:fixed;z-index:30;top:0;left:0;right:0;height:var(--barra);display:flex;align-items:center;gap:28px;padding:0 max(32px,(100% - var(--ancho))/2);color:var(--tinta);background:rgba(244,240,230,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--linea);transition:background .35s,color .35s,box-shadow .35s}
+.barra.sobre{background:transparent;color:#fff;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.marca{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:700;font-size:19px;line-height:1.1;min-width:0;max-width:340px}
+.marca .ms{font-size:26px;color:var(--sol)}
+.marca span:last-child{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a,.nav button{position:relative;display:flex;align-items:center;min-height:44px;padding:0 14px;font-weight:600;font-size:16px;border-radius:999px;transition:background .25s}
+.nav a:hover,.nav button:hover{background:rgba(127,127,127,.14)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;background:var(--sol);border-radius:2px}
+.barra .btn{min-height:44px;padding:0 20px;font-size:15.5px}
+.tabbar{display:none}
+/* secciones */
+.sec{padding:110px 0}
+.sec.tono{background:var(--papel2)}
+.sec.oscura{background:var(--noche);color:#fff}
+.sec.oscura h2 em{color:var(--sol)}
+.cab{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:44px}
+.cab p{max-width:520px;color:var(--gris);font-size:18px}
+.sec.oscura .cab p{color:rgba(255,255,255,.72)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--linea);font-weight:600;font-size:15.5px;white-space:nowrap;transition:background .25s,color .25s,box-shadow .25s}
+.chip .ms{font-size:20px}
+.chip:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.chip[aria-pressed="true"]{background:var(--tinta);color:#fff;box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.chip[aria-disabled="true"]{opacity:.38;cursor:not-allowed}
+.chip small{font-weight:500;opacity:.75;font-size:13px}
+.rotulo{margin-top:18px;font-size:14px;color:var(--gris)}
+/* dónde estamos */
+.donde{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:28px;align-items:stretch}
+.mapa{position:relative;border-radius:24px;overflow:hidden;background:var(--papel2);min-height:440px}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.donde-info{display:flex;flex-direction:column;gap:18px;background:#fff;border-radius:24px;padding:26px}
+.pestanas{display:flex;gap:6px;padding:5px;background:var(--papel);border-radius:999px}
+.pestanas button{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;border-radius:999px;font-weight:700;font-size:15px;color:var(--gris);transition:background .3s,color .3s}
+.pestanas button .ms{font-size:20px}
+.pestanas button[aria-selected="true"]{background:var(--tinta);color:#fff}
+.donde-info h3{font-size:24px;line-height:1.15}
+.donde-info p{color:#3B4550;font-size:16px}
+.donde-info ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15.5px}
+.donde-info li{display:flex;gap:10px;align-items:flex-start}
+.donde-info li .ms{color:var(--mar);font-size:21px}
+.donde-info .acc{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+
+/* cierre y pie */
+.cierre{position:relative;min-height:56vh;display:grid;place-items:center;text-align:center;color:#fff;padding:110px 24px;overflow:hidden;background:var(--noche)}
+.cierre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.cierre div{position:relative;max-width:720px}
+.cierre h2{font-size:clamp(44px,5vw,76px)}
+.cierre h2 em{color:var(--sol)}
+.cierre p{margin:14px auto 26px;font-size:18px;opacity:.86;max-width:520px}
+.pie{background:var(--noche);color:rgba(255,255,255,.72);font-size:14.5px;padding:30px max(32px,(100% - var(--ancho))/2) 30px;display:flex;justify-content:space-between;gap:16px 40px;flex-wrap:wrap}
+.pie a{color:#fff;font-weight:700}
+.muestra{position:fixed;z-index:40;left:16px;bottom:16px;font-size:12.5px;font-weight:600;color:#fff;background:rgba(12,21,32,.84);padding:7px 12px;border-radius:999px;pointer-events:none}
+.flotante{position:fixed;z-index:40;right:20px;bottom:20px;width:60px;height:60px;border-radius:50%;background:#1F9D55;color:#fff;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(0,0,0,.5)}
+.flotante svg{width:30px;height:30px}
+.aviso{position:fixed;z-index:60;left:0;right:0;bottom:96px;margin:0 auto;width:max-content;max-width:min(92vw,480px);background:var(--tinta);color:#fff;padding:14px 18px;border-radius:14px;font-size:15.5px;box-shadow:0 20px 40px -16px rgba(0,0,0,.5);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s var(--suave)}
+.aviso.ver{opacity:1;transform:none}
+/* arranque de las páginas internas */
+.pcab{padding:calc(var(--barra) + 64px) 0 36px}
+.pcab h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(52px,6vw,96px);line-height:.95;letter-spacing:-.015em}
+.pcab p{margin-top:14px;font-size:18.5px;color:var(--gris);max-width:620px}
+.ruta-linea{position:relative;height:40px;margin-top:22px;max-width:520px}
+.ruta-linea svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ruta-linea path{fill:none;stroke:var(--mar);stroke-width:2;stroke-dasharray:6 7;stroke-linecap:round}
+.ruta-linea .punta{position:absolute;top:50%;left:0;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:var(--mar);color:#fff;display:grid;place-items:center}
+.ruta-linea .punta .ms{font-size:22px}
+.ruta-linea .fin{position:absolute;right:-4px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--sol)}
+.consulta-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 30px;margin-top:56px;padding:30px 34px;border-radius:24px;background:var(--noche);color:#fff}
+.consulta-band h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:34px;line-height:1.05}
+.consulta-band p{color:rgba(255,255,255,.75);margin-top:6px}
+.armado{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:56px;align-items:start;padding-bottom:110px}
+.bloque{padding:26px 0;border-top:1px solid var(--linea)}
+.bloque:first-child{border-top:0;padding-top:0}
+.bloque h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:32px;margin-bottom:14px}
+.grupo+.grupo{margin-top:18px}
+.grupo h4{font-size:15px;font-weight:700;color:var(--gris);margin-bottom:10px}
+.contador{display:inline-flex;align-items:center;gap:4px;background:#fff;border-radius:999px;padding:4px;box-shadow:inset 0 0 0 1.5px var(--linea)}
+.contador button{width:44px;height:44px;border-radius:50%;font-size:24px;line-height:1;display:grid;place-items:center}
+.contador button:hover{background:var(--papel)}
+.contador output{min-width:34px;text-align:center;font-weight:700;font-size:18px}
+.contadores{display:flex;flex-wrap:wrap;gap:12px 26px}
+.contadores label{display:flex;align-items:center;gap:12px;font-weight:600}
+.lado-pase{position:sticky;top:calc(var(--barra) + 20px);display:flex;flex-direction:column;gap:16px}
+.burbuja{position:relative;background:#DCF7C5;color:#0E2A12;border-radius:16px 16px 4px 16px;padding:14px 16px 22px;font-size:15.5px;line-height:1.42;max-width:94%;margin-left:auto}
+.burbuja small{position:absolute;right:12px;bottom:5px;font-size:12px;color:#4C7A52}
+.lado-pase .btn{width:100%}
+.resumen-celu{display:none}
+.nota-ref{font-size:13.5px;color:var(--gris)}
+@media (max-width:860px){
+  :root{--barra:58px}
+  body{font-size:16px}
+  .envoltura{width:calc(100% - 32px)}
+  .barra{gap:10px;padding:0 16px}
+  .marca{font-size:16.5px;max-width:none;flex:1}
+  .marca .ms{font-size:22px}
+  .nav{display:none}
+  .barra .btn{min-height:44px;padding:0 16px;font-size:14.5px}
+  .tabbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:fixed;z-index:35;left:0;right:0;bottom:0;height:calc(62px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:rgba(244,240,230,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 -1px 0 var(--linea)}
+  .tabbar a,.tabbar button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;font-weight:650;color:#4E5760;min-width:0}
+  .tabbar span:last-child{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tabbar .ms{font-size:24px}
+  .tabbar [aria-current="page"]{color:var(--mar)}
+  .tabbar [aria-current="page"] .ms{font-variation-settings:"FILL" 1,"wght" 500,"GRAD" 0,"opsz" 24}
+  .tabbar [aria-current="page"]::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--mar)}
+  .muestra{left:12px;bottom:calc(72px + env(safe-area-inset-bottom));font-size:12px}
+  .flotante{right:14px;bottom:calc(74px + env(safe-area-inset-bottom));width:54px;height:54px}
+  .flotante svg{width:27px;height:27px}
+  .aviso{bottom:calc(140px + env(safe-area-inset-bottom))}
+  .pie{padding:24px 16px calc(84px + env(safe-area-inset-bottom));font-size:13.5px}
+  .sec{padding:64px 0}
+  .cab{margin-bottom:26px}
+  .cab p{font-size:16px}
+  .preg h3{font-size:16px}
+  .desliza{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px;scroll-padding:0 16px;-webkit-overflow-scrolling:touch}
+  .desliza::-webkit-scrollbar{display:none}
+  .chip{font-size:15px;padding:0 14px}
+  .donde{grid-template-columns:minmax(0,1fr);gap:14px}
+  .mapa{min-height:260px;border-radius:20px}
+  .donde-info{padding:20px;border-radius:20px}
+  .cierre{min-height:0;padding:64px 18px}
+  .cierre p{font-size:16px}
+
+  .pcab{padding:calc(var(--barra) + 30px) 0 22px}
+  .pcab p{font-size:16px}
+  .ruta-linea{margin-top:16px;height:36px;max-width:none}
+  .consulta-band{padding:24px 20px;margin-top:36px}
+  .consulta-band h3{font-size:28px}
+  .consulta-band .btn{width:100%}
+  .armado{grid-template-columns:minmax(0,1fr);gap:26px;padding-bottom:70px}
+  .bloque h3{font-size:28px}
+  .lado-pase{position:static}
+  .resumen-celu{display:flex;position:sticky;top:var(--barra);z-index:12;align-items:center;justify-content:space-between;gap:10px;margin:0 -16px 16px;padding:10px 16px;background:var(--noche);color:#fff;font-size:14px;min-height:52px;width:calc(100% + 32px);text-align:left}
+  .resumen-celu b{font-size:15px}
+  .resumen-celu .ms{font-size:18px;vertical-align:-4px;color:var(--sol)}
+  .resumen-celu span:last-child{font-weight:700;color:var(--sol);white-space:nowrap}
+}
+/* ───────── Seguros: lo propio (se apoya en el kit de la muestra de agencias) ───────── */
+.btn.amb{background:var(--sol);color:#1A1204}.btn.amb:hover{background:#FFC24D}
+.btn.claro-o{background:rgba(255,255,255,.1);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}.btn.claro-o:hover{background:rgba(255,255,255,.18)}
+.sec.oscura h2 em,.portada h1 em,.pagoscura h1 em{color:var(--cian)}
+:focus-visible{outline:3px solid var(--cian);outline-offset:2px;border-radius:6px}
+.barra.osc{background:rgba(10,20,36,.92);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.1)}
+.nav a[data-ir="choque"]::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sol);margin-right:8px;animation:baliza 1.3s ease-in-out infinite}
+@keyframes baliza{0%,100%{opacity:.25}50%{opacity:1}}
+a,[role="button"],summary{cursor:pointer}
+
+/* portada: sábado 22:10 */
+.portada{position:relative;min-height:100vh;min-height:100svh;background:var(--noche);color:#fff;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end}
+.p-fondo{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.p-fondo::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 64% at 50% 112%,#1B3A66 0%,rgba(10,20,36,0) 64%),linear-gradient(180deg,#060C18 0%,#0A1424 52%,#0D1B31 100%)}
+.hz{position:absolute;top:0;bottom:0;width:48%;opacity:0}
+.hz.i{left:0}.hz.d{right:0}
+.hz-a.i{background:radial-gradient(ellipse 88% 58% at 0 66%,rgba(255,177,31,.5),rgba(255,177,31,0) 72%)}
+.hz-a.d{background:radial-gradient(ellipse 88% 58% at 100% 66%,rgba(255,177,31,.5),rgba(255,177,31,0) 72%)}
+.hz-c.i{background:radial-gradient(ellipse 88% 58% at 0 66%,rgba(60,207,255,.26),rgba(60,207,255,0) 72%)}
+.hz-c.d{background:radial-gradient(ellipse 88% 58% at 100% 66%,rgba(60,207,255,.26),rgba(60,207,255,0) 72%)}
+.luz{position:absolute;border-radius:50%;opacity:.5;animation:deriva 26s ease-in-out infinite alternate}
+.luz.a{background:radial-gradient(circle,rgba(255,177,31,.55),rgba(255,177,31,0) 68%)}
+.luz.c{background:radial-gradient(circle,rgba(60,207,255,.42),rgba(60,207,255,0) 68%)}
+.luz.b{background:radial-gradient(circle,rgba(255,255,255,.34),rgba(255,255,255,0) 68%)}
+@keyframes deriva{from{transform:translateX(-5vw)}to{transform:translateX(5vw)}}
+.p-grid{position:relative;width:min(var(--ancho),100% - 64px);margin:0 auto;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:end;padding:calc(var(--barra) + 36px) 0 52px}
+.p-dia{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:clamp(26px,2.4vw,36px);line-height:1;color:rgba(255,255,255,.82);margin-bottom:2px}
+.reloj{display:flex;align-items:baseline;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:clamp(110px,min(17vw,24vh),250px);line-height:.88;color:var(--sol);text-shadow:0 0 42px rgba(255,177,31,.5);font-variant-numeric:tabular-nums;transition:color 1.3s,text-shadow 1.3s}
+.reloj.calma{color:var(--cian);text-shadow:0 0 42px rgba(60,207,255,.42)}
+.reloj .d{display:inline-block;min-width:.47em;text-align:center}
+.reloj .dp{display:inline-block;min-width:.26em;text-align:center;transform:translateY(-.05em);animation:titila 1.2s steps(1) infinite}
+@keyframes titila{0%,49%{opacity:1}50%,100%{opacity:.18}}
+.p-h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1;letter-spacing:-.015em;margin-top:18px}
+.p-h1 span{display:block;font-size:clamp(58px,min(8.4vw,12vh),132px)}
+.p-h1 .l2{font-style:italic;color:rgba(255,255,255,.92)}
+.p-sub{margin-top:18px;max-width:30em;font-size:19px;color:rgba(255,255,255,.82)}
+.p-acc{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:26px}
+.p-acc .enlace{color:#fff}
+.p-fe{display:flex;align-items:center;gap:8px;margin-top:22px;font-size:14.5px;color:rgba(255,255,255,.7)}
+.p-fe .ms{font-size:20px;color:var(--cian)}
+.p-der{display:flex;flex-direction:column;align-items:flex-end;gap:22px;min-width:0}
+.triangulo{width:clamp(150px,15vw,224px);height:auto;overflow:visible;margin-right:clamp(10px,4vw,60px);filter:drop-shadow(0 0 22px rgba(255,177,31,.5));transition:filter 1.3s}
+.triangulo .t-ext{fill:rgba(255,177,31,.1);stroke:var(--sol);stroke-width:13;stroke-linejoin:round;transition:stroke 1.3s,fill 1.3s}
+.triangulo .t-int{fill:none;stroke:rgba(255,255,255,.55);stroke-width:3;stroke-linejoin:round}
+.triangulo .t-b{stroke:#fff;stroke-width:12;stroke-linecap:round}
+.triangulo .t-p{fill:#fff}
+.triangulo.calma{filter:drop-shadow(0 0 22px rgba(60,207,255,.45))}
+.triangulo.calma .t-ext{stroke:var(--cian);fill:rgba(60,207,255,.1)}
+.p-pasos{width:100%;list-style:none;display:flex;flex-direction:column;gap:2px;padding:12px;border-radius:28px;background:rgba(255,255,255,.055);box-shadow:inset 0 0 0 1px rgba(255,255,255,.13);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.p-pasos h2{font-family:"Barlow",sans-serif;font-size:15px;font-weight:600;letter-spacing:0;color:rgba(255,255,255,.7);padding:8px 16px 4px}
+.p-paso{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center;padding:12px 16px;border-radius:18px}
+.p-paso b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(255,177,31,.15);color:var(--sol);font-family:"Barlow Condensed",sans-serif;font-size:25px;font-weight:600;transition:background .5s,color .5s}
+.p-paso.ok b{background:rgba(60,207,255,.18);color:var(--cian)}
+.p-paso strong{display:block;font-size:18px;line-height:1.2}
+.p-paso small{display:block;font-size:14.5px;color:rgba(255,255,255,.7);line-height:1.3;margin-top:2px}
+
+/* dos puertas */
+.puertas{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px}
+.puerta{position:relative;display:flex;flex-direction:column;gap:14px;min-height:380px;padding:40px;border-radius:28px;overflow:hidden;transition:transform .4s var(--suave),box-shadow .4s}
+.puerta:hover{transform:translateY(-4px)}
+.puerta h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(44px,4.4vw,68px);line-height:.95}
+.puerta p{font-size:18px;max-width:30em}
+.puerta .mini{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:16.5px}
+.puerta .mini li{display:flex;gap:10px;align-items:center}
+.puerta .mini .ms{font-size:21px;color:var(--sol)}
+.puerta .ir{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:17px;align-self:flex-start;padding-bottom:2px;border-bottom:2px solid currentColor}
+.puerta .ir .ms{font-size:21px;transition:transform .3s var(--suave)}
+.puerta:hover .ir .ms{transform:translateX(5px)}
+.puerta.choc{background:var(--noche);color:#fff}
+.puerta.choc::before{content:"";position:absolute;right:-90px;top:-90px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(255,177,31,.34),rgba(255,177,31,0) 68%);animation:baliza 1.6s ease-in-out infinite}
+.puerta.choc p{color:rgba(255,255,255,.82)}
+.puerta.choc .ir{color:var(--sol)}
+.puerta.cot{background:#fff;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--linea)}
+.puerta.cot p{color:#36404A}
+.puerta.cot .mini .ms{color:var(--mar)}
+.puerta.cot .ir{color:var(--mar)}
+
+/* ¿qué querés asegurar? */
+.que{display:flex;flex-direction:column;border-top:1.5px solid var(--tinta)}
+.que-f{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;align-items:center;gap:24px;padding:26px 8px;border-bottom:1px solid var(--linea);transition:background .3s,padding .4s var(--suave)}
+.que-f:hover{background:rgba(255,255,255,.6);padding-left:22px}
+.que-f h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(46px,5.2vw,84px);line-height:.95}
+.que-f p{font-size:18px;color:#36404A}
+.que-f .ic{width:56px;height:56px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;transition:background .3s}
+.que-f .ic .ms{font-size:27px}
+.que-f:hover .ic{background:var(--mar)}
+
+/* terceros completo o todo riesgo, en criollo */
+.esc-tabs{display:inline-flex;gap:6px;padding:6px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);margin-bottom:34px}
+.esc-tabs button{min-height:48px;padding:0 22px;border-radius:999px;font-weight:700;font-size:16.5px;color:rgba(255,255,255,.78);transition:background .3s,color .3s;white-space:nowrap}
+.esc-tabs button:hover{color:#fff}
+.esc-tabs button[aria-selected="true"]{background:#fff;color:var(--tinta)}
+.esc-cuerpo{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.esc-def{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(32px,3.4vw,50px);line-height:1.08}
+.esc-nota{margin-top:20px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.07);font-size:16px;color:rgba(255,255,255,.82)}
+.esc-nota b{color:var(--sol)}
+.esc-lista{list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.16)}
+.esc-lista li{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:14px;align-items:center;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,.16);font-size:17.5px}
+.est{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none}
+.est .ms{font-size:20px}
+.est.s2{background:var(--cian);color:#04202C}
+.est.s1{box-shadow:inset 0 0 0 2px var(--sol);background:linear-gradient(90deg,var(--sol) 50%,transparent 50%)}
+.est.s0{box-shadow:inset 0 0 0 2px rgba(255,255,255,.3);color:rgba(255,255,255,.5)}
+.esc-lista small{font-size:14px;color:rgba(255,255,255,.66);white-space:nowrap}
+.leyenda{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px;font-size:14.5px;color:rgba(255,255,255,.72)}
+.leyenda span{display:inline-flex;align-items:center;gap:8px}
+.leyenda .est{width:20px;height:20px}.leyenda .est .ms{font-size:14px}
+
+/* matrícula y compañías a la vista */
+.vista{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:center}
+.vista h2{margin-bottom:16px}
+.vista p{font-size:18px;color:#36404A;max-width:26em;margin-bottom:22px}
+.nota-g{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;font-weight:700}
+.nota-g b{font-family:"Instrument Serif",serif;font-weight:400;font-size:44px;line-height:1}
+.nota-g .ms{color:var(--sol);font-size:22px;font-variation-settings:"FILL" 1,"wght" 500,"GRAD" 0,"opsz" 24}
+.cred{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -38px rgba(14,26,43,.65),inset 0 0 0 1.5px var(--linea)}
+.cred-l{background:var(--noche);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px 12px;text-align:center}
+.cred-l .ms{font-size:56px;color:var(--cian);font-variation-settings:"FILL" 1,"wght" 500,"GRAD" 0,"opsz" 48}
+.cred-l span:last-child{font-size:13.5px;line-height:1.25;color:rgba(255,255,255,.78)}
+.cred-r{padding:24px 28px;display:flex;flex-direction:column;gap:12px}
+.cred-r h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:34px;line-height:1.02}
+.cred-r dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 18px;font-size:16px}
+.cred-r dt{color:var(--gris);font-weight:500}
+.cred-r dd{font-weight:700}
+.cred-r .ok{display:inline-flex;align-items:center;gap:6px;color:#127A41}
+.cred-r .ok .ms{font-size:20px}
+.cias-mini{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.cia-m{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 8px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--linea);font-weight:600;font-size:15.5px}
+.cia-m i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--tinta);color:#fff;font-style:normal;font-family:"Barlow Condensed",sans-serif;font-size:19px;font-weight:600}
+.cierre::before{content:"";position:absolute;left:50%;bottom:-220px;width:760px;height:460px;margin-left:-380px;background:radial-gradient(ellipse,rgba(60,207,255,.28),rgba(60,207,255,0) 68%);pointer-events:none}
+.cierre h2 em{color:var(--cian)}
+.mapa-ej{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--gris);background:var(--papel2)}
+.mapa-ej svg{position:absolute;inset:0;width:100%;height:100%}
+.mapa-ej div{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;font-weight:600}
+.mapa-ej .ms{font-size:44px;color:var(--mar)}
+
+/* cotizá */
+.cotz{display:grid;grid-template-columns:minmax(0,1fr) 500px;gap:56px;align-items:start;padding-bottom:110px}
+.tipos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tipo{display:flex;align-items:center;gap:12px;min-height:76px;padding:0 18px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--linea);text-align:left;font-weight:700;font-size:19px;transition:background .25s,color .25s,box-shadow .25s}
+.tipo .ms{font-size:32px;color:var(--mar);transition:color .25s}
+.tipo small{display:block;font-weight:500;font-size:13.5px;opacity:.7}
+.tipo:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.tipo[aria-pressed="true"]{background:var(--tinta);color:#fff;box-shadow:none}
+.tipo[aria-pressed="true"] .ms{color:var(--sol)}
+.preg-c{padding:20px 0;border-top:1px solid var(--linea)}
+.preg-c:first-child{border-top:0;padding-top:0}
+.preg-c h4{font-size:17px;font-weight:700;margin-bottom:12px}
+.preg-c h4 small{font-weight:500;color:var(--gris);font-size:14px;margin-left:6px}
+.preg-c .chips{flex-wrap:wrap}
+.chip .ms{font-size:19px}
+.chip[aria-pressed="true"] .ms{color:var(--sol)}
+.sug-top{padding:6px 2px 16px}
+.sug-top small{display:block;font-size:14.5px;color:var(--gris)}
+.sug-top b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:40px;line-height:1.02;margin-top:4px}
+.sug{background:#fff;border-radius:22px;padding:18px 20px 20px;box-shadow:0 18px 40px -32px rgba(14,26,43,.55);display:flex;flex-direction:column;gap:8px}
+.sug+.sug{margin-top:12px}
+.sug .tg{align-self:flex-start;font-size:13px;font-weight:700;padding:4px 11px;border-radius:999px}
+.tg.oblig{background:#E3ECFB;color:var(--mar2)}
+.tg.rec{background:var(--tinta);color:#fff}
+.tg.sum{background:#FFF0CF;color:#6A4300}
+.tg.imp{background:#FFE3DE;color:#8A1F11}
+.sug h5{font-family:"Instrument Serif",serif;font-weight:400;font-size:29px;line-height:1.05}
+.sug p{font-size:15.5px;color:#36404A}
+.sug p b{color:var(--tinta)}
+.sug .ojo{font-size:14.5px;color:var(--gris)}
+.cot-lado{display:flex;flex-direction:column;gap:14px}
+.cot-lado .btn{width:100%}
+.nota-ref b{color:var(--tinta)}
+
+/* si chocaste (página oscura) */
+body.noche{background:var(--noche)}
+.pagoscura{color:#fff}
+.pagoscura .pcab p{color:rgba(255,255,255,.78)}
+.pagoscura .ruta-linea path{stroke:var(--cian)}
+.pagoscura .ruta-linea .punta{background:var(--sol);color:#1A1204}
+.pagoscura .ruta-linea .fin{background:var(--cian)}
+.docs-a-mano{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:20px}
+.docs-a-mano span{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.08);font-size:15px;font-weight:600;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.docs-a-mano .ms{font-size:20px;color:var(--sol)}
+.choque{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:48px;align-items:start;padding:10px 0 110px}
+.prog{display:flex;align-items:center;gap:16px;margin-bottom:18px;font-weight:700;font-size:16px}
+.prog-b{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden}
+.prog-b i{display:block;height:100%;width:0;background:var(--cian);border-radius:4px;transition:width .5s var(--suave)}
+.pasos{list-style:none;display:flex;flex-direction:column;gap:10px}
+.paso button{display:grid;grid-template-columns:56px minmax(0,1fr) 40px;gap:18px;align-items:start;width:100%;text-align:left;padding:20px 22px;border-radius:24px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.13);transition:background .3s,box-shadow .3s}
+.paso button:hover{background:rgba(255,255,255,.1)}
+.paso .n{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:rgba(255,177,31,.16);color:var(--sol);font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:32px;transition:background .4s,color .4s}
+.paso strong{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:32px;line-height:1.04}
+.paso .t span{display:block;margin-top:6px;font-size:17px;color:rgba(255,255,255,.8)}
+.paso .ck{width:36px;height:36px;margin-top:8px}
+.paso .ck svg{width:100%;height:100%;overflow:visible}
+.paso .ck circle{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2}
+.paso .ck path{fill:none;stroke:var(--cian);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30}
+.paso.hecho button{background:rgba(60,207,255,.1);box-shadow:inset 0 0 0 1.5px rgba(60,207,255,.45)}
+.paso.hecho .n{background:var(--cian);color:#04202C}
+.paso.hecho .ck path{stroke-dashoffset:0;transition:stroke-dashoffset .5s ease}
+.paso.hecho .ck circle{stroke:var(--cian)}
+.no-hagas{margin-top:26px;padding:24px 26px;border-radius:24px;background:rgba(255,177,31,.1);box-shadow:inset 0 0 0 1.5px rgba(255,177,31,.4)}
+.no-hagas h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:32px;margin-bottom:12px}
+.no-hagas ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:17px}
+.no-hagas li{display:flex;gap:12px;align-items:flex-start}
+.no-hagas .ms{color:var(--sol);font-size:24px}
+.lado-ch{display:flex;flex-direction:column;gap:16px;position:sticky;top:calc(var(--barra) + 20px)}
+.caja-o{padding:24px;border-radius:26px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.caja-o h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:32px;line-height:1.05;margin-bottom:12px}
+.tels{list-style:none;display:flex;flex-direction:column}
+.tels li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-top:1px solid rgba(255,255,255,.14);font-size:16px}
+.tels li:first-child{border-top:0}
+.tels b{font-family:"Barlow Condensed",sans-serif;font-size:24px;font-weight:600;color:var(--sol);white-space:nowrap}
+.tels span small{display:block;font-size:13px;color:rgba(255,255,255,.62)}
+.tels li.ej-t b{font-size:17px;font-family:Barlow,sans-serif;color:rgba(255,255,255,.82);font-weight:600}
+.caja-o .preg-c{border-color:rgba(255,255,255,.14)}
+.caja-o .chip{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.22)}
+.caja-o .chip[aria-pressed="true"]{background:#fff;color:var(--tinta)}
+.caja-o .campo{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.25)}
+.caja-o .campo::placeholder{color:rgba(255,255,255,.55)}
+.caja-o .btn{width:100%;margin-top:14px}
+.campo{display:block;width:100%;max-width:520px;min-height:50px;padding:0 16px;border-radius:14px;border:0;font:inherit;font-size:16px;background:#fff;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--linea)}
+.campo::placeholder{color:#8A939D}
+
+/* matrícula y compañías */
+.cf-1{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;padding:6px 0 80px}
+.cf-1 h2,.cf-2 h2,.cf-3 h2{font-size:clamp(34px,3.4vw,48px);margin-bottom:14px}
+.cf-1 p{font-size:17.5px;color:#36404A;margin-bottom:12px}
+.verif{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.verif li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:start;font-size:17px}
+.verif b{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--tinta);color:#fff;font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:600}
+.cf-2{padding:0 0 80px}
+.cias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.cia{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:22px;border-radius:24px;background:#fff;box-shadow:0 18px 40px -34px rgba(14,26,43,.6),inset 0 0 0 1.5px var(--linea)}
+.cia-l{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:var(--noche);color:var(--cian);font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:38px}
+.cia h4{font-size:20px;line-height:1.15}
+.cia .ramos{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+.cia .ramos span{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--papel)}
+.cia .ramos .ms{font-size:16px;color:var(--mar)}
+.cia dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:14.5px}
+.cia dt{color:var(--gris)}
+.cia dd{font-weight:700;text-align:right}
+.cf-3{padding:0 0 20px}
+.etapas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:26px;border-top:1.5px solid var(--tinta)}
+.etapa{padding:22px 22px 6px 0}
+.etapa+.etapa{padding-left:22px;border-left:1px solid var(--linea)}
+.etapa b{font-family:"Barlow Condensed",sans-serif;font-size:21px;font-weight:600;color:var(--mar)}
+.etapa h4{font-family:"Instrument Serif",serif;font-weight:400;font-size:30px;line-height:1.05;margin:4px 0 8px}
+.etapa p{font-size:16px;color:#36404A}
+
+/* escribinos */
+.pcab.sola{padding-bottom:20px}
+.lado-info{padding:22px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--linea)}
+.lado-info ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15.5px}
+.lado-info li{display:flex;gap:10px;align-items:flex-start}
+.lado-info .ms{color:var(--mar);font-size:21px}
+.lado-info a.enlace{min-height:36px}
+.mes-fila{display:flex;flex-wrap:wrap;gap:8px}
+
+@media (max-width:1180px){
+  .nav a,.nav button{padding:0 10px;font-size:15px}
+  .marca{max-width:240px}
+  .puerta{padding:30px}
+  .esc-cuerpo{gap:36px}
+  .cotz{grid-template-columns:minmax(0,1fr) 420px;gap:36px}
+  .choque{grid-template-columns:minmax(0,1fr) 380px;gap:32px}
+  .vista{gap:36px}
+  .cf-1{gap:32px}
+}
+@media (max-width:980px){
+  .p-grid{grid-template-columns:minmax(0,1fr);gap:30px}
+  .esc-cuerpo{grid-template-columns:minmax(0,1fr)}
+  .vista{grid-template-columns:minmax(0,1fr)}
+  .cf-1{grid-template-columns:minmax(0,1fr)}
+  .cotz{grid-template-columns:minmax(0,1fr)}
+  .choque{grid-template-columns:minmax(0,1fr)}
+  .lado-ch{position:static}
+}
+@media (max-width:860px){
+  .tabbar{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .tabbar a[data-ir="choque"]{color:#8A5A00}
+  body.noche .tabbar{background:rgba(10,20,36,.97);box-shadow:0 -1px 0 rgba(255,255,255,.1)}
+  body.noche .tabbar a,body.noche .tabbar button{color:rgba(255,255,255,.7)}
+  body.noche .tabbar [aria-current="page"]{color:var(--cian)}
+  body.noche .tabbar [aria-current="page"]::before{background:var(--cian)}
+  .portada{align-items:flex-start}
+  .p-grid{width:calc(100% - 32px);padding:calc(var(--barra) + 12px) 0 calc(86px + env(safe-area-inset-bottom));gap:22px}
+  .p-dia{font-size:24px}
+  .reloj{font-size:clamp(96px,30vw,150px)}
+  .p-h1{margin-top:10px}
+  .p-h1 span{font-size:clamp(48px,15vw,70px)}
+  .p-sub{font-size:16.5px;margin-top:12px}
+  .p-acc{margin-top:18px;gap:10px 16px}
+  .p-acc .btn{flex:1 1 100%}
+  .p-fe{font-size:13.5px;margin-top:14px}
+  .p-pasos{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px;border-radius:22px}
+  .p-pasos h2{grid-column:1/-1;padding:6px 10px 2px}
+  .p-paso{grid-template-columns:minmax(0,1fr);gap:8px;padding:12px;align-items:start}
+  .p-paso b{width:34px;height:34px;font-size:20px}
+  .p-paso strong{font-size:15.5px}
+  .p-paso small{display:none}
+  .puertas{grid-template-columns:minmax(0,1fr);gap:12px}
+  .puerta{min-height:0;padding:24px 20px;border-radius:24px;gap:10px}
+  .puerta h3{font-size:42px}
+  .que-f{padding:16px 2px!important}
+  .triangulo{position:absolute;right:2px;top:calc(var(--barra) + 60px);width:92px;margin:0}
+  .p-der{display:contents}
+  .docs-a-mano span{min-height:36px;padding:0 11px;font-size:14px}
+  .docs-a-mano{gap:8px}
+  .puerta p{font-size:16px}
+  .puerta .mini{font-size:15.5px}
+  .que-f{grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:16px 2px}
+  .que-f h3{font-size:44px}
+  .que-f p{grid-column:1;font-size:15.5px}
+  .que-f .ic{grid-column:2;grid-row:1/3;width:46px;height:46px}
+  .que-f .ic .ms{font-size:24px}
+  .que-f:hover{padding-left:4px}
+  .esc-tabs{display:flex;width:100%;margin-bottom:22px;padding:4px}
+  .esc-tabs button{flex:1;min-height:46px;padding:0 6px;font-size:14px;white-space:normal;line-height:1.1}
+  .esc-def{font-size:30px}
+  .esc-lista li{grid-template-columns:30px minmax(0,1fr);gap:12px;font-size:16px;padding:12px 2px}
+  .esc-lista small{display:none}
+  .cred{grid-template-columns:104px minmax(0,1fr);border-radius:22px}
+  .cred-l .ms{font-size:42px}
+  .cred-l span:last-child{font-size:12px}
+  .cred-r{padding:16px 16px}
+  .cred-r h3{font-size:26px}
+  .cred-r dl{font-size:14.5px;gap:6px 12px}
+  .vista p{font-size:16px;margin-bottom:16px}
+  .cia-m{font-size:14.5px;min-height:44px;padding-right:14px}
+  .tipos{grid-template-columns:minmax(0,1fr);gap:8px}
+  .tipo{min-height:64px;font-size:18px}
+  .sug h5{font-size:26px}
+  .sug-top b{font-size:34px}
+  .paso button{grid-template-columns:44px minmax(0,1fr) 30px;gap:12px;padding:16px 14px;border-radius:20px}
+  .paso .n{width:44px;height:44px;font-size:26px}
+  .paso strong{font-size:26px}
+  .paso .t span{font-size:15.5px}
+  .paso .ck{width:30px;height:30px;margin-top:4px}
+  .no-hagas{padding:20px 18px}
+  .no-hagas h3,.caja-o h3{font-size:27px}
+  .caja-o{padding:20px 16px;border-radius:22px}
+  .cias{grid-template-columns:minmax(0,1fr)}
+  .cia{grid-template-columns:52px minmax(0,1fr);padding:16px;gap:14px;border-radius:20px}
+  .cia-l{width:52px;height:52px;font-size:30px;border-radius:14px}
+  .cf-1,.cf-2{padding-bottom:44px}
+  .etapas{grid-template-columns:minmax(0,1fr);border-top:0}
+  .etapa,.etapa+.etapa{padding:16px 0;border-left:0;border-top:1px solid var(--linea)}
+  .etapa h4{font-size:27px}
+}
+@media (min-width:1700px){.reloj{font-size:clamp(110px,min(17vw,24vh),280px)}.p-sub{font-size:20px}}
+
+/* reglas fijas de Felipe: sin zoom por doble toque, sin selección azul, sin cursor de texto (las entradas animadas se ven en cada carga) */
+html{touch-action:manipulation}
+body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;cursor:default}
+input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:text;cursor:text}
+img{-webkit-user-drag:none}
+button,.chip,.tipo,[data-ir],[data-wsp]{cursor:pointer}
+.alerta{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:rgba(255,177,31,.16);box-shadow:inset 0 0 0 1.5px rgba(255,177,31,.5);font-size:15px;color:#fff;margin-top:12px}
+.alerta .ms{color:var(--sol);font-size:22px}
+
+.mapa::before{content:"location_on";font-family:"Material Symbols Outlined";font-size:54px;color:rgba(21,83,200,.35);position:absolute;left:50%;top:50%;margin:-27px 0 0 -27px;font-variation-settings:"FILL" 1,"wght" 500,"GRAD" 0,"opsz" 48}
+.mapa{background:#DCD6C6}
+@media (min-width:981px){#cot-ctl{position:sticky;top:calc(var(--barra) + 20px)}}
+
+</style>
+<style>
+[data-pagina][hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="barra sobre" id="barra"><a class="marca" data-ir="inicio"><span class="ms lleno" aria-hidden="true">verified_user</span><span data-n>Tu productora de seguros</span></a>
+  <nav class="nav" id="nav" aria-label="Páginas"></nav>
+  <a class="btn" data-ir="consulta" id="barra-btn">Escribinos</a></header>
+<nav class="tabbar" id="tabbar" aria-label="Páginas"></nav>
+
+<main>
+<div data-pagina="inicio">
+  <section class="portada" id="arriba" aria-label="Portada">
+    <div class="p-fondo" aria-hidden="true">
+      <i class="hz hz-a i"></i><i class="hz hz-a d"></i><i class="hz hz-c i"></i><i class="hz hz-c d"></i>
+      <i class="luz a" style="left:6%;bottom:14%;width:150px;height:150px;animation-duration:31s"></i>
+      <i class="luz c" style="left:24%;bottom:6%;width:210px;height:210px;animation-duration:38s"></i>
+      <i class="luz b" style="left:44%;bottom:20%;width:90px;height:90px;animation-duration:27s"></i>
+      <i class="luz a" style="left:63%;bottom:8%;width:180px;height:180px;animation-duration:34s"></i>
+      <i class="luz c" style="left:82%;bottom:18%;width:130px;height:130px;animation-duration:29s"></i>
+    </div>
+    <div class="p-grid">
+      <div class="p-izq" id="p-izq">
+        <p class="p-dia" id="p-dia">sábado</p>
+        <div class="reloj" id="reloj" role="img" aria-label="22:10"><span class="d" id="r1">2</span><span class="d" id="r2">2</span><span class="dp">:</span><span class="d" id="r3">0</span><span class="d" id="r4">9</span></div>
+        <h1 class="p-h1"><span class="l1" id="h-choc">¿Chocaste?</span><span class="l2" id="h-resp">Respirá.</span></h1>
+        <p class="p-sub" id="p-sub">Estos son los pasos, uno por uno. Sirven a cualquier hora, también ahora.</p>
+        <div class="p-acc" id="p-acc"><a class="btn amb" data-ir="choque">Ver qué hacer ahora</a><a class="enlace" data-ir="cotizar">O cotizá tu seguro <span class="ms" aria-hidden="true">arrow_forward</span></a></div>
+        <p class="p-fe" id="p-fe"><span class="ms" aria-hidden="true">verified_user</span><span>Matrícula N.º de ejemplo · Compañías A, B y C de ejemplo</span></p>
+      </div>
+      <div class="p-der"><svg class="triangulo" id="triangulo" viewBox="0 0 220 196" aria-hidden="true"><path class="t-ext" d="M110 16 L204 178 H16 Z"/><path class="t-int" d="M110 58 L168 158 H52 Z"/><path class="t-b" d="M110 92 V124"/><circle class="t-p" cx="110" cy="144" r="7"/></svg>
+      <div class="p-pasos" id="p-pasos" role="group" aria-label="Lo primero, en orden">
+        <h2>Lo primero, en orden</h2>
+        <div class="p-paso"><b>1</b><span><strong>Frená y señalizá</strong><small>Motor apagado, balizas y triángulo detrás del auto.</small></span></div>
+        <div class="p-paso"><b>2</b><span><strong>Primero las personas</strong><small>Si hay heridos: 107 o 911. No muevas a nadie.</small></span></div>
+        <div class="p-paso"><b>3</b><span><strong>Fotos y datos</strong><small>Autos, patentes, lugar y datos del otro conductor.</small></span></div>
+        <div class="p-paso"><b>4</b><span><strong>Avisá a tu compañía</strong><small>Y escribinos: armamos la denuncia con vos.</small></span></div>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="dos">
+    <div class="envoltura">
+      <div class="puertas">
+        <a class="puerta choc" data-ir="choque" data-rv="0">
+          <h3>Si chocaste</h3>
+          <p>Los pasos, en orden y a mano, a cualquier hora. Con los teléfonos que importan y cómo hacer la denuncia.</p>
+          <ul class="mini"><li><span class="ms" aria-hidden="true">warning</span>Qué hacer en los primeros minutos</li><li><span class="ms" aria-hidden="true">call</span>A quién llamar</li><li><span class="ms" aria-hidden="true">fact_check</span>Cómo se hace la denuncia</li></ul>
+          <span class="ir">Ver los pasos <span class="ms" aria-hidden="true">arrow_forward</span></span>
+        </a>
+        <a class="puerta cot" data-ir="cotizar" data-rv="1">
+          <h3>Si querés asegurar</h3>
+          <p>Contanos qué es y te mostramos qué coberturas tienen sentido y por qué. Con las reglas a la vista.</p>
+          <ul class="mini"><li><span class="ms" aria-hidden="true">directions_car</span>Auto</li><li><span class="ms" aria-hidden="true">home</span>Hogar</li><li><span class="ms" aria-hidden="true">storefront</span>Comercio</li></ul>
+          <span class="ir">Armar mi cotización <span class="ms" aria-hidden="true">arrow_forward</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tono" id="que">
+    <div class="envoltura">
+      <div class="cab"><h2>¿Qué querés <em>asegurar</em>?</h2><p>Tres puertas de entrada, cada una con lo primero que se pregunta.</p></div>
+      <div class="que">
+        <a class="que-f" data-ir="cotizar" data-id="auto" data-rv="0"><h3>Auto</h3><p>¿Terceros completo o todo riesgo? ¿Qué pasa con la franquicia?</p><span class="ic"><span class="ms" aria-hidden="true">directions_car</span></span></a>
+        <a class="que-f" data-ir="cotizar" data-id="hogar" data-rv="1"><h3>Hogar</h3><p>¿Casa o departamento? ¿Sos dueño o alquilás?</p><span class="ic"><span class="ms" aria-hidden="true">home</span></span></a>
+        <a class="que-f" data-ir="cotizar" data-id="comercio" data-rv="2"><h3>Comercio</h3><p>¿Local, taller u oficina? ¿Tenés empleados?</p><span class="ic"><span class="ms" aria-hidden="true">storefront</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec oscura" id="cob">
+    <div class="envoltura">
+      <div class="cab"><h2>Terceros completo o todo riesgo, <em>en criollo</em></h2><p>Lo que suele estar cubierto en cada escalón y lo que depende de la compañía. Tocá uno.</p></div>
+      <div class="esc-tabs" id="esc-tabs" role="tablist" aria-label="Escalón de cobertura" data-rv="0"></div>
+      <div class="esc-cuerpo" data-rv="1">
+        <div><p class="esc-def" id="esc-def" aria-live="polite"></p><p class="esc-nota" id="esc-nota"></p></div>
+        <div><ul class="esc-lista" id="esc-lista"></ul>
+          <p class="leyenda"><span><i class="est s2"><span class="ms" aria-hidden="true">check</span></i>suele estar</span><span><i class="est s1"></i>depende de la compañía</span><span><i class="est s0"><span class="ms" aria-hidden="true">close</span></i>no suele estar</span></p></div>
+      </div>
+      <p class="ej" style="color:rgba(255,255,255,.6);margin-top:26px">Guía general y de ejemplo: lo que cubre cada póliza lo define la compañía y figura en la póliza.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="vista">
+    <div class="envoltura"><div class="vista">
+      <div>
+        <h2 data-rv="0">Con quién <em>estás hablando</em></h2>
+        <div class="nota-g" id="nota-g" hidden><span class="ms" aria-hidden="true">star</span><b id="nota-num">4,8</b><span id="nota-tx"></span></div>
+        <p data-rv="1">Matrícula, compañías, oficina y horarios: a la vista, sin tener que pedirlos.</p>
+        <a class="enlace" data-ir="confianza" data-rv="2">Ver matrícula y compañías <span class="ms" aria-hidden="true">arrow_forward</span></a>
+      </div>
+      <div data-rv="1">
+        <div class="cred"><div class="cred-l"><span class="ms" aria-hidden="true">shield</span><span>Productor asesor de seguros</span></div>
+          <div class="cred-r"><h3 data-n>Tu productora de seguros</h3>
+            <dl><dt>Matrícula</dt><dd>N.º de ejemplo</dd><dt>Estado</dt><dd><span class="ok"><span class="ms" aria-hidden="true">check_circle</span>Vigente (de ejemplo)</span></dd><dt>Oficina</dt><dd id="cred-of">Calle de ejemplo 000</dd><dt>Atención</dt><dd>Lun a vie, 9 a 18 h</dd></dl></div></div>
+        <div class="cias-mini"><span class="cia-m"><i>A</i>Compañía A de ejemplo</span><span class="cia-m"><i>B</i>Compañía B de ejemplo</span><span class="cia-m"><i>C</i>Compañía C de ejemplo</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="sec tono" id="donde">
+    <div class="envoltura">
+      <div class="cab"><h2>Dónde <em>estamos</em></h2><p id="donde-p">Pasá cuando quieras o escribinos: la oficina y los horarios, a la vista.</p></div>
+      <div class="donde"><div class="mapa" id="mapa-caja"></div>
+        <div class="donde-info" id="donde-info"></div></div>
+    </div>
+  </section>
+
+  <section class="cierre"><div><h2 id="c-tit">A las 22:10 y a las 9:00, <em>esta página responde</em></h2><p id="c-sub">Escribinos y te contestamos con lo que necesites: una cotización, un vencimiento o una denuncia.</p><a class="btn claro" data-ir="consulta">Escribinos</a></div></section>
+</div>
+
+<div data-pagina="cotizar" hidden>
+  <header class="pcab envoltura"><h1>¿Qué querés <em>asegurar</em>?</h1><p>Contanos tres o cuatro cosas y te mostramos qué coberturas tienen sentido y por qué. Sin precios acá: la cotización te la armamos con las compañías.</p><div class="ruta-linea" id="rl-cot"></div></header>
+  <div class="envoltura">
+    <button class="resumen-celu" type="button" id="resumen-celu"></button>
+    <div class="cotz">
+      <div id="cot-ctl"><div class="bloque"><h3>Primero, lo principal</h3><div class="tipos" id="tipos"></div></div><div class="bloque" id="cot-preg"></div></div>
+      <div class="cot-lado" id="cot-lado">
+        <div class="sug-top" id="sug-top" aria-live="polite"></div>
+        <div id="sug-lista"></div>
+        <p class="burbuja" id="cot-burbuja"></p>
+        <button class="btn wsp" type="button" id="cot-enviar" data-wsp="#cot-burbuja"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><use href="#ico-wsp"/></svg>Pedir la cotización</button>
+        <p class="nota-ref">Guía general y de ejemplo. <b>Lo que cubre cada póliza lo define la compañía</b> y figura en la póliza. Sin precios: te cotizamos con las compañías con las que trabajamos.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-pagina="choque" hidden class="pagoscura">
+  <header class="pcab envoltura"><h1>Si <em>chocaste</em></h1><p>Respirá. Estos pasos sirven a cualquier hora. Tocá cada uno cuando lo hagas y, al final, escribinos: te acompañamos con la denuncia.</p>
+    <div class="docs-a-mano" aria-label="Tené a mano"><span><span class="ms" aria-hidden="true">badge</span>Carnet de conducir</span><span><span class="ms" aria-hidden="true">description</span>Cédula verde o azul</span><span><span class="ms" aria-hidden="true">verified_user</span>Comprobante del seguro</span></div></header>
+  <div class="envoltura"><div class="choque">
+    <div>
+      <div class="prog"><span id="prog-t">Llevás 0 de 6</span><div class="prog-b" aria-hidden="true"><i id="prog-i"></i></div></div>
+      <ol class="pasos" id="pasos"></ol>
+      <div class="no-hagas" data-rv="0"><h3>Lo que no conviene hacer</h3>
+        <ul><li><span class="ms" aria-hidden="true">block</span>Irte del lugar del choque.</li><li><span class="ms" aria-hidden="true">block</span>Arreglar el auto antes de avisar a la compañía.</li><li><span class="ms" aria-hidden="true">block</span>Firmar papeles que no hayas leído o que no entiendas.</li></ul></div>
+    </div>
+    <aside class="lado-ch">
+      <div class="caja-o"><h3>Los teléfonos, a mano</h3>
+        <ul class="tels" id="tels"></ul></div>
+      <div class="caja-o" id="av-caja"><h3>Avisanos ahora</h3>
+        <div class="preg-c"><h4>¿Hay heridos?</h4><div class="chips" id="av-her"></div></div>
+        <div class="preg-c"><h4>¿El auto puede circular?</h4><div class="chips" id="av-cir"></div></div>
+        <div class="preg-c"><h4>¿Dónde pasó? <small>opcional</small></h4><input class="campo" id="av-lugar" type="text" placeholder="Calle y altura, o ruta y kilómetro" maxlength="60" autocomplete="off" enterkeyhint="done"></div>
+        <p class="alerta" id="av-alerta" hidden><span class="ms" aria-hidden="true">warning</span><span>Si hay heridos, primero llamá al 107 o al 911. Después escribinos.</span></p>
+        <p class="burbuja" id="av-burbuja"></p>
+        <button class="btn wsp" type="button" data-wsp="#av-burbuja"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><use href="#ico-wsp"/></svg>Avisar por WhatsApp</button></div>
+    </aside>
+  </div></div>
+</div>
+
+<div data-pagina="confianza" hidden>
+  <header class="pcab envoltura"><h1>Matrícula y compañías, <em>a la vista</em></h1><p>Antes de contratar, mirá con quién estás hablando. Acá está todo, sin tener que pedirlo.</p><div class="ruta-linea" id="rl-conf"></div></header>
+  <div class="envoltura">
+    <section class="cf-1">
+      <div data-rv="0">
+        <div class="cred"><div class="cred-l"><span class="ms" aria-hidden="true">shield</span><span>Productor asesor de seguros</span></div>
+          <div class="cred-r"><h3 data-n>Tu productora de seguros</h3>
+            <dl><dt>Matrícula</dt><dd>N.º de ejemplo</dd><dt>Titular</dt><dd>Nombre de ejemplo</dd><dt>Estado</dt><dd><span class="ok"><span class="ms" aria-hidden="true">check_circle</span>Vigente (de ejemplo)</span></dd><dt>Oficina</dt><dd id="cred-of2">Calle de ejemplo 000</dd></dl></div></div>
+        <p class="ej" style="margin-top:10px">Matrícula y datos de ejemplo: acá va la del productor.</p>
+      </div>
+      <div data-rv="1">
+        <h2>Qué es la matrícula y cómo <em>verificarla</em></h2>
+        <p>Para ofrecer seguros, un productor asesor tiene que estar matriculado: la matrícula la otorga la Superintendencia de Seguros de la Nación. Pedínosla y comprobala vos.</p>
+        <ul class="verif"><li><b>1</b><span>Pedí el número de matrícula y el nombre completo del productor.</span></li><li><b>2</b><span>Consultalo en el sitio oficial de la Superintendencia antes de pagar nada.</span></li><li><b>3</b><span>Verificá que la póliza esté a tu nombre y que la compañía sea la que te dijeron.</span></li></ul>
+      </div>
+    </section>
+    <section class="cf-2">
+      <h2 data-rv="0">Compañías con las que <em>trabajamos</em></h2>
+      <p style="font-size:17.5px;color:#36404A;max-width:36em" data-rv="1">Cotizamos con varias para que no tengas que ir de una en una. Los nombres y teléfonos son de ejemplo: acá van los reales.</p>
+      <div class="cias" id="cias"></div>
+    </section>
+    <section class="cf-3">
+      <h2 data-rv="0">Un siniestro con nosotros, <em>paso a paso</em></h2>
+      <div class="etapas" data-rv="1">
+        <div class="etapa"><b>Primero</b><h4>La denuncia</h4><p>La hacemos juntos, con tus datos y tus fotos, ante la compañía.</p></div>
+        <div class="etapa"><b>Después</b><h4>La inspección</h4><p>La compañía revisa el daño. Te avisamos cuándo y cómo.</p></div>
+        <div class="etapa"><b>Luego</b><h4>La reparación</h4><p>Te orientamos con el taller y con lo que te toque a vos, como la franquicia.</p></div>
+        <div class="etapa"><b>Al final</b><h4>El seguimiento</h4><p>Estamos hasta que el caso se cierra. No quedás solo con un número de siniestro.</p></div>
+      </div>
+      <div class="consulta-band" data-rv="2"><div><h3>¿Tu póliza vence pronto?</h3><p>Pasanos la patente y el mes y te recotizamos.</p></div><a class="btn claro" data-ir="consulta" data-id="vence">Avisar mi vencimiento</a></div>
+    </section>
+  </div>
+  <div style="height:110px"></div>
+</div>
+
+<div data-pagina="consulta" hidden>
+  <header class="pcab envoltura"><h1>Escribinos. <em>Llega armado.</em></h1><p>Elegí por qué escribís y completá lo que sepas. El mensaje se arma solo y nos llega con lo que necesitamos para ayudarte.</p><div class="ruta-linea" id="rl-con"></div></header>
+  <div class="envoltura">
+    <button class="resumen-celu" type="button" id="resumen-con"></button>
+    <div class="armado"><div id="con-ctl"></div>
+      <div class="lado-pase" id="lado-con"><p class="burbuja" id="con-burbuja"></p>
+        <button class="btn wsp" type="button" data-wsp="#con-burbuja"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><use href="#ico-wsp"/></svg>Escribinos por WhatsApp</button>
+        <div class="lado-info"><ul id="con-info"></ul></div></div></div>
+  </div>
+</div>
+</main>
+
+<footer class="pie"><p>Diseño de muestra hecho por <a href="https://masandcoweb.com" target="_blank" rel="noopener">Mas & Co</a> para <span data-nu>su productora de seguros</span>.</p><p>Matrícula, compañías, teléfonos, dirección, horarios y textos de ejemplo: con los suyos queda su página.</p></footer>
+<span class="muestra">Diseño de muestra</span>
+<button class="flotante" type="button" id="flotante" data-wsp aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wsp"/></svg></button>
+<p class="aviso" id="aviso" role="status"></p>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ico-wsp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.23-3.25-.68-2.75-1.08-4.49-3.9-4.63-4.08-.13-.18-1.1-1.47-1.1-2.81 0-1.33.7-1.99.95-2.26.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2.01.07.13.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.13-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.91 1.89 1.2 2.16 1.33.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.06.11.06.67-.18 1.35z"/></symbol></svg>
+
+<script>
+const KIT = (() => {
+  const GUARDAR = ['s', 'n', 'c', 'r', 'o', 't', 'hora', 'u'];
+  const base = new URLSearchParams(location.search);
+  const hooks = {};
+  let actual = null;
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+
+  function url(p, extra = {}) {
+    const u = new URLSearchParams();
+    GUARDAR.forEach(k => { if (base.has(k)) u.set(k, base.get(k)); });
+    if (p && p !== 'inicio') u.set('p', p);
+    Object.entries(extra).forEach(([k, v]) => { if (v != null && v !== '') u.set(k, v); });
+    const q = u.toString();
+    return location.pathname + (q ? '?' + q : '');
+  }
+  function leer() {
+    const q = new URLSearchParams(location.search);
+    const extra = {};
+    q.forEach((v, k) => { if (!GUARDAR.includes(k) && k !== 'p') extra[k] = v; });
+    return { p: q.get('p') || 'inicio', extra };
+  }
+  function mostrar(p, extra = {}, animar = true) {
+    const destino = document.querySelector(`[data-pagina="${p}"]`) || document.querySelector('[data-pagina="inicio"]');
+    const nombre = destino.dataset.pagina;
+    const anterior = actual ? document.querySelector(`[data-pagina="${actual}"]`) : null;
+    const cambia = anterior && anterior !== destino;
+    if (actual && hooks[actual] && hooks[actual].salir) hooks[actual].salir();
+    const poner = () => {
+      document.querySelectorAll('[data-pagina]').forEach(el => { el.hidden = el !== destino; });
+      window.scrollTo(0, 0);
+      document.querySelectorAll('[data-ir]').forEach(a => {
+        if (a.dataset.ir === nombre && !a.dataset.id) a.setAttribute('aria-current', 'page');
+        else a.removeAttribute('aria-current');
+      });
+      actual = nombre;
+      if (hooks[nombre] && hooks[nombre].entrar) hooks[nombre].entrar(extra);
+      document.dispatchEvent(new CustomEvent('kit:pagina', { detail: { p: nombre, extra } }));
+      if (window.ScrollTrigger) requestAnimationFrame(() => ScrollTrigger.refresh());
+      if (animar && cambia && window.gsap) {
+        gsap.fromTo(destino, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .35, ease: 'power2.out', clearProps: 'opacity,transform' });
+      }
+    };
+    if (animar && cambia && window.gsap) {
+      gsap.to(anterior, { opacity: 0, duration: .14, ease: 'power1.in', onComplete: () => { gsap.set(anterior, { clearProps: 'opacity' }); poner(); } });
+    } else poner();
+  }
+  function ir(p, extra = {}, reemplazar = false) {
+    try { history[reemplazar ? 'replaceState' : 'pushState']({ p, extra }, '', url(p, extra)); } catch (e) { /* file:// */ }
+    mostrar(p, extra);
+  }
+  function en(p, entrar, salir) {
+    hooks[p] = { entrar, salir };
+    if (actual === p && entrar) entrar(leer().extra);
+  }
+  function enlaces(raiz = document) {
+    raiz.querySelectorAll('a[data-ir]').forEach(a => a.setAttribute('href', url(a.dataset.ir, a.dataset.id ? { id: a.dataset.id } : {})));
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-ir]');
+    if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;
+    e.preventDefault();
+    ir(a.dataset.ir, a.dataset.id ? { id: a.dataset.id } : {});
+  });
+  addEventListener('popstate', e => {
+    const s = (e.state && e.state.p) ? e.state : leer();
+    mostrar(s.p, s.extra || {});
+  });
+  function arrancar() {
+    enlaces();
+    const { p, extra } = leer();
+    try { history.replaceState({ p, extra }, '', location.href); } catch (e) {}
+    mostrar(p, extra, false);
+  }
+  return { url, ir, en, enlaces, arrancar, leer, get actual() { return actual; } };
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+/* Muestra de seguros · Mas & Co · 26/10/2026. Se apoya en el kit de agencias (KIT, barra, aviso, burbuja).
+   Animaciones: no dependen de la preferencia de movimiento reducido del sistema (Felipe tiene apagadas las animaciones de Windows): se ven siempre. */
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const ms = (n, cls = '') => `<span class="ms${cls ? ' ' + cls : ''}" aria-hidden="true">${n}</span>`;
+const lista = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' y ' + a[a.length - 1];
+const may1 = s => s.replace(/^./, x => x.toUpperCase());
+const celu = () => matchMedia('(max-width:860px)').matches;
+
+// ───────── el negocio: ?n=Nombre&c=Ciudad (y ?r= nota de Google, ?o= cantidad de opiniones, si se conocen) ─────────
+const q = new URLSearchParams(location.search);
+const NRAW = (q.get('n') || '').trim().slice(0, 80);
+const N = NRAW || 'Tu productora de seguros';
+const NU = NRAW || 'su productora de seguros';
+const LUGAR = (q.get('c') || '').trim().slice(0, 80);
+const CIUDAD = LUGAR.split(',')[0].trim();
+const R = parseFloat((q.get('r') || '').replace(',', '.')) || NaN;
+const O = parseInt((q.get('o') || '').replace(/\D/g, ''), 10) || 0;
+const DIR = 'Calle de ejemplo 000' + (CIUDAD ? ', ' + CIUDAD : '');
+const AHORA = new Date();
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+$$('[data-n]').forEach(e => e.textContent = N);
+$$('[data-nu]').forEach(e => e.textContent = NU);
+document.title = `${N} · Seguros · diseño de muestra`;
+$('#cred-of').textContent = DIR; $('#cred-of2').textContent = DIR;
+
+function avisar(t) { const a = $('#aviso'); a.textContent = t; a.classList.add('ver'); clearTimeout(avisar._t); avisar._t = setTimeout(() => a.classList.remove('ver'), 5200); }
+document.addEventListener('click', e => {
+  const w = e.target.closest('[data-wsp]'); if (!w) return;
+  const f = w.dataset.wsp && $(w.dataset.wsp), msg = f && f.dataset.msg;
+  avisar((msg ? `“${msg}” ` : '') + `En su página, este botón le manda el mensaje directo al WhatsApp de ${NU}.`);
+});
+function burbuja(sel, texto) { const b = $(sel); b.dataset.msg = texto; b.innerHTML = `${esc(texto)}<small>ahora</small>`; }
+
+// ───────── navegación ─────────
+const NAV = [['inicio', 'Inicio', 'home'], ['cotizar', 'Cotizá', 'request_quote'], ['choque', 'Si chocaste', 'car_crash'], ['confianza', 'Matrícula y compañías', 'verified_user'], ['donde', 'Dónde estamos', 'location_on']];
+$('#nav').innerHTML = NAV.map(([p, t]) => p === 'donde' ? `<button type="button" data-donde>${t}</button>` : `<a data-ir="${p}">${t}</a>`).join('');
+const TABS = [['inicio', 'Inicio', 'home'], ['cotizar', 'Cotizá', 'request_quote'], ['choque', 'Chocaste', 'car_crash'], ['confianza', 'Compañías', 'verified_user'], ['consulta', 'Escribinos', 'chat']];
+$('#tabbar').innerHTML = TABS.map(([p, t, i]) => `<a data-ir="${p}">${ms(i)}<span>${t}</span></a>`).join('');
+document.addEventListener('click', e => {
+  if (!e.target.closest('[data-donde]')) return;
+  const ir = () => { const el = $('#donde'); window.scrollTo({top: el.getBoundingClientRect().top + scrollY - (celu() ? 50 : 60), behavior: 'smooth'}); };
+  if (KIT.actual !== 'inicio') { KIT.ir('inicio'); setTimeout(ir, 520); } else ir();
+});
+function barra() {
+  const b = $('#barra'), a = KIT.actual, sobre = a === 'inicio' && scrollY < $('#arriba').offsetHeight - 80;
+  b.classList.toggle('sobre', sobre); b.classList.toggle('osc', a === 'choque' && !sobre);
+}
+addEventListener('scroll', barra, {passive: true});
+document.addEventListener('kit:pagina', e => { document.body.classList.toggle('noche', e.detail.p === 'choque'); barra(); });
+
+// ───────── entradas: se ven en cada carga y cada vez que se entra a la página ─────────
+const rvIO = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const el = e.target; rvIO.unobserve(el);
+  gsap.to(el, {opacity: 1, y: 0, duration: .8, ease: 'power3.out', delay: (+el.dataset.rv || 0) * .09, clearProps: 'transform'});
+}), {threshold: .1, rootMargin: '0px 0px -5% 0px'});
+function revelar(pagina) { $$('[data-rv]', pagina).forEach(el => { rvIO.unobserve(el); gsap.set(el, {opacity: 0, y: 26}); rvIO.observe(el); }); }
+const pag = nombre => $(`[data-pagina="${nombre}"]`);
+
+// la línea de ruta debajo del título de cada página
+function rutaLinea(el, icono) {
+  el.innerHTML = `<svg viewBox="0 0 520 40" preserveAspectRatio="none" aria-hidden="true"><path d="M20 20 H510"/></svg><span class="fin"></span><span class="punta">${ms(icono)}</span>`;
+}
+function correrLinea(el) {
+  const p = el.querySelector('.punta'), w = el.offsetWidth;
+  gsap.fromTo(p, {x: 0}, {x: w - 24, duration: 1.4, ease: 'power2.inOut', delay: .15});
+  gsap.fromTo(el.querySelector('path'), {strokeDashoffset: 0, opacity: .25}, {opacity: 1, duration: 1.4, delay: .15});
+}
+rutaLinea($('#rl-cot'), 'directions_car'); rutaLinea($('#rl-conf'), 'verified_user'); rutaLinea($('#rl-con'), 'chat');
+
+// ───────── portada: sábado 22:10, choque, y la página que responde ─────────
+let heroTL = null;
+function rodar(el, v) {
+  gsap.to(el, {yPercent: -60, opacity: 0, duration: .14, ease: 'power2.in', onComplete: () => { el.textContent = v; gsap.fromTo(el, {yPercent: 60, opacity: 0}, {yPercent: 0, opacity: 1, duration: .22, ease: 'power2.out'}); }});
+}
+function heroEntrar() {
+  if (heroTL) heroTL.kill();
+  const rel = $('#reloj'), amb = $$('.hz-a'), cia = $$('.hz-c'), pasos = $$('.p-paso'), tri = $('#triangulo');
+  tri.classList.remove('calma'); gsap.set(tri, {opacity: 0, y: -26});
+  $('#r3').textContent = '0'; $('#r4').textContent = '9'; rel.classList.remove('calma');
+  gsap.set([amb, cia], {opacity: 0});
+  gsap.set(['#r3', '#r4'], {clearProps: 'all'});
+  gsap.set('#p-dia', {opacity: 0, y: 10}); gsap.set(rel, {opacity: 0});
+  gsap.set(['#h-choc', '#h-resp', '#p-sub', '#p-acc', '#p-fe'], {opacity: 0});
+  gsap.set('.p-pasos', {opacity: 0, y: 26}); gsap.set(pasos, {opacity: 0, x: 18}); pasos.forEach(p => p.classList.remove('ok'));
+  const tl = heroTL = gsap.timeline();
+  const baliza = t => tl.to(amb, {opacity: 1, duration: .1, ease: 'none'}, t).to(amb, {opacity: .04, duration: .36, ease: 'power1.out'}, t + .1).to(tri, {opacity: 1, y: 0, duration: .1, ease: 'none'}, t).to(tri, {opacity: .2, duration: .36, ease: 'power1.out'}, t + .1);
+  tl.to('#p-dia', {opacity: 1, y: 0, duration: .5, ease: 'power2.out'}, .1).to(rel, {opacity: .55, duration: .4}, .15);
+  baliza(.3);
+  tl.add(() => { rodar($('#r3'), '1'); rodar($('#r4'), '0'); }, .95).to(rel, {opacity: 1, duration: .25}, .95);
+  baliza(.9);
+  tl.fromTo('#h-choc', {opacity: 0, scale: 1.14, y: 8, transformOrigin: '0 60%'}, {opacity: 1, scale: 1, y: 0, duration: .38, ease: 'power4.out'}, 1.1);
+  tl.to('#p-izq', {x: 7, duration: .05, yoyo: true, repeat: 5, ease: 'none'}, 1.15);
+  baliza(1.5);
+  tl.add(() => { rel.classList.add('calma'); tri.classList.add('calma'); }, 2.05).to(tri, {opacity: 1, duration: .8}, 2.05).to(cia, {opacity: 1, duration: 1.1, ease: 'power2.out'}, 2.05)
+    .fromTo('#h-resp', {opacity: 0, y: 16}, {opacity: 1, y: 0, duration: .7, ease: 'power3.out'}, 2.15)
+    .fromTo('#p-sub', {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: .6, ease: 'power2.out'}, 2.4)
+    .fromTo('#p-acc', {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: .6, ease: 'power2.out'}, 2.6)
+    .fromTo('#p-fe', {opacity: 0}, {opacity: 1, duration: .6}, 2.8)
+    .to('.p-pasos', {opacity: 1, y: 0, duration: .7, ease: 'power3.out'}, 2.3)
+    .to(pasos, {opacity: 1, x: 0, duration: .5, stagger: .16, ease: 'power2.out'}, 2.5);
+  pasos.forEach((p, i) => tl.add(() => p.classList.add('ok'), 2.9 + i * .35));
+  tl.to(cia, {opacity: .55, duration: 2.4, yoyo: true, repeat: -1, ease: 'sine.inOut'}, 3.4);
+}
+KIT.en('inicio', () => {
+  document.title = `${N} · Seguros · diseño de muestra`;
+  heroEntrar(); revelar(pag('inicio'));
+}, () => { if (heroTL) { heroTL.kill(); heroTL = null; } });
+
+// ───────── terceros completo o todo riesgo, en criollo ─────────
+const ESCALONES = [
+  {t: 'Responsabilidad civil', def: 'Lo mínimo que exige la ley. Si le causás daños a otro, la compañía responde. Tu auto queda por tu cuenta.', nota: '<b>Para quién:</b> un auto que vale poco, donde lo importante es cumplir con la ley.', s: [2, 0, 0, 0, 0, 0, 1]},
+  {t: 'Terceros completo', def: 'Además de lo que le causes a otros, te cubren lo que más duele perder: que te roben el auto o que se incendie.', nota: '<b>El punto medio:</b> no paga la reparación de tu auto cuando el choque fue culpa tuya.', s: [2, 2, 1, 1, 1, 0, 1]},
+  {t: 'Todo riesgo', def: 'Suma la reparación de tu propio auto cuando chocás, aunque la culpa sea tuya. Casi siempre con franquicia.', nota: '<b>Franquicia:</b> la parte del daño que pagás vos. Con una franquicia más alta la cuota suele ser más baja, y si chocás ponés más de tu bolsillo.', s: [2, 2, 2, 1, 1, 2, 1]}];
+const ESC_ITEMS = ['Daños que le causás a otros (autos, cosas, personas)', 'Robo o incendio total del auto', 'Robo o incendio parcial (partes, accesorios)', 'Cristales, cerraduras y ruedas', 'Granizo', 'Reparación de tu propio auto cuando chocás', 'Grúa y auxilio mecánico'];
+const EST_TX = ['no suele estar', 'depende de la compañía', 'suele estar'];
+$('#esc-tabs').innerHTML = ESCALONES.map((e, i) => `<button type="button" role="tab" aria-selected="${i === 1}" data-i="${i}">${e.t}</button>`).join('');
+function pintarEsc(i, animar = true) {
+  const e = ESCALONES[i];
+  $$('#esc-tabs button').forEach((b, k) => b.setAttribute('aria-selected', k === i));
+  $('#esc-def').textContent = e.def; $('#esc-nota').innerHTML = e.nota;
+  $('#esc-lista').innerHTML = ESC_ITEMS.map((t, j) => { const s = e.s[j]; return `<li><i class="est s${s}">${s === 2 ? ms('check') : s === 0 ? ms('close') : ''}</i><span>${t}</span><small>${EST_TX[s]}</small></li>`; }).join('');
+  if (animar) {
+    gsap.fromTo('#esc-lista li', {opacity: 0, x: 16}, {opacity: 1, x: 0, duration: .4, stagger: .05, ease: 'power2.out'});
+    gsap.fromTo(['#esc-def', '#esc-nota'], {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: .45, stagger: .08, ease: 'power2.out'});
+  }
+}
+$('#esc-tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pintarEsc(+b.dataset.i); });
+pintarEsc(1, false);
+
+// ───────── la nota de Google (solo si se conoce) y dónde estamos ─────────
+if (!isNaN(R)) {
+  $('#nota-g').hidden = false; $('#nota-num').textContent = R.toFixed(1).replace('.', ',');
+  $('#nota-tx').textContent = O ? `${O.toLocaleString('es-AR')} opiniones en Google` : 'en Google';
+}
+(function donde() {
+  const lugar = N + (LUGAR ? ', ' + LUGAR : ''), consulta = NRAW ? lugar : LUGAR;
+  if (consulta) $('#mapa-caja').innerHTML = `<iframe id="mapa" title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(consulta)}&output=embed"></iframe>`;
+  else $('#mapa-caja').innerHTML = `<div class="mapa-ej"><svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="400" fill="#E4DFD1"/><path d="M-20 120 L620 70 M-20 300 L620 250 M140 -20 L200 420 M420 -20 L380 420 M-20 210 L620 180" stroke="#F8F5EE" stroke-width="22" fill="none"/><path d="M-20 120 L620 70 M-20 300 L620 250 M140 -20 L200 420 M420 -20 L380 420 M-20 210 L620 180" stroke="#D5CFBE" stroke-width="2" fill="none"/></svg><div>${ms('location_on', 'lleno')}<span>Acá va el mapa con la dirección real</span></div></div>`;
+  $('#donde-info').innerHTML = `<h3>${esc(N)}</h3><p>${NRAW ? 'Pasá cuando quieras o escribinos.' : 'La oficina de su productora, con la dirección y los horarios a la vista.'}</p>
+    <ul><li>${ms('schedule')}<span>Lunes a viernes de 9 a 18 h; sábados de 9 a 13 h (horarios de ejemplo)</span></li><li>${ms('location_on')}<span>${esc(DIR)} (dirección de ejemplo)</span></li><li>${ms('badge')}<span>Matrícula N.º de ejemplo</span></li><li>${ms('chat')}<span>Fuera de horario te respondemos al abrir. Si chocaste, los pasos están en esta página.</span></li></ul>
+    <div class="acc"><a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(consulta || 'oficina')}" target="_blank" rel="noopener">${ms('near_me')}Cómo llegar</a><a class="enlace" data-ir="choque">Si chocaste ${ms('arrow_forward')}</a></div>`;
+  KIT.enlaces($('#donde-info'));
+})();
+
+// ───────── el cotizador por reglas: qué cobertura tiene sentido y por qué (sin precios) ─────────
+const TIPOS = [['auto', 'Auto', 'directions_car', 'Terceros, todo riesgo, granizo'], ['hogar', 'Hogar', 'home', 'Casa, departamento o alquiler'], ['comercio', 'Comercio', 'storefront', 'Local, taller u oficina']];
+const PREG = {
+  auto: [
+    {k: 'edad', t: '¿Cuántos años tiene el auto?', ops: [['0', '0 km o hasta 5 años'], ['m', 'De 6 a 15 años'], ['v', 'Más de 15 años']]},
+    {k: 'prenda', t: '¿Está prendado o lo pagás en cuotas?', ops: [['si', 'Sí'], ['no', 'No']]},
+    {k: 'noche', t: '¿Dónde pasa la noche?', ops: [['cochera', 'En cochera o garaje'], ['calle', 'En la calle']]},
+    {k: 'extras', t: '¿Algo más?', sub: 'podés marcar varios', multi: 1, ops: [['ruta', 'Viajo seguido por ruta'], ['trabajo', 'Lo uso para trabajar'], ['gnc', 'Tiene GNC o accesorios']]}],
+  hogar: [
+    {k: 'tipo', t: '¿Qué es?', ops: [['casa', 'Una casa'], ['depto', 'Un departamento']]},
+    {k: 'rol', t: '¿Sos dueño o alquilás?', ops: [['dueno', 'Soy dueño'], ['inq', 'Alquilo']]},
+    {k: 'uso', t: '¿Cuánto la habitás?', ops: [['fijo', 'Vivo todo el año'], ['finde', 'Es de fin de semana o vacaciones']]},
+    {k: 'preo', t: '¿Qué te preocupa más?', sub: 'podés marcar varios', multi: 1, ops: [['robo', 'Robo'], ['agua', 'Pérdidas de agua'], ['otros', 'Daños a vecinos o visitas']]}],
+  comercio: [
+    {k: 'rubro', t: '¿Qué tipo de comercio?', ops: [['local', 'Local de venta'], ['oficina', 'Oficina o consultorio'], ['taller', 'Taller o depósito'], ['gastro', 'Gastronómico']]},
+    {k: 'publico', t: '¿Atendés público en el local?', ops: [['si', 'Sí'], ['no', 'No']]},
+    {k: 'emp', t: '¿Tenés empleados?', ops: [['si', 'Sí'], ['no', 'No']]},
+    {k: 'tenes', t: '¿Qué más tenés?', sub: 'podés marcar varios', multi: 1, ops: [['merca', 'Mercadería'], ['equipos', 'Equipos y máquinas'], ['vidriera', 'Vidrieras'], ['efectivo', 'Efectivo en el local']]}]
+};
+const S = {tipo: 'auto', auto: {edad: 'm', prenda: 'no', noche: 'calle', extras: new Set()}, hogar: {tipo: 'depto', rol: 'dueno', uso: 'fijo', preo: new Set(['robo'])}, comercio: {rubro: 'local', publico: 'si', emp: 'no', tenes: new Set(['merca'])}};
+const ORDEN_G = {oblig: 0, imp: 1, rec: 2, sum: 3}, TAG = {oblig: 'Obligatoria', imp: 'Importante', rec: 'Recomendada', sum: 'Sumala si te importa'};
+function reglas(tipo, s) {
+  const r = [], add = (g, t, porque, ojo) => r.push({g, t, porque, ojo});
+  if (tipo === 'auto') {
+    const pr = s.prenda === 'si';
+    add('oblig', 'Responsabilidad civil', 'Es lo mínimo que exige la ley para circular: cubre lo que le causes a otras personas y a sus bienes. No cubre tu propio auto.', 'Tiene una suma máxima: si el daño la supera, la diferencia la ponés vos. Preguntá por el límite.');
+    if (s.edad === '0') add('rec', 'Todo riesgo con franquicia', `Un auto de pocos años vale más y una reparación grande cuesta mucho: con todo riesgo también te cubren los daños de tu propio auto.${pr ? ' Y como está prendado, quien te financia suele pedir una cobertura amplia (confirmalo con ellos).' : ''}`, 'La franquicia es la parte que pagás vos en cada daño. Más franquicia suele bajar la cuota.');
+    if (s.edad === 'm') {
+      add(pr ? 'sum' : 'rec', 'Terceros completo', 'Para un auto de 6 a 15 años suele ser el punto medio: además de lo que causes a otros, cubre el robo y el incendio sin pagar la cuota de un todo riesgo.', 'No paga la reparación de tu auto si el choque fue culpa tuya. Cristales, ruedas y cerraduras dependen de la póliza.');
+      add(pr ? 'rec' : 'sum', 'Todo riesgo con franquicia', pr ? 'Con el auto prendado, quien te financia suele pedir una cobertura amplia. Confirmalo con ellos antes de elegir.' : 'Es el escalón siguiente: también cubre la reparación de tu propio auto cuando chocás.', 'Con franquicia, parte del arreglo lo pagás vos. A mayor franquicia, menor cuota.');
+    }
+    if (s.edad === 'v') add('sum', 'Terceros completo', 'Como el auto vale menos, a veces no conviene pagar por reparar daños propios. Terceros completo suma lo que más preocupa: que te lo roben o se incendie.', 'Mirá que la suma asegurada se parezca a lo que vale el auto hoy.');
+    if (s.noche === 'calle') add('sum', 'Granizo y robo de partes', 'Si pasa la noche en la calle está más expuesto al granizo, al robo de ruedas, espejos o baterías y a la rotura de cristales.', 'Depende de la compañía y del plan: pedí por escrito qué incluye cada uno.');
+    if (s.extras.has('ruta')) add('sum', 'Grúa y auxilio mecánico', 'Si viajás seguido por ruta, un remolque con buen tope de kilómetros te saca de un apuro lejos de casa.', 'Fijate el tope de kilómetros y cuántos auxilios incluye por año.');
+    if (s.extras.has('trabajo')) add('imp', 'Declarar el uso del auto', 'Si lo usás para trabajar (reparto, aplicaciones, remis) tiene que figurar en la póliza: si no está declarado, la compañía podría rechazar un siniestro.', 'Contanoslo al cotizar. El uso cambia la cobertura y la cuota.');
+    if (s.extras.has('gnc')) add('imp', 'Equipo de GNC y accesorios', 'El equipo de GNC y los accesorios (como el equipo de música) tienen que figurar en la póliza para estar cubiertos.', 'Tené a mano la documentación del equipo y las facturas.');
+  } else if (tipo === 'hogar') {
+    const casa = s.tipo === 'casa', dueno = s.rol === 'dueno';
+    if (dueno) add('rec', casa ? 'Incendio del edificio y del contenido' : 'Incendio de tu unidad y del contenido', casa ? 'Como la casa es tuya, lo más caro de perder es la construcción entera. Conviene asegurarla por lo que cuesta reconstruirla, no por lo que vale hoy en el mercado.' : 'En un departamento, el consorcio suele asegurar el edificio y lo común; vos asegurás tu unidad y lo que hay adentro.', 'Una suma asegurada baja puede hacer que te paguen menos en un siniestro. Te ayudamos a calcularla.');
+    else add('rec', 'Contenido del hogar', 'Alquilás, así que el edificio es del dueño. Lo tuyo son los muebles, los electrodomésticos y los objetos personales: eso es lo que conviene asegurar.', 'Hacé un listado con fotos de lo más valioso: ayuda si hay un reclamo.');
+    if (s.preo.has('robo')) add(s.uso === 'finde' ? 'imp' : 'rec', 'Robo de contenido', s.uso === 'finde' ? 'Una casa que queda vacía entre semana está más expuesta. Muchas pólizas ponen condiciones especiales (rejas, alarma, tiempo sin habitarse).' : 'Cubre lo que se llevan en un robo. Es la que más se pregunta.', 'Mirá qué objetos tienen límite (joyas, notebooks, dinero) y cómo se prueba lo que había.');
+    if (s.preo.has('agua')) add('sum', 'Daños por agua', 'Una cañería rota o una pérdida del vecino de arriba puede arruinar pisos, muebles y paredes.', 'Se suele cubrir el daño que causa el agua, no siempre el arreglo de la cañería. Preguntá qué incluye.');
+    if (s.preo.has('otros')) add('rec', 'Responsabilidad civil', (casa ? 'Si alguien se lastima en tu casa o tu casa daña la del vecino, esta cobertura responde.' : 'En un departamento un descuido (una canilla abierta, un incendio) puede dañar al vecino. Esta cobertura responde por eso.') + (dueno ? '' : ' Como inquilino, también te puede proteger si dañás el inmueble del dueño.'), 'Tiene una suma máxima por hecho. Preguntá cuál es.');
+    add('sum', 'Variaciones de tensión', 'Un pico de luz puede quemar la heladera, el aire o la tele. Suele ser una cobertura aparte para equipos electrónicos.', 'Tiene un límite por equipo y por evento.');
+  } else {
+    const gastro = s.rubro === 'gastro', taller = s.rubro === 'taller';
+    add('rec', 'Incendio del local y del contenido', gastro ? 'Una cocina con gas y campana sube el riesgo de incendio: declararla es parte de cotizar bien. Cubre el local (si es tuyo) y todo lo que hay adentro.' : 'Un incendio o una explosión pueden parar el negocio. Cubre el local (si es tuyo) y lo que hay adentro.', 'Asegurá por lo que cuesta reponer, no por lo que pagaste. Pedí que te ayudemos a calcularlo.');
+    if (s.tenes.has('merca') || s.tenes.has('equipos')) add('rec', 'Robo de mercadería y equipos', 'Si tenés mercadería o equipos de valor, un robo puede costar más que un mes de ventas.', 'Mirá las medidas de seguridad que pide la póliza (rejas, alarma) y los topes por rubro.');
+    if (s.publico === 'si') add('rec', 'Responsabilidad civil comercial', 'Si un cliente se cae en el local o algo de tu negocio le daña la propiedad a un tercero, esta cobertura responde.', 'Fijate si incluye a los clientes dentro del local y en la vereda.');
+    if (s.emp === 'si') add('imp', 'ART para tus empleados', 'Si tenés empleados en relación de dependencia, la ART es obligatoria por ley. Se contrata aparte de la póliza del comercio.', 'Es independiente del seguro del local.');
+    if (s.tenes.has('vidriera')) add('sum', 'Cristales y vidrieras', 'Una vidriera rota por un intento de robo o un accidente es un gasto fuerte y deja el local abierto.', 'Preguntá si incluye la reposición inmediata y los carteles.');
+    if (s.tenes.has('efectivo')) add('sum', 'Dinero en el local y en tránsito', 'Si manejás efectivo hay una cobertura aparte para el dinero de la caja y el que llevás al banco.', 'Tiene topes bajos y condiciones de seguridad.');
+    if (taller || s.tenes.has('equipos')) add('sum', 'Rotura de máquinas y equipos', 'Si una máquina se rompe por un desperfecto eléctrico o mecánico, esta cobertura paga la reparación.', 'Suele excluir el desgaste normal. Preguntá qué entra.');
+  }
+  return r.sort((a, b) => ORDEN_G[a.g] - ORDEN_G[b.g]);
+}
+const OPT = (tipo, k, v) => (PREG[tipo].find(p => p.k === k).ops.find(o => o[0] === v) || [0, ''])[1];
+function mensajeCot() {
+  const t = S.tipo, s = S[t], rs = reglas(t, s);
+  const top = rs.find(x => x.g === 'rec') || rs[0];
+  let d;
+  if (t === 'auto') {
+    const tx = [{'0': 'tiene hasta 5 años', m: 'tiene entre 6 y 15 años', v: 'tiene más de 15 años'}[s.edad], s.prenda === 'si' ? 'está prendado' : null, s.noche === 'calle' ? 'duerme en la calle' : 'duerme en cochera', s.extras.has('ruta') ? 'viajo seguido por ruta' : null, s.extras.has('trabajo') ? 'lo uso para trabajar' : null, s.extras.has('gnc') ? 'tiene GNC o accesorios' : null].filter(Boolean);
+    d = `mi auto: ${lista(tx)}`;
+  } else if (t === 'hogar') {
+    const tx = [s.rol === 'dueno' ? 'soy dueño' : 'alquilo', s.uso === 'fijo' ? 'vivo todo el año' : 'es de fin de semana', s.preo.has('robo') ? 'me preocupa el robo' : null, s.preo.has('agua') ? 'me preocupan las pérdidas de agua' : null, s.preo.has('otros') ? 'quiero cubrir daños a vecinos o visitas' : null].filter(Boolean);
+    d = `mi ${s.tipo === 'casa' ? 'casa' : 'departamento'}: ${lista(tx)}`;
+  } else {
+    const tx = [s.publico === 'si' ? 'atiendo público' : null, s.emp === 'si' ? 'tengo empleados' : null, s.tenes.has('merca') ? 'tengo mercadería' : null, s.tenes.has('equipos') ? 'tengo equipos y máquinas' : null, s.tenes.has('vidriera') ? 'tengo vidrieras' : null, s.tenes.has('efectivo') ? 'manejo efectivo' : null].filter(Boolean);
+    d = `mi ${{local: 'local de venta', oficina: 'oficina o consultorio', taller: 'taller o depósito', gastro: 'local gastronómico'}[s.rubro]}${tx.length ? ': ' + lista(tx) : ''}`;
+  }
+  return `Hola, quiero cotizar el seguro de ${d}. Me interesa ${top.t.toLowerCase()}. ¿Qué compañías me recomiendan?`;
+}
+function pintarTipos() {
+  $('#tipos').innerHTML = TIPOS.map(([k, t, i, sub]) => `<button class="tipo" type="button" data-k="${k}" aria-pressed="${S.tipo === k}">${ms(i)}<span>${t}<small>${sub}</small></span></button>`).join('');
+}
+function pintarPreg() {
+  const t = S.tipo, s = S[t];
+  $('#cot-preg').innerHTML = PREG[t].map(p => `<div class="preg-c"><h4>${p.t}${p.sub ? `<small>${p.sub}</small>` : ''}</h4><div class="chips" data-k="${p.k}">${p.ops.map(([v, x]) => `<button class="chip" type="button" data-v="${v}" aria-pressed="${p.multi ? s[p.k].has(v) : s[p.k] === v}">${x}</button>`).join('')}</div></div>`).join('');
+}
+function pintarSug(animar = true) {
+  const t = S.tipo, rs = reglas(t, S[t]), top = rs.find(x => x.g === 'rec') || rs[0], nom = TIPOS.find(x => x[0] === t)[1];
+  $('#sug-top').innerHTML = `<small>Por dónde empezar con tu ${nom.toLowerCase()}</small><b>${esc(top.t)}</b>`;
+  $('#sug-lista').innerHTML = rs.map(x => `<article class="sug"><span class="tg ${x.g}">${TAG[x.g]}</span><h5>${esc(x.t)}</h5><p><b>Por qué:</b> ${esc(x.porque)}</p><p class="ojo"><b>Ojo:</b> ${esc(x.ojo)}</p></article>`).join('');
+  burbuja('#cot-burbuja', mensajeCot());
+  $('#resumen-celu').innerHTML = `<span><b>${nom}</b> · ${rs.length} coberturas sugeridas</span><span>Ver</span>`;
+  if (animar) gsap.fromTo('#sug-lista .sug', {opacity: 0, y: 14}, {opacity: 1, y: 0, duration: .45, stagger: .06, ease: 'power2.out'});
+}
+$('#tipos').addEventListener('click', e => { const b = e.target.closest('.tipo'); if (!b) return; S.tipo = b.dataset.k; pintarTipos(); pintarPreg(); pintarSug(); });
+$('#cot-preg').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  const caja = b.parentElement, k = caja.dataset.k, p = PREG[S.tipo].find(x => x.k === k), s = S[S.tipo];
+  if (p.multi) { s[k].has(b.dataset.v) ? s[k].delete(b.dataset.v) : s[k].add(b.dataset.v); b.setAttribute('aria-pressed', s[k].has(b.dataset.v)); }
+  else { s[k] = b.dataset.v; $$('.chip', caja).forEach(c => c.setAttribute('aria-pressed', c === b)); }
+  pintarSug();
+});
+$('#resumen-celu').addEventListener('click', () => { window.scrollTo({top: $('#cot-lado').getBoundingClientRect().top + scrollY - 70, behavior: 'smooth'}); });
+pintarTipos(); pintarPreg(); pintarSug(false);
+KIT.en('cotizar', extra => {
+  document.title = `Cotizá · ${N}`;
+  if (extra.id && TIPOS.some(x => x[0] === extra.id) && extra.id !== S.tipo) { S.tipo = extra.id; pintarTipos(); pintarPreg(); pintarSug(false); }
+  correrLinea($('#rl-cot')); pintarSug(true); revelar(pag('cotizar'));
+});
+
+// ───────── si chocaste: pasos a mano ─────────
+const PASOS = [
+  ['Frená, apagá el motor y señalizá', 'Prendé las balizas y poné el triángulo detrás del auto. Si podés hacerlo con seguridad, sacalo del medio de la calle o de la ruta.'],
+  ['Primero las personas', '¿Hay heridos? Llamá al 107 (emergencias médicas) o al 911. No muevas a nadie si no es necesario.'],
+  ['Sacá fotos', 'Los autos, las patentes, el lugar, los daños, las señales y los semáforos. Cuantas más, mejor.'],
+  ['Intercambiá datos', 'Nombre, DNI, teléfono, patente, compañía y número de póliza del otro conductor. Mostrale los tuyos. Contá lo que pasó sin discutir.'],
+  ['Avisá a tu compañía', 'Cuanto antes: la póliza fija un plazo corto para hacer la denuncia. Los teléfonos están acá al costado (de ejemplo).'],
+  ['Escribinos y te acompañamos', 'Con los datos y las fotos armamos la denuncia con vos y te decimos qué sigue: inspección, taller y seguimiento.']];
+$('#pasos').innerHTML = PASOS.map(([t, d], i) => `<li class="paso" data-rv="${i}"><button type="button" aria-pressed="false"><span class="n">${i + 1}</span><span class="t"><strong>${t}</strong><span>${d}</span></span><span class="ck"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16"/><path d="M10.5 18.5l5.2 5.2L26 12.5"/></svg></span></button></li>`).join('');
+function progreso() {
+  const n = $$('.paso.hecho').length;
+  $('#prog-t').textContent = n === PASOS.length ? 'Listo. Ahora escribinos' : `Llevás ${n} de ${PASOS.length}`;
+  $('#prog-i').style.width = (n / PASOS.length * 100) + '%';
+}
+$('#pasos').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const li = b.parentElement, on = !li.classList.contains('hecho');
+  li.classList.toggle('hecho', on); b.setAttribute('aria-pressed', on);
+  if (on) gsap.fromTo($('.n', li), {scale: 1.25}, {scale: 1, duration: .5, ease: 'back.out(2.5)'});
+  progreso();
+});
+$('#tels').innerHTML = `<li><span>Emergencias médicas</span><b>107</b></li><li><span>Policía y emergencias</span><b>911</b></li>`
+  + ['A', 'B', 'C'].map(l => `<li class="ej-t"><span>Compañía ${l} de ejemplo<small>Denuncias y auxilio</small></span><b>N.º de ejemplo</b></li>`).join('')
+  + `<li class="ej-t"><span>${esc(N)}<small>Oficina</small></span><b>N.º de ejemplo</b></li>`;
+const AV = {her: 'no', cir: 'si'};
+const chipsAv = (id, ops, k) => { $(id).innerHTML = ops.map(([v, t]) => `<button class="chip" type="button" data-k="${k}" data-v="${v}" aria-pressed="${AV[k] === v}">${t}</button>`).join(''); };
+chipsAv('#av-her', [['no', 'No'], ['si', 'Sí']], 'her'); chipsAv('#av-cir', [['si', 'Sí'], ['no', 'No, necesito grúa']], 'cir');
+function mensajeAv() {
+  const l = $('#av-lugar').value.trim();
+  $('#av-alerta').hidden = AV.her !== 'si';
+  burbuja('#av-burbuja', `Hola, choqué. ${AV.her === 'si' ? 'Hay heridos.' : 'No hay heridos.'} ${AV.cir === 'si' ? 'El auto puede circular.' : 'El auto no puede circular, necesito grúa.'}${l ? ` Estoy en ${l}.` : ''} ¿Me ayudan con la denuncia?`);
+}
+$('#av-caja').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; AV[b.dataset.k] = b.dataset.v; $$('.chip', b.parentElement).forEach(c => c.setAttribute('aria-pressed', c === b)); mensajeAv(); });
+$('#av-lugar').addEventListener('input', mensajeAv);
+mensajeAv(); progreso();
+KIT.en('choque', () => { document.title = `Si chocaste · ${N}`; revelar(pag('choque')); });
+
+// ───────── matrícula y compañías ─────────
+const CIAS = [['A', ['Autos', 'Hogar', 'Comercio']], ['B', ['Autos', 'Hogar']], ['C', ['Hogar', 'Comercio']], ['D', ['Autos', 'Comercio']]];
+const ICO_RAMO = {Autos: 'directions_car', Hogar: 'home', Comercio: 'storefront'};
+$('#cias').innerHTML = CIAS.map(([l, rs], i) => `<article class="cia" data-rv="${i}"><span class="cia-l">${l}</span><div><h4>Compañía ${l} de ejemplo</h4><div class="ramos">${rs.map(r => `<span>${ms(ICO_RAMO[r])}${r}</span>`).join('')}</div><dl><dt>Denuncias</dt><dd>N.º de ejemplo</dd>${rs.includes('Autos') ? '<dt>Auxilio mecánico</dt><dd>N.º de ejemplo</dd>' : ''}</dl></div></article>`).join('');
+KIT.en('confianza', () => { document.title = `Matrícula y compañías · ${N}`; correrLinea($('#rl-conf')); revelar(pag('confianza')); });
+
+// ───────── escribinos: la consulta que arma el WhatsApp ─────────
+const C = {motivo: 'cotizar', sobre: 'auto', detalle: '', patente: '', mes: 0, her: 'no', donde: '', nombre: '', hora: 'c'};
+const MOTIVOS = [['cotizar', 'Quiero cotizar', 'request_quote'], ['vence', 'Mi póliza vence', 'event'], ['siniestro', 'Tuve un siniestro', 'car_crash'], ['duda', 'Tengo una duda', 'help']];
+const SOBRE = [['auto', 'Auto', 'directions_car'], ['hogar', 'Hogar', 'home'], ['comercio', 'Comercio', 'storefront'], ['otro', 'Otro', 'shield']];
+const MES_OPS = Array.from({length: 6}, (_, k) => MESES[(AHORA.getMonth() + k) % 12]);
+const HORAS = [['m', 'Por la mañana'], ['t', 'Por la tarde'], ['c', 'Cuando puedan']];
+const cc = (k, ops, extra = () => '') => `<div class="chips" data-c="${k}">${ops.map(([v, t, i]) => `<button class="chip" type="button" data-v="${v}" aria-pressed="${C[k] === v}">${i ? ms(i) : ''}${t}</button>`).join('')}</div>`;
+function pintarCon(rehacer = true) {
+  if (rehacer) {
+    let dyn;
+    if (C.motivo === 'cotizar') dyn = `<div class="grupo"><h4>Contanos qué querés asegurar</h4><input class="campo" id="c-detalle" type="text" maxlength="90" placeholder="Por ejemplo: Gol 2015, casa de dos plantas, local de ropa" autocomplete="off" value="${esc(C.detalle)}"></div>`;
+    else if (C.motivo === 'vence') dyn = `<div class="grupo"><h4>¿En qué mes vence?</h4><div class="chips" data-c="mes">${MES_OPS.map((m, i) => `<button class="chip" type="button" data-v="${i}" aria-pressed="${C.mes === i}">${may1(m)}</button>`).join('')}</div></div><div class="grupo"><h4>Patente <small style="font-weight:500;color:var(--gris)">si es un auto</small></h4><input class="campo" id="c-patente" type="text" maxlength="9" placeholder="Por ejemplo: AB 123 CD" autocomplete="off" value="${esc(C.patente)}"></div>`;
+    else if (C.motivo === 'siniestro') dyn = `<div class="grupo"><h4>¿Hay heridos?</h4>${cc('her', [['no', 'No'], ['si', 'Sí']])}</div><div class="grupo"><h4>¿Dónde pasó? <small style="font-weight:500;color:var(--gris)">opcional</small></h4><input class="campo" id="c-donde" type="text" maxlength="60" placeholder="Calle y altura, o ruta y kilómetro" autocomplete="off" value="${esc(C.donde)}"></div><p class="alerta" style="color:var(--tinta);background:#FFF1D2;box-shadow:inset 0 0 0 1.5px #E8B23C"${C.her === 'si' ? '' : ' hidden'} id="c-alerta">${ms('warning')}<span>Si hay heridos, primero llamá al 107 o al 911. Después escribinos.</span></p>`;
+    else dyn = `<div class="grupo"><h4>Escribí tu duda</h4><input class="campo" id="c-detalle" type="text" maxlength="120" placeholder="Por ejemplo: ¿qué diferencia hay entre terceros completo y todo riesgo?" autocomplete="off" value="${esc(C.detalle)}"></div>`;
+    $('#con-ctl').innerHTML = `<div class="bloque"><h3>¿Por qué escribís?</h3>${cc('motivo', MOTIVOS.map(([v, t, i]) => [v, t, i]))}</div>
+      <div class="bloque"><h3>${C.motivo === 'siniestro' ? 'Contanos qué pasó' : 'Los datos'}</h3><div class="grupo"><h4>¿Sobre qué?</h4>${cc('sobre', SOBRE)}</div>${dyn}</div>
+      <div class="bloque"><h3>Para que te escribamos</h3><div class="grupo"><h4>Tu nombre <small style="font-weight:500;color:var(--gris)">opcional</small></h4><input class="campo" id="c-nombre" type="text" maxlength="40" placeholder="Cómo te llamás" autocomplete="off" value="${esc(C.nombre)}"></div><div class="grupo"><h4>¿Cuándo te viene bien?</h4>${cc('hora', HORAS)}</div></div>`;
+  }
+  const soy = C.nombre ? `, soy ${C.nombre}` : '', sob = {auto: 'mi auto', hogar: 'mi hogar', comercio: 'mi comercio', otro: 'un seguro'}[C.sobre];
+  let m;
+  if (C.motivo === 'cotizar') m = `Hola${soy}. Quiero cotizar el seguro de ${C.sobre === 'otro' ? 'otra cosa' : sob}${C.detalle ? `: ${C.detalle}` : ''}. ¿Qué coberturas me recomiendan?`;
+  else if (C.motivo === 'vence') m = `Hola${soy}. Mi seguro de ${sob} vence en ${MES_OPS[C.mes]}${C.patente ? ` (patente ${C.patente.toUpperCase()})` : ''}. ¿Pueden recotizarlo?`;
+  else if (C.motivo === 'siniestro') m = `Hola${soy}. Tuve un siniestro con ${sob}. ${C.her === 'si' ? 'Hay heridos. ' : ''}${C.donde ? `Pasó en ${C.donde}. ` : ''}¿Me ayudan con la denuncia?`;
+  else m = `Hola${soy}. Tengo una duda sobre ${C.sobre === 'otro' ? 'seguros' : sob}${C.detalle ? `: ${C.detalle}` : ''}`;
+  m += {m: ' Me viene bien que me escriban por la mañana.', t: ' Me viene bien que me escriban por la tarde.', c: ''}[C.hora];
+  burbuja('#con-burbuja', m);
+  const ch = $('#c-alerta'); if (ch) ch.hidden = C.her !== 'si';
+  $('#resumen-con').innerHTML = `<span><b>${MOTIVOS.find(x => x[0] === C.motivo)[1]}</b></span><span>Ver el mensaje</span>`;
+}
+$('#con-ctl').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  const k = b.parentElement.dataset.c; let v = b.dataset.v; if (k === 'mes') v = +v;
+  C[k] = v;
+  if (k === 'motivo') { pintarCon(true); gsap.fromTo('#con-ctl .bloque:nth-child(2)', {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: .4}); }
+  else { $$('.chip', b.parentElement).forEach(c => c.setAttribute('aria-pressed', c === b)); pintarCon(false); }
+});
+$('#con-ctl').addEventListener('input', e => {
+  const id = e.target.id;
+  if (id === 'c-detalle') C.detalle = e.target.value.trim(); else if (id === 'c-patente') C.patente = e.target.value.trim(); else if (id === 'c-donde') C.donde = e.target.value.trim(); else if (id === 'c-nombre') C.nombre = e.target.value.trim(); else return;
+  pintarCon(false);
+});
+$('#con-info').innerHTML = `<li>${ms('location_on')}<span>${esc(DIR)} (dirección de ejemplo)</span></li><li>${ms('schedule')}<span>Lunes a viernes de 9 a 18 h; sábados de 9 a 13 h (horarios de ejemplo)</span></li><li>${ms('chat')}<span>Fuera de horario te respondemos al abrir.</span></li><li>${ms('car_crash')}<span>¿Chocaste? Mirá los pasos y avisanos.</span></li><li><a class="enlace" data-ir="choque">Ver los pasos ${ms('arrow_forward')}</a> <button class="enlace" type="button" data-donde style="margin-left:14px">Ver el mapa ${ms('arrow_forward')}</button></li>`;
+$('#resumen-con').addEventListener('click', () => { window.scrollTo({top: $('#lado-con').getBoundingClientRect().top + scrollY - 70, behavior: 'smooth'}); });
+pintarCon(true);
+KIT.en('consulta', extra => {
+  document.title = `Escribinos · ${N}`;
+  if (extra.id && MOTIVOS.some(x => x[0] === extra.id) && extra.id !== C.motivo) { C.motivo = extra.id; pintarCon(true); }
+  correrLinea($('#rl-con')); revelar(pag('consulta'));
+  gsap.fromTo('#lado-con', {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .7, ease: 'power3.out', delay: .2, clearProps: 'transform'});
+});
+
+KIT.enlaces();
+KIT.arrancar();
+barra();
+
+</script>
+</body></html>
