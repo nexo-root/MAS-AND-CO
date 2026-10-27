@@ -25,7 +25,7 @@ import os
 import time
 import urllib.error
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from publicar import (ARG, IG_USER_ID, PAGE_ID, llamar, ya_esta_en_facebook,
@@ -152,7 +152,9 @@ def main() -> int:
     aqui = Path(__file__).parent
     cola = json.loads((aqui / "cola-reels.json").read_text(encoding="utf-8"))
     solo = os.environ.get("SOLO", "").strip().lower()
-    hoy = os.environ.get("FECHA", "").strip() or datetime.now(ARG).strftime("%Y-%m-%d")
+    # GitHub larga los cron con horas de atraso: hasta las 6 de la mañana todavía cuenta como el día anterior,
+    # para que una corrida pasada la medianoche publique el reel que le tocaba y no el de mañana.
+    hoy = os.environ.get("FECHA", "").strip() or (datetime.now(ARG) - timedelta(hours=6)).strftime("%Y-%m-%d")
 
     entrada = next((r for r in cola["reels"] if r["fecha"] == hoy), None)
     if not entrada:

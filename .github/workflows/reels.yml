@@ -7,6 +7,10 @@ on:
     # los demas dias termina en silencio. Esta ADELANTADO a proposito: GitHub
     # larga los cron con horas de atraso.
     - cron: "30 22 * * *"
+    # Repasos a las 21:30 y 23:00 ARG por si la primera no corrió o falló. No duplican:
+    # el script mira si el texto ya está publicado en Instagram y en Facebook.
+    - cron: "30 0 * * *"
+    - cron: "0 2 * * *"
   workflow_dispatch:
     inputs:
       fecha:
@@ -15,6 +19,11 @@ on:
 
 permissions:
   contents: read
+
+# Si dos corridas atrasadas arrancan juntas, la segunda espera a que termine la primera.
+concurrency:
+  group: reels
+  cancel-in-progress: false
 
 jobs:
   publicar:
