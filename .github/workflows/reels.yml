@@ -2,18 +2,13 @@ name: Reels de Mas & Co
 
 on:
   schedule:
-    # Todos los dias a las 22:30 UTC = 19:30 ARG. El script mira cola-reels.json
-    # y solo publica si hoy hay un reel programado (van cada tres dias), asi que
-    # los demas dias termina en silencio. Esta ADELANTADO a proposito: GitHub
-    # larga los cron con horas de atraso.
-    - cron: "30 22 * * *"
-    # Reel del mediodía (12:30 ARG) y su repaso a las 14:30.
-    - cron: "30 15 * * *"
-    - cron: "30 17 * * *"
-    # Repasos a las 21:30 y 23:00 ARG por si la primera no corrió o falló. No duplican:
-    # el script mira si el texto ya está publicado en Instagram y en Facebook.
-    - cron: "30 0 * * *"
-    - cron: "0 2 * * *"
+    # El script publica todo lo del dia que ya tenga la hora cumplida (campo "hora" de la
+    # cola; sin hora = 19:30) y no repite lo ya publicado, asi que correr de mas no duplica.
+    # Minutos "raros" (:07 y :37): GitHub atrasa mucho los cron en punto y en y media.
+    # Mediodia: 12:37, 13:37 y 14:37 ARG. Noche: 19:37 a 23:37 ARG, cada hora.
+    - cron: "37 15,16,17 * * *"
+    - cron: "37 22,23,0,1,2 * * *"
+    - cron: "7 1 * * *"
   workflow_dispatch:
     inputs:
       fecha:
