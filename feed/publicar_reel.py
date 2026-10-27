@@ -154,24 +154,31 @@ def main() -> int:
     solo = os.environ.get("SOLO", "").strip().lower()
     # GitHub larga los cron con horas de atraso: hasta las 6 de la mañana todavía cuenta como el día anterior,
     # para que una corrida pasada la medianoche publique el reel que le tocaba y no el de mañana.
-    hoy = os.environ.get("FECHA", "").strip() or (datetime.now(ARG) - timedelta(hours=6)).strftime("%Y-%m-%d")
+    ahora = datetime.now(ARG)
+    forzada = os.environ.get("FECHA", "").strip()
+    hoy = forzada or (ahora - timedelta(hours=6)).strftime("%Y-%m-%d")
 
-    entrada = next((r for r in cola["reels"] if r["fecha"] == hoy), None)
-    if not entrada:
-        print(f"[i] {hoy}: no hay reel programado. Nada que hacer.")
+    # Puede haber más de un reel por día, cada uno con su "hora" (sin hora = 19:30). Sale el que ya
+    # tiene la hora cumplida; si la corrida cae pasada la medianoche, ya vencieron todos los del día.
+    del_dia = sorted((r for r in cola["reels"] if r["fecha"] == hoy), key=lambda r: r.get("hora", "19:30"))
+    if not forzada and ahora.strftime("%Y-%m-%d") == hoy:
+        limite = (ahora + timedelta(minutes=10)).strftime("%H:%M")
+        del_dia = [r for r in del_dia if r.get("hora", "19:30") <= limite]
+    if not del_dia:
+        print(f"[i] {hoy}: no hay reel para esta hora. Nada que hacer.")
         return 0
 
-    url_video = cola["base_url"] + entrada["video"]
-    caption = entrada["caption"]
-    print(f"[i] {hoy}: publicando el reel {entrada['video']}")
-
     resultados = {}
-    if solo != "fb":
-        resultados["Instagram"] = publicar_reel_instagram(token, url_video, caption, entrada.get("colaboradores"),
-                                                           int(entrada.get("portada_ms", 3000)))
-    # Facebook va SIEMPRE, aunque Instagram haya fallado.
-    if solo != "ig":
-        resultados["Facebook"] = publicar_reel_facebook(token, url_video, caption)
+    for entrada in del_dia:
+        url_video = cola["base_url"] + entrada["video"]
+        caption = entrada["caption"]
+        print(f"[i] {hoy} {entrada.get('hora', '19:30')}: publicando el reel {entrada['video']}")
+        if solo != "fb":
+            resultados[f"Instagram {entrada['video']}"] = publicar_reel_instagram(
+                token, url_video, caption, entrada.get("colaboradores"), int(entrada.get("portada_ms", 3000)))
+        # Facebook va SIEMPRE, aunque Instagram haya fallado.
+        if solo != "ig":
+            resultados[f"Facebook {entrada['video']}"] = publicar_reel_facebook(token, url_video, caption)
 
     for red, ok in resultados.items():
         print(f"[{'OK' if ok else 'X'}] {red}")

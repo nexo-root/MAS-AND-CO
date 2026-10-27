@@ -1,5 +1,5 @@
 {
-  "_doc": "Reels de Mas & Co: uno cada tres dias, a las 19:30 de Argentina, en Instagram y en la pagina de Facebook. Lo publica publicar_reel.py desde el workflow reels.yml. Los videos traen la musica pegada adentro del archivo. Los dias van corridos respecto de TikTok a proposito, para no repetir lo mismo el mismo dia. | 23/09: la musica va PEGADA en el MP4: beats de hip-hop serios de Pixabay (sin Content ID), en negocio/v5-editorial/musica/cool/. La musica RF de Instagram no se puede bajar. | 30/09: v8 con zona segura (nada tapado por la interfaz de TikTok ni de Reels) y musica nueva sin voces (Vanish Mode, Urban y Confident, de Pixabay, sin Content ID). Sale r04-cabanas: muestra la pagina de Pehuen-Co, que no se muestra (Felipe, 26/09). | 30/09 (tarde): v9 con /total-animations. Cada corte cae en el uno de un compas del tema (grilla medida sobre los golpes reales, negocio/reels-manychat/_afinar_beats.py), la caida de la musica pega en el segundo 1 y hay un solo movimiento por escena. Los subtitulos largos se achican solos para no quedar debajo del texto de la cuenta. | 26/10: tanda diaria de 10 reels paradoja con voz de Carlos (r15-r24), del 26/10 al 04/11; TikTok va por Metricool a la misma hora. | 27/10: stock de 30 reels con voz de Carlos (r25-r54), del 05/11 al 04/12.",
+  "_doc": "Reels de Mas & Co: uno cada tres dias, a las 19:30 de Argentina, en Instagram y en la pagina de Facebook. Lo publica publicar_reel.py desde el workflow reels.yml. Los videos traen la musica pegada adentro del archivo. Los dias van corridos respecto de TikTok a proposito, para no repetir lo mismo el mismo dia. | 23/09: la musica va PEGADA en el MP4: beats de hip-hop serios de Pixabay (sin Content ID), en negocio/v5-editorial/musica/cool/. La musica RF de Instagram no se puede bajar. | 30/09: v8 con zona segura (nada tapado por la interfaz de TikTok ni de Reels) y musica nueva sin voces (Vanish Mode, Urban y Confident, de Pixabay, sin Content ID). Sale r04-cabanas: muestra la pagina de Pehuen-Co, que no se muestra (Felipe, 26/09). | 30/09 (tarde): v9 con /total-animations. Cada corte cae en el uno de un compas del tema (grilla medida sobre los golpes reales, negocio/reels-manychat/_afinar_beats.py), la caida de la musica pega en el segundo 1 y hay un solo movimiento por escena. Los subtitulos largos se achican solos para no quedar debajo del texto de la cuenta. | 26/10: tanda diaria de 10 reels paradoja con voz de Carlos (r15-r24), del 26/10 al 04/11; TikTok va por Metricool a la misma hora. | 27/10: 30 reels más con voz de Carlos (r25-r54), dos por día: el 27/10 a las 21:30, del 28/10 al 04/11 a las 12:30 (a las 19:30 sigue el paradoja) y desde el 05/11 a las 12:30 y 19:30. Campo 'hora'; sin hora = 19:30.",
   "base_url": "https://raw.githubusercontent.com/nexo-root/MAS-AND-CO/main/feed/reels/",
   "reels": [
     {
@@ -73,9 +73,27 @@
       "caption": "Para mueblerías: la de enfrente es más chica y siempre tiene gente eligiendo, porque el cliente ve el catálogo antes de ir.\n\nCon una página propia ven cada mueble, arman su comedor a medida y saben cuándo se lo entregan. La consulta te llega armada.\n\nEscribinos la palabra MUEBLERÍA y te mostramos cómo quedaría la tuya.\n\n#muebleria #muebles #paginaweb #negocios"
     },
     {
+      "fecha": "2026-10-27",
+      "video": "r25.mp4",
+      "caption": "“Ya tengo Instagram” y suma: las fotos enamoran. Pero no dice tus horarios ni qué hay para elegir.\n\nCon una página propia se ve todo junto: lo que ofrecés, los horarios y cómo llegar.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "21:30"
+    },
+    {
+      "fecha": "2026-10-28",
+      "video": "r27.mp4",
+      "caption": "Tres errores que espantan clientes en WhatsApp: contestar al otro día, repetir lo mismo a cada uno y no tener un link con todo junto.\n\nUna página propia resuelve los tres: lo que siempre te preguntan queda a la vista, a cualquier hora.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
+    },
+    {
       "fecha": "2026-10-28",
       "video": "r17.mp4",
       "caption": "Para restaurantes: el de enfrente tiene todas las mesas llenas, porque la gente ve la carta antes de ir.\n\nCon una página propia ven cada plato, eligen horario y cuántos son, y la reserva te llega armada.\n\nEscribinos la palabra RESTAURANTE y te mostramos cómo quedaría el tuyo.\n\n#restaurante #gastronomia #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-10-29",
+      "video": "r29.mp4",
+      "caption": "Así ve tu negocio un cliente hoy: tres fotos y nada más. Y cuando te busca, no aparecés.\n\nCon una página propia está todo a la vista y te encuentran cuando te buscan.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
     },
     {
       "fecha": "2026-10-29",
@@ -84,8 +102,20 @@
     },
     {
       "fecha": "2026-10-30",
+      "video": "r31.mp4",
+      "caption": "Un salón, una mueblería y un corralón con el mismo problema: el cliente los busca y no los encuentra.\n\nCon una página propia cada uno aparece y muestra lo suyo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-10-30",
       "video": "r19.mp4",
       "caption": "Para agencias de viaje: la de enfrente tiene menos destinos y fila con valijas, porque el cliente ve los viajes antes de ir.\n\nCon una página propia ven cada destino, arman su viaje y miran las próximas salidas. La consulta te llega armada.\n\nEscribinos la palabra AGENCIA y te mostramos cómo quedaría la tuya.\n\n#agenciadeviajes #turismo #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-10-31",
+      "video": "r33.mp4",
+      "caption": "“Nadie mira páginas” y es cierto que las redes se miran más. Pero antes de ir a un negocio, la gente lo busca en Google.\n\nCon una página propia aparecés ahí, con todo lo tuyo a la vista.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
     },
     {
       "fecha": "2026-10-31",
@@ -94,8 +124,20 @@
     },
     {
       "fecha": "2026-11-01",
+      "video": "r35.mp4",
+      "caption": "Tres errores que esconden tu negocio en Google: no aparecer cuando te buscan, horarios viejos que nadie corrige y ninguna foto de lo que hay.\n\nUna página propia resuelve los tres.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-01",
       "video": "r21.mp4",
       "caption": "Para cabañas y alojamientos: la de enfrente es más simple y tiene los fines de semana llenos, porque el huésped la ve antes de reservar.\n\nCon una página propia ven cada cabaña, eligen para cuántos y miran las fechas libres. La consulta te llega armada.\n\nEscribinos la palabra CABAÑA y te mostramos cómo quedaría la tuya.\n\n#cabañas #alojamiento #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-11-02",
+      "video": "r37.mp4",
+      "caption": "Lo que tu cliente ve hoy: lindas fotos, sin saber qué hay, y preguntas que quedan sin respuesta.\n\nCon una página propia ve el catálogo completo y encuentra todo ahí.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
     },
     {
       "fecha": "2026-11-02",
@@ -104,8 +146,20 @@
     },
     {
       "fecha": "2026-11-03",
+      "video": "r39.mp4",
+      "caption": "La misma noche, un restaurante, unas cabañas y un salón: el cliente escribe y nadie contesta.\n\nCon una página propia cada uno responde con lo suyo a la vista, aunque sea de noche.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-03",
       "video": "r23.mp4",
       "caption": "Para productores de seguros: la de enfrente trabaja con menos compañías y recibe pedidos de cotización todos los días, porque el cliente confía antes de escribir.\n\nCon una página propia se ven tu matrícula y tus compañías, los pasos ante un choque quedan a mano y la cotización te llega armada.\n\nEscribinos la palabra SEGUROS y te mostramos cómo quedaría el tuyo.\n\n#seguros #productordeseguros #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-11-04",
+      "video": "r41.mp4",
+      "caption": "Tres errores que cuestan clientes en Instagram: un perfil sin horarios ni dirección, un link en la bio que no lleva a nada y contestar “por privado” a todos.\n\nUna página propia resuelve los tres: el link de la bio lleva a todo lo tuyo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
     },
     {
       "fecha": "2026-11-04",
@@ -114,153 +168,129 @@
     },
     {
       "fecha": "2026-11-05",
-      "video": "r25.mp4",
-      "caption": "“Ya tengo Instagram” y suma: las fotos enamoran. Pero no dice tus horarios ni qué hay para elegir.\n\nCon una página propia se ve todo junto: lo que ofrecés, los horarios y cómo llegar.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
+      "video": "r26.mp4",
+      "caption": "Para restaurantes: viernes a la noche buscan dónde cenar, no aparecés y nadie contesta. Se van al de al lado.\n\nCon una página propia ven si hay mesa, miran el menú y saben cómo llegar, a cualquier hora.\n\nEscribinos la palabra RESTAURANTE y te mostramos cómo quedaría el tuyo.\n\n#restaurante #gastronomia #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-05",
+      "video": "r42.mp4",
+      "caption": "Tirá la cortina: hoy te escriben y nadie contesta, y las fotos son lindas pero no está la carta.\n\nCon una página propia la consulta queda armada y se ve todo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-06",
-      "video": "r26.mp4",
-      "caption": "Para restaurantes: viernes a la noche buscan dónde cenar, no aparecés y nadie contesta. Se van al de al lado.\n\nCon una página propia ven si hay mesa, miran el menú y saben cómo llegar, a cualquier hora.\n\nEscribinos la palabra RESTAURANTE y te mostramos cómo quedaría el tuyo.\n\n#restaurante #gastronomia #paginaweb #negocios"
+      "video": "r28.mp4",
+      "caption": "Para salones de eventos: “con el boca a boca alcanza” se entiende, pero el recomendado igual te busca antes de reservar.\n\nCon una página propia la familia ve qué fechas están libres sin escribir y se pasa el link entero.\n\nEscribinos la palabra SALÓN y te mostramos cómo quedaría el tuyo.\n\n#salondeeventos #fiestas #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-06",
+      "video": "r43.mp4",
+      "caption": "“Con WhatsApp me alcanza” y está bien, por ahí te escriben. Pero a la noche nadie contesta y el cliente no espera.\n\nCon una página propia ve horarios, fotos y lo que ofrecés a cualquier hora, y la consulta llega armada.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-07",
-      "video": "r27.mp4",
-      "caption": "Tres errores que espantan clientes en WhatsApp: contestar al otro día, repetir lo mismo a cada uno y no tener un link con todo junto.\n\nUna página propia resuelve los tres: lo que siempre te preguntan queda a la vista, a cualquier hora.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
+      "video": "r30.mp4",
+      "caption": "Para mueblerías: siempre te hacen las mismas tres preguntas. ¿Hacen a medida? ¿Cuánto demora? ¿Hacen flete?\n\nCon una página propia se responden solas: piden con sus medidas, ven cada paso con su plazo y eligen el día del flete.\n\nEscribinos la palabra MUEBLERÍA y te mostramos cómo quedaría la tuya.\n\n#muebleria #muebles #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-07",
+      "video": "r44.mp4",
+      "caption": "Una concesionaria, una mueblería y una inmobiliaria, una sola búsqueda: ninguna aparece y el cliente se va a otro.\n\nCon una página propia las tres aparecen con lo suyo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-08",
-      "video": "r28.mp4",
-      "caption": "Para salones de eventos: “con el boca a boca alcanza” se entiende, pero el recomendado igual te busca antes de reservar.\n\nCon una página propia la familia ve qué fechas están libres sin escribir y se pasa el link entero.\n\nEscribinos la palabra SALÓN y te mostramos cómo quedaría el tuyo.\n\n#salondeeventos #fiestas #paginaweb #negocios"
+      "video": "r32.mp4",
+      "caption": "Para productores de seguros: sábado a la noche alguien chocó, te busca y no aparecés. Se va con otro.\n\nCon una página propia sabe a quién llamar, ve qué cubrís y ve tu matrícula y tu oficina.\n\nEscribinos la palabra SEGUROS y te mostramos cómo quedaría el tuyo.\n\n#seguros #productordeseguros #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-08",
+      "video": "r50.mp4",
+      "caption": "“Lo hace mi sobrino” y se agradece: la familia ayuda. Pero si nadie la actualiza, el cliente no encuentra lo que busca.\n\nCon una página propia todo queda ordenado y al día, y quien busca encuentra respuesta.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-09",
-      "video": "r29.mp4",
-      "caption": "Así ve tu negocio un cliente hoy: tres fotos y nada más. Y cuando te busca, no aparecés.\n\nCon una página propia está todo a la vista y te encuentran cuando te buscan.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
+      "video": "r34.mp4",
+      "caption": "Para inmobiliarias: “con el portal alcanza” se entiende, pero en el portal te comparan con todos.\n\nCon una página propia tus propiedades tienen su ficha completa y el turno de visita llega como consulta armada.\n\nEscribinos la palabra INMOBILIARIA y te mostramos cómo quedaría la tuya.\n\n#inmobiliaria #propiedades #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-09",
+      "video": "r45.mp4",
+      "caption": "Tres errores cuando alguien te pregunta: contestar cuando ya se fue, mandar todo suelto foto por foto y que no vea las fechas ni los turnos libres.\n\nUna página propia resuelve los tres.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-10",
-      "video": "r30.mp4",
-      "caption": "Para mueblerías: siempre te hacen las mismas tres preguntas. ¿Hacen a medida? ¿Cuánto demora? ¿Hacen flete?\n\nCon una página propia se responden solas: piden con sus medidas, ven cada paso con su plazo y eligen el día del flete.\n\nEscribinos la palabra MUEBLERÍA y te mostramos cómo quedaría la tuya.\n\n#muebleria #muebles #paginaweb #negocios"
+      "video": "r36.mp4",
+      "caption": "Para cabañas y alojamientos: jueves a la noche buscan cabañas con pileta, no aparecés y nadie contesta. Reservan en otra.\n\nCon una página propia ven si hay lugar, miran fotos reales, saben si aceptan mascotas y reservan directo.\n\nEscribinos la palabra CABAÑA y te mostramos cómo quedaría la tuya.\n\n#cabañas #alojamiento #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-10",
+      "video": "r46.mp4",
+      "caption": "La misma vidriera, hoy y con página: hoy buscan materiales y ven a otros, nadie sabe qué cubrís y las obras no se ven completas.\n\nCon una página propia se ve lo tuyo, queda claro qué cubrís y cada obra se ve completa.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-11",
-      "video": "r31.mp4",
-      "caption": "Un salón, una mueblería y un corralón con el mismo problema: el cliente los busca y no los encuentra.\n\nCon una página propia cada uno aparece y muestra lo suyo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
+      "video": "r38.mp4",
+      "caption": "Para corralones: todos los días las mismas tres preguntas. ¿Qué tienen? ¿Hacen flete? ¿Me pasan presupuesto?\n\nCon una página propia el stock y las zonas de flete quedan a la vista, y el pedido te llega como lista armada.\n\nEscribinos la palabra CORRALÓN y te mostramos cómo quedaría el tuyo.\n\n#corralon #materialesdeconstruccion #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-11",
+      "video": "r52.mp4",
+      "caption": "“Vienen por boca en boca” y una recomendación vale mucho. Pero te recomiendan, te buscan y no aparecés.\n\nCon una página propia quien te busca te encuentra y ve lo tuyo. Así la recomendación se completa.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-12",
-      "video": "r32.mp4",
-      "caption": "Para productores de seguros: sábado a la noche alguien chocó, te busca y no aparecés. Se va con otro.\n\nCon una página propia sabe a quién llamar, ve qué cubrís y ve tu matrícula y tu oficina.\n\nEscribinos la palabra SEGUROS y te mostramos cómo quedaría el tuyo.\n\n#seguros #productordeseguros #paginaweb #negocios"
+      "video": "r40.mp4",
+      "caption": "Para financieras: “con un WhatsApp alcanza” se entiende, pero antes de escribir la gente verifica quién sos.\n\nCon una página propia los requisitos quedan claros antes de la consulta, y las consultas llegan ordenadas.\n\nEscribinos la palabra FINANCIERA y te mostramos cómo quedaría la tuya.\n\n#financiera #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-12",
+      "video": "r47.mp4",
+      "caption": "Una aseguradora, una financiera, una constructora y un corralón con el mismo problema: el cliente los busca y no los ve.\n\nCon una página propia cada uno aparece y muestra lo suyo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-13",
-      "video": "r33.mp4",
-      "caption": "“Nadie mira páginas” y es cierto que las redes se miran más. Pero antes de ir a un negocio, la gente lo busca en Google.\n\nCon una página propia aparecés ahí, con todo lo tuyo a la vista.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
+      "video": "r51.mp4",
+      "caption": "Para concesionarias: todos los días las mismas tres preguntas. ¿Tomás mi usado? ¿Cuántos km tiene? ¿Lo puedo ver?\n\nCon una página propia el usado se cotiza con foto, cada auto tiene su ficha completa y la visita llega como consulta armada.\n\nEscribinos la palabra CONCESIONARIA y te mostramos cómo quedaría la tuya.\n\n#concesionaria #autos #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-13",
+      "video": "r48.mp4",
+      "caption": "Tres errores que vacían el fin de semana: estar cerrado y sin respuesta, no tener dónde ver la carta y no poder reservar solo.\n\nUna página propia resuelve los tres.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-14",
-      "video": "r34.mp4",
-      "caption": "Para inmobiliarias: “con el portal alcanza” se entiende, pero en el portal te comparan con todos.\n\nCon una página propia tus propiedades tienen su ficha completa y el turno de visita llega como consulta armada.\n\nEscribinos la palabra INMOBILIARIA y te mostramos cómo quedaría la tuya.\n\n#inmobiliaria #propiedades #paginaweb #negocios"
+      "video": "r53.mp4",
+      "caption": "Para agencias de viaje: domingo a la noche sueñan con vacaciones, te buscan y no aparecés. Viajan con otra.\n\nCon una página propia ven las próximas salidas y tu legajo, y calculan su seña y sus cuotas.\n\nEscribinos la palabra AGENCIA y te mostramos cómo quedaría la tuya.\n\n#agenciadeviajes #turismo #paginaweb #negocios",
+      "hora": "12:30"
+    },
+    {
+      "fecha": "2026-11-14",
+      "video": "r54.mp4",
+      "caption": "“Mi negocio es chico” y se nota: atendés de cerca. Pero si estás en el mostrador, el chat espera.\n\nCon una página propia la consulta llega armada y vos seguís atendiendo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "19:30"
     },
     {
       "fecha": "2026-11-15",
-      "video": "r35.mp4",
-      "caption": "Tres errores que esconden tu negocio en Google: no aparecer cuando te buscan, horarios viejos que nadie corrige y ninguna foto de lo que hay.\n\nUna página propia resuelve los tres.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-16",
-      "video": "r36.mp4",
-      "caption": "Para cabañas y alojamientos: jueves a la noche buscan cabañas con pileta, no aparecés y nadie contesta. Reservan en otra.\n\nCon una página propia ven si hay lugar, miran fotos reales, saben si aceptan mascotas y reservan directo.\n\nEscribinos la palabra CABAÑA y te mostramos cómo quedaría la tuya.\n\n#cabañas #alojamiento #paginaweb #negocios"
-    },
-    {
-      "fecha": "2026-11-17",
-      "video": "r37.mp4",
-      "caption": "Lo que tu cliente ve hoy: lindas fotos, sin saber qué hay, y preguntas que quedan sin respuesta.\n\nCon una página propia ve el catálogo completo y encuentra todo ahí.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-18",
-      "video": "r38.mp4",
-      "caption": "Para corralones: todos los días las mismas tres preguntas. ¿Qué tienen? ¿Hacen flete? ¿Me pasan presupuesto?\n\nCon una página propia el stock y las zonas de flete quedan a la vista, y el pedido te llega como lista armada.\n\nEscribinos la palabra CORRALÓN y te mostramos cómo quedaría el tuyo.\n\n#corralon #materialesdeconstruccion #paginaweb #negocios"
-    },
-    {
-      "fecha": "2026-11-19",
-      "video": "r39.mp4",
-      "caption": "La misma noche, un restaurante, unas cabañas y un salón: el cliente escribe y nadie contesta.\n\nCon una página propia cada uno responde con lo suyo a la vista, aunque sea de noche.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-20",
-      "video": "r40.mp4",
-      "caption": "Para financieras: “con un WhatsApp alcanza” se entiende, pero antes de escribir la gente verifica quién sos.\n\nCon una página propia los requisitos quedan claros antes de la consulta, y las consultas llegan ordenadas.\n\nEscribinos la palabra FINANCIERA y te mostramos cómo quedaría la tuya.\n\n#financiera #paginaweb #negocios"
-    },
-    {
-      "fecha": "2026-11-21",
-      "video": "r41.mp4",
-      "caption": "Tres errores que cuestan clientes en Instagram: un perfil sin horarios ni dirección, un link en la bio que no lleva a nada y contestar “por privado” a todos.\n\nUna página propia resuelve los tres: el link de la bio lleva a todo lo tuyo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-22",
-      "video": "r42.mp4",
-      "caption": "Tirá la cortina: hoy te escriben y nadie contesta, y las fotos son lindas pero no está la carta.\n\nCon una página propia la consulta queda armada y se ve todo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-23",
-      "video": "r43.mp4",
-      "caption": "“Con WhatsApp me alcanza” y está bien, por ahí te escriben. Pero a la noche nadie contesta y el cliente no espera.\n\nCon una página propia ve horarios, fotos y lo que ofrecés a cualquier hora, y la consulta llega armada.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-24",
-      "video": "r44.mp4",
-      "caption": "Una concesionaria, una mueblería y una inmobiliaria, una sola búsqueda: ninguna aparece y el cliente se va a otro.\n\nCon una página propia las tres aparecen con lo suyo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-25",
-      "video": "r45.mp4",
-      "caption": "Tres errores cuando alguien te pregunta: contestar cuando ya se fue, mandar todo suelto foto por foto y que no vea las fechas ni los turnos libres.\n\nUna página propia resuelve los tres.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-26",
-      "video": "r46.mp4",
-      "caption": "La misma vidriera, hoy y con página: hoy buscan materiales y ven a otros, nadie sabe qué cubrís y las obras no se ven completas.\n\nCon una página propia se ve lo tuyo, queda claro qué cubrís y cada obra se ve completa.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-27",
-      "video": "r47.mp4",
-      "caption": "Una aseguradora, una financiera, una constructora y un corralón con el mismo problema: el cliente los busca y no los ve.\n\nCon una página propia cada uno aparece y muestra lo suyo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-28",
-      "video": "r48.mp4",
-      "caption": "Tres errores que vacían el fin de semana: estar cerrado y sin respuesta, no tener dónde ver la carta y no poder reservar solo.\n\nUna página propia resuelve los tres.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-29",
       "video": "r49.mp4",
-      "caption": "Sábado a la tarde, un corralón, un restaurante y unas cabañas que no contestan: el cliente escribe y se cansa.\n\nCon una página propia cada uno responde con todo armado.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-11-30",
-      "video": "r50.mp4",
-      "caption": "“Lo hace mi sobrino” y se agradece: la familia ayuda. Pero si nadie la actualiza, el cliente no encuentra lo que busca.\n\nCon una página propia todo queda ordenado y al día, y quien busca encuentra respuesta.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-12-01",
-      "video": "r51.mp4",
-      "caption": "Para concesionarias: todos los días las mismas tres preguntas. ¿Tomás mi usado? ¿Cuántos km tiene? ¿Lo puedo ver?\n\nCon una página propia el usado se cotiza con foto, cada auto tiene su ficha completa y la visita llega como consulta armada.\n\nEscribinos la palabra CONCESIONARIA y te mostramos cómo quedaría la tuya.\n\n#concesionaria #autos #paginaweb #negocios"
-    },
-    {
-      "fecha": "2026-12-02",
-      "video": "r52.mp4",
-      "caption": "“Vienen por boca en boca” y una recomendación vale mucho. Pero te recomiendan, te buscan y no aparecés.\n\nCon una página propia quien te busca te encuentra y ve lo tuyo. Así la recomendación se completa.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
-    },
-    {
-      "fecha": "2026-12-03",
-      "video": "r53.mp4",
-      "caption": "Para agencias de viaje: domingo a la noche sueñan con vacaciones, te buscan y no aparecés. Viajan con otra.\n\nCon una página propia ven las próximas salidas y tu legajo, y calculan su seña y sus cuotas.\n\nEscribinos la palabra AGENCIA y te mostramos cómo quedaría la tuya.\n\n#agenciadeviajes #turismo #paginaweb #negocios"
-    },
-    {
-      "fecha": "2026-12-04",
-      "video": "r54.mp4",
-      "caption": "“Mi negocio es chico” y se nota: atendés de cerca. Pero si estás en el mostrador, el chat espera.\n\nCon una página propia la consulta llega armada y vos seguís atendiendo.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores"
+      "caption": "Sábado a la tarde, un corralón, un restaurante y unas cabañas que no contestan: el cliente escribe y se cansa.\n\nCon una página propia cada uno responde con todo armado.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n\n#paginaweb #negocios #emprendedores",
+      "hora": "12:30"
     }
   ]
 }
