@@ -136,6 +136,41 @@ html.intro .barra,html.intro .dock{opacity:0;pointer-events:none}
 .coti{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr);gap:28px;margin-top:44px;align-items:start}
 .bloque{background:var(--grafito);border:1px solid var(--borde);border-radius:22px;padding:clamp(18px,3vw,30px)}
 .bloque+.bloque{margin-top:14px}
+/* ¿qué necesitás?: un campo que despliega la lista; lo que no está, se escribe */
+.busca{margin-top:14px}
+.busca-campo{position:relative}
+.busca-campo>svg{position:absolute;left:14px;top:27px;width:22px;height:22px;margin-top:-11px;fill:var(--texto3);pointer-events:none}
+#f-serv{width:100%;min-height:54px;border-radius:14px;border:1.5px solid var(--borde2);background:#0c0d10;color:var(--texto);padding:0 14px 0 46px;font:inherit;font-size:max(16px,1rem);transition:border-color .2s}
+#f-serv:focus{outline:none;border-color:var(--rojo2)}
+#f-serv::placeholder{color:var(--texto3)}
+.lista{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;max-height:min(50vh,430px);overflow:auto;overscroll-behavior:contain;list-style:none;background:#16171c;border:1px solid var(--borde2);border-radius:14px;padding:6px;box-shadow:0 18px 44px rgba(0,0,0,.6)}
+.lista li{display:flex;align-items:center;gap:12px;min-height:50px;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600;color:#e6e8ec}
+.lista li:hover{background:rgba(255,255,255,.07)}
+.lista .tilde{flex:none;width:22px;height:22px;border-radius:6px;border:1.5px solid var(--borde2);display:grid;place-items:center}
+.lista li[aria-selected="true"] .tilde{background:var(--rojo);border-color:var(--rojo)}
+.lista li[aria-selected="true"] .tilde::after{content:"";width:10px;height:6px;border:2.5px solid #fff;border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}
+.lista .otro{color:#ffd5d7}.lista .otro b{color:#fff}
+.lista .listo{position:sticky;bottom:0;justify-content:center;margin-top:4px;background:var(--rojo);color:#fff;font-weight:800}
+.lista .listo:hover{background:var(--rojo2)}
+.elegidos{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.elegidos:empty,.zonas-elegidas:empty{display:none}
+.tag{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 10px 0 14px;border-radius:999px;background:rgba(227,19,28,.16);border:1.5px solid rgba(227,19,28,.55);color:#fff;font-weight:600;font-size:.95rem}
+.tag span{font-size:1.35rem;line-height:1;color:#ffb3b7}
+/* más datos: plegado, para que la consulta rápida sea corta */
+.opcional summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:800;font-stretch:112%;font-size:1.1rem}
+.opcional summary::-webkit-details-marker{display:none}
+.opcional summary small{display:block;font-weight:500;font-stretch:100%;color:var(--texto3);font-size:.9rem;margin-top:2px}
+.opcional summary::after{content:"+";flex:none;color:var(--rojo2);font-size:1.7rem;line-height:1;transition:transform .25s var(--ease)}
+.opcional[open] summary::after{transform:rotate(45deg)}
+.opcional .sub{margin-top:22px;font-weight:800;font-stretch:110%;font-size:1.05rem}
+/* celular y tablet: el botón de enviar queda fijo abajo mientras armás la consulta */
+.envio-fijo{display:none}
+@media (max-width:980px){
+  .envio-fijo{display:block;position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:46;transform:translateY(160%);transition:transform .35s var(--ease)}
+  .envio-fijo .btn{width:100%;min-height:56px}
+  body.con-envio .envio-fijo{transform:none}
+  body.con-envio .dock{opacity:0;pointer-events:none}
+}
 .bloque h3{display:flex;align-items:baseline;gap:12px;font-stretch:112%;font-weight:800;font-size:1.2rem}
 .bloque h3 b{font-stretch:125%;font-style:italic;font-weight:900;color:var(--rojo2);font-size:1.05rem}
 .bloque h3 small{font-weight:500;font-stretch:100%;color:var(--texto3);font-size:.92rem;margin-left:auto}
@@ -399,7 +434,14 @@ img{-webkit-user-drag:none}
     <p class="bajada">Tocá dónde está el daño y qué necesitás: nos llega todo escrito por WhatsApp. El presupuesto es sin costo.</p>
     <div class="coti">
       <div>
-        <div class="bloque" id="b-zonas"><h3><b>1</b>¿Dónde está el daño?<small>tocá el auto</small></h3>
+        <div class="bloque" id="b-serv"><h3><b>1</b>¿Qué necesitás?<small>podés elegir varios</small></h3>
+          <div class="busca" id="busca">
+            <div class="busca-campo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input id="f-serv" type="text" autocomplete="off" enterkeyhint="done" placeholder="Tocá o escribí acá" role="combobox" aria-expanded="false" aria-controls="lista-serv" aria-autocomplete="list" aria-label="Qué necesitás">
+              <ul class="lista" id="lista-serv" role="listbox" aria-multiselectable="true" hidden></ul></div>
+            <div class="elegidos" id="serv-elegidos"></div>
+          </div>
+        </div>
+        <div class="bloque" id="b-zonas"><h3><b>2</b>¿Dónde está el daño?<small>tocá el auto</small></h3>
           <div class="auto-env">
             <div class="auto"><div class="escena" id="escena"><i class="suelo" id="suelo"></i><div class="giro" id="giro">
             <div class="cara arriba" id="cara-arriba"><svg viewBox="0 0 260 540" id="auto" role="group" aria-label="Plano del auto visto desde arriba">
@@ -487,14 +529,14 @@ img{-webkit-user-drag:none}
             </div></div>
             <button class="chip girar" type="button" id="girar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg><span id="girar-t">Dar vuelta el auto</span></button>
             <p class="girar-n" id="girar-n" aria-live="polite"></p></div>
-            <div><p class="ayuda">Tocá las partes con daño: chapa, vidrios, faros o espejos. Para lo de abajo (escape, tren delantero, cárter, zócalos, piso o ruedas), tocá «Dar vuelta el auto». Podés marcar varias. Si es granizo en casi todo el auto, elegí «Todo el auto». Si es lavado o pulido, podés saltear este paso.</p>
+            <div>
               <div class="zonas-elegidas" id="zonas-elegidas"></div>
               <div class="chips"><button class="chip" type="button" id="todo-auto" aria-pressed="false">Todo el auto</button></div>
             </div>
           </div>
         </div>
-        <div class="bloque"><h3><b>2</b>¿Qué necesitás?<small>podés elegir más de uno</small></h3><div class="chips" id="c-serv"></div></div>
-        <div class="bloque"><h3><b id="n-auto">3</b>Tu auto</h3>
+                <details class="bloque opcional" id="mas-datos"><summary><span>Más datos<small>Opcional: tu auto, seguro, taller y día</small></span></summary>
+          <h4 class="sub">Tu auto</h4>
           <div class="campos">
             <div class="campo"><label for="f-modelo">Marca y modelo</label><input id="f-modelo" autocomplete="off" placeholder="Ej.: Gol Trend"></div>
             <div class="campo"><label for="f-anio">Año</label><input id="f-anio" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="Ej.: 2016"></div>
@@ -502,22 +544,21 @@ img{-webkit-user-drag:none}
           <p class="ayuda" style="margin-top:16px">¿Es por seguro?</p>
           <div class="chips" id="c-seguro" style="margin-top:8px"><button class="chip" type="button" data-v="no" aria-pressed="true">Particular</button><button class="chip" type="button" data-v="si" aria-pressed="false">Por seguro</button></div>
           <div class="oculto" id="f-seguro"><p class="ayuda" style="margin-top:16px">¿Qué compañía?</p><div class="chips" id="c-compania" style="margin-top:8px"></div><div class="campos"><div class="campo ancho"><label for="f-compania">Si es otra, escribila</label><input id="f-compania" autocomplete="off" placeholder="Nombre de tu compañía"></div></div></div>
-        </div>
-        <div class="bloque"><h3><b id="n-sigue">4</b>¿Cómo seguimos?</h3>
+          <h4 class="sub">¿Cómo seguimos?</h4>
           <div class="chips" id="c-modo"><button class="chip" type="button" data-v="visita" aria-pressed="true">Visita para presupuesto</button><button class="chip" type="button" data-v="llamada" aria-pressed="false">Que me llamen</button><button class="chip" type="button" data-v="chat" aria-pressed="false">Solo consultar</button></div>
           <p class="ayuda" style="margin-top:18px">¿A qué taller?</p>
           <div class="chips" id="c-taller" style="margin-top:8px"></div>
           <div id="f-dia"><p class="ayuda" style="margin-top:18px">¿Qué día te queda bien?</p><div class="chips num" id="c-dia" style="margin-top:8px"></div></div>
           <div id="f-franja"><p class="ayuda" style="margin-top:18px" id="t-franja">¿A qué hora?</p><div class="chips" id="c-franja" style="margin-top:8px"><button class="chip" type="button" data-v="a la mañana" aria-pressed="false">A la mañana</button><button class="chip" type="button" data-v="a la tarde" aria-pressed="false">A la tarde</button></div></div>
           <div class="campos"><div class="campo ancho"><label for="f-nombre">Tu nombre</label><input id="f-nombre" autocomplete="given-name" placeholder="Para saber cómo llamarte"></div></div>
-        </div>
+        </details>
       </div>
       <aside class="resumen" aria-label="Tu consulta">
         <div class="bloque">
           <h3>Tu consulta<small id="r-taller"></small></h3>
           <div class="msj" id="msj" aria-live="polite"></div>
           <a class="btn btn-wa" id="enviar" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span id="enviar-t">Enviar por WhatsApp</span></a>
-          <p class="falta" id="falta">Elegí al menos un servicio.</p>
+          <p class="falta" id="falta">Contanos qué necesitás o tocá el auto.</p>
           <div class="fotos-tip">
             <div><svg><use href="#i-cam"/></svg><span><b>Una de lejos</b>, que se vea el auto entero.</span></div>
             <div><svg><use href="#i-lupa"/></svg><span><b>Una de cerca</b> del daño.</span></div>
@@ -601,6 +642,7 @@ img{-webkit-user-drag:none}
   </div>
 </footer>
 
+<div class="envio-fijo"><a class="btn btn-wa" id="enviar2" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span>Enviar consulta por WhatsApp</span></a></div>
 <nav class="dock" id="dock" aria-label="Ir a una sección"><i class="dock-luz" id="dock-luz"></i><a href="#cotizar" data-sec="cotizar"><svg><use href="#d-cotizar"/></svg><span>Cotizar</span></a><a href="#servicios" data-sec="servicios"><svg><use href="#d-servicios"/></svg><span>Servicios</span></a><a href="#seguros" data-sec="seguros"><svg><use href="#d-seguros"/></svg><span>Seguros</span></a><a href="#talleres" data-sec="talleres"><svg><use href="#d-talleres"/></svg><span>Talleres</span></a><a href="#trabajos" data-sec="trabajos"><svg><use href="#d-trabajos"/></svg><span>Trabajos</span></a><a href="#preguntas" data-sec="preguntas"><svg><use href="#d-preguntas"/></svg><span>Preguntas</span></a></nav>
 <dialog class="visor" id="visor"><button class="cerrar" type="button" aria-label="Cerrar">×</button><img alt=""></dialog>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -659,10 +701,57 @@ $$('.rev,.rev-t').forEach(el => ojo.observe(el));
 /* ---------- cotizador ---------- */
 const SERV = [['bollo', 'Sacar un bollo', 1], ['granizo', 'Daños por granizo', 1], ['chapa', 'Chapa y pintura', 1], ['paragolpe', 'Paragolpes', 1], ['siniestro', 'Auto siniestrado', 1], ['cristal', 'Cambio de cristal', 1], ['cerradura', 'Cerradura o levantacristales', 1], ['llantas', 'Llantas', 0], ['opticas', 'Pulido de ópticas', 0], ['ceramico', 'Pulido y cerámico', 0], ['polarizado', 'Polarizado', 0], ['lavado', 'Lavado integral o premium', 0], ['interior', 'Limpieza interior', 0]];
 const ZN = { pd: 'paragolpe delantero', capo: 'capó', parab: 'parabrisas', techo: 'techo', luneta: 'luneta', baul: 'baúl o portón', pt: 'paragolpe trasero', gdi: 'guardabarros delantero izquierdo', pdi: 'puerta delantera izquierda', pti: 'puerta trasera izquierda', gti: 'guardabarros trasero izquierdo', gdd: 'guardabarros delantero derecho', pdd: 'puerta delantera derecha', ptd: 'puerta trasera derecha', gtd: 'guardabarros trasero derecho', ei: 'espejo izquierdo', ed: 'espejo derecho', fdi: 'faro delantero izquierdo', fdd: 'faro delantero derecho', fti: 'faro trasero izquierdo', ftd: 'faro trasero derecho', fdel: 'debajo del paragolpe delantero', carter: 'cárter o cubre cárter', trend: 'tren delantero', caja: 'caja de cambios', piso: 'piso del auto', zi: 'zócalo izquierdo', zd: 'zócalo derecho', catalizador: 'catalizador', cano: 'caño de escape', silenciador: 'silenciador del escape', tanque: 'tanque de nafta', trent: 'tren trasero', ftra: 'debajo del paragolpe trasero', rdi: 'rueda delantera izquierda', rdd: 'rueda delantera derecha', rti: 'rueda trasera izquierda', rtd: 'rueda trasera derecha' };
-const S = { serv: new Set(), zonas: new Set(), todo: false, seguro: 'no', modo: 'visita', taller: M1.talleres[0].id, dia: null, franja: null };
-const cServ = $('#c-serv');
-SERV.forEach(([id, t]) => cServ.insertAdjacentHTML('beforeend', `<button class="chip" type="button" data-v="${id}" aria-pressed="false">${t}</button>`));
-cServ.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; S.serv.has(b.dataset.v) ? S.serv.delete(b.dataset.v) : S.serv.add(b.dataset.v); pintar(); });
+const S = { serv: new Set(), otros: [], zonas: new Set(), todo: false, seguro: 'no', modo: null, taller: null, dia: null, franja: null };
+/* ¿qué necesitás?: se toca el campo y aparece la lista; si no está, se escribe y queda igual */
+const CLAVES = { bollo: 'abolladura golpe sacabollo', granizo: 'piedra', chapa: 'raya rayon golpe choque pintar', paragolpe: 'paragolpes golpe', siniestro: 'choque seguro accidente', cristal: 'vidrio parabrisas luneta ventanilla', cerradura: 'llave traba ventanilla levantavidrios', llantas: 'rueda llanta', opticas: 'faro farol optica amarilla', ceramico: 'brillo pulir encerado', polarizado: 'polarizar film vidrio oscuro', lavado: 'lavar limpieza', interior: 'tapizado asientos limpieza' };
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fServ = $('#f-serv'), lServ = $('#lista-serv');
+const pendiente = () => fServ.value.trim();
+function listaServ() {
+  const q = norm(fServ.value), pal = q.split(/\s+/).filter(Boolean);
+  const hay = SERV.filter(([id, t]) => pal.every(p => norm(t + ' ' + (CLAVES[id] || '')).includes(p)));
+  lServ.innerHTML = hay.map(([id, t]) => `<li role="option" data-v="${id}" aria-selected="${S.serv.has(id)}"><span class="tilde"></span>${t}</li>`).join('')
+    + (q && !SERV.some(([, t]) => norm(t) === q) ? `<li class="otro" data-otro="1"><span>Agregar «<b>${esc(pendiente())}</b>»</span></li>` : '')
+    + '<li class="listo" data-listo="1">Listo</li>';
+}
+function guardarTexto() {
+  const v = pendiente(); if (!v) return;
+  const igual = SERV.find(([, t]) => norm(t) === norm(v));
+  if (igual) S.serv.add(igual[0]); else if (!S.otros.some(o => norm(o) === norm(v))) S.otros.push(v);
+  fServ.value = ''; pintar();
+}
+function abrirServ() { listaServ(); lServ.hidden = false; fServ.setAttribute('aria-expanded', 'true'); }
+function cerrarServ() { guardarTexto(); lServ.hidden = true; fServ.setAttribute('aria-expanded', 'false'); }
+fServ.addEventListener('focus', () => { abrirServ(); if (matchMedia('(max-width:760px)').matches) setTimeout(() => irA($('#b-serv')), 320); });
+fServ.addEventListener('click', abrirServ);
+fServ.addEventListener('input', () => { abrirServ(); pintar(); });
+fServ.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { cerrarServ(); fServ.blur(); }
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  const op = lServ.querySelectorAll('[data-v]');
+  if (pendiente() && op.length === 1) { S.serv.add(op[0].dataset.v); fServ.value = ''; pintar(); } else guardarTexto();
+  listaServ();
+});
+fServ.addEventListener('blur', () => setTimeout(() => { if (document.activeElement !== fServ) cerrarServ(); }, 150));
+lServ.addEventListener('mousedown', e => e.preventDefault()); // tocar la lista no le saca el foco al campo
+lServ.addEventListener('click', e => {
+  const li = e.target.closest('li'); if (!li) return;
+  if (li.dataset.listo) { cerrarServ(); fServ.blur(); return; }
+  if (li.dataset.otro) { guardarTexto(); listaServ(); return; }
+  S.serv.has(li.dataset.v) ? S.serv.delete(li.dataset.v) : S.serv.add(li.dataset.v);
+  fServ.value = ''; pintar(); listaServ();
+});
+$('#serv-elegidos').addEventListener('click', e => {
+  const b = e.target.closest('.tag'); if (!b) return;
+  b.dataset.v ? S.serv.delete(b.dataset.v) : S.otros.splice(+b.dataset.o, 1);
+  pintar(); if (!lServ.hidden) listaServ();
+});
+function pintarServ() {
+  $('#serv-elegidos').innerHTML = SERV.filter(s => S.serv.has(s[0])).map(([id, t]) => `<button type="button" class="tag" data-v="${id}" aria-label="Quitar ${t}">${t}<span aria-hidden="true">×</span></button>`).join('')
+    + S.otros.map((o, i) => `<button type="button" class="tag" data-o="${i}" aria-label="Quitar ${esc(o)}">${esc(o)}<span aria-hidden="true">×</span></button>`).join('');
+}
 function grupo(el, clave) {
   el.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; S[clave] = b.dataset.v; pintar(); });
 }
@@ -707,13 +796,13 @@ $('#aseguradoras').innerHTML = M1.seguros.map(n => `<li>${n}</li>`).join('');
 const marcar = (sel, v) => $$(sel + ' .chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === v));
 function mensaje() {
   const L = ['Hola, M1. Quiero consultar por un arreglo.'];
-  const sv = SERV.filter(s => S.serv.has(s[0])).map(s => s[1].toLowerCase());
+  const sv = SERV.filter(s => S.serv.has(s[0])).map(s => s[1].toLowerCase()).concat(S.otros, pendiente() ? [pendiente()] : []);
   if (sv.length) L.push('• Necesito: ' + lista(sv) + '.');
   { if (S.todo) L.push('• Daño en todo el auto.'); else if (S.zonas.size) L.push('• Daño en: ' + lista([...S.zonas].map(z => ZN[z])) + '.'); }
   const auto = [$('#f-modelo').value.trim(), $('#f-anio').value.trim()].filter(Boolean).join(' ');
   if (auto) L.push('• Auto: ' + auto + '.');
   if (S.seguro === 'si') { const c = $('#f-compania').value.trim(); L.push('• Es por seguro' + (c ? ' (' + c + ')' : '') + '.'); }
-  L.push('• Taller: ' + taller(S.taller).n + '.');
+  if (S.taller) L.push('• Taller: ' + taller(S.taller).n + '.');
   if (S.modo === 'visita') L.push('• Quiero una visita para presupuesto' + (S.dia ? ' ' + S.dia : '') + (S.franja ? ', ' + S.franja : '') + '.');
   if (S.modo === 'llamada') L.push('• Prefiero que me llamen' + (S.franja ? ' ' + S.franja : '') + '.');
   const n = $('#f-nombre').value.trim(); if (n) L.push('• Soy ' + n + '.');
@@ -722,29 +811,36 @@ function mensaje() {
 }
 const necesitaZonas = () => SERV.some(s => s[2] && S.serv.has(s[0]));
 const msj = $('#msj'), enviar = $('#enviar');
+const hayAlgo = () => S.serv.size > 0 || S.otros.length > 0 || !!pendiente() || S.zonas.size > 0 || S.todo;
+/* celular y tablet: botón de enviar fijo abajo mientras se arma la consulta (y no se ve el de la tarjeta) */
+let enCoti = false, enviarVisto = false;
+const fijo = () => document.body.classList.toggle('con-envio', enCoti && !enviarVisto && hayAlgo());
+new IntersectionObserver(es => { es.forEach(e => { if (e.target === enviar) enviarVisto = e.isIntersecting; else enCoti = e.isIntersecting; }); fijo(); }).observe($('.coti'));
 function pintar() {
-  $$('#c-serv .chip').forEach(b => b.setAttribute('aria-pressed', S.serv.has(b.dataset.v)));
+  pintarServ();
   marcar('#c-seguro', S.seguro); marcar('#c-modo', S.modo); marcar('#c-taller', S.taller); marcar('#c-dia', S.dia); marcar('#c-franja', S.franja);
   $$('.auto .z').forEach(r => r.setAttribute('aria-pressed', S.todo || S.zonas.has(r.dataset.z)));
   $('#todo-auto').setAttribute('aria-pressed', S.todo); pintarGiro();
-  $('#zonas-elegidas').innerHTML = S.todo ? '<span>Todo el auto</span>' : S.zonas.size ? [...S.zonas].map(k => `<span>${ZN[k]}</span>`).join('') : '<span class="vacio">Todavía no marcaste nada.</span>';
+  $('#zonas-elegidas').innerHTML = S.todo ? '<span>Todo el auto</span>' : S.zonas.size ? [...S.zonas].map(k => `<span>${ZN[k]}</span>`).join('') : '';
   $('#f-seguro').classList.toggle('oculto', S.seguro !== 'si');
   $$('#c-compania .chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === 'Otra' ? !!fComp.value && !M1.seguros.includes(fComp.value) : b.dataset.v === fComp.value));
   $('#f-dia').classList.toggle('oculto', S.modo !== 'visita');
-  $('#f-franja').classList.toggle('oculto', S.modo === 'chat');
+  $('#f-franja').classList.toggle('oculto', !S.modo || S.modo === 'chat');
   $('#t-franja').textContent = S.modo === 'llamada' ? '¿Cuándo te llamamos?' : '¿A qué hora?';
   // el mensaje: solo se reemplaza la línea que cambió
   const L = mensaje(), viejas = [...msj.children];
   L.forEach((t, i) => { if (viejas[i]?.textContent === t) return; const s = document.createElement('span'); s.className = 'linea'; s.textContent = t; viejas[i] ? msj.replaceChild(s, viejas[i]) : msj.appendChild(s); });
   viejas.slice(L.length).forEach(v => v.remove());
-  const t = taller(S.taller), ok = S.serv.size > 0;
-  $('#r-taller').textContent = 'Taller ' + t.n;
-  $('#enviar-t').textContent = 'Enviar a M1 ' + t.n;
+  const t = taller(S.taller), ok = hayAlgo();
+  $('#r-taller').textContent = S.taller ? 'Taller ' + t.n : '';
+  $('#enviar-t').textContent = 'Enviar a M1' + (S.taller ? ' ' + t.n : '');
   enviar.href = ok ? wa(t.wa, L.join('\n')) : '#';
   ok ? enviar.removeAttribute('disabled') : enviar.setAttribute('disabled', '');
   $('#falta').classList.toggle('oculto', ok);
+  $('#enviar2').href = enviar.href; fijo();
 }
-enviar.addEventListener('click', e => { if (!S.serv.size) e.preventDefault(); });
+$$('#enviar,#enviar2').forEach(b => b.addEventListener('click', e => { if (!hayAlgo()) e.preventDefault(); }));
+new IntersectionObserver(es => { enviarVisto = es[0].isIntersecting; fijo(); }).observe(enviar);
 function elegir(servicios, seguro) {
   S.serv = new Set(servicios); if (seguro) S.seguro = 'si'; pintar();
   irA($('#cotizar'));
