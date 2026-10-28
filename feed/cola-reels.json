@@ -1,5 +1,5 @@
 {
-  "_doc": "Reels de Mas & Co: uno cada tres dias, a las 19:30 de Argentina, en Instagram y en la pagina de Facebook. Lo publica publicar_reel.py desde el workflow reels.yml. Los videos traen la musica pegada adentro del archivo. Los dias van corridos respecto de TikTok a proposito, para no repetir lo mismo el mismo dia. | 23/09: la musica va PEGADA en el MP4: beats de hip-hop serios de Pixabay (sin Content ID), en negocio/v5-editorial/musica/cool/. La musica RF de Instagram no se puede bajar. | 30/09: v8 con zona segura (nada tapado por la interfaz de TikTok ni de Reels) y musica nueva sin voces (Vanish Mode, Urban y Confident, de Pixabay, sin Content ID). Sale r04-cabanas: muestra la pagina de Pehuen-Co, que no se muestra (Felipe, 26/09). | 30/09 (tarde): v9 con /total-animations. Cada corte cae en el uno de un compas del tema (grilla medida sobre los golpes reales, negocio/reels-manychat/_afinar_beats.py), la caida de la musica pega en el segundo 1 y hay un solo movimiento por escena. Los subtitulos largos se achican solos para no quedar debajo del texto de la cuenta. | 26/10: tanda diaria de 10 reels paradoja con voz de Carlos (r15-r24), del 26/10 al 04/11; TikTok va por Metricool a la misma hora. | 27/10: 30 reels más con voz de Carlos (r25-r54), dos por día: el 27/10 a las 21:30, del 28/10 al 04/11 a las 12:30 (a las 19:30 sigue el paradoja) y desde el 05/11 a las 12:30 y 19:30. Campo 'hora'; sin hora = 19:30. | 27/10: + 2 animados 2D con voz de Carlos (r55 Rubén 15/11 19:30, r56 Marta 16/11 12:30).",
+  "_doc": "Reels de Mas & Co: uno cada tres dias, a las 19:30 de Argentina, en Instagram y en la pagina de Facebook. Lo publica publicar_reel.py desde el workflow reels.yml. Los videos traen la musica pegada adentro del archivo. Los dias van corridos respecto de TikTok a proposito, para no repetir lo mismo el mismo dia. | 23/09: la musica va PEGADA en el MP4: beats de hip-hop serios de Pixabay (sin Content ID), en negocio/v5-editorial/musica/cool/. La musica RF de Instagram no se puede bajar. | 30/09: v8 con zona segura (nada tapado por la interfaz de TikTok ni de Reels) y musica nueva sin voces (Vanish Mode, Urban y Confident, de Pixabay, sin Content ID). Sale r04-cabanas: muestra la pagina de Pehuen-Co, que no se muestra (Felipe, 26/09). | 30/09 (tarde): v9 con /total-animations. Cada corte cae en el uno de un compas del tema (grilla medida sobre los golpes reales, negocio/reels-manychat/_afinar_beats.py), la caida de la musica pega en el segundo 1 y hay un solo movimiento por escena. Los subtitulos largos se achican solos para no quedar debajo del texto de la cuenta. | 26/10: tanda diaria de 10 reels paradoja con voz de Carlos (r15-r24), del 26/10 al 04/11; TikTok va por Metricool a la misma hora. | 27/10: 30 reels más con voz de Carlos (r25-r54), dos por día: el 27/10 a las 21:30, del 28/10 al 04/11 a las 12:30 (a las 19:30 sigue el paradoja) y desde el 05/11 a las 12:30 y 19:30. Campo 'hora'; sin hora = 19:30. | 27/10: + 2 animados 2D con voz de Carlos (r55 Rubén 15/11 19:30, r56 Marta 16/11 12:30). | 27/10: + 12 animados 2D con voz de Carlos (r57-r68: 7 historias y V1-V5), del 16/11 19:30 al 22/11 12:30.",
   "base_url": "https://raw.githubusercontent.com/nexo-root/MAS-AND-CO/main/feed/reels/",
   "reels": [
     {
@@ -303,6 +303,78 @@
       "hora": "12:30",
       "video": "r56.mp4",
       "caption": "Marta iba a cerrar las cabañas para siempre. Fuera de temporada la buscaban en el celular y no la encontraban.\n\nUn invierno armó su página: fotos, fechas libres y cómo llegar.\n\nHistoria ilustrativa.\n\nMas & Co · Hacemos la página de tu negocio.\n\n#cabañas #alojamiento #paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-16",
+      "hora": "19:30",
+      "video": "r57.mp4",
+      "caption": "Cuando alguien entra a tu página, los primeros segundos deciden si se queda o se va. Lo midió Microsoft Research y lo resumió Nielsen Norman Group: el arranque de la visita es el tramo más crítico.\n\nHay tres errores que vemos seguido: la portada no dice qué ofrecés, lo importante queda abajo (donde se mira menos) y el botón para escribirte no se ve.\n\nUna página propia bien armada resuelve los tres desde la primera pantalla.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n#paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-17",
+      "hora": "12:30",
+      "video": "r58.mp4",
+      "caption": "Una casa de cotillón familiar de Sídney, Australia. La dueña animaba fiestas infantiles disfrazada de payasa y, con su familia, abrió un local chico.\n\nA fines de los noventa salieron a vender por internet. El primer sitio lo armó un chico que todavía iba al colegio, con estudiantes de informática.\n\nCon los años tuvieron que alquilar el local de al lado y un sótano, y el equipo terminó trabajando apretado entre cajas.\n\nMas & Co · Hacemos la página de tu negocio.\nHistoria real. Fuentes: Dynamic Business (febrero de 2015) y Kimp (abril de 2023); también Inside Retail (octubre de 2024). No es cliente de Mas & Co: la contamos como ejemplo.\n\n#cotillon #fiestas #paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-17",
+      "hora": "19:30",
+      "video": "r59.mp4",
+      "caption": "La primera impresión de una página se forma antes de leer nada: un estudio de 2006 la midió en menos de un parpadeo.\n\nUn restaurante, una concesionaria o una inmobiliaria que no aparecen cuando alguien los busca ni siquiera tienen esa oportunidad. El que busca elige lo que ve.\n\nCon página propia, cada negocio muestra su vidriera a toda hora, también de noche.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n#paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-18",
+      "hora": "12:30",
+      "video": "r60.mp4",
+      "caption": "Norma heredó el salón de su papá y anotaba todo en un cuaderno. Las reservas llegaban por teléfono, solo en horario de oficina.\n\nUna noche armó su página: fotos del salón, fechas libres y cómo escribirle. Esa misma semana, una pareja de otro pueblo lo recorrió desde el celular.\n\nDesde entonces, cada mañana encuentra una fecha nueva en la agenda.\n\nMas & Co · Hacemos la página de tu negocio.\nHistoria ilustrativa.\n\n#salondeeventos #fiestas #paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-18",
+      "hora": "19:30",
+      "video": "r61.mp4",
+      "caption": "Los reels sirven para que te conozcan, y está muy bien. La pregunta es qué pasa cuando termina el video.\n\nEsa persona quiere ver todo junto antes de decidir: fotos, horarios, dónde estás y cómo escribirte. Si tiene que salir a buscarlo, se enfría.\n\nUna página propia junta todo en un solo lugar, con el botón para escribirte a la vista.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n#paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-19",
+      "hora": "12:30",
+      "video": "r62.mp4",
+      "caption": "Hugo tenía la playa llena de autos, pero todo estaba en su cabeza. Cada consulta era lo mismo: qué año, qué color, si le mandaba fotos. Y él contestaba desde la vereda, entre auto y auto.\n\nUn día armó su página: cada auto con sus fotos, sus datos y un botón que abre el chat.\n\nAhora los mensajes llegan distintos: ya vieron las fotos y preguntan directo si el gris sigue.\n\nMas & Co · Hacemos la página de tu negocio.\nHistoria ilustrativa.\n\n#concesionaria #autos #paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-19",
+      "hora": "19:30",
+      "video": "r63.mp4",
+      "caption": "Si tenés una mueblería, seguro te preguntan lo mismo todo el día: si hay stock, qué medidas tiene, si hacen envíos.\n\nUna pregunta sin respuesta queda dando vueltas en la cabeza del cliente. Con una página propia, el stock, las medidas y los días de envío ya están a la vista, y te escriben con todo elegido.\n\nEscribinos la palabra MUEBLERÍA y te mostramos cómo quedaría la tuya.\n#muebleria #muebles #mueblesamedida #decoracion #paginaweb #negocios"
+    },
+    {
+      "fecha": "2026-11-20",
+      "hora": "12:30",
+      "video": "r64.mp4",
+      "caption": "Esta historia la cuenta un pizarrón. Chela escribía con tiza el menú del día y solo lo leía el que pasaba por la vereda. Los pedidos le llegaban por todos lados.\n\nUn día armó su página, con el menú de hoy y un botón que cae directo en su WhatsApp.\n\nAhora el pizarrón tiene un cartelito nuevo, los de siempre piden desde la página y Chela los saluda por el nombre.\n\nMas & Co · Hacemos la página de tu negocio.\nHistoria ilustrativa.\n\n#restaurante #gastronomia #paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-20",
+      "hora": "19:30",
+      "video": "r65.mp4",
+      "caption": "Mientras tu página carga, el cliente mira una pantalla blanca. Y cuanto más tarda, más gente se va antes de verla: Google lo midió en 2017.\n\nUn salón, unas cabañas o una concesionaria con fotos enormes y cosas de más en la portada se cuelgan justo cuando alguien quiere mirar.\n\nUna página liviana abre rápido y muestra primero lo importante.\n\nEscribinos la palabra WEB y te mostramos cómo quedaría la tuya.\n#paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-21",
+      "hora": "12:30",
+      "video": "r66.mp4",
+      "caption": "Domingo, muy tarde. Paula busca casa y en los portales todas le parecen iguales. Las casas de Lucas estaban ahí, mezcladas con las de todos, y nadie sabía que eran suyas.\n\nLucas armó su propia página, con sus casas, su zona y su cara. Esa noche Paula la encontró y le escribió desde el sofá.\n\nEl lunes entró a la oficina y le dijo: “te encontré por tu página, no por el portal”.\n\nMas & Co · Hacemos la página de tu negocio.\nHistoria ilustrativa.\n\n#inmobiliaria #propiedades #paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-21",
+      "hora": "19:30",
+      "video": "r67.mp4",
+      "caption": "Ramón hace muebles a medida, pero para verlos había que ir hasta el taller. Desde lejos nadie los veía, y el teléfono no sonaba.\n\nSu hija Juli les sacó fotos a todos, con sus medidas, y armó un catálogo que se abre desde cualquier casa.\n\nAhora el teléfono vibra a cualquier hora: le mandan la foto de un living vacío y le preguntan si algo así entra.\n\nMas & Co · Hacemos la página de tu negocio.\nHistoria ilustrativa.\n\n#muebleria #muebles #paginaweb #negocios #emprendedores"
+    },
+    {
+      "fecha": "2026-11-22",
+      "hora": "12:30",
+      "video": "r68.mp4",
+      "caption": "Antes, a primera hora, llamaba el albañil: ¿tenés arena?, ¿te queda cemento? Y Néstor salía a mirar el depósito.\n\nNéstor armó su página con la lista de materiales, las fotos y lo que hay en stock, para abrirla desde la obra.\n\nAhora el albañil arma su lista arriba del andamio y Néstor la recibe con el mate en la mano.\n\nMas & Co · Hacemos la página de tu negocio.\nHistoria ilustrativa.\n\n#corralon #materialesdeconstruccion #paginaweb #negocios #emprendedores"
     }
   ]
 }
