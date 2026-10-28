@@ -690,8 +690,9 @@ addEventListener('scroll', () => barra.classList.toggle('solida', scrollY > 40),
     .fromTo([S('.bajada'), S('.acciones'), S('.lugares')], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .6, stagger: .1, ease: 'power2.out' }, 3.35)
     .add(() => R.classList.remove('intro'), 3.5);
   P.addEventListener('pointerdown', () => tl.progress(1), { once: true }); // un toque saltea la entrada
-  const imgs = [...P.querySelectorAll('img')].map(i => i.decode ? i.decode().catch(() => {}) : 0);
-  Promise.all(imgs).then(() => tl.play());
+  // arranca cuando está el logo de la persiana (la foto queda tapada hasta el segundo 2,4), o al segundo y medio como mucho
+  const logo = P.querySelector('.logo-p');
+  Promise.race([logo.decode ? logo.decode().catch(() => {}) : 0, new Promise(r => setTimeout(r, 1500))]).then(() => tl.play());
 })();
 
 /* ---------- apariciones ---------- */
