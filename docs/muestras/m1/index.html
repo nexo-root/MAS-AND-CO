@@ -147,11 +147,11 @@ html.intro .barra,html.intro .dock{opacity:0;pointer-events:none}
 .chip[aria-pressed="true"]{background:var(--rojo);border-color:var(--rojo);color:#fff}
 .oculto{display:none!important}
 .auto-env{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:24px;align-items:center;margin-top:14px}
-.auto svg{width:100%;height:auto;max-height:560px;display:block;margin-inline:auto;overflow:visible}
+.auto svg{width:100%;height:auto;display:block;overflow:visible}
 .auto .z{fill:url(#pintura);stroke:rgba(255,255,255,.2);stroke-width:1;cursor:pointer;transition:fill .2s,filter .2s;outline:none}
 .auto .z.vidrio{fill:url(#vidrio)}
 .auto .z.faro{fill:url(#faro)}.auto .z.faro-t{fill:url(#faroT)}
-.auto .z.bajo{fill:url(#bajo)}
+.auto .z.bajo{fill:url(#bajo)}.auto .z.metal{fill:url(#metal)}.auto .z.goma{fill:#15161a;stroke:#3a3d45}
 .auto .z:hover,.auto .z:focus-visible{filter:brightness(1.45)}
 .auto .z[aria-pressed="true"]{fill:var(--rojo);stroke:#ffb3b7;filter:drop-shadow(0 0 7px rgba(227,19,28,.85))}
 .auto .deco{pointer-events:none}
@@ -160,20 +160,28 @@ html.intro .barra,html.intro .dock{opacity:0;pointer-events:none}
 .auto .parrilla{fill:#0d0e11}
 .auto .vidrio-lat{fill:url(#vidrio);opacity:.9}
 .auto text{fill:var(--texto3);font-size:17px;font-weight:700;letter-spacing:.06em;font-family:Archivo,sans-serif}
-/* dar vuelta el auto: las dos caras ocupan el mismo lugar */
-.giro{display:grid}
-.giro>svg{grid-area:1/1}
-.giro>svg.atras{visibility:hidden}
-.auto .deco.bajo-pieza{fill:rgba(0,0,0,.4);stroke:rgba(255,255,255,.16);stroke-width:1.2}
-.auto .deco.eje{fill:none;stroke:#2c2f36;stroke-width:6;stroke-linecap:round}
-.auto .deco.cano{fill:none;stroke:#3a3d45;stroke-width:5;stroke-linecap:round}
+/* dar vuelta el auto: una caja 3D con el auto de arriba, de abajo y de costado */
+.escena{position:relative;perspective:1100px}
+.suelo{position:absolute;left:50%;top:50%;width:calc(var(--u,1px)*190);height:calc(var(--u,1px)*480);margin:calc(var(--u,1px)*-240) 0 0 calc(var(--u,1px)*-95);border-radius:50%;background:rgba(0,0,0,.6);filter:blur(16px);pointer-events:none}
+.giro{position:relative;display:grid;width:100%;max-width:260px;margin-inline:auto;transform-style:preserve-3d}
+.cara{grid-area:1/1;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.cara.arriba{transform:translateZ(calc(var(--u,1px)*32))}
+.cara.abajo{transform:rotateY(180deg) translateZ(calc(var(--u,1px)*32))}
+.cara.lado{justify-self:center;width:calc(var(--u,1px)*64);transform:rotateY(-90deg) translateZ(calc(var(--u,1px)*84));pointer-events:none}
+.cara.atras{visibility:hidden}
+.auto .toque{fill:none;stroke:transparent;stroke-width:26;pointer-events:stroke}
+.lado .perfil{fill:url(#lateral);stroke:rgba(255,255,255,.18);stroke-width:1.2}
+.lado .vidrios{fill:url(#vidrio)}
+.lado .pilar{stroke:#454a53;stroke-width:7}
+.lado .linea{fill:none;stroke:rgba(0,0,0,.5);stroke-width:2}
+.lado .goma{fill:#121317;stroke:#2c2f36;stroke-width:2}.lado .llanta{fill:#5a5f69}
 .girar{display:flex;align-items:center;gap:8px;margin:14px auto 0;border-color:rgba(227,19,28,.6)}
 .auto .girar svg{width:20px;height:20px;fill:currentColor;flex:none;margin:0}
 .girar-n{min-height:1.4em;margin-top:6px;text-align:center;color:#ffb3b7;font-size:.9rem;font-weight:600}
 .zonas-elegidas{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;min-height:32px}
 .zonas-elegidas span{display:inline-flex;align-items:center;gap:6px;background:rgba(227,19,28,.14);border:1px solid rgba(227,19,28,.45);color:#ffd5d7;padding:5px 10px;border-radius:999px;font-size:.92rem;font-weight:600}
 .zonas-elegidas .vacio{background:none;border:0;color:var(--texto3);padding:5px 0;font-weight:500}
-@media (max-width:640px){.auto-env{grid-template-columns:1fr}.auto svg{max-height:400px;max-width:240px}}
+@media (max-width:640px){.auto-env{grid-template-columns:1fr}}
 .campos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
 .campo label{display:block;font-size:.95rem;color:var(--texto2);font-weight:600;margin-bottom:6px}
 .campo input{width:100%;min-height:50px;border-radius:14px;border:1.5px solid var(--borde2);background:#0c0d10;color:var(--texto);padding:0 14px;font:inherit;font-size:16px;transition:border-color .2s}
@@ -309,7 +317,7 @@ dialog.visor .cerrar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
   .bloque h3 small{font-size:.9rem;flex-basis:100%;margin-left:0}
   .chips{gap:6px;margin-top:12px}
   .chip{min-height:46px;padding:0 14px;font-size:.95rem}
-  .auto svg{max-width:180px;max-height:360px}
+  .giro{max-width:220px}
   .campo input{min-height:44px}
   .msj{font-size:.95rem;min-height:90px}
   .fotos-tip div{font-size:.95rem}
@@ -393,7 +401,8 @@ img{-webkit-user-drag:none}
       <div>
         <div class="bloque" id="b-zonas"><h3><b>1</b>¿Dónde está el daño?<small>tocá el auto</small></h3>
           <div class="auto-env">
-            <div class="auto"><div class="giro" id="giro"><svg viewBox="0 0 260 540" id="auto" role="group" aria-label="Plano del auto visto desde arriba">
+            <div class="auto"><div class="escena" id="escena"><i class="suelo" id="suelo"></i><div class="giro" id="giro">
+            <div class="cara arriba" id="cara-arriba"><svg viewBox="0 0 260 540" id="auto" role="group" aria-label="Plano del auto visto desde arriba">
               <defs>
                 <linearGradient id="pintura" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#2b2e35"/><stop offset=".5" stop-color="#555a64"/><stop offset="1" stop-color="#2b2e35"/></linearGradient>
                 <linearGradient id="vidrio" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2c4258"/><stop offset=".45" stop-color="#16222f"/><stop offset="1" stop-color="#0d141c"/></linearGradient>
@@ -403,7 +412,6 @@ img{-webkit-user-drag:none}
                 <filter id="sombra" x="-30%" y="-10%" width="160%" height="120%"><feGaussianBlur stdDeviation="9"/></filter>
               </defs>
               <text x="130" y="14" text-anchor="middle">FRENTE</text>
-              <ellipse class="deco" cx="130" cy="272" rx="98" ry="248" fill="rgba(0,0,0,.55)" filter="url(#sombra)"/>
               <g class="deco rueda"><rect x="32" y="112" width="16" height="62" rx="7"/><rect x="212" y="112" width="16" height="62" rx="7"/><rect x="32" y="368" width="16" height="62" rx="7"/><rect x="212" y="368" width="16" height="62" rx="7"/></g>
               <path class="deco cuerpo" d="M130 33 C175 33 205 40 210 62 L214 120 C218 135 218 165 214 180 L212 360 C218 375 218 405 214 420 L210 478 C205 500 175 507 130 507 C85 507 55 500 50 478 L46 420 C42 405 42 375 48 360 L48 180 C42 165 42 135 46 120 L50 62 C55 40 85 33 130 33 Z"/>
               <path class="deco parrilla" d="M54 62 C80 56 180 56 206 62 L196 80 C170 70 90 70 64 80 Z"/>
@@ -437,32 +445,49 @@ img{-webkit-user-drag:none}
               </g>
               <path class="deco" d="M66 80 L194 80 L190 446 L70 446 Z" fill="url(#reflejo)"/>
               <text x="130" y="532" text-anchor="middle">ATRÁS</text>
-            </svg>
-            <svg viewBox="0 0 260 540" id="auto-abajo" class="atras" role="group" aria-label="Plano del auto visto desde abajo">
-              <defs><linearGradient id="bajo" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#2a2d34"/><stop offset=".5" stop-color="#4d525c"/><stop offset="1" stop-color="#2a2d34"/></linearGradient></defs>
+            </svg></div>
+            <div class="cara abajo atras" id="cara-abajo"><svg viewBox="0 0 260 540" id="auto-abajo" role="group" aria-label="Plano del auto visto desde abajo">
+              <defs><linearGradient id="bajo" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#2a2d34"/><stop offset=".5" stop-color="#4d525c"/><stop offset="1" stop-color="#2a2d34"/></linearGradient>
+              <linearGradient id="metal" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#4a4e57"/><stop offset=".5" stop-color="#9aa0aa"/><stop offset="1" stop-color="#4a4e57"/></linearGradient></defs>
               <text x="130" y="14" text-anchor="middle">FRENTE</text>
-              <ellipse class="deco" cx="130" cy="272" rx="98" ry="248" fill="rgba(0,0,0,.55)" filter="url(#sombra)"/>
               <path class="deco cuerpo" d="M130 33 C175 33 205 40 210 62 L214 120 C218 135 218 165 214 180 L212 360 C218 375 218 405 214 420 L210 478 C205 500 175 507 130 507 C85 507 55 500 50 478 L46 420 C42 405 42 375 48 360 L48 180 C42 165 42 135 46 120 L50 62 C55 40 85 33 130 33 Z"/>
-              <g class="deco rueda"><rect x="50" y="108" width="20" height="70" rx="8"/><rect x="190" y="108" width="20" height="70" rx="8"/><rect x="50" y="364" width="20" height="70" rx="8"/><rect x="190" y="364" width="20" height="70" rx="8"/></g>
-              <path class="deco eje" d="M70 143 H92 M168 143 H190"/>
               <path class="z bajo" data-z="fdel" d="M52 64 C56 41 86 34 130 34 C174 34 204 41 208 64 C180 57 80 57 52 64 Z"/>
-              <path class="z bajo" data-z="carter" d="M90 78 C112 73 148 73 170 78 L166 170 C148 174 112 174 94 170 Z"/>
+              <rect class="z goma" data-z="rdd" x="50" y="108" width="20" height="70" rx="8"/>
+              <rect class="z goma" data-z="rdi" x="190" y="108" width="20" height="70" rx="8"/>
+              <rect class="z goma" data-z="rtd" x="50" y="364" width="20" height="70" rx="8"/>
+              <rect class="z goma" data-z="rti" x="190" y="364" width="20" height="70" rx="8"/>
+              <path class="z bajo" data-z="carter" d="M92 76 C112 72 148 72 168 76 L164 128 C148 131 112 131 96 128 Z"/>
+              <g class="z bajo" data-z="trend"><path d="M70 128 L92 133 L92 160 L70 158 Z"/><path d="M190 128 L168 133 L168 160 L190 158 Z"/></g>
+              <path class="z bajo" data-z="caja" d="M104 134 H156 L150 178 H110 Z"/>
+              <path class="z bajo" data-z="piso" d="M80 186 H180 Q186 186 186 192 V340 Q186 346 180 346 H80 Q74 346 74 340 V192 Q74 186 80 186 Z"/>
               <path class="z bajo" data-z="zd" d="M49 188 H69 V354 H49 Z"/>
               <path class="z bajo" data-z="zi" d="M191 188 H211 V354 H191 Z"/>
-              <path class="z bajo" data-z="piso" d="M82 184 H178 Q184 184 184 190 V440 Q184 446 178 446 H82 Q76 446 76 440 V190 Q76 184 82 184 Z"/>
+              <g class="z bajo" data-z="trent"><rect x="70" y="395" width="120" height="10" rx="4"/><rect x="72" y="370" width="14" height="56" rx="5"/><rect x="174" y="370" width="14" height="56" rx="5"/></g>
+              <rect class="z bajo" data-z="tanque" x="90" y="352" width="44" height="76" rx="10"/>
+              <g class="z metal" data-z="cano"><rect x="151" y="176" width="9" height="18" rx="4"/><rect x="151" y="246" width="9" height="140" rx="4"/><path class="toque" d="M155.5 176 V194 M155.5 246 V386"/></g>
+              <rect class="z metal" data-z="catalizador" x="144" y="192" width="23" height="56" rx="10"/>
+              <g class="z metal" data-z="silenciador"><rect x="140" y="384" width="31" height="54" rx="12"/><rect x="151" y="436" width="9" height="36" rx="4"/><path class="toque" d="M155.5 438 V472"/></g>
               <path class="z bajo" data-z="ftra" d="M52 474 C80 482 180 482 208 474 C205 498 174 506 130 506 C86 506 55 498 52 474 Z"/>
-              <path class="deco eje" d="M70 399 H190"/>
-              <path class="deco bajo-pieza" d="M121 186 H139 V326 H121 Z"/>
-              <rect class="deco bajo-pieza" x="88" y="350" width="54" height="74" rx="10"/>
-              <path class="deco cano" d="M154 176 V380 M160 436 V470"/>
-              <rect class="deco bajo-pieza" x="146" y="380" width="28" height="58" rx="11"/>
               <text x="26" y="271" text-anchor="middle" transform="rotate(-90 26 271)">DERECHA</text>
               <text x="234" y="271" text-anchor="middle" transform="rotate(90 234 271)">IZQUIERDA</text>
               <text x="130" y="532" text-anchor="middle">ATRÁS</text>
             </svg></div>
+            <div class="cara lado"><svg viewBox="0 0 64 540" aria-hidden="true">
+              <defs><linearGradient id="lateral" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#1f2227"/><stop offset=".6" stop-color="#474c56"/><stop offset="1" stop-color="#5f6470"/></linearGradient></defs>
+              <path class="perfil" d="M2 54 Q2 36 20 34 H46 Q62 36 62 54 V486 Q62 504 46 506 H20 Q2 504 2 486 Z"/>
+              <path class="vidrios" d="M36 176 L56 214 V318 L36 352 Z"/>
+              <path class="pilar" d="M34 262 H58"/>
+              <path class="linea" d="M4 180 H36 M4 262 H36 M4 352 H36"/>
+              <path class="perfil" d="M54 182 L64 178 L64 194 L54 196 Z"/>
+              <path fill="url(#faro)" d="M30 36 H50 Q58 38 58 46 H30 Z"/>
+              <path fill="url(#faroT)" d="M30 504 H50 Q58 502 58 494 H30 Z"/>
+              <g class="goma"><circle cx="10" cy="143" r="25"/><circle cx="10" cy="399" r="25"/></g>
+              <g class="llanta"><circle cx="10" cy="143" r="11"/><circle cx="10" cy="399" r="11"/></g>
+            </svg></div>
+            </div></div>
             <button class="chip girar" type="button" id="girar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg><span id="girar-t">Dar vuelta el auto</span></button>
             <p class="girar-n" id="girar-n" aria-live="polite"></p></div>
-            <div><p class="ayuda">Tocá las partes con daño: chapa, vidrios, faros o espejos. Para marcar lo de abajo (zócalos, piso o cubre cárter), tocá «Dar vuelta el auto». Si es granizo en casi todo el auto, elegí «Todo el auto». Si es lavado o pulido, podés saltear este paso.</p>
+            <div><p class="ayuda">Tocá las partes con daño: chapa, vidrios, faros o espejos. Para lo de abajo (escape, tren delantero, cárter, zócalos, piso o ruedas), tocá «Dar vuelta el auto». Podés marcar varias. Si es granizo en casi todo el auto, elegí «Todo el auto». Si es lavado o pulido, podés saltear este paso.</p>
               <div class="zonas-elegidas" id="zonas-elegidas"></div>
               <div class="chips"><button class="chip" type="button" id="todo-auto" aria-pressed="false">Todo el auto</button></div>
             </div>
@@ -633,7 +658,7 @@ $$('.rev,.rev-t').forEach(el => ojo.observe(el));
 
 /* ---------- cotizador ---------- */
 const SERV = [['bollo', 'Sacar un bollo', 1], ['granizo', 'Daños por granizo', 1], ['chapa', 'Chapa y pintura', 1], ['paragolpe', 'Paragolpes', 1], ['siniestro', 'Auto siniestrado', 1], ['cristal', 'Cambio de cristal', 1], ['cerradura', 'Cerradura o levantacristales', 1], ['llantas', 'Llantas', 0], ['opticas', 'Pulido de ópticas', 0], ['ceramico', 'Pulido y cerámico', 0], ['polarizado', 'Polarizado', 0], ['lavado', 'Lavado integral o premium', 0], ['interior', 'Limpieza interior', 0]];
-const ZN = { pd: 'paragolpe delantero', capo: 'capó', parab: 'parabrisas', techo: 'techo', luneta: 'luneta', baul: 'baúl o portón', pt: 'paragolpe trasero', gdi: 'guardabarros delantero izquierdo', pdi: 'puerta delantera izquierda', pti: 'puerta trasera izquierda', gti: 'guardabarros trasero izquierdo', gdd: 'guardabarros delantero derecho', pdd: 'puerta delantera derecha', ptd: 'puerta trasera derecha', gtd: 'guardabarros trasero derecho', ei: 'espejo izquierdo', ed: 'espejo derecho', fdi: 'faro delantero izquierdo', fdd: 'faro delantero derecho', fti: 'faro trasero izquierdo', ftd: 'faro trasero derecho', fdel: 'debajo del paragolpe delantero', carter: 'cubre cárter', zi: 'zócalo izquierdo', zd: 'zócalo derecho', piso: 'piso del auto', ftra: 'debajo del paragolpe trasero' };
+const ZN = { pd: 'paragolpe delantero', capo: 'capó', parab: 'parabrisas', techo: 'techo', luneta: 'luneta', baul: 'baúl o portón', pt: 'paragolpe trasero', gdi: 'guardabarros delantero izquierdo', pdi: 'puerta delantera izquierda', pti: 'puerta trasera izquierda', gti: 'guardabarros trasero izquierdo', gdd: 'guardabarros delantero derecho', pdd: 'puerta delantera derecha', ptd: 'puerta trasera derecha', gtd: 'guardabarros trasero derecho', ei: 'espejo izquierdo', ed: 'espejo derecho', fdi: 'faro delantero izquierdo', fdd: 'faro delantero derecho', fti: 'faro trasero izquierdo', ftd: 'faro trasero derecho', fdel: 'debajo del paragolpe delantero', carter: 'cárter o cubre cárter', trend: 'tren delantero', caja: 'caja de cambios', piso: 'piso del auto', zi: 'zócalo izquierdo', zd: 'zócalo derecho', catalizador: 'catalizador', cano: 'caño de escape', silenciador: 'silenciador del escape', tanque: 'tanque de nafta', trent: 'tren trasero', ftra: 'debajo del paragolpe trasero', rdi: 'rueda delantera izquierda', rdd: 'rueda delantera derecha', rti: 'rueda trasera izquierda', rtd: 'rueda trasera derecha' };
 const S = { serv: new Set(), zonas: new Set(), todo: false, seguro: 'no', modo: 'visita', taller: M1.talleres[0].id, dia: null, franja: null };
 const cServ = $('#c-serv');
 SERV.forEach(([id, t]) => cServ.insertAdjacentHTML('beforeend', `<button class="chip" type="button" data-v="${id}" aria-pressed="false">${t}</button>`));
@@ -651,17 +676,23 @@ $$('.auto .z').forEach(z => {
   z.addEventListener('click', t); z.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
 });
 $('#todo-auto').addEventListener('click', () => { S.todo = !S.todo; pintar(); });
-/* dar vuelta el auto: las partes de abajo (zócalos, piso, cubre cárter) */
-const ABAJO = ['fdel', 'carter', 'zi', 'zd', 'piso', 'ftra'];
+/* dar vuelta el auto: las partes de abajo (escape, tren, cárter, zócalos, piso, ruedas) */
+const ABAJO = ['fdel', 'carter', 'trend', 'caja', 'piso', 'zi', 'zd', 'catalizador', 'cano', 'silenciador', 'tanque', 'trent', 'ftra', 'rdi', 'rdd', 'rti', 'rtd'];
 let abajo = false;
-const giro = $('#giro');
+const escena = $('#escena'), giro = $('#giro');
+// la caja mide lo que mide el dibujo: 1 unidad del plano = u píxeles; la cara de arriba queda en z = 0 (nítida)
+const medirGiro = () => { const u = giro.offsetWidth / 260; escena.style.setProperty('--u', u + 'px'); gsap.set(giro, { z: -32 * u }); };
+medirGiro(); addEventListener('resize', medirGiro);
 $('#girar').addEventListener('click', () => {
   if (gsap.isTweening(giro)) return;
   abajo = !abajo;
-  gsap.timeline()
-    .to(giro, { rotationY: 90, transformPerspective: 900, duration: .26, ease: 'power2.in' })
-    .add(() => { $('#auto').classList.toggle('atras', abajo); $('#auto-abajo').classList.toggle('atras', !abajo); pintarGiro(); })
-    .fromTo(giro, { rotationY: -90 }, { rotationY: 0, transformPerspective: 900, duration: .34, ease: 'power2.out', clearProps: 'transform' });
+  $$('#giro .cara').forEach(c => c.classList.remove('atras'));
+  pintarGiro();
+  gsap.timeline({ onComplete: () => $(abajo ? '#cara-arriba' : '#cara-abajo').classList.add('atras') })
+    .to(giro, { rotationY: abajo ? 180 : 0, duration: .95, ease: 'power2.inOut' }, 0)
+    .to(giro, { scale: 1.06, duration: .475, ease: 'sine.out', yoyo: true, repeat: 1 }, 0)
+    .to('#suelo', { scale: .8, opacity: .45, duration: .475, ease: 'sine.out', yoyo: true, repeat: 1 }, 0)
+    .to('#girar svg', { rotation: '+=360', duration: .95, ease: 'power2.inOut' }, 0);
 });
 function pintarGiro() {
   const n = S.todo ? 0 : [...S.zonas].filter(z => ABAJO.includes(z) !== abajo).length;
