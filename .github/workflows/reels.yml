@@ -6,9 +6,11 @@ on:
     # cola; sin hora = 19:30) y no repite lo ya publicado, asi que correr de mas no duplica.
     # Minutos "raros" (:07 y :37): GitHub atrasa mucho los cron en punto y en y media.
     # Mediodia: 12:37, 13:37 y 14:37 ARG. Noche: 19:37 a 23:37 ARG, cada hora.
-    - cron: "37 15,16,17 * * *"
-    - cron: "37 22,23,0,1,2 * * *"
-    - cron: "7 1 * * *"
+    # PAUSADO (Felipe, 30/10/2026): no se publica nada hasta mejorar los reels de la cola. Para volver, sacar los # de estas 3 lineas.
+    # - cron: "37 15,16,17 * * *"
+    # - cron: "37 22,23,0,1,2 * * *"
+    # - cron: "7 1 * * *"
+    - cron: "0 0 31 2 *"  # nunca: el bloque schedule no puede quedar vacio
   workflow_dispatch:
     inputs:
       fecha:
