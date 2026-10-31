@@ -264,7 +264,26 @@ html.intro .barra,html.intro .dock{opacity:0;pointer-events:none}
 .faq p{color:var(--texto2);padding:0 0 20px;margin-top:-6px;max-width:70ch}
 
 /* trabajos */
-.galeria{columns:4 220px;column-gap:14px;margin-top:44px}
+.casos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.caso{display:flex;flex-direction:column;text-align:left;border-radius:var(--r);overflow:hidden;border:1px solid var(--borde);background:var(--chapa);touch-action:manipulation}
+.caso-foto{position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden}
+.caso-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.caso .d{clip-path:inset(0 100% 0 0);transition:clip-path .8s var(--ease)}
+.caso.hecho .d{clip-path:inset(0 0 0 0)}
+.caso .raya{position:absolute;top:0;bottom:0;left:-4px;width:3px;background:#fff;box-shadow:0 0 18px rgba(255,255,255,.75);transition:left .8s var(--ease)}
+.caso.hecho .raya{left:100%}
+.caso .chip-c{position:absolute;left:12px;top:12px;padding:6px 14px;border-radius:999px;background:var(--rojo);color:#fff;font-weight:700;font-size:1rem;line-height:1.2}
+.caso.hecho .chip-c{background:#fff;color:#111}
+.caso-txt{display:flex;flex-direction:column;flex:1;gap:4px;padding:16px 18px 18px}
+.caso-tag{color:var(--texto2);font-size:1rem;font-weight:600}
+.caso h3{font-stretch:115%;font-weight:800;font-style:italic;font-size:1.4rem;line-height:1.1}
+.caso p{color:var(--texto2);font-size:1rem}
+.caso-ver{margin-top:auto;padding-top:10px;font-weight:700;font-size:1rem;color:#fff}
+.sub-taller{font-stretch:115%;font-weight:800;font-style:italic;font-size:clamp(1.4rem,2.4vw,1.9rem);margin-top:56px}
+.sub-taller+.galeria{margin-top:18px}
+@media (max-width:980px){.casos{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.casos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:16px;gap:12px;margin:22px -16px 0;padding:0 16px 6px;scrollbar-width:none}.casos::-webkit-scrollbar{display:none}.caso{flex:0 0 84%;scroll-snap-align:start}.sub-taller{margin-top:32px}#trabajos .tit em{display:block}}
+.galeria{columns:3 220px;column-gap:14px;margin-top:44px}
 .galeria button{display:block;width:100%;margin:0 0 14px;border-radius:16px;overflow:hidden;position:relative;break-inside:avoid;border:1px solid var(--borde);background:var(--chapa)}
 .galeria img{width:100%;height:auto}
 .galeria button::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
@@ -587,7 +606,7 @@ img{-webkit-user-drag:none}
     <div class="bento">
       <button class="serv grande rev" data-servicio="chapa,paragolpe"><img src="fotos/s-chapa-720.webp" srcset="fotos/s-chapa-720.webp 720w, fotos/s-chapa-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Auto encintado y listo para pintar" loading="lazy"><h3>Chapa y pintura</h3><p>Paragolpes, llantas, chapa y pintura.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv rev" data-servicio="bollo,granizo"><img src="fotos/s-bollo-720.webp" alt="Capó con daños por granizo bajo la luz de la lámpara de sacabollos" loading="lazy"><h3>Sacabollos y granizo</h3><p>Bollos de estacionamiento, puertazos y daños por granizo. Si la pintura está sana, se saca sin pintar.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="siniestro" data-seguro="1"><img src="fotos/s-siniestro-720.webp" alt="Utilitario con el frente desarmado para reparar" loading="lazy"><h3>Autos siniestrados</h3><p>Trabajamos con Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="siniestro" data-seguro="1"><img src="fotos/s-siniestro-720.webp" alt="Peugeot 308 con el frente destruido por un choque" loading="lazy"><h3>Autos siniestrados</h3><p>Trabajamos con Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv rev" data-servicio="cristal,cerradura"><img src="fotos/s-cristales-720.webp" alt="Auto con la luneta rota" loading="lazy"><h3>Cristales y cerraduras</h3><p>Cambio de cristales, cerraduras y levantacristales.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv rev" data-servicio="opticas,ceramico"><img src="fotos/s-pulido-720.webp" alt="Capó negro pulido con el reflejo de la lámpara" loading="lazy"><h3>Pulido y cerámico</h3><p>Pulido de ópticas y tratamiento cerámico en autos y camionetas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <button class="serv ancho rev" data-servicio="lavado,interior,polarizado,llantas"><img src="fotos/s-estetica-720.webp" srcset="fotos/s-estetica-720.webp 720w, fotos/s-estetica-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Camioneta azul recién lavada en la puerta del taller" loading="lazy"><h3>Estética y llantas</h3><p>Lavado integral y premium, limpieza interior, polarizado y diamantado de llantas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
@@ -613,8 +632,10 @@ img{-webkit-user-drag:none}
 </section>
 <section class="seccion" id="trabajos" style="padding-top:0">
   <div class="env">
-    <h2 class="tit rev-t">En el <em>taller.</em></h2>
-    <p class="bajada">Fotos reales de nuestro trabajo en Eldorado y Montecarlo.</p>
+    <h2 class="tit rev-t">Así llegan. <em>Así se van.</em></h2>
+    <p class="bajada">Autos reales que pasaron por el taller. Tocá cada foto para ver el antes y el después.</p>
+    <div class="casos" id="casos"></div>
+    <h3 class="sub-taller">En el taller</h3>
     <div class="galeria" id="galeria"></div>
   </div>
 </section>
@@ -895,11 +916,25 @@ if (M1.promo && new Date(M1.promo.hasta + 'T23:59') >= new Date()) {
 }
 
 /* ---------- trabajos ---------- */
-const G = [['b1', 'Ford Ranger azul de frente', 700, 700], ['b2', 'Chevrolet Corsa gris terminado', 700, 932], ['b3', 'Fiat Palio Weekend terminado', 700, 700], ['b4', 'Volkswagen Gol azul de frente', 700, 700], ['b5', 'Renault Sandero Stepway negro de atrás', 700, 933], ['b6', 'Chevrolet Corsa gris de frente', 700, 933], ['b7', 'Auto plateado terminado, de atrás', 700, 938], ['b8', 'Renault plateado terminado', 700, 933]];
+const G = [['t1', 'Sacando bollos en una camioneta Ford, con la lámpara de control', 500, 500], ['t2', 'Trabajando la puerta de una Toyota Hilux', 500, 719], ['t3', 'Lámparas de control armadas al lado de una Kangoo', 500, 500], ['t4', 'Sacabollos en el techo de un auto blanco', 500, 500], ['t5', 'Marcas de granizo en la chapa, vistas con la lámpara', 500, 500], ['t6', 'Capó con daños por granizo bajo la lámpara', 500, 500]];
+const CASOS = [
+  ['peugeot', 'Peugeot 308', 'Choque frontal', 'Enderezado de chasis, cambio de airbag, pintura completa y tratamiento cerámico.'],
+  ['vento', 'Volkswagen Vento', 'Choque frontal', 'Reparación de carrocería, chapa y pintura.'],
+  ['goltrasera', 'Volkswagen Gol Trend', 'Golpe trasero', 'Reconstrucción de chapa, portón y paragolpes, preparación y pintura.'],
+  ['golfrente', 'Volkswagen Gol Trend', 'Golpe frontal', 'Reparación frontal de chapa y pintura.'],
+  ['chevrolet', 'Chevrolet', 'Golpe en el frente', 'Chapa y pintura del frente.'],
+  ['tremor', 'Ford Tremor', 'Daños por granizo', 'Reparación de granizo y lavado premium.']
+];
+const fotoCaso = (n, l) => `src="fotos/c-${n}-${l}-720.webp" srcset="fotos/c-${n}-${l}-720.webp 720w, fotos/c-${n}-${l}-1080.webp 1080w" sizes="(max-width:640px) 84vw, (max-width:980px) 50vw, 33vw"`;
+$('#casos').innerHTML = CASOS.map(([n, t, g, d]) => `<button type="button" class="caso" aria-pressed="false"><span class="caso-foto"><img ${fotoCaso(n, 'a')} alt="${t} antes de la reparación" loading="lazy" width="720" height="540"><img class="d" ${fotoCaso(n, 'd')} alt="${t} después de la reparación" loading="lazy" width="720" height="540"><i class="raya"></i><b class="chip-c">Antes</b></span><span class="caso-txt"><span class="caso-tag">${g}</span><h3>${t}</h3><p>${d}</p><span class="caso-ver">Ver cómo quedó</span></span></button>`).join('');
+const verCaso = (c, si) => { c.classList.toggle('hecho', si); c.setAttribute('aria-pressed', si); $('.chip-c', c).textContent = si ? 'Después' : 'Antes'; $('.caso-ver', c).textContent = si ? 'Ver cómo llegó' : 'Ver cómo quedó'; };
+// cada caso se muestra solo una vez: se ve el golpe un momento y pasa a cómo quedó
+const ojoCaso = new IntersectionObserver(es => es.forEach(e => { const c = e.target; clearTimeout(c._t); if (e.isIntersecting) c._t = setTimeout(() => { verCaso(c, true); ojoCaso.unobserve(c); }, 1400); }), { threshold: .7 });
+$$('.caso').forEach(c => { c.addEventListener('click', () => { clearTimeout(c._t); ojoCaso.unobserve(c); verCaso(c, !c.classList.contains('hecho')); }); ojoCaso.observe(c); });
 const gal = $('#galeria'), visor = $('#visor');
-gal.innerHTML = G.map(([f, a, w, h]) => `<button type="button" data-f="${f}"><img src="fotos/${f}-700.webp" alt="${a}" loading="lazy" width="${w}" height="${h}"></button>`).join('');
+gal.innerHTML = G.map(([f, a, w, h]) => `<button type="button" data-f="${f}"><img src="fotos/${f}-500.webp" alt="${a}" loading="lazy" width="${w}" height="${h}"></button>`).join('');
 $$('#galeria button').forEach(b => ojo.observe(b));
-gal.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const i = $('img', visor); i.src = `fotos/${b.dataset.f}-1100.webp`; i.alt = $('img', b).alt; visor.showModal(); });
+gal.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const i = $('img', visor); i.src = `fotos/${b.dataset.f}-1000.webp`; i.alt = $('img', b).alt; visor.showModal(); });
 visor.addEventListener('click', () => visor.close());
 
 /* ---------- talleres ---------- */
