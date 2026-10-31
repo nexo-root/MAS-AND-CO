@@ -268,12 +268,16 @@ html.intro .barra,html.intro .dock{opacity:0;pointer-events:none}
 .caso{display:flex;flex-direction:column;text-align:left;border-radius:var(--r);overflow:hidden;border:1px solid var(--borde);background:var(--chapa);touch-action:manipulation}
 .caso-foto{position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden}
 .caso-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.caso .d{clip-path:inset(0 100% 0 0);transition:clip-path .8s var(--ease)}
-.caso.hecho .d{clip-path:inset(0 0 0 0)}
-.caso .raya{position:absolute;top:0;bottom:0;left:-4px;width:3px;background:#fff;box-shadow:0 0 18px rgba(255,255,255,.75);transition:left .8s var(--ease)}
-.caso.hecho .raya{left:100%}
+.caso{--t:.7s;--w:cubic-bezier(.65,0,.35,1)}
+.caso-d,.caso-d2{position:absolute;inset:0;will-change:transform;transition:transform var(--t) var(--w)}
+.caso-d{overflow:hidden;transform:translate3d(-100%,0,0)}
+.caso-d2{transform:translate3d(100%,0,0)}
+.caso.hecho .caso-d,.caso.hecho .caso-d2{transform:translate3d(0,0,0)}
+.caso .raya{position:absolute;inset:0;pointer-events:none;will-change:transform;transform:translate3d(calc(-100% - 14px),0,0);transition:transform var(--t) var(--w)}
+.caso .raya::after{content:"";position:absolute;top:0;bottom:0;right:0;width:3px;background:#fff;box-shadow:0 0 16px rgba(255,255,255,.75)}
+.caso.hecho .raya{transform:translate3d(14px,0,0)}
 .caso .chip-c{position:absolute;left:12px;top:12px;padding:6px 14px;border-radius:999px;background:var(--rojo);color:#fff;font-weight:700;font-size:1rem;line-height:1.2}
-.caso.hecho .chip-c{background:#fff;color:#111}
+.caso .chip-c.blanco{background:#fff;color:#111}
 .caso-txt{display:flex;flex-direction:column;flex:1;gap:4px;padding:16px 18px 18px}
 .caso-tag{color:var(--texto2);font-size:1rem;font-weight:600}
 .caso h3{font-stretch:115%;font-weight:800;font-style:italic;font-size:1.4rem;line-height:1.1}
@@ -926,11 +930,15 @@ const CASOS = [
   ['tremor', 'Ford Tremor', 'Daños por granizo', 'Reparación de granizo y lavado premium.']
 ];
 const fotoCaso = (n, l) => `src="fotos/c-${n}-${l}-720.webp" srcset="fotos/c-${n}-${l}-720.webp 720w, fotos/c-${n}-${l}-1080.webp 1080w" sizes="(max-width:640px) 84vw, (max-width:980px) 50vw, 33vw"`;
-$('#casos').innerHTML = CASOS.map(([n, t, g, d]) => `<button type="button" class="caso" aria-pressed="false"><span class="caso-foto"><img ${fotoCaso(n, 'a')} alt="${t} antes de la reparación" loading="lazy" width="720" height="540"><img class="d" ${fotoCaso(n, 'd')} alt="${t} después de la reparación" loading="lazy" width="720" height="540"><i class="raya"></i><b class="chip-c">Antes</b></span><span class="caso-txt"><span class="caso-tag">${g}</span><h3>${t}</h3><p>${d}</p><span class="caso-ver">Ver cómo quedó</span></span></button>`).join('');
-const verCaso = (c, si) => { c.classList.toggle('hecho', si); c.setAttribute('aria-pressed', si); $('.chip-c', c).textContent = si ? 'Después' : 'Antes'; $('.caso-ver', c).textContent = si ? 'Ver cómo llegó' : 'Ver cómo quedó'; };
+$('#casos').innerHTML = CASOS.map(([n, t, g, d]) => `<button type="button" class="caso" aria-pressed="false"><span class="caso-foto"><img ${fotoCaso(n, 'a')} alt="${t} antes de la reparación" loading="lazy" decoding="sync" width="720" height="540"><b class="chip-c">Antes</b><span class="caso-d"><span class="caso-d2"><img ${fotoCaso(n, 'd')} alt="${t} después de la reparación" loading="lazy" decoding="sync" width="720" height="540"><b class="chip-c blanco">Después</b></span></span><i class="raya"></i></span><span class="caso-txt"><span class="caso-tag">${g}</span><h3>${t}</h3><p>${d}</p><span class="caso-ver">Ver cómo quedó</span></span></button>`).join('');
+const verCaso = (c, si) => { c.classList.toggle('hecho', si); c.setAttribute('aria-pressed', si); $('.caso-ver', c).textContent = si ? 'Ver cómo llegó' : 'Ver cómo quedó'; };
+// las fotos se bajan y decodifican antes de llegar: el cambio nunca espera una imagen
+const prepCaso = c => c._listo || (c._listo = Promise.all($$('img', c).map(i => { i.loading = 'eager'; return i.decode().catch(() => {}); })));
+const ojoLejos = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { $$('.caso').forEach(prepCaso); ojoLejos.disconnect(); } }, { rootMargin: '1600px 0px' });
+ojoLejos.observe($('#casos'));
 // cada caso se muestra solo una vez: se ve el golpe un momento y pasa a cómo quedó
-const ojoCaso = new IntersectionObserver(es => es.forEach(e => { const c = e.target; clearTimeout(c._t); if (e.isIntersecting) c._t = setTimeout(() => { verCaso(c, true); ojoCaso.unobserve(c); }, 1400); }), { threshold: .7 });
-$$('.caso').forEach(c => { c.addEventListener('click', () => { clearTimeout(c._t); ojoCaso.unobserve(c); verCaso(c, !c.classList.contains('hecho')); }); ojoCaso.observe(c); });
+const ojoCaso = new IntersectionObserver(es => es.forEach(e => { const c = e.target; clearTimeout(c._t); if (e.isIntersecting) c._t = setTimeout(() => prepCaso(c).then(() => { if (c._tocado) return; verCaso(c, true); ojoCaso.unobserve(c); }), 1400); }), { threshold: .7 });
+$$('.caso').forEach(c => { c.addEventListener('click', () => { c._tocado = true; clearTimeout(c._t); ojoCaso.unobserve(c); prepCaso(c).then(() => verCaso(c, !c.classList.contains('hecho'))); }); ojoCaso.observe(c); });
 const gal = $('#galeria'), visor = $('#visor');
 gal.innerHTML = G.map(([f, a, w, h]) => `<button type="button" data-f="${f}"><img src="fotos/${f}-500.webp" alt="${a}" loading="lazy" width="${w}" height="${h}"></button>`).join('');
 $$('#galeria button').forEach(b => ojo.observe(b));
