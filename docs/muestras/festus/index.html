@@ -134,7 +134,7 @@ input,select,textarea{font:inherit;color:inherit}
 /* ── lo que festejamos ── */
 .festeja{padding:80px 0 0}
 .festeja .cabeza{margin-bottom:34px}
-.paneles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 8px}
+.paneles{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:0 8px}
 .panel{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;border-radius:14px;color:var(--marfil);background:var(--humo)}
 .panel img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
 .panel img:not([src]){visibility:hidden}
@@ -621,6 +621,7 @@ html,body{touch-action:manipulation}
   .promo .btn{grid-column:1/-1;width:100%}
   .festeja{padding-top:56px}
   .paneles{grid-template-columns:1fr 1fr;gap:6px;padding:0 6px}
+  .paneles .panel:last-child{grid-column:span 2;aspect-ratio:2/1}
   .panel{aspect-ratio:4/5}
   .panel .pn{left:14px;right:14px;bottom:14px}
   .panel .pn b{font-size:1rem}
@@ -709,6 +710,7 @@ body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:trans
 input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:text;cursor:text}
 img{-webkit-user-drag:none}
 /* ── solapas: portada, tarjetas y contacto ── */
+#paneles .panel::after{background:linear-gradient(180deg,rgba(20,18,16,0) 30%,rgba(20,18,16,.92) 82%)}
 .sol-port{min-height:62vh}.sol-port img{object-position:50% 22%}
 .sol-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .sol-tiles .panel{aspect-ratio:4/5}
@@ -869,7 +871,7 @@ img{-webkit-user-drag:none}
 <section class="promo" id="promo" hidden aria-label="Promoción vigente"></section>
 
 <section class="festeja" id="festejamos">
-  <div class="envase"><div class="cabeza rev"><h2>Lo que <em>festejamos</em></h2><p>Cuatro fiestas distintas, el mismo salón: la escalera, la pista a cuadros y la barra. Tocá la tuya.</p></div></div>
+  <div class="envase"><div class="cabeza rev"><h2>Queremos brindarte un lugar para <em>cumplir tu sueño.</em></h2><p>Estamos listos para darte la mejor atención y preparar tus eventos a tu medida.</p></div></div>
   <div class="paneles" id="paneles"></div>
 </section>
 
@@ -1435,7 +1437,8 @@ function pintarPromos() {
 }
 
 /* ── lo que festejamos ── */
-$('#paneles').innerHTML = Object.entries(FIESTAS).map(([k, f]) => `<a class="panel" data-ir="fiesta" data-id="${k}">${img(f.foto).replace(' src=', ' data-src=').replace(' srcset=', ' data-srcset=')}<i class="telon" aria-hidden="true"></i><span class="pn"><b>${esc(f.nombre)}</b><i>${esc(f.lema)}</i><em>Ver la fiesta ${icono('fwd')}</em></span></a>`).join('');
+const A_SOLAPAS = [['corporativo', 'Corporativo', 'Cenas, capacitaciones y lanzamientos.', 'f05'], ['sociales', 'Sociales', 'XV, casamientos y cumpleaños.', 'f10'], ['armar', 'Reservas', 'Elegí tu fecha y armá tu fiesta.', 'f08'], ['promos', 'Promos', 'Promos vigentes y cursos abiertos.', 'f14'], ['proveedores', 'Proveedores', 'Los equipos que trabajan con nosotros.', 'f15']];
+$('#paneles').innerHTML = A_SOLAPAS.map(([k, t, d, f]) => `<a class="panel" data-ir="${k}">${img(f).replace(' src=', ' data-src=').replace(' srcset=', ' data-srcset=')}<i class="telon" aria-hidden="true"></i><span class="pn"><b>${esc(t)}</b><i>${esc(d)}</i><em>Entrar ${icono('fwd')}</em></span></a>`).join('');
 
 /* ── Mis XV: la calculadora ── */
 const calc = {anio: hoy.getFullYear() + 1, mes: 10};
