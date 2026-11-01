@@ -711,6 +711,7 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:tex
 img{-webkit-user-drag:none}
 /* ── solapas: portada, tarjetas y contacto ── */
 #paneles .panel::after{background:linear-gradient(180deg,rgba(20,18,16,0) 30%,rgba(20,18,16,.92) 82%)}
+.esp-f.sin-foto{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--humo);color:var(--marfil2)}.esp-f.sin-foto img{position:static;width:64px;height:64px;object-fit:contain;transform:none}
 .sol-port{min-height:62vh}.sol-port img{object-position:50% 22%}
 .sol-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .sol-tiles .panel{aspect-ratio:4/5}
@@ -878,12 +879,12 @@ img{-webkit-user-drag:none}
 <section class="xv" id="xv">
   <div class="envase">
     <div>
-      <h2 class="rev">Mis XV<br>2027 · 2028<small>Reservá con años de anticipación</small></h2>
-      <p class="frase rev">Elegís la fecha hoy y la pagás en cuotas de <b id="xv-cuota-txt">100 USD</b> por mes. Cuanto antes reservás, más cuotas te quedan y más tranquila llega la fiesta.</p>
+      <h2 class="rev">Reservá tu fecha<br>2027 · 2028</h2>
+      <p class="frase rev">Elegís la fecha hoy y la pagás en cuotas. Cuanto antes reservás, mejor cumplís tu sueño.</p>
       <ul class="rev">
-        <li><svg class="ico"><use href="#i-diamond"/></svg><span><b>All Inclusive:</b> salón, DJ, catering, decoración, fotografía y coordinación.</span></li>
-        <li><svg class="ico"><use href="#i-ok"/></svg><span>La fecha queda señada con la primera cuota.</span></li>
-        <li><svg class="ico"><use href="#i-groups"/></svg><span>La familia solo disfruta.</span></li>
+        <li><svg class="ico"><use href="#i-diamond"/></svg><span>Alquiler de salón, catering, DJ, sonido y luces, decoración y ambientación, y experiencias.</span></li>
+        <li><svg class="ico"><use href="#i-ok"/></svg><span>Con la reserva, los precios quedan congelados.</span></li>
+        <li><svg class="ico"><use href="#i-groups"/></svg><span>Contratación segura y la familia disfruta.</span></li>
       </ul>
       <div class="xv-foto"><img src="fotos/f04-640.webp" srcset="fotos/f04-640.webp 640w, fotos/f04-1080.webp 1080w" sizes="(max-width:860px) 50vw, 22vw" width="1080" height="1440" loading="lazy" decoding="async" alt="Quinceañera con vestido rojo frente a la pared de lentejuelas"><img src="fotos/f14-640.webp" srcset="fotos/f14-640.webp 640w, fotos/f14-1080.webp 1080w" sizes="(max-width:860px) 50vw, 22vw" width="1080" height="1080" loading="lazy" decoding="async" alt="Amigas de la quinceañera en la pista"></div>
     </div>
@@ -905,19 +906,19 @@ img{-webkit-user-drag:none}
 
 <section class="familias" id="familias">
   <div class="envase">
-    <div class="cabeza rev"><h2>Lo que dicen <em>las familias</em></h2><p>Los videos de su Instagram, tal cual los publicaron. Tocá para verlos con sonido.</p></div>
+    <div class="cabeza rev"><h2>Lo que dicen <em>de FESTUS</em></h2></div>
     <div class="vgrid" id="vgrid"></div>
   </div>
 </section>
 
 <section class="sec adentro" id="adentro">
   <div class="envase">
-    <div class="cabeza rev"><h2>El salón, <em>por dentro</em></h2><p>La escalera, la pista, la barra y el rincón de fotos: cuadros de fiestas reales, de noche.</p></div>
-    <div class="espacios cuatro" aria-label="Los espacios del salón"><figure class="esp-c"><div class="esp-f"><img src="fotos/s-escalera-640.webp" srcset="fotos/s-escalera-640.webp 640w, fotos/s-escalera-720.webp 720w" sizes="(max-width:860px) 74vw, (min-width:1600px) 340px, 290px" width="720" height="960" loading="lazy" decoding="async" alt="La escalera de Festus con las luces encendidas"></div><figcaption><i>01</i><b>La escalera</b><span>La entrada de la noche, con las luces encendidas.</span></figcaption></figure><figure class="esp-c"><div class="esp-f"><img src="fotos/s-pista-640.webp" srcset="fotos/s-pista-640.webp 640w, fotos/s-pista-720.webp 720w" sizes="(max-width:860px) 74vw, (min-width:1600px) 340px, 290px" width="720" height="960" loading="lazy" decoding="async" alt="La pista a cuadros con el escenario iluminado"></div><figcaption><i>02</i><b>La pista</b><span>Piso a cuadros, bolas de espejos y las luces del DJ.</span></figcaption></figure><figure class="esp-c"><div class="esp-f"><img src="fotos/f15-1080.webp" width="1080" height="720" loading="lazy" decoding="async" alt="La barra de Festus"></div><figcaption><i>03</i><b>La barra</b><span>Tragos y bebidas durante toda la noche.</span></figcaption></figure><figure class="esp-c"><div class="esp-f"><img src="fotos/s-rincon-640.webp" srcset="fotos/s-rincon-640.webp 640w, fotos/s-rincon-720.webp 720w" sizes="(max-width:860px) 74vw, (min-width:1600px) 340px, 290px" width="720" height="960" loading="lazy" decoding="async" alt="El rincón de fotos con la estrella de luces y los globos"></div><figcaption><i>04</i><b>El rincón de fotos</b><span>La estrella de luces y los globos, para las fotos.</span></figcaption></figure></div>
+    <div class="cabeza rev"><h2>FESTUS <em>por dentro</em></h2></div>
+    <div class="espacios cuatro" aria-label="Los espacios del salón"><figure class="esp-c"><div class="esp-f sin-foto"><img src="ig/monograma-marfil.png" alt=""><small>Foto a confirmar</small></div><figcaption><i>01</i><b>El hall</b></figcaption></figure><figure class="esp-c"><div class="esp-f"><img src="fotos/s-escalera-720.webp" width="720" height="960" loading="lazy" decoding="async" alt="La escalera de Festus con las luces encendidas"></div><figcaption><i>02</i><b>La escalera</b></figcaption></figure><figure class="esp-c"><div class="esp-f sin-foto"><img src="ig/monograma-marfil.png" alt=""><small>Foto a confirmar</small></div><figcaption><i>03</i><b>La suite</b></figcaption></figure><figure class="esp-c"><div class="esp-f"><img src="fotos/s-armado-720.webp" width="720" height="960" loading="lazy" decoding="async" alt="El salón de Festus armado para una fiesta"></div><figcaption><i>04</i><b>El salón</b></figcaption></figure></div>
     <p class="desliza"><svg class="ico" aria-hidden="true"><use href="#i-fwd"/></svg>Deslizá para ver los cuatro</p>
     <div class="datos3">
-      <div><b id="d-capacidad">250</b><span>personas de capacidad <span class="nota-ej">dato de ejemplo</span></span></div>
-      <div><b>1</b><span>escalera para la entrada</span></div>
+      <div><b>150</b><span>personas: almuerzos, cenas, eventos sociales y empresariales</span></div>
+      <div><b id="d-capacidad">220</b><span>personas: eventos corporativos</span></div>
       <div><b>4,5</b><span>en Google, con 166 opiniones</span></div>
     </div>
     <a class="btn oscuro-b" data-ir="salon">Ver el salón completo<svg class="ico"><use href="#i-fwd"/></svg></a>
@@ -986,7 +987,7 @@ img{-webkit-user-drag:none}
 <section class="s-portada"><div class="envase s-port-env"><div class="s-port-txt"><h1>El salón</h1><p class="frase">Un solo espacio que se arma distinto para cada fiesta: la escalera, la pista a cuadros, la barra.</p><a class="btn" data-ir="armar">Armá tu evento como quieras<svg class="ico"><use href="#i-fwd"/></svg></a><ul class="s-medidas"><li><b>22 × 14 m</b><span>de salón</span></li><li><b>6 × 6 m</b><span>de pista a cuadros</span></li><li><b id="s-cap">250</b><span>personas de capacidad</span></li></ul><span class="nota-ej">medidas y capacidad de ejemplo</span></div><figure class="s-port-foto"><img src="fotos/f10-1080.webp" srcset="fotos/f10-640.webp 640w, fotos/f10-1080.webp 1080w, fotos/f10-1600.webp 1600w" sizes="(max-width:860px) 100vw, 58vw" width="1600" height="1064" fetchpriority="high" decoding="async" alt="La quinceañera bajando la escalera de Festus"><figcaption>La escalera, la noche de unos XV.</figcaption></figure></div></section>
 <section class="sec" id="s-espacios"><div class="envase"><div class="cabeza"><h2>Los <em>espacios</em></h2><p>Fotos de fiestas reales en Festus. Deslizá o recorrelos uno por uno.</p></div><div class="espacios seis" id="esp-grid"></div></div></section>
 <section class="sec oscuro" id="s-galeria"><div class="envase"><div class="cabeza"><h2>En <em>fotos</em></h2><p>Las que Festus elige mostrar desde su panel.</p></div><div class="galeria" id="s-gal"></div></div></section>
-<section class="sec adentro" id="s-capac"><div class="envase"><div class="cabeza"><h2>¿Cuántos <em>entran</em>?</h2><p>Depende de cómo se arme. <span class="nota-ej">Capacidades de ejemplo</span></p></div><ul class="cap-lista" id="cap-lista"></ul></div></section>
+<section class="sec adentro" id="s-capac"><div class="envase"><div class="cabeza"><h2>¿Cuántos <em>entran</em>?</h2><p>Depende del tipo de evento.</p></div><ul class="cap-lista" id="cap-lista"></ul></div></section>
 <section class="sec" id="s-fechas"><div class="envase"><div class="cabeza"><h2>Fechas <em>libres</em></h2><p>Tocá un día libre y pedilo.</p></div><div class="leyenda-cal"><span><i></i>Libre</span><span><i class="senada"></i>Señada</span><span><i class="ocupada"></i>Ocupada</span></div><div class="cal-nav"><button type="button" data-cal-nav="-1" aria-label="Mes anterior"><svg class="ico"><use href="#i-left"/></svg></button><button type="button" data-cal-nav="1" aria-label="Mes siguiente"><svg class="ico"><use href="#i-right"/></svg></button></div><div class="cal-tira" id="cal-salon"></div></div></section>
 </div>
 
@@ -1264,7 +1265,7 @@ const img = (id, extra = '', sizes = '(max-width:860px) 50vw, 25vw') => `<img sr
 const icono = (k, cls = 'ico') => `<svg class="${cls}" aria-hidden="true"><use href="#i-${k}"/></svg>`;
 
 /* ── lo que Festus maneja desde el panel: en memoria + localStorage (demostración) ── */
-const CLAVE = 'festus-demo-v1';
+const CLAVE = 'festus-demo-v2';
 const DEF = () => ({
   fechas: {},
   promos: [{id: 'madre', titulo: 'Descuento especial del Día de la Madre', texto: '45 % OFF en eventos hasta el 31/12/2027.', foto: 'f04', vence: '2026-10-20'}],
@@ -1272,7 +1273,7 @@ const DEF = () => ({
     {id: 'makeup', titulo: 'Experiencia Makeup', fecha: '2026-11-11', horas: '15:00 y 19:00', precio: '$20.000', con: 'Paula Natalia MakeUp', foto: 'f14', texto: 'Aprendé a maquillarte para tu fiesta, en el salón, con Paula Natalia MakeUp. Dos turnos, cupos limitados.'},
     {id: 'empresas', titulo: 'Eventos de empresa, diciembre', fecha: '2026-12-01', horas: 'lunes a jueves', precio: '', con: '', foto: 'f05', texto: 'Abrimos la agenda de diciembre para cenas y fiestas de fin de año: salón, DJ, sonido y luces, catering y decoración.'}
   ],
-  valores: {cuota: 100, capacidad: 250, horario: 'Lunes a viernes de 9 a 18 h, con turno.', allinc: 85, salon: 1200, dj: 450, catering: 45, deco: 600, foto: 400, coord: 250, mesadulce: 300, cabina: 350, tragos: 9, anima: 250, pelotero: 180},
+  valores: {cuota: 100, capacidad: 220, horario: 'Lunes a viernes de 9 a 18 h, con turno.', allinc: 85, salon: 1200, dj: 450, catering: 45, deco: 600, foto: 400, coord: 250, mesadulce: 300, cabina: 350, tragos: 9, anima: 250, pelotero: 180},
   fotos: ['f10', 's-armado', 's-pista', 'f15', 's-letras', 'f04', 'f14', 'f08', 's-mesa']
 });
 let STORE = DEF();
@@ -1453,7 +1454,6 @@ function pintarCalc(animar = true) {
   else num.textContent = n;
   $('#calc-cuota').textContent = usd(V().cuota);
   $('#calc-total').textContent = usd(total);
-  $('#xv-cuota-txt').textContent = usd(V().cuota);
   $('#calc-btn').href = KIT.url('armar', {f: 'xv', anio: calc.anio, mes: calc.mes});
 }
 $('#calc').addEventListener('click', e => {
@@ -1639,7 +1639,7 @@ function pintarSalon() {
   $('#s-cap').textContent = V().capacidad;
   pintarGaleriaSalon();
   const c = V().capacidad;
-  $('#cap-lista').innerHTML = [[Math.round(c * .72 / 10) * 10, 'sentados en mesas redondas, con pista'], [c, 'de pie, formato cóctel'], [Math.round(c * .88 / 10) * 10, 'en formato auditorio, con pantalla']].map(([n, t]) => `<li><b>${n}</b><span>${t}</span></li>`).join('');
+  $('#cap-lista').innerHTML = [[150, 'almuerzos, cenas, eventos sociales y empresariales'], [c, 'eventos corporativos']].map(([n, t]) => `<li><b>${n}</b><span>${t}</span></li>`).join('');
   salonPintado = true;
 }
 function pintarGaleriaSalon() { $('#s-gal').innerHTML = STORE.fotos.map((k, i) => `<figure>${img(k, '', i ? undefined : '(max-width:860px) 100vw, 50vw')}</figure>`).join(''); }
