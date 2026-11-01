@@ -2181,8 +2181,8 @@ function pintarTodo() {
 /* ── las páginas ── */
 let inicioRevelado = false;
 /* ── solapas: cada una con foto de portada, un comentario y el contacto ── */
-// cuando Rafael confirme el mail: endpoint = 'https://formsubmit.co/ajax/<mail>'. Mientras tanto la consulta sale por WhatsApp.
-const CONTACTO = {endpoint: ''};
+// si FormSubmit no acepta el envío (por ejemplo, sin activar), la consulta sale por WhatsApp
+const CONTACTO = {endpoint: 'https://formsubmit.co/ajax/festussalondeeventos@gmail.com'};
 const SOLAPAS = {
   corporativo: {tit: 'Eventos corporativos', com: 'Cenas de fin de año, capacitaciones y lanzamientos, con pantalla, micrófono, catering y sonido en el mismo salón.', foto: 'f05',
     tiles: [['Fiestas de fin de año', 'Cena, brindis y pista para todo el equipo.', 'f07'], ['Capacitaciones y jornadas', 'En formato auditorio, con pantalla y micrófono.', 'f06'], ['Lanzamientos', 'Cóctel y presentación para tus clientes.', 'f05']].map(t => [...t, 'empresa'])},
@@ -2208,7 +2208,8 @@ document.addEventListener('submit', async e => {
   btn.disabled = true; est.textContent = 'Enviando…';
   try {
     const r = await fetch(CONTACTO.endpoint, {method: 'POST', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify({Nombre: d.nombre, Mail: d.mail, Teléfono: d.telefono, Empresa: d.empresa || '-', Mensaje: d.mensaje, Solapa: hoja, _subject: `Consulta web · ${hoja}`, _replyto: d.mail, _template: 'table', _captcha: 'false'})});
-    if (!r.ok) throw 0;
+    const j = await r.json();
+    if (!r.ok || String(j.success) !== 'true') throw 0;
     f.reset(); est.textContent = 'Recibimos tu consulta. Te respondemos a la brevedad.';
   } catch (x) { porWa(); }
   btn.disabled = false;
