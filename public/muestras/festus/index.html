@@ -599,7 +599,7 @@ html,body{touch-action:manipulation}
   #barra .logo img{height:32px}
   #barra .logo span{font-size:.95rem}
   #barra .btn{min-height:38px;padding:6px 14px;font-size:.9rem}
-  #tabs-cel{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:55;height:var(--tabs);background:rgba(20,18,16,.97);border-top:1px solid rgba(201,169,110,.22);padding-bottom:env(safe-area-inset-bottom)}
+  #tabs-cel{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;left:0;right:0;bottom:0;z-index:55;height:var(--tabs);background:rgba(20,18,16,.97);border-top:1px solid rgba(201,169,110,.22);padding-bottom:env(safe-area-inset-bottom)}
   #tabs-cel a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:.68rem;letter-spacing:.02em;color:rgba(243,237,226,.7)}
   #tabs-cel a .ico{width:22px;height:22px}
   #tabs-cel a[aria-current]{color:var(--champ2)}
@@ -708,6 +708,36 @@ html{touch-action:manipulation}
 body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;cursor:default}
 input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:text;cursor:text}
 img{-webkit-user-drag:none}
+/* ── solapas: portada, tarjetas y contacto ── */
+.sol-port{min-height:62vh}.sol-port img{object-position:50% 22%}
+.sol-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sol-tiles .panel{aspect-ratio:4/5}
+.sol-prov{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.prov{display:flex;align-items:center;gap:14px;padding:22px;border:1px solid var(--borde2);border-radius:14px}
+.prov .ico{width:30px;height:30px;flex:none;color:var(--champ)}
+.prov b{display:block;font-family:var(--serif);font-weight:600;font-size:1.1rem}
+.prov span{display:block;color:var(--tinta3);font-size:.95rem;margin-top:2px}
+.pr-c{display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center;padding:14px;border:1px solid var(--borde2);border-radius:14px}
+.pr-c img{width:130px;height:110px;object-fit:cover;border-radius:10px}
+.pr-c h3{font-family:var(--serif);font-weight:600;font-size:1.2rem}
+.pr-c small{display:block;margin-top:6px;color:var(--tinta3)}
+.ct-env{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.ct-env .cabeza{margin-bottom:0}
+.ct-form .campo:first-child{margin-top:0}
+.ct-form .campo label{font-size:1rem}
+.ct-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ct-ok{display:flex;align-items:flex-start;gap:10px;margin-top:16px;color:var(--tinta2);font-size:1rem}
+.ct-ok input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--champ)}
+.ct-ok a{text-decoration:underline}
+.ct-form .btn{margin-top:18px;width:100%}
+.ct-estado{margin-top:12px;min-height:1.5em;color:var(--tinta2)}
+@media (max-width:860px){
+  .sol-port{min-height:56vh}
+  .sol-tiles,.sol-prov{grid-template-columns:1fr}
+  .sol-tiles .panel{aspect-ratio:4/3}
+  .ct-env{grid-template-columns:1fr;gap:26px}
+  #tabs-cel a{font-size:.64rem;letter-spacing:0}
+}
 </style>
 </head>
 <body>
@@ -760,21 +790,23 @@ img{-webkit-user-drag:none}
 <header id="barra">
   <a class="logo" data-ir="inicio" aria-label="Festus, inicio"><img src="ig/monograma-marfil.png" alt=""><span>FESTUS</span></a>
   <nav aria-label="Secciones">
-    <a data-ir="fiesta" data-id="xv">Fiestas</a>
-    <a href="#xv" data-ancla="xv">Mis XV</a>
-    <a data-ir="salon">El salón</a>
-    <a data-ir="armar">Fechas</a>
-    <a data-ir="agenda">Agenda</a>
+    <a data-ir="inicio">Inicio</a>
+    <a data-ir="corporativo">Corporativo</a>
+    <a data-ir="sociales">Sociales</a>
+    <a data-ir="armar">Reservas</a>
+    <a data-ir="promos">Promos</a>
+    <a data-ir="proveedores">Proveedores</a>
     <a data-ir="panel" class="panel-link"><svg class="ico"><use href="#i-lock"/></svg>Panel</a>
   </nav>
   <a class="btn chico" id="wa-barra" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Pedí tu fecha</a>
 </header>
 <nav id="tabs-cel" aria-label="Secciones">
   <a data-ir="inicio"><svg class="ico"><use href="#i-home"/></svg>Inicio</a>
-  <a data-ir="fiesta" data-id="xv"><svg class="ico"><use href="#i-diamond"/></svg>Fiestas</a>
-  <a data-ir="armar"><svg class="ico"><use href="#i-cal"/></svg>Fechas</a>
-  <a data-ir="salon"><svg class="ico"><use href="#i-salon"/></svg>Salón</a>
-  <a data-ir="panel"><svg class="ico"><use href="#i-lock"/></svg>Panel</a>
+  <a data-ir="corporativo"><svg class="ico"><use href="#i-groups"/></svg>Corporativo</a>
+  <a data-ir="sociales"><svg class="ico"><use href="#i-diamond"/></svg>Sociales</a>
+  <a data-ir="armar"><svg class="ico"><use href="#i-cal"/></svg>Reservas</a>
+  <a data-ir="promos"><svg class="ico"><use href="#i-campaign"/></svg>Promos</a>
+  <a data-ir="proveedores"><svg class="ico"><use href="#i-coord"/></svg>Proveedores</a>
 </nav>
 
 <!-- ════════ INICIO ════════ -->
@@ -933,6 +965,7 @@ img{-webkit-user-drag:none}
     </div>
   </div>
 </section>
+<div data-contacto="inicio"></div>
 </div>
 
 <!-- ════════ FIESTA ════════ -->
@@ -957,7 +990,8 @@ img{-webkit-user-drag:none}
 
 <!-- ════════ ARMÁ TU FIESTA ════════ -->
 <div data-pagina="armar" hidden>
-<section class="sec" id="armar" style="padding-top:calc(var(--barra) + 48px)">
+<div data-solapa="reservas"></div>
+<section class="sec" id="armar">
   <div class="envase">
     <div class="cabeza"><h2>Armá tu fiesta, <em>pedí tu fecha</em></h2><p>Elegí y mirá cómo se arma el salón. Lo que armes nos llega por WhatsApp, escrito y listo para contestarte.</p></div>
     <div class="armar-env">
@@ -987,7 +1021,14 @@ img{-webkit-user-drag:none}
     </div>
   </div>
 </section>
+<div data-contacto="reservas"></div>
 </div>
+
+<!-- ════════ SOLAPAS NUEVAS ════════ -->
+<div data-pagina="corporativo" hidden><div data-solapa="corporativo"></div><section class="sec"><div class="envase"><div class="sol-tiles" data-tiles="corporativo"></div></div></section><div data-contacto="corporativo"></div></div>
+<div data-pagina="sociales" hidden><div data-solapa="sociales"></div><section class="sec"><div class="envase"><div class="sol-tiles" data-tiles="sociales"></div></div></section><div data-contacto="sociales"></div></div>
+<div data-pagina="promos" hidden><div data-solapa="promos"></div><section class="sec"><div class="envase"><div class="cabeza"><h2>Promos <em>vigentes</em></h2></div><div class="ag-grid" id="pr-pagina"></div></div></section><section class="sec oscuro"><div class="envase"><div class="cabeza"><h2>Cursos y <em>eventos abiertos</em></h2></div><div class="ag-grid" id="ag-promos"></div></div></section><div data-contacto="promos"></div></div>
+<div data-pagina="proveedores" hidden><div data-solapa="proveedores"></div><section class="sec"><div class="envase"><div class="sol-prov" id="sol-prov"></div></div></section><div data-contacto="proveedores"></div></div>
 
 <!-- ════════ AGENDA ════════ -->
 <div data-pagina="agenda" hidden>
@@ -1558,7 +1599,9 @@ function agHTML(a, pagina = false) {
 function pintarAgenda() {
   const prox = STORE.agenda.filter(a => a.fecha >= iso(hoy)).sort((a, b) => a.fecha.localeCompare(b.fecha));
   $('#ag-inicio').innerHTML = prox.slice(0, 2).map(a => agHTML(a)).join('') || '<div class="ag-vacia">Por ahora no hay cursos abiertos. Festus los publica desde su panel.</div>';
-  $('#ag-pagina').innerHTML = prox.map(a => agHTML(a, true)).join('') || '<div class="ag-vacia">Por ahora no hay cursos ni eventos abiertos.</div>';
+  const pagina = prox.map(a => agHTML(a, true)).join('') || '<div class="ag-vacia">Por ahora no hay cursos ni eventos abiertos.</div>';
+  $('#ag-pagina').innerHTML = pagina;
+  $('#ag-promos').innerHTML = pagina;
 }
 
 /* ── página de cada fiesta ── */
@@ -2134,6 +2177,43 @@ function pintarTodo() {
 
 /* ── las páginas ── */
 let inicioRevelado = false;
+/* ── solapas: cada una con foto de portada, un comentario y el contacto ── */
+// cuando Rafael confirme el mail: endpoint = 'https://formsubmit.co/ajax/<mail>'. Mientras tanto la consulta sale por WhatsApp.
+const CONTACTO = {endpoint: ''};
+const SOLAPAS = {
+  corporativo: {tit: 'Eventos corporativos', com: 'Cenas de fin de año, capacitaciones y lanzamientos, con pantalla, micrófono, catering y sonido en el mismo salón.', foto: 'f05',
+    tiles: [['Fiestas de fin de año', 'Cena, brindis y pista para todo el equipo.', 'f07'], ['Capacitaciones y jornadas', 'En formato auditorio, con pantalla y micrófono.', 'f06'], ['Lanzamientos', 'Cóctel y presentación para tus clientes.', 'f05']].map(t => [...t, 'empresa'])},
+  sociales: {tit: 'Eventos sociales', com: 'XV, casamientos y cumpleaños, con la escalera, la pista a cuadros y la barra para tu fiesta.', foto: 'f10',
+    tiles: [['XV All Inclusive', FIESTAS.xv.lema, 'f04', 'xv'], ['Casamientos', FIESTAS.casamiento.lema, 'f13', 'casamiento'], ['Cumpleaños', FIESTAS.cumple.lema, 'f11', 'cumple']]},
+  reservas: {tit: 'Reservas', com: 'Elegí un día libre y armá tu fiesta: los invitados, el formato y lo que querés incluir.', foto: 'f08'},
+  promos: {tit: 'Promos', com: 'Las promos vigentes y los cursos abiertos del salón.', foto: 'f14'},
+  proveedores: {tit: 'Proveedores', com: 'Los equipos que trabajan con nosotros en cada fiesta.', foto: 'f15'}
+};
+$$('[data-solapa]').forEach(el => { const s = SOLAPAS[el.dataset.solapa]; el.innerHTML = `<section class="f-portada sol-port">${img(s.foto, '', '100vw')}<div class="envase"><h1>${esc(s.tit)}</h1><p class="frase">${esc(s.com)}</p></div></section>`; });
+$$('[data-tiles]').forEach(el => { el.innerHTML = SOLAPAS[el.dataset.tiles].tiles.map(([t, d, f, id]) => `<a class="panel" data-ir="fiesta" data-id="${id}">${img(f, '', '(max-width:860px) 100vw, 33vw')}<span class="pn"><b>${esc(t)}</b><i>${esc(d)}</i><em>Más información ${icono('fwd')}</em></span></a>`).join(''); });
+$('#sol-prov').innerHTML = SERV.map(([, n, i]) => `<div class="prov">${icono(i)}<div><b>${esc(n)}</b><span>Nombre y logo a confirmar</span></div></div>`).join('');
+$$('[data-contacto]').forEach(el => { const o = el.dataset.contacto; el.innerHTML = `<section class="sec contacto"><div class="envase ct-env"><div class="cabeza"><h2>Hablemos de <em>tu evento</em></h2><p>Dejanos tus datos y te respondemos a la brevedad.</p></div><form class="ct-form" data-origen="${o}"><div class="campo"><label for="${o}-nombre">Nombre y apellido</label><input id="${o}-nombre" name="nombre" autocomplete="name" maxlength="80" required></div><div class="campo dos"><div><label for="${o}-mail">Mail</label><input id="${o}-mail" name="mail" type="email" autocomplete="email" maxlength="120" required></div><div><label for="${o}-tel">Teléfono</label><input id="${o}-tel" name="telefono" type="tel" autocomplete="tel" maxlength="30" required></div></div><div class="campo"><label for="${o}-emp">Empresa (opcional)</label><input id="${o}-emp" name="empresa" autocomplete="organization" maxlength="80"></div><div class="campo"><label for="${o}-msj">Mensaje</label><textarea id="${o}-msj" name="mensaje" maxlength="1500" required></textarea></div><input class="ct-hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"><label class="ct-ok"><input type="checkbox" required><span>Acepto la <a href="legal.html">política de privacidad</a></span></label><button class="btn" type="submit">Enviar consulta</button><p class="ct-estado" role="status"></p></form></div></section>`; });
+document.addEventListener('submit', async e => {
+  const f = e.target.closest('.ct-form'); if (!f) return;
+  e.preventDefault();
+  if (!f.reportValidity()) return;
+  const d = Object.fromEntries(new FormData(f)), est = $('.ct-estado', f), btn = $('button', f), hoja = f.dataset.origen;
+  if (d._honey) return;
+  const txt = `Hola, Festus. Soy ${d.nombre}.\nMail: ${d.mail}\nTeléfono: ${d.telefono}${d.empresa ? `\nEmpresa: ${d.empresa}` : ''}\nConsulta desde ${hoja}: ${d.mensaje}`;
+  const porWa = () => { window.open(`https://wa.me/${TEL}?text=${encodeURIComponent(txt)}`, '_blank', 'noopener'); est.textContent = 'Te abrimos WhatsApp con tu consulta.'; };
+  if (!CONTACTO.endpoint) { porWa(); return; }
+  btn.disabled = true; est.textContent = 'Enviando…';
+  try {
+    const r = await fetch(CONTACTO.endpoint, {method: 'POST', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify({Nombre: d.nombre, Mail: d.mail, Teléfono: d.telefono, Empresa: d.empresa || '-', Mensaje: d.mensaje, Solapa: hoja, _subject: `Consulta web · ${hoja}`, _replyto: d.mail, _template: 'table', _captcha: 'false'})});
+    if (!r.ok) throw 0;
+    f.reset(); est.textContent = 'Recibimos tu consulta. Te respondemos a la brevedad.';
+  } catch (x) { porWa(); }
+  btn.disabled = false;
+});
+document.addEventListener('kit:pagina', e => { $$(`[data-pagina="${e.detail.p}"] .sol-port img`).forEach(i => { i.loading = 'eager'; }); });
+const prHTML = p => `<article class="pr-c">${img(p.foto, '', '130px')}<div><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p><small>Hasta el ${esc(fechaCorta(deIso(p.vence)))}</small></div></article>`;
+KIT.en('promos', () => { const act = STORE.promos.filter(vigente); $('#pr-pagina').innerHTML = act.map(prHTML).join('') || '<div class="ag-vacia">Por ahora no hay promos vigentes.</div>'; pintarAgenda(); });
+KIT.enlaces();
 KIT.en('inicio', () => { if (!inicioRevelado) { inicioRevelado = true; revelarInicio(); } despues(calibrarResp); });
 KIT.en('fiesta', extra => { pintarFiesta(extra.id); });
 KIT.en('salon', () => { if (!salonPintado) pintarSalon(); });
