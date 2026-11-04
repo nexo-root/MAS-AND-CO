@@ -150,6 +150,11 @@ def main() -> int:
         return 1
 
     aqui = Path(__file__).parent
+    # Felipe frenó los reels automáticos el 3/11/2026: GitHub siguió disparando el cron viejo, así que el freno vive acá.
+    # Los videos de Content Factory se publican a mano con las funciones de este archivo. Para volver, borrar feed/PAUSA.
+    if (aqui / "PAUSA").exists():
+        print("[i] Publicación automática pausada (feed/PAUSA). Nada que hacer.")
+        return 0
     cola = json.loads((aqui / "cola-reels.json").read_text(encoding="utf-8"))
     solo = os.environ.get("SOLO", "").strip().lower()
     # GitHub larga los cron con horas de atraso: hasta las 6 de la mañana todavía cuenta como el día anterior,
