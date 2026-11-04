@@ -72,9 +72,9 @@ img{display:block;max-width:100%}
 .apagon{position:absolute;inset:0;background:#05080C;opacity:0;pointer-events:none}
 html.entra .apagon{opacity:.9}
 .arena-piso{position:absolute;left:0;right:0;bottom:0;height:calc(var(--palabra) * .3);background:linear-gradient(180deg,rgba(243,232,210,0) 0%,rgba(243,232,210,.85) 55%,var(--arena-c) 100%);z-index:3;pointer-events:none}
-.portada{--palabra:min(21.2vw,300px)}
-.palabra{position:absolute;left:0;right:0;bottom:calc(var(--palabra) * -.07);z-index:2;margin-top:0;text-align:center;font-family:var(--disp);font-weight:900;
-  font-size:var(--palabra);line-height:.8;letter-spacing:-.005em;color:var(--arena);white-space:nowrap;overflow:hidden;padding-top:.16em;
+.portada{--palabra:min(15.5vw,236px)}
+.palabra{position:absolute;left:0;right:0;bottom:calc(var(--palabra) * .2);z-index:2;margin-top:0;text-align:center;font-family:var(--disp);font-weight:900;
+  font-size:var(--palabra);line-height:.8;letter-spacing:.01em;color:var(--arena);white-space:nowrap;overflow:hidden;padding-top:.16em;padding-bottom:.08em;
   text-shadow:0 .02em .1em rgba(0,0,0,.25)}
 .palabra span{display:inline-block}
 .portada-arriba{position:absolute;z-index:4;left:0;right:0;top:calc(var(--barra) + 18px);display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:0 var(--lado)}
@@ -287,6 +287,9 @@ html.entra .apagon{opacity:.9}
 .motivos{display:flex;flex-wrap:wrap;gap:6px}
 .motivos button{min-height:36px;padding:0 12px;border-radius:999px;font-size:13.5px;font-weight:600;border:1.5px solid rgba(243,232,210,.2)}
 .motivos button[aria-pressed=true]{border-color:var(--debe);background:rgba(226,96,63,.16)}
+.motivo-otro{display:none;margin-top:8px;width:100%;min-height:42px;padding:0 14px;border-radius:12px;font:inherit;font-size:15px;color:var(--crema);background:rgba(243,232,210,.06);border:1.5px solid rgba(243,232,210,.2)}
+.motivo-otro.ver{display:block}
+.motivo-otro:focus{outline:none;border-color:var(--luz)}
 .cerrar-form .btn{background:var(--crema);min-height:46px}
 .cerrados{display:grid;gap:6px;margin-top:14px}
 .cerrado-it{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;padding:8px 10px 8px 12px;border-radius:12px;background:rgba(226,96,63,.1);border:1px dashed rgba(226,96,63,.5)}
@@ -576,8 +579,9 @@ img{-webkit-user-drag:none}
             <div class="sel-caja"><select id="b-dia" aria-label="Día a cerrar"></select></div>
             <div class="sel-caja"><select id="b-hora" aria-label="Hora a cerrar"></select></div>
             <div class="motivos" id="motivos" role="group" aria-label="Motivo">
-              <button data-m="Lluvia" aria-pressed="true">Lluvia</button><button data-m="Arreglo de la cancha" aria-pressed="false">Arreglo</button><button data-m="Evento privado" aria-pressed="false">Evento</button>
+              <button data-m="Lluvia" aria-pressed="true">Lluvia</button><button data-m="Arreglo de la cancha" aria-pressed="false">Arreglo</button><button data-m="Evento privado" aria-pressed="false">Evento</button><button data-m="Otro" aria-pressed="false">Otro</button>
             </div>
+            <input class="motivo-otro" id="motivo-otro" type="text" maxlength="40" placeholder="Escriba el motivo (ej.: corte de luz)" aria-label="Otro motivo">
             <button class="btn btn-chico" id="b-cerrar"><svg class="ico"><use href="#i-candado"/></svg>Cerrar ese horario</button>
           </div>
           <div class="cerrados" id="cerrados"></div>
@@ -954,10 +958,11 @@ function llenarHorasCerrar() {
 }
 $('#b-dia').addEventListener('change', llenarHorasCerrar);
 let motivo = 'Lluvia';
-$('#motivos').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; motivo = b.dataset.m; document.querySelectorAll('#motivos button').forEach(x => x.setAttribute('aria-pressed', x === b)); });
+$('#motivos').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; motivo = b.dataset.m; document.querySelectorAll('#motivos button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  const otro = $('#motivo-otro'); otro.classList.toggle('ver', motivo === 'Otro'); if (motivo === 'Otro') otro.focus(); });
 $('#b-cerrar').addEventListener('click', () => {
   const f = $('#b-dia').value, h = +$('#b-hora').value; if (!$('#b-hora').value) return;
-  E.cerrados.push({ f, h, m: motivo }); guardar();
+  E.cerrados.push({ f, h, m: motivo === 'Otro' ? ($('#motivo-otro').value.trim() || 'Otro') : motivo }); guardar();
   if (sel && sel.f === f && h >= sel.h && h < sel.h + sel.len) sel = null;
   pintarTodo(); aviso(`Cerrado: ${nomDia(fecha(f), true)} de ${h} a ${h + 1} h. En Turnos ya figura como cerrado.`);
   const it = $('#cerrados').lastElementChild; if (it && window.gsap) gsap.from(it, { opacity: 0, y: -10, duration: .4 });
