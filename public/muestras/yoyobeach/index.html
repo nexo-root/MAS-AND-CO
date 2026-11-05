@@ -12,7 +12,7 @@
 /* Yoyobeach · muestra · Mas & Co · 04/11/2026
    Una cancha de arena en Eldorado (Misiones). La dueña maneja los horarios y su papá atiende la cancha.
    Problema: «acomodar y contestar horarios todo el tiempo». La página lo resuelve a la vista:
-   1. Portada: la foto de noche con las luces que se prenden; el nombre sale de la arena; cuántos turnos quedan hoy.
+   1. Portada: la cancha en un cuadro redondeado sobre la arena, el logo arriba y cuántos turnos quedan hoy (5/11: sin las luces que se prendían).
    2. Turnos: la semana, hora por hora (8 a 24). Se toca la hora (y la de al lado para sumar), la modalidad, y se arma el WhatsApp.
    3. Turno fijo: los grupos de todas las semanas, cuota mensual, calendario del mes que se marca solo.
    4. Así lo vería usted: el panel de la dueña (pedidos, pagos y señas, cuotas, cerrar horarios). Guarda en localStorage.
@@ -40,7 +40,7 @@ img{display:block;max-width:100%}
 .disp{font-family:var(--disp);font-weight:800;letter-spacing:-.01em;line-height:.92}
 .envase{max-width:1360px;margin:0 auto;padding:0 var(--lado)}
 .ej{font-size:12px;font-weight:600;color:var(--gris);background:rgba(28,26,22,.07);border-radius:4px;padding:1px 6px;white-space:nowrap}
-.oscuro .ej,.cierre .ej,.portada .ej{color:rgba(243,232,210,.75);background:rgba(243,232,210,.1)}
+.oscuro .ej,.cierre .ej{color:rgba(243,232,210,.75);background:rgba(243,232,210,.1)}
 /* arena: grano */
 .grano{position:relative;isolation:isolate}
 .grano::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
@@ -64,38 +64,44 @@ img{display:block;max-width:100%}
 .barra .btn{min-height:42px}
 
 .barra .marca{transition:opacity .3s}.barra:not(.llena) .marca{opacity:0;pointer-events:none}
-/* ── portada ── */
-.portada{position:relative;height:100vh;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:var(--noche);color:var(--crema)}
-.portada picture,.portada .foto{position:absolute;inset:0;width:100%;height:100%}
-.portada .foto{object-fit:cover;object-position:50% 38%}
-.velo{position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(12,19,27,.8) 0%,rgba(12,19,27,.25) 30%,rgba(12,19,27,0) 48%,rgba(12,19,27,.45) 70%,rgba(12,19,27,.88) 100%)}
-.apagon{position:absolute;inset:0;background:#05080C;opacity:0;pointer-events:none}
-html.entra .apagon{opacity:.9}
-.arena-piso{position:absolute;left:0;right:0;bottom:-1px;height:clamp(28px,4vw,56px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 34 C 180 8 360 8 560 26 S 900 52 1100 30 S 1340 6 1440 22 V60 H0Z' fill='%23F3E8D2'/%3E%3C/svg%3E") bottom/100% 100% no-repeat;z-index:3;pointer-events:none}
-.portada{--palabra:min(15.5vw,236px)}
-.palabra{position:absolute;left:0;right:0;top:calc(var(--barra) + 2vh);z-index:2;margin-top:0;text-align:center;font-family:var(--disp);font-weight:900;
-  font-size:var(--palabra);line-height:.8;letter-spacing:.01em;color:var(--arena);white-space:nowrap;overflow:hidden;padding-top:.16em;padding-bottom:.08em;
-  text-shadow:0 .02em .1em rgba(0,0,0,.25)}
-.palabra span{display:inline-block}
-.palabra{overflow:visible;line-height:0}
-.palabra img{display:block;margin:0 auto;width:min(76vw,980px);height:auto;filter:drop-shadow(0 10px 28px rgba(0,0,0,.5))}
-.portada-arriba{position:absolute;z-index:4;left:0;right:0;bottom:calc(clamp(28px,4vw,56px) + 26px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:0 var(--lado)}
-.bajada{max-width:440px}
-.bajada p{font-size:clamp(17px,1.5vw,21px);line-height:1.4;font-weight:500;text-shadow:0 1px 14px rgba(0,0,0,.5)}
-.bajada .lugar{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;opacity:.85;margin-bottom:10px}
-.hoy{width:min(360px,100%);background:rgba(12,19,27,.62);border:1px solid rgba(243,232,210,.18);border-radius:22px;padding:18px 20px 18px;
-  backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 24px 50px -24px rgba(0,0,0,.6)}
-.hoy-tit{font-size:14px;font-weight:600;opacity:.8;display:flex;justify-content:space-between;gap:10px}
+/* la barra arranca sobre la arena: letra oscura; al llenarse pasa a la noche */
+.barra:not(.llena){color:var(--tinta)}
+.barra:not(.llena) .btn{background:var(--noche);color:var(--crema)}
+/* ── portada: la cancha en un cuadro, apoyada en la arena ── */
+.portada{position:relative;z-index:2;background:var(--arena-c);color:var(--tinta);padding:calc(var(--barra) + 4px) var(--lado) 0}
+.marco{position:relative;height:min(64vh,640px);min-height:420px;border-radius:28px;overflow:hidden;background:var(--noche);isolation:isolate;
+  box-shadow:0 44px 70px -52px rgba(12,19,27,.7)}
+.marco picture{position:absolute;inset:0}
+.marco .foto{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;object-position:50% 38%}
+.velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,19,27,.6) 0%,rgba(12,19,27,.16) 36%,rgba(12,19,27,0) 58%,rgba(12,19,27,.3) 100%)}
+.palabra{position:absolute;left:0;right:0;top:clamp(22px,5vh,52px);z-index:2;margin:0;line-height:0;text-align:center}
+.palabra img{display:block;margin:0 auto;width:min(72%,820px);height:auto;filter:drop-shadow(0 10px 26px rgba(0,0,0,.45))}
+.marco .lugar{position:absolute;left:16px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;font-size:13.5px;font-weight:600;
+  color:var(--crema);background:rgba(12,19,27,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.portada-abajo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:32px;align-items:end;padding:28px 0 6px}
+.bajada p{font-size:clamp(20px,2vw,27px);line-height:1.3;font-weight:600;letter-spacing:-.01em;max-width:600px;text-wrap:balance}
+.acciones{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn-noche{background:var(--noche);color:var(--crema)}
+.btn-linea{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(28,26,22,.28)}
+.btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.hoy{position:relative;z-index:3;margin-top:-132px;background:var(--crema);border:1px solid rgba(28,26,22,.08);border-radius:22px;padding:18px 20px;
+  box-shadow:0 30px 50px -30px rgba(12,19,27,.5)}
+.hoy-tit{font-size:14px;font-weight:600;color:var(--gris);display:flex;justify-content:space-between;gap:10px}
 .hoy-num{display:flex;align-items:baseline;gap:12px;margin:2px 0 10px}
-.hoy-num b{font-family:var(--disp);font-weight:900;font-size:76px;line-height:.9;color:var(--luz)}
+.hoy-num b{font-family:var(--disp);font-weight:900;font-size:76px;line-height:.9;color:var(--luz-o)}
 .hoy-num span{font-size:17px;font-weight:600;line-height:1.2}
 .hoy-chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip-h{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid rgba(60,207,255,.55);color:var(--crema);font-weight:700;font-size:15px;
+.chip-h{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid rgba(11,127,166,.4);color:var(--tinta);font-weight:700;font-size:15px;
   transition:background .2s,border-color .2s,transform .2s var(--suave)}
-.chip-h:hover{background:rgba(60,207,255,.16);border-color:var(--luz);transform:translateY(-1px)}
-.chip-h .ico{font-size:15px;color:var(--pelota)}
-.hoy-ver{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:14.5px;font-weight:600;border-bottom:1px solid rgba(243,232,210,.4)}
+.chip-h:hover{background:rgba(60,207,255,.14);border-color:var(--luz-o);transform:translateY(-1px)}
+.chip-h .ico{font-size:15px;color:#A86F12}
+.hoy-ver{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:14.5px;font-weight:600;border-bottom:1px solid rgba(28,26,22,.35)}
+/* después de pedir: dónde queda la cancha */
+.llegar{margin-top:14px;padding:14px 16px;border-radius:16px;background:rgba(60,207,255,.1);border:1px solid rgba(60,207,255,.35)}
+.llegar-tit{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--luz)}
+.llegar-txt{font-size:14.5px;line-height:1.45;color:rgba(243,232,210,.88);margin-top:4px}
+.llegar-txt b{color:var(--crema)}
+.llegar-mapa{display:inline-flex;align-items:center;gap:6px;margin-top:10px;min-height:40px;padding:0 14px;border-radius:999px;background:var(--crema);color:var(--tinta);font-weight:700;font-size:14.5px}
 .hoy-ver .ico{transition:transform .25s var(--suave)}.hoy-ver:hover .ico{transform:translateX(4px)}
 
 /* ── secciones ── */
@@ -339,14 +345,17 @@ html.entra .apagon{opacity:.9}
   :root{--barra:58px}
   .marca{font-size:24px}
   .barra .btn{min-height:40px;padding:0 16px;font-size:15px}
-  .portada{min-height:560px;--palabra:21.6vw}
-  .portada .foto{object-position:50% 40%}
-  .palabra{top:calc(var(--barra) + 14px)}
-  .palabra img{width:92vw}
-  .portada-arriba{flex-direction:column;align-items:stretch;gap:14px;bottom:44px}
-  .bajada p{font-size:16px}
-  .bajada .lugar{margin-bottom:4px;font-size:13px}
-  .hoy{padding:14px 16px;border-radius:18px}
+  .portada{padding:calc(var(--barra) + 2px) 12px 0}
+  .marco{height:56svh;min-height:380px;border-radius:22px}
+  .marco .foto{object-position:50% 40%}
+  .palabra{top:20px}
+  .palabra img{width:88%}
+  .marco .lugar{left:12px;bottom:12px;font-size:13px}
+  .portada-abajo{grid-template-columns:1fr;gap:18px;padding:20px 4px 4px}
+  .bajada p{font-size:19px}
+  .acciones .btn{flex:1 1 auto}
+  .acciones .btn-linea{display:none}
+  .hoy{margin-top:0;padding:14px 16px;border-radius:18px}
   .hoy-num b{font-size:60px}
   .hoy-num{margin:0 0 8px}
   .hoy-ver{margin-top:10px}
@@ -400,7 +409,8 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:tex
 select{cursor:pointer}
 img{-webkit-user-drag:none}
 </style>
-<script>/* la portada arranca a oscuras (las luces se prenden con GSAP); si el script no llega, a los 3 s se ve igual */
+<style>html.entra .palabra img,html.entra #bajada,html.entra #hoy{opacity:0}</style>
+<script>/* la portada entra con GSAP (el cuadro se abre y el logo sube); si el script no llega, a los 3 s se ve igual */
 (function(){var d=document.documentElement;d.classList.add('entra');setTimeout(function(){d.classList.remove('entra')},3000)})();</script>
 </head>
 <body>
@@ -427,18 +437,21 @@ img{-webkit-user-drag:none}
   <a class="btn" href="#turnos">Reservar</a>
 </header>
 
-<section class="portada" id="inicio" aria-label="Portada">
-  <picture>
-    <source media="(max-width:700px)" srcset="https://images.pexels.com/photos/35514787/pexels-photo-35514787.jpeg?auto=compress&cs=tinysrgb&w=900">
-    <img class="foto" id="portada-foto" src="https://images.pexels.com/photos/35514775/pexels-photo-35514775.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Partido en una cancha de arena de noche, con las luces prendidas" fetchpriority="high">
-  </picture>
-  <div class="velo"></div>
-  <div class="apagon" id="apagon"></div>
+<section class="portada grano" id="inicio" aria-label="Portada">
+  <div class="marco" id="marco">
+    <picture>
+      <source media="(max-width:700px)" srcset="https://images.pexels.com/photos/35514787/pexels-photo-35514787.jpeg?auto=compress&cs=tinysrgb&w=900">
+      <img class="foto" id="portada-foto" src="https://images.pexels.com/photos/35514775/pexels-photo-35514775.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Partido en una cancha de arena de noche, con las luces prendidas" fetchpriority="high">
+    </picture>
+    <div class="velo"></div>
+    <h1 class="palabra" id="palabra"><img src="titulo.png" alt="Yoyobeach" width="1226" height="277"></h1>
+    <p class="lugar"><svg class="ico"><use href="#i-lugar"/></svg>Misiones</p>
+  </div>
 
-  <div class="portada-arriba">
+  <div class="portada-abajo">
     <div class="bajada" id="bajada">
-      <p class="lugar"><svg class="ico"><use href="#i-lugar"/></svg>Misiones</p>
       <p>Una cancha de beach vóley. Mirá lo libre y pedí tu turno sin preguntar.</p>
+      <div class="acciones"><a class="btn btn-noche" href="#turnos">Ver los turnos libres</a><a class="btn btn-linea" href="#fijo">Turno fijo para grupos</a></div>
     </div>
     <div class="hoy" id="hoy" aria-live="polite">
       <p class="hoy-tit"><span id="hoy-dia">Hoy</span><span class="ej">de ejemplo</span></p>
@@ -447,9 +460,6 @@ img{-webkit-user-drag:none}
       <a class="hoy-ver" href="#turnos">Ver toda la semana <svg class="ico"><use href="#i-flecha"/></svg></a>
     </div>
   </div>
-
-  <h1 class="palabra" id="palabra"><img src="titulo.png" alt="Yoyobeach" width="1226" height="277"></h1>
-  <div class="arena-piso"></div>
 </section>
 
 <main>
@@ -491,6 +501,12 @@ img{-webkit-user-drag:none}
         <div class="burbuja" id="burbuja"></div>
         <p class="t-precio" id="t-precio"></p>
         <a class="btn btn-wa" id="pedir" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg class="ico"><use href="#i-wa"/></svg>Pedir el turno por WhatsApp</a>
+        <div class="llegar" id="llegar" aria-live="polite" hidden>
+          <p class="llegar-tit"><svg class="ico"><use href="#i-ok"/></svg>Pedido enviado</p>
+          <p class="llegar-txt" id="llegar-con">Cuando te confirmen el turno, te esperamos en <b id="llegar-dir"></b>.</p>
+          <p class="llegar-txt" id="llegar-sin">Cuando te confirmen el turno, te pasan la ubicación por WhatsApp.</p>
+          <a class="llegar-mapa" id="llegar-mapa" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-lugar"/></svg>Cómo llegar</a>
+        </div>
       </aside>
     </div>
   </div>
@@ -642,6 +658,7 @@ const GRUPOS = [
 const CUOTA_INICIAL = { g1: true, g2: false, g3: true, g4: true, g5: false, g6: false };
 const NOMBRES = ['Marcos','Sofi y amigas','Equipo de Lauti','Los del barrio','Juli','Nico y compañía','Cumple de Tomi','Pato','Meli','Fran','Los de la facu','Agus'];
 const PLANES = { '1': { n: 'una vez por semana', p: 104000 }, '2': { n: 'dos veces por semana', p: 196000 }, 'd': { n: 'de día', p: 84000 } };
+const direccion = () => '';                  // en la muestra la dirección está «a confirmar»
 
 /* ───────── utilidades ───────── */
 const $ = s => document.querySelector(s);
@@ -783,6 +800,7 @@ function mensaje() {
 function total() { let t = 0; for (let h = sel.h; h < sel.h + sel.len; h++) t += precio(h); return t; }
 function pintarTicket() {
   const pedir = $('#pedir'), bt = $('#barra-turno');
+  if (sel) $('#llegar').hidden = true;
   $('#somos').textContent = somos;
   if (!sel) {
     $('#t-tit').textContent = 'Tu turno';
@@ -811,7 +829,18 @@ function enviado(e) {
   pedidos().push({ id: 'p' + Date.now(), f: sel.f, h: sel.h, len: sel.len, dep, n: somos, nom: $('#nombre').value.trim() || 'Sin nombre' });
   guardar();
   sel = null;
+  mostrarLlegar();
   setTimeout(() => { pintarTodo(); aviso('Listo. En la muestra, su pedido también le aparece a la dueña, abajo en «Así lo vería usted».', 5200); }, 250);
+}
+/* después de pedir: dónde queda la cancha (la dirección se carga en el panel) */
+function mostrarLlegar() {
+  const d = direccion();
+  $('#llegar-dir').textContent = d;
+  $('#llegar-con').hidden = !d; $('#llegar-sin').hidden = !!d; $('#llegar-mapa').hidden = !d;
+  if (d) $('#llegar-mapa').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(d);
+  $('#llegar').hidden = false;
+  // si pidió desde la barra de abajo, al volver del WhatsApp lo encuentra a la vista
+  setTimeout(() => $('#llegar').scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
 }
 $('#pedir').addEventListener('click', enviado);
 $('#bt-pedir').addEventListener('click', enviado);
@@ -996,25 +1025,23 @@ if (!window.gsap) { document.documentElement.classList.remove('entra'); return; 
 gsap.registerPlugin(ScrollTrigger);
 const letras = gsap.utils.toArray('#palabra img');
 const foto = $('#portada-foto');
-const prender = () => {
-  const tl = gsap.timeline({ defaults: { ease: 'power2.out' }, onComplete: () => document.documentElement.classList.remove('entra') });
-  // las luces de la cancha tardan en agarrar: dos parpadeos y prenden
-  tl.set('#apagon', { opacity: .9 })
-    .to('#apagon', { opacity: .55, duration: .06 }, .25).to('#apagon', { opacity: .88, duration: .08 })
-    .to('#apagon', { opacity: .35, duration: .05 }, '+=.12').to('#apagon', { opacity: .7, duration: .1 })
-    .to('#apagon', { opacity: 0, duration: 1.1, ease: 'power1.out' }, '+=.08')
-    .fromTo(foto, { scale: 1.08 }, { scale: 1, duration: 2.6, ease: 'power2.out' }, 0)
-    .fromTo(letras, { yPercent: -30, opacity: 0, scale: .94 }, { yPercent: 0, opacity: 1, scale: 1, duration: 1.1, ease: 'power4.out' }, .7)
-    .fromTo('#bajada', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .6 }, 1.1)
-    .fromTo('#hoy', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .7 }, 1.25)
-    .add(() => { const el = $('#hoy-n'), n = +el.dataset.n, o = { x: 0 }; gsap.to(o, { x: n, duration: .9, ease: 'power2.out', onUpdate: () => el.textContent = Math.round(o.x) }); }, 1.4)
-    .fromTo('#hoy-chips .chip-h', { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: .4, stagger: .08 }, 1.7);
+const marco = $('#marco');
+const entrar = () => {
+  const r = getComputedStyle(marco).borderTopLeftRadius;
+  const tl = gsap.timeline({ onComplete: () => document.documentElement.classList.remove('entra') });
+  // el cuadro de la cancha se abre desde un poco más chico; la foto se asienta adentro; el logo sube
+  tl.fromTo(marco, { clipPath: 'inset(6% 5% 6% 5% round 44px)' }, { clipPath: `inset(0% 0% 0% 0% round ${r})`, duration: 1.05, ease: 'expo.out', clearProps: 'clipPath' }, 0)
+    .fromTo(foto, { scale: 1.14 }, { scale: 1, duration: 1.8, ease: 'power3.out' }, 0)
+    .fromTo(letras, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'power3.out' }, .3)
+    .fromTo('#bajada', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .6, ease: 'power2.out' }, .5)
+    .fromTo('#hoy', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .75, ease: 'power3.out' }, .62)
+    .add(() => { const el = $('#hoy-n'), n = +el.dataset.n, o = { x: 0 }; gsap.to(o, { x: n, duration: .9, ease: 'power2.out', onUpdate: () => el.textContent = Math.round(o.x) }); }, .85)
+    .fromTo('#hoy-chips .chip-h', { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: .35, stagger: .07, ease: 'power2.out' }, 1.05);
 };
-if (foto.complete) prender(); else { foto.addEventListener('load', prender, { once: true }); setTimeout(() => { if (!foto.complete) { foto.removeEventListener('load', prender); prender(); } }, 1600); }
+if (foto.complete) entrar(); else { foto.addEventListener('load', entrar, { once: true }); setTimeout(() => { if (!foto.complete) { foto.removeEventListener('load', entrar); entrar(); } }, 1600); }
 
-// la palabra se hunde un poco en la arena al bajar
-gsap.to('#palabra', { yPercent: 18, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: true } });
-gsap.to(foto, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: true } });
+// al bajar, la foto se desliza un poco dentro del cuadro
+gsap.to(foto, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '#marco', start: 'top top', end: 'bottom top', scrub: true } });
 
 // títulos de sección
 gsap.utils.toArray('.tit').forEach(t => gsap.from(t, { y: 24, opacity: 0, duration: .7, ease: 'power3.out', scrollTrigger: { trigger: t, start: 'top 88%', once: true } }));
