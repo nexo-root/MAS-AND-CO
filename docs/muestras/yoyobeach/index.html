@@ -13,7 +13,7 @@
    Una cancha de arena en Eldorado (Misiones). La dueña maneja los horarios y su papá atiende la cancha.
    Problema: «acomodar y contestar horarios todo el tiempo». La página lo resuelve a la vista:
    1. Portada: la foto de noche con las luces que se prenden; el nombre sale de la arena; cuántos turnos quedan hoy.
-   2. Turnos: la semana, hora por hora (8 a 24). Se toca la hora (y la de al lado para sumar), el deporte, y se arma el WhatsApp.
+   2. Turnos: la semana, hora por hora (8 a 24). Se toca la hora (y la de al lado para sumar), la modalidad, y se arma el WhatsApp.
    3. Turno fijo: los grupos de todas las semanas, cuota mensual, calendario del mes que se marca solo.
    4. Así lo vería usted: el panel de la dueña (pedidos, pagos y señas, cuotas, cerrar horarios). Guarda en localStorage.
    5. Cierre con WhatsApp; ubicación a confirmar.
@@ -438,7 +438,7 @@ img{-webkit-user-drag:none}
   <div class="portada-arriba">
     <div class="bajada" id="bajada">
       <p class="lugar"><svg class="ico"><use href="#i-lugar"/></svg>Misiones</p>
-      <p>Una cancha de arena para vóley, fútbol y tenis playa. Mirá lo libre y pedí tu turno sin preguntar.</p>
+      <p>Una cancha de beach vóley. Mirá lo libre y pedí tu turno sin preguntar.</p>
     </div>
     <div class="hoy" id="hoy" aria-live="polite">
       <p class="hoy-tit"><span id="hoy-dia">Hoy</span><span class="ej">de ejemplo</span></p>
@@ -448,7 +448,7 @@ img{-webkit-user-drag:none}
     </div>
   </div>
 
-  <h1 class="palabra" id="palabra"><img src="titulo.webp" alt="Yoyobeach" width="1800" height="368"></h1>
+  <h1 class="palabra" id="palabra"><img src="titulo.png" alt="Yoyobeach" width="1226" height="277"></h1>
   <div class="arena-piso"></div>
 </section>
 
@@ -458,7 +458,7 @@ img{-webkit-user-drag:none}
     <div class="turnos-cab">
       <div>
         <h2 class="tit" id="turnos-tit">Elegí día y hora</h2>
-        <p class="sub">Lo libre está a la vista. Tocás la hora, elegís a qué juegan y el mensaje sale escrito.</p>
+        <p class="sub">Lo libre está a la vista. Tocás la hora, elegís cómo juegan y el mensaje sale escrito.</p>
       </div>
       <div class="leyenda" aria-hidden="true"><span><i class="l-libre"></i>Libre</span><span><i class="l-tuyo"></i>Tu turno</span><span><i class="l-ocu"></i>Ocupado</span><span><i class="l-fijo"></i>Grupo fijo</span></div>
     </div>
@@ -474,11 +474,11 @@ img{-webkit-user-drag:none}
       <aside class="ticket" id="ticket" aria-label="Tu turno">
         <h3 id="t-tit">Tu turno</h3>
         <p class="t-cuando" id="t-cuando">Tocá una hora libre de la izquierda.</p>
-        <div class="campo"><span class="lab">¿A qué juegan?</span>
-          <div class="deps" id="deps" role="group" aria-label="Deporte">
-            <button class="dep" data-d="voley" aria-pressed="true"><svg class="ico"><use href="#i-voley"/></svg>Beach vóley</button>
-            <button class="dep" data-d="futbol" aria-pressed="false"><svg class="ico"><use href="#i-futbol"/></svg>Fútbol playa</button>
-            <button class="dep" data-d="tenis" aria-pressed="false"><svg class="ico"><use href="#i-tenis"/></svg>Beach tenis</button>
+        <div class="campo"><span class="lab">¿Cómo juegan?</span>
+          <div class="deps" id="deps" role="group" aria-label="Modalidad">
+            <button class="dep" data-d="voley" aria-pressed="true"><svg class="ico"><use href="#i-voley"/></svg>2 vs 2</button>
+            <button class="dep" data-d="futbol" aria-pressed="false"><svg class="ico"><use href="#i-voley"/></svg>4 vs 4</button>
+            <button class="dep" data-d="tenis" aria-pressed="false"><svg class="ico"><use href="#i-voley"/></svg>Recreativo</button>
           </div>
         </div>
         <div class="campo fila2">
@@ -630,11 +630,11 @@ const PRECIO = { dia: 24000, noche: 30000 }, SENA = 10000;
 const DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 const DCORTO = ['dom','lun','mar','mié','jue','vie','sáb'];
 const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-const DEP = { voley: { n: 'Beach vóley', i: 'i-voley' }, futbol: { n: 'Fútbol playa', i: 'i-futbol' }, tenis: { n: 'Beach tenis', i: 'i-tenis' } };
+const DEP = { voley: { n: '2 vs 2', i: 'i-voley' }, futbol: { n: '4 vs 4', i: 'i-voley' }, tenis: { n: 'Recreativo', i: 'i-voley' } };
 const GRUPOS = [
   { id: 'g1', n: 'Los del lunes',        d: 'futbol', dow: 1, h: 21, cuota: 104000 },
   { id: 'g2', n: 'Las Pumas',            d: 'voley',  dow: 2, h: 20, cuota: 104000 },
-  { id: 'g3', n: 'Tenis playa mixto',    d: 'tenis',  dow: 3, h: 20, cuota: 104000 },
+  { id: 'g3', n: 'Mixto de los miércoles', d: 'tenis',  dow: 3, h: 20, cuota: 104000 },
   { id: 'g4', n: 'Grupo de los jueves',  d: 'voley',  dow: 4, h: 21, cuota: 104000 },
   { id: 'g5', n: 'Los Primos',           d: 'futbol', dow: 5, h: 22, cuota: 104000 },
   { id: 'g6', n: 'Escuelita de vóley',   d: 'voley',  dow: 6, h: 10, cuota: 84000 },
@@ -778,7 +778,7 @@ $('#nombre').addEventListener('input', () => pintarTicket());
 
 function mensaje() {
   const d = fecha(sel.f), nom = $('#nombre').value.trim();
-  return `¡Hola Yoyobeach! Quiero reservar la cancha:\nDía: ${DIAS[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}\nHorario: ${rango(sel.h, sel.len)}${sel.len > 1 ? ' (' + sel.len + ' horas)' : ''}\nDeporte: ${DEP[dep].n}\nSomos: ${somos}` + (nom ? `\nA nombre de: ${nom}` : '') + `\n¿Me lo confirman?`;
+  return `¡Hola Yoyobeach! Quiero reservar la cancha:\nDía: ${DIAS[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}\nHorario: ${rango(sel.h, sel.len)}${sel.len > 1 ? ' (' + sel.len + ' horas)' : ''}\nModalidad: ${DEP[dep].n}\nSomos: ${somos}` + (nom ? `\nA nombre de: ${nom}` : '') + `\n¿Me lo confirman?`;
 }
 function total() { let t = 0; for (let h = sel.h; h < sel.h + sel.len; h++) t += precio(h); return t; }
 function pintarTicket() {
@@ -787,7 +787,7 @@ function pintarTicket() {
   if (!sel) {
     $('#t-tit').textContent = 'Tu turno';
     $('#t-cuando').textContent = 'Tocá una hora libre para empezar.';
-    $('#burbuja').textContent = '¡Hola Yoyobeach! Quiero reservar la cancha:\nDía: …\nHorario: …\nDeporte: ' + DEP[dep].n + '\nSomos: ' + somos;
+    $('#burbuja').textContent = '¡Hola Yoyobeach! Quiero reservar la cancha:\nDía: …\nHorario: …\nModalidad: ' + DEP[dep].n + '\nSomos: ' + somos;
     $('#t-precio').innerHTML = '';
     pedir.setAttribute('aria-disabled', 'true'); pedir.href = '#';
     bt.classList.remove('ver'); document.body.classList.remove('con-turno');
