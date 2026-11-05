@@ -359,8 +359,12 @@ img{display:block;max-width:100%}
   .hoy-num b{font-size:60px}
   .hoy-num{margin:0 0 8px}
   .hoy-ver{margin-top:10px}
-  .seccion{padding:48px 0}
+  .seccion{padding:36px 0}
   .turnos{padding-top:20px}
+  /* 5/11 celu más corto (Felipe: «se hace muy larga, no es rápido ni eficaz»): fuera lo que no ayuda a pedir o a administrar */
+  #turnos .sub,.burbuja,.burbuja-tit,.fijo-foto,.fijo-sec .como,.mes,.panel-cab .sub,.antes{display:none}
+  #turnos #horas .hora.paso{display:none}
+  #turnos #horas:not(:has(.hora:not(.paso)))::after{content:"Hoy ya no quedan horarios. Elegí otro día.";grid-column:1/-1;font-size:14px;color:var(--gris);padding:8px 0}
   .leyenda{gap:6px 12px;font-size:12.5px}
   .dias{scroll-padding-left:var(--lado);display:flex;overflow-x:auto;gap:6px;margin:0 calc(var(--lado) * -1);padding:0 var(--lado) 4px;scrollbar-width:none;scroll-snap-type:x proximity}
   .dias::-webkit-scrollbar{display:none}
@@ -374,26 +378,24 @@ img{display:block;max-width:100%}
   .horas-cab p{font-size:13px}
   .ticket{padding:18px 16px 16px;border-radius:20px}
   .ticket h3{font-size:30px}
-  .dep{font-size:12.5px;padding:8px 2px}
-  .burbuja{font-size:14px}
-  .fijo-foto{min-height:220px;border-radius:20px}
-  .mes-grilla .c{height:30px}
+  .dep{flex-direction:row;justify-content:center;gap:6px;font-size:13px;padding:10px 4px}
+  .dep .ico{font-size:18px}
   .como{margin:18px 0 20px}
   .como li{font-size:15px}
   .plan{padding:12px 2px;gap:10px}
   .plan b{font-size:16px}.plan small{font-size:13px}
   .plan .pr{font-size:24px}
   .fijo-form{gap:10px}
-  .antes p{grid-template-columns:62px 1fr;font-size:15px}
   .tab-cab{padding:14px 16px}
   .resumen{gap:18px;width:100%}
   .resumen b{font-size:28px}
   .col{padding:16px 16px 20px}
-  .res{grid-template-columns:40px 1fr;row-gap:6px}
+  .res{grid-template-columns:30px minmax(0,1fr) auto;gap:8px;padding:7px 0}
+  .res .rh{font-size:22px}
+  .seg button{padding:0 8px;font-size:12.5px}
   .pedido{grid-template-columns:1fr}
   .pedido .acc .mini.si{flex:1;justify-content:center}
-  .res .seg{grid-column:2}
-  .cierre{min-height:540px}
+  .cierre{min-height:420px}
   .cierre-fila .btn{width:100%}
   .pie{display:block;padding:22px var(--lado) 90px;font-size:13px}
   .pie p+p{margin-top:8px}
@@ -926,7 +928,7 @@ function pintarPanel(animar) {
     } else if (r) {
       n++; const v = pagoDe(k, h), pr = precio(h);
       if (v === 'pagado') cob += pr; else if (v === 'sena') { cob += SENA; fal += pr - SENA; } else fal += pr;
-      filas += `<div class="res${paso ? ' paso' : ''}"><span class="rh">${h}</span><span class="rn"><b>${r.nom}</b><small>${ico(DEP[r.dep].i)}${DEP[r.dep].n} · ${r.n}</small></span><span class="seg" data-k="${k}:${h}" role="group" aria-label="Pago de las ${h}"><button data-v="nada" aria-pressed="${v === 'nada'}">Sin pagar</button><button data-v="sena" aria-pressed="${v === 'sena'}">Seña</button><button data-v="pagado" aria-pressed="${v === 'pagado'}">Pagado</button></span></div>`;
+      filas += `<div class="res${paso ? ' paso' : ''}"><span class="rh">${h}</span><span class="rn"><b>${r.nom}</b><small>${ico(DEP[r.dep].i)}${DEP[r.dep].n} · ${r.n}</small></span><span class="seg" data-k="${k}:${h}" role="group" aria-label="Pago de las ${h}"><button data-v="nada" aria-pressed="${v === 'nada'}">Debe</button><button data-v="sena" aria-pressed="${v === 'sena'}">Seña</button><button data-v="pagado" aria-pressed="${v === 'pagado'}">Pagó</button></span></div>`;
     } else if (s.t === 'cerrado') {
       filas += `<div class="res"><span class="rh">${h}</span><span class="rn"><b>Cerrado</b><small>${ico('i-candado')}${s.m}</small></span></div>`;
     }
