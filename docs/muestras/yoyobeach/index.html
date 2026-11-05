@@ -63,23 +63,24 @@ img{display:block;max-width:100%}
 .btn-chico{min-height:40px;padding:0 16px;font-size:14.5px}
 .barra .btn{min-height:42px}
 
+.barra .marca{transition:opacity .3s}.barra:not(.llena) .marca{opacity:0;pointer-events:none}
 /* ── portada ── */
 .portada{position:relative;height:100vh;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:var(--noche);color:var(--crema)}
 .portada picture,.portada .foto{position:absolute;inset:0;width:100%;height:100%}
 .portada .foto{object-fit:cover;object-position:50% 38%}
 .velo{position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(12,19,27,.75) 0%,rgba(12,19,27,.1) 26%,rgba(12,19,27,0) 52%,rgba(12,19,27,.35) 72%,rgba(12,19,27,.6) 84%)}
+  linear-gradient(180deg,rgba(12,19,27,.8) 0%,rgba(12,19,27,.25) 30%,rgba(12,19,27,0) 48%,rgba(12,19,27,.45) 70%,rgba(12,19,27,.88) 100%)}
 .apagon{position:absolute;inset:0;background:#05080C;opacity:0;pointer-events:none}
 html.entra .apagon{opacity:.9}
-.arena-piso{position:absolute;left:0;right:0;bottom:0;height:calc(var(--palabra) * .3);background:linear-gradient(180deg,rgba(243,232,210,0) 0%,rgba(243,232,210,.85) 55%,var(--arena-c) 100%);z-index:3;pointer-events:none}
+.arena-piso{position:absolute;left:0;right:0;bottom:-1px;height:clamp(28px,4vw,56px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 34 C 180 8 360 8 560 26 S 900 52 1100 30 S 1340 6 1440 22 V60 H0Z' fill='%23F3E8D2'/%3E%3C/svg%3E") bottom/100% 100% no-repeat;z-index:3;pointer-events:none}
 .portada{--palabra:min(15.5vw,236px)}
-.palabra{position:absolute;left:0;right:0;bottom:calc(var(--palabra) * .2);z-index:2;margin-top:0;text-align:center;font-family:var(--disp);font-weight:900;
+.palabra{position:absolute;left:0;right:0;top:calc(var(--barra) + 2vh);z-index:2;margin-top:0;text-align:center;font-family:var(--disp);font-weight:900;
   font-size:var(--palabra);line-height:.8;letter-spacing:.01em;color:var(--arena);white-space:nowrap;overflow:hidden;padding-top:.16em;padding-bottom:.08em;
   text-shadow:0 .02em .1em rgba(0,0,0,.25)}
 .palabra span{display:inline-block}
 .palabra{overflow:visible;line-height:0}
-.palabra img{display:block;margin:0 auto;width:min(84vw,1080px);height:auto;filter:drop-shadow(0 10px 28px rgba(0,0,0,.5))}
-.portada-arriba{position:absolute;z-index:4;left:0;right:0;top:calc(var(--barra) + 18px);display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:0 var(--lado)}
+.palabra img{display:block;margin:0 auto;width:min(76vw,980px);height:auto;filter:drop-shadow(0 10px 28px rgba(0,0,0,.5))}
+.portada-arriba{position:absolute;z-index:4;left:0;right:0;bottom:calc(clamp(28px,4vw,56px) + 26px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:0 var(--lado)}
 .bajada{max-width:440px}
 .bajada p{font-size:clamp(17px,1.5vw,21px);line-height:1.4;font-weight:500;text-shadow:0 1px 14px rgba(0,0,0,.5)}
 .bajada .lugar{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;opacity:.85;margin-bottom:10px}
@@ -340,10 +341,9 @@ html.entra .apagon{opacity:.9}
   .barra .btn{min-height:40px;padding:0 16px;font-size:15px}
   .portada{min-height:560px;--palabra:21.6vw}
   .portada .foto{object-position:50% 40%}
-  .palabra{bottom:46px}
+  .palabra{top:calc(var(--barra) + 14px)}
   .palabra img{width:92vw}
-  .arena-piso{height:calc(var(--palabra) * .34 + 38px);background:linear-gradient(180deg,rgba(243,232,210,0) 0%,rgba(243,232,210,.85) 30%,var(--arena-c) 52%)}
-  .portada-arriba{flex-direction:column;gap:14px;top:calc(var(--barra) + 10px)}
+  .portada-arriba{flex-direction:column;align-items:stretch;gap:14px;bottom:44px}
   .bajada p{font-size:16px}
   .bajada .lugar{margin-bottom:4px;font-size:13px}
   .hoy{padding:14px 16px;border-radius:18px}
@@ -1004,7 +1004,7 @@ const prender = () => {
     .to('#apagon', { opacity: .35, duration: .05 }, '+=.12').to('#apagon', { opacity: .7, duration: .1 })
     .to('#apagon', { opacity: 0, duration: 1.1, ease: 'power1.out' }, '+=.08')
     .fromTo(foto, { scale: 1.08 }, { scale: 1, duration: 2.6, ease: 'power2.out' }, 0)
-    .fromTo(letras, { yPercent: 60, opacity: 0, scale: .94 }, { yPercent: 0, opacity: 1, scale: 1, duration: 1.1, ease: 'power4.out' }, .7)
+    .fromTo(letras, { yPercent: -30, opacity: 0, scale: .94 }, { yPercent: 0, opacity: 1, scale: 1, duration: 1.1, ease: 'power4.out' }, .7)
     .fromTo('#bajada', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .6 }, 1.1)
     .fromTo('#hoy', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .7 }, 1.25)
     .add(() => { const el = $('#hoy-n'), n = +el.dataset.n, o = { x: 0 }; gsap.to(o, { x: n, duration: .9, ease: 'power2.out', onUpdate: () => el.textContent = Math.round(o.x) }); }, 1.4)
