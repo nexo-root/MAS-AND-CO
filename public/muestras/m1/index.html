@@ -8,7 +8,7 @@
 <link rel="icon" href="fotos/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="fotos/logo-grande.webp">
+<link rel="preload" as="image" href="fotos/logo-grande.webp" imagesrcset="fotos/logo-grande-480.webp 480w, fotos/logo-grande-720.webp 720w, fotos/logo-grande.webp 1000w" imagesizes="(max-width:560px) 60vw, 460px">
 <style>
 :root{--negro:#09090b;--grafito:#111115;--chapa:#18191e;--chapa2:#202228;--borde:rgba(255,255,255,.09);--borde2:rgba(255,255,255,.16);
 --texto:#f3f4f6;--texto2:#a9adb6;--texto3:#9499a2;--rojo:#e3131c;--rojo2:#ff3d46;--wa:#25d366;
@@ -409,6 +409,7 @@ html{touch-action:manipulation}
 body{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;cursor:default}
 input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:text;cursor:text}
 img{-webkit-user-drag:none}
+.mapa{background-size:cover;background-position:center;cursor:pointer}.mapa-pin{position:absolute;width:22px;height:22px;border-radius:50% 50% 50% 0;background:var(--rojo);border:3px solid #fff;transform:translate(-50%,-100%) rotate(-45deg);box-shadow:0 6px 14px rgba(0,0,0,.45)}.mapa-ver{position:absolute;right:12px;bottom:12px;padding:9px 14px;border-radius:999px;background:rgba(9,9,11,.82);color:var(--texto);font:inherit;font-weight:700;font-size:.9rem;border:1px solid rgba(255,255,255,.18)}.mapa-osm{position:absolute;left:8px;bottom:6px;font-size:10px;color:#333;background:rgba(255,255,255,.7);padding:1px 5px;border-radius:4px}
 </style>
 </head>
 <body class="entra">
@@ -438,11 +439,11 @@ img{-webkit-user-drag:none}
 
 <main>
 <section class="portada" id="inicio" aria-label="Portada">
-  <div class="foto"><!-- foto de fondo: Danila Rusanov, Pexels (licencia libre) --><img src="fotos/fondo-1600.webp" srcset="fotos/fondo-1000.webp 1000w, fotos/fondo-1600.webp 1600w, fotos/fondo-2400.webp 2400w" sizes="100vw" alt="" fetchpriority="high"><i class="apagado"></i></div>
-  <div class="persiana" aria-hidden="true"><div class="chapas"></div><img class="logo-p" src="fotos/logo-grande.webp" alt="" fetchpriority="high"><div class="zocalo"><i class="manija"></i></div><i class="oscuro"></i></div>
+  <div class="foto"><!-- foto de fondo: Danila Rusanov, Pexels (licencia libre) --><img src="fotos/fondo-1600.webp" srcset="fotos/fondo-1000.webp 1000w, fotos/fondo-1200.webp 1200w, fotos/fondo-1600.webp 1600w, fotos/fondo-2400.webp 2400w" sizes="100vw" alt="" fetchpriority="high"><i class="apagado"></i></div>
+  <div class="persiana" aria-hidden="true"><div class="chapas"></div><img class="logo-p" src="fotos/logo-grande.webp" srcset="fotos/logo-grande-480.webp 480w, fotos/logo-grande-720.webp 720w, fotos/logo-grande.webp 1000w" sizes="(max-width:560px) 60vw, 460px" alt="" fetchpriority="high"><div class="zocalo"><i class="manija"></i></div><i class="oscuro"></i></div>
   <div class="tubos" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="portada-texto">
-    <div class="logo-w"><img src="fotos/logo-grande.webp" alt="M1 Pintura y Carrocería" width="1000" height="675" fetchpriority="high"><i></i></div>
+    <div class="logo-w"><img src="fotos/logo-grande.webp" srcset="fotos/logo-grande-480.webp 480w, fotos/logo-grande-720.webp 720w, fotos/logo-grande.webp 1000w" sizes="(max-width:560px) 60vw, 460px" alt="M1 Pintura y Carrocería" width="1000" height="675" fetchpriority="high"><i></i></div>
     <h1><span class="l"><span>Tu auto vuelve</span></span><span class="l"><span><em>como antes del golpe.</em></span></span></h1>
     <p class="bajada">Pintura y carrocería, sacabollos, cristales, cerraduras y estética del auto, en Eldorado y Montecarlo.</p>
     <div class="acciones"><a class="btn btn-rojo" href="#cotizar"><span class="txt-pc">Cotizar mi arreglo</span><span class="txt-cel">Cotizar</span> <svg><use href="#i-flecha"/></svg></a><a class="btn btn-borde" id="hero-foto" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span class="txt-pc">Mandanos una foto</span><span class="txt-cel">Mandar foto</span></a></div>
@@ -608,12 +609,13 @@ img{-webkit-user-drag:none}
     <h2 class="tit rev-t">Todo lo que el auto necesita, <em>en un solo lugar.</em></h2>
     <p class="bajada">Tocá un servicio y te armamos la consulta.</p>
     <div class="bento">
-      <button class="serv grande rev" data-servicio="chapa,paragolpe"><img src="fotos/s-chapa-720.webp" srcset="fotos/s-chapa-720.webp 720w, fotos/s-chapa-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Auto encintado y listo para pintar" loading="lazy"><h3>Chapa y pintura</h3><p>Paragolpes, llantas, chapa y pintura.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="bollo,granizo"><img src="fotos/s-bollo-720.webp" alt="Capó con daños por granizo bajo la luz de la lámpara de sacabollos" loading="lazy"><h3>Sacabollos y granizo</h3><p>Bollos de estacionamiento, puertazos y daños por granizo. Si la pintura está sana, se saca sin pintar.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="siniestro" data-seguro="1"><img src="fotos/s-siniestro-720.webp" alt="Peugeot 308 con el frente destruido por un choque" loading="lazy"><h3>Autos siniestrados</h3><p>Trabajamos con Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="cristal,cerradura"><img src="fotos/s-cristales-720.webp" alt="Auto con la luneta rota" loading="lazy"><h3>Cristales y cerraduras</h3><p>Cambio de cristales, cerraduras y levantacristales.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv rev" data-servicio="opticas,ceramico"><img src="fotos/s-pulido-720.webp" alt="Capó negro pulido con el reflejo de la lámpara" loading="lazy"><h3>Pulido y cerámico</h3><p>Pulido de ópticas y tratamiento cerámico en autos y camionetas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
-      <button class="serv ancho rev" data-servicio="tapizado,lavado,interior,polarizado,llantas"><img src="fotos/s-estetica-720.webp" srcset="fotos/s-estetica-720.webp 720w, fotos/s-estetica-1280.webp 1280w" sizes="(max-width:900px) 100vw, 50vw" alt="Camioneta azul recién lavada en la puerta del taller" loading="lazy"><h3>Tapizados, estética y llantas</h3><p>Tapizados, lavado integral y premium, limpieza interior, polarizado y diamantado de llantas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv grande rev" data-servicio="chapa,paragolpe"><img src="fotos/s-chapa-720.webp" srcset="fotos/s-chapa-400.webp 400w, fotos/s-chapa-720.webp 720w, fotos/s-chapa-1280.webp 1280w" sizes="(max-width:560px) 240px, (max-width:900px) 100vw, 50vw" alt="Auto encintado y listo para pintar" loading="lazy"><h3>Chapa y pintura</h3><p>Paragolpes, llantas, chapa y pintura.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="bollo,granizo"><img src="fotos/s-bollo-720.webp" srcset="fotos/s-bollo-400.webp 400w, fotos/s-bollo-720.webp 720w" sizes="(max-width:560px) 240px, (max-width:900px) 50vw, 25vw" alt="Capó con daños por granizo bajo la luz de la lámpara de sacabollos" loading="lazy"><h3>Sacabollos y granizo</h3><p>Bollos de estacionamiento, puertazos y daños por granizo. Si la pintura está sana, se saca sin pintar.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="siniestro" data-seguro="1"><img src="fotos/s-siniestro-720.webp" srcset="fotos/s-siniestro-400.webp 400w, fotos/s-siniestro-720.webp 720w" sizes="(max-width:560px) 240px, (max-width:900px) 50vw, 25vw" alt="Peugeot 308 con el frente destruido por un choque" loading="lazy"><h3>Autos siniestrados</h3><p>Trabajamos con Sancor, Triunfo, SMG, San Cristóbal, Berkley y Paraná.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="cristal,cerradura"><img src="fotos/s-cristales-720.webp" srcset="fotos/s-cristales-400.webp 400w, fotos/s-cristales-720.webp 720w" sizes="(max-width:560px) 240px, (max-width:900px) 50vw, 25vw" alt="Auto con la luneta rota" loading="lazy"><h3>Cristales y cerraduras</h3><p>Cambio de cristales, cerraduras y levantacristales.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="opticas,ceramico"><img src="fotos/s-pulido-720.webp" srcset="fotos/s-pulido-400.webp 400w, fotos/s-pulido-720.webp 720w" sizes="(max-width:560px) 240px, (max-width:900px) 50vw, 25vw" alt="Capó negro pulido con el reflejo de la lámpara" loading="lazy"><h3>Pulido y cerámico</h3><p>Pulido de ópticas y tratamiento cerámico en autos y camionetas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="tapizado"><img src="fotos/s-tapizado-720.webp" srcset="fotos/s-tapizado-400.webp 400w, fotos/s-tapizado-720.webp 720w" sizes="(max-width:560px) 240px, (max-width:900px) 50vw, 25vw" alt="Dos butacas de Hilux recién tapizadas en tela gris" loading="lazy"><h3>Tapizados</h3><p>Reparación y tapizado de butacas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
+      <button class="serv rev" data-servicio="lavado,interior,polarizado,llantas"><img src="fotos/s-estetica-720.webp" srcset="fotos/s-estetica-400.webp 400w, fotos/s-estetica-720.webp 720w, fotos/s-estetica-1280.webp 1280w" sizes="(max-width:560px) 240px, (max-width:900px) 50vw, 25vw" alt="Camioneta azul recién lavada en la puerta del taller" loading="lazy"><h3>Estética y llantas</h3><p>Lavado, limpieza interior, polarizado y llantas.</p><span class="ir">Cotizar <svg><use href="#i-flecha"/></svg></span></button>
       <a class="serv ancho otro rev" id="otra-cosa" href="#" target="_blank" rel="noopener"><h3>¿Es otra cosa?</h3><p>Contanos qué le pasó al auto y te decimos si lo hacemos.</p><span class="ir">Escribir por WhatsApp <svg><use href="#i-flecha"/></svg></span></a>
     </div>
   </div>
@@ -930,7 +932,7 @@ const CASOS = [
   ['chevrolet', 'Chevrolet', 'Golpe en el frente', 'Chapa y pintura del frente.'],
   ['tremor', 'Ford Tremor', 'Daños por granizo', 'Reparación de granizo y lavado premium.']
 ];
-const fotoCaso = (n, l) => `src="fotos/c-${n}-${l}-720.webp" srcset="fotos/c-${n}-${l}-720.webp 720w, fotos/c-${n}-${l}-1080.webp 1080w" sizes="(max-width:640px) 84vw, (max-width:980px) 50vw, 33vw"`;
+const fotoCaso = (n, l) => `src="fotos/c-${n}-${l}-720.webp" srcset="fotos/c-${n}-${l}-720.webp 720w, fotos/c-${n}-${l}-1080.webp 1080w" sizes="(max-width:640px) 240px, (max-width:980px) 50vw, 33vw"`;
 $('#casos').innerHTML = CASOS.map(([n, t, g, d]) => `<button type="button" class="caso" aria-pressed="false"><span class="caso-foto"><img ${fotoCaso(n, 'a')} alt="${t} antes de la reparación" loading="lazy" decoding="sync" width="720" height="540"><b class="chip-c">Antes</b><span class="caso-d"><span class="caso-d2"><img ${fotoCaso(n, 'd')} alt="${t} después de la reparación" loading="lazy" decoding="sync" width="720" height="540"><b class="chip-c blanco">Después</b></span></span><i class="raya"></i></span><span class="caso-txt"><span class="caso-tag">${g}</span><h3>${t}</h3><p>${d}</p><span class="caso-ver">Ver cómo quedó</span></span></button>`).join('');
 const verCaso = (c, si) => { c.classList.toggle('hecho', si); c.setAttribute('aria-pressed', si); $('.caso-ver', c).textContent = si ? 'Ver cómo llegó' : 'Ver cómo quedó'; };
 // las fotos se bajan y decodifican antes de llegar: el cambio nunca espera una imagen
@@ -948,10 +950,12 @@ visor.addEventListener('click', () => visor.close());
 
 /* ---------- talleres ---------- */
 // con el pin, el mapa marca el taller y «Cómo llegar» abre el recorrido; sin pin, se pide la ubicación por WhatsApp
-$('#lista-talleres').innerHTML = M1.talleres.map(t => `<article class="taller"><div class="mapa" data-q="${t.pin || t.q}"></div><div class="datos"><h3>${t.n}</h3><p>Pintura y carrocería automotriz</p><p>${t.dir || 'Escribinos y te pasamos la ubicación exacta.'}</p><p>${M1.horario}</p><div class="acciones"><a class="btn btn-wa" href="${wa(t.wa, 'Hola, M1 ' + t.n + '. Quería hacer una consulta.')}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Escribir</a>${t.pin
+const PIN = { eldorado: [52.2, 50.0], montecarlo: [33.9, 50.0] };
+$('#lista-talleres').innerHTML = M1.talleres.map(t => `<article class="taller"><div class="mapa" data-q="${t.pin || t.q}"${t.pin ? ` style="background-image:url(fotos/mapa-${t.id}.webp)"` : ''}>${t.pin ? `<i class="mapa-pin" style="left:${PIN[t.id][0]}%;top:${PIN[t.id][1]}%"></i><button type="button" class="mapa-ver">Ver mapa</button><span class="mapa-osm">© OpenStreetMap</span>` : ''}</div><div class="datos"><h3>${t.n}</h3><p>Pintura y carrocería automotriz</p><p>${t.dir || 'Escribinos y te pasamos la ubicación exacta.'}</p><p>${M1.horario}</p><div class="acciones"><a class="btn btn-wa" href="${wa(t.wa, 'Hola, M1 ' + t.n + '. Quería hacer una consulta.')}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Escribir</a>${t.pin
   ? `<a class="btn btn-borde" href="https://www.google.com/maps/dir/?api=1&destination=${t.pin}" target="_blank" rel="noopener">Cómo llegar</a>`
   : `<a class="btn btn-borde" href="${wa(t.wa, 'Hola, M1. ¿Me pasan la ubicación del taller de ' + t.n + '?')}" target="_blank" rel="noopener">Pedir ubicación</a>`}</div></div></article>`).join('');
 const mapaOjo = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; e.target.innerHTML = `<iframe title="Mapa de ${e.target.dataset.q}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(e.target.dataset.q)}&z=${/^-?\d/.test(e.target.dataset.q) ? 16 : 13}&output=embed"></iframe>`; mapaOjo.unobserve(e.target); }), { rootMargin: '400px' });
-$$('.taller .mapa').forEach(m => mapaOjo.observe(m));
+// el mapa de Google pesa unos 450 KB por taller: se carga recién cuando lo tocan
+$$('.taller .mapa').forEach(m => { const b = m.querySelector('.mapa-ver'); if (b) m.addEventListener('click', () => { m.style.backgroundImage = ''; mapaOjo.observe(m); }, { once: true }); else mapaOjo.observe(m); });
 </script>
 </body></html>
