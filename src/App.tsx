@@ -224,6 +224,37 @@ function Inicio() {
         </div>
       </section>
 
+      {/* Además de la página (7/11/2026). Mas & Co ya hace sistemas (los paneles de Yoyobeach y Festus) y no se veía.
+          Fichas con una línea de estado en el color vivo: el servicio andando, no una lista de palabras. */}
+      <section id="ademas">
+        <div className="eje">
+          <h2 className="titulo">Además de la página.</h2>
+          <p className="seccion-bajada">La página es la base. Si tu negocio lo necesita, le sumamos herramientas para que trabaje solo.</p>
+          <div className="extras">
+            <article className="extra">
+              <p className="extra-rotulo">La base</p>
+              <h3>Tu página web</h3>
+              <p>La que aparece en Google y adonde mandás a la gente desde Instagram, con tu dominio.</p>
+              <p className="extra-estado"><i></i>Publicada · tunegocio.com.ar</p>
+              <a className="extra-ir" href="/casos/">Ver ejemplos</a>
+            </article>
+            <article className="extra">
+              <p className="extra-rotulo">Se suma</p>
+              <h3>Turnos, reservas y cuotas</h3>
+              <p>La gente ve qué hay libre y pide su lugar; vos lo confirmás desde el celular. También grupos fijos y cuotas del mes.</p>
+              <p className="extra-estado"><i></i>Hoy · 4 turnos libres</p>
+              <a className="extra-ir" href="/muestras/yoyobeach/#panel">Ver un panel de ejemplo</a>
+            </article>
+            <article className="extra">
+              <p className="extra-rotulo">Se suma</p>
+              <h3>Asistente de WhatsApp con IA</h3>
+              <p>Contesta precios, horarios y disponibilidad a cualquier hora, y te pasa las consultas de los que quieren comprar.</p>
+              <p className="extra-estado"><i></i>Respondió a las 23:41</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="trabajos">
         <div className="eje">
           <h2 className="titulo">Publicado y andando.</h2>

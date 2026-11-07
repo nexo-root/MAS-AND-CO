@@ -161,6 +161,7 @@ writeFileSync(
 - Pago: un solo pago, al final, cuando se ve la página terminada en un enlace de prueba. Si no gusta, no se paga.
 - Mantenimiento opcional (dominio, alojamiento, respaldos, soporte): se cotiza junto con la página, primer mes gratis.
 - El dominio se registra a nombre del cliente.
+- Además de la página: turnos, reservas y cuotas con un panel para el dueño, y asistente de WhatsApp con IA que contesta precios, horarios y disponibilidad.
 - Casos reales (${ORIGEN}/casos/): Crédito Finan, consultora de crédito (creditofinan.com, en línea desde julio de 2026) y El Arbolito, alojamiento en Pehuén-Có (pehuencoalquileres.com, en línea desde agosto de 2026).
 
 ## Páginas
