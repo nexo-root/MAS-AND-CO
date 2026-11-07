@@ -209,7 +209,7 @@ function Inicio() {
             <div>
               <p>
                 Trabajamos para todo el país, por WhatsApp. Nos contás qué necesitás, lo armamos,
-                lo ves terminado en tu celular, y recién ahí pagás el saldo. Del otro lado
+                lo ves terminado en tu celular, y recién ahí lo pagás. Del otro lado
                 contesta una persona, no un formulario.
               </p>
               <p className="enlaces">
@@ -226,10 +226,7 @@ function Inicio() {
 
       <section id="trabajos">
         <div className="eje">
-          <h2 className="titulo">Sitios publicados y andando.</h2>
-          <Obra id="arbolito" url="https://pehuencoalquileres.com/"
-                titulo="El Arbolito" rubro="Alojamientos · Pehuén-Có"
-                bajada="Cuatro alojamientos frente al mar. Dominio propio y consulta directa por WhatsApp." />
+          <h2 className="titulo">Publicado y andando.</h2>
           <Obra id="creditofinan" url="https://creditofinan.com/"
                 titulo="Crédito Finan" rubro="Créditos"
                 bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
@@ -238,7 +235,6 @@ function Inicio() {
           <p className="enlaces">
             <a href="/casos/">Ejemplos de todos los rubros</a>
             <a href="/caso/credito-finan/">El caso de Crédito Finan</a>
-            <a href="/caso/el-arbolito/">El caso de El Arbolito</a>
           </p>
         </div>
       </section>
@@ -257,6 +253,19 @@ function Inicio() {
         </div>
       </section>
 
+      {/* Así trabajamos (7/11/2026): los mismos pasos del video del proceso, en filas grandes para leer de un vistazo. */}
+      <section id="como">
+        <div className="eje">
+          <h2 className="titulo">Así trabajamos.</h2>
+          <ol className="pasos">
+            <li><span>01</span><div><b>Diseños para elegir</b><p>Armamos diseños para tu negocio y elegís el que más te gusta.</p></div></li>
+            <li><span>02</span><div><b>Presupuesto en el día</b><p>Te pasamos el precio por WhatsApp antes de arrancar, y no cambia después.</p></div></li>
+            <li><span>03</span><div><b>Lista en días</b><p>La ves andando en tu celular, en un link de prueba, con tus fotos y tus datos.</p></div></li>
+            <li><span>04</span><div><b>Un solo pago, al final</b><p>Si te gusta, la pagás y se publica con tu dominio. Las consultas te llegan a tu correo y a tu WhatsApp.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
       {/* El precio va acá y no en la portada: leido despues de cuatro trabajos
           es lo que sale hacer eso, y leido antes es un numero suelto que el
           visitante compara contra seguir con el Instagram, que es gratis. */}
@@ -265,12 +274,12 @@ function Inicio() {
           <h2 className="titulo">Lo que sale una página web.</h2>
           <div className="placa">
             <div><b>Por presupuesto</b><span>Te lo pasamos en el día</span></div>
-            <div><b>50% y 50%</b><span>Al arrancar y al verlo</span></div>
+            <div><b>Un solo pago</b><span>Al final, cuando la ves</span></div>
             <div><b>En días</b><span>De principio a fin</span></div>
           </div>
           <p className="seccion-bajada">
-            Pagás la mitad al arrancar y la otra mitad recién cuando la ves
-            terminada. Si no te gusta, la segunda mitad no la pagás.{" "}
+            Te la armamos completa y la ves andando en un link de prueba. Si te gusta, la
+            pagás en un solo pago y se publica con tu dominio. Si no te gusta, no pagás.{" "}
             <a href="/precios/">Ver qué incluye y qué cotiza el mercado.</a>
           </p>
         </div>

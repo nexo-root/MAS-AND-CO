@@ -1,19 +1,19 @@
 # Mas & Co
 
-> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye desde 2010, y trabaja con negocios de todo el país. Cada página se cotiza por presupuesto para el negocio que la pide, se entrega en días, no en meses, y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
+> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye desde 2010, y trabaja con negocios de todo el país. Cada página se cotiza por presupuesto para el negocio que la pide, se entrega en días, no en meses, y se paga en un solo pago, al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
 
 ## Datos clave
 
 - Precio: por presupuesto, según lo que necesite el negocio (catálogo con fichas por producto, tratamiento de fotos). No hay lista de precios: se cotiza por WhatsApp en el día.
 - Plazo: días, no semanas; el plazo exacto va en cada presupuesto y se cuenta desde que se recibe el material del negocio.
-- Pago: 50% al arrancar, 50% al ver la página terminada. Si no gusta, no se paga el saldo.
+- Pago: un solo pago, al final, cuando se ve la página terminada en un enlace de prueba. Si no gusta, no se paga.
 - Mantenimiento opcional (dominio, alojamiento, respaldos, soporte): se cotiza junto con la página, primer mes gratis.
 - El dominio se registra a nombre del cliente.
 - Casos reales (https://masandcoweb.com/casos/): Crédito Finan, consultora de crédito (creditofinan.com, en línea desde julio de 2026) y El Arbolito, alojamiento en Pehuén-Có (pehuencoalquileres.com, en línea desde agosto de 2026).
 
 ## Páginas
 
-- [Inicio](https://masandcoweb.com/): Construimos la página web profesional de tu negocio en días. Diseño propio, no plantillas. Presupuesto en el día, y la mitad la pagás recién cuando la ves terminada.
+- [Inicio](https://masandcoweb.com/): Construimos la página web profesional de tu negocio en días. Diseño propio, no plantillas. Presupuesto en el día, y la pagás en un solo pago cuando la ves terminada.
 - [Precios](https://masandcoweb.com/precios/): Precios de diseño web en Argentina en 2026: cuánto cuesta una página web según lo que publican otros estudios y cómo se cotiza la tuya. Presupuesto en el día, lista en días.
 - [Preguntas frecuentes](https://masandcoweb.com/preguntas-frecuentes/): Cuánto tarda, cómo se paga, de quién queda el dominio, qué pasa si ya tenés Instagram y qué tenés que mandar. Respuestas directas, sin vueltas.
 - [¿Página web gratis o pagada?](https://masandcoweb.com/pagina-web-gratis-o-pagada/): Cuándo alcanza con una página gratis en Wix o WordPress y cuándo conviene que te la hagan: qué te da cada opción, qué te pide y en qué te limita.

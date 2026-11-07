@@ -36,7 +36,7 @@ export function Quienes() {
             automatizaciones con los que un negocio vende y atiende. Y
             trabajamos distinto a una agencia grande: nos cuenta qué necesita
             por WhatsApp, lo armamos con sus fotos y su información, y lo ve
-            terminado en su celular antes de pagar el saldo. Del otro lado
+            terminado en su celular antes de pagarlo. Del otro lado
             contesta una persona, no un formulario.
           </p>
           <h2>Lo que ya hicimos</h2>
@@ -114,9 +114,9 @@ export function Terminos() {
           <h2>4. Presupuestos y pagos</h2>
           <p>
             Los precios se expresan en pesos argentinos y los presupuestos
-            tienen una validez de 7 días. Los trabajos se abonan 50% al
-            comenzar y 50% contra entrega, una vez que el cliente vio el
-            trabajo terminado. El mantenimiento es un abono mensual que cubre
+            tienen una validez de 7 días. Los trabajos se abonan en un solo pago
+            contra entrega, una vez que el cliente vio el trabajo terminado
+            en un enlace de prueba. El mantenimiento es un abono mensual que cubre
             dominio, alojamiento, respaldos y soporte; si se interrumpe, el
             sitio puede salir de línea y el servicio puede retomarse cuando el
             cliente lo decida.
@@ -277,7 +277,7 @@ export function Contacto() {
           <ol>
             <li>Te preguntamos de qué es tu negocio y qué necesitás que haga la página.</li>
             <li>Te mostramos ejemplos de tu rubro y te pasamos el presupuesto por escrito, en el día.</li>
-            <li>Si te sirve, arrancamos con la mitad. La otra mitad la pagás cuando ves la página terminada, y si no te gusta, no la pagás.</li>
+            <li>Si te sirve, la armamos completa y la ves andando en un link de prueba. La pagás en un solo pago cuando la ves terminada, y si no te gusta, no la pagás.</li>
           </ol>
 
           <h2>Qué conviene tener a mano</h2>

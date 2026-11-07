@@ -152,13 +152,13 @@ writeFileSync(
   join(DOCS, "llms.txt"),
   `# Mas & Co
 
-> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye desde 2010, y trabaja con negocios de todo el país. Cada página se cotiza por presupuesto para el negocio que la pide, se entrega en días, no en meses, y se paga 50% al arrancar y 50% al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
+> Agencia de diseño y desarrollo de páginas web para negocios en Argentina. Es la rama de tecnología del grupo Mas (CMD y Mas & Sons), una familia que construye desde 2010, y trabaja con negocios de todo el país. Cada página se cotiza por presupuesto para el negocio que la pide, se entrega en días, no en meses, y se paga en un solo pago, al verla terminada. Diseño propio, no plantillas. Todo el proceso es por WhatsApp.
 
 ## Datos clave
 
 - Precio: por presupuesto, según lo que necesite el negocio (catálogo con fichas por producto, tratamiento de fotos). No hay lista de precios: se cotiza por WhatsApp en el día.
 - Plazo: días, no semanas; el plazo exacto va en cada presupuesto y se cuenta desde que se recibe el material del negocio.
-- Pago: 50% al arrancar, 50% al ver la página terminada. Si no gusta, no se paga el saldo.
+- Pago: un solo pago, al final, cuando se ve la página terminada en un enlace de prueba. Si no gusta, no se paga.
 - Mantenimiento opcional (dominio, alojamiento, respaldos, soporte): se cotiza junto con la página, primer mes gratis.
 - El dominio se registra a nombre del cliente.
 - Casos reales (${ORIGEN}/casos/): Crédito Finan, consultora de crédito (creditofinan.com, en línea desde julio de 2026) y El Arbolito, alojamiento en Pehuén-Có (pehuencoalquileres.com, en línea desde agosto de 2026).

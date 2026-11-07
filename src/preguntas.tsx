@@ -13,7 +13,7 @@ const WA = "https://wa.me/5493764615587?text=Hola%2C%20tengo%20una%20consulta"
 export const PREGUNTAS: Pregunta[] = [
   {
     q: "¿Cuánto cuesta hacer una página web para mi negocio?",
-    a: "No hay lista de precios: cada página se cotiza según lo que necesite tu negocio, y el presupuesto te lo pasamos por WhatsApp en el día, antes de que pagues nada. Se paga la mitad al arrancar y la otra mitad cuando la ves terminada.",
+    a: "No hay lista de precios: cada página se cotiza según lo que necesite tu negocio, y el presupuesto te lo pasamos por WhatsApp en el día, antes de que pagues nada. Se paga en un solo pago, cuando la ves terminada.",
   },
   {
     q: "¿Cuánto tarda?",
@@ -21,7 +21,7 @@ export const PREGUNTAS: Pregunta[] = [
   },
   {
     q: "¿Cómo se paga?",
-    a: "50% al arrancar y 50% cuando ves la página terminada en tu celular. Si no te gusta, no pagás el saldo. No hay letra chica en eso.",
+    a: "En un solo pago, al final: la ves terminada en tu celular, en un link de prueba, y recién ahí la pagás. Si no te gusta, no pagás. No hay letra chica en eso.",
   },
   {
     q: "Ya tengo Instagram, ¿para qué necesito una página web?",
@@ -33,7 +33,7 @@ export const PREGUNTAS: Pregunta[] = [
   },
   {
     q: "¿Cómo creo la página web de mi negocio?",
-    a: "Hay dos caminos: crearla vos con una plataforma como Wix o WordPress, que tienen planes gratis con límites, o que te la haga alguien. Si te la hacemos nosotros, nos pasás fotos e información por WhatsApp, te pasamos el presupuesto en el día y la ves terminada antes de pagar el saldo.",
+    a: "Hay dos caminos: crearla vos con una plataforma como Wix o WordPress, que tienen planes gratis con límites, o que te la haga alguien. Si te la hacemos nosotros, nos pasás fotos e información por WhatsApp, te pasamos el presupuesto en el día y la ves terminada antes de pagarla.",
   },
   {
     q: "¿El dominio queda a mi nombre?",

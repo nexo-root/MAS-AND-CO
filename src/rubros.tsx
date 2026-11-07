@@ -63,7 +63,7 @@ export const RUBROS: Record<string, Rubro> = {
     faq: [
       {
         q: "¿Cómo creo una página web para mi restaurante?",
-        a: "Tenés dos caminos: armarla vos en una plataforma como Wix, con una plantilla y un plan pago para tener tu dominio, o que te la hagan. Si te la hacemos nosotros, nos mandás por WhatsApp fotos de los platos y del lugar, la carta y los horarios, y la ves terminada antes de pagar el saldo.",
+        a: "Tenés dos caminos: armarla vos en una plataforma como Wix, con una plantilla y un plan pago para tener tu dominio, o que te la hagan. Si te la hacemos nosotros, nos mandás por WhatsApp fotos de los platos y del lugar, la carta y los horarios, y la ves terminada antes de pagarla.",
       },
       {
         q: "¿Puedo cambiar la carta y los precios yo mismo?",
@@ -75,7 +75,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para un restaurante?",
-        a: "Se cotiza por presupuesto según lo que necesite tu restaurante, y te lo pasamos por WhatsApp en el día. Lista en días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+        a: "Se cotiza por presupuesto según lo que necesite tu restaurante, y te lo pasamos por WhatsApp en el día. Lista en días: la ves andando en tu celular y la pagás en un solo pago, recién cuando la ves terminada.",
       },
     ],
   },
@@ -188,7 +188,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para un alojamiento?",
-        a: "Se cotiza por presupuesto según lo que necesite tu alojamiento, y te lo pasamos por WhatsApp en el día. Lista en días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+        a: "Se cotiza por presupuesto según lo que necesite tu alojamiento, y te lo pasamos por WhatsApp en el día. Lista en días: la ves andando en tu celular y la pagás en un solo pago, recién cuando la ves terminada.",
       },
     ],
   },
@@ -245,7 +245,7 @@ export const RUBROS: Record<string, Rubro> = {
       },
       {
         q: "¿Cuánto cuesta una página web para un profesional?",
-        a: "Se cotiza por presupuesto según lo que necesites, y te lo pasamos por WhatsApp en el día. Lista en días: pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+        a: "Se cotiza por presupuesto según lo que necesites, y te lo pasamos por WhatsApp en el día. Lista en días: la ves andando en tu celular y la pagás en un solo pago, recién cuando la ves terminada.",
       },
     ],
   },
@@ -316,12 +316,12 @@ export function Rubro({ id }: { id: keyof typeof RUBROS }) {
           <h2>Lo que sale</h2>
           <div className="placa">
             <div><b>Por presupuesto</b><span>Te lo pasamos en el día</span></div>
-            <div><b>50% y 50%</b><span>Al arrancar y al verla</span></div>
+            <div><b>Un solo pago</b><span>Al final, cuando la ves</span></div>
             <div><b>En días</b><span>De principio a fin</span></div>
           </div>
           <p className="seccion-bajada">
-            Pagás la mitad al arrancar y la otra mitad recién cuando la ves terminada. Si no te
-            gusta, la segunda mitad no la pagás. <a href="/precios/">Ver qué incluye y qué va aparte.</a>
+            Te la armamos completa y la ves andando en un link de prueba. Si te gusta, la pagás
+            en un solo pago y se publica con tu dominio. Si no te gusta, no pagás. <a href="/precios/">Ver qué incluye y qué va aparte.</a>
           </p>
 
           <h2>Preguntas de este rubro</h2>

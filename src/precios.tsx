@@ -61,7 +61,7 @@ const FAQ: Pregunta[] = [
   },
   {
     q: "¿Qué define el precio de tu página?",
-    a: "Tres cosas: cuántas secciones lleva, si tiene catálogo con una ficha por producto, y cuánto trabajo piden las fotos. Lo que no lo encarece: no hay oficina, ni reuniones, ni intermediarios. Nos contás qué necesitás por WhatsApp, lo armamos con tus fotos y tu información, y lo ves terminado en tu celular antes de pagar el saldo. El diseño es propio, no una plantilla.",
+    a: "Tres cosas: cuántas secciones lleva, si tiene catálogo con una ficha por producto, y cuánto trabajo piden las fotos. Lo que no lo encarece: no hay oficina, ni reuniones, ni intermediarios. Nos contás qué necesitás por WhatsApp, lo armamos con tus fotos y tu información, y lo ves terminado en tu celular antes de pagarlo. El diseño es propio, no una plantilla.",
   },
   {
     q: "¿Tienen lista de precios?",
@@ -69,7 +69,7 @@ const FAQ: Pregunta[] = [
   },
   {
     q: "¿Cómo se paga?",
-    a: "La mitad al arrancar y la otra mitad recién cuando ves la página terminada. Si no te gusta, no pagás el saldo.",
+    a: "En un solo pago, recién cuando ves la página terminada en un link de prueba. Si no te gusta, no pagás.",
   },
   {
     q: "¿Qué es el mantenimiento y cuánto cuesta?",
@@ -106,14 +106,14 @@ export function Precios() {
           Una página institucional para un negocio cuesta entre $180.000 y $350.000 en los
           estudios más accesibles del país, y arriba de $1.000.000 en las agencias
           corporativas. En Mas &amp; Co no hay lista de precios: <b>cada página se cotiza para
-          el negocio que la pide</b>, te pasamos el presupuesto por WhatsApp en el día, y pagás
-          la mitad al arrancar y la otra mitad cuando la ves terminada. Lista en días.
+          el negocio que la pide</b>, te pasamos el presupuesto por WhatsApp en el día, y la
+          pagás en un solo pago cuando la ves terminada. Lista en días.
         </p>
         <Actualizado iso={ruta.actualizado} />
 
         <div className="placa">
           <div><b>Por presupuesto</b><span>Te lo pasamos en el día</span></div>
-          <div><b>50% y 50%</b><span>Al arrancar y al verla</span></div>
+          <div><b>Un solo pago</b><span>Al final, cuando la ves</span></div>
           <div><b>En días</b><span>De principio a fin</span></div>
         </div>
 
@@ -159,7 +159,7 @@ export function Precios() {
             <li>Que se vea bien en el celular, que es donde la va a abrir casi todo el mundo.</li>
             <li>Botón de WhatsApp, ubicación, horarios, tus fotos y tu información ordenada.</li>
             <li>El dominio se registra a tu nombre: la página es tuya, no nuestra.</li>
-            <li>La ves terminada antes de pagar el saldo. Si no te gusta, no lo pagás.</li>
+            <li>La ves terminada antes de pagar. Si no te gusta, no la pagás.</li>
           </ul>
 
           <h2>Qué va aparte, y por qué</h2>
@@ -177,7 +177,7 @@ export function Precios() {
             Porque sacamos todo lo que encarece una página sin mejorarla. No hay oficina que
             pagar, no hay reuniones, no hay vendedor en el medio. Nos contás qué necesitás por
             WhatsApp, lo armamos con tus fotos y tu información, y lo ves terminado en tu celular
-            antes de pagar el saldo. Del otro lado contesta una persona.
+            antes de pagarla. Del otro lado contesta una persona.
           </p>
 
           <h2>Preguntas sobre el precio</h2>

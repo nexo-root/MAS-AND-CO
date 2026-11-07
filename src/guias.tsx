@@ -331,7 +331,7 @@ const WHATSAPP_FAQ: Pregunta[] = [
   },
   {
     q: "¿Cuánto cuesta una página web que lleve a WhatsApp?",
-    a: "Se cotiza por presupuesto según lo que necesite tu negocio, y te lo pasamos por WhatsApp en el día. Pagás la mitad al arrancar y la otra mitad cuando la ves terminada.",
+    a: "Se cotiza por presupuesto según lo que necesite tu negocio, y te lo pasamos por WhatsApp en el día. La pagás en un solo pago, cuando la ves terminada.",
   },
 ]
 
