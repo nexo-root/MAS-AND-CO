@@ -119,7 +119,7 @@ function Obra({ id, url, titulo, rubro, bajada }: {
   return (
     <a className="obra" href={url} target="_blank" rel="noopener">
       <div className="lienzo">
-        <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={1960} height={1274}
+        <img className="ancha" src={`${BASE}fotos/${id}.webp`} srcSet={`${BASE}fotos/${id}-1000.webp 1000w, ${BASE}fotos/${id}.webp 1960w`} sizes="(max-width:760px) 330px, 1240px" width={1960} height={1274}
              loading="lazy" decoding="async" alt={`Sitio de ${titulo} visto en computadora`} />
       </div>
       <div className="ficha">
@@ -141,7 +141,7 @@ function Diseno({ id, titulo, rubro, bajada, enlace }: {
   return (
     <div className="obra obra-muestra">
       <div className="lienzo">
-        <img className="ancha" src={`${BASE}fotos/${id}.webp`} width={1960} height={1274}
+        <img className="ancha" src={`${BASE}fotos/${id}.webp`} srcSet={`${BASE}fotos/${id}-1000.webp 1000w, ${BASE}fotos/${id}.webp 1960w`} sizes="(max-width:760px) 330px, 1240px" width={1960} height={1274}
              loading="lazy" decoding="async" alt={`Diseno de muestra ${titulo} en computadora`} />
       </div>
       <div className="ficha">
@@ -155,6 +155,8 @@ function Diseno({ id, titulo, rubro, bajada, enlace }: {
 }
 
 function Inicio() {
+  // celu: el texto de «Páginas web para negocios» se pliega; queda entero en el HTML para Google
+  const [abierto, setAbierto] = useState(false)
   return (
     <>
       <Cabeza ruta={rutaPorId("inicio")} />
@@ -191,7 +193,7 @@ function Inicio() {
           La portada tiene 40 palabras; Google necesita texto para saber de que
           va la pagina, y el visitante que baja necesita saber que estamos
           vendiendo antes de ver las capturas. */}
-      <section id="que-hacemos">
+      <section id="que-hacemos" className={abierto ? "abierto" : undefined}>
         <div className="eje">
           <h2 className="titulo">Páginas web para negocios.</h2>
           <div className="prosa dos">
@@ -201,13 +203,14 @@ function Inicio() {
                 Google y adonde mandás a la gente desde Instagram para que vea precios, horarios
                 y ubicación, y te escriba por WhatsApp sin que tengas que explicar todo cada vez.
               </p>
-              <p>
+              <button type="button" className="leer-mas" onClick={() => setAbierto(true)}>Leer más</button>
+              <p className="solo-abierto">
                 Diseño web propio para cada negocio, no una plantilla con tu logo encima. Lista en
                 días desde que recibimos tus fotos y tu información. El presupuesto, en el día.
               </p>
             </div>
             <div>
-              <p>
+              <p className="solo-abierto">
                 Trabajamos para todo el país, por WhatsApp. Nos contás qué necesitás, lo armamos,
                 lo ves terminado en tu celular, y recién ahí lo pagás. Del otro lado
                 contesta una persona, no un formulario.
@@ -277,10 +280,12 @@ function Inicio() {
             Estos no son encargos: los hicimos nosotros para mostrar cómo
             resolvemos un rubro cuando arrancamos de cero.
           </p>
+          <div className="fila-muestras">
           <Diseno id="brasa" titulo="Brasa" rubro="Parrilla" enlace="/pagina-web-para-restaurantes/"
                   bajada="Carta, horarios y una mesa que se reserva por mensaje." />
           <Diseno id="terra" titulo="Terra Propiedades" rubro="Inmobiliaria" enlace="/pagina-web-para-inmobiliarias/"
                   bajada="Buscador de propiedades y visitas que se coordinan por WhatsApp." />
+          </div>
         </div>
       </section>
 
