@@ -1,0 +1,74 @@
+[
+ {
+  "f": 1,
+  "texto": "Solares de Loreto va a tener agua propia en todo el loteo.",
+  "ini": 0.15,
+  "fin": 3.621
+ },
+ {
+  "f": 2,
+  "texto": "Así se va a construir.",
+  "ini": 4.221,
+  "fin": 5.881
+ },
+ {
+  "f": 3,
+  "texto": "Entrando al loteo, junto al mirador, hay un predio triangular de mil doscientos cincuenta metros cuadrados. Ahí va el tanque.",
+  "ini": 6.481,
+  "fin": 14.828
+ },
+ {
+  "f": 4,
+  "texto": "Primero, la perforación: un pozo que llega hasta el agua subterránea.",
+  "ini": 15.428,
+  "fin": 20.257
+ },
+ {
+  "f": 5,
+  "texto": "Adentro baja una bomba sumergible, con su caño hasta la superficie.",
+  "ini": 20.857,
+  "fin": 24.886
+ },
+ {
+  "f": 6,
+  "texto": "La bomba funciona con energía solar: los paneles le dan la electricidad, sin depender de la red.",
+  "ini": 25.486,
+  "fin": 31.384
+ },
+ {
+  "f": 7,
+  "texto": "Después se levanta la torre de acero, tramo por tramo, con su escalera protegida.",
+  "ini": 31.984,
+  "fin": 37.011
+ },
+ {
+  "f": 8,
+  "texto": "Arriba se monta el tanque, y se conectan los caños de subida y de bajada.",
+  "ini": 37.611,
+  "fin": 41.999
+ },
+ {
+  "f": 9,
+  "texto": "Cuando sale el sol, la bomba sube el agua hasta el tanque. Un flotante la corta cuando está lleno.",
+  "ini": 42.599,
+  "fin": 48.59
+ },
+ {
+  "f": 10,
+  "texto": "Desde la altura, el agua baja sola, por gravedad, y llega con presión a cada lote.",
+  "ini": 49.19,
+  "fin": 54.658
+ },
+ {
+  "f": 11,
+  "texto": "Al lado, dos construcciones: un puesto de guardia y una capilla. Y el mirador, con su piso de piedra.",
+  "ini": 55.258,
+  "fin": 62.851
+ },
+ {
+  "f": 12,
+  "texto": "Con la venta de tres lotes, el tanque se pone en marcha. Agua para todo Solares de Loreto.",
+  "ini": 63.451,
+  "fin": 68.954
+ }
+]
