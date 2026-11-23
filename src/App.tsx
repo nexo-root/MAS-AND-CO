@@ -261,13 +261,14 @@ function Inicio() {
       <section id="trabajos">
         <div className="eje">
           <h2 className="titulo">Publicado y andando.</h2>
-          <Obra id="creditofinan" url="https://creditofinan.com/"
-                titulo="Crédito Finan" rubro="Créditos"
-                bajada="Formulario que llega al correo y a una planilla, sin intermediarios." />
+          <Obra id="m1" url="https://m1talleres.com/"
+                titulo="M1 Pintura y Carrocería" rubro="Taller de chapa y pintura"
+                bajada="Autos de antes y después, y un cotizador que arma el WhatsApp con el daño marcado." />
           {/* Los casos tenian pagina propia pero solo se llegaba por el pie: el
               estudio de visibilidad en IA (26/09) ni los encontro. */}
           <p className="enlaces">
             <a href="/casos/">Ejemplos de todos los rubros</a>
+            <a href="/caso/m1/">El caso de M1</a>
             <a href="/caso/credito-finan/">El caso de Crédito Finan</a>
           </p>
         </div>

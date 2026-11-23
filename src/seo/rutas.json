@@ -117,6 +117,15 @@
     "actualizado": "2026-09-30"
   },
   {
+    "id": "caso-m1",
+    "path": "/caso/m1/",
+    "nombre": "Caso: M1 Pintura y Carrocería",
+    "prioridad": "0.7",
+    "titulo": "Caso real: página web de M1, taller de pintura y carrocería | Mas & Co",
+    "descripcion": "Caso real: la página web de M1 Pintura y Carrocería, un taller de chapa y pintura, publicada en noviembre de 2026. Autos de antes y después, seguros y un cotizador que arma el WhatsApp.",
+    "actualizado": "2026-11-23"
+  },
+  {
     "id": "caso-finan",
     "path": "/caso/credito-finan/",
     "nombre": "Caso: Crédito Finan",

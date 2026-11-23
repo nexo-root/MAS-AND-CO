@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="es-AR" class="lenis" data-tema="claro"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Lo que sigue es la cabecera de la HOME. Cada ruta la reescribe desde
+         src/seo/Cabeza.tsx (title, description, canonical, OG, Twitter y su
+         JSON-LD), y el prerender guarda el resultado por pagina. -->
+    <title>Caso real: página web de M1, taller de pintura y carrocería | Mas &amp; Co</title>
+    <meta name="description" content="Caso real: la página web de M1 Pintura y Carrocería, un taller de chapa y pintura, publicada en noviembre de 2026. Autos de antes y después, seguros y un cotizador que arma el WhatsApp.">
+    <link rel="canonical" href="https://masandcoweb.com/caso/m1/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="Mas &amp; Co">
+    <meta property="og:url" content="https://masandcoweb.com/caso/m1/">
+    <meta property="og:title" content="Caso real: página web de M1, taller de pintura y carrocería | Mas &amp; Co">
+    <meta property="og:description" content="Caso real: la página web de M1 Pintura y Carrocería, un taller de chapa y pintura, publicada en noviembre de 2026. Autos de antes y después, seguros y un cotizador que arma el WhatsApp.">
+    <meta property="og:image" content="https://masandcoweb.com/fotos/m1.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Caso real: página web de M1, taller de pintura y carrocería | Mas &amp; Co">
+    <meta name="twitter:description" content="Caso real: la página web de M1 Pintura y Carrocería, un taller de chapa y pintura, publicada en noviembre de 2026. Autos de antes y después, seguros y un cotizador que arma el WhatsApp.">
+    <meta name="twitter:image" content="https://masandcoweb.com/fotos/m1.webp">
+    <!-- el tema guardado se aplica ANTES del primer cuadro: el HTML prerenderizado
+         sale en claro, y sin esto un usuario en oscuro veria un flash de papel -->
+    <script>try{if(localStorage.getItem("tema")==="oscuro")document.documentElement.dataset.tema="oscuro"}catch(e){}</script>
+    <!-- El icono. Google lo rastrea aparte del HTML y solo muestra el que
+         esta DECLARADO aca: sin este link no aparece logo en el resultado.
+         Va PNG ademas del SVG porque Google pide un raster cuadrado. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <!-- La letra vive en el sitio (src/index.css): sin la hoja de Google Fonts,
+         que bloqueaba el primer pintado. Se precarga la de caracteres latinos,
+         que es la unica que usa el castellano. -->
+    <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin="">
+    <!-- El grafo comun a todo el sitio. Lo que cambia por pagina (WebPage, migas,
+         FAQPage, Service) lo agrega la Cabeza en <script id="ld-pagina">. -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[
+      {"@type":"Organization","@id":"https://masandcoweb.com/#organization",
+       "name":"Mas & Co","url":"https://masandcoweb.com/",
+       "logo":{"@type":"ImageObject","url":"https://masandcoweb.com/fotos/wordmark.png"},
+       "email":"masandco.mas@gmail.com","telephone":"+54 9 3764 61-5587",
+       "sameAs":["https://www.instagram.com/masandco.mas","https://www.facebook.com/1342032842315941","https://www.google.com/maps?cid=3284061739839486985"],
+       "parentOrganization":{"@type":"Organization","name":"Grupo Mas"},
+       "contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+54 9 3764 61-5587","availableLanguage":"es","areaServed":"AR"}},
+      {"@type":"WebSite","@id":"https://masandcoweb.com/#website",
+       "url":"https://masandcoweb.com/","name":"Mas & Co","inLanguage":"es-AR",
+       "publisher":{"@id":"https://masandcoweb.com/#organization"}},
+      {"@type":"LocalBusiness","@id":"https://masandcoweb.com/#negocio",
+       "name":"Mas & Co","url":"https://masandcoweb.com/",
+       "image":"https://masandcoweb.com/og-masandco.png",
+       "description":"Diseño y desarrollo de páginas web para negocios en Argentina. Se cotizan por presupuesto, listas en días.",
+       "telephone":"+54 9 3764 61-5587","email":"masandco.mas@gmail.com",
+       "address":{"@type":"PostalAddress","addressLocality":"Posadas","addressRegion":"Misiones","addressCountry":"AR"},
+       "geo":{"@type":"GeoCoordinates","latitude":-27.3671,"longitude":-55.8961},
+       "areaServed":{"@type":"Country","name":"Argentina"},
+       "openingHoursSpecification":{"@type":"OpeningHoursSpecification",
+         "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+         "opens":"09:00","closes":"20:00"},
+       "parentOrganization":{"@id":"https://masandcoweb.com/#organization"},
+       "makesOffer":{"@type":"Offer","name":"Página web institucional a medida",
+         "url":"https://masandcoweb.com/precios/",
+         "availability":"https://schema.org/InStock",
+         "itemOffered":{"@type":"Service","name":"Diseño y desarrollo de página web",
+           "serviceType":"Diseño web","provider":{"@id":"https://masandcoweb.com/#organization"},
+           "areaServed":{"@type":"Country","name":"Argentina"}}}}
+    ]}
+    </script>
+    <script type="module" crossorigin="" src="/assets/index-BQmKaH6L.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-BwCImMB0.css">
+  <script id="ld-pagina" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://masandcoweb.com/caso/m1/#webpage","url":"https://masandcoweb.com/caso/m1/","name":"Caso real: página web de M1, taller de pintura y carrocería | Mas & Co","description":"Caso real: la página web de M1 Pintura y Carrocería, un taller de chapa y pintura, publicada en noviembre de 2026. Autos de antes y después, seguros y un cotizador que arma el WhatsApp.","inLanguage":"es-AR","isPartOf":{"@id":"https://masandcoweb.com/#website"},"about":{"@id":"https://masandcoweb.com/#organization"},"dateModified":"2026-11-23","breadcrumb":{"@id":"https://masandcoweb.com/caso/m1/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://masandcoweb.com/caso/m1/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://masandcoweb.com/"},{"@type":"ListItem","position":2,"name":"Casos reales","item":"https://masandcoweb.com/casos/"},{"@type":"ListItem","position":3,"name":"Caso: M1 Pintura y Carrocería","item":"https://masandcoweb.com/caso/m1/"}]},{"@type":"CreativeWork","@id":"https://masandcoweb.com/caso/m1/#caso","name":"Página web de M1 Pintura y Carrocería","description":"Página web hecha para M1 Pintura y Carrocería, taller de chapa y pintura.","genre":"Diseño y desarrollo de páginas web","creator":{"@id":"https://masandcoweb.com/#organization"},"about":{"@type":"Organization","name":"M1 Pintura y Carrocería","url":"https://m1talleres.com"},"dateCreated":"2026-11","datePublished":"2026-11","isPartOf":{"@id":"https://masandcoweb.com/casos/#webpage"},"url":"https://masandcoweb.com/caso/m1/","image":"https://masandcoweb.com/fotos/m1.webp","inLanguage":"es-AR"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cómo le llega la consulta al taller?","acceptedAnswer":{"@type":"Answer","text":"Por WhatsApp. El cliente marca en el plano del auto qué se dañó y la página arma el mensaje, así el taller lo recibe ya con el detalle."}},{"@type":"Question","name":"¿Los trabajos que se ven son reales?","acceptedAnswer":{"@type":"Answer","text":"Sí. Son autos que pasaron por el taller, con las patentes tapadas. Las fotos las pone el taller y nosotros las acomodamos en la página."}},{"@type":"Question","name":"¿Se puede cambiar algo después?","acceptedAnswer":{"@type":"Answer","text":"Sí. El primer mes de cambios no se cobra."}}]}]}</script></head>
+  <body>
+    <div id="root"><canvas class="curvas" aria-hidden="true" width="1440" height="900" style="width: 1440px; height: 900px;"></canvas><div id="centinela" style="position: absolute; top: 0px; height: 1px; width: 1px;"></div><div class="progreso" aria-hidden="true"></div><header><div class="eje barra"><a class="marca" href="/">MAS &amp; CO</a><nav class="menu"><a href="/precios/">Precios</a><a href="/casos/">Ejemplos</a><a href="/quienes-somos/">Quiénes somos</a><a href="/preguntas-frecuentes/">Preguntas</a></nav><span class="palanca"><label class="cursor-pointer relative h-[3em] w-[6em] rounded-full bg-[hsl(0,0%,7%)] shadow-[0px_2px_4px_0px_rgb(18,18,18,0.25),0px_4px_8px_0px_rgb(18,18,18,0.35)]"><span class="absolute inset-[0.1em] rounded-full border-[1px] border-[hsl(0,0%,25%)]"></span><div class="absolute left-[0.5em] top-1/2 flex h-[2em] w-[2em] -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-[inset_0px_2px_2px_0px_hsl(0,0%,85%)]"><div class="h-[1.5em] w-[1.5em] rounded-full bg-[hsl(0,0%,7%)] shadow-[0px_2px_2px_0px_hsl(0,0%,85%)]"></div></div><div class="absolute right-[0.5em] top-1/2 h-[0.25em] w-[1.5em] -translate-y-1/2 rounded-full bg-[hsl(0,0%,50%)] shadow-[inset_0px_2px_1px_0px_hsl(0,0%,40%)]"></div><input class="peer h-[1em] w-[1em] opacity-0" aria-label="Cambiar entre tema claro y oscuro" type="checkbox"><span class="absolute left-[0.25em] top-1/2 flex h-[2.5em] w-[2.5em] -translate-y-1/2 items-center justify-center rounded-full bg-[rgb(26,26,26)] shadow-[inset_4px_4px_4px_0px_rgba(64,64,64,0.25),inset_-4px_-4px_4px_0px_rgba(16,16,16,0.5)] duration-300 peer-checked:left-[calc(100%-2.75em)]"><span class="relative h-full w-full rounded-full"><span class="absolute inset-[0.1em] rounded-full border-[1px] border-[hsl(0,0%,50%)]"></span></span></span></label></span></div></header><main><section class="pagina"><div class="eje"><p class="miga"><a href="/">Inicio</a> · <a href="/casos/">Ejemplos</a> · M1 Pintura y Carrocería</p><h1 class="titulo">Caso real: la página de M1, taller de pintura y carrocería.</h1><p class="respuesta">Hicimos la página web de M1 Pintura y Carrocería, un taller de chapa y pintura con dos talleres, y está en línea desde noviembre de 2026 en m1talleres.com. Muestra autos reales de antes y después, las compañías de seguro con las que trabaja y un cotizador donde se marca el daño sobre el auto y se arma la consulta por WhatsApp. Es un cliente real: la página se puede abrir y comprobar.</p><p class="seccion-bajada"><b>Cliente:</b> M1 Pintura y Carrocería · <b>Rubro:</b> Taller de chapa y pintura · <b>En línea desde:</b> noviembre de 2026 · <a href="https://m1talleres.com" target="_blank" rel="noopener">m1talleres.com</a></p><div class="rubro-vitrina"><div class="lienzo"><img class="ancha" width="1960" height="1274" alt="Página web de M1 Pintura y Carrocería, taller de chapa y pintura, vista en computadora" loading="eager" decoding="async" src="/fotos/m1.webp"></div><div class="ficha"><h2>M1 Pintura y Carrocería</h2><small>Taller de chapa y pintura</small><a class="ir" href="https://m1talleres.com" target="_blank" rel="noopener">Abrir el sitio</a></div><p class="obra-bajada">Cliente real. La página está publicada y se puede entrar.</p></div><div class="prosa"><h2>El punto de partida</h2><p>Un taller se elige mirando trabajos. Si los autos arreglados quedan perdidos en Instagram, el que busca chapa y pintura no los ve, y para pedir un presupuesto tiene que ponerse a escribir qué le pasó al auto.</p><h2>Qué hicimos</h2><ul><li>Autos reales de antes y después, que se tocan para ver el cambio.</li><li>Un cotizador: se marca el daño sobre el auto y la página arma el mensaje de WhatsApp.</li><li>Las compañías de seguro con las que trabaja, a la vista.</li><li>Los dos talleres, con cómo llegar a cada uno y el horario.</li></ul><h2>El resultado</h2><p>El que llega ya vio cómo trabaja el taller y manda la consulta con el daño marcado, así el presupuesto arranca con información y no con una lista de preguntas.</p><p>La página está en línea desde noviembre de 2026 y se puede comprobar entrando a <a href="https://m1talleres.com" target="_blank" rel="noopener">m1talleres.com</a>.</p><h2>Cómo se trabajó</h2><p>El cliente nos escribió por WhatsApp, nos pasó las fotos y los datos por ahí mismo, y la vio terminada en su celular antes de pagar la segunda mitad. El dominio quedó a su nombre.</p><h2>Preguntas sobre este trabajo</h2><div class="faq"><details><summary>¿Cómo le llega la consulta al taller?</summary><p>Por WhatsApp. El cliente marca en el plano del auto qué se dañó y la página arma el mensaje, así el taller lo recibe ya con el detalle.</p></details><details><summary>¿Los trabajos que se ven son reales?</summary><p>Sí. Son autos que pasaron por el taller, con las patentes tapadas. Las fotos las pone el taller y nosotros las acomodamos en la página.</p></details><details><summary>¿Se puede cambiar algo después?</summary><p>Sí. El primer mes de cambios no se cobra.</p></details></div><p class="seccion-bajada"><a href="/casos/">Ver ejemplos de páginas para otros rubros</a> · <a href="/casos/">Ver los ejemplos de todos los rubros</a></p><div class="acciones"><a class="boton lleno" href="https://wa.me/5493764615587?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20para%20mi%20negocio" target="_blank" rel="noopener">Quiero la mía</a><a class="boton borde" href="/precios/">Ver qué incluye</a></div></div></div></section><section class="tinta" id="contacto"><div class="eje"><p class="rama">La rama de tecnología del grupo Mas, junto a CMD y Mas &amp; Sons.</p><h2 class="titulo enorme">Contanos qué<br>necesitás.</h2><div class="acciones"><a class="boton claro" href="https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div><div class="vias"><a href="https://wa.me/5493764615587" target="_blank" rel="noopener">+54 9 3764 61-5587</a><a href="mailto:masandco.mas@gmail.com">masandco.mas@gmail.com</a><a href="https://instagram.com/masandco.mas" target="_blank" rel="noopener">@masandco.mas</a></div></div><footer><div class="eje pie"><span class="logo-pie">MAS &amp; CO</span><nav class="pie-enlaces"><a href="/precios/">Precios</a><a href="/preguntas-frecuentes/">Preguntas frecuentes</a><a href="/pagina-web-gratis-o-pagada/">¿Página web gratis o pagada?</a><a href="/pagina-web-o-instagram/">¿Página web o Instagram?</a><a href="/pagina-web-y-whatsapp/">¿Web si vendés por WhatsApp?</a><a href="/como-elegir-quien-hace-tu-pagina-web/">¿Cómo elegir quién te hace la página web?</a><a href="/pagina-web-para-restaurantes/">Página web para restaurantes</a><a href="/pagina-web-para-inmobiliarias/">Página web para inmobiliarias</a><a href="/pagina-web-para-alojamientos/">Página web para alojamientos</a><a href="/pagina-web-para-profesionales/">Página web para profesionales</a><a href="/casos/">Ejemplos</a><a href="/caso/el-arbolito/">Caso: El Arbolito</a><a href="/caso/m1/">Caso: M1 Pintura y Carrocería</a><a href="/caso/credito-finan/">Caso: Crédito Finan</a><a href="/quienes-somos/">Quiénes somos</a><a href="/contacto/">Contacto</a><a href="/terminos/">Términos y condiciones</a></nav><span>Argentina</span></div></footer></section></main><a class="fijo" href="https://wa.me/5493764615587?text=Hola%2C%20quiero%20consultar" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
+
+    <!-- Cloudflare Web Analytics (sin cookies). Se carga SOLO en el dominio real:
+         asi el prerender, la verificacion y las capturas locales no cuentan
+         como visitas, y el HTML prerenderizado no queda con el beacon duplicado. -->
+    <script>
+      if (location.hostname === "masandcoweb.com") {
+        var cf = document.createElement("script")
+        cf.type = "module"
+        cf.src = "https://static.cloudflareinsights.com/beacon.min.js"
+        cf.setAttribute("data-cf-beacon", '{"token": "94cc48e8d3804eb0b66e4b515f16be84"}')
+        document.body.appendChild(cf)
+      }
+    </script>
+  
+
+</body></html>

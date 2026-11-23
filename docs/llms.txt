@@ -10,7 +10,7 @@
 - Mantenimiento opcional (dominio, alojamiento, respaldos, soporte): se cotiza junto con la página, primer mes gratis.
 - El dominio se registra a nombre del cliente.
 - Además de la página: turnos, reservas y cuotas con un panel para el dueño, y asistente de WhatsApp con IA que contesta precios, horarios y disponibilidad.
-- Casos reales (https://masandcoweb.com/casos/): Crédito Finan, consultora de crédito (creditofinan.com, en línea desde julio de 2026) y El Arbolito, alojamiento en Pehuén-Có (pehuencoalquileres.com, en línea desde agosto de 2026).
+- Casos reales (https://masandcoweb.com/casos/): M1 Pintura y Carrocería, taller de chapa y pintura (m1talleres.com, en línea desde noviembre de 2026), Crédito Finan, consultora de crédito (creditofinan.com, en línea desde julio de 2026) y El Arbolito, alojamiento en Pehuén-Có (pehuencoalquileres.com, en línea desde agosto de 2026).
 
 ## Páginas
 
@@ -27,6 +27,7 @@
 - [Página web para profesionales](https://masandcoweb.com/pagina-web-para-profesionales/): Tu especialidad, tu matrícula, dónde atendés y turnos por WhatsApp en una página propia. Para abogados, contadores, psicólogos y más. Presupuesto en el día, lista en días.
 - [Ejemplos](https://masandcoweb.com/casos/): Páginas de muestra para concesionarias, salones, alojamientos, mueblerías, restaurantes, inmobiliarias, agencias de viajes y corralones. Probalas con el nombre de tu negocio.
 - [Caso: El Arbolito](https://masandcoweb.com/caso/el-arbolito/): Caso real: la página web de El Arbolito, un alojamiento en Pehuén-Có, publicada en agosto de 2026. Fotos del lugar, cómo llegar y consultas por WhatsApp.
+- [Caso: M1 Pintura y Carrocería](https://masandcoweb.com/caso/m1/): Caso real: la página web de M1 Pintura y Carrocería, un taller de chapa y pintura, publicada en noviembre de 2026. Autos de antes y después, seguros y un cotizador que arma el WhatsApp.
 - [Caso: Crédito Finan](https://masandcoweb.com/caso/credito-finan/): Caso real: la página web de Crédito Finan, una consultora de crédito, publicada en julio de 2026. Qué hacen en una frase, un formulario que les llega al correo y el WhatsApp.
 - [Quiénes somos](https://masandcoweb.com/quienes-somos/): Mas & Co es un estudio de diseño web de Argentina, la rama de tecnología de una familia que construye desde 2010. Hacemos páginas web, turnos y automatizaciones para negocios.
 - [Contacto](https://masandcoweb.com/contacto/): Escribinos por WhatsApp al +54 9 3764 61-5587 o a masandco.mas@gmail.com. Atendemos todos los días de 9 a 20 y trabajamos con negocios de todo el país.

@@ -41,6 +41,49 @@ type Caso = {
 }
 
 export const CASOS: Record<string, Caso> = {
+  "caso-m1": {
+    rutaId: "caso-m1",
+    h1: "Caso real: la página de M1, taller de pintura y carrocería.",
+    resumen:
+      "Hicimos la página web de M1 Pintura y Carrocería, un taller de chapa y pintura con dos talleres, y está en línea desde noviembre de 2026 en m1talleres.com. Muestra autos reales de antes y después, las compañías de seguro con las que trabaja y un cotizador donde se marca el daño sobre el auto y se arma la consulta por WhatsApp. Es un cliente real: la página se puede abrir y comprobar.",
+    entrada:
+      "Un taller se elige mirando trabajos. Si los autos arreglados quedan perdidos en Instagram, el que busca chapa y pintura no los ve, y para pedir un presupuesto tiene que ponerse a escribir qué le pasó al auto.",
+    cliente: {
+      nombre: "M1 Pintura y Carrocería",
+      rubro: "Taller de chapa y pintura",
+      url: "https://m1talleres.com",
+      dominio: "m1talleres.com",
+      foto: "m1",
+    },
+    publicada: { texto: "noviembre de 2026", iso: "2026-11" },
+    seVe: [
+      "Autos reales de antes y después, que se tocan para ver el cambio.",
+      "Un cotizador: se marca el daño sobre el auto y la página arma el mensaje de WhatsApp.",
+      "Las compañías de seguro con las que trabaja, a la vista.",
+      "Los dos talleres, con cómo llegar a cada uno y el horario.",
+    ],
+    porQue:
+      "El que llega ya vio cómo trabaja el taller y manda la consulta con el daño marcado, así el presupuesto arranca con información y no con una lista de preguntas.",
+    faq: [
+      {
+        q: "¿Cómo le llega la consulta al taller?",
+        a: "Por WhatsApp. El cliente marca en el plano del auto qué se dañó y la página arma el mensaje, así el taller lo recibe ya con el detalle.",
+      },
+      {
+        q: "¿Los trabajos que se ven son reales?",
+        a: "Sí. Son autos que pasaron por el taller, con las patentes tapadas. Las fotos las pone el taller y nosotros las acomodamos en la página.",
+      },
+      {
+        q: "¿Se puede cambiar algo después?",
+        a: "Sí. El primer mes de cambios no se cobra.",
+      },
+    ],
+    rubroRelacionado: {
+      texto: "Ver ejemplos de páginas para otros rubros",
+      href: "/casos/",
+    },
+  },
+
   "caso-finan": {
     rutaId: "caso-finan",
     h1: "Caso real: la página de Crédito Finan, consultora de crédito.",
@@ -292,6 +335,13 @@ type Muestra = {
 
 const MUESTRAS: Muestra[] = [
   {
+    id: "m1", rubro: "Taller de chapa y pintura", titulo: "M1 Pintura y Carrocería", url: "https://m1talleres.com/",
+    real: { desde: "noviembre de 2026", caso: "/caso/m1/", dominio: "m1talleres.com" },
+    bajada: "Autos reales de antes y después, y un cotizador que arma la consulta de WhatsApp con el daño marcado.",
+    tiene: CASOS["caso-m1"].seVe.slice(0, 3),
+    pedido: "Hola, vi la página de M1 y quiero una así para mi negocio",
+  },
+  {
     id: "creditofinan", rubro: "Consultora de crédito", titulo: "Crédito Finan", url: "https://creditofinan.com/",
     real: { desde: "julio de 2026", caso: "/caso/credito-finan/", dominio: "creditofinan.com" },
     bajada: "Dice qué hacen en una frase, tiene un formulario que les llega al correo y el WhatsApp a un toque.",
@@ -532,7 +582,7 @@ export function Casos() {
   const ruta = rutaPorId("casos")
   const [abierta, setAbierta] = useState<string | null>(null)
   const botones = useRef<Record<string, HTMLButtonElement | null>>({})
-  const reales = Object.values(CASOS).filter((c) => c.rutaId === "caso-finan")
+  const reales = Object.values(CASOS).filter((c) => c.rutaId === "caso-m1" || c.rutaId === "caso-finan")
   const m = MUESTRAS.find((x) => x.id === abierta)
 
   return (
@@ -553,8 +603,8 @@ export function Casos() {
         <p className="respuesta">
           Para cada rubro con el que trabajamos armamos una página de muestra completa. Tocá una
           para abrirla en grande, recorrela como la vería un cliente tuyo y probala con el nombre de
-          tu negocio. Las fotos y los datos son de ejemplo. Crédito Finan es un cliente real: su
-          página está publicada y se puede abrir.
+          tu negocio. Las fotos y los datos son de ejemplo. M1 y Crédito Finan son clientes
+          reales: sus páginas están publicadas y se pueden abrir.
         </p>
 
         <div className="vit-grilla">

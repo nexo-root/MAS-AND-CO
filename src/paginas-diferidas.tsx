@@ -26,6 +26,7 @@ const cargadores: Record<string, () => Promise<Pagina>> = {
   profesionales: () => import("./rubros").then((m) => () => <m.Rubro id="profesionales" />),
   casos: () => import("./casos").then((m) => m.Casos),
   "caso-arbolito": () => import("./casos").then((m) => () => <m.Caso id="caso-arbolito" />),
+  "caso-m1": () => import("./casos").then((m) => () => <m.Caso id="caso-m1" />),
   "caso-finan": () => import("./casos").then((m) => () => <m.Caso id="caso-finan" />),
   quienes: () => import("./paginas").then((m) => m.Quienes),
   contacto: () => import("./paginas").then((m) => m.Contacto),
